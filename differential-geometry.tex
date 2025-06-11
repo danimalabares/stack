@@ -1,0 +1,184 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Differential Geometry}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Variações da energia}
+\label{section-variações-energia}
+
+\begin{theorem}[Bonnet Myers]
+\label{theorem-bonnet-myers}
+If $M$ has  $\operatorname{Ric} \leq \frac{1}{r^2}$, then
+$\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
+\end{theorem}
+
+\section{Morse index theorem}
+\label{section-morse-index}
+
+\subsection{Cut locus}
+\label{subsection-cut-locus}
+
+\begin{definition}
+\label{definition-injectivity-radius}
+The {\it injectivity radius} of a manifold $M$ is
+$$
+i(M)=\operatorname{inf}\{d(p,C_m(M)):p \in M\}
+$$
+\end{definition}
+
+\section{Bishop-Gromov Theorem}
+\label{section-bishop-gromov}
+
+\begin{theorem}[Bishop-Gromov]
+\label{theorem-bishop-gromov}
+
+\end{theorem}
+
+\begin{proof}
+Tome a função exponencial como uma carta parametrizando a esfera geodésica de
+raio $r$ com centro em $p$. Então
+$$
+\operatorname{Vol}_{S_r}=\int
+\operatorname{Vol}_{S_r}=
+\int_{S_r(0)}\operatorname{exp}_p^*\operatorname{Vol}_{S_r}
+$$
+Portanto, estamos interessados em calcular 
+$$
+|\det d_{rv} \operatorname{exp}_p|
+$$
+Avaliando em uma base de vetores tangentes a $S_r(0)$, notamos que cada um deles
+nos dá um campo de Jacobi $J$ ao longo de $\gamma$.
+
+Como $\gamma'(r)\perp J$, derivando obtemos $A J=J'$ onde $A$ é o operador de
+forma de $S_r$ respeito ao normal interior $\gamma'(r)$ (cf. conta feita antes).
+
+Mmm… no sé: creo que lo que quiero calcular realmente es
+$$
+\det J
+$$
+entonces no sé dondé entran ni $A$ ni $J'$… O sea si derivas con respecto a $r$
+pues va… pero si no…
+
+\end{proof}
+
+\section{Toponogov's theorem}
+\label{section-toponogov}
+
+First recall
+
+\begin{theorem}[Toponogov, local version]
+\label{theorem-toponogov,local}
+Let $o,p_1,p_2 \in B$ where $B$ is a totally convex ball of $M$. Let $\gamma_1$
+and $\gamma_2$ be the normalized geodesics joining $o$ to $p_1$ and to $p_2$.
+
+Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple with the
+exact same properties on another manifold $\tilde{M}$.
+
+Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
+$$
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}_s)\leq 
+$$
+
+\end{theorem}
+
+\begin{exercise}[Lista 7]
+\label{exercise-toponogov-from-rauch}
+Prove the local version of Toponogov's theorem as a corollary of Rauch's
+Comparison Theorem.
+\end{exercise}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}[Toponogov, hinge version]
+\label{theorem-toponogov-hinge}
+Let $o,p_1,p_2 \in M$ and 
+\end{theorem}
+
+
+
+
+
+
+\section{Other exercises}
+\label{section-other-exercises}
+
+\begin{exercise}
+Calcule o diâmetro de $S^2$, $\mathbb{T}^2$, $\mathbb{R}P^{2}$.
+\end{exercise}
+
+\begin{proof}[Solution]
+O diâmetro de $S^2$ pode ser calculado via o teorema de Bonnet Myers
+\ref{theorem-bonnet-myers}: nenhuma geodésica é minimizante depois de atingir
+comprimento $\pi r$, e temos uma geodésica que atinge esse comprimento: qualquer
+uma!
+
+O diâmetro de $\mathbb{T}^2$ é $1$. Isso é por simples geometria
+euclidiana: é o diâmetro do cubo! Por definição, a métrica de  $\mathbb{T}^2$ é
+a induzida pela projeção quociente.
+
+O diâmetro de $\mathbb{R}P^{2}$ é $\pi/2$. Qualquer geodésica que liga dois
+pontos a distância $\pi/2$ é minimizante, pois estamos na métrica esférica e
+podemos pegar cartas esféricas onde dois pontos a essa distância estão contidos. 
+Por outro lado, se tivéssemos dois pontos a distância maior, a geodésica 
+esférica que percorre o ponto antípoda ao inicial, chega no ponto final mais 
+rapidamente que inicial; portanto geodésicas de comprimento maior que $\pi/2$ 
+não são minimizantes.
+\end{proof}
+
+\section{Lista 8}
+\label{section-l8}
+
+\begin{exercise}
+Prop. 2.12 do capítulo XIII, \cite{doc}. Seja $p \in M$. Suponha exista um ponto $q \in C_m(p)$ que realiza a distância de $p$ a $C_m(p)$. Então:
+\begin{enumerate}
+\item ou existe uma geodésica minimizante $\gamma$ de $p$ a $q$ ao longo da qual $q$ é conjungado a p,
+\item ou existem exatamente duas geodésicas minimizantes $\gamma$ e $\sigma$ de $p$ a $q$; além disto, $\gamma'(\ell)$, $\ell=d(p,q)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}[Prova sem consultar outras referencias]
+Foi provado em sala que um ponto $q$ está no cut locus $C_m(p)$ se e somente se
+alguma das seguintes condições é verdadeira: (a) $q$ é o primeiro ponto
+conjugado a $p$, ou (b) existem duas geodésicas minimizantes ligando $p$ e $q$.
+
+Sponha que (a) não é verdadeira. Considere a variação por geodésicas 
+$$
+f(s,t):=\operatorname{exp}_{\gamma(t)}
+(s\operatorname{exp}_{\gamma(t)}^{-1}\sigma(t))
+$$
+Note que se $\gamma'(\ell)=-\sigma'(\ell)$ o campo de Jacobi é nulo. Em outro
+caso obtemos que $p$ é conjugado a $q$, absurdo.
+\end{proof}
+
+\begin{exercise}
+Proposição 2.13, Cap. XIII \cite{doc}. Se a curvatura seccional $K$ de uma
+variedade Riemanniana completa $M$ satisfaz
+$$
+0\leq K_{\operatorname{min}}\leq K\leq K_{\operatorname{max}},
+$$
+Então
+\begin{enumerate}
+\item $i(M) \geq \pi/\sqrt{K_{\operatorname{max}}}$, ou
+\item existe uma geodésica fechada $\gamma$ em $M$, cujo comprimento é menor do 
+que o de qualquer outra geodésica fechada em $M$, tal que
+$$
+i(M)=\frac{1}{2}\ell(\gamma)
+$$
+
+\end{enumerate}
+\end{exercise}
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+

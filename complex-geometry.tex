@@ -1,0 +1,130 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Complex Geometry}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Chow's theorem}
+\label{section-chow-theorem}
+
+\begin{proposition}
+\label{proposition-slice-charts}
+Every codimension-$p$ submanifold of a complex $n$-manifold has slice charts,
+i.e. for any $p \in M$ there's a coordinate chart $U \ni p$ such that points of
+$M$ have coordinates $(z_1,\ldots,z_n,0,\ldots 0)$.
+\end{proposition}
+
+\begin{proof}
+This may be taken as the definition of smooth (real or complex) submanifold, or
+as a proposition using inverse function theorem (real or complex).
+\end{proof}
+
+\begin{proposition}
+\label{proposition-stalk-principal-smooth}
+Stalks of holomorphic functions principal at smooth points.
+\end{proposition}
+
+
+
+\begin{theorem}[Chow for hypersurfaces]
+\label{theorem-chow}
+Every complex codimension-1 submanifold of $\mathbb{C}P^{n}$ is algebraic.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+\section{Morse index theorem}
+\label{section-morse-index}
+
+\subsection{Cut locus}
+\label{subsection-cut-locus}
+
+\begin{definition}
+\label{definition-injectivity-radius}
+The {\it injectivity radius} of a manifold $M$ is
+$$
+i(M)=\operatorname{inf}\{d(p,C_m(M)):p \in M\}
+$$
+\end{definition}
+\section{Other exercises}
+\label{section-other-exercises}
+
+\begin{exercise}
+Calcule o diâmetro de $S^2$, $\mathbb{T}^2$, $\mathbb{R}P^{2}$.
+\end{exercise}
+
+\begin{proof}[Solution]
+O diâmetro de $S^2$ pode ser calculado via o teorema de Bonnet Myers
+\ref{theorem-bonnet-myers}: nenhuma geodésica é minimizante depois de atingir
+comprimento $\pi r$, e temos uma geodésica que atinge esse comprimento: qualquer
+uma!
+
+O diâmetro de $\mathbb{T}^2$ é $1$. Isso é por simples geometria
+euclidiana: é o diâmetro do cubo! Por definição, a métrica de  $\mathbb{T}^2$ é
+a induzida pela projeção quociente.
+
+O diâmetro de $\mathbb{R}P^{2}$ é $\pi/2$. Qualquer geodésica que liga dois
+pontos a distância $\pi/2$ é minimizante, pois estamos na métrica esférica e
+podemos pegar cartas esféricas onde dois pontos a essa distância estão contidos. 
+Por outro lado, se tivéssemos dois pontos a distância maior, a geodésica 
+esférica que percorre o ponto antípoda ao inicial, chega no ponto final mais 
+rapidamente que inicial; portanto geodésicas de comprimento maior que $\pi/2$ 
+não são minimizantes.
+\end{proof}
+
+\section{Lista 8}
+\label{section-l8}
+
+\begin{exercise}
+Prop. 2.12 do capítulo XIII, \cite{doc}. Seja $p \in M$. Suponha exista um ponto $q \in C_m(p)$ que realiza a distância de $p$ a $C_m(p)$. Então:
+\begin{enumerate}
+\item ou existe uma geodésica minimizante $\gamma$ de $p$ a $q$ ao longo da qual $q$ é conjungado a p,
+\item ou existem exatamente duas geodésicas minimizantes $\gamma$ e $\sigma$ de $p$ a $q$; além disto, $\gamma'(\ell)$, $\ell=d(p,q)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}[Prova sem consultar outras referencias]
+Foi provado em sala que um ponto $q$ está no cut locus $C_m(p)$ se e somente se
+alguma das seguintes condições é verdadeira: (a) $q$ é o primeiro ponto
+conjugado a $p$, ou (b) existem duas geodésicas minimizantes ligando $p$ e $q$.
+
+Sponha que (a) não é verdadeira. Considere a variação por geodésicas 
+$$
+f(s,t):=\operatorname{exp}_{\gamma(t)}
+(s\operatorname{exp}_{\gamma(t)}^{-1}\sigma(t))
+$$
+Note que se $\gamma'(\ell)=-\sigma'(\ell)$ o campo de Jacobi é nulo. Em outro
+caso obtemos que $p$ é conjugado a $q$, absurdo.
+\end{proof}
+
+\begin{exercise}
+Proposição 2.13, Cap. XIII \cite{doc}. Se a curvatura seccional $K$ de uma
+variedade Riemanniana completa $M$ satisfaz
+$$
+0\leq K_{\operatorname{min}}\leq K\leq K_{\operatorname{max}},
+$$
+Então
+\begin{enumerate}
+\item $i(M) \geq \pi/\sqrt{K_{\operatorname{max}}}$, ou
+\item existe uma geodésica fechada $\gamma$ em $M$, cujo comprimento é menor do 
+que o de qualquer outra geodésica fechada em $M$, tal que
+$$
+i(M)=\frac{1}{2}\ell(\gamma)
+$$
+
+\end{enumerate}
+\end{exercise}
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+
