@@ -257,3 +257,16 @@ web: tmp/index.tex
 	cp my.bib $(WEBDIR)/my.bib
 	cp tags/tags $(WEBDIR)/tags
 	python3 ./scripts/web_book.py "$(CURDIR)" > $(WEBDIR)/book.tex
+
+
+
+danistack: danistack.pdf
+
+danistack.pdf: danistack.tex dg.tex lista8.tex preamble.tex my.bib
+	pdflatex danistack
+	bibtex danistack || true
+	pdflatex danistack
+	pdflatex danistack
+clean-danistack:
+	rm -f danistack.{aux,log,out,toc,bbl,blg,pdf}
+

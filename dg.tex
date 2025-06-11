@@ -1,0 +1,37 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Differential Geometry}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Manifolds}
+\label{section-manifolds}
+
+\noindent
+A \emph{smooth manifold} is a second-countable Hausdorff space locally homeomorphic to $\mathbb{R}^n$, with smooth transition maps.
+
+\begin{definition}
+\label{definition-manifold}
+A smooth $n$-manifold is a topological space $M$ with an atlas of charts to $\mathbb{R}^n$ such that transition maps are smooth.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-regular-level-set}
+Let $f : M \to \mathbb{R}$ be smooth. If $c$ is a regular value, then $f^{-1}(c)$ is a submanifold.
+\end{lemma}
+
+\begin{proof}
+This is the Regular Value Theorem.
+\end{proof}
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+
