@@ -31,5 +31,5 @@ for continuous compilation.
 #Other links
 
 3. [Google Chrome extension](https://chromewebstore.google.com/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en&pli=1) to facilitate navigation:
-4. PDF viewer: (Sioyek)[https://sioyek.info/]
-5. Shell for Mac OS: (Oh My SSH)[https://ohmyz.sh/]
+4. PDF viewer: [Sioyek](https://sioyek.info/)
+5. Shell for Mac OS: [Oh My SSH](https://ohmyz.sh/)
