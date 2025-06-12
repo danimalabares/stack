@@ -22,7 +22,11 @@ Also if you are working on any file you can use
 
 for continuous compilation.
 
+Then do
 
+``make clean``
+
+to delete all the byproducts of compilation (inclding pdf).
 
 #How I write in latex
 
