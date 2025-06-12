@@ -15,11 +15,13 @@ So far we can only compile each topic separately so just go
 
 Official Stacks Project repo uses a python script to compile the whole book. I didn't manage to set that working (an attempt is at ``scripts`` directory) but feel free to try.
 
-Also if you are working on the file you can use 
+Also if you are working on any file you can use 
 
 ``latexmk -pdf -pvc complex-geometry.tex``
 
 for continuous compilation.
+
+
 
 #How I write in latex
 
