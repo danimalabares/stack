@@ -26,10 +26,10 @@ for continuous compilation.
 #How I write in latex
 
 1. “The seminal work on the subject”: [Gilles Castel’s blog](https://castel.dev/post/lecture-notes-1/)
-2. Tutorial: https://ejmastnak.com/tutorials/vim-latex/intro/
+2. Tutorial: [ejmastnak](https://ejmastnak.com/tutorials/vim-latex/intro/)
 
 #Other links
 
-3. Google Chrome extension to facilitate navigation: https://chromewebstore.google.com/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en&pli=1
-4. PDF viewer https://sioyek.info/
-5. Shell for Mac OS: https://ohmyz.sh/
+3. [Google Chrome extension](https://chromewebstore.google.com/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en&pli=1) to facilitate navigation:
+4. PDF viewer: (Sioyek)[https://sioyek.info/]
+5. Shell for Mac OS: (Oh My SSH)[https://ohmyz.sh/]
