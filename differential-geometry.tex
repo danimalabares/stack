@@ -1,0 +1,387 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Differential Geometry}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Submanifolds}
+\label{section-submanifolds}
+
+\begin{remark}
+\label{remark-ricci-equation}
+Ricci equation may help prove that the normal bundle of a high codimension
+submanifold is trivial.
+\end{remark}
+
+
+\section{Variações da energia}
+\label{section-variações-energia}
+
+\begin{theorem}[Bonnet Myers]
+\label{theorem-bonnet-myers}
+If $M$ has  $\operatorname{Ric} \leq \frac{1}{r^2}$, then
+$\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
+\end{theorem}
+
+\section{Teorema de comparação de Rauch}
+\label{section-rauch}
+
+\subsection{Index lemma}
+\label{subsection-index-lemma}
+
+\subsection{Teorema de Rauch}
+\label{subsection-rauch}
+
+\begin{theorem}[Rauch]
+\label{theorem-rauch}
+\end{theorem}
+
+\begin{proposition}
+\label{proposition-contraction}
+Sejam $p \in M$, $\tilde{p} \in \tilde{M}$ e $i:T_pM \to T_{\tilde{p}}\tilde{M}$
+uma isometria. Então $f:=\operatorname{exp}^{-1}_p \circ i \circ
+\operatorname{exp}_{\tilde{p}}$ é uma contração métrica, i.e. $|f_*w|\leq |w|$
+para todo $w \in T_pM$.
+
+Mas ainda, se $\operatorname{exp}_p^{-1}$ está definida numa bola totalmente
+convexa, $f$ é uma contração métrica.
+\end{proposition}
+
+\begin{proof}
+Write an abitrary $w\in T_p M$ as a Jacobi variational field of the variation 
+$f(s,t)=\operatorname{exp}_p(t(v+sw)$. The resulting field on $\tilde{M}$ is a
+Jacobi field with respect to $iw$ using that $i$ is an isometry. The conditions
+of Rauch theorem are satisfied and the desired inequality is obtained.
+
+For the metric result we just integrate along a curve realising the distance and
+compute.
+\end{proof}
+
+\section{Morse index theorem}
+\label{section-morse-index}
+
+\begin{slogan}
+The problem is that the vector spaces of sections of smooth manifolds are infinite-dimensional. we are interested in computing
+\end{slogan}
+
+\begin{definition}
+\label{definition-index-index-form}
+$$
+i(I_a):=\operatorname{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L}<0\}
+$$
+
+\end{definition}
+
+\begin{theorem}[Morse Index]
+\label{theorem-morse-index}
+O índice $i(I_t)$ é finito e igual ao número de pontos conjugados em $[0,t)$ ao
+longo de $\gamma$.
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+
+\section{Cut locus}
+\label{section-cut-locus}
+
+\begin{definition}
+\label{definition-injectivity-radius}
+The {\it injectivity radius} of a manifold $M$ is
+$$
+i(M)=\operatorname{inf}\{d(p,C_m(M)):p \in M\}
+$$
+\end{definition}
+
+\section{Bishop-Gromov Theorem}
+\label{section-bishop-gromov}
+
+\begin{theorem}[Bishop-Gromov]
+\label{theorem-bishop-gromov}
+
+\end{theorem}
+
+\begin{proof}
+Tome a função exponencial como uma carta parametrizando a esfera geodésica de
+raio $r$ com centro em $p$. Então
+$$
+\operatorname{Vol}_{S_r}=\int
+\operatorname{Vol}_{S_r}=
+\int_{S_r(0)}\operatorname{exp}_p^*\operatorname{Vol}_{S_r}
+$$
+Portanto, estamos interessados em calcular 
+$$
+|\det d_{rv} \operatorname{exp}_p|
+$$
+Avaliando em uma base de vetores tangentes a $S_r(0)$, notamos que cada um deles
+nos dá um campo de Jacobi $J$ ao longo de $\gamma$.
+
+Como $\gamma'(r)\perp J$, derivando obtemos $A J=J'$ onde $A$ é o operador de
+forma de $S_r$ respeito ao normal interior $\gamma'(r)$ (cf. conta feita antes).
+
+Mmm… no sé: creo que lo que quiero calcular realmente es
+$$
+\det J
+$$
+entonces no sé dondé entran ni $A$ ni $J'$… O sea si derivas con respecto a $r$
+pues va… pero si no…
+
+\end{proof}
+
+\section{Toponogov's theorem}
+\label{section-toponogov}
+
+First recall
+
+\begin{theorem}[Toponogov, local version]
+\label{theorem-toponogov,local}
+Let $o,p_1,p_2 \in B$ where $B$ is a totally convex ball of $M$. Let $\gamma_1$
+and $\gamma_2$ be the normalized geodesics joining $o$ to $p_1$ and to $p_2$.
+
+Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple on 
+another manifold $\tilde{M}$ such that the distances from $\tilde{o}$ to
+$\tilde{p}_1$ and from $\tilde{o}$ to $\tilde{p}_2$ coincide with those in $M$.
+
+Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
+$$
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}_s)\leq d(\gamma_1(t),\gamma_2(s))
+$$
+\end{theorem}
+
+\begin{exercise}[Lista 7]
+\label{exercise-toponogov-from-rauch}
+Prove the local version of Toponogov's theorem as a corollary of Rauch's
+Comparison Theorem \ref{theorem-rauch}.
+\end{exercise}
+
+\begin{proof}
+This is an application of Proposition \label{proposition:contraction} for $i$ as
+given by the condition of mapping $\gamma'_1(0)$ to $\gamma_2'(0)$ and the angle
+between them to the corresponding vectors and angle on $\tilde{M}$.
+\end{proof}
+
+\begin{theorem}[Toponogov, hinge version] \label{theorem-toponogov-hinge}
+Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, with
+$p_1\neq  p_2$. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
+$o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing.
+Let $\gamma_0$ be a nonconstant geodesic joining $p_1$ to $p_2$ and suppose
+$$
+\ell(\gamma_0) \leq \ell(\gamma_1) +\ell(\gamma_2)
+$$
+If $k>0$ suppose additionally that $\ell(\gamma_0) \leq \pi/\sqrt{k}$.
+
+Then there exists a geodesic triangle $\{\tilde{\gamma}_i:i=1,2,0\}$ in
+$\mathbb{Q}_k^2$ such that $\ell(\tilde{\gamma}_i) = \ell(\gamma_i)$ and
+$$
+d(\tilde{p}_1,\tilde{p}_2) \leq  d(o,p_1)+d(o,p_2)
+$$
+
+Put another way (next lecture…) Let $\tilde{\gamma}_1$ and $\tilde{\gamma}_2$ 
+be a corresponding angle in $\mathbb{Q}_k^2$. Then
+$$
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
+$$
+
+\end{theorem}
+
+\begin{remark}
+For me a more geometric statement is
+
+
+
+Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple on 
+another manifold $\tilde{M}$ such that 
+$$
+d(\tilde{p}_1,\tilde{p}_2) \leq  d(o,p_1)+d(o,p_2)
+$$
+If the sectional curvature $K$ of $M$ is $K>0$, then suppose additionally that
+$\ell(\gamma_1$
+
+Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
+$$
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
+$$
+So it's the same right? You look form $p_1$ instead…
+\end{remark}
+
+
+\section{Exercises}
+\label{section-exercises}
+
+\begin{exercise}
+Calcule o diâmetro de $S^2$, $\mathbb{T}^2$, $\mathbb{R}P^{2}$.
+\end{exercise}
+
+\begin{proof}[Solution]
+O diâmetro de $S^2$ pode ser calculado via o teorema de Bonnet Myers
+\ref{theorem-bonnet-myers}: nenhuma geodésica é minimizante depois de atingir
+comprimento $\pi r$, e temos uma geodésica que atinge esse comprimento: qualquer
+uma!
+
+O diâmetro de $\mathbb{T}^2$ é $1$. Isso é por simples geometria
+euclidiana: é o diâmetro do cubo! Por definição, a métrica de  $\mathbb{T}^2$ é
+a induzida pela projeção quociente.
+
+O diâmetro de $\mathbb{R}P^{2}$ é $\pi/2$. Qualquer geodésica que liga dois
+pontos a distância $\pi/2$ é minimizante, pois estamos na métrica esférica e
+podemos pegar cartas esféricas onde dois pontos a essa distância estão contidos. 
+Por outro lado, se tivéssemos dois pontos a distância maior, a geodésica 
+esférica que percorre o ponto antípoda ao inicial, chega no ponto final mais 
+rapidamente que inicial; portanto geodésicas de comprimento maior que $\pi/2$ 
+não são minimizantes.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-pts}
+$\gamma$ geodésica sem pontos conjugados em $[0,a]$. Então $\gamma$ é localmente
+minimizante.
+\end{exercise}
+
+\begin{proof}
+Temos dois casos:
+\begin{enumerate}
+\item Se $E''(0)<0$ usamos o teorema do índice.
+\item Se $E''(0)=0$,
+\begin{enumerate}
+\item[(0)] Como $\gamma$ não tem pontos conjugados, então $I$ não tem
+		nulidade em todo  $\mathcal{V}$.
+\item $I_{\mathcal{V}^-}$ não tem índice nem nulidade. Segue do ponto anterior +
+	algum passo na prova.
+\item $I_{\mathcal{V}^-}$ não tem índice.
+\item 2+3 dão que $I_{\mathcal{V}^-}>0$.
+\item Logo $I>0$.
+\end{enumerate}
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}
+\label{exercise-wraped-product}
+Para $(M,g_M)$ e $(N,g_N)$ e $f:M \to \mathbb{R}_+$, definimos o {\it warped
+product} como sendo o produto cartesiano $M\times N$ com a métrica 
+ $g_M+f^2g_N$.
+
+Mostre que se os fatores são completos, o warped product é completo.
+\end{exercise}
+
+\subsection{Highlight exercises}
+\label{subsection-highlight-exercises}
+\begin{exercise}
+\label{exercise-minimal-intersection}
+$(M^n,g)$ completa $\operatorname{Ric}_M>0$. $A$, $B$ hipersuperfícies mínimas
+completas. Então  $A \cap B \neq \emptyset$.
+\end{exercise}
+
+\begin{proof}
+Suponha que existe uma $\gamma$ mínima com comprimento positivo ligando as 
+duas variedades. Tem dois caminhos:
+\begin{enumerate}
+\item Deixa o campo exponencial ao longo da $\gamma$ e ajusta nos extremos
+para fazer ele tangente às variedades. Nesse caso já tem que o temo
+$\left<f_{ss},\gamma'\right>|_{0}^a$ se anula. Então so mostrar que $I(V,V)$  é
+zero. {\bf Onde se usa que são mínimas? Intentar construir esta?}
+\item Começa com uma geodésica tangente e transporta paralelamente um vetor
+tangente $e_i$ a  $M_1$. Ele chega tangente a  $M_2$ porque a geodésica é
+minimizante (cf exer passado).
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}[\cite{doc} Chapter IX, Exercise 5]
+\label{exercise-two-submanifolds}
+Sejam $N_1$ e $N_2$ duas subvariedades fechadas e disjuntas de uma variedade
+Riemanniana compacta.
+\begin{enumerate}
+\item Mostre que a distância entre $N_1$ e $N_2$ é realizada por uma geodésica
+	$\gamma$ perpendicular a ambas $N_1$ e $N_2$.
+\item Mostre que, para qualquer variação ortogonal $h(t,s)$ de $\gamma$, com
+$h(0,s) \in N_1$ e $h(\ell,s) \in N_2$, tem-se para a fórmula da segunda
+variação a seguinte expressão
+$$
+\frac{1}{2}E''(0)=I_{\ell}(V,V)+
+\left<V(\ell),S_{\gamma'(\ell)}^{(2)}V(\ell)\right>
+-\left<V(0),S^{(2)}_{\gamma'(0)}(V(0))\right>
+$$
+\end{enumerate}
+\end{exercise}
+
+
+\begin{exercise}
+%\label{exercise}
+{\bf (Qualificação)}Prove que $M^{2n},K_M>0$ compact, então ela é simplesmente conexa.
+\end{exercise}
+
+\begin{exercise}
+%\label{exercise-}
+$M^{2n+1}$, $K_M>0$ compacta \(\implies\) orientável.
+\end{exercise}
+
+O exercício anterior usa Exercício 6 da lista 6. Ou, equivalentemente,
+
+\begin{exercise}
+%\label{exercise-}
+Se $M^{2n+1}$ tem $K_M >0$ e $\gamma:S^1 \to M$ inverta orientação, então é
+possível encurtar $\gamma$ na sua classe de homotopia.
+\end{exercise}
+
+\begin{exercise}
+
+\end{exercise}
+
+\section{Lista 8}
+\label{section-l8}
+
+\begin{exercise}
+Prop. 2.12 do capítulo XIII, \cite{doc}. Seja $p \in M$. 
+Suponha exista um ponto $q \in C_m(p)$ que realiza a distância de $p$ a 
+$C_m(p)$. Então:
+\begin{enumerate}
+\item ou existe uma geodésica 
+minimizante $\gamma$ de $p$ a $q$ ao longo da qual $q$ é 
+conjungado a p,
+\item ou existem exatamente duas geodésicas 
+minimizantes $\gamma$ e $\sigma$ de $p$ a $q$; além disto, $\gamma'(\ell)$, 
+$\ell=d(p,q)$. 
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}[Prova sem consultar outras referencias]
+Foi provado em sala que um ponto $q$ está no cut locus $C_m(p)$ se e somente se
+alguma das seguintes condições é verdadeira: (a) $q$ é o primeiro ponto
+conjugado a $p$, ou (b) existem duas geodésicas minimizantes ligando $p$ e $q$.
+
+Sponha que (a) não é verdadeira. Considere a variação por geodésicas 
+$$
+f(s,t):=\operatorname{exp}_{\gamma(t)}
+(s\operatorname{exp}_{\gamma(t)}^{-1}\sigma(t))
+$$
+Note que se $\gamma'(\ell)=-\sigma'(\ell)$ o campo de Jacobi é nulo. Em outro
+caso obtemos que $p$ é conjugado a $q$, absurdo.
+\end{proof}
+
+\begin{exercise}
+Proposição 2.13, Cap. XIII \cite{doc}. Se a curvatura seccional $K$ de uma
+variedade Riemanniana completa $M$ satisfaz
+$$
+0\leq K_{\operatorname{min}}\leq K\leq K_{\operatorname{max}},
+$$
+Então
+\begin{enumerate}
+\item $i(M) \geq \pi/\sqrt{K_{\operatorname{max}}}$, ou
+\item existe uma geodésica fechada $\gamma$ em $M$, cujo comprimento é menor do 
+que o de qualquer outra geodésica fechada em $M$, tal que
+$$
+i(M)=\frac{1}{2}\ell(\gamma)
+$$
+
+\end{enumerate}
+\end{exercise}
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+

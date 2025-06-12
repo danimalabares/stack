@@ -1,0 +1,64 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Complex Geometry}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Chow's theorem}
+\label{section-chow-theorem}
+
+\begin{proposition}
+\label{proposition-slice-charts}
+Every codimension-$p$ submanifold of a complex $n$-manifold has slice charts,
+i.e. for any $p \in M$ there's a coordinate chart $U \ni p$ such that points of
+$M$ have coordinates $(z_1,\ldots,z_n,0,\ldots 0)$.
+\end{proposition}
+
+\begin{proof}
+This may be taken as the definition of smooth (real or complex) submanifold, or
+as a proposition using inverse function theorem (real or complex).
+\end{proof}
+
+\begin{proposition}
+\label{proposition-stalk-principal-smooth}
+Stalks of holomorphic functions principal at smooth points.
+\end{proposition}
+
+\begin{theorem}[Chow for hypersurfaces]
+\label{theorem-chow}
+Every complex codimension-1 submanifold of $\mathbb{C}P^{n}$ is algebraic.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+\section{Serre duality}
+\label{section-serre-duality}
+
+\begin{theorem}[Serre duality] \label{theorem-serre-duality} \cite{voi}
+II.5.32. The pairing
+$$
+H^q(X,\mathcal{E})\otimes
+H^{n-q}(X,\mathcal{E}^*\otimes K_X)\to H^{n}(X,K_X)\cong\mathbb{C}
+$$
+
+\end{theorem}
+
+So when you put the dual \(\vee\) on one of these you get isomorphism.
+
+Our course version says:
+$$
+H^{k}(X,\mathcal{L})^{\vee}=H^{n-k}(X,\omega_X \otimes \mathcal{L}^*)
+$$
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+
