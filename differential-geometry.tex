@@ -10,20 +10,169 @@
 
 \tableofcontents
 
-\section{Variações da energia}
-\label{section-variações-energia}
+\section{Jacobi Fields}
+\label{section-jacobi-fields}
 
-\begin{theorem}[Bonnet Myers]
+\begin{proposition}
+\label{proposition-critical-points-exp}
+\cite{doc} Chapter V, Proposition 3.5. A vector $v \in T_pM$ is a critical
+point of $\operatorname{exp}_p$ if and only if the corresponding 
+$\gamma_v(1)$ is a conjugate point of $p$ along $\gamma_v$.
+Moreover, in such points, the dimension of the kernel of 
+$\operatorname{exp}_p$ at this vector is the multiplicity
+of the conjugate point $\gamma_v(1)$ 
+(i.e. the dimension of the space of Jacobi fields vanishing 
+at the endpoints).
+\end{proposition}
+
+\begin{proof}
+($\implies$) Suppose that $v$ is a critical point of $\operatorname{exp}_p$ and 
+let $w \in \ker d_v \operatorname{exp}_p$ then a Jacobi field along $\gamma$ 
+vanishing at the endpoints is given by
+$$
+J(t):=d_{tv}\operatorname{exp}_ptw
+$$
+($\impliedby$) If you have a critical point along $\gamma$, then the 
+differential of $\operatorname{exp}_p$ has kernel.
+
+(Mulitplicity.) The proof every element of the kernel gives a Jacobi
+ field vanishing at the points. Linearly dependent elements will give 
+ linearly dependent Jacobi fields.
+\end{proof}
+\section{Submanifolds}
+\label{section-submanifolds}
+
+\begin{remark}
+\label{remark-ricci-equation}
+Ricci equation may help prove that the normal bundle of a high codimension
+submanifold is trivial.
+\end{remark}
+\section{First Variation Formula}
+\label{section-first-variation}
+
+\section{Second Variation Formula}
+\label{section-second-variation}
+
+
+\section{Bonnet-Myers Theorem}
+\label{subsection-bonnet-myers}
+
+\begin{theorem}[Bonnet-Myers]
 \label{theorem-bonnet-myers}
-If $M$ has  $\operatorname{Ric} \leq \frac{1}{r^2}$, then
+If $M$ is a complete manifold with $\operatorname{Ric} \geq \frac{1}{r^2}$, then
 $\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
 \end{theorem}
+
+\section{Teorema de comparação de Rauch}
+\label{section-rauch}
+
+\section{Index lemma}
+\label{subsection-index-lemma}
+
+\section{Teorema de Rauch}
+\label{subsection-rauch}
+
+\begin{theorem}[Rauch]
+\label{theorem-rauch}
+\end{theorem}
+
+\begin{proposition}
+\label{proposition-contraction}
+Sejam $p \in M$, $\tilde{p} \in \tilde{M}$ e $i:T_pM \to T_{\tilde{p}}\tilde{M}$
+uma isometria. Então $f:=\operatorname{exp}^{-1}_p \circ i \circ
+\operatorname{exp}_{\tilde{p}}$ é uma contração métrica, i.e. $|f_*w|\leq |w|$
+para todo $w \in T_pM$.
+
+Mas ainda, se $\operatorname{exp}_p^{-1}$ está definida numa bola totalmente
+convexa, $f$ é uma contração métrica.
+\end{proposition}
+
+\begin{proof}
+Write an abitrary $w\in T_p M$ as a Jacobi variational field of the variation 
+$f(s,t)=\operatorname{exp}_p(t(v+sw)$. The resulting field on $\tilde{M}$ is a
+Jacobi field with respect to $iw$ using that $i$ is an isometry. The conditions
+of Rauch theorem are satisfied and the desired inequality is obtained.
+
+For the metric result we just integrate along a curve realising the distance and
+compute.
+\end{proof}
 
 \section{Morse index theorem}
 \label{section-morse-index}
 
-\subsection{Cut locus}
-\label{subsection-cut-locus}
+\begin{slogan}
+The problem is that the vector spaces of sections of smooth manifolds are infinite-dimensional. we are interested in computing
+\end{slogan}
+
+\begin{definition}
+\label{definition-index-index-form}
+$$
+i(I_a):=\operatorname{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L}<0\}
+$$
+
+\end{definition}
+
+\begin{theorem}[Morse Index]
+\label{theorem-morse-index}
+O índice $i(I_t)$ é finito e igual ao número de pontos conjugados em $[0,t)$ ao
+longo de $\gamma$.
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+
+\section{Cut locus}
+\label{section-cut-locus}
+
+\begin{proposition}
+\label{proposition-first-cut-point}
+Let $\gamma$ be a minimizing geodesic joining $p$ and $q$. Then $q$ is the cut
+point of $p$ if and only if either of the following conditions hold:
+\begin{enumerate}
+\item $q$ is the first conjugate point of $p$ along $\gamma$.
+\item There is another, distinct, minimizing geodesic $\sigma$ joining $p$ and
+ $q$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+($\implies$) Since $q:=\gamma(r)$ is the cut point of $p$, we know that for every point
+$\gamma(r+\varepsilon)$ along $\gamma$ after $q$ there must be some other geodesic
+$\gamma_\varepsilon$ which realizes the distance between $p$ and
+$\gamma(r+\varepsilon)$
+
+Taking the limit as $\varepsilon \to 0$ we obtain another geodesic
+(because we are taking limit inside $S^n \subset T_pM$, so we get convergence;
+and because ``things will behave well under the limit")
+which puts us in the second condition of the theorem,
+unless the limit geodesic is the same as  $\gamma$ setwise.
+
+Now there's a critical observation:
+the two geodesics $\gamma$ and $\gamma_\varepsilon$ meet at the point 
+ $\gamma(r+\varepsilon)$, so you can write
+ $\gamma_\varepsilon(r+\delta(\varepsilon))=\gamma(r+\varepsilon)$
+ for some function $\delta(\varepsilon)$ (that could be negative, doesn't
+ matter).
+ But since $\gamma_\varepsilon$ is the minimizing
+ geodesic from $\gamma(0)$ to this point, then
+ $|\delta(\varepsilon)|<\varepsilon$.
+
+Right, the point is that defining
+$$
+u_\varepsilon:=(r+\varepsilon)v,\qquad
+u'_\varepsilon:=r+\delta(\varepsilon))v_\varepsilon
+$$
+we see that $\operatorname{exp}_p$ is not injective, since these two vectors
+hit that point.
+
+This being true for every $\varepsilon>0$, there is no neighbourhood of $vr$ 
+where $\operatorname{exp}_p$ is injective---much less a diffeomorphism.
+So it cannot be a local diffeomorphism, and we know that critical points of
+$\operatorname{exp}_p$ are conjugate points of $p$. (Remember: if
+$\operatorname{exp}_p$ has a critical point, its differential has kernel,
+and the map $d_{tv}\operatorname{exp}_pw$, for $w$ in the kernel, gives 
+a Jacobi field. See Proposition \ref{proposition-critical-points-exp})
+\end{proof}
 
 \begin{definition}
 \label{definition-injectivity-radius}
@@ -78,111 +227,90 @@ First recall
 Let $o,p_1,p_2 \in B$ where $B$ is a totally convex ball of $M$. Let $\gamma_1$
 and $\gamma_2$ be the normalized geodesics joining $o$ to $p_1$ and to $p_2$.
 
-Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple with the
-exact same properties on another manifold $\tilde{M}$.
+Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple on 
+another manifold $\tilde{M}$ such that the distances from $\tilde{o}$ to
+$\tilde{p}_1$ and from $\tilde{o}$ to $\tilde{p}_2$ coincide with those in $M$.
 
 Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
 $$
 \tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}_s)\leq d(\gamma_1(t),\gamma_2(s))
 $$
-
 \end{theorem}
 
 \begin{exercise}[Lista 7]
 \label{exercise-toponogov-from-rauch}
 Prove the local version of Toponogov's theorem as a corollary of Rauch's
-Comparison Theorem.
+Comparison Theorem \ref{theorem-rauch}.
 \end{exercise}
 
 \begin{proof}
-
+This is an application of Proposition \label{proposition:contraction} for $i$ as
+given by the condition of mapping $\gamma'_1(0)$ to $\gamma_2'(0)$ and the angle
+between them to the corresponding vectors and angle on $\tilde{M}$.
 \end{proof}
 
-\begin{theorem}[Toponogov, hinge version]
-\label{theorem-toponogov-hinge}
-Let $o,p_1,p_2 \in M$ and 
+\begin{theorem}[Toponogov, hinge version] \label{theorem-toponogov-hinge}
+Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, with
+$p_1\neq  p_2$. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
+$o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing.
+Let $\gamma_0$ be a nonconstant geodesic joining $p_1$ to $p_2$ and suppose
+$$
+\ell(\gamma_0) \leq \ell(\gamma_1) +\ell(\gamma_2)
+$$
+If $k>0$ suppose additionally that $\ell(\gamma_0) \leq \pi/\sqrt{k}$.
+
+Then there exists a geodesic triangle $\{\tilde{\gamma}_i:i=1,2,0\}$ in
+$\mathbb{Q}_k^2$ such that $\ell(\tilde{\gamma}_i) = \ell(\gamma_i)$ and
+$$
+d(\tilde{p}_1,\tilde{p}_2) \leq  d(o,p_1)+d(o,p_2)
+$$
+
+Put another way (next lecture…) Let $\tilde{\gamma}_1$ and $\tilde{\gamma}_2$ 
+be a corresponding angle in $\mathbb{Q}_k^2$. Then
+$$
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
+$$
+
 \end{theorem}
 
+\begin{remark}
+For me a more geometric statement is
 
 
 
-
-
-\section{Other exercises}
-\label{section-other-exercises}
-
-\begin{exercise}
-Calcule o diâmetro de $S^2$, $\mathbb{T}^2$, $\mathbb{R}P^{2}$.
-\end{exercise}
-
-\begin{proof}[Solution]
-O diâmetro de $S^2$ pode ser calculado via o teorema de Bonnet Myers
-\ref{theorem-bonnet-myers}: nenhuma geodésica é minimizante depois de atingir
-comprimento $\pi r$, e temos uma geodésica que atinge esse comprimento: qualquer
-uma!
-
-O diâmetro de $\mathbb{T}^2$ é $1$. Isso é por simples geometria
-euclidiana: é o diâmetro do cubo! Por definição, a métrica de  $\mathbb{T}^2$ é
-a induzida pela projeção quociente.
-
-O diâmetro de $\mathbb{R}P^{2}$ é $\pi/2$. Qualquer geodésica que liga dois
-pontos a distância $\pi/2$ é minimizante, pois estamos na métrica esférica e
-podemos pegar cartas esféricas onde dois pontos a essa distância estão contidos. 
-Por outro lado, se tivéssemos dois pontos a distância maior, a geodésica 
-esférica que percorre o ponto antípoda ao inicial, chega no ponto final mais 
-rapidamente que inicial; portanto geodésicas de comprimento maior que $\pi/2$ 
-não são minimizantes.
-\end{proof}
-
-\section{Lista 8}
-\label{section-l8}
-
-\begin{exercise}
-Prop. 2.12 do capítulo XIII, \cite{doc}. Seja $p \in M$. 
-Suponha exista um ponto $q \in C_m(p)$ que realiza a distância de $p$ a 
-$C_m(p)$. Então:
-\begin{enumerate}
-\item ou existe uma geodésica 
-minimizante $\gamma$ de $p$ a $q$ ao longo da qual $q$ é 
-conjungado a p,
-\item ou existem exatamente duas geodésicas 
-minimizantes $\gamma$ e $\sigma$ de $p$ a $q$; além disto, $\gamma'(\ell)$, 
-$\ell=d(p,q)$. 
-\end{enumerate}
-\end{exercise}
-
-\begin{proof}[Prova sem consultar outras referencias]
-Foi provado em sala que um ponto $q$ está no cut locus $C_m(p)$ se e somente se
-alguma das seguintes condições é verdadeira: (a) $q$ é o primeiro ponto
-conjugado a $p$, ou (b) existem duas geodésicas minimizantes ligando $p$ e $q$.
-
-Sponha que (a) não é verdadeira. Considere a variação por geodésicas 
+Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple on 
+another manifold $\tilde{M}$ such that 
 $$
-f(s,t):=\operatorname{exp}_{\gamma(t)}
-(s\operatorname{exp}_{\gamma(t)}^{-1}\sigma(t))
+d(\tilde{p}_1,\tilde{p}_2) \leq  d(o,p_1)+d(o,p_2)
 $$
-Note que se $\gamma'(\ell)=-\sigma'(\ell)$ o campo de Jacobi é nulo. Em outro
-caso obtemos que $p$ é conjugado a $q$, absurdo.
-\end{proof}
+If the sectional curvature $K$ of $M$ is $K>0$, then suppose additionally that
+$\ell(\gamma_1$
 
-\begin{exercise}
-Proposição 2.13, Cap. XIII \cite{doc}. Se a curvatura seccional $K$ de uma
-variedade Riemanniana completa $M$ satisfaz
+Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
 $$
-0\leq K_{\operatorname{min}}\leq K\leq K_{\operatorname{max}},
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
 $$
-Então
-\begin{enumerate}
-\item $i(M) \geq \pi/\sqrt{K_{\operatorname{max}}}$, ou
-\item existe uma geodésica fechada $\gamma$ em $M$, cujo comprimento é menor do 
-que o de qualquer outra geodésica fechada em $M$, tal que
-$$
-i(M)=\frac{1}{2}\ell(\gamma)
-$$
+So it's the same right? You look form $p_1$ instead…
+\end{remark}
 
-\end{enumerate}
-\end{exercise}
 
+
+\label{section-}
+
+
+
+
+
+
+
+
+
+
+
+
+%\input{exercises.tex}
+
+\clearpage
 \bibliography{my}
 \bibliographystyle{amsalpha}
 

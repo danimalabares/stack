@@ -1,0 +1,219 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Algebraic Geometry}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Dominant morphisms}
+\label{section-dominant}
+
+\noindent
+The definition of a morphism of schemes being dominant is a little
+different from what you might expect if you are used to the notion
+of a dominant morphism of varieties.
+
+\begin{definition}
+\label{definition-dominant}
+A morphism $f : X \to S$ of schemes is called {\it dominant} if the
+image of $f$ is a dense subset of $S$.
+\end{definition}
+
+\section{Morphisms of finite type}
+\label{section-finite-type}
+
+\noindent
+Recall that a ring map $R \to A$ is said to be of finite type if
+$A$ is isomorphic to a quotient of $R[x_1, \ldots, x_n]$ as an $R$-algebra, see
+Algebra, Definition \ref{algebra-definition-finite-type}.
+
+\begin{definition}
+\label{definition-finite-type}
+Let $f : X \to S$ be a morphism of schemes.
+\begin{enumerate}
+\item We say that $f$ is of {\it finite type at $x \in X$} if
+there exists an affine open neighbourhood $\Spec(A) = U \subset X$
+of $x$ and an affine open $\Spec(R) = V \subset S$
+with $f(U) \subset V$ such that the induced ring map
+$R \to A$ is of finite type.
+\item We say that $f$ is {\it locally of finite type} if it is
+of finite type at every point of $X$.
+\item We say that $f$ is of {\it finite type} if it is locally of
+finite type and quasi-compact.
+\end{enumerate}
+\end{definition}
+
+\section{Normalization}
+\label{section-normalization}
+
+\begin{definition}
+\label{definition-normalization-X-in-Y}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism of schemes.
+Let $\mathcal{O}'$ be the integral closure of $\mathcal{O}_X$ in
+$f_*\mathcal{O}_Y$. The {\it normalization of $X$ in $Y$} is the
+scheme\footnote{The scheme $X'$ need not be normal, for example if
+$Y = X$ and $f = \text{id}_X$, then $X' = X$.}
+$$
+\nu : X' = \underline{\Spec}_X(\mathcal{O}') \to X
+$$
+over $X$. It comes equipped with a natural factorization
+$$
+Y \xrightarrow{f'} X' \xrightarrow{\nu} X
+$$
+of the initial morphism $f$.
+\end{definition}
+
+\noindent
+The factorization is the composition of the canonical morphism
+$Y \to \underline{\Spec}_X(f_*\mathcal{O}_Y)$ (see
+Constructions, Lemma
+\ref{constructions-lemma-canonical-morphism})
+and the morphism of relative spectra coming from the inclusion map
+$\mathcal{O}' \to f_*\mathcal{O}_Y$. We can characterize the
+normalization as follows.
+
+\begin{lemma}
+\label{lemma-characterize-normalization}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism of schemes.
+The factorization $f = \nu \circ f'$, where $\nu : X' \to X$ is the
+normalization of $X$ in $Y$ is characterized by the following
+two properties:
+\begin{enumerate}
+\item the morphism $\nu$ is integral, and
+\item for any factorization $f = \pi \circ g$, with $\pi : Z \to X$
+integral, there exists a commutative diagram
+$$
+\xymatrix{
+Y \ar[d]_{f'} \ar[r]_g & Z \ar[d]^\pi \\
+X' \ar[ru]^h \ar[r]^\nu & X
+}
+$$
+for some unique morphism $h : X' \to Z$.
+\end{enumerate}
+Moreover, the morphism $f' : Y \to X'$ is dominant and in (2) the
+morphism $h : X' \to Z$ is the normalization of $Z$ in $Y$.
+\end{lemma}
+
+
+
+\section{Reflexive sheaves}
+\label{section-reflexive-sheaves}
+
+\begin{slogan}
+These are vector bundles except for a small locus.
+\end{slogan}
+
+\begin{definition}
+\label{definition-reflexive}
+Let $X$ be an integral locally Noetherian scheme. Let $\mathcal{F}$
+be a coherent $\mathcal{O}_X$-module. The {\it reflexive hull}
+of $\mathcal{F}$ is the $\mathcal{O}_X$-module
+$$
+\mathcal{F}^{**} = \SheafHom_{\mathcal{O}_X}(
+\SheafHom_{\mathcal{O}_X}(\mathcal{F}, \mathcal{O}_X), \mathcal{O}_X)
+$$
+We say $\mathcal{F}$ is {\it reflexive} if the natural map
+$j : \mathcal{F} \longrightarrow \mathcal{F}^{**}$
+is an isomorphism.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-reflexive-torsion-free}
+Let $X$ be an integral locally Noetherian scheme. Let $\mathcal{F}$
+be a coherent $\mathcal{O}_X$-module.
+\begin{enumerate}
+\item If $\mathcal{F}$ is reflexive, then $\mathcal{F}$ is torsion free.
+\item The map $j : \mathcal{F} \longrightarrow \mathcal{F}^{**}$
+is injective if and only if $\mathcal{F}$ is torsion free.
+\end{enumerate}
+\end{lemma}
+
+\begin{remark}[Talk at IMPA, 11 June]\leavevmode
+\label{remark-reflexive-talk}
+Torsion could also be defined so that the sheaf can inject onto its dual. In
+this talk we discussed the moduli space of reflexive/torsion-free sheaves, which
+turned out to be parametrized by $c_1, c_2$ and $c_3$. This was denoted by 
+$R(c_1,c_2,c_3)$. Actually I think it may have been Manolache that proved the
+existence of this moduli space.
+
+Alan Muniz
+
+Nesta palestra discutiremos a classificação de feixes reflexivos de posto dois e
+seus espaços de módulos. Apresentaremos algumas ferramentas básicas usadas na
+construção e determinação de tais feixes. Aplicaremos estas técnicas para o caso
+de feixes com segunda classe de Chern igual a quatro, obtido recentemente em
+colaboração com Marcos Jardim.
+\end{remark}
+
+\begin{theorem}[Jardim-Muniz]
+\label{theorem-jardim-muniz}
+Conditions on Chern classes used to understand moduli space $R(c_1,c_2,c_3)$.
+$c_2=4$ gives (?). For $c_3\leq 6$, possible ``spectrum" exists…
+\end{theorem}
+
+\section{Stability}
+\label{section-stability}
+
+\begin{definition}[Talk at impa]
+\label{definition-slope-stability}
+A rank-2 sheaf $\mathcal{F}$ is {\it semistable (stable)}if
+$H^{0}(\mathcal{F}(t))=0$ for $-t \geq(>) \frac{c_1F}{2}$
+\end{definition}
+
+Compare with
+
+\begin{definition}[moduli-curves.tex]
+\label{definition-semistable}
+Let $f : X \to S$ be a family of curves.
+We say $f$ is a {\it semistable family of curves} if
+\begin{enumerate}
+\item $X \to S$ is a prestable family of curves, and
+\item $X_s$ has genus $\geq 1$ and
+does not have a rational tail for all $s \in S$.
+\end{enumerate}
+\end{definition}
+
+\section{Coherent sheaves}
+\label{section-coherent-sheaves}
+
+\begin{lemma}
+\label{lemma-quasi-coherent-affine-cohomology-zero}
+\begin{slogan}
+Serre vanishing: Higher cohomology vanishes on affine schemes
+for quasi-coherent modules.
+\end{slogan}
+Let $X$ be a scheme.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+For any affine open $U \subset X$ we have
+$H^p(U, \mathcal{F}) = 0$ for all $p > 0$.
+\end{lemma}
+
+\begin{proof}
+We are going to apply
+Cohomology, Lemma \ref{cohomology-lemma-cech-vanish-basis}.
+As our basis $\mathcal{B}$ for the topology of $X$ we are going to use
+the affine opens of $X$.
+As our set $\text{Cov}$ of open coverings we are going to use the standard
+open coverings of affine opens of $X$.
+Next we check that conditions (1), (2) and (3) of
+Cohomology, Lemma \ref{cohomology-lemma-cech-vanish-basis}
+hold. Note that the intersection of standard opens in an affine is
+another standard open. Hence property (1) holds.
+The coverings form a cofinal system of open coverings of any element
+of $\mathcal{B}$, see
+Schemes, Lemma \ref{schemes-lemma-standard-open}.
+Hence (2) holds.
+Finally, condition (3) of the lemma follows from
+Lemma \ref{lemma-cech-cohomology-quasi-coherent-trivial}.
+\end{proof}
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+

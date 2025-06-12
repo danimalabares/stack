@@ -34,7 +34,8 @@ LIJST = introduction conventions sets categories \
 	stacks-introduction stacks-more-morphisms stacks-geometry \
 	moduli moduli-curves \
 	examples exercises guide \
-	desirables coding obsolete
+	desirables coding obsolete \
+	differential-geometry algebraic-geometry complex-geometry physics
 
 # Add index and fdl to get index and license latexed as well.
 LIJST_FDL = $(LIJST) fdl index
@@ -222,6 +223,7 @@ book: book.foo book.bar book.dvi book.pdf
 .PHONY: clean
 clean:
 	rm -f *.aux *.bbl *.blg *.dvi *.log *.pdf *.ps *.out *.toc *.foo *.bar
+	rm -f *.fdb_latexmk *.fls #dani added this to compile via latexmk -pdf -pvc name.tex
 	rm -f tmp/book.tex tmp/index.tex
 	rm -f stacks-project.tar.bz2
 
@@ -258,15 +260,4 @@ web: tmp/index.tex
 	cp tags/tags $(WEBDIR)/tags
 	python3 ./scripts/web_book.py "$(CURDIR)" > $(WEBDIR)/book.tex
 
-
-
-danistack: danistack.pdf
-
-danistack.pdf: danistack.tex dg.tex lista8.tex preamble.tex my.bib
-	pdflatex danistack
-	bibtex danistack || true
-	pdflatex danistack
-	pdflatex danistack
-clean-danistack:
-	rm -f danistack.{aux,log,out,toc,bbl,blg,pdf}
 
