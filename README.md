@@ -25,7 +25,7 @@ for continuous compilation.
 
 #How I write in latex
 
-1. “The seminal work on the subject”: Gilles Castel’s blog: https://castel.dev/post/lecture-notes-1/
+1. “The seminal work on the subject”: [Gilles Castel’s blog](https://castel.dev/post/lecture-notes-1/)
 2. Tutorial: https://ejmastnak.com/tutorials/vim-latex/intro/
 
 #Other links
