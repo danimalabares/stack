@@ -1,3 +1,8 @@
+#What is this
+
+This is a copy of the [Stacks Project repository](https://github.com/stacks/stacks-project).
+There are some files with math notes.
+
 #How to use
 
 Make a clone of repo in your computer so that you have all the files. Then you can edit and compile.
