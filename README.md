@@ -1,7 +1,8 @@
 #What is this
 
 This is a copy of the [Stacks Project repository](https://github.com/stacks/stacks-project).
-There are some files with math notes.
+There are some files with math notes. Also ``crazybranch`` and ``danibranch`` contain all
+the files from the original Stacks repo.
 
 #How to use
 
