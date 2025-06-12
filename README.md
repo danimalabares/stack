@@ -1,7 +1,9 @@
 #How to use
+
 Make a clone of repo in your computer so that you have all the files. Then you can edit and compile.
 
 #How to compile
+
 So far we can only compile each topic separately so just go
 ``make complex-geometry.pdf``
 Official Stacks Project repo uses a python script to compile the whole book. I didn't manage to set that working (an attempt is at ``scripts`` directory) but feel free to try.
