@@ -14,6 +14,8 @@ So far we can only compile each topic separately so just go
 
 ``make complex-geometry.pdf``
 
+(except for ``exercises-dg.tex``, this is included in ``differential-geometry.tex`` hehe, just for now)
+
 Official Stacks Project repo uses a python script to compile the whole book. I didn't manage to set that working (an attempt is at ``scripts`` directory) but feel free to try.
 
 Also if you are working on any file you can use 
