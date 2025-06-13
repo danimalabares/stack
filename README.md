@@ -1,12 +1,13 @@
 #What is this
 
 This is a copy of the [Stacks Project repository](https://github.com/stacks/stacks-project).
-There are some files with math notes. Also ``crazybranch`` and ``danibranch`` contain all
-the files from the original Stacks repo.
+There are some files with math notes.
 
 #How to use
 
-Make a clone of repo in your computer so that you have all the files. Then you can edit and compile.
+Make a clone of repo in your computer so that you have all the files.
+Then you can edit and compile. The ``documentation`` directory contains
+the original documentation files.
 
 #How to compile
 
@@ -14,9 +15,12 @@ So far we can only compile each topic separately so just go
 
 ``make complex-geometry.pdf``
 
-(except for ``exercises-dg.tex``, this is included in ``differential-geometry.tex`` hehe, just for now)
+(except for ``exercises-dg.tex``, this is included in ``differential-geometry.tex`` 
+hehe, just for now)
 
-Official Stacks Project repo uses a python script to compile the whole book. I didn't manage to set that working (an attempt is at ``scripts`` directory) but feel free to try.
+Official Stacks Project repo uses a python script to compile the whole book. 
+I didn't manage to set that working (an attempt is at ``scripts`` directory) 
+but feel free to try.
 
 Also if you are working on any file you can use 
 
