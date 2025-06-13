@@ -13,7 +13,36 @@
 \section{Jacobi Fields}
 \label{section-jacobi-fields}
 
-\begin{proposition}
+\subsection{Jacobi Equation}
+\label{subsection-jacobi-equation}
+
+\begin{proposition}[Everyday Jacobi field]
+\label{proposition-everyday-jacobi-field}
+\cite{doc} Chapter V, Proposition 2.4. Let $\gamma:[0,a]\to M$ be a normalized
+geodesic and let $J$ be a Jacobi field through $\gamma$ with $J(0)=0$.
+Let $p:\gamma(0)$ $w:=J'(0)$ and  $v:=\gamma'(0)$. 
+Consider the variation
+$$
+f(s,t):=\operatorname{exp}_{p}(t(v+sw))
+$$
+Then the associated Jacobi field is $J$. So in particular the field
+$$
+J(t)=d_{tv}\operatorname{exp}_p(tw)
+$$
+is a Jacobi field.
+
+{\bf Remark:} the variation can also be taken with respect to
+any a curve $\sigma$ on $T_vT_{p}M$ passing through $v$ 
+at $s=0$ with velocity $w$.
+
+\end{proposition}
+
+\begin{example}[Jacobi Fields in constant curvature]
+\label{example-jacobi-fields-in-constant-curvature}
+If $M$ has constant curvature $k$, a Jacobi field is of the form
+\end{example}
+
+\begin{proposition}[Critical points of exponential]
 \label{proposition-critical-points-exp}
 \cite{doc} Chapter V, Proposition 3.5. A vector $v \in T_pM$ is a critical
 point of $\operatorname{exp}_p$ if and only if the corresponding 
@@ -124,9 +153,9 @@ longo de $\gamma$.
 \section{Cut locus}
 \label{section-cut-locus}
 
-\begin{proposition}
+\begin{proposition}[First cut point characterization]
 \label{proposition-first-cut-point}
-Let $\gamma$ be a minimizing geodesic joining $p$ and $q$. Then $q$ is the cut
+\cite{doc} Chapter XIII, Proposition 2.2. Let $\gamma$ be a minimizing geodesic joining $p$ and $q$. Then $q$ is the cut
 point of $p$ if and only if either of the following conditions hold:
 \begin{enumerate}
 \item $q$ is the first conjugate point of $p$ along $\gamma$.
@@ -174,7 +203,66 @@ and the map $d_{tv}\operatorname{exp}_pw$, for $w$ in the kernel, gives
 a Jacobi field. See Proposition \ref{proposition-critical-points-exp})
 \end{proof}
 
-\begin{definition}
+\begin{exercise}[Diâmetros]
+\label{exercise-diametros}
+Calcule o diâmetro de $S^2$, $\mathbb{T}^2$, $\mathbb{R}P^{2}$.
+\end{exercise}
+
+\begin{proof}[Solution]
+O diâmetro de $S^2$ pode ser calculado via o teorema de Bonnet Myers
+\ref{theorem-bonnet-myers}: nenhuma geodésica é minimizante depois de atingir
+comprimento $\pi r$, e temos uma geodésica que atinge esse comprimento: qualquer
+uma!
+
+O diâmetro de $\mathbb{T}^2$ é $1$. Isso é por simples geometria
+euclidiana: é o diâmetro do cubo! Por definição, a métrica de  $\mathbb{T}^2$ é
+a induzida pela projeção quociente.
+
+O diâmetro de $\mathbb{R}P^{2}$ é $\pi/2$. Qualquer geodésica que liga dois
+pontos a distância $\pi/2$ é minimizante, pois estamos na métrica esférica e
+podemos pegar cartas esféricas onde dois pontos a essa distância estão contidos. 
+Por outro lado, se tivéssemos dois pontos a distância maior, a geodésica 
+esférica que percorre o ponto antípoda ao inicial, chega no ponto final mais 
+rapidamente que inicial; portanto geodésicas de comprimento maior que $\pi/2$ 
+não são minimizantes.
+\end{proof}
+
+\begin{lemma}[Cut point is reflexive]
+\label{lemma-cut-point-reflexive}
+If $q$ is the cut point of $p$ through $\gamma$, then $p$ is the cut point of
+$p$ through $\gamma$.
+\end{lemma}
+
+\begin{lemma}[Not in the cut locus implies minimizing]
+\label{lemma-not-cut-locus-minimizing}
+
+\end{lemma}
+
+\begin{proposition}[Distance to cut point is continuous]\leavevmode
+The function
+\begin{align*}
+	\rho: T^1_p &\longrightarrow [0,+\infty] \\
+	v &\longmapsto \text{cut point along }\gamma_v 
+\end{align*}
+is continuous.
+\end{proposition}
+
+\begin{lemma}[Cut locus is a closed set]
+\label{lemma-cut-locus-closed}
+Because it's the image of the unit sphere in $T_pM$, which is closed.
+\end{lemma}
+
+\begin{lemma}[Cut locus is open, dense, homeomorphic to a ball, total measure]
+\label{lemma-cut-locus-topology}
+
+\end{lemma}
+
+\begin{lemma}[Outside the cut locus implies exists unique minimizing geodesic]
+\label{lemma-outside-cut-locus-minimizing-geodesic}
+The geodesic stays outside the cut locus.
+\end{lemma}
+
+\begin{definition}[Injectivity radius]
 \label{definition-injectivity-radius}
 The {\it injectivity radius} of a manifold $M$ is
 $$
