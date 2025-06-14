@@ -141,6 +141,7 @@ turned out to be parametrized by $c_1, c_2$ and $c_3$. This was denoted by
 $R(c_1,c_2,c_3)$. Actually I think it may have been Manolache that proved the
 existence of this moduli space.
 
+
 Alan Muniz
 
 Nesta palestra discutiremos a classificação de feixes reflexivos de posto dois e
@@ -149,6 +150,52 @@ construção e determinação de tais feixes. Aplicaremos estas técnicas para o
 de feixes com segunda classe de Chern igual a quatro, obtido recentemente em
 colaboração com Marcos Jardim.
 \end{remark}
+
+\subsection{Distributions on manifolds}
+\label{subsection-distributions-on-manifolds}
+
+Here's the abstract from a talk by Marcos Jardim at Geometric Structures:
+
+``I will revise the work done over the past 10 years with various collaborators
+on distributions and foliations on 3-folds, especially on the projective space,
+with a focus on properties of the tangent sheaf and singular scheme."
+
+Here are two key ideas: if the distribution is codimension 1 we can write:
+$$
+\xymatrix{
+0\ar[r]&F\ar[r]&TX\arrow[r]^{\omega}&I_Z \otimes L\ar[r]&0
+}
+$$
+where $L$ is a line bundle and $\omega \in H^{0}(\Omega_X \otimes L)$, and
+$Z=\{p:\omega(p)=0\}$.
+
+When codimension is 2 then $\mathcal{D}$ is given by a holomorphic vector field 
+$\nu$: $T_p=\left<\nu(p)\right>$.
+
+It can be encoded as an exact sequence
+$$
+\xymatrix{
+	0\ar[r]&L\ar[r]^{\nu}&TX\arrow[r]&N\ar[r]&0
+}
+$$
+where $L$ is a line bundle and $\nu \in H^{0}(TX \otimes L^\vee)$;
+  $Z=\{p | \nu(p) = 0\}$.
+
+\begin{remark}
+\label{remark-stauration}
+Saturation means that $Z \subset X$ is a union of curves and points.
+\end{remark}
+
+And again, distributions are parametrized by Chern classes.
+
+Two interesting open questions:
+\begin{enumerate}
+\item {\bf Conjeture.} if $\mathcal{D}$ is a codimension 1 foliation of degree
+$d$ on $\mathbb{P}^3$, then $c_2(F)\leq d^2-d+1$ and bound is attained
+by rational foliations of type $(1,d+1)$. (True for $d \leq 2$.)
+\item {\bf Conjecture (with Pepe Seade).} $\mathcal{D}$ is a codimension 1 
+foliation on a smooth projective 3-fold, then $\text{Sing}\mathcal{D}$ is connected.
+\end{enumerate}
 
 \begin{theorem}[Jardim-Muniz]
 \label{theorem-jardim-muniz}
@@ -159,6 +206,56 @@ $c_2=4$ gives (?). For $c_3\leq 6$, possible ``spectrum" exists…
 \section{Stability}
 \label{section-stability}
 
+{\bf Question.} What is stability?
+
+\begin{enumerate}
+\item Stable objects in an abelian category are the ``building blocks":
+we can reconstruct the whole category from them.
+\item  An abelian subcategory (hart) $\subset$ a triangulated
+\item stability defined via stability function on $\mathcal{A}$.
+\item Q. Can we reconstruct $\mathcal{T}$ from the semistable elements of
+$\mathcal{A}$
+\item {\bf Example.} $\mathcal{A}=\text{Coh}X$ is heart of $D^b(X)$
+w/ funny function.
+\item Stability condition is hart + stability function.
+\item Bridgeland Stabl:= the stability conditions are a complex manifold
+of complex codimension $\text{rk}\Lambda$:
+$$
+ \mathcal{Z}:\text{Stab}(\mathcal{T})
+\longrightarrow \text{Hom}(\Lambda,\mathbb{C})
+$$
+\item There's a chamber structure; moduli space changes across chambers.
+\item I think we typically think of vectors in $\text{Hom}(\Lambda,\mathbb{C})$ 
+as Chern classes, to characterize the moduli spaces.
+\item Existence: given a projective variety $X$, are there stability
+conditions on $D^\text{b}(X)$? Yes for fano 3fold pic rk 1.
+\item Moduli spaces: is $M_\sigma(v)$ a projective scheme? Cannot use
+usual git techniques to study. A stack!
+\item Picture: blue + black are walls. Q. What are $\beta$ and $\alpha$?
+\item thm: bridgeland stable = gieseker stable ?
+\item Q. slope stability = bridgeland stability? A. Not always.
+\item DT/PT correspondance: only one wall between PT and G chambers
+\medskip
+\item Polynomial stability function. This is an asymptotic version of BS.
+\item There are some $\rho$'s. Arrangements of $\rho_i$ are polynomial 
+stability conditions on a threefold.
+\item Pata-Thomas introduced stability for rank 1 objects.
+Bayer compares the---wall. Q. Same for Bridge S---only one wall?
+\item Recall Gieseker stability.
+\medskip
+\item Def. A {\it stable triple}: when
+$\text{gcd}(\text{ch}_0,\text{ch}_2,\text{ch}_3)=1$, every PT stable object
+comes from three conditions (missing).
+\item What happens when you cross the blue wall? 
+Both $\mathcal{G}$ and $\mathcal{T}$ are projective. What happens at the blue
+wall?
+\medskip
+\item For $X$ smooth threefold with $\text{rk}\text{Pic}=1$, $\mathcal{G}(v)$,
+$v=(r,0,0,-n)$, $\mathcal{G}(v)$ is a known sheaf object and
+$\mathcal{T}=\emptyset$.
+\item $X$ sm 3 rkpic1, Fake wall; $\mathcal{G}=\mathcal{T}$.
+\item (Extra.) red circle is a wall for a weaker form of stability.
+\end{enumerate}
 \begin{definition}[Talk at impa]
 \label{definition-slope-stability}
 A rank-2 sheaf $\mathcal{F}$ is {\it semistable (stable)}if

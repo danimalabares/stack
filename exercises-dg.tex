@@ -115,20 +115,16 @@ $\ell=d(p,q)$.
 \end{exercise}
 
 \begin{proof}[Solução en processo]
-Foi provado em sala que um ponto $q$ é o cut point de $p$ ao longo 
-de $\gamma$ se e somente se
-alguma das seguintes condições é verdadeira: (a) $q$ é o primeiro ponto
-conjugado a $p$, ou (b) existem duas geodésicas minimizantes ligando $p$ e $q$.
+Suponha que $M$ é completa, de modo que podemos garantir a existência de
+uma geodésica minimizante $\gamma$ ligando $p$ e $q$.
 
-Suponha a primeira condição da proposição não é verdadeira. 
-Ou seja, não existe uma geodésica {\it minimizante} ligando $p$ e $q$ ao longo
-da qual $q$ é conjugado a $p$. Ainda pode existir uma geodésica, não
-minimizante, ligando $p$ e $q$ ao longo da qual $p$ é conjugado a $q$.
+Então podemos aplicar a Proposição \ref{proposition-cut-point-characterization}:
+ um ponto $q$ é o cut point de $p$ ao longo de $\gamma$ se e somente se
+alguma das seguintes condições é verdadeira: 
+(a) $q$ é o primeiro ponto conjugado a $p$ ao longo de $\gamma$, ou 
+(b) existem duas geodésicas minimizantes ligando $p$ e $q$.
 
-Como $\gamma$ não tem pontos conjugados antes
-de $q$, ela é minimizante (cf. Exercício 6, Lista 7).
-
-Considere a variação por geodésicas 
+Se (a) é verdadeira, terminamos. Se (b) é verdadiera, considere a variação por geodésicas 
 $$
 f(s,t):=\operatorname{exp}_{\gamma(t)}
 (s\operatorname{exp}_{\gamma(t)}^{-1}\sigma(t))
