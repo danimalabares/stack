@@ -657,6 +657,7 @@ INPUT ./exercises-dg.tex
 INPUT exercises-dg.tex
 INPUT ./exercises-dg.tex
 INPUT exercises-dg.tex
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmr5.tfm
 INPUT ./differential-geometry.bbl
 INPUT differential-geometry.bbl
 INPUT ./differential-geometry.bbl

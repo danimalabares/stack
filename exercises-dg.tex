@@ -115,22 +115,33 @@ $\ell=d(p,q)$.
 \end{exercise}
 
 \begin{proof}[Solução en processo]
-Suponha que $M$ é completa, de modo que podemos garantir a existência de
+Suponha por enquanto que existe
 uma geodésica minimizante $\gamma$ ligando $p$ e $q$.
 
 Então podemos aplicar a Proposição \ref{proposition-cut-point-characterization}:
- um ponto $q$ é o cut point de $p$ ao longo de $\gamma$ se e somente se
+ um ponto $q$ é o cut point de $p$ ao longo de uma 
+geodésica minimizante $\gamma$ se e somente se
 alguma das seguintes condições é verdadeira: 
 (a) $q$ é o primeiro ponto conjugado a $p$ ao longo de $\gamma$, ou 
 (b) existem duas geodésicas minimizantes ligando $p$ e $q$.
 
-Se (a) é verdadeira, terminamos. Se (b) é verdadiera, considere a variação por geodésicas 
+Se (a) é verdadeira, terminamos. 
+Se (b) é verdadeira, considere a variação por geodésicas 
 $$
 f(s,t):=\operatorname{exp}_{\gamma(t)}
 (s\operatorname{exp}_{\gamma(t)}^{-1}\sigma(t))
 $$
-Note que se $\gamma'(\ell)=-\sigma'(\ell)$ o campo de Jacobi é nulo. Em outro
-caso obtemos que $p$ é conjugado a $q$, absurdo.
+cujo campo de Jacobi 
+$$
+J(t)=d_{t\text{exp}_{\gamma(t)}^{-1}\sigma(t)}
+\text{exp}_p(\text{exp}_{\gamma(t)}^{-1}\sigma(t))
+$$
+Se anula em $t=0,1$. Note que se $\gamma'(\ell)=-\sigma'(\ell)$ 
+o campo de Jacobi é nulo, e não necessariamente $p$ é conjugado a $q$ ao longo
+de $\gamma$. Em qualquer outro caso voltamos no caso (a).
+
+Agora vamos mostrar 
+
 \end{proof}
 
 \begin{exercise}
