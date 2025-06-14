@@ -92,12 +92,69 @@ Se $M^{2n+1}$ tem $K_M >0$ e $\gamma:S^1 \to M$ inverta orientação, então é
 possível encurtar $\gamma$ na sua classe de homotopia.
 \end{exercise}
 
-\begin{exercise}
 
+\section{Lista 3}
+\label{section-lista-3}
+
+\begin{exercise}[Curvas minimizantes]
+\label{exercise-curvas-minimizantes}
+\begin{enumerate}
+\item Seja $\gamma$ uma curva suave por partes parametrizada por comprimento de
+ arco, conectando $p$ a $q$, pontos de uma variedade Riemanniana $(M,g)$.
+ Mostre que se $d(p,q)=\ell(\gamma)$, então $\gamma$ é uma geodésica.
+ Dizemos que $\gamma$ realiza a distância entre $p$ e $q$.
+\item Suponha que $\gamma,\sigma:[0,2]\to M$ são geodésicas distintas
+ e satisfazem: $\gamma(0)=\sigma(0):=p$, $\gamma(1)=\sigma(1):=q$, 
+$\gamma$ e $\sigma$ realizam a distância entre $p$ e $q$.
+ Mostre que $\gamma$ não realiza a distância entre $p$ e $\gamma(1+s)$ 
+para nenhum $s>0$.
+\end{enumerate}
 \end{exercise}
 
+\begin{proof}
+\begin{enumerate}
+\item Primeiro suponha que $\gamma$ é suave. Podemos ver que trata-se de uma 
+geodésica usando seu campo de velocidades como campo variacional na primeira
+fórmula da variação:
+$$
+E'(0)=\int_0^a |\gamma'|=0 \implies \gamma'\equiv 0
+$$
+Uma geodésica quebrada não pode ser minimizante porque em uma vizinhança 
+totalmente normal (cf. \ref{proposition-totally-normal-neighbourhoods}) 
+do ponto singular podemos achar uma geodésica radial (suave)
+ que acurta a distância entre qualquer ponto antes do ponto singular
+ e qualquer ponto depois do ponto singular.
+\item Se as duas geodésicas se intersectam não tangencialmente, podemos 
+construir um caminho mais curto entre $p$ e $\gamma(1+s)$ ao longo de $\sigma$,
+a menos de suavizar a quina perto de $q$. Se as curvas se intersectam
+ tangencialmente devem ser a mesma.
+\end{enumerate}
+\end{proof}
+
+
+\section{Lista 7}
+\label{section-lista-7}
+
+
 \section{Lista 8}
-\label{section-l8}
+\label{section-lista-8}
+
+\begin{exercise}
+\label{exercise-minimizing-implies-no-conjugate-points}
+Seja $\gamma:[0,a]\to M$ uma geodésica em uma variedade Riemanniana $M$.
+ Prove que se $\gamma$ é minimizante, então $\gamma$ não possui pontos
+ conjugados em  $(0,a)$. Encontre um exemplo de geodésica $\gamma:[0,a] \to M$ 
+sem pontos conjugados que não é minimizante.
+\end{exercise}
+
+\begin{proof}
+Por contrapositiva, suponha que existem dois pontos conjugados
+ ao longo de $\gamma$ e vamos provar que ela não pode ser minimizante. 
+Por que não posso simplesmente pegar a variação associada ao campo de 
+Jacobi? Essa variação me da duas geodésicas que convergem num ponto,
+ e portanto $\gamma$ não pode ser minimizante depois desse ponto. 
+Resposta: porque nada me assegura que essas geodésicas 
+\end{proof}
 
 \begin{exercise}
 Prop. 2.12 do capítulo XIII, \cite{doc}. Seja $p \in M$. 
@@ -140,7 +197,19 @@ Se anula em $t=0,1$. Note que se $\gamma'(\ell)=-\sigma'(\ell)$
 o campo de Jacobi é nulo, e não necessariamente $p$ é conjugado a $q$ ao longo
 de $\gamma$. Em qualquer outro caso voltamos no caso (a).
 
-Agora vamos mostrar 
+Agora vamos mostrar que o fato de que $q \in C_m(p)$ realiza a distância de $p$ a 
+$C_m(p)$ é suficiente para garantir a existência de uma geodésica minimizante
+ligando $p$ e $q$. Por definição de cut locus, existe uma geodésica 
+$\gamma$ ligando $p$ e $q$, e $q$ é o primeiro ponto onde $\gamma$ deixa
+de ser minimizante.
+
+Portanto, $\gamma$ não tem pontos conjugados entre $p$ e $q$. Idea: isso vai
+ obrigar a que a geodésica seja minimizante antes de $q$: suponha que
+$\gamma$ não é minimizante
+$$
+d(p,C_m(p))=d(p,q)=\text{inf}_{}
+$$
+
 
 \end{proof}
 
