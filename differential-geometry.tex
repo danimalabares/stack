@@ -10,6 +10,16 @@
 
 \tableofcontents
 
+\section{Geodesics}
+\label{section-geodesics}
+
+\begin{proposition}[Totally Normal Neighbourhoods]
+\label{proposition-totally-normal-neighbourhoods}
+For all $p \in M$ there is a neighbourhood $W \ni p$ and a number $\delta>0$ 
+ such that for every $q \in W$, $B_\delta(q)$ is normal and
+ $W \subset B_\delta(q)$. 
+\end{proposition}
+
 \section{Jacobi Fields}
 \label{section-jacobi-fields}
 
@@ -17,7 +27,7 @@
 \label{proposition-everyday-jacobi-field}
 \cite{doc} Chapter V, Proposition 2.4. Let $\gamma:[0,a]\to M$ be a normalized
 geodesic and let $J$ be a Jacobi field through $\gamma$ with $J(0)=0$.
-Let $p:\gamma(0)$ $w:=J'(0)$ and  $v:=\gamma'(0)$. 
+Let $p:=\gamma(0)$ $w:=J'(0)$ and  $v:=\gamma'(0)$. 
 Consider the variation
 $$
 f(s,t):=\operatorname{exp}_{p}(t(v+sw))
@@ -126,17 +136,13 @@ compute.
 \section{Morse index theorem}
 \label{section-morse-index}
 
-\begin{slogan}
-The problem is that the vector spaces of sections of smooth manifolds are infinite-dimensional. we are interested in computing
-\end{slogan}
-
-\begin{definition}
+\begin{definition}[Index of index form]
 \label{definition-index-index-form}
 $$
 i(I_a):=\operatorname{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L}<0\}
 $$
-
 \end{definition}
+
 
 \begin{theorem}[Morse Index]
 \label{theorem-morse-index}
@@ -145,10 +151,34 @@ longo de $\gamma$.
 \end{theorem}
 
 \begin{proof}
+\begin{enumerate}
+\item Define
+\begin{align*}
+\mathcal{V}_a&=\{V \in \mathfrak{X}_\gamma:\text{d.p.p., }V(0)=0, V(a)=0\}\\
+\mathcal{V}_t^+&:=\{V \in \mathcal{V}_t:V(t_i)=0\}\\
+\mathcal{V}_t^-& :=\{V \in \mathcal{V}_t:V|_{[t_j,t_{j+1}]}\in
+\mathfrak{X}_{\gamma|_{[t_j,t_{j+1}]}}^J\}=\bigoplus_{j=1}^{i-1}T_{\gamma(t_j)}M
+\end{align*}
+Onde a igualdade em $\mathcal{V}_t^-$ é porque para qualquer escolha de vetores
+ $v_1 \in T_{\gamma(t_1)}M,\ldots,v_{i-1}\in T_{\gamma(t_{i-1})}M$ existe
+ um único campo $J \in \mathcal{V}^-$ tal que $J(t_j)=v_j$, por ser a solução
+ da EDO com condições de contorno.
+\end{enumerate}
 \end{proof}
 
 \section{Cut locus}
 \label{section-cut-locus}
+
+\begin{defn}[Cut point]
+\label{definition-cut-point}
+O {\it cut point} de  $p$ ao longo de $\gamma$ é $\gamma(\rho(\gamma))$ 
+onde
+$$
+\rho(\gamma)=\text{sup}\{t:\gamma|_{[0,t]}\text{ é minimizante}\}
+$$
+
+\end{defn}
+
 
 \begin{proposition}[Cut point characterization]
 \label{proposition-cut-point-characterization}
