@@ -1,0 +1,4961 @@
+global !p
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def comment(): 
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	return x != '0' and y != '0'
+def tx():
+      return vim.eval('vimtex#syntax#in_mathzone()') == '0'
+endglobal
+
+context "math()" 
+snippet rH "cohomology" i
+\tilde{H}^{$1}($2,$3)$4
+endsnippet
+
+context "math()"
+snippet hH "cohomology2" iA
+h^{$1}($2)$0
+endsnippet
+
+context "math()"
+snippet hd "cohomology2" iA
+h^{$1}($2)$0
+endsnippet
+
+context "math()"
+snippet HH "cohomology2" iA
+H^{$1}($2)$0
+endsnippet
+
+context "math()"
+snippet HB "cohomology2" iA
+H^{$1}_{\operatorname{BC}}($2)$0
+endsnippet
+
+context "math()"
+snippet HA "cohomology2" iA
+H^{$1}_{\operatorname{AE}}($2)$0
+endsnippet
+
+context "math()"
+snippet HD "cohomology2" iA
+H^{$1}_{\bar{\partial}}($2)$0
+endsnippet
+
+priority 1000
+context "math()"
+snippet JJ "cohomology2" iA
+J^{$1}($2)$0
+endsnippet
+
+priority 2
+context "math()"
+snippet hh "homology2" iA
+h^$1($2)
+endsnippet
+
+context "tx()"
+snippet mk "Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ',')',':',';']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+context "tx()"
+snippet dm "Math" wA
+$$
+$1
+$$
+$2
+endsnippet
+
+context "math()"
+snippet mc "mathcal" iA
+\mathcal{$1}
+endsnippet
+
+context "math()"
+snippet mf "mathfrak" iA
+\mathfrak{$1}
+endsnippet
+
+context "math()"
+snippet ms "mathsansserif" iA
+\mathsf{$1}
+endsnippet
+
+context "math()"
+snippet tx "text" iA
+\text{$1} $0
+endsnippet
+
+context "math()"
+snippet se "set" iA
+\\{$1\\}
+endsnippet
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction"
+\\frac{`!p snip.rv = match.group(1)`}{$1}
+endsnippet
+
+priority 1
+context "math()"
+snippet to "to" iA
+\to
+endsnippet
+
+priority 2
+context "math()"
+snippet lto "longto" iA
+\longrightarrow
+endsnippet
+
+
+context "math()"
+snippet xn "nth variable" iA
+x_n
+endsnippet
+
+#context "math()"
+#snippet '([A-Za-z])!' "autosubscript" wrA
+#_`!p snip.rv = match.group(1)`
+#endsnippet
+
+priority 1
+context "math()"
+snippet '([A-Za-z])N' "autosuperscript" wrA
+`!p snip.rv = match.group(1)`_n
+endsnippet
+#context "math()"
+#snippet '([A-Za-z])R' "autosuperscript" wrA
+#`!p snip.rv = match.group(1)`_r
+#endsnippet
+
+priority 100
+context "math()"
+snippet xM "Description" iA
+xM
+endsnippet
+
+priority 100
+context "math()"
+snippet TM "Description" iA
+TM
+endsnippet
+
+priority 10
+context "math()"
+snippet pM "Description" iA
+pM
+endsnippet
+
+priority 1
+context "math()"
+snippet '([A-Za-z])M' "autosuperscript" wrA
+`!p snip.rv = match.group(1)`_m
+endsnippet
+
+priority 2
+context "math()"
+snippet TN "Tangent" iA
+TN
+endsnippet
+context "math()"
+snippet '([A-Za-z])K' "autosuperscript" wrA
+`!p snip.rv = match.group(1)`_k
+endsnippet
+#context "math()"
+#snippet '([A-Za-z])T' "autosuperscript" wrA
+#`!p snip.rv = match.group(1)`_t
+#endsnippet
+context "math()"
+snippet '([A-Za-z])I' "autosuperscript" wrA
+`!p snip.rv = match.group(1)`_i
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])jj' "autosubscript" wrA
+`!p snip.rv = match.group(1)`^j
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])tt' "autosubscript" wrA
+`!p snip.rv = match.group(1)`^t
+endsnippet
+
+priority 2
+context "math()"
+snippet '([A-Za-z])ii' "autosubscript" wrA
+`!p snip.rv = match.group(1)`^i
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])mm' "autosubscript" wrA
+`!p snip.rv = match.group(1)`^m
+endsnippet
+
+priority 1
+context "math()"
+snippet '([A-Za-z])nn' "autosubscript" wrA
+`!p snip.rv = match.group(1)`^n
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])kk' "autosubscript" wrA
+`!p snip.rv = match.group(1)`^k
+endsnippet
+
+priority 2
+context "math()"
+snippet 'S(\d)' "autosphere" wrA
+S^`!p snip.rv = match.group(1)`$0
+endsnippet
+priority 2
+context "math()"
+snippet 'mathbb{S}(\d)' "autosphere" wrA
+mathbb{S}^`!p snip.rv = match.group(1)`$0
+endsnippet
+
+priority 1
+context "math()"
+snippet '([A-Za-z])(\d)' "true autosubscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`$0
+endsnippet
+
+
+
+#snippet '([A-Za-z])^(\d\d)' "autosubscript2" wrA
+#`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+#endsnippet
+
+context "math()"
+snippet ^^ "superscript3" iA
+^{$1}`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet Sn "sphere" iA
+S^n
+endsnippet
+
+context "math()"
+snippet @ "superscript" iA
+^
+endsnippet
+
+context "math()"
+snippet ^^ "long superscript" options
+^{$1}`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+
+context "math()"
+snippet __ "subscript" iA
+_{$1}$0
+endsnippet
+
+context "math()"
+snippet -- "subscript" iA
+_{$1}$0
+endsnippet
+
+context "math()"
+snippet ker "kernel" iA
+\ker`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet cok "coker" iA
+\operatorname{coker}
+endsnippet
+
+context "math()"
+snippet exp "exponent" iA
+\operatorname{exp}
+endsnippet
+
+context "math()"
+snippet exp}p "exponent" iA
+exp}_p
+endsnippet
+
+context "math()"
+snippet img "image" iA
+\operatorname{img}
+endsnippet
+
+snippet != "equals" iA
+\neq 
+endsnippet
+
+context "math()"
+snippet π "pi" iA
+\pi
+endsnippet
+
+context "math()"
+snippet os "oplus" iA
+\oplus 
+endsnippet
+
+context "math()"
+snippet floor "floor" iA
+\left\lfloor $1 \right\rfloor$0
+endsnippet
+
+context "math()"
+snippet ceil "ceil" iA
+\left\lceil $1 \right\rceil $0
+endsnippet
+
+context "math()"
+snippet mat "pmat" wA
+\begin{pmatrix} $1 \end{pmatrix} $0
+endsnippet
+
+context "math()"
+snippet bmat "bmat" iA
+\begin{bmatrix} $1 \end{bmatrix} $0
+endsnippet
+
+context "math()"
+snippet vmat "vmat" iA
+\begin{vmatrix} $1 \end{vmatrix} $0
+endsnippet
+
+context "math()"
+snippet Bmat "block matrix" iA
+\left(\begin{array}{@{}c|c@{}}
+$1&$2\\\
+\hline
+$3&$4\end{array}\right)
+endsnippet
+
+
+context "math()"
+snippet sqmat "square matrix" iA
+\begin{pmatrix}$1&$2\\\$3&$4\end{pmatrix}$0
+endsnippet
+
+context "math()"
+snippet lr "left( right)" i
+\left( ${1:${VISUAL}} \right) $0
+endsnippet
+
+priority 100
+context "math()"
+snippet lrp "left( right)" iA
+\left(${1:${VISUAL}}\right)$0
+endsnippet
+
+context "math()"
+snippet lrB "left( right)" iA
+\left[$1\right]
+endsnippet
+context "math()"
+snippet lrb "left( right)" iA
+\left\\{$1\right\\}
+endsnippet
+
+priority 2
+context "math()"
+snippet blrp "left( right)" iA
+\big( ${1:${VISUAL}} \big) $0
+endsnippet
+
+priority 2
+context "math()"
+snippet BL "left( right)" iA
+\Big( ${1:${VISUAL}} \Big) $0
+endsnippet
+
+priority 100
+context "math()"
+snippet lr| "left| right|" iA
+\left| ${1:${VISUAL}} \right| $0
+endsnippet
+
+context "math()"
+snippet SE "left\{ right\}" iA
+\left\\{ ${1:${VISUAL}} \right\\} $0
+endsnippet
+context "math()"
+snippet lr{ "left\{ right\}" iA
+\left\\{ ${1:${VISUAL}} \right\\} $0
+endsnippet
+
+#context "math()"
+#snippet lrs "left\{ right\}" iA
+#\left\\{ ${1:${VISUAL}} \right\\} 
+#endsnippet
+
+context "math()"
+snippet lr[ "left[ right]" iA
+\left[ ${1:${VISUAL}} \right] 
+endsnippet
+
+context "math()"
+snippet lra "leftangle rightangle" iA
+\left<$1\right>
+endsnippet
+
+context "math()"
+snippet zum "sum" iA
+\sum_
+endsnippet
+context "math()"
+snippet sum "sum" iA
+\sum
+endsnippet
+context "math()"
+snippet Sum "sum" iA
+\sum_{$1}$2
+endsnippet
+
+snippet taylor "taylor" w
+\sum_{${1:k}=${2:0}}^{${3:\infty}} ${4:c_$1} (x-a)^$1 $0
+endsnippet
+
+context "math()"
+snippet lim "limit" iA
+\lim_{$1} 
+endsnippet
+
+snippet limsup "limsup" w
+\limsup_{${1:n} \to ${2:\infty}} 
+endsnippet
+context "math()"
+snippet prod "product" iA
+\prod_{$1}
+endsnippet
+
+context "math()"
+snippet bigo "direct sum" iA
+\bigoplus_{${1:n=${2:1}}}
+endsnippet
+context "math()"
+snippet Bigo "direct sum" iA
+\bigoplus
+endsnippet
+priority 100
+context "math()"
+snippet bot "direct sum" iA
+\bigotimes
+endsnippet
+
+context "math()"
+snippet sqr "\sqrt{}" iA
+\sqrt{$1}
+endsnippet
+
+context "math()"
+snippet sqrt{t "\sqrt{}" iA
+sqrt{
+endsnippet
+
+context "math()"
+snippet td "to the ... power" iA
+^{($1)}$0
+endsnippet
+
+context "math()"
+snippet op "operator" iA
+\operatorname{$1}$0
+endsnippet
+
+snippet fun "function" i
+$$1:$2\to $3$
+endsnippet
+
+snippet Fun
+\[$1:$2\longrightarrow $3\]
+$0
+endsnippet
+
+context "math()"
+snippet fun "function" i
+$1:$2\to $3 
+endsnippet
+
+priority 1
+context "math()"
+snippet oo "\infty" iA
+\infty
+endsnippet
+
+snippet rij "mrij" i
+(${1:x}_${2:n})_{${3:$2}\\in${4:\\N}}$0
+endsnippet
+
+context "math()"
+snippet xnn "xn" iA
+x_{n}
+endsnippet
+
+context "math()"
+snippet ynn "yn" iA
+y_{n}
+endsnippet
+
+priority 1
+context "math()"
+snippet xii "xi" iA
+x_{i}
+endsnippet
+
+context "math()"
+snippet yii "yi" iA
+y_{i}
+endsnippet
+
+context "math()"
+snippet xjj "xj" iA
+x_{j}
+endsnippet
+
+context "math()"
+snippet yjj "yj" iA
+y_{j}
+endsnippet
+
+context "math()"
+snippet xp1 "x" iA
+x_{n+1}
+endsnippet
+
+context "math()"
+snippet xmm "x" iA
+x_{m}
+endsnippet
+
+snippet plot "Plot" w
+\begin{figure}[$1]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			xmin= ${2:-10}, xmax= ${3:10},
+			ymin= ${4:-10}, ymax = ${5:10},
+			axis lines = middle,
+		]
+			\addplot[domain=$2:$3, samples=${6:100}]{$7};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{$8}
+	\label{${9:$8}}
+\end{figure}
+endsnippet
+
+snippet nn "Tikz node" w
+\node[$5] (${1/[^0-9a-zA-Z]//g}${2}) ${3:at (${4:0,0}) }{$${1}$};
+$0
+endsnippet
+
+context "math()"
+snippet ll "l" iA
+\ell
+endsnippet
+
+context "math()"
+snippet nab "abla" iA
+\nabla
+endsnippet
+
+context "math()"
+snippet xx "cross" iA
+\times
+endsnippet
+
+context "math()"
+snippet AA "affine" iA
+\mathbb{A}^
+endsnippet
+
+context "math()"
+snippet nor "norm" iA
+\|$1\|
+endsnippet
+
+priority 300
+context "math()"
+snippet int "integral" iA
+\int
+endsnippet
+
+context "math()"
+snippet compl "complement" iA
+^{c}
+endsnippet
+
+context "math()"
+snippet \\\ "setminus" iA
+\setminus
+endsnippet
+
+snippet >> ">>" iA
+\gg
+endsnippet
+
+snippet << "<<" iA
+\ll
+endsnippet
+
+snippet ~~ "~" iA
+\sim
+endsnippet
+
+snippet || "mid" iA
+\mid
+endsnippet
+
+priority 1
+context "math()"
+snippet cc "subset" Ai
+\subset
+endsnippet
+
+context "math()"
+snippet Cc "Description" Ai
+\Subset
+endsnippet
+
+
+priority 2
+context "math()"
+snippet ncc "not subset" iA
+\not\subset
+endsnippet
+
+priority 1
+context "math()"
+snippet cec "subseteq" Ai
+\subseteq
+endsnippet
+
+priority 2
+context "math()"
+snippet ncec "not subset" iA
+\not\subseteq
+endsnippet
+
+priority 1
+context "math()"
+snippet zez "supset" iA
+\supseteq
+endsnippet
+
+priority 2
+context "math()"
+snippet nzez "not subset" iA
+\not\supseteq
+endsnippet
+
+priority 1
+context "math()"
+snippet zz "supset" iA
+\supset
+endsnippet
+
+priority 2
+context "math()"
+snippet nzz "not subset" iA
+\not\supset
+endsnippet
+
+priority 2
+context "math()"
+snippet inn "in " iA
+\in
+endsnippet
+
+snippet nii "ni" iA
+\ni
+endsnippet
+
+context "math()"
+snippet Nin "not in" iA
+\not\in
+endsnippet
+
+context "math()"
+snippet nq "neq" iA
+\neq 
+endsnippet
+#context "math()"
+#snippet nq "neq" iA
+#\neq `!p
+#if t[1] and t[1][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+#     snip.rv = ' '
+#else:
+#     snip.rv = ''
+#`$0
+#endsnippet
+
+context "math()"
+snippet ww "cap" iA
+\cap
+endsnippet
+
+context "math()"
+snippet uu "cup" iA
+\cup 
+endsnippet
+
+context "math()"
+snippet ucu "sqcup" iA
+\sqcup
+endsnippet
+
+context "math()"
+snippet Ucu "Description" iA
+\bigsqcup_{$1}
+endsnippet
+
+
+context "math()"
+snippet UU "bigcup" iA
+\bigcup_{${1:i \in ${2: I}}}$0
+endsnippet
+
+priority 2
+context "math()"
+snippet WW "Omega...for now" iA
+\Omega^{$1}($2)
+endsnippet
+
+context "math()"
+snippet XX "vector fields" iA
+\mathfrak{X}
+endsnippet
+
+context "math()"
+snippet Ww "bigcap" iA
+\bigcap_{${1:i \in ${2: I}}}$0
+endsnippet
+
+context "math()"
+snippet OO "regular functions" iA
+\mathcal{O}
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])J' "autosuperscript" wrA
+`!p snip.rv = match.group(1)`_j
+endsnippet
+
+context "math()"
+snippet mb "mathbb" iA
+\mathbb{$1}$0
+endsnippet
+
+context "math()"
+snippet bf "mathbf" iA
+\mathbf{$1}$0
+endsnippet
+
+context "math()"
+snippet CC "complex" iA
+\mathbb{C}
+endsnippet
+
+context "math()"
+snippet GG "Description" iA
+\mathbb{G}
+endsnippet
+
+
+context "math()"
+snippet CP "complex projective space" iA
+\mathbb{C}P^{$1}
+endsnippet
+
+context "math()"
+snippet Cn "complex" iA
+\mathbb{C}^
+endsnippet
+
+context "math()"
+snippet rn "reals" iA
+\mathbb{R}^
+endsnippet
+
+context "math()"
+snippet cn "complexes" iA
+\mathbb{C}^
+endsnippet
+
+context "math()"
+snippet pn "projectives" iA
+\mathbb{P}^
+endsnippet
+
+
+context "math()"
+snippet Ss "sphere" iA
+\Sigma
+endsnippet
+
+context "math()"
+snippet SS "SS" iA
+\mathbb{S}
+endsnippet
+
+context "math()"
+snippet KK "what is this one?" iA
+\mathbb{K}
+endsnippet
+
+context "math()"
+snippet RR "real" iA
+\mathbb{R}
+endsnippet
+
+context "math()"
+snippet RP "projective space" iA
+\mathbb{R}P^{$1}
+endsnippet
+
+snippet Rn "Rn" iA
+$\mathbb{R}^{$1}$
+endsnippet
+
+context "math()"
+snippet QQ "Q" iA
+\mathbb{Q}
+endsnippet
+
+context "math()"
+snippet ZZ "Z" iA
+\mathbb{Z}
+endsnippet
+
+context "math()"
+snippet DD "D" iA
+\mathcal{D}
+endsnippet
+
+context "math()"
+snippet NN "n" iA
+\mathbb{N}
+endsnippet
+
+context "math()"
+snippet PP "p" iA
+\mathbb{P}
+endsnippet
+
+priority 100
+context "math()"
+snippet TT "torus" iA
+\mathbb{T}
+endsnippet
+
+
+context "math()"
+snippet Pp "priority ojective" iA
+\mathbb{P}($1)
+endsnippet
+
+
+context "math()"
+snippet Pn "projective" iA
+\mathbb{P}^{$1}
+endsnippet
+context "math()"
+
+context "math()"
+snippet PN "projective" iA
+\mathbb{P}^{$1}
+endsnippet
+
+
+
+context "math()"
+snippet ee "exists" iA
+\exists 
+endsnippet
+
+context "math()"
+snippet aa "forall" iA
+\forall 
+endsnippet
+
+snippet Bif "Big function" iA
+	$1: $2 &\longrightarrow $3 \\\\
+	$4 &\longmapsto $5
+endsnippet
+
+snippet BF "Big function" iA
+\begin{aligned}
+	$1: $2 &\longrightarrow $3 \\\\
+	$4 &\longmapsto $5
+\end{aligned}
+$0
+endsnippet
+snippet bif "Big function" iA
+\begin{align*}
+	$1: $2 &\longrightarrow $3 \\\\
+	$4 &\longmapsto $5
+\end{align*}
+$0
+endsnippet
+
+context "tx()"
+snippet biif "two big functions" iA
+\begin{align*}
+\begin{aligned}
+$1: $2 &\longrightarrow $3 \\\\
+	$4 &\longmapsto $5
+\end{aligned}\qquad
+\begin{aligned}
+$6: $7 &\longrightarrow $8 \\\\
+	$9 &\longmapsto $10
+\end{aligned}
+\end{align*}
+endsnippet
+
+
+snippet rif "Big function" bA
+\begin{align*}
+	$1: $2 &\dashrightarrow $3 \\\\
+	$4 &\longmapsto $5
+\end{align*}
+$0
+endsnippet
+
+snippet rf "rational function" i
+$$1:$2\dashrightarrow $3$
+endsnippet
+
+
+snippet cvec "column vector" iA
+\begin{pmatrix} ${1:x}_${2:1}\\\\ \vdots\\\\ $1_${2:n} \end{pmatrix}
+endsnippet
+
+priority 100
+context "math()"
+snippet udl "underline" iA
+\underline{$1}
+endsnippet
+
+
+priority 10
+context "math()"
+snippet ovl "overline" iA
+\overline{$1}$0
+endsnippet
+context "math()"
+snippet br "overline" iA
+\overline{$1}$0
+endsnippet
+priority 10
+context "math()"
+snippet ol "overline" iA
+\overline{$1}$0
+endsnippet
+
+priority 100
+context "math()"
+snippet "([a-zA-Z])br" "bar" riA
+\overline{`!p snip.rv=match.group(1)`}
+endsnippet
+
+priority 100
+context "math()"
+snippet "([a-zA-Z])tl" "bar" riA
+\tilde{`!p snip.rv=match.group(1)`}
+endsnippet
+priority 100
+context "math()"
+snippet "([a-zA-Z])ht" "bar" riA
+\hat{`!p snip.rv=match.group(1)`}
+endsnippet
+
+priority 1000
+context "math()"
+snippet right "Description" iA
+right
+endsnippet
+
+
+priority 100
+context "math()"
+snippet "([a-zA-Z])vc" "bar" riA
+\vec{`!p snip.rv=match.group(1)`}
+endsnippet
+
+priority 1
+context "math()"
+snippet vc "vec" iA
+\vec{$1}
+endsnippet
+
+context "math()"
+snippet bar "bar" iA
+\bar{$1}
+endsnippet
+
+
+priority 10
+context "math()"
+snippet "hat" "hat" iA
+\hat{$1}
+endsnippet
+
+priority 100
+context "math()"
+snippet what "widehat" iA
+\widehat{$1}
+endsnippet
+context "math()"
+snippet wht "widehat" iA
+\widehat{$1}
+endsnippet
+
+context "math()"
+snippet imp "implies" iA
+\implies 
+endsnippet
+
+context "tx()"
+snippet Imp "Description" i
+($\implies$)
+endsnippet
+
+context "math()"
+snippet imd "implied by" iA
+\impliedby
+endsnippet
+
+context "math()"
+snippet impd "implied by" iA
+\impliedby
+endsnippet
+
+context "tx()"
+snippet Imd "Description" i
+($\impliedby$)
+endsnippet
+
+context "tx()"
+snippet Impd "Description" iA
+($\impliedby$)
+endsnippet
+
+
+
+priority 2
+context "math()"
+snippet iff "iff" iA
+\iff
+endsnippet
+
+snippet // "Fraction" 
+\\frac{$1}{$2}$0
+endsnippet
+
+priority 1
+context "math()"
+snippet ff "Fraction" iA
+\frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet df "dfrac" i
+\dfrac{${1:num}}{${2:den}}$0
+endsnippet
+
+#snippet == "equals" iA
+#&= $1 \\\\
+#endsnippet
+
+context "math()"
+snippet ... "ldots" iA
+\ldots
+endsnippet
+
+priority 1
+context "math()"
+snippet bca "cases" iA
+\begin{cases}
+	$1\qquad &$2 \\\
+	$3\qquad &$4
+\end{cases}
+endsnippet
+priority 1
+context "math()"
+snippet pca "cases" iA
+\begin{cases}
+	$1\\\
+	$2
+\end{cases}
+endsnippet
+
+context "math()"
+snippet fund "fundamental group" iA
+\pi_1(X,x_0)
+endsnippet
+
+context "math()"
+snippet pa "pi_n" iA
+\pi_{$1}($2)
+endsnippet
+
+context "math()"
+snippet cg "cong" iA
+\cong
+endsnippet
+
+context "math()"
+snippet tl "tilde" iA
+\tilde{$1}$0
+endsnippet
+
+context "math()"
+snippet til "tilde" iA
+\tilde{$1}$0
+endsnippet
+
+context "math()"
+snippet Til "tilde" iA
+\widetilde{$1}$0
+endsnippet
+
+context "math()"
+snippet Tl "tilde" iA
+\widetilde{$1}$0
+endsnippet
+
+context "math()"
+snippet hk "hookrightarrow" iA
+\hookrightarrow 
+endsnippet
+
+context "math()"
+snippet qd "quad" iA
+\qquad 
+endsnippet
+
+context "math()"
+snippet Qd "quad" iA
+\quad 
+endsnippet
+
+context "math()"
+snippet lq "geq" iA
+\leq 
+endsnippet
+
+context "math()"
+snippet gq "geq" iA
+\geq 
+endsnippet
+
+context "math()"
+snippet bul "bullet" iA
+\bullet
+endsnippet
+
+context "math()"
+snippet dl "del" iA
+\partial
+endsnippet
+
+context "math()"
+snippet Dl "del" iA
+\partial_i|_{p}
+endsnippet
+
+context "math()"
+snippet pd "del" iA
+\partial
+endsnippet
+
+context "math()"
+snippet par "del" iA
+\partial
+endsnippet
+
+context "math()"
+snippet hat "hat" iA
+\hat{$1}$0
+endsnippet
+
+context "math()"
+snippet cic "circ" iA
+\circ
+endsnippet
+
+priority 10000
+context "math()"
+snippet Db "dbar" iA
+\partial\overline{\partial}
+endsnippet
+
+priority 10
+context "math()"
+snippet COL "column sep" iA
+column sep=${1:small}
+endsnippet
+priority 10
+context "math()"
+snippet ROW "row sep" iA
+row sep=${1:small}
+endsnippet
+
+snippet COR "color" iA
+{\color{$1}$2}$0
+endsnippet
+
+snippet fib "fibration" i
+$$1\hookrightarrow $2\to $3$$0
+endsnippet
+
+snippet Fib "fibration" i
+\[$1\hookrightarrow $2\to $3\]
+$0
+endsnippet
+
+snippet rH "reduced homology" iA
+\widetilde{H}_{$1}($2)$0
+endsnippet
+
+priority 1
+context "math()"
+snippet ot "otimes" iA
+\otimes`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet box "otimes" iA
+\boxed{$1}
+endsnippet
+
+
+context "math()"
+snippet vv "vee" iA
+\vee
+endsnippet
+
+snippet sc "sections" i
+\Gamma($1,$2)$0
+endsnippet
+
+priority 200
+context "math()"
+snippet sK "substacks" iA
+\substack{\begin{array}{c}$1 \\\ $2\end{array}}$0
+endsnippet
+
+priority 200
+context "math()"
+snippet SK "substacks" iA
+\substack{$1 \\\ $2}$0
+endsnippet
+
+context "math()"
+snippet ovs "overset" iA
+\overset{$1}{$2}$0
+endsnippet
+
+priority 1
+context "math()"
+snippet cv "curvearrowright" iA
+\mathbb{y}
+endsnippet
+
+priority 2
+context "math()"
+snippet lcv "curvearrowright" iA
+\mathbb{x}
+endsnippet
+
+priority 1
+context "math()"
+snippet dim "dimension" iA
+\dim
+endsnippet
+
+priority 2
+context "math()"
+snippet codim "Description" iA
+\operatorname{codim}
+endsnippet
+
+
+context "math()"
+snippet sm "sim" iA
+\sim
+endsnippet
+
+context "math()"
+snippet SM "smile!" iA
+\smile
+endsnippet
+
+
+context "math()"
+snippet £ "cdot" iA
+\cdot
+endsnippet
+
+priority 1
+context "math()"
+snippet sg "squigarrow" iA
+\rightsquigarrow 
+endsnippet
+
+context "math()"
+snippet we "wedge" iA
+\wedge
+endsnippet
+
+
+context "math()"
+snippet vwg "varowedge" iA
+\varowedge 
+endsnippet
+
+context "math()"
+snippet Gr "grassmannian" iA
+\operatorname{Gr}
+endsnippet
+
+context "math()"
+snippet GR "grassmanian" iA
+\operatorname{Gr}_{++}
+endsnippet
+
+
+priority 1
+context "math()"
+snippet mt "mapsto" iA
+\mapsto 
+endsnippet
+
+priority 2
+context "math()"
+snippet lmt "longmapsto" iA
+\longmapsto
+endsnippet
+
+context "math()"
+snippet abs "abs" iA
+|${1}|
+endsnippet
+
+context "math()"
+snippet Abs "abs" iA
+\left|${1}\right|
+endsnippet
+
+context "math()"
+snippet ns "normsquared norm squared" iA
+|$1|^2
+endsnippet
+context "math()"
+snippet Ns "normsquared norm squared" iA
+\|$1\|^2
+endsnippet
+
+
+context "math()"
+snippet vd "vdits" iA
+\vdots 
+endsnippet
+
+context "math()"
+snippet K3 "K" iA
+K(\mathbb{Z},3)
+endsnippet
+
+context "math()"
+snippet bk "backslash" iA
+\backslash 
+endsnippet
+
+priority 2
+context "math()"
+snippet sime "simeq" iA
+\simeq 
+endsnippet
+
+context "math()"
+snippet qq "^-1" iA
+\mathfrak{q}
+endsnippet
+
+context "math()"
+snippet § "-1" iA
+^{-1}
+endsnippet
+
+
+context "math()"
+snippet hofib "hofib" iA
+\hofib 
+endsnippet
+
+context "math()"
+snippet det "det" iA
+\det
+endsnippet
+
+context "math()"
+snippet r} "Description" iA
+\right\\}
+endsnippet
+
+context "math()"
+snippet l{ "Description" iA
+\left\\{
+endsnippet
+
+priority 100
+context "math()"
+snippet perp "perp" iA
+\perp
+endsnippet
+
+priority 1000
+context "math()"
+snippet \perp "Description" iA
+\perp
+endsnippet
+
+
+context "math()"
+snippet ve "varepsilon" iA
+\varepsilon
+endsnippet
+
+context "math()"
+snippet vp "varphi" iA
+\varphi
+endsnippet
+
+context "math()"
+snippet Fi "phi" iA
+\phi
+endsnippet
+
+
+context "math()"
+snippet pm "pm" iA
+\pm 
+endsnippet
+
+context "math()"
+snippet cs "cosine" iA
+\cos
+endsnippet
+
+context "math()"
+snippet sn "sine" iA
+\sin
+endsnippet
+
+context "math()"
+snippet ± "el 11 no aparece mucho" iA
+^{$1}`!p
+if t[2] and t[2][0] not in ['(',',', '.', '_', '?', '-', ' ']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet ~ "el 11 no aparece mucho" iA
+^{$1}`!p
+if t[2] and t[2][0] not in ['(',',', '.', '_', '?', '-', ' ']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+context "math()"
+snippet ™ "el 11 no aparece mucho" iA
+^{$1}`!p
+if t[2] and t[2][0] not in ['(',',', '.', '_', '?', '-', ' ']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet ,, "Description" iA
+^{$1}
+endsnippet
+
+
+context "math()"
+snippet Spec "spec" iA
+\operatorname{Spec}
+endsnippet
+context "math()"
+snippet Spn "Sp" iA
+\operatorname{Sp}($1)$0
+endsnippet
+
+context "math()"
+snippet id "identity" iA
+\operatorname{id}
+endsnippet
+
+
+context "math()"
+snippet St "star" iA
+^*`!p
+if t[1] and t[1][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$0
+endsnippet
+context "math()"
+snippet st "star" iA
+^*`!p
+if t[1] and t[1][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$0
+endsnippet
+
+context "math()"
+snippet ts "tsar" iA
+_*`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet sa "tsar" iA
+_*
+endsnippet
+
+context "math()"
+snippet trc "trace" iA
+\operatorname{tr}$1
+endsnippet
+
+context "math()"
+snippet trace "trace" iA
+\operatorname{tr}$1
+endsnippet
+
+context "math()"
+snippet Tr "trace" iA
+\operatorname{tr}$1
+endsnippet
+
+context "math()"
+snippet trans "transpose" iA
+^{\mathbf{T}}
+endsnippet
+context "math()"
+snippet trp "transpose" iA
+^{\mathbf{T}}
+endsnippet
+
+context "math()"
+snippet hb "hbar" iA
+\hslash
+endsnippet
+
+context "math()"
+snippet Nab "nabla" iA
+\nabla_{$1}
+endsnippet
+
+context "math()"
+snippet hes "Description" iA
+\nabla^{2}$1
+endsnippet
+
+context "math()"
+snippet Br "bbracket" iA
+\llbracket $1\rrbracket
+endsnippet
+
+context "math()"
+snippet Lb "Laurent bracket" iA
+(\!($1)\!)
+endsnippet
+
+
+context "math()"
+snippet llr "longleftrightarrow" iA
+\longeftrightarrow 
+endsnippet
+
+priority 2
+context "math()"
+snippet lsg "longsquigrightarrow" iA
+\longsquigrightarrow
+endsnippet
+
+priority 1000
+context "math()"
+snippet Sg "leftrightsquig" iA
+\leftrightsquigarrow
+endsnippet
+
+
+
+context "math()"
+snippet R2 "R2" iA
+\mathbb{R}^2
+endsnippet
+
+context "math()"
+snippet R3 "R3" iA
+\mathbb{R}^3
+endsnippet
+
+context "math()"
+snippet lap "laplacian" iA
+\Delta
+endsnippet
+
+context "math()"
+snippet oc "Ocal" iA
+\mathcal{O}
+endsnippet
+
+
+context "math()"
+snippet qde "qdet" iA
+\operatorname{qdet}
+endsnippet
+context "math()"
+
+
+context "math()"
+snippet Hh "hyperbolic" iA
+\mathbb{H}^{$1}
+endsnippet
+
+snippet texor "texorpdfstring" iA
+\texorpdfstring{$1}{$2}$0
+endsnippet
+
+priority 1
+context "math()"
+snippet ald "aligned" iA
+\begin{aligned}
+$1
+\end{aligned}
+endsnippet
+
+snippet tk "Description" i
+\begin{tikzcd}$1\end{tikzcd}$0
+endsnippet
+
+priority 10
+context "math()"
+snippet dot "dot" iA
+\dot
+endsnippet
+
+context "math()"
+snippet ∆ "dot" iA
+\dot
+endsnippet
+
+priority 100
+context "math()"
+snippet doo "ddot" iA
+\ddot
+endsnippet
+
+priority 200
+context "math()"
+snippet dddo "dddot" iA
+\dddot
+endsnippet
+
+priority 3
+context "math()"
+snippet am "ampersand" iA
+&`!p
+if t[1] and t[1][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$0
+endsnippet
+
+context "math()"
+snippet fla "flat" iA
+^\flat`!p
+if t[1] and t[1][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$0
+endsnippet
+
+context "math()"
+snippet sha "sharp" iA
+\sharp
+endsnippet
+
+context "math()"
+snippet longr "longrightarrow" iA
+\longrightarrow`!p
+if t[1] and t[1][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$0
+endsnippet
+
+context "math()"
+snippet Rs "restriction" iA
+\Big|_{$1}
+endsnippet
+
+priority 10
+context "math()"
+snippet rs "restriction" iA
+|_{$1}
+endsnippet
+
+context "math()"
+snippet RS "restructuib" iA
+\Big|_{$1}
+endsnippet
+
+
+context "math()"
+snippet ub "underbrace" iA
+\underbrace{$1}_{$2}
+endsnippet
+
+context "math()"
+snippet Cong "cong specific" iA
+\overset{$1}{\cong}
+endsnippet
+
+context "math()"
+snippet Cg "cong" iA
+\overset{\operatorname{$1}}{\cong}
+endsnippet
+
+context "math()"
+snippet dif "diffeomorphic" iA
+\overset{\operatorname{difeo}}{\simeq}
+endsnippet
+
+
+
+context "math()"
+snippet To "overset name" iA
+\overset{$1}{\longrightarrow}
+endsnippet
+
+context "math()"
+snippet xt "xto" iA
+\xrightarrow{$1}$0
+endsnippet
+
+priority 100
+context "math()"
+snippet xmt "Description" iA
+\xmapsto{$1}
+endsnippet
+
+
+context "math()"
+snippet Hk "Hook" iA
+\overset{$1}{\hookrightarrow}$0
+endsnippet
+
+
+context "math()"
+snippet Cin "cinfinity" iA
+C^\infty
+endsnippet
+
+context "math()"
+snippet cin "cinfinity" iA
+C^\infty
+endsnippet
+
+context "math()"
+snippet Pd "partial derivative" iA
+\frac{\partial $1}{\partial $2}$0
+endsnippet
+context "math()"
+snippet PD "partial derivative" iA
+\frac{\partial^2 $1}{\partial $2\partial $3}$0
+endsnippet
+context "math()"
+snippet par "partial derivative" iA
+\frac{\partial $1}{\partial $2}$0
+endsnippet
+
+context "math()"
+snippet dd "derivative" iA
+\frac{d$1}{d$2}$0
+endsnippet
+
+context "math()"
+snippet Dt "i" iA
+\frac{d}{dt}\Big|_{t=0}
+endsnippet
+
+context "math()"
+snippet Ds "i" iA
+\frac{d}{ds}\Big|_{s=0}
+endsnippet
+
+context "math()"
+snippet FF "sheaf" iA
+\mathcal{F}
+endsnippet
+
+context "math()"
+snippet gr "grad" iA
+\operatorname{gr}
+endsnippet
+
+context "math()"
+snippet bin "bim" iA
+\binom{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet == "&=" iA
+&=
+endsnippet
+
+context "math()"
+snippet ++ "amp+" iA
+&+
+endsnippet
+
+
+context "math()"
+snippet ni "ni" iA
+\ni
+endsnippet
+
+context "math()"
+snippet rev "reverse" iA
+reverse
+endsnippet
+
+priority 101
+context "math()"
+snippet das "dashed" iA
+dashed
+endsnippet
+
+context "math()"
+snippet po "exterior" iA
+\Lambda^{$1}$2
+endsnippet
+context "math()"
+snippet ls "exterior" iA
+\Lambda^{$1}($2)
+endsnippet
+context "math()"
+snippet ext "exterior" iA
+\Lambda^{$1}($2)`!p
+if t[3] and t[3][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$3
+endsnippet
+
+context "math()"
+snippet not "not" iA
+\not
+endsnippet
+
+context "math()"
+snippet VV "zero sets" iA
+\mathbb{V}`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+context "math()"
+snippet BB "zero sets" iA
+\mathbb{B}`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet An "annihilator" iA
+\operatorname{Ann}($1)`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet Ch "chern character" iA
+\operatorname{Ch}_{\cdot}($1)
+endsnippet
+
+context "math()"
+snippet Td "todd character" iA
+\operatorname{Td}_{\cdot}($1)
+endsnippet
+
+context "math()"
+snippet ho "hook" iA
+hook
+endsnippet
+
+context "math()"
+snippet bti "begin tikz" bA
+\[\begin{tikzcd}
+endsnippet
+
+context "math()"
+snippet eti "end tikzcd" iA
+\end{tikzd}\]
+endsnippet
+
+context "math()"
+snippet aray "array" iA
+\begin{array}
+	$1
+\end{array}
+endsnippet
+context "math()"
+snippet Dif "Diffeos" iA
+\operatorname{Dif}
+endsnippet
+
+context "math()"
+snippet LL "Lie" iA
+\mathcal{L}
+endsnippet
+
+context "math()"
+snippet bp "big parentheseis" iA
+\big($1\big)
+endsnippet
+
+context "math()"
+snippet Bp "Big pa" iA
+\Big($1)\Big)
+endsnippet
+
+priority 2
+context "math()"
+snippet bald "Description" iA
+\begin{aligned}
+endsnippet
+
+priority 3
+context "math()"
+snippet eald "algd" iA
+\end{aligned}
+endsnippet
+
+context "math()"
+snippet Pic "picard" iA
+\operatorname{Pic}
+endsnippet
+
+context "math()"
+snippet mm "ideal" iA
+\mathfrak{m}
+endsnippet
+
+context "math()"
+snippet Aut "Automorph" iA
+\operatorname{Aut}
+endsnippet
+
+context "math()"
+snippet Fix "fixed" iA
+\operatorname{Fix}$1
+endsnippet
+
+context "math()"
+snippet NS "neron severi" iA
+\operatorname{NS}
+endsnippet
+
+context "math()"
+snippet es "vacio" iA
+\emptyset
+endsnippet
+context "math()"
+
+context "math()"
+snippet EE "Description" iA
+\mathcal{E}
+endsnippet
+
+context "math()"
+snippet ord "order" iA
+\operatorname{ord}
+endsnippet
+
+context "math()"
+snippet Cp "cp infinty" iA
+\mathbb{C}P^\infty
+endsnippet
+
+context "math()"
+snippet Bf "fundamental bundle" iA
+B_{\operatorname{fun}}
+endsnippet
+
+context "math()"
+snippet B( "bigleft" iA
+\Big(
+endsnippet
+
+context "math()"
+snippet B) "big)" iA
+\Big)
+endsnippet
+
+context "math()"
+snippet B/ "bigslash" iA
+\Big/
+endsnippet
+
+context "math()"
+snippet B{ "i" iA
+\Big\\{
+endsnippet
+
+context "math()"
+snippet B} "Description" iA
+\Big\\}
+endsnippet
+
+
+priority 1
+context "math()"
+snippet lp "bigleft" iA
+\left(
+endsnippet
+
+priority 1
+context "math()"
+snippet rp "big)" iA
+\right)
+endsnippet
+
+context "math()"
+snippet eali "end align" iA
+\end{align*}
+endsnippet
+
+priority 1
+context "math()"
+snippet Def "Deform" iA
+\operatorname{Def}
+endsnippet
+
+priority 2
+context "math()"
+snippet aDef "Description" iA
+\operatorname{Def}^a_X
+endsnippet
+
+
+context "math()"
+snippet MA "maps to" iA
+maps to
+endsnippet
+
+context "math()"
+snippet Ad "adj" iA
+\operatorname{Ad}
+endsnippet
+
+context "math()"
+snippet ad "adj" iA
+\operatorname{ad}
+endsnippet
+
+context "math()"
+snippet Per "Description" iA
+\mathbb{P}\operatorname{er}
+endsnippet
+
+priority 5
+context "math()"
+snippet Hom "Description" iA
+\operatorname{Hom}($1)
+endsnippet
+
+context "math()"
+snippet Re "Description" iA
+\operatorname{Re}$1
+endsnippet
+
+context "math()"
+snippet Im "I" iA
+\operatorname{Im}$1
+endsnippet
+
+context "math()"
+snippet Tei "iA" iA
+\operatorname{Teich}
+endsnippet
+
+context "math()"
+snippet Proj "Proj" iA
+\operatorname{Proj}
+endsnippet
+
+context "math()"
+snippet PRo "Proj" iA
+\operatorname{Proj}
+endsnippet
+
+priority 1
+context "math()"
+snippet pp "pp" iA
+\mathfrak{p}
+endsnippet
+
+priority 100
+context "math()"
+snippet app "approximately" iA
+\approx
+endsnippet
+
+
+context "math()"
+snippet Bir "bir" iA
+\operatorname{Bir}
+endsnippet
+
+context "math()"
+snippet rk "Description" iA
+\operatorname{rk}
+endsnippet
+
+context "math()"
+snippet ck "Description" iA
+\operatorname{corank}
+endsnippet
+
+context "math()"
+snippet disc "Description" iA
+\operatorname{disc}
+endsnippet
+
+context "math()"
+snippet div "Description" iA
+\mathsf{div}
+endsnippet
+
+context "math()"
+snippet Der "der" iA
+\operatorname{Der}
+endsnippet
+
+context "math()"
+snippet Bl "blow" iA
+\operatorname{Bl}_$1
+endsnippet
+
+context "math()"
+snippet Pf "an operator" iA
+\operatorname{Pf}($1)
+endsnippet
+
+context "math()"
+snippet bw "bigwedge" iA
+\bigwedge`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+priority 100
+context "math()"
+snippet supp "an operator" iA
+\operatorname{supp}($1)
+endsnippet
+
+
+context "math()"
+snippet eq "equiv" iA
+\equiv
+endsnippet
+
+priority 10
+context "math()"
+snippet Isom "an operator" iA
+\mathsf{Isom}($1)
+endsnippet
+
+priority 100
+context "math()"
+snippet Isom}m "Description" iA
+Isom\}
+endsnippet
+
+priority 10
+context "math()"
+snippet cop "coproduct" iA
+\coprod
+endsnippet
+
+context "math()"
+snippet cpol "Cpolu" iA
+\mathbb{C}[z_1,\ldots,z_n]
+endsnippet
+
+context "math()"
+snippet Sec "an operator" iA
+\operatorname{Sec}($1)
+endsnippet
+
+context "math()"
+snippet B( "parenthesis" iA
+\Big(
+endsnippet
+context "math()"
+
+priority 1
+context "math()"
+snippet sc "sections" iA
+\Gamma($1)
+endsnippet
+
+context "tx()"
+snippet vma "varphi map" iA
+$\varphi:$1\longrightarrow $2$`!p
+if t[3] and t[3][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`
+endsnippet
+context "tx()"
+snippet fma "f map" iA
+$f:$1\longrightarrow $2$`!p
+if t[3] and t[3][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`
+endsnippet
+
+context "math()"
+snippet deg "an operator" iA
+\operatorname{deg}
+endsnippet
+
+context "math()"
+snippet bsq "Description" iA
+\bigsqcup
+endsnippet
+
+snippet jn "paran" iA
+($1)
+endsnippet
+
+context "math()"
+snippet rat "dashed to, ration" iA
+\dashrightarrow`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet !! "" iA
+^\Omega
+endsnippet
+
+context "tx()"
+snippet hp "hspace" iA
+\hspace{$1em}
+endsnippet
+
+
+
+context "tx()"
+snippet pif "pi function" iA
+$\pi:$1\longrightarrow $2$
+endsnippet
+
+context "math()"
+snippet red "Description" iA
+\operatorname{red}
+endsnippet
+
+priority 101
+context "math()"
+snippet sas "subast" iA
+_*
+endsnippet
+
+priority 4
+context "math()"
+snippet om "omega" iA
+\omega
+endsnippet
+
+context "math()"
+snippet Om "Omega" iA
+\Omega
+endsnippet
+
+priority 101
+context "math()"
+snippet ta^*t "iA" iA
+ta^*
+endsnippet
+
+priority 101
+context "math()"
+snippet tas "iA" iA
+ta^*
+endsnippet
+priority 103
+context "math()"
+snippet ˆ "alph" iA
+\iota
+endsnippet
+
+priority 1000
+context "math()"
+snippet II "Description" iA
+\mathcal{I}
+endsnippet
+
+priority 100
+context "math()"
+snippet as "asterisk" iA
+*
+endsnippet
+
+
+context "math()"
+snippet å "alph" iA
+\alpha
+endsnippet
+
+context "math()"
+snippet ∫ "alph" iA
+\beta
+endsnippet
+
+context "math()"
+snippet © "alph" iA
+\gamma
+endsnippet
+
+priority 4
+context "math()"
+snippet gam "gamma" iA
+\gamma
+endsnippet
+
+priority 4
+context "math()"
+snippet Gam "gamma" iA
+\Gamma
+endsnippet
+
+priority 101
+context "math()"
+snippet gammas "Description" iA
+gamma^*
+endsnippet
+
+priority 1000
+context "math()"
+snippet gamma^*t "Description" iA
+gamma^*
+endsnippet
+
+context "math()"
+snippet ¥ "psi" iA
+\psi
+endsnippet
+
+context "math()"
+snippet ps "psi" iA
+\psi
+endsnippet
+
+
+context "math()"
+snippet Á "PSi" iA
+\Psi
+endsnippet
+
+context "math()"
+snippet ˛ "i" iA
+\Xi
+endsnippet
+
+
+context "math()"
+snippet ∂ "alph" iA
+\delta
+endsnippet
+
+context "math()"
+snippet del "Description" iA
+\delta
+endsnippet
+
+
+context "math()"
+snippet ´ "alph" iA
+\varepsilon
+endsnippet
+
+context "math()"
+snippet ƒ "alph" iA
+\phi
+endsnippet
+
+context "math()"
+snippet ˙ "eta" iA
+\eta
+endsnippet
+
+context "math()"
+snippet Et "eta" iA
+\eta
+endsnippet
+
+context "math()"
+snippet ˚ "alph" iA
+\kappa
+endsnippet
+
+context "math()"
+snippet ¬ "alph" iA
+\lambda
+endsnippet
+
+context "math()"
+snippet lam "alph" iA
+\lambda
+endsnippet
+
+context "math()"
+snippet ˜ "alph" iA
+\nu
+endsnippet
+
+context "math()"
+snippet ø "alph" iA
+\omega
+endsnippet
+
+context "math()"
+snippet ∑ "alph" iA
+\omega
+endsnippet
+
+context "math()"
+snippet ® "alph" iA
+\rho
+endsnippet
+
+context "math()"
+snippet ß "alph" iA
+\sigma
+endsnippet
+
+context "math()"
+snippet † "alph" iA
+\tau
+endsnippet
+
+context "math()"
+snippet ≈ "alph" iA
+\xi
+endsnippet
+
+context "math()"
+snippet Ω "alph" iA
+\dseta
+endsnippet
+
+context "math()"
+snippet ˝ "alph" iA
+\Gamma
+endsnippet
+
+context "math()"
+snippet Ï "alph" iA
+\Phi
+endsnippet
+
+context "math()"
+snippet Ò "alph" iA
+\Lambda
+endsnippet
+context "math()"
+snippet La "alph" iA
+\Lambda
+endsnippet
+
+context "math()"
+snippet ∏ "alph" iA
+\Pi
+endsnippet
+context "math()"
+
+context "math()"
+snippet „ "alph" iA
+\Omega
+endsnippet
+
+context "math()"
+snippet Ø "alph" iA
+\Omega
+endsnippet
+
+context "math()"
+snippet Œ "Theta" iA
+\Theta
+endsnippet
+
+
+context "math()"
+snippet œ "theta" iA
+\theta
+endsnippet
+
+context "math()"
+snippet µ "m" iA
+\mu
+endsnippet
+
+context "math()"
+snippet Í "Sigma" iA
+\Sigma
+endsnippet
+
+context "math()"
+snippet √ "Sigma" iA
+\nu
+endsnippet
+
+priority 2
+context "math()"
+snippet iot "iota" iA
+\iota
+endsnippet
+
+#Here come the text snippets I had already done
+
+snippet preamble "preamble" i
+\input{/Users/daniel/github/config/preamble.sty}%This is available at github.com/danimalabares/config
+\input{/Users/daniel/github/config/thms-eng.sty}%This is available at github.com/danimalabares/config
+
+%\usepackage[style=authortitle-terse,backend=bibtex]{biblatex}
+%\addbibresource{/Users/daniel/github/config/bibliography.bib}
+
+\begin{document}
+endsnippet
+
+snippet header "Description" i
+\begin{minipage}{\textwidth}
+	\begin{minipage}{1\textwidth}
+		$1 \hfill Daniel González Casanova Azuela
+		
+		{\small $2\hfill\href{https://github.com/danimalabares/$3}{github.com/danimalabares/$3}}
+	\end{minipage}
+\end{minipage}\vspace{.2cm}\hrule
+
+\vspace{10pt}
+{\huge ${4:title}}
+endsnippet
+
+
+snippet center "center" i
+\begin{center}
+	$1
+\end{center}$0
+endsnippet
+
+snippet beg "begin{} / end{}" 
+\begin{$1}
+$0
+\end{$1}$2
+endsnippet
+
+priority 1
+snippet thm "theorem" bA
+\begin{theorem}
+\label{theorem-$1}
+$2
+\end{theorem}
+endsnippet
+
+snippet Thm "theorem" bA
+\begin{theorem}[$1]
+\label{theorem-$2}
+$3
+\end{theorem}
+endsnippet
+
+snippet prop "proposition" bA
+\begin{proposition}
+\label{proposition-$1}
+$2
+\end{proposition}
+endsnippet
+
+snippet Prop "proposition" bA
+\begin{proposition}[$1]
+\label{proposition-$2}
+$3
+\end{proposition}
+$0
+endsnippet
+
+snippet lde "" bA
+\begin{defn}
+$1
+\end{defn}
+endsnippet
+snippet Defn "" bA
+\begin{defn}[$1]\leavevmode
+$2
+\end{defn}$0
+endsnippet
+
+snippet defn "" bA
+\begin{definition}
+\label{definition-$1}
+$2
+\end{definition}
+endsnippet
+
+snippet Lem "" bA
+\begin{lemma}[$1]
+\label{lemma-$2}
+$3
+\end{lemma}
+$0
+endsnippet
+
+
+snippet lem "" bA
+\begin{lemma}
+\label{lemma-$1}
+$2
+\end{lemma}
+$0
+endsnippet
+
+snippet lqst "" bA
+\begin{question}\leavevmode
+$1
+\end{question}$0
+endsnippet
+snippet Qst "" bA
+\begin{question}[$1]\leavevmode
+$2
+\end{question}$0
+endsnippet
+snippet qst "" bA
+\begin{question}\leavevmode
+$1
+\end{question}$0
+endsnippet
+
+snippet cl "" bA
+\begin{claim}\leavevmode
+$1
+\end{claim}$0
+endsnippet
+snippet Cl "" bA
+\begin{claim}[$1]\leavevmode
+$2
+\end{claim}
+endsnippet
+
+context "tx()"
+snippet Coro "corollary" bA
+\begin{coro}[$1]\leavevmode
+$2
+\end{coro}$0
+endsnippet
+
+snippet lcoro "" bA
+\begin{coro}\leavevmode
+$1
+\end{coro}$0
+endsnippet
+snippet coro "" bA
+\begin{coro}
+$1
+\end{coro}
+endsnippet
+
+snippet Exa "" bA
+\begin{example}[$1]
+\label{example-$2}
+$3
+\end{example}
+$0
+endsnippet
+
+snippet lexa "" bA
+\begin{example}\leavevmode
+$1
+\end{example}$0
+endsnippet
+
+snippet exa "" bA
+\begin{example}
+\label{example-$1}
+$2
+\end{example}
+$0
+endsnippet
+
+snippet upshot "theorem" bA
+\begin{upshot}\leavevmode
+$1
+\end{upshot}$0
+endsnippet
+
+snippet Exer "" bA
+\begin{exercise}[$1]
+\label{exercise-$2]
+$2
+\end{exercise}
+$0
+endsnippet
+
+snippet exer "" bA
+\begin{exercise}
+\label{exercise-$1}
+$2
+\end{exercise}
+$0
+endsnippet
+
+snippet Mex "labeled manual numbering exercise" bA
+\addcontentsline{toc}{subsection}{Exercise $1}
+\begin{manualexercise}{$1}
+$2
+\end{manualexercise}$0
+endsnippet
+
+snippet mex "manual numbering exercise" bA
+\begin{manualexercise}{${1:number}}
+$2
+\end{manualexercise}$0
+endsnippet
+
+context "tx()"
+snippet mco "manual coro" bA
+\begin{manualcorollary}{$1}
+$2
+\end{manualcorollary}
+endsnippet
+
+context "tx()"
+snippet Nth "named theorem" bA
+\begin{namedthm*}{$1}[$2]\leavevmode
+$3
+\end{namedthm*}
+endsnippet
+
+context "tx()"
+snippet 'i(\d)' "idea1" bwrA
+\begin{thing`!p snip.rv = match.group(1)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'I(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'i(\d)(\d)' "idea1" bwrA
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+context "tx()"
+snippet 'I(\d)(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+
+context "tx()"
+snippet 'id(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'Id(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'id(\d)(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+context "tx()"
+snippet 'Id(\d)(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+
+context "tx()"
+snippet 'th(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'Th(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'th(\d)(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+context "tx()"
+snippet 'Th(\d)(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+
+context "tx()"
+snippet 't(\d)' "idea1" bwrA
+\begin{thing`!p snip.rv = match.group(1)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'T(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 't(\d)(\d)' "idea1" bwrA
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+context "tx()"
+snippet 'T(\d)(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+
+context "tx()"
+snippet 'th(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'Th(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'th(\d)(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}\leavevmode
+$2
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+context "tx()"
+snippet 'Th(\d)(\d)' "idea1" wr
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}[$2]\leavevmode
+$3
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+
+context "tx()"
+snippet 'q(\d)' "autoquote" brA
+{\color{`!p snip.rv = match.group(1)`}\begin{quotation}
+$1
+\end{quotation}}
+endsnippet
+
+context "tx()"
+snippet cr "Description" i
+\cref{$1}
+endsnippet
+
+
+context "tx()"
+snippet 'ai(\d)' "idea1" wr
+\addcontentsline{toc}{subsection}{$1}
+\begin{thing`!p snip.rv = match.group(1)`}{$1}\leavevmode
+	$2
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'AI(\d)' "idea1" wr
+\addcontentsline{toc}{subsection}{$1}
+\begin{thing`!p snip.rv = match.group(1)`}{$1}[$2]\leavevmode
+	$3
+\end{thing`!p snip.rv = match.group(1)`}
+endsnippet
+context "tx()"
+snippet 'ai(\d)(\d)' "idea1" wr
+\addcontentsline{toc}{subsection}{$1}
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}\leavevmode
+	$2
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+context "tx()"
+snippet 'AI(\d)(\d)' "idea1" wr
+\addcontentsline{toc}{subsection}{$1}
+\begin{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}{$1}[$2]\leavevmode
+	$3
+\end{thing`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`}
+endsnippet
+
+
+
+
+context "tx()"
+snippet prob "Problem" bA
+\addcontentsline{toc}{subsection}{Problem $1}
+\paragraph{Problem $1}$0
+endsnippet
+
+
+snippet mdef "manualdef" bA
+\begin{manualdef}{${1:number}}
+$2
+\end{manualdef}$0
+endsnippet
+
+snippet conj "" bA
+\begin{conjecture}[$1]
+$2
+\end{conjecture}$0
+endsnippet
+
+context "tx()"
+snippet pf "proof" bA
+\begin{proof}
+$1
+\end{proof}
+endsnippet
+
+
+snippet dem "demostracao" bA
+\begin{proof}[Demostração]
+$1
+\end{proof}$0
+endsnippet
+
+snippet sol "" bA
+\begin{proof}[Solution]
+$1
+\end{proof}$0
+endsnippet
+
+snippet Pf "" bA
+\begin{proof}[$1]
+$2
+\end{proof}
+endsnippet
+
+context "tx()"
+snippet ben "begin enumerate" iA
+\begin{enumerate}
+endsnippet
+
+context "tx()"
+snippet een "end enumerate" bA
+\end{enumerate}
+endsnippet
+
+
+
+snippet ali "align" bA
+\begin{align*}
+$1&=$2
+\end{align*}$0
+endsnippet
+
+context "tx()"
+snippet bali "begin align" bA
+\begin{align*}
+endsnippet
+context "tx()"
+snippet beq "begin align" bA
+\begin{equation}\label{$1}
+endsnippet
+
+context "math()"
+snippet ene "begin align" iA
+\end{equation}
+endsnippet
+
+snippet eali "end align" bA
+\end{align*}
+endsnippet
+
+snippet eq "equation" bA
+\begin{equation*}
+$1
+\end{equation*}$0
+endsnippet
+
+snippet Eq "equation" bA
+\begin{equation}\label{eq:$1}
+$2
+\end{equation}$0
+endsnippet
+
+snippet Rk "remark" bA
+\begin{remark}[$1]\leavevmode
+$2
+\end{remark}$0
+endsnippet
+
+snippet rk "remark" bA
+\begin{remark}
+\label{remark-$1}
+$2
+\end{remark}
+$0
+endsnippet
+
+snippet pgp
+\paragraph{$1} $2
+endsnippet
+
+context "tx()"
+snippet e "Description" w
+\emph{$1}
+endsnippet
+
+
+priority 3
+snippet bi "bold-italic" w
+\textit{\textbf{${1}}}`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ',':',')']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+priority 1
+context "tx()"
+snippet b "bold" w
+{\bf $1}
+endsnippet
+
+priority 1
+context "tx()"
+snippet i "italic" w
+{\it $1}
+endsnippet
+
+snippet hr "hyperref" i
+\href{$1}{$2}
+endsnippet
+
+context "tx()"
+snippet hy "Description" i
+\hyperref[${1:label}]{$2}
+endsnippet
+
+
+snippet ct "cite" i
+\cite{$1}$2
+endsnippet
+
+#snippet @ "exponent" iA
+#^
+#endsnippet
+
+#snippet ^ "at" iA
+#@
+#endsnippet
+
+snippet enum "Enumerate" bA
+\begin{enumerate}
+\item $1
+\end{enumerate}
+endsnippet
+
+snippet aen "Enumerate using letters" bA
+\begin{enumerate}[label=(\alph*)]
+\item $1
+\end{enumerate}
+endsnippet
+
+snippet ien "Enumerate using i,ii,iii..." bA
+\begin{enumerate}[label=(\roman*)]
+\item $1
+\end{enumerate}
+endsnippet
+
+snippet nenum "Enumerate start at *" bA
+\begin{enumerate}[($1)]\setcounter{enumi}{${2:one before}}
+	\item $2
+\end{enumerate}
+endsnippet
+
+snippet step "steps" bA
+\begin{enumerate}[label=\textbf{Step \arabic*}]
+\item $1
+\end{enumerate}
+endsnippet
+
+snippet passo "steps" bA
+\begin{enumerate}[label=\textbf{Passo \arabic*}]
+\item $1
+\end{enumerate}
+endsnippet
+
+snippet paso "steps" bA
+\begin{enumerate}[label=\textbf{Passo \arabic*}]
+\item $1
+\end{enumerate}
+endsnippet
+
+snippet item "Itemize" bA
+\begin{itemize}
+\item $1
+\end{itemize}
+endsnippet
+
+snippet sec "section" bA
+\section{$1}
+\label{section-$2}
+$0
+endsnippet
+
+snippet ssec "subsection" bA
+\subsection{$1}
+\label{subsection-$2}
+$0
+endsnippet
+
+snippet seec "subsubsection" bA
+\subsubsection{$1}
+\label{subsubsection-$2}
+$0
+endsnippet
+
+snippet table "Table environment" b
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
+	\begin{tabular}{${5:c}}
+	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{tabular}
+\end{table}
+endsnippet
+
+snippet fig "Figure environment" b
+\begin{figure}[${1:htpb=where?}]
+	\centering
+	\includegraphics[width=$2\textwidth]{$3}
+	\caption*{$4}
+\end{figure}
+endsnippet
+
+snippet template "Basic template" b
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[dutch]{babel}
+\usepackage{amsmath, amssymb}
+
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\begin{document}
+	$0
+\end{document}
+endsnippet
+
+snippet kah "Kahler"
+Kähler 
+endsnippet
+
+context "tx()"
+snippet Cech "Cech" iA
+Čech
+endsnippet
+
+
+context "tx()"
+snippet 'i "i" iA
+í
+endsnippet
+
+context "tx()"
+snippet 'e "e" iA
+é
+endsnippet
+
+context "tx()"
+snippet 'a "a" iA
+á
+endsnippet
+
+context "tx()"
+snippet 'o "o" iA
+ó
+endsnippet
+
+context "tx()"
+snippet 'u "u" iA
+ú
+endsnippet
+
+context "tx()"
+snippet 'A "A" iA
+Á
+endsnippet
+
+context "tx()"
+snippet 'E "E" iA
+É
+endsnippet
+
+context "tx()"
+snippet 'I "Description" options
+Í
+endsnippet
+
+context "tx()"
+snippet 'O "Description" options
+Ó
+endsnippet
+
+context "tx()"
+snippet 'U "Description" options
+Ú
+endsnippet
+
+snippet ~a "a" iA
+\~a
+endsnippet
+
+snippet \leav "leavevmode" iA
+\leavevmode
+endsnippet
+
+snippet toc "toc" bA
+\tableofcontents
+endsnippet
+
+snippet Quot "quotation" bA
+\begin{quotation}
+	$1
+\end{quotation}
+$0
+endsnippet
+snippet quot "quotation" bA
+\begin{quotation}
+	\`\`$1"
+\end{quotation}
+$0
+endsnippet
+
+snippet Kah "khaler" iA
+Kähler`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+snippet Grun "grunbaum" iA
+Grünbraum`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+snippet Grob "Grobner" iA
+Gröbner`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+snippet Gol "golebiewski" iA
+Go\l\c ebiewski
+endsnippet
+
+snippet ... "dots" iA
+…
+endsnippet
+
+priority 1
+snippet c1 "color" iA
+{\color{1}$2}$0
+endsnippet
+
+snippet c2 "color" iA	
+{\color{2}$2}$0
+endsnippet
+snippet c3 "color" iA	
+{\color{3}$2}$0
+endsnippet
+snippet c4 "color" iA	
+{\color{4}$2}$0
+endsnippet
+snippet c5 "color" iA	
+{\color{5}$2}$0
+endsnippet
+snippet c6 "color" iA	
+{\color{6}$2}$0
+endsnippet
+snippet c7 "color" iA	
+{\color{7}$2}$0
+endsnippet
+snippet c8 "color" iA	
+{\color{8}$2}$0
+endsnippet
+snippet c9 "color" iA
+{\color{9}$2}$0
+endsnippet
+snippet c10 "color" iA	
+{\color{10}$2}$0
+endsnippet
+snippet c11 "color" iA	
+{\color{11}$2}$0
+endsnippet
+snippet c12 "color" iA	
+{\color{12}$2}$0
+endsnippet
+snippet c13 "color" iA	
+{\color{13}$2}$0
+endsnippet
+snippet c14 "color" iA	
+{\color{14}$2}$0
+endsnippet
+snippet c15 "color" iA	
+{\color{15}$2}$0
+endsnippet
+snippet c16 "color" iA	
+{\color{16}$2}$0
+endsnippet
+snippet c17 "color" iA	
+{\color{17}$2}$0
+endsnippet
+snippet c18 "color" iA	
+{\color{18}$2}$0
+endsnippet
+snippet c19 "color" iA
+{\color{19}$2}$0
+endsnippet
+
+snippet blue "blue" i
+{\color{blue}$1}$0
+endsnippet
+
+snippet orng "orange" iA
+{\color{orange}$1}$0
+endsnippet
+
+snippet persi "persimon" iA
+{\color{persimmon}$1}$0
+endsnippet
+
+snippet lvmg "lavendermgn" iA
+{\color{lavendermagenta}$1}$0
+endsnippet
+
+snippet blv "blue-violet" iA
+{\color{blue-violet}$1}$0
+endsnippet
+
+snippet mgn "magenta" iA
+{\color{magenta}$1}$0
+endsnippet
+
+snippet cyan "cyan" iA
+{\color{cyan}$1}$0
+endsnippet
+
+context "tx()"
+snippet dbar "dbar" iA
+\(\bar\partial\)
+endsnippet
+
+snippet itt "item" bA
+\item 
+endsnippet
+
+snippet leav "leavevmode" iA
+\leavevmode 
+endsnippet
+
+context "math()"
+snippet LV "\leavevmodeev" iA
+\leavevmode
+endsnippet
+
+
+snippet math "MathdaniBooks" i
+~/daniDrive/Otros/daniBooks/Mathematics/
+endsnippet
+
+snippet nth "nth" iA
+$n$-th
+endsnippet
+
+#attempt
+#snippet '([A-Za-z])([A-Za-z])' "Description" options
+#$([A-Za-z])([A-Za-z])
+#endsnippet
+
+
+#Something that maps any letter twice to $theletter$
+#context "tx()"
+#snippet '([A-Za-z])()' "auto superscript" wrA
+#`!p snip.rv = match.group(1)`^{`!p snip.rv = match.group(2)`$1}$0
+#endsnippet
+
+snippet iff "iff" i
+\(\iff\) 
+endsnippet
+
+snippet sii "sii" iA
+si y s\'olo si`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+snippet Freuden "Freudenthal" iA
+Freudenthal 
+endsnippet
+
+snippet \if "iffase" iA
+\iffalse
+endsnippet
+
+snippet txx "texttt" iA
+\texttt{$1}`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^',':']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+snippet texttt "texttt" iA
+\texttt{$1}`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^',':']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "tx()"
+snippet Cn "complex" iA
+$\mathbb{C}^{$1}$
+endsnippet
+
+
+context "tx()"
+snippet Rn "real" iA
+$\mathbb{R}^{$1}
+endsnippet
+
+context "tx()"
+snippet \cc "c with hook" iA
+ç
+endsnippet
+
+context "tx()"
+snippet ^a "hat" iA
+â
+endsnippet
+
+context "tx()"
+snippet ^o "hat" iA
+ô
+endsnippet
+
+context "tx()"
+snippet ^e "hat" iA
+ê
+endsnippet
+
+context "tx()"
+snippet …a "atilde" iA
+ã
+endsnippet
+
+context "tx()"
+snippet …o "otilde" iA
+õ
+endsnippet
+
+context "tx()"
+snippet ~o "otilde" iA
+õ
+endsnippet
+
+priority 3
+context "tx()"
+snippet cao "cao" iA 
+ção
+endsnippet
+
+context "tx()"
+snippet coes "coes" iA
+ções
+endsnippet
+
+context "tx()"
+snippet `a "a" iA
+à
+endsnippet
+
+context "tx()"
+snippet vizi "viz" iA
+vizinhança
+endsnippet
+
+context "tx()"
+snippet ed "end document" bA
+\end{document}
+endsnippet
+
+context "tx()"
+snippet adb "Description" bA 
+\bibliographystyle{alpha}
+endsnippet
+
+context "tx()"
+snippet pb "print bibliogrphy" bA
+\bibliography{bib.bib}
+endsnippet
+
+context "tx()"
+snippet PB "print bibligraphy'" bA
+\printbibliography
+endsnippet
+
+context "tx()"
+snippet Pb "print bibligraphy'" bA
+\bibliography{~/github/config/bibliography.bib}
+endsnippet
+
+context "tx()"
+snippet bib "Description" bA
+\bibliographystyle{alpha}
+endsnippet
+
+
+context "tx()"
+snippet tc "table of contents" bA
+\tableofcontents
+endsnippet
+
+context "tx()"
+snippet fr "frame" bA
+\begin{frame}
+	$1
+\end{frame}$0
+endsnippet
+
+context "tx()"
+snippet Tei "Techmuller" iA
+Teichmüler`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "tx()"
+snippet nao "nao" iA
+não`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "tx()"
+snippet ep "end proof" bA
+\end{proof}
+endsnippet
+
+context "tx()"
+snippet [a "à" iA
+à
+endsnippet
+
+priority 1
+context "tx()"
+snippet sao "sao" iA
+são
+endsnippet
+
+context "tx()"
+snippet bdef "bdef" bA
+\begin{defn}
+endsnippet
+
+context "tx()"
+snippet edef "bdsa" bA
+\end{defn}
+endsnippet
+
+context "tx()"
+snippet erk "end remark" bA
+\end{remark}
+endsnippet
+
+
+#priority 1
+#context "tx()"
+#snippet '([A-Za-z])C' "autosuperscript" wrA
+#`!p snip.rv = match.group(1)`ç
+#endsnippet
+
+#priority 1
+#context "tx()"
+#snippet '([A-Za-z])A' "autosuperscript" wrA
+#`!p snip.rv = match.group(1)`ã
+#endsnippet
+
+context "tx()"
+snippet 'çO' "autosuperscript" wrA
+çõ
+endsnippet
+
+context "tx()"
+snippet 'çA' "autosuperscript" wrA
+çã
+endsnippet
+
+priority 2
+context "tx()"
+snippet CC "Description" iA
+\(C\)`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+
+context "tx()"
+snippet "o "o" iA
+ö
+endsnippet
+
+context "tx()"
+snippet æo "o" iA
+ö
+endsnippet
+
+context "tx()"
+snippet luk1 "jan1" iA
+\cite{luk1}
+endsnippet
+
+context "tx()"
+snippet luk2 "jan1" iA
+\cite{luk2}
+endsnippet
+context "tx()"
+snippet jan1 "jan1" iA
+\cite{jan1}
+endsnippet
+context "tx()"
+snippet jan2 "jan1" iA
+\cite{jan2}`!p
+if t[2] and t[2][0] not in [',',':',')', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+snippet jan3 "jan1" iA
+\cite{jan3}`!p
+if t[2] and t[2][0] not in [',',':', '.',')', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+snippet jan4 "jan1" iA
+\cite{jan4}`!p
+if t[2] and t[2][0] not in [',',':', '.',')', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+snippet kk1 "jan1" iA
+\cite{kk1}`!p
+if t[2] and t[2][0] not in [',',':', '.',')', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "tx()"
+snippet dass "das" iA
+\cite{das}
+endsnippet
+
+
+context "tx()"
+snippet pdf "pdf" iA
+\texttt{$1.pdf}
+endsnippet
+
+context "tx()"
+snippet Mob "Description" iA
+Möbius`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "tx()"
+snippet vs "Description" bA
+\vspace{$1em}
+endsnippet
+
+context "tx()"
+snippet bp "Beginning of paragrap" bA
+{\color{$1}\bfseries $2.}\hspace{.5em}$0
+endsnippet
+context "tx()"
+snippet bp "Beginning of paragrap" i
+{\color{$1}\bfseries $2.}\hspace{.5em}$0
+endsnippet
+
+context "tx()"
+snippet pp "Beginning of paragrap parenth" bA
+{\color{$1}\bfseries ($2.)}\hspace{.5em}$0
+endsnippet
+context "tx()"
+
+snippet neig "neighbo" iA
+neighbourhood`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^','s']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "tx()"
+snippet hs "hspace" i
+\hspace{0.5em}
+endsnippet
+
+context "tx()"
+snippet Weie "Description" iA
+Weierstrass`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "tx()"
+snippet Sol "soluçao" bA
+\begin{proof}[Solução]\leavevmode
+$1
+\end{proof}
+endsnippet
+
+context "tx()"
+snippet ei "end idea" bA
+\end{thing$1}
+endsnippet
+
+context "tx()"
+snippet ac "add contents line" i
+\addcontentsline{toc}{${1:section}}{$2}
+endsnippet
+
+context "math()"
+snippet bet "beta" iA
+\beta
+endsnippet
+
+priority 2 
+context "math()"
+snippet alp "alpha" iA
+\alpha
+endsnippet
+
+priority 1
+context "math()"
+snippet MM "Description" iA
+\operatorname{Mat}_{$1}($2)
+endsnippet
+
+context "math()"
+snippet cli "Description" iA
+\mathcal{C}^\infty_{\operatorname{lin}}($1)
+endsnippet
+
+priority 10
+context "math()"
+snippet Disc "an operator" iA
+\operatorname{Disc}($1)
+endsnippet
+
+context "math()"
+snippet sur "sujection two double headed" iA
+\twoheadrightarrow`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet '([A-Z])ca' "mathcal autocal" wrA
+\mathcal{`!p snip.rv = match.group(1)`}
+endsnippet
+
+context "math()"
+snippet '([A-Z])fk' "mathfrak autofrak" wrA
+\mathfrak{`!p snip.rv = match.group(1)`}
+endsnippet
+
+context "tx()"
+snippet OK "OK" iA
+\(\mathsf{OK}\)`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+context "tx()"
+snippet SO "OK" iA
+\(\mathsf{SO}\)`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+context "tx()"
+snippet GO "OK" iA
+$\mathsf{GO}$`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+context "tx()"
+snippet quickly! "OK" iA
+$\mathsf{quickly!}$`!p
+if t[2] and t[2][0] not in [',', '.', '_', '?', '-', ' ','(','^']:
+     snip.rv = ' '
+else:
+     snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet the "theta" iA
+\theta
+endsnippet
+
+context "math()"
+snippet ST "star" iA
+\star
+endsnippet
+
+context "math()"
+snippet av "a dual" iA
+a^\vee_
+endsnippet
+
+context "math()"
+snippet Lim "an operator" iA
+\operatorname{Lim}($1)
+endsnippet
+
+context "math()"
+snippet \mathbb{P}er "Per" iA
+\mathbb{P}\operatorname{er}
+endsnippet
+
+context "math()"
+snippet Set "an operator" iA
+\operatorname{Sets}
+endsnippet
+
+context "math()"
+snippet log "log" iA
+\operatorname{log}
+endsnippet
+
+context "math()"
+snippet Id "an operator" iA
+\operatorname{Id}
+endsnippet
+
+context "math()"
+snippet bra "dirac bracket right" iA
+|$1\rangle
+endsnippet
+
+context "math()"
+snippet ket "dirac braket" iA
+\langle $1|
+endsnippet
+
+context "tx()"
+snippet espaco "espaco espaço" iA
+espaço
+endsnippet
+
+context "tx()"
+snippet HL "HLBC" iA
+HLBC
+endsnippet
+
+priority 10
+context "math()"
+snippet Pos "an operator" iA
+\operatorname{Pos}
+endsnippet
+
+priority 11
+context "math()"
+snippet Vol "an operator" iA
+\operatorname{Vol}
+endsnippet
+
+context "math()"
+snippet End "an operator" iA
+\operatorname{End}($1)
+endsnippet
+
+context "math()"
+snippet primi "Description" iA
+H^{$1}_{\operatorname{primitive}}($2)
+endsnippet
+
+context "math()"
+snippet nz "not zero not containing zero" iA
+\setminus\\{0\\}
+endsnippet
+context "math()"
+snippet nZ "not zero not containing zero" iA
+\\{0\\}
+endsnippet
+
+context "math()"
+snippet Sym "an operator" iA
+\operatorname{Sym}
+endsnippet
+
+priority 1
+context "math()"
+snippet Div "an operator" iA
+\operatorname{Div}
+endsnippet
+
+priority 2
+context "math()"
+snippet PDiv "an operator" iA
+\operatorname{PDiv}($1)
+endsnippet
+context "math()"
+snippet Hes "an operator" iA
+\operatorname{Hess}($1)
+endsnippet
+
+context "math()"
+snippet Alt "an operator" iA
+\operatorname{Alt}($1)
+endsnippet
+
+context "math()"
+snippet pif "transversal" iA
+\pitchfork 
+endsnippet
+
+context "math()"
+snippet s- "sqrt-1" iA
+\sqrt{-1}
+endsnippet
+
+context "tx()"
+snippet IN "Description" iA
+$$1\in $2$
+endsnippet
+
+context "math()"
+snippet kks "Description" iA
+\operatorname{kks}
+endsnippet
+
+context "math()"
+snippet 33 "Description" iA
+\begin{pmatrix}$1&$2&$3\\\\ $4&$5&$6\\\\ $7&$8&$9\end{pmatrix}
+endsnippet
+
+context "math()"
+snippet 2x2 "Description" iA
+\begin{pmatrix}$1&$2\\\\ $3&$5\end{pmatrix}
+endsnippet
+
+context "math()"
+snippet 22 "Description" iA
+^{$1}
+endsnippet
+
+priority 100
+context "math()"
+snippet _22 "Description" iA
+^{$1}
+endsnippet
+
+
+context "math()"
+snippet cto "cancel to" iA
+\cancelto{${1:0}}{$2}
+endsnippet
+priority 1
+context "math()"
+snippet cl "cancel" iA
+\cancel{$1}
+endsnippet
+
+context "math()"
+snippet xcl "x cancel" iA
+\xcancel{$1}
+endsnippet
+
+#priority 1000
+#context "math()"
+#snippet xx "Description" iA
+#\mathbf{x}
+#endsnippet
+
+
+#priority 1000
+#context "math()"
+#snippet vv "Description" iA
+#\mathbf{v}
+#endsnippet
+
+context "math()"
+snippet kd "Description" iA
+\mathbb{C}P^2\#\mathbb{C}P^2
+endsnippet
+
+context "tx()"
+snippet cf "cref" i
+\cref{$1}
+endsnippet
+
+priority 100
+context "math()"
+snippet Dom "iA" iA
+\operatorname{Dom}
+endsnippet
+
+
+context "math()"
+snippet Kah "an operator" iA
+\operatorname{Kah}($1)
+endsnippet
+
+context "tx()"
+snippet abs "abstract" i
+\vspace{2em}
+
+\begin{thing4}{Abstract}
+$1
+\end{thing4}
+\vspace{2em}
+
+endsnippet
+
+context "math()"
+snippet Sa "an operator" iA
+\operatorname{span}
+endsnippet
+
+context "tx()"
+snippet Exer "Description" i
+Exercise \hyperref[exer:$1]{$1}
+endsnippet
+context "tx()"
+context "tx()"
+snippet Prop "Description" i
+Prop. \hyperref[prop:$1]{$1}
+endsnippet
+context "tx()"
+snippet Rk "Description" i
+Remark \hyperref[rk:$1]{$1}
+endsnippet
+context "tx()"
+snippet Def "Description" i
+Definition \hyperref[def:$1]{$1}
+endsnippet
+
+context "tx()"
+snippet tabular "Description" iA
+\begin{tabular}{${1:c c}}
+$2
+\end{tabular}
+endsnippet
+
+context "math()"
+snippet inf "infimum" iA
+\operatorname{inf}
+endsnippet
+
+context "math()"
+snippet sup "supremum" iA
+\operatorname{sup}
+endsnippet
+
+context "tx()"
+snippet PR "Description" bA
+\begin{thing1}{Problem $1}\label{prob:$1}\leavevmode
+$2
+\end{thing1}
+endsnippet
+context "tx()"
+snippet pEX "Description" bA
+\begin{thing6}{Exercício $1}\label{exer:$1}\leavevmode
+$2
+\end{thing6}
+endsnippet
+snippet EX "Description" bA
+\begin{thing6}{Exercise $1}\label{exer:$1}\leavevmode
+$2
+\end{thing6}
+endsnippet
+snippet TH "Description" bA
+\begin{thing6}{Theorem $1}\label{thm:$1}\leavevmode
+$2
+\end{thing6}
+endsnippet
+priority 100
+snippet pDF "Description" bA
+\begin{thing6}{Definição $1}\label{def:$1}\leavevmode
+$2
+\end{thing6}
+endsnippet
+priority 100
+snippet pdF "Description" bA
+\begin{thing6}{Definição $1}[$2]\label{def:$1}\leavevmode
+$3
+\end{thing6}
+endsnippet
+priority 1
+snippet DF "Description" bA
+\begin{thing6}{Definition $1}\label{def:$1}\leavevmode
+$2
+\end{thing6}
+endsnippet
+
+priority 1
+snippet dF "Description" bA
+\begin{thing6}{Definition $1}[$2]\label{def:$1}\leavevmode
+$3
+\end{thing6}
+endsnippet
+snippet tH "Description" bA
+\begin{thing6}{Theorem $1}[$2]\label{thm:$1}\leavevmode
+$3
+\end{thing6}
+endsnippet
+snippet pP "Description" bA
+\begin{thing6}{Proposition $1}[$2]\label{prop:$1}\leavevmode
+$3
+\end{thing6}
+endsnippet
+snippet lE "Description" bA
+\begin{thing6}{Lemma $1}[$2]\label{lem:$1}\leavevmode
+$3
+\end{thing6}
+endsnippet
+snippet LE "Description" bA
+\begin{thing6}{Lemma $1}\label{lem:$1}\leavevmode
+$2
+\end{thing6}
+endsnippet
+snippet pR "Description" bA
+\begin{thing6}{Problem $1}[$2]\label{prob:$1}\leavevmode
+$3
+\end{thing6}
+endsnippet
+snippet PP "Description" bA
+\begin{thing6}{Proposition $1}\label{prop:$1}\leavevmode
+$2
+\end{thing6}
+endsnippet
+context "tx()"
+snippet eX "Description" bA
+\begin{thing6}{Exercise $1}[$2]\label{exer:$1}\leavevmode
+$3
+\end{thing6}
+endsnippet
+context "tx()"
+snippet RK "Description" bA
+\begin{thing5}{Remark $1}\label{rk:$1}\leavevmode
+$2
+\end{thing5}
+endsnippet
+context "tx()"
+snippet DEF "Description" bA
+\begin{thing3}{Definition $1}\label{def:$1}\leavevmode
+$2
+\end{thing3}
+endsnippet
+context "tx()"
+snippet QT "quotes" iA
+\`\`$1"
+endsnippet
+
+context "tx()"
+snippet "" "quotes" iA
+\`\`$1"
+endsnippet
+
+context "math()"
+snippet TO "totalspace" iA
+\substack{\to\\\\\to}
+endsnippet
+
+context "math()"
+snippet BAS "base del espacio tangente" i
+\left\{ \frac{\partial }{\partial x_1}\Big|_{p},\ldots,\frac{\partial }{\partial x^n}\Big|_{p} \right\}
+endsnippet
+
+priority 1
+context "math()"
+snippet ime "Description" iA
+\rightlooparrow
+endsnippet
+
+context "math()"
+snippet max "Description" iA
+\operatorname{max}
+endsnippet
+
+context "math()"
+snippet min "Description" iA
+\operatorname{min}
+endsnippet
+
+context "math()"
+snippet Vect "an operator" iA
+\operatorname{Vect}($1)
+endsnippet
+
+context "math()"
+snippet sym "sda" iA
+\operatorname{symb}
+endsnippet
+
+context "math()"
+snippet ind "Description" iA
+\operatorname{ind}
+endsnippet
+
+context "math()"
+snippet Crit "Description" iA
+\operatorname{Crit}
+endsnippet
+
+context "math()"
+snippet Hb "Description" iA
+\mathbb{H}
+endsnippet
+
+context "math()"
+snippet sign "an operator" iA
+\operatorname{sign}($1)
+endsnippet
+
+priority 100
+context "math()"
+snippet wind "an operator" iA
+\operatorname{wind}
+endsnippet
+
+context "tx()"
+snippet intro "Description" 
+\clearpage\phantomsection\stepcounter{section}\addcontentsline{toc}{section}{\thesection\quad ${1:title}}\addtocontents{toc}{\hspace{1em}\textit{${2:author}, \hspace{.2 em}${3:university},\hspace{.5em}${4:month} ${5:day}, ${6:year}, ${7:event}}\par}
+{\Huge $1}
+
+\hfill{\Large $2}
+
+{\Large \hfill $3}
+
+\hfill{\large $4 $5, $6
+
+\hfill \textit{$7}}
+\vspace{2em}
+
+\begin{thing6}{Abstract}
+$8
+\end{thing6}
+\vspace{2em}
+
+endsnippet
+
+context "math()"
+snippet dc "ddc" iA
+dd^c
+endsnippet
+context "math()"
+snippet db "ddc" iA
+\overline{\partial}
+endsnippet
+
+context "math()"
+snippet crit "Description" iA
+\operatorname{crit}
+endsnippet
+
+context "math()"
+snippet Int "i" iA
+\operatorname{Int}
+endsnippet
+
+context "math()"
+snippet mod "an operator" iA
+\operatorname{mod}
+endsnippet
+
+context "math()"
+snippet Val "an operator" iA
+\operatorname{Val}
+endsnippet
+
+context "math()"
+snippet Sup "an operator" iA
+\operatorname{supp}
+endsnippet
+
+context "math()"
+snippet def "Description" iA
+\overset{\operatorname{def}}{=}
+endsnippet
+
+context "math()"
+snippet Ric "an operator" iA
+\operatorname{Ric}
+endsnippet
+
+context "math()"
+snippet Num "an operator" iA
+\operatorname{Num}
+endsnippet
+
+priority 1
+context "math()"
+snippet GL "gl" iA
+\mathsf{GL}($1)
+endsnippet
+
+priority 2
+context "math()"
+snippet PGL "an operator" iA
+\mathsf{PGL}($1)
+endsnippet
+
+priority 1
+context "math()"
+snippet SO "so" iA
+\mathsf{SO}($1)
+endsnippet
+
+context "math()"
+snippet SP "so" iA
+\mathsf{Spec}($1)
+endsnippet
+
+context "math()"
+snippet Un "Unitary" iA
+\mathsf{U}($1)
+endsnippet
+
+context "math()"
+snippet Spin "spin" iA
+\mathsf{Spin}($1)
+endsnippet
+
+context "math()"
+snippet SU "special unitary" iA
+\mathsf{SU}($1)
+endsnippet
+
+context "math()"
+snippet Or "Orthogonal" iA
+\mathsf{O}($1)
+endsnippet
+
+context "math()"
+snippet On "Orthogonal" iA
+\mathsf{O}($1)
+endsnippet
+
+priority 1
+context "math()"
+snippet SL "SL" iA
+\mathsf{SL}($1)
+endsnippet
+
+priority 2
+context "math()"
+snippet PSL "SL" iA
+\mathsf{PSL}($1)
+endsnippet
+
+priority 2
+context "math()"
+snippet PSO "SL" iA
+\mathsf{PSO}($1)
+endsnippet
+
+
+priority 1
+context "math()"
+snippet hh "algebra de lie" iA
+\mathfrak{h}
+endsnippet
+
+context "math()"
+snippet gl "algebra de lie" iA
+\mathfrak{gl}($1)
+endsnippet
+
+context "math()"
+snippet gg "algebra de lie" iA
+\mathfrak{g}
+endsnippet
+
+priority 1000
+context "math()"
+snippet onn "algebra de lie" iA
+\mathfrak{o}($1)
+endsnippet
+
+context "math()"
+snippet sl "algebra de lie" iA
+\mathfrak{sl}($1)
+endsnippet
+
+priority 1
+context "math()"
+snippet so "algebra de lie" iA
+\mathfrak{so}($1)
+endsnippet
+
+context "math()"
+snippet sp "algebra de lie" iA
+\mathfrak{sp}($1)
+endsnippet
+
+context "math()"
+snippet Lie "lie algabra" iA
+\mathsf{Lie}$1
+endsnippet
+
+context "math()"
+snippet un "algebra de lie" iA
+\mathfrak{u}($1)
+endsnippet
+
+priority 10
+context "math()"
+snippet sun "algebra de lie" iA
+\mathfrak{su}($1)
+endsnippet
+
+priority 10
+context "math()"
+snippet conv "an operator" iA
+\operatorname{conv}
+endsnippet
+
+context "math()"
+snippet LEAV "Description" iA
+\leavevmode
+endsnippet
+
+context "math()"
+snippet TP "tangent" iA
+T_p
+endsnippet
+context "math()"
+snippet T_P "tangent" iA
+T_p
+endsnippet
+
+context "math()"
+snippet TPm "tangent" iA
+T_pM
+endsnippet
+
+context "math()"
+snippet Tp "tangent" iA
+T_p
+endsnippet
+
+context "math()"
+snippet Multi "an operator" iA
+\operatorname{Multi}
+endsnippet
+
+context "tx()"
+snippet imp "Description" i
+$\implies$
+endsnippet
+
+context "math()"
+snippet pb "Description" iA
+\\{\cdot,\cdot\\}
+endsnippet
+
+context "math()"
+snippet Jac "an operator" iA
+\operatorname{Jac}
+endsnippet
+
+context "tx()"
+snippet entao "Description" iA
+então
+endsnippet
+
+context "tx()"
+snippet Entao "Description" iA
+Então
+endsnippet
+
+context "math()"
+snippet hip "Description" iA
+\overset{\operatorname{hip}}{=}
+endsnippet
+
+context "math()"
+snippet cr "Description" iA
+\overset{\substack{\text{chain}\\\\\text{rule}}}{=}
+endsnippet
+
+context "math()"
+snippet qro "Description" iA
+\overset{\text{quero}}{=}
+endsnippet
+
+context "math()"
+snippet quero "Description" iA
+\overset{\text{quero}}{=}
+endsnippet
+
+context "math()"
+snippet char "an operator" iA
+\operatorname{char}
+endsnippet
+
+context "math()"
+snippet met "Description" iA
+\left<\cdot,\cdot\right>
+endsnippet
+
+context "math()"
+snippet cte "Description" iA
+\operatorname{cte}
+endsnippet
+
+context "math()"
+snippet can "an operator" iA
+\operatorname{can}
+endsnippet
+
+context "math()"
+snippet arg "an operator" iA
+\operatorname{arg}
+endsnippet
+
+context "tx()"
+snippet regiao "Description" iA
+região
+endsnippet
+
+context "math()"
+snippet area "an operator" iA
+\operatorname{area}
+endsnippet
+
+context "tx()"
+snippet conexao "Description" iA
+conexão
+endsnippet
+
+context "math()"
+snippet lar "left arrow" iA
+\leftarrow
+endsnippet
+
+context "math()"
+snippet ch "Description" iA
+\Gamma_{$1}^
+endsnippet
+
+context "math()"
+snippet Ch "Description" iA
+\Gamma_{$1}^
+endsnippet
+
+context "math()"
+snippet tan "tangent part" iA
+\top
+endsnippet
+
+context "math()"
+snippet fog "Description" iA
+f\circ g
+endsnippet
+
+priority 100
+context "math()"
+snippet Iso "an operator" iA
+\operatorname{Iso}
+endsnippet
+
+context "tx()"
+snippet code "Description" i
+\texttt{$1}
+endsnippet
+
+context "math()"
+snippet ang "Description" iA
+\angle
+endsnippet
+
+context "math()"
+snippet Kil "an operator" iA
+\mathsf{Kil}
+endsnippet
+
+context "math()"
+snippet Hes "hessian Hessian" iA
+\mathsf{Hess}
+endsnippet
+
+context "math()"
+snippet Hess}s "" iA
+Hess\}
+endsnippet
+
+context "tx()"
+snippet \cl "clea" iA
+\\clearpage
+endsnippet
+
+context "tx()"
+snippet \clearpagee "Description" iA
+\\clearpage
+endsnippet
+
+context "tx()"
+snippet \clearpagea "Description" iA
+\\clearpage
+endsnippet
+
+context "tx()"
+snippet \clearpager "Description" iA
+\\clearpage
+endsnippet
+
+priority 10000
+context "math()"
+snippet sigm*t "sigmast" iA
+sigma^*
+endsnippet
+
+context "math()"
+snippet \mathbb{T}l "TTl" iA
+T\widetilde{M}
+endsnippet
+
+context "math()"
+snippet nu "Description" iA
+\nu
+endsnippet
+
+context "tx()"
+snippet bver "Description" iA
+\begin{verbatim}
+endsnippet
+
+context "tx()"
+snippet everba "Description" iA
+\end{verbatim}
+endsnippet
+
+context "tx()"
+snippet verbat "i" iA
+\begin{verbatim}
+$1
+\end{verbatim}
+endsnippet
+
+context "tx()"
+snippet box "Description" i
+\begin{tcolorbox}[colback=white,colframe=black,boxrule=0.5pt,sharp corners]
+$1
+\end{tcolorbox}
+endsnippet
+
+priority 1
+context "math()"
+snippet l| "Description" iA
+\left|
+endsnippet
+
+priority 1
+context "math()"
+snippet r| "Description" iA
+\right|
+endsnippet
+
+context "math()"
+snippet sing "an operator" iA
+\operatorname{sing}
+endsnippet
+
+context "math()"
+snippet Syz "an operator" iA
+\operatorname{Syz}
+endsnippet
+
+context "math()"
+snippet odo "Description" iA
+\odot
+endsnippet
+
+priority 100
+context "math()"
+snippet diam "Description" iA
+\operatorname{diam}
+endsnippet
+
+context "tx()"
+snippet telegram "Description" i
+\begin{telegrammsg}{${1:who},[${2:when}]}
+$3
+\end{telegrammsg}
+endsnippet
+
+context "math()"
+snippet Sc "Description" iA
+\operatorname{scal}
+endsnippet
+
+context "math()"
+snippet tt "Description" iA
+t^{w_$1}x_$1
+endsnippet
+
+context "math()"
+snippet dag "Description" iA
+\dag
+endsnippet
+
+priority 1000
+context "math()"
+snippet \gammatl "Description" iA
+\tilde{\gamma}
+endsnippet
+
+priority 1000
+context "math()"
+snippet \alp\hat{l "Description" iA
+\tilde{\alpha
+endsnippet
+
+priority 1000
+context "math()"
+snippet \betatl "Description" iA
+\tilde{\beta}
+endsnippet
+
+priority 1000
+context "math()"
+snippet \varphitl "Description" iA
+\tilde{\varphi}
+endsnippet
+priority 1000
+context "math()"
+snippet \psitl "Description" iA
+\tilde{\psi}
+endsnippet
+
+priority 100
+context "math()"
+snippet dom "an operator" iA
+\operatorname{dom}
+endsnippet
+
+context "tx()"
+snippet lab "Description" bA
+\label{$1}
+endsnippet
+
+context "tx()"
+snippet ref "Description" i
+\ref{$1}
+endsnippet
+
+context "math()"
+snippet sig "Description" iA
+\sigma
+endsnippet
+
+context "tx()"
+snippet slog "Description" bA
+\begin{slogan}
+$1
+\end{slogan}
+endsnippet
+
+context "tx()"
+snippet xy "Description" b
+$$
+\xymatrix{
+$1
+}
+$$
+$0
+endsnippet
+
+context "tx()"
+snippet tx "Description" i
+\text{$1}
+endsnippet
+
+priority 2
+snippet ses "short exact sequence"
+$$
+\xymatrix{
+0\ar[r]&$1\ar[r]&$2\arrow[r]&$3\ar[r]&0
+}
+$$
+$0
+endsnippet
+
+

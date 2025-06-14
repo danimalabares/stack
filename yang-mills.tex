@@ -1,0 +1,504 @@
+% This file is part of the Stack Project
+% https://github.com/danimalabares/stack
+
+\section{Yang--Mills theory}
+\bibliographystyle{alpha}
+\begin{minipage}{\textwidth}
+	\begin{minipage}{1\textwidth}
+		Personal notes on YM \hfill Daniel González Casanova Azuela
+		
+  {\small
+  \hfill\href{https://github.com/sergunchik/daniel}{github.com/sergunchik/daniel}}
+	\end{minipage}
+\end{minipage}\vspace{.2cm}\hrule
+
+\vspace{10pt}
+{\huge Personal notes on Yang-Mills theory}
+
+Disclaimer: these are very sketchy notes just to keep track of what I read and
+remember key ideas.
+
+\section{December 14: day 1}
+
+\subsection{Reading \cite{reportdouglas}}
+
+\begin{enumerate}
+\item YM theory is a generalization of Maxwell's theory of electromagnetism.
+\item Has classical and quantum version.
+\item Classical version is some PDEs.
+\item Quantum version has no satisfactory mathematical definition.
+\item YM on a lattice (there are other very different ways to think about YM
+theory)
+	\begin{enumerate}
+ \item Start with a lattice $\Gamma$ like $\mathbb{Z}^4 \subset \mathbb{R}^4$.
+ Put some graph structure on $\Gamma$. Define a $G$-connection to be a function
+ from edges to $G$. Define the curvature. YM action is the sum of squares of the
+ curvatures.
+ \item Quantize: define a quantum lattice on a subgraph $\gamma \subset \Gamma$
+ with a functional integral $Z$ that is called \textit{\textbf{partition
+ function}}. It is of physical interest like the expectation values of quantum
+ observables.
+ \item (\textbf{Objective}.) To devine a functional integral on all of $\Gamma$
+ by taking the limit of $Z$ over larger and larger $\gamma$.
+ \item (\textbf{Existence}.) There are some properties this construction should
+ have.
+ \item (\textbf{Mass gap}.) There are some other properties this construction
+ should have.
+	\end{enumerate}
+ This could be explained without $\Gamma$, or partition functions, or taking
+ limits.
+\item There are some QFTs similar to YMT--- ``There are two classes of quantum
+field theories which are generally believed to bear a close similarity to
+four-dimensional Yang-Mills theory. The first is the two-dimensional nonlinear
+sigma model with target space a group manifold \( G\)…"
+
+ ``The orher broad class of models with great simlarity to YM" are 4dssYMTs. In
+ those we consider also fermions, and the quantum Hamiltonian has a square root.
+ These theories help with the problem of renormalization. Actually there's a
+ reason why solving the problem here would solve the problem in the original
+ problem.
+
+ This property has been discovered by physicists from experiment and confirmed
+ by computer simulations, but it still has not been understood from a
+ theoretical point of view. Progress in establishing the existence of the
+ Yang-Mills theory and a mass gap will require the introduction of fundamental
+ new ideas both in physics and in mathematics.
+\item There are some recent results (2000's).
+\item In 1994 Seiberg-Witten had a clever ansatz to solve a problem.
+Computations were hard, but they were solved by N. Roughly, this made SW some
+sort of mirror-symmetry for 4d topology.
+\item Integrability of $N=4$ ssYM is harder to explain in mathematical terms but
+it is important. It has to do with AdS/CFT.
+\end{enumerate}
+
+From \href{https://www.claymath.org/millennium/yang-mills-the-maths-gap/}{here}:
+{\color{3}\begin{quotation}
+ The successful use of Yang-Mills theory to describe the strong interactions of
+ elementary particles depends on a subtle quantum mechanical property called the
+ “mass gap”: the quantum particles have positive masses, even though the
+ classical waves travel at the speed of light.
+\end{quotation}}
+
+\subsection{Video of a lecture by David Gross on YM}
+
+\href{https://www.youtube.com/watch?v=vMiY7zlBOFI}{Here's the video}.
+
+\subsubsection{Motivation}
+
+\begin{thing4}{Millenium problem}\leavevmode
+Existence of YM theory in 4 dimensions with gauge group $G$, and finite mass
+gap.
+\end{thing4}
+Gauge theories are examples of QFTs. In 4 dimensions they have never been proven
+to exist. But the existence of these QFTs is not that interesting.
+
+Why is there a prize on this?
+\begin{enumerate}
+\item These theories (YM theories) are the standrd theory of elementary
+particles. It's the best most complete ambitious physical theories we've had.
+\item Physicists have ways to discover truth that isn't guided solely by
+mathematics. First part of this problem: it's hard to know how it would fail
+since we don't know what it would mean to prove the non-existence of QFT. It
+would be possible to define a YM theory which \textit{doesn't} have a positive
+mass gap. That would shock us all since we know it's false.
+
+ Like walking on a rope over a precipice without looking down: we have nature to
+ guide us. We know YMT is correct by expermient, analogues, etc… David Gross
+ takes strong bets against the unexistence of positive mass gap.
+\end{enumerate}
+So: there are no mathematics to explain this.
+
+\subsubsection{Gauge theory}
+
+Probably the one Gauge theory you are all familiar with is electromagnetism.
+It's was the first \textit{field theory} in which there were dynamical objects
+which are functions $\phi(\vec{x},t)$ which could be measured, etc. It is based
+in what we call an abelian Gauge theory (for historical reasons) with group
+$\mathsf{U}(1)$. Its \textit{dynamical field} is a connection $A$, which is
+{\color{4}locally?} a 1-form on Minkowsky space $\mathbb{R}^{3,1}$, over a
+$\mathsf{U}(1)$-bundle. And the \textit{physical observables} are the
+\textit{field strengths} (i.e. curvature) $F=dA=dt\wedge \vec{x}
+\vec{E}{\color{3}\ldots}$, whose components are the familiar electric and
+magnetics fields.
+
+Maxwell unified electricity and magnetism into these theory, whose equations are
+simple second order PDEs:
+\[dF=0,\qquad d\wedge F=0\]
+which follow from an action functional
+\[\delta=\frac{1}{4e^2}\int_{M}F\wedge * F.\]
+These equations were the first \textit{field theory}. Having dynamics described
+by a function $\phi(\vec{x},t)$ of space and time. The action is invariant under
+Lorentz transformations i.e. in the group $\mathsf{SO}(3,1)$. The solutions of
+Maxwell equations are light $\sim$ waves of ripples in this field strength.
+
+{\color{3}\begin{quotation}
+	All the theories we discuss in YM are generalizations of that.
+\end{quotation}}
+
+The constant in the action functional is called the \textit{electric charge}.
+
+{\color{3}\bfseries Units.}\hspace{.5em}In physics we need to specify the units
+of the physical things we are measuring. Like $L,T$ energy, mass, etc. Also
+there appear some universal constants like velocity of light $c$, and Plank's
+constant $\hslash=\frac{mL^2}{T}$. We can somehow put them to 1. Having units
+means that \textit{everything is expressible by a length}. So the $e$ in the
+action functional above is $\frac{e^2}{\hslash c}=\frac{1}{137.035\ldots}$
+
+That's electrodynamics in the vaccum--- it's very trivial and it's even trivial
+to quantize it (you can easily construct the Hilbert space).
+
+Actually, nobody has ever proven the existence of a QED (quantum
+electrodynamics?) as opposed to electromagnetism coupled to electrons.
+
+\begin{thing14}{QED at very short distances}\leavevmode
+ QFT assumes the existence of fields-- functions of spacetime. This means we
+ believe that we live in a continuum, that we can go down to arbitrarily small
+ distances. If we put a cutoff, destroy the continuum at very short distances,
+ say, at $10^{-3}$ cm. Then the non existence of QED (this simple abelian gauge
+ theory) is well-defined. We can argue that the assymtpotic expansion (this is
+ related to the theoretical approximation of some constant that can also be
+ appoximated experimentally) would approximate with erros of small order. So you
+ can use asymptotic expans. But the theory may not work at other levels of
+ energy. Actually we believe that QED theory to arbitrarily short distances does
+ not exist. And for the very same reasons that we believe that, we believe that
+ non-abelian gauge theories, even just vaccum non-abelian gauge theories, which
+ are highly non-trivial, \textit{do exist}. And you can really go to arbitrarily
+ short distances; it's a complete theory.
+\end{thing14}
+
+\subsection{YM}
+
+YM theory has a mass gap, which produces a scale that ED in the vaccum does not
+have. We will be discussing non-abelian electromagnetism just like
+electromagnetism has no scale as a dimensionless coupling. And we will produce a
+scale, a mass gap, from quantum effects.
+
+\begin{question}\leavevmode
+	What does it mean to define or prove the existence of a QFT?
+\end{question}
+
+We need a Hilbert space $\mathcal{H}$, states in a Hilbert space $|\psi\rangle$,
+positive norm states (we identify probability with the norm of states, and
+probability should be positive). We want \textit{\textbf{relativistic
+invariant}}, symmetries, Poincaré invariants: translation in space and time $x
+\mapsto x+a$ + Lorentz transformations $\mathsf{SO}(3,1)$. In quantum mechanics,
+such symmetries of the theories are represented by unitary operators under which
+states, the fields, transform covariantly. And we want a \textit{\textbf{vacuum
+state}} $|\Omega\rangle$, a ground state of the system, that is invariant under
+translations and Lorentz transformations. We're looking for all this.
+
+We also want that the generators of these symmetry transofrmations, the momenta
+$P^n$, have definite spectral properties. In particular, the energy $P^0$ should
+have spectrum bounded from below $P^0\geq 0$. We call
+$\mathcal{P}^2=E^2-P^2=m^2$ the \textit{\textbf{mass}}.
+
+In the case of ENM, the spectrum of the energy  $P^0$ is continuous.
+
+The spectrum of the mass operator has a base state $|\Omega\rangle$, and then
+there is a discrete state $m_G$, $G$ standing for \textit{gap}. An the pairs of
+these particles of twice the mass, $2m_G$, and some extra kinetic energy, are
+continuum of these multiparticle sates. So, in a QFT where we have massive
+particles and no massless particles like lightrays, \textit{there is a gap
+between the vacuum, the ground state, and the first state that can be created
+with a minimal energy equal to the mass of that particle}, and then
+multiparticle states, and perhaps some isolated states.
+
+\begin{thing5}{Really interesting dynamical issue}\leavevmode
+ how to produce YM theory with roughly the same structure as classical
+ electromagnetism a mass gap.
+\end{thing5}
+
+\section{Reading \cite{yangmills}}
+
+Like in the video by David Gross, in this paper there is a quick review of
+electromagnetic theory as the most basic gauge theory: the gauge group is
+\(\mathsf{U}(1)\), which has associated a connection $A$, which is locally a
+1-form ({\color{6}like in Dani's symplectic geometry presentation}), whic
+differential is the two form \(F=dA\) ({\color{6}which is the curvature and the
+force}), so that Maxwell's equations read \(0=dF=d * F\), {\color{6}where I'm
+still not sure how Hodge star acts here}. And the upshot (or one of the upshots)
+is that this system describes both ``large scale electric and magnetic fields"
+\textit{and}, as Maxwell discovered, the propagation of light waves at the speed
+of light.
+
+And then what is YM theory?
+\begin{quotation}
+ ``[…] and the discovery of Yang-Mills theory, also known as \textit{non-abelian
+ gauge theory}."
+\end{quotation}
+So in YM we replace the gauge group \(\mathsf{U}(1)\) with a compact
+({\color{6}non-abelian I suppose}) gauge group \(G\). The definition of
+curvature changes to \(F=dA+A \wedge A\) and Maxwell's equations are replaced by
+YM equations \(0=d_AF=d_A * F\) where \(d_A\) is the gauge-covariant extension
+of the exterior derivative ({\color{6}probably just the most natural extension
+of the exterior derivative to something that behaves well along with the new
+\(G\) }).
+
+Despite interesting advantages, some difficulties arise in this theory: ``the
+masless nature of classical YM was a seious obstacle to applying YM theory to
+the other forces […]" And then ``In the 1960s and 1970s, physicists overcame
+these obstacles to the physiscal interpretation of non-abelian gauge theory.",
+basicall introding an additional ``Higgs field".
+
+``The solution to the problem of massless YM fields for the strong interaction
+has a completely different nature. […] by discovering a remarkable property of
+YM theory itself […] called `àsymptotic freedom" […] that at short distances the
+field displays quantum behaviour very similar to its classical behavior; yet at
+long distances the classical theory is no longer a good guide to the quantum
+behaviour of the field.
+
+In \textbf{Section 3. Quantum Fields} some basic concepts related to QFTs are
+explained, so that in \textbf{Section 4. The problem} we have:
+
+\begin{thing7}{Yang-Mills Existence and Mass Gap}\leavevmode
+ Prove that for any compact simple gauge group \(G\), a non-trivial quantum
+ Yang-Mills theory exists on \(\mathbb{R}^4\) and has a mass gap \(\Delta>0\).
+ Existence includes establishing axiomatic properties at least as strong as
+ those cited in [35,45]. Existence includes establishing axiomatic properties at
+ least as strong as those cited in [35,45].
+\end{thing7}
+
+\section{Lucas' talk on January 17}
+
+Here's a few notes on what I picked up from today's talk. Probably Lucas can
+share his own notes.
+
+\subsection{Plan}
+
+\begin{enumerate}
+\item QFT (today).
+\item AQFT.
+ \item  QYM
+\begin{enumerate}
+\item mass gap.
+\item Perturbative \(\times\) lattice
+\item Example \(d=2\).
+\item Difficulties.
+\end{enumerate}
+\end{enumerate}
+
+
+\subsection{Standard model}
+
+Fermions correspond to mass. They are divided in Quarks ($u$, $c$, $t$, $d$,
+$s$, $b$ ) and Leptons (\(e^-\) (electron), \(\mu^-, \tau^-, \nu_e, \nu_\mu,
+\nu_\tau\). Quarks are much more massive than leptons. For a long time leptons
+were just asumed to have zero mass.
+
+Bosons correspond to ``mass carriers". We will discuss a lot about these today.
+Gauge bosons: foton: $g$ and \(Y\); *something* decay (radiation): \(Z\) and
+\(W\). Scalar (Higg) boson \(H\).
+
+\begin{question}\leavevmode
+What's a proton: it's a combination of three fundamental quarks: up up down,
+$uud$. And neutrons are up down down. (So protons and neutrons are not
+fundamental.)
+\end{question}
+
+So the Boson part is very related to light, and the Fermion part to gravity.
+Well light may be studied by Electromagnetism (and its quantum version QED), for
+which the particle is a foton \(Y\) and the gauge group is \(\mathsf{U}(1)\).
+Then there's Electroweak force (or field?) which includes Higgs boson in its
+particle and its gauge group is \(\mathsf{SU}(2)\times \mathsf{U}(1)\). And
+finally also Quantum Chromo Dynamics (QCD) with partigle \(g\) and gauge group
+\(\mathsf{SU}(3)\).
+
+\begin{remark}\leavevmode
+\begin{enumerate}
+\item Pretty much everything has an antimatter, which has the same mass but
+(opposite charge?).
+\end{enumerate}
+\end{remark}
+
+\subsection{Classical \(\rightsquigarrow \) Quantum}
+
+\textbf{Classical:} ``deterministic".
+\begin{itemize}
+\item Space of fields \(A\).
+\item Action functional \(S(A)= \int_A \mathcal{L}(A)\).
+\item Equation of motion (EOM) = Euler-Lagrange equations for \(S\) (\(\delta
+S=0\), first vol.).
+\end{itemize}
+
+\textbf{Quantum}: ``probabilistic". A particle becomes a wave [drawing
+double-slit-experiment-like]
+\begin{itemize}
+\item \(Z_{\operatorname{euc}}=\int e^{S(A)/\hslash}dA\).
+\item \(\left<O(A)\right>=\int O(A)e^{S(A)/\hslash}dA\).
+\end{itemize}
+
+\begin{remark}\leavevmode
+The measure \(dA\) is usually ill-defined, but there are ways to solve it (some
+cases).
+
+\(\hslash \to 0\): the exp in \(Z\) gets localized at the minimum of \(S
+\rightsquigarrow \)EL, EOM.
+\end{remark}
+
+\begin{example}\leavevmode
+\(M^3\), \(G=\) compact gauge group. \(S_{\operatorname{cs}}(A)=\frac{k}{4\pi}
+\int_M \operatorname{tr}(A \wedge dA+\frac{2}{3}A \wedge A \wedge A)\), \(Z=
+\int e^{i S(A)/\hslash}dA\).
+\end{example}
+
+\begin{example}\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item Fields=space of Riemannian metrics. This is \textit{\textbf{Quantum
+gravity}}.
+\item Fix auxiliary manifold $N$: fields are functions \(M \to N\). This gives a
+\textit{\textbf{sigma-model}}. Dimension 1 \(\sigma\) model is actually Quantum
+Mechanics (QM).
+\item Fix principal \(G\)-bundle \(P \to M\). Fields: \(G\)-connections (``gauge
+fields"). Sections of associated vector bundles (``mother fields"). This is
+\textit{\textbf{Quantum Gauge Theory}}.
+\end{enumerate}
+\end{example}
+
+\section{January 24}
+
+\subsection{Sergey S.}
+
+A surface \(\Sigma\), choose a set of \(N\) points \(P_i \in \Sigma\) which give
+a triangulation. Then we take piecewise linear compactly supported functions
+\(\phi\), which generate the finite-dimensional hilbert space \(\mathcal{H}_N\).
+Consider \(\mathcal{H}_N \to \mathcal{H})\).
+
+\subsection{Bruno}
+
+\(\Sigma\) compact, \(L\) holomorphic pre-quantum line bundle.
+\(V_n=H^{0}(\Sigma,L^{\otimes n})\). Since \(\Sigma\), the sections of line
+bundles are \textbf{finite dimensional}. The BT operators are \(Tx_j \in
+\operatorname{End}(V_n)\).
+
+Looks like we are tryng to understand what a \textbf{quantum surface} is. This
+was defined by Koontsevich and collaborators in \cite{kon}.
+
+Here's Bruno saying what Altan told him about what Kontsevich said in that
+video:
+
+\begin{quotation}
+ \(\Sigma \xrightarrow{\text{minimal surface}} \mathbb{R}^n\).
+ \(L=K_\Sigma^{1/2}\) hermitian, metric. \(\mathcal{H}_n=H^{0}(\Sigma,L^{\otimes
+ n})\cap L^2\). \(T_{x_i}\in B(\mathcal{H}_n)\) by BT.
+\end{quotation}
+
+Here's Bruno saying some other ideas:
+\begin{quotation}
+ Start with \((M, \omega)\) Kähler \(\mathcal{L}\) holomorphic line bundle, \(f
+ \in C^\infty (M)\) \( T_f=\pi_\mathcal{H} \circ M_f\). \(\mathcal{H}:
+ H^{0}(M,\mathcal{L})\hookrightarrow
+ L^2(M,\mathcal{L})=\mathcal{H}^{\operatorname{pre}}\).
+\end{quotation}
+
+
+Here are Altan's ideas:
+\begin{quotation}
+\(\Sigma\) a compact surface. \(\Sigma \hookrightarrow \mathbb{R}^n\) a minimal
+surface. Then \(x_1,\ldots, x_N : \Sigma \to \mathbb{R}\). BT quantization:
+\(X_1,\ldots,X_n \in \operatorname{Mat}_{n \times n}\). Quantum surface.
+\end{quotation}
+
+\subsection{Lucas: basic TQFT}
+
+\begin{upshot}\leavevmode
+One the axioms in 1-extended TQFT \textbf{is Atiyah-Floer conjecture} 
+\end{upshot}
+
+\textbf{Notation:} \(M^{(d)}\) is a closed oriented $d$-manifold.
+\(\underline{M^{(d)}}\) is compact \(d\)-manifold \textit{with} boundary.
+
+TQFT: 2functors: classical TQFT is given by two functors. For any closed
+manifold you associate a vector space,
+\[\mathcal{H}:Y^{(n-1)}\mapsto \mathcal{H}(Y) \in \operatorname{Vect}\]
+and also
+\[Z: \underline{X}^{(n) }\mapsto Z(x) \in \mathcal{H}(Y), \qquad \partial X=Y.\]
+Satisfying some axioms:
+
+\begin{enumerate}
+\item \(\mathcal{H}(Y \sqcup Y'=\mathcal{H} (Y) \otimes \mathcal{H}(Y')\).
+\item  \(\mathcal{H}(\overline{Y}) = \mathcal{H}(Y)^*\).
+\item \(\mathcal{H}(Y)^* \otimes \mathcal{H}(Y)\otimes \mathcal{H}(Y')\to
+\mathcal{H}(Y')\), \(Z(\underline{X}\mapsto Z(\underline{X}^\sharp\).
+\end{enumerate}
+
+And then there is the ``1-extended TQFT", where now to a closed surface we
+associate a category
+\[\Sigma \mapsto  \mathcal{C}(\Sigma)\]
+and
+\[\underline{Y} \mapsto \]
+
+\subsection{Altan: Atiyah-Floer Homology}
+
+\begin{thing4}{Abstract}
+I will give an overview of Floer theory and share my perception of the
+Atiyah-Floer conjecture. Your help and remarks are very welcome, especially from
+Lucas who has studied it all before.
+\end{thing4}
+
+Recall that last week we also had Altan
+
+\begin{thing4}{Abstract from last week}
+Tomorrow I am going to present the history of the Atiyah-Floer conjecture,
+introduce Z/8Z-graded instanton Floer homology and recall some
+infinite-dimensional Morse theory developed by Witten. I hope we'll have some
+examples, too. Sorry if you've already heard it somewhere else.
+
+I'm postponing the general discussion of Lagrangian Floer homology and further
+intuition/physical interpretation of the Atiyah-Floer conjecture until our next
+meeting (Wednesday?).
+\end{thing4}
+
+\subsubsection{Morse homology}
+
+\begin{remark}\leavevmode
+ (Pretty much everything I know about Morse homology was learnt in
+ \texttt{gabriel-anotado.pdf}.) Today we went over the basic construction of
+ Morse homology, which is section 3.3 of Gabriel's project. We have defined the
+ differential on the chain of complexes generated by the critical points of
+ index \(k\) of a Morse function as \(\partial[x]=\sum_{y \in
+ \operatorname{Crit}f}\# \mathcal{M}_{f,y}(x,y)[y]\). So as I recall that's the
+ number of trayectories from \(x\) to \(y\), and the index decreases one-by-one
+ along trajectories so its image is the chain group of degree one less. Then
+ Altan started the proof of \(\partial^2=0\). In contrast with Gabriel's work
+ (the more usual approach I think), today we have used \(\mathbb{Z}\)
+ coefficients (unfortunately we were unable to prove \(\partial^2=0\) with
+ \(\mathbb{Z}\)-coefficients).
+\end{remark}
+
+\((M,f)\), \(M\) manifold and \(f:M\to \mathbb{R}\). We ask that $f$ be a Morse
+function, i.e. in the discrete set \(\operatorname{Crit}f=\{x:df_x=0\}\) the
+Hessian is nondegenerate. So locally
+\(f(x)=c+x_1^2+\ldots+x_k^2-x^2_{k+1}+\ldots+x_n^2\) by Morse lemma.
+
+The \textit{\textbf{index}} of \(f\) is the negative part of the signature of
+the Hessian at a given critical point.
+
+\begin{remark}[Lucas]\leavevmode
+The examples of doughnut, heart, with height function (I think) are
+\textit{generic}, meaning most cases are like this and it's $\mathsf{OK}$ to
+think of these examples when doing these things. (In particular Morse functions
+are dense.)
+\end{remark}
+
+I have interpreted that a proof that Morse homology is isomorphic to singular
+may be done using the stable/unstable manifolds to give \(M\) a CW structure.
+
+\section{January 31}
+
+\subsection{Altan}
+
+\subsubsection{Recall}
+
+\(Y\) a 3-dimensional manifold (a homology sphere). A \(\begin{tikzcd}
+E\arrow[d]\\
+Y
+\end{tikzcd}\)-principal \(\mathsf{SU}(2)\)-bundle. \(\mathcal{A}\) all
+connections on \(E\). \(\mathcal{G}\) the gauge group. The
+\textit{\textbf{Chern-Simmons functional}} \(\operatorname{ C S}:
+\mathcal{A}/\mathcal{G}\to \mathbb{R}/4\pi^2\mathbb{Z}\)
+
+
+
+
+%\bibliography{~/github/config/bibliography.bib}
+\bibliography{b.bib}
