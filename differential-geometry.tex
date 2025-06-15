@@ -120,6 +120,34 @@ $\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
 \section{Rauch's comparison theorem}
 \label{section-Rauch}
 
+\section{Weinstein's theorem}
+\label{section-Weinstein-theorem}
+
+\begin{theorem}[Weinstein]
+\label{theorem-Weinstein}
+Let $M^n$ be oriented, compact, $K>0$ and $f \in \text{Iso}(M)$. Suppose that 
+if $n$ is even, $f$ preserves orientation, and if $n$ is odd, $f$ reverts
+orientation. Then $f$ has a fixed point.
+\end{theorem}
+
+\section{Synge's theorem}
+\label{section-Synge-theorem}
+
+\begin{theorem}[Synge]
+\label{theorem-Synge}
+Let $M^n$ be compact and $K>0$. Then
+\begin{enumerate}
+\item If $n$ is even,
+$$
+\pi_1(M)=\begin{cases}
+	1\qquad & \text{if $M$ is orientable}\\
+	\mathbb{Z}_2\qquad & \text{if $M$ is not orientable}
+\end{cases}
+$$
+\item If $n$ is odd, then $M^n$ is orientable.
+\end{enumerate}
+\end{theorem}
+
 \section{Index lemma}
 \label{subsection-index-lemma}
 
@@ -466,18 +494,40 @@ $$
 So it's the same right? You look form $p_1$ instead…
 \end{remark}
 
+\section{Cartan's Theorem}
+\label{section-Cartan-theorem}
 
+\begin{definition}
+\label{definition-free-homotopy-set}
+The {\it free homotopy set} is the set of homotopy classes of loops based on any
+point of $M$.
+\end{definition}
 
+\begin{definition}
+\label{definition-geodesic-loop}
+A {\it geodesic loop} is a geodesic whose starting and ending points are the
+same. It may not be differentiable at such point.
+\end{definition}
 
+\begin{definition}
+\label{definition-closed-geodesic}
+A {\it closed geodesic} a smooth geodesic loop.
+\end{definition}
 
+\begin{theorem}[Cartan]
+\label{theorem-Cartan}
+Let $M^n$ be compact, and $\omega \in \hat{\pi}_1M$ nontrivial. Then there is a
+closed geodesic $\gamma$ such that $[\gamma]=\omega$.
+\end{theorem}
 
-
-
-
-
-
-
-
+\begin{proof}[Idea of proof]
+Consider a sequence of loops whose lengths converge to the number
+$$
+\ell:=\text{inf}\{\ell(c):c \in \omega\}>0
+$$
+Apply Arzerlà-Ascoli to ensure convergence and show this is a geodesic homotopic
+to any representant of the class $\omega$.
+\end{proof}
 
 \input{exercises-dg.tex}
 
