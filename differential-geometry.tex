@@ -136,17 +136,13 @@ compute.
 \section{Morse index theorem}
 \label{section-morse-index}
 
-\begin{slogan}
-The problem is that the vector spaces of sections of smooth manifolds are infinite-dimensional. we are interested in computing
-\end{slogan}
-
-\begin{definition}
+\begin{definition}[Index of index form]
 \label{definition-index-index-form}
 $$
 i(I_a):=\operatorname{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L}<0\}
 $$
-
 \end{definition}
+
 
 \begin{theorem}[Morse Index]
 \label{theorem-morse-index}
@@ -155,12 +151,50 @@ longo de $\gamma$.
 \end{theorem}
 
 \begin{proof}
+\begin{enumerate}
+\item Define
+\begin{align*}
+\mathcal{V}_a&=\{V \in \mathfrak{X}_\gamma:\text{d.p.p., }V(0)=0, V(a)=0\}\\
+\mathcal{V}_t^+&:=\{V \in \mathcal{V}_t:V(t_i)=0\}\\
+\mathcal{V}_t^-& :=\{V \in \mathcal{V}_t:V|_{[t_j,t_{j+1}]}\in
+\mathfrak{X}_{\gamma|_{[t_j,t_{j+1}]}}^J\}
+\end{align*}
+\item Note que
+$$
+\mathcal{V}_t=\mathcal{V}_t^+ \oplus  \mathcal{V}_t^-
+$$
+\item Note que 
+$$
+\mathcal{V}_t^-=\bigoplus_{j=1}^{i-1}T_{\gamma(t_j)}M
+$$
+porque para qualquer escolha de vetores
+ $v_1 \in T_{\gamma(t_1)}M,\ldots,v_{i-1}\in T_{\gamma(t_{i-1})}M$ existe
+ um único campo $J \in \mathcal{V}^-$ tal que $J(t_j)=v_j$, por ser a solução
+ da EDO com condições de contorno.
+\item (\cite{doc} Capítulo X, Proposição 2.3. A nulidade da forma do índice é
+$$
+\Ker I_t:=\{V \in \mathcal{V}_t:I_t(V,W)=0\forall W\in\mathcal{V}_t\}=
+V_t \cap \mathfrak{X}_\gamma^J 
+$$
+The point here is to show that if $V \in \Ker$ then it is (1) a Jacobi
+ field in each interval where $V$ is smooth, and (2) smooth in the whole
+ interval.
+
+We use the fact that $V$ is in the kernel to show that (1) the norm of 
+$V-R_{\gamma'}V$ is zero, and (2) the left and right derivatives of $V$
+coincide. The first part involves multiplying by a positive function $f$ that
+vanishes at the singular points; this will make the ``singular part" of the
+index form, i.e. the sum, vanish, so that we get only with the integral part,
+which is the norm of the Jacobi equation, which will vanish since we are in the
+kernel. The second part I'm not sure---why do we need to show that $V$ is
+differentiable, or $C^2$ (since it's the solution of an ODE).
+\end{enumerate}
 \end{proof}
 
 \section{Cut locus}
 \label{section-cut-locus}
 
-\begin{defn}[Cut point]
+\begin{definition}[Cut point]
 \label{definition-cut-point}
 O {\it cut point} de  $p$ ao longo de $\gamma$ é $\gamma(\rho(\gamma))$ 
 onde
@@ -168,7 +202,7 @@ $$
 \rho(\gamma)=\text{sup}\{t:\gamma|_{[0,t]}\text{ é minimizante}\}
 $$
 
-\end{defn}
+\end{definition}
 
 
 \begin{proposition}[Cut point characterization]

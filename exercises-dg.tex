@@ -1,7 +1,7 @@
 \section{Exercises}
 \label{section-exercises}
 
-\begin{exercise}
+\begin{exercise}[Geodésica sem pontos conjugados é localmente minimizante]
 \label{exercise-pts}
 $\gamma$ geodésica sem pontos conjugados em $[0,a]$. Então $\gamma$ é localmente
 minimizante.
@@ -10,13 +10,15 @@ minimizante.
 \begin{proof}
 Temos dois casos:
 \begin{enumerate}
-\item Se $E''(0)<0$ usamos o teorema do índice.
+\item Se $E''(0)<0$ usamos o teorema do índice. Isto é, não é possível que
+ $E''(0)<0$ porque isso implica que o índice da forma do índice é diferente
+ de zero, ou seja, existem pontos conjugados.
 \item Se $E''(0)=0$,
 \begin{enumerate}
 \item[(0)] Como $\gamma$ não tem pontos conjugados, então $I$ não tem
-		nulidade em todo  $\mathcal{V}$.
-\item $I_{\mathcal{V}^-}$ não tem índice nem nulidade. Segue do ponto anterior +
-	algum passo na prova.
+nulidade em todo  $\mathcal{V}$.
+\item $I_{\mathcal{V}^-}$ não tem índice nem nulidade. Segue do ponto anterior + 
+algum passo na prova.
 \item $I_{\mathcal{V}^-}$ não tem índice.
 \item 2+3 dão que $I_{\mathcal{V}^-}>0$.
 \item Logo $I>0$.
@@ -24,7 +26,7 @@ Temos dois casos:
 \end{enumerate}
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[Warped product]
 \label{exercise-wraped-product}
 Para $(M,g_M)$ e $(N,g_N)$ e $f:M \to \mathbb{R}_+$, definimos o {\it warped
 product} como sendo o produto cartesiano $M\times N$ com a métrica 
@@ -92,7 +94,6 @@ Se $M^{2n+1}$ tem $K_M >0$ e $\gamma:S^1 \to M$ inverta orientação, então é
 possível encurtar $\gamma$ na sua classe de homotopia.
 \end{exercise}
 
-
 \section{Lista 3}
 \label{section-lista-3}
 
@@ -135,13 +136,10 @@ a menos de suavizar a quina perto de $q$. Se as curvas se intersectam
 \section{Lista 7}
 \label{section-lista-7}
 
-
-\section{Lista 8}
-\label{section-lista-8}
-
 \begin{exercise}
 \label{exercise-minimizing-implies-no-conjugate-points}
 Seja $\gamma:[0,a]\to M$ uma geodésica em uma variedade Riemanniana $M$.
+
  Prove que se $\gamma$ é minimizante, então $\gamma$ não possui pontos
  conjugados em  $(0,a)$. Encontre um exemplo de geodésica $\gamma:[0,a] \to M$ 
 sem pontos conjugados que não é minimizante.
@@ -155,6 +153,9 @@ Jacobi? Essa variação me da duas geodésicas que convergem num ponto,
  e portanto $\gamma$ não pode ser minimizante depois desse ponto. 
 Resposta: porque nada me assegura que essas geodésicas 
 \end{proof}
+
+\section{Lista 8}
+\label{section-lista-8}
 
 \begin{exercise}
 Prop. 2.12 do capítulo XIII, \cite{doc}. Seja $p \in M$. 
@@ -171,7 +172,7 @@ $\ell=d(p,q)$.
 \end{enumerate}
 \end{exercise}
 
-\begin{proof}[Solução en processo]
+\begin{proof}[Intento 1, mas exp não é injetiva…]
 Suponha por enquanto que existe
 uma geodésica minimizante $\gamma$ ligando $p$ e $q$.
 
@@ -202,15 +203,6 @@ $C_m(p)$ é suficiente para garantir a existência de uma geodésica minimizante
 ligando $p$ e $q$. Por definição de cut locus, existe uma geodésica 
 $\gamma$ ligando $p$ e $q$, e $q$ é o primeiro ponto onde $\gamma$ deixa
 de ser minimizante.
-
-Portanto, $\gamma$ não tem pontos conjugados entre $p$ e $q$. Idea: isso vai
- obrigar a que a geodésica seja minimizante antes de $q$: suponha que
-$\gamma$ não é minimizante
-$$
-d(p,C_m(p))=d(p,q)=\text{inf}_{}
-$$
-
-
 \end{proof}
 
 \begin{exercise}

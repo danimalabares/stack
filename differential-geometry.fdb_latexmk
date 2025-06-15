@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex differential-geometry"] 1749926961 "differential-geometry.aux" "differential-geometry.bbl" "differential-geometry" 1749928344 0
+["bibtex differential-geometry"] 1749947318 "differential-geometry.aux" "differential-geometry.bbl" "differential-geometry" 1749947360 0
   "./my.bib" 1749639342 231284 a153ac224fb6f4a95dc3f2828662031d ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/amscls/amsalpha.bst" 1513722769 28675 71ba1b1ee8387ac88670b0ea0eb2399a ""
-  "differential-geometry.aux" 1749928343 6192 ab7a6d838a257ae4e3142f2c7c07fec0 "pdflatex"
+  "differential-geometry.aux" 1749947359 7191 d3fdbea7c0b8e4945e0a12206b228f7c "pdflatex"
   (generated)
   "differential-geometry.bbl"
   "differential-geometry.blg"
   (rewritten before read)
-["pdflatex"] 1749928341 "differential-geometry.tex" "differential-geometry.pdf" "differential-geometry" 1749928344 0
+["pdflatex"] 1749947357 "differential-geometry.tex" "differential-geometry.pdf" "differential-geometry" 1749947360 0
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -150,12 +150,12 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1685667091 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1685667073 7883462 49cb0241251fa90111bd48780aadf4f1 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "differential-geometry.aux" 1749928343 6192 ab7a6d838a257ae4e3142f2c7c07fec0 "pdflatex"
-  "differential-geometry.bbl" 1749926962 515 83b335be930e52b88bf56486f6d3bacb "bibtex differential-geometry"
-  "differential-geometry.out" 1749928343 2403 e59dfe341caf4e270fcedbc7eb57d159 "pdflatex"
-  "differential-geometry.tex" 1749926857 12804 5d67b3a9e0708812cf8dd02e624b857c ""
-  "differential-geometry.toc" 1749928343 1249 0471506adf4cd232d69bc6ff8337577c "pdflatex"
-  "exercises-dg.tex" 1749928339 5634 75453dfa31fef184cc616a66adb20f28 ""
+  "differential-geometry.aux" 1749947359 7191 d3fdbea7c0b8e4945e0a12206b228f7c "pdflatex"
+  "differential-geometry.bbl" 1749947318 515 83b335be930e52b88bf56486f6d3bacb "bibtex differential-geometry"
+  "differential-geometry.out" 1749947359 2728 6a26c268eca69dab27046c2ab6db669f "pdflatex"
+  "differential-geometry.tex" 1749947270 14865 bcb9a7284c94571f1f83cb3eb5154983 ""
+  "differential-geometry.toc" 1749947359 1459 b0fbf77174dbd02c83598bf2a8c2df77 "pdflatex"
+  "exercises-dg.tex" 1749947356 8225 14d616ea4ba5ef3497c0f95f81d66a60 ""
   "hyperref.cfg" 1749638618 124 02a657fc8360aaa19bc5874b6b16f93d ""
   "preamble.tex" 1749638618 8116 ec4a567b14502e079cd4ff100a3ad1c2 ""
   "stacks-project.cls" 1749638618 60186 510614f9bc57ce310e5ae6e986ff0888 ""
