@@ -157,19 +157,44 @@ longo de $\gamma$.
 \mathcal{V}_a&=\{V \in \mathfrak{X}_\gamma:\text{d.p.p., }V(0)=0, V(a)=0\}\\
 \mathcal{V}_t^+&:=\{V \in \mathcal{V}_t:V(t_i)=0\}\\
 \mathcal{V}_t^-& :=\{V \in \mathcal{V}_t:V|_{[t_j,t_{j+1}]}\in
-\mathfrak{X}_{\gamma|_{[t_j,t_{j+1}]}}^J\}=\bigoplus_{j=1}^{i-1}T_{\gamma(t_j)}M
+\mathfrak{X}_{\gamma|_{[t_j,t_{j+1}]}}^J\}
 \end{align*}
-Onde a igualdade em $\mathcal{V}_t^-$ é porque para qualquer escolha de vetores
+\item Note que
+$$
+\mathcal{V}_t=\mathcal{V}_t^+ \oplus  \mathcal{V}_t^-
+$$
+\item Note que 
+$$
+\mathcal{V}_t^-=\bigoplus_{j=1}^{i-1}T_{\gamma(t_j)}M
+$$
+porque para qualquer escolha de vetores
  $v_1 \in T_{\gamma(t_1)}M,\ldots,v_{i-1}\in T_{\gamma(t_{i-1})}M$ existe
  um único campo $J \in \mathcal{V}^-$ tal que $J(t_j)=v_j$, por ser a solução
  da EDO com condições de contorno.
+\item (\cite{doc} Capítulo X, Proposição 2.3. A nulidade da forma do índice é
+$$
+\Ker I_t:=\{V \in \mathcal{V}_t:I_t(V,W)=0\forall W\in\mathcal{V}_t\}=
+V_t \cap \mathfrak{X}_\gamma^J 
+$$
+The point here is to show that if $V \in \Ker$ then it is (1) a Jacobi
+ field in each interval where $V$ is smooth, and (2) smooth in the whole
+ interval.
+
+We use the fact that $V$ is in the kernel to show that (1) the norm of 
+$V-R_{\gamma'}V$ is zero, and (2) the left and right derivatives of $V$
+coincide. The first part involves multiplying by a positive function $f$ that
+vanishes at the singular points; this will make the ``singular part" of the
+index form, i.e. the sum, vanish, so that we get only with the integral part,
+which is the norm of the Jacobi equation, which will vanish since we are in the
+kernel. The second part I'm not sure---why do we need to show that $V$ is
+differentiable, or $C^2$ (since it's the solution of an ODE).
 \end{enumerate}
 \end{proof}
 
 \section{Cut locus}
 \label{section-cut-locus}
 
-\begin{defn}[Cut point]
+\begin{definition}[Cut point]
 \label{definition-cut-point}
 O {\it cut point} de  $p$ ao longo de $\gamma$ é $\gamma(\rho(\gamma))$ 
 onde
@@ -177,8 +202,7 @@ $$
 \rho(\gamma)=\text{sup}\{t:\gamma|_{[0,t]}\text{ é minimizante}\}
 $$
 
-\end{defn}
-
+\end{definition}
 
 \begin{proposition}[Cut point characterization]
 \label{proposition-cut-point-characterization}
@@ -285,9 +309,20 @@ Because it's the image of the unit sphere in $T_pM$, which is closed.
 \end{lemma}
 
 \begin{lemma}[Outside the cut locus implies exists unique minimizing geodesic]
-\label{lemma-outside-cut-locus-minimizing-geodesic}
-The geodesic stays outside the cut locus.
+\label{lemma-outside-cut-locus-exists-minimizing-geodesic}
+If $q \in M\setminus C_m(p)$, there exists a unique minimizing geodesic joining
+$p$ and $q$.
 \end{lemma}
+
+\begin{proof}
+This is an immediate consequence of Proposition 
+\ref{proposition-cut-point-characterization}: first, by Hopf-Rinow, we know that
+there exists a minimizing geodesic joining any two points. We know by Exercise  
+\ref{exercise-curvas-minimizantes} that if there were two minimizing geodesics 
+joining the two points, the 
+\end{proof}
+
+This
 
 \begin{definition}[Injectivity radius]
 \label{definition-injectivity-radius}

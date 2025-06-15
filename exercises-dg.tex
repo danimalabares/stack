@@ -2,7 +2,7 @@
 \label{section-exercises}
 
 \begin{exercise}[Geodésica sem pontos conjugados é localmente minimizante]
-\label{exercise-pts}
+\label{exercise-geodesica-sem-pontos-conjugados-e-localmente-minimizante}
 $\gamma$ geodésica sem pontos conjugados em $[0,a]$. Então $\gamma$ é localmente
 minimizante.
 \end{exercise}
@@ -10,13 +10,15 @@ minimizante.
 \begin{proof}
 Temos dois casos:
 \begin{enumerate}
-\item Se $E''(0)<0$ usamos o teorema do índice.
+\item Se $E''(0)<0$ usamos o teorema do índice. Isto é, não é possível que
+ $E''(0)<0$ porque isso implica que o índice da forma do índice é diferente
+ de zero, ou seja, existem pontos conjugados.
 \item Se $E''(0)=0$,
 \begin{enumerate}
 \item[(0)] Como $\gamma$ não tem pontos conjugados, então $I$ não tem
-		nulidade em todo  $\mathcal{V}$.
-\item $I_{\mathcal{V}^-}$ não tem índice nem nulidade. Segue do ponto anterior +
-	algum passo na prova.
+nulidade em todo  $\mathcal{V}$.
+\item $I_{\mathcal{V}^-}$ não tem índice nem nulidade. Segue do ponto anterior + 
+algum passo na prova.
 \item $I_{\mathcal{V}^-}$ não tem índice.
 \item 2+3 dão que $I_{\mathcal{V}^-}>0$.
 \item Logo $I>0$.
@@ -24,7 +26,7 @@ Temos dois casos:
 \end{enumerate}
 \end{proof}
 
-\begin{exercise}[Warped produc]
+\begin{exercise}[Warped product]
 \label{exercise-wraped-product}
 Para $(M,g_M)$ e $(N,g_N)$ e $f:M \to \mathbb{R}_+$, definimos o {\it warped
 product} como sendo o produto cartesiano $M\times N$ com a métrica 
@@ -170,7 +172,7 @@ $\ell=d(p,q)$.
 \end{enumerate}
 \end{exercise}
 
-\begin{proof}[Solução en processo]
+\begin{proof}[Intento 1, mas exp não é injetiva…]
 Suponha por enquanto que existe
 uma geodésica minimizante $\gamma$ ligando $p$ e $q$.
 
@@ -201,15 +203,6 @@ $C_m(p)$ é suficiente para garantir a existência de uma geodésica minimizante
 ligando $p$ e $q$. Por definição de cut locus, existe uma geodésica 
 $\gamma$ ligando $p$ e $q$, e $q$ é o primeiro ponto onde $\gamma$ deixa
 de ser minimizante.
-
-Portanto, $\gamma$ não tem pontos conjugados entre $p$ e $q$. Idea: isso vai
- obrigar a que a geodésica seja minimizante antes de $q$: suponha que
-$\gamma$ não é minimizante
-$$
-d(p,C_m(p))=d(p,q)=\text{inf}_{}
-$$
-
-
 \end{proof}
 
 \begin{exercise}
@@ -226,8 +219,31 @@ que o de qualquer outra geodésica fechada em $M$, tal que
 $$
 i(M)=\frac{1}{2}\ell(\gamma)
 $$
-
 \end{enumerate}
 \end{exercise}
 
+\begin{proof}
+Suponha que (1) não é verdadeiro. Considere $q \in C_m(p)$, o ponto onde a
+distância de $p$ a $C_m(p)$ é mínima, que existe porque $C_m(p)$ é fechado e
+portanto compacto, já que $M$ é compacta pelo Teorema de Bonnet-Myers 
+\ref{theorem-bonnet-myers}.
 
+Então podemos usar o exercício anterior. Primeiro vamos ver o que
+acontece no caso da segunda possibilidade, i.e. 
+que existem exatamente duas geodésicas ligando $p$ e $q$, digamos
+$\gamma$ é $\sigma$, tais que $\gamma'(\ell)=-\sigma'(\ell)$ onde $\ell=d(p,q)$.
+ Considere $\gamma * \overline{\sigma}$, onde $*$ é a concatenação de curvas e
+$\overline{\sigma}$ é a curva $\sigma$ percorrida em sentido contrário. É claro
+que $\gamma * \overline{\sigma}$ é uma geodésica fechada de comprimento $2
+d(p,q)$. Note que por definição  $d(p,q)=\ell=i(M)$.
+
+Portanto, basta descartar o primeiro caso do exercício anterior. Para chegar a
+ uma contradição, suponha que $p $ é conjugado a $q$, i.e. que existe um campo
+ de Jacobi $J$ que se anula em $p$ e em $q$. Podemos usar o teorema de Rauch
+\ref{theorem-rauch} para comparar esse campo com $\tilde{J}$, 
+um campo em $S^n_{K_{\text{max}}}$, a esfera de curvatura constante
+ $K_{\text{max}}$. Como $K \leq  K_{\text{max}}$,
+concluímos que $\tilde{J}$ deve se anular em $\ell=d(p,q)=i(M)$. Absurdo, pois
+estamos supondo que (1) não é verdadeiro, i.e. que
+ $i(M) < \pi/\sqrt{K_{\text{max}}}$.
+\end{proof}
