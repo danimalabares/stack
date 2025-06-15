@@ -85,7 +85,7 @@ submanifold is trivial.
 \end{remark}
 
 \section{Hopf-Rinow Theorem}
-\label{section-hopf-rinow-theorem}
+\label{section-Hopf-Rinow-theorem}
 
 \begin{theorem}[Hopf-Rinow]
 \label{theorem-Hopf-Rinow}
@@ -109,7 +109,7 @@ geodesic joining any two points.
 
 
 \section{Bonnet-Myers Theorem}
-\label{subsection-Bonnet-Myers}
+\label{subsection-Bonnet-Myers-theorem}
 
 \begin{theorem}[Bonnet-Myers]
 \label{theorem-bonnet-myers}
@@ -117,7 +117,7 @@ If $M$ is a complete manifold with $\operatorname{Ric} \geq \frac{1}{r^2}$, then
 $\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
 \end{theorem}
 
-\section{Teorema de comparação de Rauch}
+\section{Rauch's comparison theorem}
 \label{section-Rauch}
 
 \section{Index lemma}
@@ -328,12 +328,13 @@ Because it's the image of the unit sphere in $T_pM$, which is closed.
 
 \begin{lemma}[Outside the cut locus implies exists unique minimizing geodesic]
 \label{lemma-outside-cut-locus-exists-minimizing-geodesic}
-If $q \in M\setminus C_m(p)$, there exists a unique minimizing geodesic joining
+\cite{doc} Chapter XIII, Corollary 2.8. If $q \in M\setminus C_m(p)$, there exists a
+ unique minimizing geodesic joining
 $p$ and $q$.
 \end{lemma}
 
 \begin{proof}
-By Hopf-Rinow, we know that
+By Hopf-Rinow \ref{theorem-Hopf-Rinow}, we know that
 there exists a minimizing geodesic joining any two points. If there was more
 than one such geodesic, by 
 Proposition \ref{proposition-cut-point-characterization} 
@@ -342,14 +343,15 @@ a contradiction.
 \end{proof}
 
 The former Lemma \ref{lemma-outside-cut-locus-exists-minimizing-geodesic} 
-shows that the exponential map is injective outside the cut locus of $M$. 
+shows that the exponential map $\text{exp}_p$
+ is injective outside the cut locus of $p$. 
 This motivates the following definition.
 
 \begin{definition}[Injectivity radius]
 \label{definition-injectivity-radius}
 The {\it injectivity radius} of a manifold $M$ is
 $$
-i(M)=\operatorname{inf}\{d(p,C_m(M)):p \in M\}
+i(M)=\operatorname{inf}\{d(p,C_m(p)):p \in M\}
 $$
 \end{definition}
 

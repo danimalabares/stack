@@ -172,7 +172,7 @@ $\ell=d(p,q)$.
 \end{enumerate}
 \end{exercise}
 
-\begin{proof}[Intento 1, mas exp não é injetiva…]
+\begin{proof}
 Suponha por enquanto que existe
 uma geodésica minimizante $\gamma$ ligando $p$ e $q$.
 
@@ -194,7 +194,16 @@ $$
 J(t)=d_{t\text{exp}_{\gamma(t)}^{-1}\sigma(t)}
 \text{exp}_p(\text{exp}_{\gamma(t)}^{-1}\sigma(t))
 $$
-Se anula em $t=0,1$. Note que se $\gamma'(\ell)=-\sigma'(\ell)$ 
+se anula em $t=0,1$. Pensei que esse campo de Jacobi estava bem definido pelo 
+Corolário 2.8, Cap. XIII (Lema 
+\ref{lemma-outside-cut-locus-exists-minimizing-geodesic}), que assegura
+ que $\text{exp}_p$ é injetiva fora do cut locus de $p$. Porém, precisaria
+ que $\text{exp}_{\gamma(t)}$ for injetiva fora do cut locus de $p$. 
+Essa condição seria garantida se $d(p,q)=i(M)$, ou seja, se a exponencial
+ $\text{exp}_{p'}$ for injetiva na bola de raio $d(p,q)$ para qualquer 
+$p' \in M$. Em conclusão: esse campo não está bem definido.
+
+Note que se $\gamma'(\ell)=-\sigma'(\ell)$ 
 o campo de Jacobi é nulo, e não necessariamente $p$ é conjugado a $q$ ao longo
 de $\gamma$. Em qualquer outro caso voltamos no caso (a).
 
