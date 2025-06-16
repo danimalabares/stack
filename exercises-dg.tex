@@ -188,7 +188,7 @@ alguma das seguintes condições é verdadeira:
 Se (a) é verdadeira, terminamos. Se (b) é verdadeira, temos que existe outra
 geodésica minimizante $\sigma$ ligando $p$ e $q$.
 
-{\bf Intento pessoal:}  considere a variação por geodésicas 
+{\bf Intento pessoal (não funcionou):}  considere a variação por geodésicas 
 $$
 f(s,t):=\operatorname{exp}_{\gamma(t)}
 (s\operatorname{exp}_{\gamma(t)}^{-1}\sigma(t))
@@ -202,27 +202,72 @@ se anula em $t=0,1$. Pensei que esse campo de Jacobi estava bem definido pelo
 Corolário 2.8, Cap. XIII (Lema 
 \ref{lemma-outside-cut-locus-exists-minimizing-geodesic}), que assegura
  que $\text{exp}_p$ é injetiva fora do cut locus de $p$. Porém, precisaria
- que $\text{exp}_{\gamma(t)}$ for injetiva fora do cut locus de $p$. 
+ que a exponencial ao longo de $\gamma$,
+ $\text{exp}_{\gamma(t)}$, for injetiva fora do cut locus de $p$. 
 Essa condição seria garantida se $d(p,q)=i(M)$, ou seja, se a exponencial
  $\text{exp}_{p'}$ for injetiva na bola de raio $d(p,q)$ para qualquer 
-$p' \in M$. Em conclusão: esse campo não está bem definido. (Se estivesse, com
+$p' \in M$. Em conclusão: minha variação não está bem definida. 
+(Se estivesse, com
 isso terminaria o exercício, pois obtemos que o único caso em que $p$ não é
 conjugado a $q$ é se $\gamma'(\ell)=-\sigma'(\ell)$, i.e. se o campo de Jacobi 
 associado à variação é nulo.) 
 
-A variação certa é produzida no \cite{doc} supondo que 
-$\gamma'(\ell)\neq -\sigma'(\ell)$. Isso significa que o vetor 
-$\gamma'(\ell)-\sigma'(\ell)$ não é zero e portanto existe um vetor 
-$V \in T_q M$ tal que $\left<\gamma'(\ell)-\sigma'(\ell),V\right>\neq 0$. 
-Podemos supor que $\left<\gamma'(\ell)-\sigma'(\ell),V\right><0$, ou seja, 
-podemos supor que um dos produtos $\left<V,\gamma'(\ell)\right>$,
-$\left<V,\sigma'(\ell)\right>$ e maior do que o outro. Mas por enquanto não sei
-como provar que podemos supor que os dois são negativos.
+\medskip
 
-Agora usamos o fato de que $p$ e $q$ não são conjugados para levantar alguma
+A variação certa é produzida no \cite{doc} supondo que 
+$\gamma'(\ell)\neq -\sigma'(\ell)$; isso implica que existe um vetor
+ $V \in T_q M$ tal que 
+$\left<\gamma'(\ell),V\right>< 0$ e $\left<\sigma'(\ell),V\right>< 0$.
+
+Uma maneria simples de conferir a existência desse vetor $V$ é olhando para o 
+plano gerado por $\gamma'(\ell)$ e $\sigma'(\ell)$ (usando que são linearmente
+independentes). O conjunto de vetores $V$ nesse plano satisfazendo 
+$\left<\gamma'(\ell),V\right><0$ é um semiespaço, e o mesmo acontece com 
+ os vetores satisfazendo $\left<\sigma'(\ell),V\right><0$. Esses dois semiespaços
+devem ter interseção não vazia precisamente porque 
+$\gamma'(\ell)\neq -\sigma'(\ell)$.
+
+Agora usamos o fato de que $p$ e $q$ não são conjugados para 
+achar uma vizinhança do vetor $\ell \gamma'(0)$ onde $\text{exp}_p$ é um
+difeomorfismo e assim levantar alguma
 curva $r$ que realize o vetor $V$ ao espaço tangente,
  digamos $v:(-\varepsilon,\varepsilon) \to T_q M$.
 
+A variação então está dada por
+$$
+f(s,t):=\text{exp}_p\left(\frac{t}{\ell}v(s)\right)
+$$
+Podemos aplicar a primeira fórmula da variação, na qual: o termo com a
+integral é zero porque $\gamma$ é uma geodésica; o termo da sumatoria é zero
+porque trata-se de uma variação suave; e o primeiro termo dos extremos é zero
+porque a variação fixa o ponto de partida. Obtemos que 
+$$
+E'(0)=\left<V,\gamma'(0)\right><0
+$$
+Note que Manfredo escreve a equação anterior usando o funcional de distância. 
+Isso também é válido: de fato a primeira fórmula da variação pode ser 
+deduzida de maneira análoga (feito em sala para variações próprias) 
+ para o funcional de distância no caso de geodésicas parametrizadas por 
+comprimento de arco (cf. Teo. 6.3 \cite{ler}).
+
+O fato da derivada do funcional de comprimento ser negativa nos diz que para
+valores perto de $s=0$ podemos achar curvas com menor comprimento. Mais
+precisamente, existe um $s>0$ tal que $\ell(f(s,\cdot))<\ell(\gamma)$.
+
+É claro que o mesmo procedimento genera uma variação $\tilde{f}$ de $\sigma$, e 
+podemos supor que a mesma $s>0$ faz $\ell(\tilde{f}(s,\cdot))<\ell(\sigma)$.
+
+Concluímos seguindo o argumento do Professor Manfredo: se 
+$\ell(\gamma_s)=\ell(\sigma_s)$, então temos duas geodésicas com o mesmo
+comprimento ligando $p$ e $\gamma_s(\ell)=\sigma_s(\ell)$; isso significa 
+que existe um ponto $\tilde{t} \in (0,\ell]$ tal que $\gamma_s(\tilde{t})$ é
+ o cut point de $p$. Porém, isso contradiz o fato de que $q$ realiza a 
+distância entre $p$ e o seu cut locus.
+
+Finalmente, se $\ell(\gamma_s)<\ell(\sigma_s)$, segue que o cut point de $p$
+ ao longo de $\sigma_s$ está a distância menor do que $q$, que de novo contradiz
+a nossa hipótese.
+\end{proof}
 
 \begin{exercise}
 Proposição 2.13, Cap. XIII \cite{doc}. Se a curvatura seccional $K$ de uma
