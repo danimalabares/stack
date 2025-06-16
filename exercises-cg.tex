@@ -1,0 +1,24 @@
+\section{Exercises}
+\label{section-exercises}
+
+\begin{exercise}
+\label{exercise-k3-2.7}
+Let $S \subset M$ be a singular, irreducible complex curve on a K3 surface.
+Prove that $(S,S)\geq 0$
+\end{exercise}
+
+\begin{proof}[Solution]
+This follows from Proposition 
+\ref{proposition-adjunction-formula-curves-on-surfaces}, which says that
+for any curve $S$ on a smooth surface $S$:
+$$
+2p_a(S)-2=S\cdot (S+K_M)
+$$
+In our case, since $K_M \cong\mathcal{O}_M$, this shows that $(S.S)\geq 0$
+provided $p_a(S) \neq 0$. This is the case since, for a singular curve like $S$,
+the arithmetic genus $p_a(S)$ is defined to be the genus of the normalization
+ $\tilde{S}$. In turn, the cokernel of the induced map by the normalization
+(cf \cite{sea} 28.5.4) is zero sheaf iff and only if the genus of $S$ coincides
+with the genus of $\tilde{S}$, but this is not true as long as $S$ has
+singularities... the cokernel is supported on a finite set of closed points.
+\end{proof}

@@ -10,6 +10,7 @@
 
 \tableofcontents
 
+
 \section{Chow's theorem}
 \label{section-chow-theorem}
 
@@ -27,8 +28,18 @@ as a proposition using inverse function theorem (real or complex).
 
 \begin{proposition}
 \label{proposition-stalk-principal-smooth}
-Stalks of holomorphic functions principal at smooth points.
+Stalk of holomorphic functions is a PID at smooth points.
 \end{proposition}
+
+\begin{proof}
+This can be proved via Weierstrass Preparation theorem
+\ref{theorem-Weierstrass-preparation} which implies
+ Lemma \ref{lemma-stalks-are-UFDs}, and this in turn implies Lemma 
+\ref{lemma-codimension-1-ideals-in-UFD-are-principal}.
+
+Also, it can be shown directly for smooth hypersurfaces
+ as in \cite{lec} Lemma 3.38.
+\end{proof}
 
 \begin{theorem}[Chow for hypersurfaces]
 \label{theorem-chow}

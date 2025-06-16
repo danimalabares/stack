@@ -1,0 +1,51 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Algebraic Topology}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Covering spaces}
+\label{section-covering-spaces}
+
+\begin{proposition}[Unique lifting property]
+\label{proposition-unique-lifting-property}
+\cite{hat}, Proposition 1.34. Given a covering space $p:\tilde{X} \to X$ and a
+map $f:Y \to X$, if two lifts $\tilde{f}_1,\tilde{f}_2:Y \to \tilde{X}$ of $f$
+agree at one point of $Y$ and $Y$ is connected, then $\tilde{f}_1$ and
+$\tilde{f}_2$ agree on all of $Y$.
+\end{proposition}
+
+\begin{proof}
+We aim to show that the set of points where $\tilde{f}_1$ and $\tilde{f}_2$
+agree is both open and closed in $Y$. Let $y \in Y$ and consider an evenly
+covered neighbourhood $U$ of $f(y)$, so that $p^{-1}(U)$ is a disjoint union of
+sets, each of which is homeomorphic to $U$ via $p$. Let $\tilde{U}_1$ and
+$\tilde{U}_2$ be the sheets containing $\tilde{f}_1(y)$ and $\tilde{f}_2(y)$,
+respectively. By continuity of $\tilde{f}_1$ and $\tilde{f}_2$, the intersection
+$\tilde{f}^{-1}_1(\tilde{U}_1) \cap \tilde{f}_2^{-1}(\tilde{U}_2):=N$ is 
+ an open neighbourhood of $y$.
+
+Since  $\tilde{U}_1$ and $\tilde{U}_2$ are mapped homeomorphically to the set
+$U \subset X$, we can only have that either $\tilde{U}_1$ coincides
+with $\tilde{U}_2$, or they are disjoint. If they are disjoint, then the 
+neighbourhood $N$ shows that the set of points where $\tilde{f}_1$ and
+$\tilde{f}_2$ agree is closed; that's because in this case they don't agree at a
+point, so that we are on the complement of the set where they agree, and we have
+shown it's an open set (every point has a neighbourhood contained in the set).
+
+If, on the other hand, $\tilde{U}_1$ and $\tilde{U}_2$ are the same, which
+happens when $\tilde{f}_1(y)=\tilde{f}_2(y)$, then $\tilde{f}_1$ and 
+$\tilde{f}_2$ agree throughout $N$, so that we have shown that the set where
+$\tilde{f}_1$ and $\tilde{f}_2$ coincide is open.
+\end{proof}
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+

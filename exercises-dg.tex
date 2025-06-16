@@ -2,7 +2,7 @@
 \label{section-exercises}
 
 \begin{exercise}[Geodésica sem pontos conjugados é localmente minimizante]
-\label{exercise-pts}
+\label{exercise-geodesica-sem-pontos-conjugados-e-localmente-minimizante}
 $\gamma$ geodésica sem pontos conjugados em $[0,a]$. Então $\gamma$ é localmente
 minimizante.
 \end{exercise}
@@ -158,6 +158,7 @@ Resposta: porque nada me assegura que essas geodésicas
 \label{section-lista-8}
 
 \begin{exercise}
+\label{exercise-l8-1}
 Prop. 2.12 do capítulo XIII, \cite{doc}. Seja $p \in M$. 
 Suponha exista um ponto $q \in C_m(p)$ que realiza a distância de $p$ a 
 $C_m(p)$. Então:
@@ -172,8 +173,9 @@ $\ell=d(p,q)$.
 \end{enumerate}
 \end{exercise}
 
-\begin{proof}[Intento 1, mas exp não é injetiva…]
-Suponha por enquanto que existe
+\begin{proof}
+No final da secção 1 do Capítulo XIII está especificado que as variedades que se
+consideram no capítulo são completas. Portanto podemos supor que existe
 uma geodésica minimizante $\gamma$ ligando $p$ e $q$.
 
 Então podemos aplicar a Proposição \ref{proposition-cut-point-characterization}:
@@ -183,8 +185,10 @@ alguma das seguintes condições é verdadeira:
 (a) $q$ é o primeiro ponto conjugado a $p$ ao longo de $\gamma$, ou 
 (b) existem duas geodésicas minimizantes ligando $p$ e $q$.
 
-Se (a) é verdadeira, terminamos. 
-Se (b) é verdadeira, considere a variação por geodésicas 
+Se (a) é verdadeira, terminamos. Se (b) é verdadeira, temos que existe outra
+geodésica minimizante $\sigma$ ligando $p$ e $q$.
+
+{\bf Intento pessoal (não funcionou):}  considere a variação por geodésicas 
 $$
 f(s,t):=\operatorname{exp}_{\gamma(t)}
 (s\operatorname{exp}_{\gamma(t)}^{-1}\sigma(t))
@@ -194,22 +198,82 @@ $$
 J(t)=d_{t\text{exp}_{\gamma(t)}^{-1}\sigma(t)}
 \text{exp}_p(\text{exp}_{\gamma(t)}^{-1}\sigma(t))
 $$
-Se anula em $t=0,1$. Note que se $\gamma'(\ell)=-\sigma'(\ell)$ 
-o campo de Jacobi é nulo, e não necessariamente $p$ é conjugado a $q$ ao longo
-de $\gamma$. Em qualquer outro caso voltamos no caso (a).
+se anula em $t=0,1$. Pensei que esse campo de Jacobi estava bem definido pelo 
+Corolário 2.8, Cap. XIII (Lema 
+\ref{lemma-outside-cut-locus-exists-minimizing-geodesic}), que assegura
+ que $\text{exp}_p$ é injetiva fora do cut locus de $p$. Porém, precisaria
+ que a exponencial ao longo de $\gamma$,
+ $\text{exp}_{\gamma(t)}$, for injetiva fora do cut locus de $p$. 
+Essa condição seria garantida se $d(p,q)=i(M)$, ou seja, se a exponencial
+ $\text{exp}_{p'}$ for injetiva na bola de raio $d(p,q)$ para qualquer 
+$p' \in M$. Em conclusão: minha variação não está bem definida. 
+(Se estivesse, com
+isso terminaria o exercício, pois obtemos que o único caso em que $p$ não é
+conjugado a $q$ é se $\gamma'(\ell)=-\sigma'(\ell)$, i.e. se o campo de Jacobi 
+associado à variação é nulo.) 
 
-Agora vamos mostrar que o fato de que $q \in C_m(p)$ realiza a distância de $p$ a 
-$C_m(p)$ é suficiente para garantir a existência de uma geodésica minimizante
-ligando $p$ e $q$. Por definição de cut locus, existe uma geodésica 
-$\gamma$ ligando $p$ e $q$, e $q$ é o primeiro ponto onde $\gamma$ deixa
-de ser minimizante.
+\medskip
+
+A variação certa é produzida no \cite{doc} supondo que 
+$\gamma'(\ell)\neq -\sigma'(\ell)$; isso implica que existe um vetor
+ $V \in T_q M$ tal que 
+$\left<\gamma'(\ell),V\right>< 0$ e $\left<\sigma'(\ell),V\right>< 0$.
+
+Uma maneria simples de conferir a existência desse vetor $V$ é olhando para o 
+plano gerado por $\gamma'(\ell)$ e $\sigma'(\ell)$ (usando que são linearmente
+independentes). O conjunto de vetores $V$ nesse plano satisfazendo 
+$\left<\gamma'(\ell),V\right><0$ é um semiespaço, e o mesmo acontece com 
+ os vetores satisfazendo $\left<\sigma'(\ell),V\right><0$. Esses dois semiespaços
+devem ter interseção não vazia precisamente porque 
+$\gamma'(\ell)\neq -\sigma'(\ell)$.
+
+Agora usamos o fato de que $p$ e $q$ não são conjugados para 
+achar uma vizinhança do vetor $\ell \gamma'(0)$ onde $\text{exp}_p$ é um
+difeomorfismo e assim levantar alguma
+curva $r$ que realize o vetor $V$ ao espaço tangente,
+ digamos $v:(-\varepsilon,\varepsilon) \to T_q M$.
+
+A variação então está dada por
+$$
+f(s,t):=\text{exp}_p\left(\frac{t}{\ell}v(s)\right)
+$$
+Podemos aplicar a primeira fórmula da variação, na qual: o termo com a
+integral é zero porque $\gamma$ é uma geodésica; o termo da sumatoria é zero
+porque trata-se de uma variação suave; e o primeiro termo dos extremos é zero
+porque a variação fixa o ponto de partida. Obtemos que 
+$$
+E'(0)=\left<V,\gamma'(0)\right><0
+$$
+Note que Manfredo escreve a equação anterior usando o funcional de distância. 
+Isso também é válido: de fato a primeira fórmula da variação pode ser 
+deduzida de maneira análoga (feito em sala para variações próprias) 
+ para o funcional de distância no caso de geodésicas parametrizadas por 
+comprimento de arco (cf. Teo. 6.3 \cite{ler}).
+
+O fato da derivada do funcional de comprimento ser negativa nos diz que para
+valores perto de $s=0$ podemos achar curvas com menor comprimento. Mais
+precisamente, existe um $s>0$ tal que $\ell(f(s,\cdot))<\ell(\gamma)$.
+
+É claro que o mesmo procedimento genera uma variação $\tilde{f}$ de $\sigma$, e 
+podemos supor que a mesma $s>0$ faz $\ell(\tilde{f}(s,\cdot))<\ell(\sigma)$.
+
+Concluímos seguindo o argumento do Professor Manfredo: se 
+$\ell(\gamma_s)=\ell(\sigma_s)$, então temos duas geodésicas com o mesmo
+comprimento ligando $p$ e $\gamma_s(\ell)=\sigma_s(\ell)$; isso significa 
+que existe um ponto $\tilde{t} \in (0,\ell]$ tal que $\gamma_s(\tilde{t})$ é
+ o cut point de $p$. Porém, isso contradiz o fato de que $q$ realiza a 
+distância entre $p$ e o seu cut locus.
+
+Finalmente, se $\ell(\gamma_s)<\ell(\sigma_s)$, segue que o cut point de $p$
+ ao longo de $\sigma_s$ está a distância menor do que $q$, que de novo contradiz
+a nossa hipótese.
 \end{proof}
 
 \begin{exercise}
 Proposição 2.13, Cap. XIII \cite{doc}. Se a curvatura seccional $K$ de uma
 variedade Riemanniana completa $M$ satisfaz
 $$
-0\leq K_{\operatorname{min}}\leq K\leq K_{\operatorname{max}},
+0< K_{\operatorname{min}}\leq K\leq K_{\operatorname{max}},
 $$
 Então
 \begin{enumerate}
@@ -222,4 +286,76 @@ $$
 \end{enumerate}
 \end{exercise}
 
+\begin{proof}
+Suponha que (1) não é verdadeiro. Considere $q \in C_m(p)$, o ponto onde a
+distância de $p$ a $C_m(p)$ é mínima, que existe porque $C_m(p)$ é fechado e
+portanto compacto, já que $M$ é compacta pelo Teorema de Bonnet-Myers 
+\ref{theorem-Bonnet-Myers}.
+
+Então podemos usar o exercício anterior. Primeiro vamos ver o que
+acontece no caso da segunda possibilidade, i.e. 
+que existem exatamente duas geodésicas ligando $p$ e $q$, digamos
+$\gamma$ é $\sigma$, tais que $\gamma'(\ell)=-\sigma'(\ell)$ onde $\ell=d(p,q)$.
+ Considere $\gamma * \overline{\sigma}$, onde $*$ é a concatenação de curvas e
+$\overline{\sigma}$ é a curva $\sigma$ percorrida em sentido contrário. É claro
+que $\gamma * \overline{\sigma}$ é uma geodésica fechada de comprimento $2
+d(p,q)$. Note que por definição  $d(p,q)=\ell=i(M)$.
+
+Portanto, basta descartar o primeiro caso do exercício anterior. Para chegar a
+ uma contradição, suponha que $p $ é conjugado a $q$, i.e. que existe um campo
+ de Jacobi $J$ que se anula em $p$ e em $q$. Podemos usar o teorema de Rauch
+\ref{theorem-Rauch} para comparar esse campo com $\tilde{J}$, 
+um campo em $S^n_{K_{\text{max}}}$, a esfera de curvatura constante
+ $K_{\text{max}}$. Como $K \leq  K_{\text{max}}$,
+concluímos que $\tilde{J}$ deve se anular em $\ell=d(p,q)=i(M)$. Absurdo, pois
+estamos supondo que (1) não é verdadeiro, i.e. que
+ $i(M) < \pi/\sqrt{K_{\text{max}}}$.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-proposição-3.4}
+\cite{doc}, Capítulo XIII, Proposição 3.4. Se a curvatura seccional $K$ de uma
+variedade Riemanniana $M^n$, compacta, orientável e de dimensão par, satisfaz 
+$0<K \leq 1$, então $i(M) \geq \pi$.
+\end{exercise}
+
+\begin{proof}
+Para obter uma contradição, suponha que existe um ponto $p \in M$ tal que
+ $d(p, C_m(p))<\pi$. Como $M$ é compacta, sabemos que $C_m(p)$ é compacto e
+portanto existe uma geodésica $\gamma$ ligando $p$ com $q \in C_m(p)$ e
+realizando a distância $d(p,C_m(p))$.
+
+Pelo teorema de Rauch, sabemos que qualquer geodésica não pode ter pontos
+conjugados antes de alcançar comprimento $\pi$. Explicitamente, se $J$ é um
+campo de Jacobi ao longo de alguma geodésica $\gamma$ tal que $J(0)=0$ e 
+$J(\ell(\gamma))=0$, comparando com um campo $\tilde{J}$ em $S^n$ tal que
+ $\tilde{J}(0)=0$, $|\tilde{J}'(0)|=|J'(0)|$ e 
+$\left<J,\gamma'\right>=\left<\tilde{J},\tilde{\gamma}\right>$, concluímos que
+ $|\tilde{J}|\leq |J|$ ao longo de $\gamma$. Como as geodésicas de $S^n$ não
+ tem pontos conjugados antes de atingir comprimento $\pi$, concluímos que 
+$J$ não pode se anular antes desse ponto.
+
+Isso mostra que, como estamos supondo que $d(p,C_m(p))<\pi$, devemos estar no
+caso (2) do Exercício \ref{exercise-l8-1}, i.e. existem exatamente duas
+geodésicas $\gamma$ e $\sigma$ ligando $p$ e $q$, e
+$\gamma'(\ell)=-\sigma'(\ell)$. Como no Exercício \ref{exercise-l8-3}, podemos
+usar essas duas geodésicas para achar um loop geodésico de comprimento $2i(M)$.
+
+Finalmente usamos o teorema de Synge \ref{theorem-Synge}, que nos diz que como
+$M$ é de dimensão par, orientável, compacta e de curvatura positiva, o grupo
+fundamental dela deve ser trivial. Isso significa que o laço geodésico que
+achamos é homotópico a uma constante.
+
+Isso não é possível: pois $\gamma$ e $\sigma$ são duas geodésicas minimizantes
+ligando $p$ e $q$, e isso significa que 
+\end{proof}
+
+\begin{exercise}
+\label{exercise-l8-11}
+Seja $M$ uma variedade Riemanniana completa, de curvatura seccional não
+negativa. Sejam $\gamma,\sigma:[0,\infty) \to M$ geodésicas tais que
+$\gamma(0)=\sigma(0)$. Se $\gamma$ é um raio e
+$\angle(\gamma'(0),\sigma'(0))<\frac{1}{2}\pi$, então $\lim_{t \to \infty}
+\rho(\sigma(0),\sigma(t))=\infty$ (i.e. $\sigma$ vai para o infinito).
+\end{exercise}
 

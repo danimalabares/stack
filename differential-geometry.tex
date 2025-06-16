@@ -83,15 +83,43 @@ differential of $\operatorname{exp}_p$ has kernel.
 Ricci equation may help prove that the normal bundle of a high codimension
 submanifold is trivial.
 \end{remark}
+
+\section{Hopf-Rinow Theorem}
+\label{section-Hopf-Rinow-theorem}
+
+\begin{theorem}[Hopf-Rinow]
+\label{theorem-Hopf-Rinow}
+The following are equivalent for any $p \in M$:
+\begin{enumerate}
+\item The domain of the exponential map $\text{exp}_p$ is $T_pM$.
+\item Closed and bounded subsets are compact.
+\item $(M,d)$ is a complete metric space.
+\item $M$ is geodeiscally complete (i.e. every geodesic is maximally defined in
+all of $\mathbb{R}$).
+\item Existence of exhaustions.
+\end{enumerate}
+Moreover, each of the former conditions imply that there exists a minimizing 
+geodesic joining any two points.
+\end{theorem}
 \section{First Variation Formula}
 \label{section-first-variation}
+
+\begin{theorem}[First Variation Formula]
+\label{theorem-first-variation-formula}
+If  $f:(-\varepsilon,\varepsilon)\times(-\delta,\delta) \to M$ is a variation of
+the geodesic $\gamma(-\delta,\delta)\to M$, then
+$$
+\frac{1}{2}E'(0)=-\int_a^b\left<V,\gamma''\right>+\left<V,\gamma'\right>|_{a}^b
++\sum_{i=1}^{k-1}\left<V,\gamma'^{-}(t_{i})-\gamma'^{+}(t_i)\right>
+$$
+\end{theorem}
 
 \section{Second Variation Formula}
 \label{section-second-variation}
 
 
 \section{Bonnet-Myers Theorem}
-\label{subsection-bonnet-myers}
+\label{subsection-Bonnet-Myers-theorem}
 
 \begin{theorem}[Bonnet-Myers]
 \label{theorem-bonnet-myers}
@@ -99,17 +127,64 @@ If $M$ is a complete manifold with $\operatorname{Ric} \geq \frac{1}{r^2}$, then
 $\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
 \end{theorem}
 
-\section{Teorema de comparação de Rauch}
-\label{section-rauch}
+\section{Rauch's comparison theorem}
+\label{section-Rauch}
+
+\section{Weinstein's theorem}
+\label{section-Weinstein-theorem}
+
+\begin{theorem}[Weinstein]
+\label{theorem-Weinstein}
+Let $M^n$ be oriented, compact, $K>0$ and $f \in \text{Iso}(M)$. Suppose that 
+if $n$ is even, $f$ preserves orientation, and if $n$ is odd, $f$ reverts
+orientation. Then $f$ has a fixed point.
+\end{theorem}
+
+\section{Synge's theorem}
+\label{section-Synge-theorem}
+
+\begin{theorem}[Synge]
+\label{theorem-Synge}
+Let $M^n$ be compact and $K>0$. Then
+\begin{enumerate}
+\item If $n$ is even,
+$$
+\pi_1(M)=\begin{cases}
+	1\qquad & \text{if $M$ is orientable}\\
+	\mathbb{Z}_2\qquad & \text{if $M$ is not orientable}
+\end{cases}
+$$
+\item If $n$ is odd, then $M^n$ is orientable.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+First suppose $n$ is even and $M$ is orientable. Since $M$ is compact we must
+have that $K\geq \delta>0$. Now consider the universal cover $\tilde{M}$. Then
+it also satisfies the curvature bound (with the pullback metric)
+, making it compact as well by Bonnet-Myers \ref{theorem-bonnet-myers}. 
+Now pick a deck transformation, which must be
+orientation-preserving if we choose the orientation on $\tilde{M}$ (simply
+connected is always orientable) making the projection orientation-preserving.
+Then $f$ must have a fixed point by Weinstein's theorem \ref{theorem-Weinstein},
+which applies since we have shown that $\tilde{M}$ is compact. 
+However, deck transformations cannot have fixes points unless they are the
+ identity: this is a consequence of the ``Unique lifting property", which a 
+slightly more general statement than the uniqueness of curve lifts that we 
+used for Klinenberg's lemma exercise \ref{exercise-l7-1}. 
+More exactly (cf. \ref{proposition-unique-lifting-property}): 
+given a covering space and to maps from any space into the base, these coincide
+ if they agree at one point only.
+\end{proof}
 
 \section{Index lemma}
 \label{subsection-index-lemma}
 
 \section{Teorema de Rauch}
-\label{subsection-rauch}
+\label{subsection-Rauch}
 
 \begin{theorem}[Rauch]
-\label{theorem-rauch}
+\label{theorem-Rauch}
 \end{theorem}
 
 \begin{proposition}
@@ -203,7 +278,6 @@ $$
 $$
 
 \end{definition}
-
 
 \begin{proposition}[Cut point characterization]
 \label{proposition-cut-point-characterization}
@@ -310,15 +384,31 @@ Because it's the image of the unit sphere in $T_pM$, which is closed.
 \end{lemma}
 
 \begin{lemma}[Outside the cut locus implies exists unique minimizing geodesic]
-\label{lemma-outside-cut-locus-minimizing-geodesic}
-The geodesic stays outside the cut locus.
+\label{lemma-outside-cut-locus-exists-minimizing-geodesic}
+\cite{doc} Chapter XIII, Corollary 2.8. If $q \in M\setminus C_m(p)$, there exists a
+ unique minimizing geodesic joining
+$p$ and $q$.
 \end{lemma}
+
+\begin{proof}
+By Hopf-Rinow \ref{theorem-Hopf-Rinow}, we know that
+there exists a minimizing geodesic joining any two points. If there was more
+than one such geodesic, by 
+Proposition \ref{proposition-cut-point-characterization} 
+we get that $q$ is the cut point of  $q$ along either of these geodesics, 
+a contradiction.
+\end{proof}
+
+The former Lemma \ref{lemma-outside-cut-locus-exists-minimizing-geodesic} 
+shows that the exponential map $\text{exp}_p$
+ is injective outside the cut locus of $p$. 
+This motivates the following definition.
 
 \begin{definition}[Injectivity radius]
 \label{definition-injectivity-radius}
 The {\it injectivity radius} of a manifold $M$ is
 $$
-i(M)=\operatorname{inf}\{d(p,C_m(M)):p \in M\}
+i(M)=\operatorname{inf}\{d(p,C_m(p)):p \in M\}
 $$
 \end{definition}
 
@@ -358,12 +448,12 @@ pues va… pero si no…
 \end{proof}
 
 \section{Toponogov's theorem}
-\label{section-toponogov}
+\label{section-Toponogov}
 
 First recall
 
 \begin{theorem}[Toponogov, local version]
-\label{theorem-toponogov,local}
+\label{theorem-Toponogov,local}
 Let $o,p_1,p_2 \in B$ where $B$ is a totally convex ball of $M$. Let $\gamma_1$
 and $\gamma_2$ be the normalized geodesics joining $o$ to $p_1$ and to $p_2$.
 
@@ -378,9 +468,9 @@ $$
 \end{theorem}
 
 \begin{exercise}[Lista 7]
-\label{exercise-toponogov-from-rauch}
+\label{exercise-Toponogov-from-Rauch}
 Prove the local version of Toponogov's theorem as a corollary of Rauch's
-Comparison Theorem \ref{theorem-rauch}.
+Comparison Theorem \ref{theorem-Rauch}.
 \end{exercise}
 
 \begin{proof}
@@ -389,7 +479,7 @@ given by the condition of mapping $\gamma'_1(0)$ to $\gamma_2'(0)$ and the angle
 between them to the corresponding vectors and angle on $\tilde{M}$.
 \end{proof}
 
-\begin{theorem}[Toponogov, hinge version] \label{theorem-toponogov-hinge}
+\begin{theorem}[Toponogov, hinge version] \label{theorem-Toponogov-hinge}
 Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, with
 $p_1\neq  p_2$. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
 $o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing.
@@ -433,18 +523,40 @@ $$
 So it's the same right? You look form $p_1$ instead…
 \end{remark}
 
+\section{Cartan's Theorem}
+\label{section-Cartan-theorem}
 
+\begin{definition}
+\label{definition-free-homotopy-set}
+The {\it free homotopy set} is the set of homotopy classes of loops based on any
+point of $M$.
+\end{definition}
 
+\begin{definition}
+\label{definition-geodesic-loop}
+A {\it geodesic loop} is a geodesic whose starting and ending points are the
+same. It may not be differentiable at such point.
+\end{definition}
 
+\begin{definition}
+\label{definition-closed-geodesic}
+A {\it closed geodesic} a smooth geodesic loop.
+\end{definition}
 
+\begin{theorem}[Cartan]
+\label{theorem-Cartan}
+Let $M^n$ be compact, and $\omega \in \hat{\pi}_1M$ nontrivial. Then there is a
+closed geodesic $\gamma$ such that $[\gamma]=\omega$.
+\end{theorem}
 
-
-
-
-
-
-
-
+\begin{proof}[Idea of proof]
+Consider a sequence of loops whose lengths converge to the number
+$$
+\ell:=\text{inf}\{\ell(c):c \in \omega\}>0
+$$
+Apply Arzerlà-Ascoli to ensure convergence and show this is a geodesic homotopic
+to any representant of the class $\omega$.
+\end{proof}
 
 \input{exercises-dg.tex}
 
