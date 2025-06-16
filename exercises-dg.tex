@@ -132,6 +132,18 @@ a menos de suavizar a quina perto de $q$. Se as curvas se intersectam
 \end{enumerate}
 \end{proof}
 
+\section{Lista 6}
+\label{section-lista-6}
+
+\begin{exercise}
+\label{exercise-l6-6}
+Seja $M^{2n}$ uma variedade Riemanniana de dimensão para, completa, orientável e
+com curvatura seccional $K>0$. Seja $\gamma$ uma geodésica fechada em $M$ de
+comprimento $\ell(\gamma)$. Mostre que existem curvas livremente homotópicas a
+$\gamma$ em $M$, arbitrariamente próximas de $\gamma$, que possuem comprimento
+menor que $\ell(\gamma)$.
+\end{exercise}
+
 
 \section{Lista 7}
 \label{section-lista-7}
@@ -270,6 +282,7 @@ a nossa hipótese.
 \end{proof}
 
 \begin{exercise}
+\label{exercise-l8-2}
 Proposição 2.13, Cap. XIII \cite{doc}. Se a curvatura seccional $K$ de uma
 variedade Riemanniana completa $M$ satisfaz
 $$
@@ -287,19 +300,28 @@ $$
 \end{exercise}
 
 \begin{proof}
-Suponha que (1) não é verdadeiro. Considere $q \in C_m(p)$, o ponto onde a
-distância de $p$ a $C_m(p)$ é mínima, que existe porque $C_m(p)$ é fechado e
-portanto compacto, já que $M$ é compacta pelo Teorema de Bonnet-Myers 
-\ref{theorem-Bonnet-Myers}.
+Suponha que (1) não é verdadeiro. 
 
-Então podemos usar o exercício anterior. Primeiro vamos ver o que
-acontece no caso da segunda possibilidade, i.e. 
-que existem exatamente duas geodésicas ligando $p$ e $q$, digamos
-$\gamma$ é $\sigma$, tais que $\gamma'(\ell)=-\sigma'(\ell)$ onde $\ell=d(p,q)$.
- Considere $\gamma * \overline{\sigma}$, onde $*$ é a concatenação de curvas e
+Note que pelo Teorema de Bonnet-Myers 
+\ref{theorem-Bonnet-Myers}, $M$ é compacta e portanto $C_m(p)$ é compacto para
+todo $p$. Isso nos permite achar dois pontos $p$ e $q$ cuja distância é o raio
+de injetividade  $i(M)$.
+
+Então podemos usar o exercício anterior para $p$ e $q$.  Primeiro vamos ver o
+que acontece no caso da segunda possibilidade daquele exercício, i.e. que
+existam exatamente duas geodésicas ligando $p$ e $q$, digamos $\gamma$ é
+$\sigma$, tais que $\gamma'(\ell)=-\sigma'(\ell)$ onde $\ell=d(p,q)$.  Considere
+$\gamma * \overline{\sigma}$, onde $*$ é a concatenação de curvas e 
 $\overline{\sigma}$ é a curva $\sigma$ percorrida em sentido contrário. É claro
 que $\gamma * \overline{\sigma}$ é uma geodésica fechada de comprimento $2
-d(p,q)$. Note que por definição  $d(p,q)=\ell=i(M)$.
+d(p,q)$. Note que por definição  $d(p,q)=\ell=i(M)$, como queríamos.
+
+Essa geodésica fechada tem a distância mínima entre as geodésicas fechadas, já
+que se tivéssemos alguma outra com distância menor, podemos pegar um ponto
+qualquer nela e o seu cut point ficaria a distância exatamente a metade do
+comprimento do laço (pois existem duas geodésicas que chegam nele: cada
+metade do laço partindo em direções opostas do ponto inicial escolhido),
+contradizendo o fato de que $i(M)=d(p,q)$.
 
 Portanto, basta descartar o primeiro caso do exercício anterior. Para chegar a
  uma contradição, suponha que $p $ é conjugado a $q$, i.e. que existe um campo
@@ -338,16 +360,33 @@ $J$ não pode se anular antes desse ponto.
 Isso mostra que, como estamos supondo que $d(p,C_m(p))<\pi$, devemos estar no
 caso (2) do Exercício \ref{exercise-l8-1}, i.e. existem exatamente duas
 geodésicas $\gamma$ e $\sigma$ ligando $p$ e $q$, e
-$\gamma'(\ell)=-\sigma'(\ell)$. Como no Exercício \ref{exercise-l8-3}, podemos
-usar essas duas geodésicas para achar um loop geodésico de comprimento $2i(M)$.
+$\gamma'(\ell)=-\sigma'(\ell)$. Repetindo o procedimento do Exercício anterior
+ \ref{exercise-l8-3}, podemos usar essas duas geodésicas para achar uma 
+geodésica fechada de comprimento $2i(M)$, cujo comprimento e menor do que o
+comprimento de qualquer outra geodésica fechada.
 
-Finalmente usamos o teorema de Synge \ref{theorem-Synge}, que nos diz que como
-$M$ é de dimensão par, orientável, compacta e de curvatura positiva, o grupo
-fundamental dela deve ser trivial. Isso significa que o laço geodésico que
-achamos é homotópico a uma constante.
+{\bf Observação.} Na prova do teorema de Synge \ref{theorem-Synge}, o Professor
+Manfredo afirma que ``Como $M$ é compacta e tem curvatura positiva, $K\geq
+\delta>0$"; que não me parece imediato, pois a curvatura seccional não é uma
+função definida em $M$. Porém, não preciso mostrar isso para garantir a
+existência do loop geodésico; apenas é necessário que $M$ seja compacta para
+garantir a existência do ponto $q$.
 
-Isso não é possível: pois $\gamma$ e $\sigma$ são duas geodésicas minimizantes
-ligando $p$ e $q$, e isso significa que 
+Minha primeira ideia foi usar o teorema de Synge \ref{theorem-Synge}, 
+que nos diz que como $M$ é de dimensão par, orientável, compacta e de 
+curvatura positiva, o grupo fundamental dela deve ser trivial. 
+Isso significa que o laço geodésico que achamos é homotópico a uma constante,
+mas isso não conduz a contradição nenhuma.
+
+O caminho certo é usar o exercício 6 da lista 6, (cf.
+\ref{exercise-l6-6}), onde mostrei que, nestas condições, i.e. $M$ de dimensão
+par, completa, orientável e com curvatura seccional positiva, existem curvas
+livremente homotópicas a qualquer geodésica fechada $\gamma$, que possuem
+comprimento menor que $\ell(\gamma)$.
+
+A condição dessas curvas serem ``arbitrariamente próximas" a $\gamma$ significa
+que são as curvas de uma variação com campo variacional arbitrariamente pequeno.
+
 \end{proof}
 
 \begin{exercise}

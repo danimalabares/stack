@@ -523,6 +523,25 @@ $$
 So it's the same right? You look form $p_1$ instead…
 \end{remark}
 
+\section{Gromov's theorem}
+\label{section-Gromov-theorem}
+
+\begin{theorem}[Gromov]
+\label{theorem-Gromov}
+$M^n$ complete, $K \geq 0$, then $\pi$ admits a set of $3^n$ generators. In
+particular, it is finitely generated.
+\end{theorem}
+
+\begin{proof}
+Consider the universal cover $\tilde{M}$ of $M$ with the pullback metric. Fix a
+point $x \in \tilde{M}$ and consider the set
+$$
+\{f \in \Gamma:d(x,f(x))<r\},\qquad r>0
+$$
+By \ref{proposition-deck-transformations-act-properly-discontinuous}
+every point must have a disjoint neighbourhood … 
+\end{proof}
+
 \section{Cartan's Theorem}
 \label{section-Cartan-theorem}
 
@@ -549,13 +568,24 @@ Let $M^n$ be compact, and $\omega \in \hat{\pi}_1M$ nontrivial. Then there is a
 closed geodesic $\gamma$ such that $[\gamma]=\omega$.
 \end{theorem}
 
-\begin{proof}[Idea of proof]
+\begin{proof}
 Consider a sequence of loops whose lengths converge to the number
 $$
 \ell:=\text{inf}\{\ell(c):c \in \omega\}>0
 $$
-Apply Arzerlà-Ascoli to ensure convergence and show this is a geodesic homotopic
-to any representant of the class $\omega$.
+Consider a sequence $c_n$ of curves in $\omega$ such that their lengths converge
+to $\ell$. Then apply Arzelà-Ascoli Theorem \ref{theorem-Arzela-Ascoli}
+ to ensure they converge to some curve $c$ and show this is a geodesic 
+in $\omega$.
+
+First suppose that each of the $c_n$ is a piecewise geodesic parametrized by
+arclength (why can we do this?). We may then pick the supremum $L$ of all the
+lengths since we are assuming that their lengths decrease. Then
+$$
+d(c_n(t),c_n(s)) \leq \ell \left(c_n|_{[t,s]}\right) \leq  N |t-s|
+$$
+This says that $\{c_n\}$ is equicontinuous (the same $N$ works for all $n$) as a
+family of maps from 
 \end{proof}
 
 \input{exercises-dg.tex}
