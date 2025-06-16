@@ -166,7 +166,15 @@ it also satisfies the curvature bound (with the pullback metric)
 Now pick a deck transformation, which must be
 orientation-preserving if we choose the orientation on $\tilde{M}$ (simply
 connected is always orientable) making the projection orientation-preserving.
-Then $f$ must have a fixed point by Weinstein's theorem.
+Then $f$ must have a fixed point by Weinstein's theorem \ref{theorem-Weinstein},
+which applies since we have shown that $\tilde{M}$ is compact. 
+However, deck transformations cannot have fixes points unless they are the
+ identity: this is a consequence of the ``Unique lifting property", which a 
+slightly more general statement than the uniqueness of curve lifts that we 
+used for Klinenberg's lemma exercise \ref{exercise-l7-1}. 
+More exactly (cf. \ref{proposition-unique-lifting-property}): 
+given a covering space and to maps from any space into the base, these coincide
+ if they agree at one point only.
 \end{proof}
 
 \section{Index lemma}
