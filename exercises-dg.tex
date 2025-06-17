@@ -384,9 +384,53 @@ par, completa, orientável e com curvatura seccional positiva, existem curvas
 livremente homotópicas a qualquer geodésica fechada $\gamma$, que possuem
 comprimento menor que $\ell(\gamma)$.
 
-A condição dessas curvas serem ``arbitrariamente próximas" a $\gamma$ significa
-que são as curvas de uma variação com campo variacional arbitrariamente pequeno.
+Para achar uma contradição pensei em imitar a prova do teorema de Cartan
+\ref{theorem-Cartan}, onde se mostra que na classe de homotopia de qualquer laço
+em $M$ existe uma geodésica fechada, cujo comprimento é o ínfimo dos
+comprimentos na sua classe de homotopia; porém, como $M$ é simplesmente conexa,
+a prova não funciona.
 
+Finalmente usei a prova de \cite{doc}: seja $c$ alguma das curvas da
+variação que vem do Exercício 6 da Lista 6, com comprimento estritamente
+menor do que $\ell(\gamma)$. Pegue ponto inicial $c(0):=\tilde{p}$ e o ponto 
+$\tilde{q}$ em $c$ tal que $d(\tilde{p},\tilde{q})$ é máxima ao longo de $c$.
+
+Considere uma geodésica $\tilde{\gamma}$ ligando $\tilde{p}$ e $\tilde{q}$. Segue que
+$\tilde{q}$ não pode ser o cut point de $\tilde{p}$ ao longo de
+$\tilde{\gamma}$: nesse caso, pelo Exercício \ref{exercise-l8-1} ou bem
+$\tilde{q}$ seria conjugado a $ \tilde{p}$, que não é possível porque o
+comprimento de $\tilde{\gamma}$ é menor que $\pi$, ou existe uma geodésica
+fechada com comprimento menor que $\ell(\gamma)$, que também não é possível.
+
+Portanto, a geodésica minimizante $\tilde{\gamma}$ é a única que liga 
+$\tilde{p}$ e $\tilde{q}$. 
+{\bf Isto como se usa? Acho que posso pegar qualquer geodésica
+ligando $\tilde{p}$ e $\tilde{q}$ e o argumento embaixo ainda funcionaria, i.e.
+posso pegar o limite sem problemas.}
+
+Agora mudemos ligeiramente a notação: escrevamos $\tilde{\gamma}_s$,
+$\tilde{p}_s$ e $\tilde{\sigma}_s$ ressaltando o parâmetro da variação $s$.
+Tomando limite quando $s \to 0$, obteremos uma terceira geodésica minimizante 
+$\tilde{\gamma}_0$ que liga $p$ e $q$, que não é possível de novo pelo
+Exercício  \ref{exercise-l8-1}.
+
+De fato, podemos dar explicitamente $\tilde{\gamma}_0$ como sendo $exp_q(tw)$
+onde $w$ é o vetor limite das velocidades iniciais de cada $\tilde{\gamma}_s$,
+supondo que elas são de tamanho 1 para assegurar a existência do limite por
+compacidade do fibrado unitário. Note que por continuidade da função distância,
+a geodésica obtida minimiza a distância entre $p$ e $q$, por um lado porque o
+limite dos pontos iniciais e $p$ por definição, e por outro lado porque os
+pontos finais são os pontos que maximizam a distância dentro de cada geodésica.
+
+Para terminar basta ver que $\tilde{\gamma}_0$ é distinta de $\gamma$. Para isso
+usamos a fórmula da primeira variação para mostrar que $\tilde{\gamma}'_0$ é
+ortogonal a $\gamma'(q)$. Devemos achar uma variação de $\tilde{\gamma}_0$ cujo
+campo variacional no ponto final seja $\gamma'(q)$ e fixando o ponto inicial.
+Desse jeito a primeira variação se simplifica à condição de ortogonalidade que
+buscamos de modo análogo a como fiz no Exercício \ref{exercise-l8-1}.
+
+Tal variação é dada pegando pontos arbitrariamente perto de $\tilde{q}$ ao
+longo de cada $\tilde{\gamma}_s$.
 \end{proof}
 
 \begin{exercise}
