@@ -390,8 +390,12 @@ em $M$ existe uma geodésica fechada, cujo comprimento é o ínfimo dos
 comprimentos na sua classe de homotopia; porém, como $M$ é simplesmente conexa,
 a prova não funciona.
 
-Finalmente usei a prova de \cite{doc}: seja $c$ alguma das curvas da
-variação que vem do Exercício 6 da Lista 6, com comprimento estritamente
+Finalmente usei a prova de \cite{doc}. A ideia é chegar numa contradição
+mostrando que existe uma terceira geodésica ligando $p$ e $q$. Essa geodésica se
+obtém como o limite de uma sequência de geodésicas associada à variação dada
+pelo Exercício 6 da Lista 6.
+
+Seja $c$ uma das curvas da variação com comprimento estritamente
 menor do que $\ell(\gamma)$. Pegue ponto inicial $c(0):=\tilde{p}$ e o ponto 
 $\tilde{q}$ em $c$ tal que $d(\tilde{p},\tilde{q})$ é máxima ao longo de $c$.
 
@@ -409,7 +413,7 @@ ligando $\tilde{p}$ e $\tilde{q}$ e o argumento embaixo ainda funcionaria, i.e.
 posso pegar o limite sem problemas.}
 
 Agora mudemos ligeiramente a notação: escrevamos $\tilde{\gamma}_s$,
-$\tilde{p}_s$ e $\tilde{\sigma}_s$ ressaltando o parâmetro da variação $s$.
+$\tilde{p}_s$ e $\tilde{q}_s$ ressaltando o parâmetro da variação $s$.
 Tomando limite quando $s \to 0$, obteremos uma terceira geodésica minimizante 
 $\tilde{\gamma}_0$ que liga $p$ e $q$, que não é possível de novo pelo
 Exercício  \ref{exercise-l8-1}.
@@ -417,20 +421,25 @@ Exercício  \ref{exercise-l8-1}.
 De fato, podemos dar explicitamente $\tilde{\gamma}_0$ como sendo $exp_q(tw)$
 onde $w$ é o vetor limite das velocidades iniciais de cada $\tilde{\gamma}_s$,
 supondo que elas são de tamanho 1 para assegurar a existência do limite por
-compacidade do fibrado unitário. Note que por continuidade da função distância,
-a geodésica obtida minimiza a distância entre $p$ e $q$, por um lado porque o
-limite dos pontos iniciais e $p$ por definição, e por outro lado porque os
+compacidade do fibrado tangente unitário. Note que a geodésica obtida minimiza a
+distância entre $p$ e $q$: a geodésica liga $p$ com  $q$ porque, por um lado, o
+limite dos pontos iniciais é $p$ por definição, e, por outro lado, porque os
 pontos finais são os pontos que maximizam a distância dentro de cada geodésica.
+A geodésica limite é minimizante por continuidade da função distância.
 
 Para terminar basta ver que $\tilde{\gamma}_0$ é distinta de $\gamma$. Para isso
 usamos a fórmula da primeira variação para mostrar que $\tilde{\gamma}'_0$ é
 ortogonal a $\gamma'(q)$. Devemos achar uma variação de $\tilde{\gamma}_0$ cujo
-campo variacional no ponto final seja $\gamma'(q)$ e fixando o ponto inicial.
+vetor variacional no ponto final seja $\gamma'(q)$ e fixando o ponto inicial.
 Desse jeito a primeira variação se simplifica à condição de ortogonalidade que
 buscamos de modo análogo a como fiz no Exercício \ref{exercise-l8-1}.
 
-Tal variação é dada pegando pontos arbitrariamente perto de $\tilde{q}$ ao
-longo de cada $\tilde{\gamma}_s$.
+Defina uma variação de $\tilde{\gamma}_0$ cujas curvas coincidem com
+$\tilde{\gamma}_0$ a menos de um pequeno trecho perto de $q$, onde estão dadas
+por geodésicas ligando um ponto fixo $x$ em $\tilde{\gamma}_0$ e algum ponto ao
+longo de $\gamma$ perto de $q$. Como $\tilde{\gamma}$ é minimizante e essas
+geodésicas não são diferenciáveis em $x$, a primeira fórmula da variação é igual
+a zero, e obtemos a condição de ortogonalidade desejada.
 \end{proof}
 
 \begin{exercise}
