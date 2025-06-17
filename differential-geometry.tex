@@ -140,6 +140,16 @@ if $n$ is even, $f$ preserves orientation, and if $n$ is odd, $f$ reverts
 orientation. Then $f$ has a fixed point.
 \end{theorem}
 
+\begin{proof}
+Suponha que $f$ não tem pontos mínimos. Defina uma função
+\begin{align*}
+	g: M &\longrightarrow \mathbb{R} \\
+	g(q) &=d(q,f(q)) 
+\end{align*}
+Como $M$ é compacta e essa função é contínua, possui um ponto mínimo que
+chamamos de $p$. 
+\end{proof}
+
 \section{Synge's theorem}
 \label{section-Synge-theorem}
 
@@ -590,6 +600,13 @@ family of maps from
 
 \section{Preisman Theorem}
 \label{section-Preisman-theorem}
+
+\begin{definition}
+\label{definition-translation}
+An isometry $f \in \text{Iso}(M)$ is called a {\it translation} if there exists
+a geodesic of $M$ such that $f(\gamma)=\gamma$. That is, $f \circ \gamma$ is a
+reparametrization of $\gamma$.
+\end{definition}
 
 \begin{theorem}[Preisman]
 \label{theorem-Preisman}

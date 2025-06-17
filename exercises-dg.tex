@@ -132,6 +132,55 @@ a menos de suavizar a quina perto de $q$. Se as curvas se intersectam
 \end{enumerate}
 \end{proof}
 
+\section{Lista 5}
+\label{section-lista-5}
+
+\begin{exercise}
+\label{exercise-l5-5}
+\cite{doc} Capítulo XII, Exercício 6. Uma geodésica $\gamma:[0,\infty)\to M$ em
+uma variedade Riemannana $M$ é um {\it raio partindo de $\gamma(0)$} se ela é
+minimizante entre $\gamma(0)$ e $\gamma(s)$ para todo  $s \in (0,\infty)$.
+Admita que $M$ é completa, não-compact, e seja $p \in M$. Mostre que $M$ contém
+um raio partindo de $p$.
+\end{exercise}
+
+\begin{proof}
+Como $M$ é compacta e completa, ela não pode ser limitada. Então
+existe uma sequência de pontos $p_i$  tal que $\lim_{i \to \infty}
+d(p_i,p)=\infty$. Para cada ponto podemos pegar uma geodésica minimizante
+$\gamma_n$ ligando $p$ e $p_n$. Podemos associar a cada geodésica um vetor
+unitário $v_i \in S^n \subset T_pM$ tal que $\gamma_i(t)=\text{exp}_p(tv_i)$.
+
+Como $S^n \subset T_pM$ é compacta existe um vetor $v$ limite da sequência
+$v_i$. A geodésica $\gamma(t):=\text{exp}_p(tv)$ é um raio, pois por
+continuidade de $\text{exp}_p$ e da distância Riemanniana,
+$$
+d(\gamma(0),\gamma(t))=d\left(p,\text{exp}_p(tv)\right)
+=d\left(p,\text{exp}_p\left(t\lim_{i \to \infty} v_i\right)\right)
+=\lim_{i \to \infty} d(p,\gamma_i (t))
+$$
+Pegando $i$ suficientemente grande, teremos que $\gamma_i$ é minimizante entre
+$p$ e $\gamma_i(t)$. Isso significa que $d(p,\gamma_i(t))$ está dada como o
+comprimento de $\gamma_i$ até esse ponto, e pegando o limite concluímos que o
+comprimento de $\gamma$ é a distância entre $\gamma(0)$ e $\gamma(t)$.
+\end{proof}
+
+\begin{definition}
+\label{definition-line-riemannian-manifold}
+Let $(M,g)$ be a Riemannian manifold. A geodesic $\gamma:\mathbb{R} \to M$ is
+called a {\it line} if $d(\gamma(t),\gamma(s))=|t-s|$ for all $t,s \in
+\mathbb{R}$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-l5-6}
+Mostre que toda métrica completa em $S^n \times \mathbb{R}$ admite uma linha.
+\end{exercise}
+
+\begin{proof}
+
+\end{proof}
+
 \section{Lista 6}
 \label{section-lista-6}
 
