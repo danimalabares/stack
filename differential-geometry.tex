@@ -228,7 +228,6 @@ i(I_a):=\operatorname{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L
 $$
 \end{definition}
 
-
 \begin{theorem}[Morse Index]
 \label{theorem-morse-index}
 O índice $i(I_t)$ é finito e igual ao número de pontos conjugados em $[0,t)$ ao
@@ -275,6 +274,27 @@ kernel. The second part I'm not sure---why do we need to show that $V$ is
 differentiable, or $C^2$ (since it's the solution of an ODE).
 \end{enumerate}
 \end{proof}
+
+
+
+\begin{theorem}[Jacobi's theorem]
+\label{theorem-Jacobi-theorem}
+Se $\gamma$ é minimizante, então não pode ter pontos conjugados. More generally,
+if $\gamma:I \to M$ is a geodesic and $ \gamma(a)$ is conjugate to $\gamma(0)$
+through $\gamma$ then for every $\delta>0$, $I_{a+\delta}\not \geq 0$.
+\end{theorem}
+
+\begin{proof}
+Se $\gamma$ é minimizante, a segunda fórmula da variação é positiva para todo
+campo em $\mathcal{V}=\{V\in \mathfrak{X}_\gamma:V \text{ d.p.p. },
+V(a)=0,V(b)=0\}$. Ou seja, a forma do índice é uma forma bilinear positiva, e
+portanto tem signatura zero, e pelo Teorema do Índice de Morse 
+\ref{theorem-Morse-index} o número de pontos conjugados é zero.
+\end{proof}
+
+It is possible to prove this theorem without using Morse Index Theorem
+\ref{theorem-Morse-index} by constructing a variation where the index form is
+negative, see Exercise \ref{exercise-l7-4}.
 
 \section{Cut locus}
 \label{section-cut-locus}
