@@ -1,0 +1,46 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Basic math}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Arzelà-Ascoli Theorem}
+\label{section-Arzela-Ascoli-theorem}
+\begin{definition}[Equicontinuous family]
+\label{definition-equicontinuous}
+From Wikipedia. Let $X$ be a compact Hausdorff space and let  $C(X)$ be the
+space of real-valued continuous functions on $X$. A subset $\mathcal{F} \subset
+C(X)$ is said to be {\it equicontinuous} if for every $x in X$ and every
+$\varepsilon>0$, $x$ has a neighbourhood $U_x$ such that
+$$
+\forall y \in U_x, \forall f \in \mathcal{F}: \qquad |f(y)-f(x)|<\varepsilon
+$$
+\end{definition}
+
+\begin{definition}[Pointwise bounded]
+\label{definition-pointwise-bounded}
+A set $\mathcal{F}\subset C(X,\mathbb{R})$ is said to be {\it pointwise
+bounded} if for every $x \in X$,
+$$
+\text{sup}\{|f(x)|:f \in \mathcal{F}\}<\infty
+$$
+\end{definition}
+
+\begin{theorem}[Arzelà-Ascoli]
+\label{theorem-Arzela-Ascoli}
+Let $X$ be a compact Hausdorff space. Then a subset $\mathcal{F}$ of $C(X)$ is
+relatively compact in the topology induced by the uniform norm if and only if it
+is equicontinuous and pointwise bounded.
+\end{theorem}
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+
