@@ -140,6 +140,16 @@ if $n$ is even, $f$ preserves orientation, and if $n$ is odd, $f$ reverts
 orientation. Then $f$ has a fixed point.
 \end{theorem}
 
+\begin{proof}
+Suponha que $f$ não tem pontos mínimos. Defina uma função
+\begin{align*}
+	g: M &\longrightarrow \mathbb{R} \\
+	g(q) &=d(q,f(q)) 
+\end{align*}
+Como $M$ é compacta e essa função é contínua, possui um ponto mínimo que
+chamamos de $p$. 
+\end{proof}
+
 \section{Synge's theorem}
 \label{section-Synge-theorem}
 
@@ -218,7 +228,6 @@ i(I_a):=\operatorname{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L
 $$
 \end{definition}
 
-
 \begin{theorem}[Morse Index]
 \label{theorem-morse-index}
 O índice $i(I_t)$ é finito e igual ao número de pontos conjugados em $[0,t)$ ao
@@ -265,6 +274,27 @@ kernel. The second part I'm not sure---why do we need to show that $V$ is
 differentiable, or $C^2$ (since it's the solution of an ODE).
 \end{enumerate}
 \end{proof}
+
+
+
+\begin{theorem}[Jacobi's theorem]
+\label{theorem-Jacobi-theorem}
+Se $\gamma$ é minimizante, então não pode ter pontos conjugados. More generally,
+if $\gamma:I \to M$ is a geodesic and $ \gamma(a)$ is conjugate to $\gamma(0)$
+through $\gamma$ then for every $\delta>0$, $I_{a+\delta}\not \geq 0$.
+\end{theorem}
+
+\begin{proof}
+Se $\gamma$ é minimizante, a segunda fórmula da variação é positiva para todo
+campo em $\mathcal{V}=\{V\in \mathfrak{X}_\gamma:V \text{ d.p.p. },
+V(a)=0,V(b)=0\}$. Ou seja, a forma do índice é uma forma bilinear positiva, e
+portanto tem signatura zero, e pelo Teorema do Índice de Morse 
+\ref{theorem-Morse-index} o número de pontos conjugados é zero.
+\end{proof}
+
+It is possible to prove this theorem without using Morse Index Theorem
+\ref{theorem-Morse-index} by constructing a variation where the index form is
+negative, see Exercise \ref{exercise-l7-4}.
 
 \section{Cut locus}
 \label{section-cut-locus}
@@ -450,10 +480,14 @@ pues va… pero si no…
 \section{Toponogov's theorem}
 \label{section-Toponogov}
 
+\begin{slogan}
+The 
+\end{slogan}
+
 First recall
 
 \begin{theorem}[Toponogov, local version]
-\label{theorem-Toponogov,local}
+\label{theorem-Toponogov-local}
 Let $o,p_1,p_2 \in B$ where $B$ is a totally convex ball of $M$. Let $\gamma_1$
 and $\gamma_2$ be the normalized geodesics joining $o$ to $p_1$ and to $p_2$.
 
@@ -463,7 +497,7 @@ $\tilde{p}_1$ and from $\tilde{o}$ to $\tilde{p}_2$ coincide with those in $M$.
 
 Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
 $$
-\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}_s)\leq d(\gamma_1(t),\gamma_2(s))
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}_2(s))\leq d(\gamma_1(t),\gamma_2(s))
 $$
 \end{theorem}
 
@@ -479,7 +513,29 @@ given by the condition of mapping $\gamma'_1(0)$ to $\gamma_2'(0)$ and the angle
 between them to the corresponding vectors and angle on $\tilde{M}$.
 \end{proof}
 
-\begin{theorem}[Toponogov, hinge version] \label{theorem-Toponogov-hinge}
+The global version of Theorem \ref{theorem-Toponogov-local} is the following.
+Notice it coincides with our intuition from comparing plane triangles with
+spherical ones; spherical are fatter.
+
+\begin{theorem}[Toponogov, hinge]
+\label{theorem-toponogov-hinge}
+$M$ complete, $K \geq k$. $\gamma_1,\gamma_2$ normalized geodesics with
+$\gamma_1(0)=\gamma_2(0)$. Suppose $\gamma_1$ is minimizing. If $k>0$ suppose
+additionally that $\ell(\gamma_2) \leq \pi/\sqrt{k}$ (this is where conjugate
+points appear).
+
+Suppose that $\tilde{\gamma}_1,\tilde{\gamma}_2$ is a corresponding hinge in
+$\mathbb{Q}_k^2$, that is, $\ell(\gamma_i)=\ell(\tilde{\gamma}_i)$ and
+$\angle(\gamma_1'(0),\gamma_2'(0)=
+\angle\tilde{\gamma}_1'(0),\tilde{\gamma}_2'(0)$. Then
+$$
+d(\gamma_1(\ell_1),\gamma_2(\ell_2)) \leq 
+\tilde{d}(\tilde{\gamma}_1(\ell_1),\tilde{\gamma}_2(\ell_2))
+$$
+\end{theorem}
+
+\begin{theorem}[Toponogov, metric version]
+\label{theorem-Toponogov-metric}
 Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, with
 $p_1\neq  p_2$. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
 $o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing.
@@ -492,15 +548,19 @@ If $k>0$ suppose additionally that $\ell(\gamma_0) \leq \pi/\sqrt{k}$.
 Then there exists a geodesic triangle $\{\tilde{\gamma}_i:i=1,2,0\}$ in
 $\mathbb{Q}_k^2$ such that $\ell(\tilde{\gamma}_i) = \ell(\gamma_i)$ and
 $$
-d(\tilde{p}_1,\tilde{p}_2) \leq  d(o,p_1)+d(o,p_2)
+d(\tilde{o},\tilde{\gamma}_0(t)) \leq  d(o,\gamma_0(t))\qquad \forall t \in
+[0,\ell(\gamma_0)]
 $$
+\end{theorem}
 
+
+\begin{theorem}[Toponogov, geom]
+\label{theorem-}
 Put another way (next lecture…) Let $\tilde{\gamma}_1$ and $\tilde{\gamma}_2$ 
 be a corresponding angle in $\mathbb{Q}_k^2$. Then
 $$
 \tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
 $$
-
 \end{theorem}
 
 \begin{remark}
@@ -587,6 +647,33 @@ $$
 This says that $\{c_n\}$ is equicontinuous (the same $N$ works for all $n$) as a
 family of maps from 
 \end{proof}
+
+\section{Preisman Theorem}
+\label{section-Preisman-theorem}
+
+\begin{definition}
+\label{definition-translation}
+An isometry $f \in \text{Iso}(M)$ is called a {\it translation} if there exists
+a geodesic of $M$ such that $f(\gamma)=\gamma$. That is, $f \circ \gamma$ is a
+reparametrization of $\gamma$.
+\end{definition}
+
+\begin{theorem}[Preisman]
+\label{theorem-Preisman}
+Let $M^n$ be compact with $K<0$. If $1 \neq  H \subset \pi_1(M)$ is abelian,
+then $H=\mathbb{Z}$.
+\end{theorem}
+
+\section{Byers Theorem}
+\label{section-Byers-theorem}
+
+\begin{lemma}
+\label{lemma-deck-fixes-a-geodesic-then-not-compact}
+Let $M^n$ be a complete manifold with $K\leq 0$. Suppose that every element of
+$\text{Deck}(\pi)$, where $\pi$ is the universal covering, fixes the same
+ geodesic $\tilde{\gamma}$. Then $M$ is not compact.
+\end{lemma}
+
 
 \input{exercises-dg.tex}
 

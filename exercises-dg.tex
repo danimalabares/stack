@@ -132,6 +132,67 @@ a menos de suavizar a quina perto de $q$. Se as curvas se intersectam
 \end{enumerate}
 \end{proof}
 
+\section{Lista 5}
+\label{section-lista-5}
+
+\begin{exercise}
+\label{exercise-l5-5}
+\cite{doc} Capítulo XII, Exercício 6. Uma geodésica $\gamma:[0,\infty)\to M$ em
+uma variedade Riemannana $M$ é um {\it raio partindo de $\gamma(0)$} se ela é
+minimizante entre $\gamma(0)$ e $\gamma(s)$ para todo  $s \in (0,\infty)$.
+Admita que $M$ é completa, não-compact, e seja $p \in M$. Mostre que $M$ contém
+um raio partindo de $p$.
+\end{exercise}
+
+\begin{proof}
+Como $M$ é compacta e completa, ela não pode ser limitada. Então
+existe uma sequência de pontos $p_i$  tal que $\lim_{i \to \infty}
+d(p_i,p)=\infty$. Para cada ponto podemos pegar uma geodésica minimizante
+$\gamma_n$ ligando $p$ e $p_n$. Podemos associar a cada geodésica um vetor
+unitário $v_i \in S^n \subset T_pM$ tal que $\gamma_i(t)=\text{exp}_p(tv_i)$.
+
+Como $S^n \subset T_pM$ é compacta existe um vetor $v$ limite da sequência
+$v_i$. A geodésica $\gamma(t):=\text{exp}_p(tv)$ é um raio, pois por
+continuidade de $\text{exp}_p$ e da distância Riemanniana,
+$$
+d(\gamma(0),\gamma(t))=d\left(p,\text{exp}_p(tv)\right)
+=d\left(p,\text{exp}_p\left(t\lim_{i \to \infty} v_i\right)\right)
+=\lim_{i \to \infty} d(p,\gamma_i (t))
+$$
+Pegando $i$ suficientemente grande, teremos que $\gamma_i$ é minimizante entre
+$p$ e $\gamma_i(t)$. Isso significa que $d(p,\gamma_i(t))$ está dada como o
+comprimento de $\gamma_i$ até esse ponto, e pegando o limite concluímos que o
+comprimento de $\gamma$ é a distância entre $\gamma(0)$ e $\gamma(t)$.
+\end{proof}
+
+\begin{definition}
+\label{definition-line-riemannian-manifold}
+Let $(M,g)$ be a Riemannian manifold. A geodesic $\gamma:\mathbb{R} \to M$ is
+called a {\it line} if $d(\gamma(t),\gamma(s))=|t-s|$ for all $t,s \in
+\mathbb{R}$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-l5-6}
+Mostre que toda métrica completa em $S^n \times \mathbb{R}$ admite uma linha.
+\end{exercise}
+
+\begin{proof}
+ Considere o conjunto $S^n\times \mathbb{R}\(S^n \times\{0\})$.
+Trata-se de um aberto disconexo, e portanto não fechado, nem compacto nem
+limitado.  Dentro desse conjunto podemos pegar duas sequências de pontos $p_i$ e
+$q_i$, onde a segunda coordenada de $p_i$ tem signo positivo, e a segunda
+coordenada de $q_i$ tem  signo negativo para toda $i$. Considere a geodésica
+$\gamma_i$ que liga $p_i$ com $q_i$, que deve passar pela esfera $S^n\times
+\{0\}$. Então obtemos uma sequência $v_i$ de vetores no fibrado tangente
+unitário de $S^n\times\{0\}$ dadas como as velocidades das geodésicas
+$\gamma_i$. Como tal fibrado é compacto, achamos um limite $v$ dessa sequência
+que por um argumento análogo ao exercício anterior, converge a um vetor cuja
+geodésica associada é uma linha. ($\gamma$ é minimizante, e como está
+parametrizada por comprimento de arco obtemos a condição dada na Definição
+\ref{definition-line-riemannian-manifold}.
+\end{proof}
+
 \section{Lista 6}
 \label{section-lista-6}
 
@@ -390,8 +451,12 @@ em $M$ existe uma geodésica fechada, cujo comprimento é o ínfimo dos
 comprimentos na sua classe de homotopia; porém, como $M$ é simplesmente conexa,
 a prova não funciona.
 
-Finalmente usei a prova de \cite{doc}: seja $c$ alguma das curvas da
-variação que vem do Exercício 6 da Lista 6, com comprimento estritamente
+Finalmente usei a prova de \cite{doc}. A ideia é chegar numa contradição
+mostrando que existe uma terceira geodésica ligando $p$ e $q$. Essa geodésica se
+obtém como o limite de uma sequência de geodésicas associada à variação dada
+pelo Exercício 6 da Lista 6.
+
+Seja $c$ uma das curvas da variação com comprimento estritamente
 menor do que $\ell(\gamma)$. Pegue ponto inicial $c(0):=\tilde{p}$ e o ponto 
 $\tilde{q}$ em $c$ tal que $d(\tilde{p},\tilde{q})$ é máxima ao longo de $c$.
 
@@ -409,7 +474,7 @@ ligando $\tilde{p}$ e $\tilde{q}$ e o argumento embaixo ainda funcionaria, i.e.
 posso pegar o limite sem problemas.}
 
 Agora mudemos ligeiramente a notação: escrevamos $\tilde{\gamma}_s$,
-$\tilde{p}_s$ e $\tilde{\sigma}_s$ ressaltando o parâmetro da variação $s$.
+$\tilde{p}_s$ e $\tilde{q}_s$ ressaltando o parâmetro da variação $s$.
 Tomando limite quando $s \to 0$, obteremos uma terceira geodésica minimizante 
 $\tilde{\gamma}_0$ que liga $p$ e $q$, que não é possível de novo pelo
 Exercício  \ref{exercise-l8-1}.
@@ -417,20 +482,25 @@ Exercício  \ref{exercise-l8-1}.
 De fato, podemos dar explicitamente $\tilde{\gamma}_0$ como sendo $exp_q(tw)$
 onde $w$ é o vetor limite das velocidades iniciais de cada $\tilde{\gamma}_s$,
 supondo que elas são de tamanho 1 para assegurar a existência do limite por
-compacidade do fibrado unitário. Note que por continuidade da função distância,
-a geodésica obtida minimiza a distância entre $p$ e $q$, por um lado porque o
-limite dos pontos iniciais e $p$ por definição, e por outro lado porque os
+compacidade do fibrado tangente unitário. Note que a geodésica obtida minimiza a
+distância entre $p$ e $q$: a geodésica liga $p$ com  $q$ porque, por um lado, o
+limite dos pontos iniciais é $p$ por definição, e, por outro lado, porque os
 pontos finais são os pontos que maximizam a distância dentro de cada geodésica.
+A geodésica limite é minimizante por continuidade da função distância.
 
 Para terminar basta ver que $\tilde{\gamma}_0$ é distinta de $\gamma$. Para isso
 usamos a fórmula da primeira variação para mostrar que $\tilde{\gamma}'_0$ é
 ortogonal a $\gamma'(q)$. Devemos achar uma variação de $\tilde{\gamma}_0$ cujo
-campo variacional no ponto final seja $\gamma'(q)$ e fixando o ponto inicial.
+vetor variacional no ponto final seja $\gamma'(q)$ e fixando o ponto inicial.
 Desse jeito a primeira variação se simplifica à condição de ortogonalidade que
 buscamos de modo análogo a como fiz no Exercício \ref{exercise-l8-1}.
 
-Tal variação é dada pegando pontos arbitrariamente perto de $\tilde{q}$ ao
-longo de cada $\tilde{\gamma}_s$.
+Defina uma variação de $\tilde{\gamma}_0$ cujas curvas coincidem com
+$\tilde{\gamma}_0$ a menos de um pequeno trecho perto de $q$, onde estão dadas
+por geodésicas ligando um ponto fixo $x$ em $\tilde{\gamma}_0$ e algum ponto ao
+longo de $\gamma$ perto de $q$. Como $\tilde{\gamma}$ é minimizante e essas
+geodésicas não são diferenciáveis em $x$, a primeira fórmula da variação é igual
+a zero, e obtemos a condição de ortogonalidade desejada.
 \end{proof}
 
 \begin{exercise}
@@ -441,4 +511,8 @@ $\gamma(0)=\sigma(0)$. Se $\gamma$ é um raio e
 $\angle(\gamma'(0),\sigma'(0))<\frac{1}{2}\pi$, então $\lim_{t \to \infty}
 \rho(\sigma(0),\sigma(t))=\infty$ (i.e. $\sigma$ vai para o infinito).
 \end{exercise}
+
+\begin{proof}
+Ideia: usar o teorema de Toponogov  m
+\end{proof}
 
