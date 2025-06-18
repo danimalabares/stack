@@ -178,7 +178,7 @@ Mostre que toda métrica completa em $S^n \times \mathbb{R}$ admite uma linha.
 \end{exercise}
 
 \begin{proof}
- Considere o conjunto $S^n\times \mathbb{R}\(S^n \times\{0\})$.
+Considere o conjunto $S^n\times \mathbb{R}\setminus(S^n \times\{0\})$.
 Trata-se de um aberto disconexo, e portanto não fechado, nem compacto nem
 limitado.  Dentro desse conjunto podemos pegar duas sequências de pontos $p_i$ e
 $q_i$, onde a segunda coordenada de $p_i$ tem signo positivo, e a segunda
@@ -513,6 +513,27 @@ $\angle(\gamma'(0),\sigma'(0))<\frac{1}{2}\pi$, então $\lim_{t \to \infty}
 \end{exercise}
 
 \begin{proof}
-Ideia: usar o teorema de Toponogov  m
+Seja $t \in \mathbb{R}$. Considere uma geodésica minimizante $\tau$ ligando
+$\gamma(t)$ com $\sigma(t)$. Defina o angulo 
+$\beta:=\angle(-\gamma'(t),\tau'(0))$ e o número $s_t$ como sendo o tempo em que
+$\tau$ chega em $\sigma$, i.e. $\tau(s_t)=\sigma(t)$.
+
+Como $0 \leq  K$, podemos comparar a ``hinge'',
+i.e. a informação do angulo e vetores incidentes no ponto $\gamma(t)$, 
+$(-\gamma'(t),\tau'(0),\beta)$ com uma hinge no espaço
+euclidiano. Obtemos que 
+$$
+\rho_{\mathbb{R}^n}(\tilde{\gamma}(0),\tilde{\tau}(s_t))\leq
+\rho(\gamma(0),\tau(s_t))=\rho(\sigma(0),\sigma(t))
+$$
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{figures/toponogov-exercise}
+\end{figure}
+
+
+Como $\tilde{\sigma}$ é uma geodésica no $\mathbb{R}^n$, a distância
+ $\rho_{\mathbb{R}^n}(\tilde{\sigma}(0),\tilde{\sigma}(t))$ diverge conforme
+ $t\to \infty$, e obtemos o resultado.
 \end{proof}
 
