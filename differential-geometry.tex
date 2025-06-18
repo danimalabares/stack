@@ -480,10 +480,14 @@ pues va… pero si no…
 \section{Toponogov's theorem}
 \label{section-Toponogov}
 
+\begin{slogan}
+The 
+\end{slogan}
+
 First recall
 
 \begin{theorem}[Toponogov, local version]
-\label{theorem-Toponogov,local}
+\label{theorem-Toponogov-local}
 Let $o,p_1,p_2 \in B$ where $B$ is a totally convex ball of $M$. Let $\gamma_1$
 and $\gamma_2$ be the normalized geodesics joining $o$ to $p_1$ and to $p_2$.
 
@@ -493,7 +497,7 @@ $\tilde{p}_1$ and from $\tilde{o}$ to $\tilde{p}_2$ coincide with those in $M$.
 
 Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
 $$
-\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}_s)\leq d(\gamma_1(t),\gamma_2(s))
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}_2(s))\leq d(\gamma_1(t),\gamma_2(s))
 $$
 \end{theorem}
 
@@ -509,7 +513,29 @@ given by the condition of mapping $\gamma'_1(0)$ to $\gamma_2'(0)$ and the angle
 between them to the corresponding vectors and angle on $\tilde{M}$.
 \end{proof}
 
-\begin{theorem}[Toponogov, hinge version] \label{theorem-Toponogov-hinge}
+The global version of Theorem \ref{theorem-Toponogov-local} is the following.
+Notice it coincides with our intuition from comparing plane triangles with
+spherical ones; spherical are fatter.
+
+\begin{theorem}[Toponogov, hinge]
+\label{theorem-toponogov-hinge}
+$M$ complete, $K \geq k$. $\gamma_1,\gamma_2$ normalized geodesics with
+$\gamma_1(0)=\gamma_2(0)$. Suppose $\gamma_1$ is minimizing. If $k>0$ suppose
+additionally that $\ell(\gamma_2) \leq \pi/\sqrt{k}$ (this is where conjugate
+points appear).
+
+Suppose that $\tilde{\gamma}_1,\tilde{\gamma}_2$ is a corresponding hinge in
+$\mathbb{Q}_k^2$, that is, $\ell(\gamma_i)=\ell(\tilde{\gamma}_i)$ and
+$\angle(\gamma_1'(0),\gamma_2'(0)=
+\angle\tilde{\gamma}_1'(0),\tilde{\gamma}_2'(0)$. Then
+$$
+d(\gamma_1(\ell_1),\gamma_2(\ell_2)) \leq 
+\tilde{d}(\tilde{\gamma}_1(\ell_1),\tilde{\gamma}_2(\ell_2))
+$$
+\end{theorem}
+
+\begin{theorem}[Toponogov, metric version]
+\label{theorem-Toponogov-metric}
 Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, with
 $p_1\neq  p_2$. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
 $o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing.
@@ -522,15 +548,19 @@ If $k>0$ suppose additionally that $\ell(\gamma_0) \leq \pi/\sqrt{k}$.
 Then there exists a geodesic triangle $\{\tilde{\gamma}_i:i=1,2,0\}$ in
 $\mathbb{Q}_k^2$ such that $\ell(\tilde{\gamma}_i) = \ell(\gamma_i)$ and
 $$
-d(\tilde{p}_1,\tilde{p}_2) \leq  d(o,p_1)+d(o,p_2)
+d(\tilde{o},\tilde{\gamma}_0(t)) \leq  d(o,\gamma_0(t))\qquad \forall t \in
+[0,\ell(\gamma_0)]
 $$
+\end{theorem}
 
+
+\begin{theorem}[Toponogov, geom]
+\label{theorem-}
 Put another way (next lecture…) Let $\tilde{\gamma}_1$ and $\tilde{\gamma}_2$ 
 be a corresponding angle in $\mathbb{Q}_k^2$. Then
 $$
 \tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
 $$
-
 \end{theorem}
 
 \begin{remark}
