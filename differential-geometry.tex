@@ -1,0 +1,806 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Differential Geometry}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Geodesics}
+\label{section-geodesics}
+
+\begin{proposition}[Totally Normal Neighbourhoods]
+\label{proposition-totally-normal-neighbourhoods}
+For all $p \in M$ there is a neighbourhood $W \ni p$ and a number $\delta>0$ 
+ such that for every $q \in W$, $B_\delta(q)$ is normal and
+ $W \subset B_\delta(q)$. 
+\end{proposition}
+
+\section{Jacobi Fields}
+\label{section-jacobi-fields}
+
+\begin{proposition}[Everyday Jacobi field]
+\label{proposition-everyday-jacobi-field}
+\cite{doc} Chapter V, Proposition 2.4. Let $\gamma:[0,a]\to M$ be a normalized
+geodesic and let $J$ be a Jacobi field through $\gamma$ with $J(0)=0$.
+Let $p:=\gamma(0)$ $w:=J'(0)$ and  $v:=\gamma'(0)$. 
+Consider the variation
+$$
+f(s,t):=\operatorname{exp}_{p}(t(v+sw))
+$$
+Then the associated Jacobi field is $J$. So in particular the field
+$$
+J(t)=d_{tv}\operatorname{exp}_p(tw)
+$$
+is a Jacobi field.
+
+{\bf Remark:} the variation can also be taken with respect to
+any a curve $\sigma$ on $T_vT_{p}M$ passing through $v$ 
+at $s=0$ with velocity $w$.
+
+\end{proposition}
+
+\begin{example}[Jacobi Fields in constant curvature]
+\label{example-jacobi-fields-in-constant-curvature}
+If $M$ has constant curvature $k$, a Jacobi field is of the form
+\end{example}
+
+\begin{proposition}[Critical points of exponential]
+\label{proposition-critical-points-exp}
+\cite{doc} Chapter V, Proposition 3.5. A vector $v \in T_pM$ is a critical
+point of $\operatorname{exp}_p$ if and only if the corresponding 
+$\gamma_v(1)$ is a conjugate point of $p$ along $\gamma_v$.
+Moreover, in such points, the dimension of the kernel of 
+$\operatorname{exp}_p$ at this vector is the multiplicity
+of the conjugate point $\gamma_v(1)$ 
+(i.e. the dimension of the space of Jacobi fields vanishing 
+at the endpoints).
+\end{proposition}
+
+\begin{proof}
+($\implies$) Suppose that $v$ is a critical point of $\operatorname{exp}_p$ and 
+let $w \in \ker d_v \operatorname{exp}_p$ then a Jacobi field along $\gamma$ 
+vanishing at the endpoints is given by
+$$
+J(t):=d_{tv}\operatorname{exp}_ptw
+$$
+($\impliedby$) If you have a critical point along $\gamma$, then the 
+differential of $\operatorname{exp}_p$ has kernel.
+
+(Mulitplicity.) The proof every element of the kernel gives a Jacobi
+ field vanishing at the points. Linearly dependent elements will give 
+ linearly dependent Jacobi fields.
+\end{proof}
+\section{Submanifolds}
+\label{section-submanifolds}
+
+\begin{remark}
+\label{remark-ricci-equation}
+Ricci equation may help prove that the normal bundle of a high codimension
+submanifold is trivial.
+\end{remark}
+
+\section{Hopf-Rinow Theorem}
+\label{section-Hopf-Rinow-theorem}
+
+\begin{theorem}[Hopf-Rinow]
+\label{theorem-Hopf-Rinow}
+The following are equivalent for any $p \in M$:
+\begin{enumerate}
+\item The domain of the exponential map $\text{exp}_p$ is $T_pM$.
+\item Closed and bounded subsets are compact.
+\item $(M,d)$ is a complete metric space.
+\item $M$ is geodeiscally complete (i.e. every geodesic is maximally defined in
+all of $\mathbb{R}$).
+\item Existence of exhaustions.
+\end{enumerate}
+Moreover, each of the former conditions imply that there exists a minimizing 
+geodesic joining any two points.
+\end{theorem}
+\section{First Variation Formula}
+\label{section-first-variation}
+
+\begin{theorem}[First Variation Formula]
+\label{theorem-first-variation-formula}
+If  $f:(-\varepsilon,\varepsilon)\times(-\delta,\delta) \to M$ is a variation of
+the geodesic $\gamma(-\delta,\delta)\to M$, then
+$$
+\frac{1}{2}E'(0)=-\int_a^b\left<V,\gamma''\right>+\left<V,\gamma'\right>|_{a}^b
++\sum_{i=1}^{k-1}\left<V,\gamma'^{-}(t_{i})-\gamma'^{+}(t_i)\right>
+$$
+\end{theorem}
+
+\section{Second Variation Formula}
+\label{section-second-variation}
+
+Agora vou fazer uma pausa para lembrar como se escreve a forma do índica em
+geral. Por definição, a forma de índice é 
+$$
+I_a(V,W):=\int_0^a
+\left<V'W'\right>-\int_0^a\left<R_{\gamma'}V,W\right>$$
+ para quaisquer campos $V,W \in \mathfrak{X}_\gamma$.
+
+Então reescrevemos isso usando que a conexão ao longo de \(\gamma\) é métrica:
+\begin{align*}
+\left<V,W'\right>'&=\left<V',W'\right>+\left<V,W''\right>\\
+\implies  \left<V',W'\right>&=\left<V,W'\right>'- \left<V,W''\right>
+\end{align*}
+Substituindo obtemos que
+\begin{equation}
+\label{equation-index-form-alternative-formula}
+\begin{aligned}
+I_a(V,W)&=\int_0^a\left<V,W'\right>'-\int_0^a \left<V,W''\right>-\int_0^a \left<R_{\gamma'}V,W\right>\\
+&=\left<V,W'\right>|_{0}^a-\int_0^a \left<V,W''\right>-\int_0^a\left<R_{\gamma'}W,V\right>\\
+&=\left<V,W'\right>|_{0}^a-\int_0^a \left<V,W''+R_{\gamma'}W\right>
+\end{aligned}
+\end{equation}
+
+\section{Weinstein's theorem}
+\label{section-Weinstein-theorem}
+
+\begin{theorem}[Weinstein]
+\label{theorem-Weinstein}
+Let $M^n$ be oriented, compact, $K>0$ and $f \in \text{Iso}(M)$. Suppose that 
+if $n$ is even, $f$ preserves orientation, and if $n$ is odd, $f$ reverts
+orientation. Then $f$ has a fixed point.
+\end{theorem}
+
+\begin{proof}
+Suponha que $f$ não tem pontos mínimos. Defina uma função
+\begin{align*}
+	g: M &\longrightarrow \mathbb{R} \\
+	g(q) &=d(q,f(q)) 
+\end{align*}
+Como $M$ é compacta e essa função é contínua, possui um ponto mínimo que
+chamamos de $p$. 
+\end{proof}
+
+\section{Synge's theorem}
+\label{section-Synge-theorem}
+
+\begin{theorem}[Synge]
+\label{theorem-Synge}
+Let $M^n$ be compact and $K>0$. Then
+\begin{enumerate}
+\item If $n$ is even,
+$$
+\pi_1(M)=\begin{cases}
+	1\qquad & \text{if $M$ is orientable}\\
+	\mathbb{Z}_2\qquad & \text{if $M$ is not orientable}
+\end{cases}
+$$
+\item If $n$ is odd, then $M^n$ is orientable.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+First suppose $n$ is even and $M$ is orientable. Since $M$ is compact we must
+have that $K\geq \delta>0$. Now consider the universal cover $\tilde{M}$. Then
+it also satisfies the curvature bound (with the pullback metric)
+, making it compact as well by Bonnet-Myers \ref{theorem-Bonnet-Myers}. 
+Now pick a deck transformation, which must be
+orientation-preserving if we choose the orientation on $\tilde{M}$ (simply
+connected is always orientable) making the projection orientation-preserving.
+Then $f$ must have a fixed point by Weinstein's theorem \ref{theorem-Weinstein},
+which applies since we have shown that $\tilde{M}$ is compact. 
+However, deck transformations cannot have fixes points unless they are the
+ identity: this is a consequence of the ``Unique lifting property", which a 
+slightly more general statement than the uniqueness of curve lifts that we 
+used for Klinenberg's lemma exercise \ref{exercise-l7-1}. 
+More exactly (cf. \ref{proposition-unique-lifting-property}): 
+given a covering space and to maps from any space into the base, these coincide
+ if they agree at one point only.
+\end{proof}
+
+\section{Index lemma}
+\label{subsection-index-lemma}
+
+\section{Rauch's comparison theorem}
+\label{section-Rauch}
+
+We motivate Rauch's comparison theorem with a result from ordinary
+differential equations.
+
+\begin{theorem}[Sturm]
+\label{theorem-Sturm}
+Suppose $f,\tilde{f},K,\tilde{K}:[0,a]\to \mathbb{R}$ are smooth functions
+satisfying the following conditions. $\tilde{f} > 0$ in $(0,a]$, $f(0)=\tilde{f}(0)=0$,
+$f'(0)=\tilde{f}'(0)$ and
+$$
+f''+Kf=0,\qquad \tilde{f}''+\tilde{K}\tilde{f}=0.
+$$
+If $K\leq \tilde{K}$, then $f/\tilde{f}$ is non decreasing. Moreover, if there
+is any point $t \in [0,a]$ where $f(t)=\tilde{f}(t)$, then $f \equiv \tilde{f}$
+and $K \equiv \tilde{K}$.
+\end{theorem}
+
+\begin{proof}
+Since we want to show $f/\tilde{f}$ is non decreasing we are interested in
+computing the sign of the derivative of this quotient. We thus calculate 
+$f'\tilde{f}-f \tilde{f}'$. We only have information about second derivatives,
+so we differentiate to obtain
+$$
+(f'\tilde{f}-f \tilde{f}')'=(\tilde{K}-K)f\tilde{f}
+$$
+We may integrate to find that 
+\begin{equation}
+\label{equation-Sturm}
+f'\tilde{f}-f \tilde{f}'=\int_0^t (f'\tilde{f}-f \tilde{f}')'
+=\int_0^t (\tilde{K}-K)f\tilde{f}
+\end{equation}
+If we show that $f\geq 0$ we get our result. So suppose that $t_0$ is the
+smallest number $t_0 \in (0,a]$ where $f$ is zero. Then $f'(t_0)<0$ since before
+that $f$ is positive, which in turn is because $f'(0)=\tilde{f}'(0)$ and
+$\tilde{f}$ is strictly positive. But this contradicts Equation
+\ref{equation-Sturm} since the integrand was positive up to $t_0$.
+
+Now suppose that $f(t_0)=\tilde{f}(t_0)$ for some $t_0 \in (0,a]$. Then Equation
+\ref{equation-Sturm} vanishes at $t_0$, and we conclude that $K \equiv
+\tilde{K}$ in $[0,t_0]$. Somehow this implies that $f$ also equals $\tilde{f}$…
+\end{proof}
+
+\begin{theorem}[Rauch]
+\label{theorem-Rauch}
+Let $\gamma$ be a geodesic of $M$ and $\tilde{\gamma}$ a geodesic of
+$\tilde{M}$. Suppose that $J \in \mathfrak{X}^J_\gamma$ and $\tilde{J}\in
+\mathfrak{X}^J_{\tilde{\gamma}}$ satisfy the following conditions. $J(0)=0$,
+$\tilde{J}(0)=0$, $|J'(0)|=|\tilde{J}'(0)|$ and 
+$\left<J,\gamma'\right>=\left<\tilde{J},\tilde{\gamma}'\right>$. Also,
+$$
+J''+K J=0,\qquad \tilde{J}''+\tilde{K}\tilde{J}=0
+$$
+If $\tilde{\gamma}$ has no conjugate points and $\tilde{K}\geq K$, then 
+$|J|/|\tilde{J}|$ is nondecreasing. Moreover, if $|J|$ and $|\tilde{J}|$
+coincide in one point, then $|J|\equiv |\tilde{J}|$ and $K \equiv \tilde{K}$.
+\end{theorem}
+
+\begin{proof}
+Let $f:=|J|^2$ and $\tilde{f}:=|\tilde{J}|^2$. I think the main difference with
+Sturm is that the condition on Jacobi fields is not a condition on the
+derivatives of the functions $f$ and $\tilde{f}$ we just defined. Note that
+$$
+f'=2\left<J',J\right>,\qquad J''=2(\left<J',J'\right>+\left<J'',J\right>).
+$$
+While we may substitute $-KJ$ on the second bracket, we still have the first
+one. Perhaps this is the reason to define $U(t):=J(t)/|J(r)|$ and
+$\tilde{U}(t):=\tilde{J}(t)/|\tilde{J}(r)|$. But wait, what's that $r$? There's
+a trick in this proof.
+
+Notice that $U$ and $\tilde{U}$ are Jacobi fields and $|U(r)|=|\tilde{U}(r)|$.
+\end{proof}
+\begin{proposition}
+\label{proposition-contraction}
+Sejam $p \in M$, $\tilde{p} \in \tilde{M}$ e $i:T_pM \to T_{\tilde{p}}\tilde{M}$
+uma isometria. Então $f:=\operatorname{exp}^{-1}_p \circ i \circ
+\operatorname{exp}_{\tilde{p}}$ é uma contração métrica, i.e. $|f_*w|\leq |w|$
+para todo $w \in T_pM$.
+
+Mas ainda, se $\operatorname{exp}_p^{-1}$ está definida numa bola totalmente
+convexa, $f$ é uma contração métrica.
+\end{proposition}
+
+\begin{proof}
+Write an abitrary $w\in T_p M$ as a Jacobi variational field of the variation 
+$f(s,t)=\operatorname{exp}_p(t(v+sw)$. The resulting field on $\tilde{M}$ is a
+Jacobi field with respect to $iw$ using that $i$ is an isometry. The conditions
+of Rauch theorem are satisfied and the desired inequality is obtained.
+
+For the metric result we just integrate along a curve realising the distance and
+compute.
+\end{proof}
+
+\section{Bonnet-Myers Theorem}
+\label{subsection-Bonnet-Myers-theorem}
+
+\begin{theorem}[Bonnet-Myers]
+\label{theorem-bonnet-myers}
+If $M$ is a complete manifold with $\operatorname{Ric} \geq \frac{1}{r^2}$, then
+$\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
+\end{theorem}
+
+\section{Morse index theorem}
+\label{section-morse-index}
+
+\begin{definition}[Index of index form]
+\label{definition-index-index-form}
+$$
+i(I_a):=\operatorname{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L}<0\}
+$$
+\end{definition}
+
+\begin{theorem}[Morse Index]
+\label{theorem-morse-index}
+O índice $i(I_t)$ é finito e igual ao número de pontos conjugados em $[0,t)$ ao
+longo de $\gamma$.
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item Define
+\begin{align*}
+\mathcal{V}_a&=\{V \in \mathfrak{X}_\gamma:\text{d.p.p., }V(0)=0, V(a)=0\}\\
+\mathcal{V}_t^+&:=\{V \in \mathcal{V}_t:V(t_i)=0\}\\
+\mathcal{V}_t^-& :=\{V \in \mathcal{V}_t:V|_{[t_j,t_{j+1}]}\in
+\mathfrak{X}_{\gamma|_{[t_j,t_{j+1}]}}^J\}
+\end{align*}
+\item Note que
+$$
+\mathcal{V}_t=\mathcal{V}_t^+ \oplus  \mathcal{V}_t^-
+$$
+\item Note que 
+$$
+\mathcal{V}_t^-=\bigoplus_{j=1}^{i-1}T_{\gamma(t_j)}M
+$$
+porque para qualquer escolha de vetores
+ $v_1 \in T_{\gamma(t_1)}M,\ldots,v_{i-1}\in T_{\gamma(t_{i-1})}M$ existe
+ um único campo $J \in \mathcal{V}^-$ tal que $J(t_j)=v_j$, por ser a solução
+ da EDO com condições de contorno.
+\item (\cite{doc} Capítulo X, Proposição 2.3. A nulidade da forma do índice é
+$$
+\Ker I_t:=\{V \in \mathcal{V}_t:I_t(V,W)=0\forall W\in\mathcal{V}_t\}=
+V_t \cap \mathfrak{X}_\gamma^J 
+$$
+The point here is to show that if $V \in \Ker$ then it is (1) a Jacobi
+ field in each interval where $V$ is smooth, and (2) smooth in the whole
+ interval.
+
+We use the fact that $V$ is in the kernel to show that (1) the norm of 
+$V-R_{\gamma'}V$ is zero, and (2) the left and right derivatives of $V$
+coincide. The first part involves multiplying by a positive function $f$ that
+vanishes at the singular points; this will make the ``singular part" of the
+index form, i.e. the sum, vanish, so that we get only with the integral part,
+which is the norm of the Jacobi equation, which will vanish since we are in the
+kernel. The second part I'm not sure---why do we need to show that $V$ is
+differentiable, or $C^2$ (since it's the solution of an ODE).
+\end{enumerate}
+\end{proof}
+
+
+
+\begin{theorem}[Jacobi's theorem]
+\label{theorem-Jacobi-theorem}
+Se $\gamma$ é minimizante, então não pode ter pontos conjugados. More generally,
+if $\gamma:I \to M$ is a geodesic and $ \gamma(a)$ is conjugate to $\gamma(0)$
+through $\gamma$ then for every $\delta>0$, $I_{a+\delta}\not \geq 0$.
+\end{theorem}
+
+\begin{proof}
+Se $\gamma$ é minimizante, a segunda fórmula da variação é positiva para todo
+campo em $\mathcal{V}=\{V\in \mathfrak{X}_\gamma:V \text{ d.p.p. },
+V(a)=0,V(b)=0\}$. Ou seja, a forma do índice é uma forma bilinear positiva, e
+portanto tem signatura zero, e pelo Teorema do Índice de Morse 
+\ref{theorem-Morse-index} o número de pontos conjugados é zero.
+\end{proof}
+
+It is possible to prove this theorem without using Morse Index Theorem
+\ref{theorem-Morse-index} by constructing a variation where the index form is
+negative, see Exercise \ref{exercise-l7-4}.
+
+\section{Cut locus}
+\label{section-cut-locus}
+
+\begin{definition}[Cut point]
+\label{definition-cut-point}
+O {\it cut point} de  $p$ ao longo de $\gamma$ é $\gamma(\rho(\gamma))$ 
+onde
+$$
+\rho(\gamma)=\text{sup}\{t:\gamma|_{[0,t]}\text{ é minimizante}\}
+$$
+
+\end{definition}
+
+\begin{proposition}[Cut point characterization]
+\label{proposition-cut-point-characterization}
+\cite{doc} Chapter XIII, Proposition 2.2. Let $\gamma$ be a minimizing geodesic joining $p$ and $q$. Then $q$ is the cut
+point of $p$ if and only if either of the following conditions hold:
+\begin{enumerate}
+\item $q$ is the first conjugate point of $p$ along $\gamma$.
+\item There is another, distinct, minimizing geodesic $\sigma$ joining $p$ and
+ $q$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+($\implies$) Since $q:=\gamma(r)$ is the cut point of $p$, we know that for every point
+$\gamma(r+\varepsilon)$ along $\gamma$ after $q$ there must be some other geodesic
+$\gamma_\varepsilon$ which realizes the distance between $p$ and
+$\gamma(r+\varepsilon)$
+
+Taking the limit as $\varepsilon \to 0$ we obtain another geodesic
+(because we are taking limit inside $S^n \subset T_pM$, so we get convergence;
+and because ``things will behave well under the limit")
+which puts us in the second condition of the theorem,
+unless the limit geodesic is the same as  $\gamma$ setwise.
+
+Now there's a critical observation:
+the two geodesics $\gamma$ and $\gamma_\varepsilon$ meet at the point 
+ $\gamma(r+\varepsilon)$, so you can write
+ $\gamma_\varepsilon(r+\delta(\varepsilon))=\gamma(r+\varepsilon)$
+ for some function $\delta(\varepsilon)$ (that could be negative, doesn't
+ matter).
+ But since $\gamma_\varepsilon$ is the minimizing
+ geodesic from $\gamma(0)$ to this point, then
+ $|\delta(\varepsilon)|<\varepsilon$.
+
+Right, the point is that defining
+$$
+u_\varepsilon:=(r+\varepsilon)v,\qquad
+u'_\varepsilon:=r+\delta(\varepsilon))v_\varepsilon
+$$
+we see that $\operatorname{exp}_p$ is not injective, since these two vectors
+hit that point.
+
+This being true for every $\varepsilon>0$, there is no neighbourhood of $vr$ 
+where $\operatorname{exp}_p$ is injective---much less a diffeomorphism.
+So it cannot be a local diffeomorphism, and we know that critical points of
+$\operatorname{exp}_p$ are conjugate points of $p$. (Remember: if
+$\operatorname{exp}_p$ has a critical point, its differential has kernel,
+and the map $d_{tv}\operatorname{exp}_pw$, for $w$ in the kernel, gives 
+a Jacobi field. See Proposition \ref{proposition-critical-points-exp})
+\end{proof}
+
+\begin{exercise}[Diâmetros]
+\label{exercise-diametros}
+Calcule o diâmetro de $S^2$, $\mathbb{T}^2$, $\mathbb{R}P^{2}$.
+\end{exercise}
+
+\begin{proof}[Solution]
+O diâmetro de $S^2$ pode ser calculado via o teorema de Bonnet Myers
+\ref{theorem-bonnet-myers}: nenhuma geodésica é minimizante depois de atingir
+comprimento $\pi r$, e temos uma geodésica que atinge esse comprimento: qualquer
+uma!
+
+O diâmetro de $\mathbb{T}^2$ é $1$. Isso é por simples geometria
+euclidiana: é o diâmetro do cubo! Por definição, a métrica de  $\mathbb{T}^2$ é
+a induzida pela projeção quociente.
+
+O diâmetro de $\mathbb{R}P^{2}$ é $\pi/2$. Qualquer geodésica que liga dois
+pontos a distância $\pi/2$ é minimizante, pois estamos na métrica esférica e
+podemos pegar cartas esféricas onde dois pontos a essa distância estão contidos. 
+Por outro lado, se tivéssemos dois pontos a distância maior, a geodésica 
+esférica que percorre o ponto antípoda ao inicial, chega no ponto final mais 
+rapidamente que inicial; portanto geodésicas de comprimento maior que $\pi/2$ 
+não são minimizantes.
+\end{proof}
+
+\begin{lemma}[Cut point is reflexive]
+\label{lemma-cut-point-reflexive}
+If $q$ is the cut point of $p$ through $\gamma$, then $p$ is the cut point of
+$p$ through $\gamma$.
+\end{lemma}
+
+\begin{lemma}[Not in the cut locus implies minimizing]
+\label{lemma-not-cut-locus-minimizing}
+
+\end{lemma}
+
+\begin{proposition}[Distance to cut point is continuous]\leavevmode
+The function
+\begin{align*}
+	\rho: T^1_p &\longrightarrow [0,+\infty] \\
+	v &\longmapsto \text{cut point along }\gamma_v 
+\end{align*}
+is continuous.
+\end{proposition}
+
+\begin{lemma}[Cut locus is a closed set]
+\label{lemma-cut-locus-closed}
+Because it's the image of the unit sphere in $T_pM$, which is closed.
+\end{lemma}
+
+\begin{lemma}[Cut locus is open, dense, homeomorphic to a ball, total measure]
+\label{lemma-cut-locus-topology}
+
+\end{lemma}
+
+\begin{lemma}[Outside the cut locus implies exists unique minimizing geodesic]
+\label{lemma-outside-cut-locus-exists-minimizing-geodesic}
+\cite{doc} Chapter XIII, Corollary 2.8. If $q \in M\setminus C_m(p)$, there exists a
+ unique minimizing geodesic joining
+$p$ and $q$.
+\end{lemma}
+
+\begin{proof}
+By Hopf-Rinow \ref{theorem-Hopf-Rinow}, we know that
+there exists a minimizing geodesic joining any two points. If there was more
+than one such geodesic, by 
+Proposition \ref{proposition-cut-point-characterization} 
+we get that $q$ is the cut point of  $q$ along either of these geodesics, 
+a contradiction.
+\end{proof}
+
+The former Lemma \ref{lemma-outside-cut-locus-exists-minimizing-geodesic} 
+shows that the exponential map $\text{exp}_p$
+ is injective outside the cut locus of $p$. 
+This motivates the following definition.
+
+\begin{definition}[Injectivity radius]
+\label{definition-injectivity-radius}
+The {\it injectivity radius} of a manifold $M$ is
+$$
+i(M)=\operatorname{inf}\{d(p,C_m(p)):p \in M\}
+$$
+\end{definition}
+
+\section{Bishop-Gromov Theorem}
+\label{section-bishop-gromov}
+
+\begin{theorem}[Bishop-Gromov]
+\label{theorem-bishop-gromov}
+
+\end{theorem}
+
+\begin{proof}
+Tome a função exponencial como uma carta parametrizando a esfera geodésica de
+raio $r$ com centro em $p$. Então
+$$
+\operatorname{Vol}_{S_r}=\int
+\operatorname{Vol}_{S_r}=
+\int_{S_r(0)}\operatorname{exp}_p^*\operatorname{Vol}_{S_r}
+$$
+Portanto, estamos interessados em calcular 
+$$
+|\det d_{rv} \operatorname{exp}_p|
+$$
+Avaliando em uma base de vetores tangentes a $S_r(0)$, notamos que cada um deles
+nos dá um campo de Jacobi $J$ ao longo de $\gamma$.
+
+Como $\gamma'(r)\perp J$, derivando obtemos $A J=J'$ onde $A$ é o operador de
+forma de $S_r$ respeito ao normal interior $\gamma'(r)$ (cf. conta feita antes).
+
+Mmm… no sé: creo que lo que quiero calcular realmente es
+$$
+\det J
+$$
+entonces no sé dondé entran ni $A$ ni $J'$… O sea si derivas con respecto a $r$
+pues va… pero si no…
+
+\end{proof}
+
+\section{Toponogov's theorem}
+\label{section-Toponogov}
+
+\begin{slogan}
+The 
+\end{slogan}
+
+First recall
+
+\begin{theorem}[Toponogov, local version]
+\label{theorem-Toponogov-local}
+Let $o,p_1,p_2 \in B$ where $B$ is a totally convex ball of $M$. Let $\gamma_1$
+and $\gamma_2$ be the normalized geodesics joining $o$ to $p_1$ and to $p_2$.
+
+Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple on 
+another manifold $\tilde{M}$ such that the distances from $\tilde{o}$ to
+$\tilde{p}_1$ and from $\tilde{o}$ to $\tilde{p}_2$ coincide with those in $M$.
+
+Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
+$$
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}_2(s))\leq d(\gamma_1(t),\gamma_2(s))
+$$
+\end{theorem}
+
+\begin{exercise}[Lista 7]
+\label{exercise-Toponogov-from-Rauch}
+Prove the local version of Toponogov's theorem as a corollary of Rauch's
+Comparison Theorem \ref{theorem-Rauch}.
+\end{exercise}
+
+\begin{proof}
+This is an application of Proposition \label{proposition:contraction} for $i$ as
+given by the condition of mapping $\gamma'_1(0)$ to $\gamma_2'(0)$ and the angle
+between them to the corresponding vectors and angle on $\tilde{M}$.
+\end{proof}
+
+The global version of Theorem \ref{theorem-Toponogov-local} is the following.
+Notice it coincides with our intuition from comparing plane triangles with
+spherical ones; spherical are fatter.
+
+\begin{theorem}[Toponogov, hinge]
+\label{theorem-toponogov-hinge}
+$M$ complete, $K \geq k$. $\gamma_1,\gamma_2$ normalized geodesics with
+$\gamma_1(0)=\gamma_2(0)$. Suppose $\gamma_1$ is minimizing. If $k>0$ suppose
+additionally that $\ell(\gamma_2) \leq \pi/\sqrt{k}$ (this is where conjugate
+points appear).
+
+Suppose that $\tilde{\gamma}_1,\tilde{\gamma}_2$ is a corresponding hinge in
+$\mathbb{Q}_k^2$, that is, $\ell(\gamma_i)=\ell(\tilde{\gamma}_i)$ and
+$\angle(\gamma_1'(0),\gamma_2'(0)=
+\angle\tilde{\gamma}_1'(0),\tilde{\gamma}_2'(0)$. Then
+$$
+d(\gamma_1(\ell_1),\gamma_2(\ell_2)) \leq 
+\tilde{d}(\tilde{\gamma}_1(\ell_1),\tilde{\gamma}_2(\ell_2))
+$$
+\end{theorem}
+
+\begin{theorem}[Toponogov, metric version]
+\label{theorem-Toponogov-metric}
+Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, with
+$p_1\neq  p_2$. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
+$o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing.
+Let $\gamma_0$ be a nonconstant geodesic joining $p_1$ to $p_2$ and suppose
+$$
+\ell(\gamma_0) \leq \ell(\gamma_1) +\ell(\gamma_2)
+$$
+If $k>0$ suppose additionally that $\ell(\gamma_0) \leq \pi/\sqrt{k}$.
+
+Then there exists a geodesic triangle $\{\tilde{\gamma}_i:i=1,2,0\}$ in
+$\mathbb{Q}_k^2$ such that $\ell(\tilde{\gamma}_i) = \ell(\gamma_i)$ and
+$$
+d(\tilde{o},\tilde{\gamma}_0(t)) \leq  d(o,\gamma_0(t))\qquad \forall t \in
+[0,\ell(\gamma_0)]
+$$
+\end{theorem}
+
+
+\begin{theorem}[Toponogov, geom]
+\label{theorem-}
+Put another way (next lecture…) Let $\tilde{\gamma}_1$ and $\tilde{\gamma}_2$ 
+be a corresponding angle in $\mathbb{Q}_k^2$. Then
+$$
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
+$$
+\end{theorem}
+
+\begin{remark}
+For me a more geometric statement is
+
+
+
+Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple on 
+another manifold $\tilde{M}$ such that 
+$$
+d(\tilde{p}_1,\tilde{p}_2) \leq  d(o,p_1)+d(o,p_2)
+$$
+If the sectional curvature $K$ of $M$ is $K>0$, then suppose additionally that
+$\ell(\gamma_1$
+
+Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
+$$
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
+$$
+So it's the same right? You look form $p_1$ instead…
+\end{remark}
+
+\section{Gromov's theorem}
+\label{section-Gromov-theorem}
+
+\begin{theorem}[Gromov]
+\label{theorem-Gromov}
+$M^n$ complete, $K \geq 0$, then $\pi$ admits a set of $3^n$ generators. In
+particular, it is finitely generated.
+\end{theorem}
+
+\begin{proof}
+Consider the universal cover $\tilde{M}$ of $M$ with the pullback metric. Fix a
+point $x \in \tilde{M}$ and consider the set
+$$
+\{f \in \Gamma:d(x,f(x))<r\},\qquad r>0
+$$
+By \ref{proposition-deck-transformations-act-properly-discontinuous}
+every point must have a disjoint neighbourhood … 
+\end{proof}
+
+\section{Cartan's Theorem}
+\label{section-Cartan-theorem}
+
+\begin{definition}
+\label{definition-free-homotopy-set}
+The {\it free homotopy set} is the set of homotopy classes of loops based on any
+point of $M$.
+\end{definition}
+
+\begin{definition}
+\label{definition-geodesic-loop}
+A {\it geodesic loop} is a geodesic whose starting and ending points are the
+same. It may not be differentiable at such point.
+\end{definition}
+
+\begin{definition}
+\label{definition-closed-geodesic}
+A {\it closed geodesic} a smooth geodesic loop.
+\end{definition}
+
+\begin{theorem}[Cartan]
+\label{theorem-Cartan}
+Let $M^n$ be compact, and $\omega \in \hat{\pi}_1M$ nontrivial. Then there is a
+closed geodesic $\gamma$ such that $[\gamma]=\omega$.
+\end{theorem}
+
+\begin{proof}
+Consider a sequence of loops whose lengths converge to the number
+$$
+\ell:=\text{inf}\{\ell(c):c \in \omega\}>0
+$$
+Consider a sequence $c_n$ of curves in $\omega$ such that their lengths converge
+to $\ell$. Then apply Arzelà-Ascoli Theorem \ref{theorem-Arzela-Ascoli}
+ to ensure they converge to some curve $c$ and show this is a geodesic 
+in $\omega$.
+
+First suppose that each of the $c_n$ is a piecewise geodesic parametrized by
+arclength (why can we do this?). We may then pick the supremum $L$ of all the
+lengths since we are assuming that their lengths decrease. Then
+$$
+d(c_n(t),c_n(s)) \leq \ell \left(c_n|_{[t,s]}\right) \leq  N |t-s|
+$$
+This says that $\{c_n\}$ is equicontinuous (the same $N$ works for all $n$) as a
+family of maps from 
+\end{proof}
+
+\section{Preisman Theorem}
+\label{section-Preisman-theorem}
+
+\begin{definition}
+\label{definition-translation}
+An isometry $f \in \text{Iso}(M)$ is called a {\it translation} if there exists
+a geodesic of $M$ such that $f(\gamma)=\gamma$. That is, $f \circ \gamma$ is a
+reparametrization of $\gamma$.
+\end{definition}
+
+\begin{theorem}[Preisman]
+\label{theorem-Preisman}
+Let $M^n$ be compact with $K<0$. If $1 \neq  H \subset \pi_1(M)$ is abelian,
+then $H=\mathbb{Z}$.
+\end{theorem}
+
+\section{Byers Theorem}
+\label{section-Byers-theorem}
+
+\begin{lemma}
+\label{lemma-deck-fixes-a-geodesic-then-not-compact}
+Let $M^n$ be a complete manifold with $K\leq 0$. Suppose that every element of
+$\text{Deck}(\pi)$, where $\pi$ is the universal covering, fixes the same
+ geodesic $\tilde{\gamma}$. Then $M$ is not compact.
+\end{lemma}
+
+\section{Busemann functions}
+\label{section-Busemann-functions}
+
+\begin{theorem}[The Strong Maximum Principle]
+\label{theorem-strong-maximum-principle}
+\cite{pet} Theorem 7.1.7. If $f:(M,g) \to \mathbb{R}$ is continuous and
+subharmonic, then $f$ is constant in a neighbourhood of every local maximum. In
+particular, if $f$ has a global maximum, then $f$ is constant.
+\end{theorem}
+
+\begin{proof}
+If $\Delta f>0$ then we can find a support function. Notice that Prof. Florit
+shows the theorem for functions satisfying $\Delta f \leq 0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-}
+
+\end{lemma}
+
+The following lemma follows from the lemma above and gives a bound on the
+Laplacian of the distance function.
+
+\begin{lemma}[Calabi]
+\label{lemma-Calabi}
+If $\text{Ric} \geq 0$, for $\rho:=d(p,\cdot)$, it holds that 
+$\Delta\rho \leq (n-1)/\rho$ on $M\setminus C_m(p)\cup\{p\}$.
+\end{lemma}
+
+\section{Cheeger-Gromoll Siplitting Theorem}
+\label{section-Chegger-Gromoll-splitting-theorem}
+
+\begin{theorem}[Cheeger-Gromoll]
+\label{theorem-Cheeger-Gromoll}
+Let $M$ be complete with  $\text{Ric}\geq0$. If $M$ has a line, then $M$ is
+isometric to $N\times\mathbb{R}$ for a compact manifold $N$.
+\end{theorem}
+
+\input{exercises-dg.tex}
+
+\clearpage
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+
