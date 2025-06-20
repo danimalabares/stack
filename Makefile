@@ -224,7 +224,7 @@ book: book.foo book.bar book.dvi book.pdf
 .PHONY: clean
 clean:
 	rm -f *.aux *.bbl *.blg *.dvi *.log *.pdf *.ps *.out *.toc *.foo *.bar
-	rm -f *.fdb_latexmk *.fls #dani added this to compile via latexmk -pdf -pvc name.tex
+	rm -f *.fdb_latexmk *.fls *.synctex.gz #dani-added
 	rm -f tmp/book.tex tmp/index.tex
 	rm -f stacks-project.tar.bz2
 
