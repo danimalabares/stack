@@ -35,7 +35,8 @@ LIJST = introduction conventions sets categories \
 	moduli moduli-curves \
 	examples exercises guide \
 	desirables coding obsolete \
-	differential-geometry algebraic-geometry complex-geometry physics
+	differential-geometry algebraic-geometry complex-geometry physics \
+	journal basic-math algebraic-topology
 
 # Add index and fdl to get index and license latexed as well.
 LIJST_FDL = $(LIJST) fdl index
