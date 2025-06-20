@@ -1,7 +1,29 @@
 \section{Exercises}
 \label{section-exercises}
 
-\begin{exercise}[Geodésica sem pontos conjugados é localmente minimizante]
+\begin{exercise}
+\label{exercise-Levi-Civita-connection-of-product}
+Let $P$ and $Q$ be Riemannian manidols. Sow that the Levi-Civita connection of
+the product metric is given by
+$\nabla_{Y_1+Y_2}(X_1+X_2)=\nabla^P_{Y_1}X_1+\nabla^Q_{Y_2}X_2$.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-totally-geodesic-submanifolds-of-product}
+Let $P$ and $Q$ be Riemannian manifolds. Show that for any $p \in P$ and $q \in
+Q$, $P\times \{q\}$ and $\{q\}\times P$ are totally geodesic
+submanifolds of $P \times Q$.
+\end{exercise}
+
+\begin{proof}[Solution]
+Let $v \in T_{(p,q)}(P\times\{q_0\})$ and consider the geodesic
+ $\text{exp}_p^{P\times Q}(tv)$. Then
+its acceleration vanishes since the Levi-Civita connection of the product metric
+is given by Exercise \ref{exercise-Levi-Civita-connection-of-product}, and the
+component along $Q$ vanishes.
+\end{proof}
+
+\begin{exercise}
 \label{exercise-geodesica-sem-pontos-conjugados-e-localmente-minimizante}
 $\gamma$ geodésica sem pontos conjugados em $[0,a]$. Então $\gamma$ é localmente
 minimizante.
@@ -35,8 +57,6 @@ product} como sendo o produto cartesiano $M\times N$ com a métrica
 Mostre que se os fatores são completos, o warped product é completo.
 \end{exercise}
 
-\subsection{Highlight exercises}
-\label{subsection-highlight-exercises}
 \begin{exercise}[Intersecting minimal hypersurfaces]
 \label{exercise-intersecting-minimal-hypersurfaces}
 $(M^n,g)$ completa $\operatorname{Ric}_M>0$. $A$, $B$ hipersuperfícies mínimas
@@ -99,6 +119,172 @@ Se $M^{2n+1}$ tem $K_M >0$ e $\gamma:S^1 \to M$ inverta orientação, então é
 possível encurtar $\gamma$ na sua classe de homotopia.
 \end{exercise}
 
+\begin{exercise}
+\label{exercise-product-of-compact-does-not-admit-negative-curvature}
+Let $N,M$ be compact. Then $N \times M$ does not admit a metric with $K<0$.
+\end{exercise}
+
+\begin{proof}
+If both $N$ and $M$ are simply connected then they cannot be compact by
+Hadamard's theorem. Assume first that both are not simply connected. Then each
+has a nontrivial homotopy class, and such a pair generates an abelian subgroup
+of $\pi_1(M \times N)$ that is not isomorphic to $\mathbb{Z}$, a contradiction
+with Preissman Theorem \ref{theorem-Preissman}.
+
+Now suppose that $N$ is simply connected and $M$ is not. The universal cover of
+$M\times N$, if it admits a metric with negative sectional curvature, 
+must be a Hadamard manifold, so that $\tilde{M} \times N \cong \mathbb{R}^n$.
+Then the induced map on cohomology is injective map ({\bf why?})
+$\pi^* :H^{k}(M)\to H^{k}(\tilde{M} \times N)=H^{k}(\mathbb{R}^n)=0$. This means
+by Poincaré duality (ref?) that $H^{n-1}(M)\cong H_1(M)$ and by Hurewicz
+isomorphism (ref?) we know that the abelizanization of $\pi_1(M)$ must be
+trivial. Thus if $\pi_1(M)$ is abelian we are done. But unfortunately most
+likely it is not--- if $M$ has negative curvature then $\pi_{1}(M)$ cannot be
+abelian by Theorem \ref{theorem-M-compact-K-negative-then-pi1-not-abelian}. 
+\end{proof}
+
+\begin{exercise}
+\label{exercise-SnxR-no-positive-Ric}
+Show that $S^n \times \mathbb{R}$ does not admite a complete metric with
+$\text{Ric}>0$.
+\end{exercise}
+
+\begin{proof}[Solução]
+If it did, then by Preissman theorem \ref{theorem-Preissman} then $S^n\times
+\mathbb{R}\cong N \times \mathbb{R}$, but the upshot is that that the latter 
+isomorphism is an isometry, and the $\mathbb{R}$ factor is flat, so we can't 
+have strictly positive Ricci.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-complete-without-a-compact-set-isometric-to-Rn}
+Let $(M^n,g)$ be complete and such that there exists a compact set
+ $K\subset M$ such that $M\setminus K \cong \mathbb{R}^n \setminus \tilde{K}$
+for some compact set $\tilde{K} \subset \mathbb{R}^n$. If $\text{Ric}M \geq 0$,
+then $M^n \cong \mathbb{R}^n$.
+\end{exercise}
+
+\begin{proof}[Solution]
+Since $M\setminus K$ is isometric to $\mathbb{R}^n\setminus \tilde{K}$, there
+must be a line (oops! this is not obvious). But suppose for now that there {\it
+is} a line on $M$. Then by the Splitting theorem \ref{theorem-splitting} there 
+is an isomorphism $M \cong N \times \mathbb{R}$. ({\it My original idea:}
+ If we manage to show that $N$ also has a line we would have that
+ $M \cong N_2 \times \mathbb{R}^2$.  if we can further do this process and find
+ that all $N_i$ have lines,
+then we end up with $M \cong N_k \times \mathbb{R}^k$ for some manifold $N_k$
+without lines.)
+
+Let's fix some notation. Let 
+$f:M\setminus K \to \mathbb{R}^n \setminus\tilde{K}$ be the given isometry and
+$\varphi:N^{n-1}\times\mathbb{R} \to M$ the isometry given by the Splitting
+theorem. Consider the restriction $f \circ \varphi |_{ N^{n-1}\times \{ a\}}$
+for some $a \in \mathbb{R}$. Observe que $N^{n-1}\times \{ a\}$ é totalmente
+geodésica (cf. Exercise \ref{exercise-totally-geodesic-submanifolds-of-product})
+, e portanto também a sua imagem sob  $f \circ \varphi$. Toda subvariedade
+totalmente geodésica de $\mathbb{R}^n$ é um plano, e acabamos.
+
+However, notice that it is not immediate from the
+isomorphism $f$ that $M$ has a line. Fix a line $L$ in $\mathbb{R}^n$. Then its
+inverse image under $f$ is minimizing in $M \setminus K$, but there could be a
+curve that minimizes distance between some two points of $f^{-1}(L)$ that is not
+contained in $f^{-1}(L)$.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-S1xS1xR-admite-curvatura--1}
+Mostre que $S^1 \times S^1 \times \mathbb{R}$ admite uma métrica de curvatura 
+$K\equiv-1$. {\it Dica.} Teorema de Preissman \ref{theorem-Preissman}.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-RPnxRPm-admite-curvatura-positiva}
+$\mathbb{R}P^{n}\times \mathbb{R}P^{m}$ admite uma métrica com 
+curvatura positiva?
+\end{exercise}
+
+\begin{proof}
+Se $m,n$ são os dois ímpares, são orientáveis, então o produto é orientável e de
+dimensão ímpar, e pelo Teorema de Synge \ref{theorem-Synge} deve ser
+simplesmente conexa, absurdo.
+ 
+Se as duas tem dimensão par, considere o recobrimento duplo orientável, que deve
+ser compacto (pode usar Bonnet-Myers \ref{theorem-Bonnet-Myers}), com curvatura
+positiva e dimensão par, e portanto é simplesmente conexo. Ou seja, trata-se do
+recobrimento universal. Porém, ele é um recobrimento duplo e portanto a fibra
+tem dois elementos, e desse jeito o $\text{Deck}\cong
+\pi_{1}(\mathbb{R}P^{n}\times\mathbb{R}P^{m})$ deve ser $\mathbb{Z}_2$, mas não
+é.
+
+E se uma é de dimensão par e a outra ímpar…
+\end{proof}
+
+\begin{exercise}
+\label{exercise-Sn-Tn-CPn-existem-curvaturas}
+Considere $S^n,\mathbb{T}^n$ e $\mathbb{C}P^{n}$. Existem métricas com $K>0$, $K
+\leq 0$, $K<0$, $K \geq 0$, $\text{Ric}>0$, $\text{Ric} \geq 0$? Faça uma
+tabela.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-Hadamard-manifold-sphere}
+Let $M^n$ be a Hadamard manifold and $S^{n-1}_r \subset M$. Mostre que
+ a curvatura média satisfaz $H_S\geq \frac{1}{r}$. {\it Dica.} A curvatura média
+da esfera em $\mathbb{R}^n$ é $\frac{1}{r}$.
+\end{exercise}
+
+\begin{proof}[Solution]
+Considere uma geodésica que liga $p$, o centro da esfera, e o bordo dela.
+Considere um referencial de campos de Jacobi $J_i$. Lembre que cada um dele
+satisfaz $A J=J'$. Então
+$$
+H=\sum_{i}\left<A \frac{J_i}{|J_i|},J_i\right>=
+$$
+\end{proof}
+
+\begin{exercise}
+\label{exercise-product-of-compact-and-Rn}
+$M^n$ compact, $\text{Ric} \geq 0$, then $\tilde{M}=N \times \mathbb{R}^n$ for
+some compact manifold $N$, where  $\tilde{M}$ is the universal cover of $M$.
+\end{exercise}
+
+\begin{proof}[Solution]
+If $\tilde{M}$ is compact we are done. So suppose it is not. Then there exists a
+ray. We want to construct a line to use Preissman \ref{theorem-Preisman}.
+Consider the fundamental domain of the cover $\tilde{M}$, which exists since
+$M$ is compact: we may take a finite covering of normal neighbourhoods of $M$,
+so that the preimage under $\pi$ is a compact set containing at least one
+representative of each class.
+
+Let $p_i$ be a sequence along the ray $\gamma$ so that $p_i$ goes to infinity.
+For each of them there exists a deck transformation $F_i$ that puts $p_i$ inside
+$K$. Consider the ray $F_i \circ \gamma$.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-rays-semispaces}
+Lista 8, Exercício 12. Let $M$ be a complete Riemannian manifold not compact
+with $K \geq 0$. Let $\sigma$ be a ray of $M$. Define for $t>0$ the {\it
+semispace}
+$$
+H_t^{\sigma}:=M\setminus \bigcup_{s>0}\Big(\sigma(t+s),s).
+$$
+Show that $H_t^{\sigma}$ is totally convex, that is, is a geodesic segment 
+ $\alpha:[0,1]\to M$ has its endpoints in $H_t^{\sigma}$, i.e.
+$\alpha(0),\alpha(1) \in H_t^{\sigma}$, then that segment is completely
+contained in $H_t^{\sigma}:\alpha([0,1]) \subset H_t^{\sigma}$. {\it Hint.}
+Suppose that it's false and use Toponogov.
+\end{exercise}
+
+\begin{proof}[Solution]
+Suppose that there is a geodesic $\gamma:[0,1]\to M$ with $\gamma(0),\gamma(1)
+\in M$, but it intersects $H_t^{\sigma}$. Consider the triangle joining $p$,
+$\sigma(t+s)$ and some other point.
+
+Choose the other point so that you obtain a contradiction using the structure of
+$H_t^{\sigma}$ of embedded balls---if a point is in any ball, it must be in all
+the next ones.
+\end{proof}
 \section{Lista 3}
 \label{section-lista-3}
 
@@ -202,8 +388,19 @@ parametrizada por comprimento de arco obtemos a condição dada na Definição
 \label{section-lista-6}
 
 \begin{exercise}
+\label{exercise-l6-3}
+Encontre um exemplo de variedade suave que admite alguma métrica Riemanniana com
+curvatura escalar positiva, mas não admite uma métrica com Riemanniana com Ricci
+positivo.
+\end{exercise}
+
+\begin{proof}[Solution]
+Precisamos de um espaço compacto para usar o teorema de B n
+\end{proof}
+
+\begin{exercise}
 \label{exercise-l6-6}
-Seja $M^{2n}$ uma variedade Riemanniana de dimensão para, completa, orientável e
+Seja $M^{2n}$ uma variedade Riemanniana de dimensão par, completa, orientável e
 com curvatura seccional $K>0$. Seja $\gamma$ uma geodésica fechada em $M$ de
 comprimento $\ell(\gamma)$. Mostre que existem curvas livremente homotópicas a
 $\gamma$ em $M$, arbitrariamente próximas de $\gamma$, que possuem comprimento
@@ -290,7 +487,7 @@ isso terminaria o exercício, pois obtemos que o único caso em que $p$ não é
 conjugado a $q$ é se $\gamma'(\ell)=-\sigma'(\ell)$, i.e. se o campo de Jacobi 
 associado à variação é nulo.) 
 
-\medskip
+\bigskip
 
 A variação certa é produzida no \cite{doc} supondo que 
 $\gamma'(\ell)\neq -\sigma'(\ell)$; isso implica que existe um vetor
