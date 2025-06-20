@@ -118,18 +118,6 @@ $$
 \label{section-second-variation}
 
 
-\section{Bonnet-Myers Theorem}
-\label{subsection-Bonnet-Myers-theorem}
-
-\begin{theorem}[Bonnet-Myers]
-\label{theorem-bonnet-myers}
-If $M$ is a complete manifold with $\operatorname{Ric} \geq \frac{1}{r^2}$, then
-$\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
-\end{theorem}
-
-\section{Rauch's comparison theorem}
-\label{section-Rauch}
-
 \section{Weinstein's theorem}
 \label{section-Weinstein-theorem}
 
@@ -190,13 +178,79 @@ given a covering space and to maps from any space into the base, these coincide
 \section{Index lemma}
 \label{subsection-index-lemma}
 
-\section{Teorema de Rauch}
-\label{subsection-Rauch}
+\section{Rauch's comparison theorem}
+\label{section-Rauch}
+
+We motivate Rauch's comparison theorem with a result from ordinary
+differential equations.
+
+\begin{theorem}[Sturm]
+\label{theorem-Sturm}
+Suppose $f,\tilde{f},K,\tilde{K}:[0,a]\to \mathbb{R}$ are smooth functions
+satisfying the following conditions. $\tilde{f} > 0$ in $(0,a]$, $f(0)=\tilde{f}(0)=0$,
+$f'(0)=\tilde{f}'(0)$ and
+$$
+f''+Kf=0,\qquad \tilde{f}''+\tilde{K}\tilde{f}=0.
+$$
+If $K\leq \tilde{K}$, then $f/\tilde{f}$ is non decreasing. Moreover, if there
+is any point $t \in [0,a]$ where $f(t)=\tilde{f}(t)$, then $f \equiv \tilde{f}$
+and $K \equiv \tilde{K}$.
+\end{theorem}
+
+\begin{proof}
+Since we want to show $f/\tilde{f}$ is non decreasing we are interested in
+computing the sign of the derivative of this quotient. We thus calculate 
+$f'\tilde{f}-f \tilde{f}'$. We only have information about second derivatives,
+so we differentiate to obtain
+$$
+(f'\tilde{f}-f \tilde{f}')'=(\tilde{K}-K)f\tilde{f}
+$$
+We may integrate to find that 
+\begin{equation}
+\label{equation-Sturm}
+f'\tilde{f}-f \tilde{f}'=\int_0^t (f'\tilde{f}-f \tilde{f}')'
+=\int_0^t (\tilde{K}-K)f\tilde{f}
+\end{equation}
+If we show that $f\geq 0$ we get our result. So suppose that $t_0$ is the
+smallest number $t_0 \in (0,a]$ where $f$ is zero. Then $f'(t_0)<0$ since before
+that $f$ is positive, which in turn is because $f'(0)=\tilde{f}'(0)$ and
+$\tilde{f}$ is strictly positive. But this contradicts Equation
+\ref{equation-Sturm} since the integrand was positive up to $t_0$.
+
+Now suppose that $f(t_0)=\tilde{f}(t_0)$ for some $t_0 \in (0,a]$. Then Equation
+\ref{equation-Sturm} vanishes at $t_0$, and we conclude that $K \equiv
+\tilde{K}$ in $[0,t_0]$. Somehow this implies that $f$ also equals $\tilde{f}$…
+\end{proof}
 
 \begin{theorem}[Rauch]
 \label{theorem-Rauch}
+Let $\gamma$ be a geodesic of $M$ and $\tilde{\gamma}$ a geodesic of
+$\tilde{M}$. Suppose that $J \in \mathfrak{X}^J_\gamma$ and $\tilde{J}\in
+\mathfrak{X}^J_{\tilde{\gamma}}$ satisfy the following conditions. $J(0)=0$,
+$\tilde{J}(0)=0$, $|J'(0)|=|\tilde{J}'(0)|$ and 
+$\left<J,\gamma'\right>=\left<\tilde{J},\tilde{\gamma}'\right>$. Also,
+$$
+J''+K J=0,\qquad \tilde{J}''+\tilde{K}\tilde{J}=0
+$$
+If $\tilde{\gamma}$ has no conjugate points and $\tilde{K}\geq K$, then 
+$|J|/|\tilde{J}|$ is nondecreasing. Moreover, if $|J|$ and $|\tilde{J}|$
+coincide in one point, then $|J|\equiv |\tilde{J}|$ and $K \equiv \tilde{K}$.
 \end{theorem}
 
+\begin{proof}
+Let $f:=|J|^2$ and $\tilde{f}:=|\tilde{J}|^2$. I think the main difference with
+Sturm is that the condition on Jacobi fields is not a condition on the
+derivatives of the functions $f$ and $\tilde{f}$ we just defined. Note that
+$$
+f'=2\left<J',J\right>,\qquad J''=2(\left<J',J'\right>+\left<J'',J\right>).
+$$
+While we may substitute $-KJ$ on the second bracket, we still have the first
+one. Perhaps this is the reason to define $U(t):=J(t)/|J(r)|$ and
+$\tilde{U}(t):=\tilde{J}(t)/|\tilde{J}(r)|$. But wait, what's that $r$? There's
+a trick in this proof.
+
+Notice that $U$ and $\tilde{U}$ are Jacobi fields and $|U(r)|=|\tilde{U}(r)|$.
+\end{proof}
 \begin{proposition}
 \label{proposition-contraction}
 Sejam $p \in M$, $\tilde{p} \in \tilde{M}$ e $i:T_pM \to T_{\tilde{p}}\tilde{M}$
@@ -217,6 +271,15 @@ of Rauch theorem are satisfied and the desired inequality is obtained.
 For the metric result we just integrate along a curve realising the distance and
 compute.
 \end{proof}
+
+\section{Bonnet-Myers Theorem}
+\label{subsection-Bonnet-Myers-theorem}
+
+\begin{theorem}[Bonnet-Myers]
+\label{theorem-bonnet-myers}
+If $M$ is a complete manifold with $\operatorname{Ric} \geq \frac{1}{r^2}$, then
+$\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
+\end{theorem}
 
 \section{Morse index theorem}
 \label{section-morse-index}
