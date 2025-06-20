@@ -1,5 +1,5 @@
-\section{Exercises}
-\label{section-exercises}
+\section{Exercises: basic constructions}
+\label{section-exercises-constructions}
 
 \begin{exercise}
 \label{exercise-Levi-Civita-connection-of-product}
@@ -22,6 +22,64 @@ its acceleration vanishes since the Levi-Civita connection of the product metric
 is given by Exercise \ref{exercise-Levi-Civita-connection-of-product}, and the
 component along $Q$ vanishes.
 \end{proof}
+
+The following exercise is important for future constructions identifying Jacobi
+fields, Hessian operators and mean curvature of geodesic spheres.
+
+\begin{exercise}
+\label{exercise-mean-curvature}
+Lista 4, Exercício 8. Let $(M,g)$ be a Riemannian manifold. Suppose that there
+is a function $f \in C^\infty(M)$ such that $0 \in \mathbb{R}$ is a regular
+value of $f$ and let $\Sigma:=f^{-1}(0)$.
+\begin{enumerate}
+\item Let $N=\frac{\nabla f}{|\nabla f| \in \mathfrak{X}^\perp(\Sigma)}$. Mostre
+que
+$$
+\left<\alpha_{\Sigma}(X,Y),N\right>=-\frac{\text{Hess}(f)(X,Y)}{|\nabla f|},
+$$
+para todos $X,Y \in \mathfrak{X}(\Sigma)$.
+
+\item Show that the mean curvature of $\Sigma$ is given by
+$$
+H_{\Sigma}=-\frac{1}{n}\mathsf{div}\left(\frac{\nabla f}{|\nabla f|}\right)
+$$
+\end{enumerate}
+{\it Note.} The notation in item (1) identifies fields using the differential of
+the inclusion map, as is customary.
+\end{exercise}
+
+\begin{proof}
+\begin{enumerate}
+\item One one hand,
+ $$
+\left<\alpha(X,Y),\nabla f\right>=-\left<Y,A_{\nabla f}X\right>
+$$
+by Remark \ref{remark-second-fundamental-form-and-shape-operator-are-adjoint}.
+On the other hand,
+$$
+\text{Hess}(f)(X,Y)=\left<\tilde{\nabla}_X \nabla f,Y\right>=
+\left<-A_{\nabla f}X+\nabla_X^\perp \nabla f,Y\right>,
+$$
+then multiply by $\frac{1}{|\nabla f|}$.
+
+\item To compute the divergence as the trace of the gradient we need an
+orthonormal frame of $M$. So let $E_i$ be an orthonormal frame of $\Sigma$ and
+add $\frac{\nabla f}{|\nabla f|}$ to obtain a frame of $M$. Then:
+\begin{align*}
+\text{div}\left(\frac{\nabla f}{|\nabla f|}\right)&=\sum
+\left<\tilde{\nabla}_{E_i}\frac{\nabla f}{|\nabla
+f|},E_i\right>+\underbrace{\left<\tilde{\nabla f}_{\frac{\nabla f}{|\nabla
+f|}}\frac{\nabla f}{|\nabla f|},\frac{\nabla f}{|\nabla
+f|}\right>}_{\frac{1}{2}\left|\frac{\nabla f}{|\nabla f|}\right|^2=0}\\
+&=\sum \left<-A_{\frac{\nabla f}{|\nabla f|}}E_i,E_i\right>\\
+&=-\text{tr}(X \mapsto A_{\frac{\nabla f}{|\nabla f|}}X=-nH_{\Sigma}(p)
+\end{align*}
+
+\end{enumerate}
+\end{proof}
+
+\section{Exercises: global differential geometry}
+\label{section-exercises-global-differential-geometry}
 
 \begin{exercise}
 \label{exercise-geodesica-sem-pontos-conjugados-e-localmente-minimizante}
@@ -95,7 +153,6 @@ $$
 \end{enumerate}
 \end{exercise}
 
-
 \begin{exercise}
 \label{exercise-even-dimension-positive-K-compact-is-simply-connected}
 Prove que $M^{2n},K_M>0$ compact, então ela é simplesmente conexa.
@@ -114,7 +171,7 @@ I want to show that $M^{2n+1}$ is diffeomorphic to its double orientable cover
 O exercício anterior usa Exercício 6 da lista 6. Ou, equivalentemente,
 
 \begin{exercise}
-%\label{exercise-}
+\label{exercise-inverts-orientation-shortened}
 Se $M^{2n+1}$ tem $K_M >0$ e $\gamma:S^1 \to M$ inverta orientação, então é
 possível encurtar $\gamma$ na sua classe de homotopia.
 \end{exercise}
@@ -285,6 +342,7 @@ Choose the other point so that you obtain a contradiction using the structure of
 $H_t^{\sigma}$ of embedded balls---if a point is in any ball, it must be in all
 the next ones.
 \end{proof}
+
 \section{Lista 3}
 \label{section-lista-3}
 
