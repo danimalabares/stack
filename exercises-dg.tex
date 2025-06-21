@@ -478,15 +478,6 @@ Seja $\gamma:[0,a]\to M$ uma geodésica em uma variedade Riemanniana $M$.
 sem pontos conjugados que não é minimizante.
 \end{exercise}
 
-\begin{proof}
-Por contrapositiva, suponha que existem dois pontos conjugados
- ao longo de $\gamma$ e vamos provar que ela não pode ser minimizante. 
-Por que não posso simplesmente pegar a variação associada ao campo de 
-Jacobi? Essa variação me da duas geodésicas que convergem num ponto,
- e portanto $\gamma$ não pode ser minimizante depois desse ponto. 
-Resposta: porque nada me assegura que essas geodésicas 
-\end{proof}
-
 \section{Lista 8}
 \label{section-lista-8}
 
@@ -745,7 +736,7 @@ $\angle(\gamma'(0),\sigma'(0))<\frac{1}{2}\pi$, então $\lim_{t \to \infty}
 \rho(\sigma(0),\sigma(t))=\infty$ (i.e. $\sigma$ vai para o infinito).
 \end{exercise}
 
-\begin{proof}
+\begin{proof}[Meu intento de prova]
 Seja $t \in \mathbb{R}$. Considere uma geodésica minimizante $\tau_t$ ligando
 $\gamma(t)$ com $\sigma(t)$. Defina o angulo 
 $\beta_t:=\angle(-\gamma'(t),\tau'_t(0))$ e o número $s_t$ como sendo o tempo em que
@@ -809,3 +800,49 @@ $|\tilde{\sigma}(t)|=\rho(\sigma(0),\sigma(t))$...
 problema inicial.
 \end{proof}
 
+\begin{proof}[Prova de \cite{Cheeger-Ebin}]
+Por desigualdade triangular, para quaisquer $t,s \in \mathbb{R}$,
+$$
+\rho(\sigma(t),\sigma(0)) \geq
+\rho(\gamma(s),\sigma(t))-\rho(\gamma(s),\gamma(0)).
+$$
+Como o lado esquerdo não depende de $s$, vemos que basta tomar o limite quando 
+$s\to \infty$ e mostrar que esse limite está inferiormente limitado por um
+número que depende linearmente de $t$, i.e. $t \cos\alpha$.
+
+Considere uma geodésica minimizante $\tau_{s,t}$ ligando $\gamma(s)$ e
+$\sigma(t)$. Podemos usar o teorema de Toponogov \ref{theorem-Toponogov-angle}
+na versão de ângulos (que está enunciada em \cite{Cheeger-Ebin}) já que duas das
+geodésicas no triângulo $\gamma(0),\gamma(s),\sigma(t)$ são minimizantes por
+hipótese. Como a cota inferior da curvatura é 0 não temos problemas com o
+comprimento de $\sigma$.
+
+Obtemos que existe um triângulo Euclidiano com lados do mesmo comprimento tal
+que os ângulos correspondentes são menores o iguais que os ângulos com que
+começamos.
+
+Denote $A:=\rho(\gamma(0),\gamma(s))=s$, $B:=\ell(\sigma(t))=t$ e
+ $C:=\rho(\gamma(s),\sigma(t))=\ell(\tau_{s,t})$.
+Nosso objetivo é limitar inferiormente $C-A$ conforme  $s \to \infty$.
+ Aplicamos a lei de cosenos no lado Euclidiano para obter
+\begin{align*}
+C^2&=A^2+B^2-2AB\cos\tilde{\alpha}\\
+\implies C^2-A^2&=B^2-2AB\cos\tilde{\alpha}\\
+\implies C-A&=\frac{B^2-2AB\cos\tilde{\alpha}}{C+A}
+\end{align*}
+Onde só $A=s$ e $C$ dependem de $s$. O comportamento assintótico desse quociente
+quando $s \to \infty$ é claro geometricamente: como $A$ e $C$ são dois lados de
+um triângulo, eles crescem proporcionadamente. Formalmente, como $C \leq A+B$,
+obtemos $C+A \leq 2A+B$. Daí
+\begin{align*}
+\frac{1}{C+A}&\geq \frac{1}{2A+B}\\
+\implies \frac{B^2-2AB\cos \tilde{\alpha}}{C+A}&\geq
+ \frac{B^2-2AB \cos \tilde{\alpha}}{2A+B}
+=\frac{A}{A}\frac{B^2/A-2B\cos \tilde{\alpha}}{2+B/A}
+\end{align*}
+que (a menos de analizar o que acontece se o numerador é negativo…)
+ converge a $B\cos \tilde{\alpha}$ conforme $s \to \infty$.
+ Concluímos que $C-A$ deve
+convergir a $-t\cos\tilde{\alpha}\leq-t\cos\alpha$. Tirando o signo obtemos a
+desigualdade desejada.
+\end{proof}

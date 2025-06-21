@@ -272,6 +272,7 @@ a trick in this proof.
 
 Notice that $U$ and $\tilde{U}$ are Jacobi fields and $|U(r)|=|\tilde{U}(r)|$.
 \end{proof}
+
 \begin{proposition}
 \label{proposition-contraction}
 Sejam $p \in M$, $\tilde{p} \in \tilde{M}$ e $i:T_pM \to T_{\tilde{p}}\tilde{M}$
@@ -591,7 +592,7 @@ corollary of Rauch's Comparison Theorem \ref{theorem-Rauch}.
 \end{exercise}
 
 \begin{proof}
-This is an application of Proposition \label{proposition:contraction} for $i$ as
+This is an application of Proposition \label{proposition-contraction} for $i$ as
 given by the condition of mapping $\gamma'_1(0)$ to $\gamma_2'(0)$ and the angle
 between them to the corresponding vectors and angle on $\tilde{M}$.
 \end{proof}
@@ -601,13 +602,12 @@ following. Notice it coincides with our intuition from comparing plane triangles
 with spherical ones; spherical are fatter.
 
 \begin{theorem}[Toponogov, hinge version]
-\label{theorem-toponogov-hinge}
+\label{theorem-Toponogov-hinge}
 $M$ complete, $K \geq k$. $\gamma_1,\gamma_2$ normalized geodesics with
 $\gamma_1(0)=\gamma_2(0)$. Suppose $\gamma_1$ is minimizing.
 
-If $k>0$ suppose
-additionally that $\ell(\gamma_2) \leq \pi/\sqrt{k}$ (because that's where 
-conjugate points appear).
+If $k>0$ suppose additionally that $\ell(\gamma_2) \leq \pi/\sqrt{k}$ (because
+that's where conjugate points appear).
 
 Suppose that $\tilde{\gamma}_1,\tilde{\gamma}_2$ is a corresponding hinge in
 $\mathbb{Q}_k^2$, that is, $\ell(\gamma_i)=\ell(\tilde{\gamma}_i)$ and
@@ -638,9 +638,13 @@ d(\tilde{o},\tilde{\gamma}_0(t)) \leq  d(o,\gamma_0(t))\qquad \forall t \in
 $$
 \end{theorem}
 
+\begin{proof}[Outline of proof]
+This is the one we proved in class. Define distance functions
+$\rho:=d(\sigma,\cdot)$ and $\tilde{\rho}:=\tilde{d}(\tilde{\sigma},\cdot)$.
+\end{proof}
 
-\begin{theorem}[Toponogov, geom]
-\label{theorem-}
+\begin{theorem}[Toponogov, hinge version 2]
+\label{theorem-Toponogov-hinge-2}
 Put another way (next lecture…) Let $\tilde{\gamma}_1$ and $\tilde{\gamma}_2$ 
 be a corresponding angle in $\mathbb{Q}_k^2$. Then
 $$
@@ -648,25 +652,22 @@ $$
 $$
 \end{theorem}
 
-\begin{remark}
-For me a more geometric statement is
+\begin{theorem}[Toponogov, angle version]
+\label{theorem-Toponogov-angle}
+\cite{Cheeger-Ebin} Theorem 2.2.(A). Let $M$ be a complete manifold with 
+$K_M\geq H$.
 
+Let $(\gamma_1,\gamma_2,\gamma_3)$ determine a geodesic triangle in $M$. Suppose
+$\gamma_1,$ $\gamma_3$ are minimal and if $H>0$, suppose $\ell(\gamma_2)\leq
+\frac{\pi}{\sqrt{H}}$. Then $M^H$, the simply connected 2-dimensional space of
+constant curvature $H$, there exists a geodesic triangle
+$(\tilde{\gamma}_1,\tilde{\gamma}_2,\tilde{\gamma}_3)$ such that
+$\ell(\gamma_i)=\ell(\tilde{\gamma}_i)$ and $\tilde{\alpha}_1 \leq\alpha_1$,
+$\tilde{\alpha}_3 \leq \tilde{\alpha}_3$.
 
-
-Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple on 
-another manifold $\tilde{M}$ such that 
-$$
-d(\tilde{p}_1,\tilde{p}_2) \leq  d(o,p_1)+d(o,p_2)
-$$
-If the sectional curvature $K$ of $M$ is $K>0$, then suppose additionally that
-$\ell(\gamma_1$
-
-Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
-$$
-\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
-$$
-So it's the same right? You look form $p_1$ instead…
-\end{remark}
+Except in case $H>0$ and $\ell(\gamma_i)=\frac{\pi}{\sqrt{H}}$ for some $i$, the
+triangle in $M^H$ is uniquely determined.
+\end{theorem}
 
 \section{Gromov's theorem}
 \label{section-Gromov-theorem}
