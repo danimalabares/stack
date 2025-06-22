@@ -2,6 +2,45 @@
 \label{section-exercises-constructions}
 
 \begin{exercise}
+\label{exercise-trace-is-independent-of-coordinates}
+Show that the trace is independent of coordinates.
+\end{exercise}
+
+\begin{proof}[Solution]
+Let $A$ be an endomorphism of a vector space. By definition
+$$
+\text{tr}A=A_i^i
+$$
+Now if $P$ is any invertible matrix,
+$$
+\text{tr}PAP^{-1}=P^j_iA_j^k\overline{P}_k^i=P^j_i\overline{P}_k^iA_j^k
+=\delta_k^jA_j^k=A_j^j
+$$
+where $\overline{P}$ denotes the indices of the inverse of $P$.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-derivative-of-determinant}
+Let $A(t)$ be a one parameter family of matrices. Compute $\det A(t)'$.
+\end{exercise}
+
+\begin{proof}[Solution]
+The determinant of a matrix is given by the product of its eigenvalues
+$\lambda_i$. Taking logarithms we see that
+$$
+\text{log}\det A(t)=\text{log}\prod_{i}\lambda_i=\sum_{i}\text{log}\lambda_i
+$$
+and differentiating we obtain
+$$
+\frac{\det A(t)'}{\det A(t)}=\sum_i \frac{\lambda_i'}{\lambda_i}
+=\text{tr} A'(t)A(t)^{-1}.
+$$
+with the caveat that we must confirm whether the functions $\lambda_i$ are
+differentiable. (Still pending…)
+
+\end{proof}
+
+\begin{exercise}
 \label{exercise-Levi-Civita-connection-of-product}
 Let $P$ and $Q$ be Riemannian manidols. Sow that the Levi-Civita connection of
 the product metric is given by
