@@ -10,6 +10,53 @@
 
 \tableofcontents
 
+\section{Connections}
+\label{section-connections}
+
+\begin{example}
+\label{example-euclidean-connection}
+The usual connection in $\mathbb{R}^n$ is given by 
+$$
+\nabla_XY=X(Y^i)\partial_i
+$$
+\end{example}
+
+\section{Riemannian submersions and immersions}
+\label{section-Riemannian-submersions-and-immersions}
+
+For any smooth manifold submersion $\pi:\tilde{M}\to M$ there is a bundle
+isomorphism I love: 
+\begin{equation}
+\label{equation-submersion-bundle-decomposition}
+\pi^*TM \oplus \Ker \pi\cong
+T\tilde{M} \end{equation}
+ where $\Ker\pi$ is the {\it kernel bundle}, whose
+fiber is the kernel of $\pi_*$, and is also called the {\it vertical bundle}.
+Proving that $\Ker\pi$ is in fact a bundle and confirming the isomorphism
+\ref{equation-submersion-bundle-decomposition} is a simple exercise.
+
+We call $\pi$ a {\it riemannian submersion} only when $\pi^*TM$ is isometric to
+$TM$, which makes sense only when $\tilde{M}$ and $M$ are Riemannian manifolds.
+
+Following notation of \cite{Milnor-Characteristic-Classes}, for any subbundle
+$\xi \subset\eta$ over a Riemannian manifold, the {\it orthogonal complement
+bundle} $\xi^\perp$ can be defined fiberwise as the orthogonal complement of the
+fiber and shown to be a bundle as in the case of the kernel bundle. Then Milnor
+defines the {\it normal bundle} when $\xi$ is the tangent bundle of a
+submanifold. Finally this construction is noted to work just as well for any
+isometric immersion $f:M\to \tilde{M}$, so that
+\begin{equation}
+\label{equation-immersion-bundle-decomposition}
+f^*T\tilde{M}\cong TM\oplus T^\perp M
+\end{equation}
+Further, in problem 3-B we are asked to define for $\xi \subset \eta$ the {\it
+quotient bundle} and show it's a bundle. And if $\eta$ has a Riemannian metric,
+then $\xi^\perp\cong\eta/\xi$. So that's why we sometimes say that we can define
+the normal bundle using a Riemannian metric but we don't need to.
+
+An interesting thought is: given a subbundle, is there a manifold whose tangent
+bundle is that subbundle?
+
 \section{Geodesics}
 \label{section-geodesics}
 
@@ -19,6 +66,24 @@ For all $p \in M$ there is a neighbourhood $W \ni p$ and a number $\delta>0$
  such that for every $q \in W$, $B_\delta(q)$ is normal and
  $W \subset B_\delta(q)$. 
 \end{proposition}
+
+\section{Curvature}
+\label{section-curvature}
+
+The {\it curvature tensor} is
+\begin{equation}
+\label{equation-curvature-tensor}
+R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z
+\end{equation}
+
+If a manifold has constant curvature $c$,
+\begin{equation}
+\label{equation-constant-curvature}
+\left<R(X,Y)Z,W\right>=
+c(\left<X,Z\right>\left<Y,W\right>-\left<X,W\right>\left<Z,Y\right>
+\end{equation}
+since the right-hand-side of Equation \ref{equation-constant-curvature} is a
+so-called curvature tensor, i.e. a tensor satisfying the symmetries of $R$.
 
 \section{Jacobi Fields}
 \label{section-jacobi-fields}
@@ -30,46 +95,52 @@ geodesic and let $J$ be a Jacobi field through $\gamma$ with $J(0)=0$.
 Let $p:=\gamma(0)$ $w:=J'(0)$ and  $v:=\gamma'(0)$. 
 Consider the variation
 $$
-f(s,t):=\operatorname{exp}_{p}(t(v+sw))
+f(s,t):=\text{exp}_{p}(t(v+sw))
 $$
 Then the associated Jacobi field is $J$. So in particular the field
 $$
-J(t)=d_{tv}\operatorname{exp}_p(tw)
+J(t)=d_{tv}\text{exp}_p(tw)
 $$
 is a Jacobi field.
 
 {\bf Remark:} the variation can also be taken with respect to
 any a curve $\sigma$ on $T_vT_{p}M$ passing through $v$ 
 at $s=0$ with velocity $w$.
-
 \end{proposition}
 
 \begin{example}[Jacobi Fields in constant curvature]
 \label{example-jacobi-fields-in-constant-curvature}
 If $M$ has constant curvature $k$, a Jacobi field is of the form
+$$
+J(t)=\begin{cases}
+	\qquad & \\
+	\qquad &
+\end{cases}
+$$
+This follows from Equation \ref{equation-constant-curvature}, 
 \end{example}
 
 \begin{proposition}[Critical points of exponential]
 \label{proposition-critical-points-exp}
 \cite{doc} Chapter V, Proposition 3.5. A vector $v \in T_pM$ is a critical
-point of $\operatorname{exp}_p$ if and only if the corresponding 
+point of $\text{exp}_p$ if and only if the corresponding 
 $\gamma_v(1)$ is a conjugate point of $p$ along $\gamma_v$.
 Moreover, in such points, the dimension of the kernel of 
-$\operatorname{exp}_p$ at this vector is the multiplicity
+$\text{exp}_p$ at this vector is the multiplicity
 of the conjugate point $\gamma_v(1)$ 
 (i.e. the dimension of the space of Jacobi fields vanishing 
 at the endpoints).
 \end{proposition}
 
 \begin{proof}
-($\implies$) Suppose that $v$ is a critical point of $\operatorname{exp}_p$ and 
-let $w \in \ker d_v \operatorname{exp}_p$ then a Jacobi field along $\gamma$ 
+($\implies$) Suppose that $v$ is a critical point of $\text{exp}_p$ and 
+let $w \in \ker d_v \text{exp}_p$ then a Jacobi field along $\gamma$ 
 vanishing at the endpoints is given by
 $$
-J(t):=d_{tv}\operatorname{exp}_ptw
+J(t):=d_{tv}\text{exp}_ptw
 $$
 ($\impliedby$) If you have a critical point along $\gamma$, then the 
-differential of $\operatorname{exp}_p$ has kernel.
+differential of $\text{exp}_p$ has kernel.
 
 (Mulitplicity.) The proof every element of the kernel gives a Jacobi
  field vanishing at the points. Linearly dependent elements will give 
@@ -78,11 +149,155 @@ differential of $\operatorname{exp}_p$ has kernel.
 \section{Submanifolds}
 \label{section-submanifolds}
 
+Let $f:M \to \tilde{M}$ be an isometric immersion of Riemannian manifolds. When
+computing the covariant derivative along two vector fields 
+$X,Y \in\mathfrak{X}(M)$ we get a vetor field along $X$ that may be split into
+its normal and tangent part thanks to Equation 
+\ref{equation-immersion-bundle-decomposition}. We find that the tangent part is
+in fact the Levi-Civita connection of $M$ since it is a symmetric and torsion
+free connection on the tangent bundle. We also find that the normal part is a
+symmetric tensor we call {\it second fundamental form}:
+\begin{equation}
+\label{equation-second-fundamental-form}
+\nabla^{f}_X f_*Y=f_*\nabla_XY+\alpha(X,Y)
+\end{equation}
+In a similar fashion we take a normal section $\xi\in T^\perp M$. 
+We call the tangent part {\it shape operator}. The normal part is a connection 
+we call the {\it normal connection}.
+\begin{equation}
+\label{equation-shape-operator}
+\nabla^f_X\xi=-A_\xi X+\nabla^\perp_X\xi
+\end{equation}
+Notice the adjointness relation
+\begin{equation}
+\label{equation-second-fundamental-form-and-shape-operator}
+\left<\xi,\alpha(X,Y)\right>=-\left<A_\xi X,Y\right>
+\end{equation}
+which follows from computing $0=X\left<Y,\xi\right>$.
+
+\section{Gauss, Codazzi, and Ricci equations}
+\label{section-Gauss-Codazzi-Ricci}
+
+The {\it Gauss equation} is
+\begin{equation}
+\label{equation-Gauss}
+\left<\tilde{R}(X,Y)Z,W\right>=\left<R(X,Y)Z,W\right>
+-\left<\alpha(X,Z),\alpha(Y,W)\right>+\left<\alpha(X,W),\alpha(Y,Z)\right>
+\end{equation}
+which follows from substituting Eq. \ref{equation-second-fundamental-form} 
+into Equation \ref{equation-curvature-tensor}.
+
+For the case of a hypersurface, the normal vector $\alpha(X,Y)$ must be
+proportional to the unit normal $\nu$, and by Eq.
+\ref{equation-second-fundamental-form-and-shape-operator} the proportionally
+factor is exactly $\left<A_\nu X,Y\right>$. Using this and evaluating
+ at an orthonormal pair $X,Y$ we obtain
+\begin{equation}
+\label{equation-Gauss-hypersurface}
+K(X,Y)=\tilde{K}(X,Y)+\left<AX,X\right>\left<AY,Y\right>-\left<AX,Y\right>^2
+\end{equation}
+
+\begin{exercise}
+\label{exercise-Gauss-sectional}
+Use Eq. \ref{equation-Gauss-hypersurface} to show that no 
+hypersurface $M \hookrightarrow \mathbb{R}^{n+1}$ can have constant
+ negative curvature.
+\end{exercise}
+
+\begin{proof}[Solution]
+After substituting $\tilde{K}(X,Y)=0$, we see that Eq. 
+\ref{equation-Gauss-hypersurface} cannot be negative because it contains the
+determinant of the matrix
+$$
+\begin{pmatrix}
+\left<AX,X\right>&\left<AX,Y\right>\\ 
+\left<AX,Y\right>&\left<AY,Y\right>
+\end{pmatrix}
+$$
+whose eigenvalues are…
+\end{proof}
+
+\begin{example}
+\label{example-curvature-of-sphere}
+Using Eq. \ref{equation-Gauss-hypersurface} we can prove that the sectional
+curvature of $S^n$ is 1 once we make sure that the shape operator of the sphere
+is the identity. And this follows from the fact that the connection on
+$\mathbb{R}^n$ is just directional derivative, see Example 
+\ref{example-euclidean-connection}.
+
+More explicitly, the normal component of $\tilde{\nabla}_X\nu$ will vanish (see
+discussion in Section \ref{section-Riccati-equation}, so that
+$\tilde{\nabla}_X\nu=-A_\nu X$. But the connection in Euclidean space is just
+differentiating the vector field, that is, $\tilde{\nabla}_X\nu=\nu X$. And
+finally, who's $\nu$? It's the $-\text{id}$ if you chose the inner normal. So
+ $\tilde{\nabla}_X\nu=-X$.
+\end{example}
+
+\begin{example}
+\label{example-hyperbolic-space}
+\cite{doc}, Chapter VIII, Exercise 3. The unit normal of hyperbolic space in the
+hyperboloid model is also the identity. This allows for a similar computation,
+but Eq. \ref{equation-Gauss-hypersurface} doesn't hold exactly because the
+metric is not Riemannian. In fact, the normal vector has norm $-1$, giving that
+hyperbolic space has constant curvature $-1$.
+\end{example}
+
+
 \begin{remark}
 \label{remark-ricci-equation}
 Ricci equation may help prove that the normal bundle of a high codimension
 submanifold is trivial.
 \end{remark}
+
+\section{Riccati equation}
+\label{section-Riccati-equation}
+
+Take any point and any tangent vector at that point. Take the geodesic and take
+the geodesic sphere of raduis say $r$ with center in the point. It's
+a hypersurface. Normal vectors are all multiples of the unit normal vector. But
+who's that, the unit normal? Ah, it's the speed of the geodesic.
+
+So? The normal derivative of any vector field tangent to the sphere with respect
+to the unit normal $\gamma'(r):=\nu$ is…
+$$
+0=X\left<\nu,\nu\right>=2\left<\nabla^\perp_X \nu,\nu\right>
+$$
+that is, normal derivative of $\nu$ with respect to $X$ is perpendicular to
+$\nu$. But normal derivative is normal so it's actually a multiple of $\nu$, 
+which makes $\nu$ have norm zero or else $\nabla^\perp_X \nu=0$.
+
+Now consider everyday Jacobi variation \ref{proposition-everyday-jacobi-field}
+ $f(s,t):=\text{exp}_p(t(v+sw))$ with Jacobi field
+$J(t)=d_{tv}\text{exp}_p(tw)$. Differentiate with using the pullback connection
+along $f$:
+\begin{align*}
+\nabla_{\frac{d}{dt}}^\gamma
+J(t)&=\nabla_{\partial_t}^ff_s=\nabla_{\partial_t}^f \partial_sf\\
+&=\nabla_{\partial_s}^f \partial_t f=\nabla_{J}^f \gamma' = -A_{\gamma'}f
+\end{align*}
+using that by our discussion above the normal derivative component vanishes. We
+conclude that
+$$
+J'=AJ
+$$
+Finally we differentiate that to obtain
+$$
+J''=A'J+AJ'=A'J+A^2J
+$$
+that is,
+$$
+A'+A^2+R_{\gamma'}=0
+$$
+since we can let $J(r)$ be any vector whatsoever and make this construction
+work.
+
+\begin{exercise}
+\label{exercise-Jacobi-tensor-derivative}
+Show that $\overline{J}'(0)=\text{id}$, where $\overline{J}:T_pM \to
+T_{\gamma(r)M}$ has the value of the Jacobi field depending on $w$ via
+Proposition \ref{proposition-everyday-jacobi-field} at time $r$.
+\end{exercise}
+
 
 \section{Hopf-Rinow Theorem}
 \label{section-Hopf-Rinow-theorem}
@@ -272,20 +487,21 @@ a trick in this proof.
 
 Notice that $U$ and $\tilde{U}$ are Jacobi fields and $|U(r)|=|\tilde{U}(r)|$.
 \end{proof}
+
 \begin{proposition}
 \label{proposition-contraction}
 Sejam $p \in M$, $\tilde{p} \in \tilde{M}$ e $i:T_pM \to T_{\tilde{p}}\tilde{M}$
-uma isometria. Então $f:=\operatorname{exp}^{-1}_p \circ i \circ
-\operatorname{exp}_{\tilde{p}}$ é uma contração métrica, i.e. $|f_*w|\leq |w|$
+uma isometria. Então $f:=\text{exp}^{-1}_p \circ i \circ
+\text{exp}_{\tilde{p}}$ é uma contração métrica, i.e. $|f_*w|\leq |w|$
 para todo $w \in T_pM$.
 
-Mas ainda, se $\operatorname{exp}_p^{-1}$ está definida numa bola totalmente
+Mas ainda, se $\text{exp}_p^{-1}$ está definida numa bola totalmente
 convexa, $f$ é uma contração métrica.
 \end{proposition}
 
 \begin{proof}
 Write an abitrary $w\in T_p M$ as a Jacobi variational field of the variation 
-$f(s,t)=\operatorname{exp}_p(t(v+sw)$. The resulting field on $\tilde{M}$ is a
+$f(s,t)=\text{exp}_p(t(v+sw)$. The resulting field on $\tilde{M}$ is a
 Jacobi field with respect to $iw$ using that $i$ is an isometry. The conditions
 of Rauch theorem are satisfied and the desired inequality is obtained.
 
@@ -297,9 +513,9 @@ compute.
 \label{subsection-Bonnet-Myers-theorem}
 
 \begin{theorem}[Bonnet-Myers]
-\label{theorem-bonnet-myers}
-If $M$ is a complete manifold with $\operatorname{Ric} \geq \frac{1}{r^2}$, then
-$\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
+\label{theorem-Bonnet-Myers}
+If $M$ is a complete manifold with $\text{Ric} \geq \frac{1}{r^2}$, then
+$\text{diam}M\leq \pi r$. In particular, $M$ is compact.
 \end{theorem}
 
 \section{Morse index theorem}
@@ -308,7 +524,7 @@ $\operatorname{diam}M\leq \pi r$. In particular, $M$ is compact.
 \begin{definition}[Index of index form]
 \label{definition-index-index-form}
 $$
-i(I_a):=\operatorname{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L}<0\}
+i(I_a):=\text{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L}<0\}
 $$
 \end{definition}
 
@@ -431,15 +647,15 @@ $$
 u_\varepsilon:=(r+\varepsilon)v,\qquad
 u'_\varepsilon:=r+\delta(\varepsilon))v_\varepsilon
 $$
-we see that $\operatorname{exp}_p$ is not injective, since these two vectors
+we see that $\text{exp}_p$ is not injective, since these two vectors
 hit that point.
 
 This being true for every $\varepsilon>0$, there is no neighbourhood of $vr$ 
-where $\operatorname{exp}_p$ is injective---much less a diffeomorphism.
+where $\text{exp}_p$ is injective---much less a diffeomorphism.
 So it cannot be a local diffeomorphism, and we know that critical points of
-$\operatorname{exp}_p$ are conjugate points of $p$. (Remember: if
-$\operatorname{exp}_p$ has a critical point, its differential has kernel,
-and the map $d_{tv}\operatorname{exp}_pw$, for $w$ in the kernel, gives 
+$\text{exp}_p$ are conjugate points of $p$. (Remember: if
+$\text{exp}_p$ has a critical point, its differential has kernel,
+and the map $d_{tv}\text{exp}_pw$, for $w$ in the kernel, gives 
 a Jacobi field. See Proposition \ref{proposition-critical-points-exp})
 \end{proof}
 
@@ -522,7 +738,7 @@ This motivates the following definition.
 \label{definition-injectivity-radius}
 The {\it injectivity radius} of a manifold $M$ is
 $$
-i(M)=\operatorname{inf}\{d(p,C_m(p)):p \in M\}
+i(M)=\text{inf}\{d(p,C_m(p)):p \in M\}
 $$
 \end{definition}
 
@@ -531,44 +747,168 @@ $$
 
 \begin{theorem}[Bishop-Gromov]
 \label{theorem-bishop-gromov}
+Let $p \in M$ and $0\leq t \leq i(p)=d(p,C_m(p)$. Denote $B_t(p)$ the ball of
+raduis $t$ centered in $p$ and $B_{t,k}$ the ball of radius $t$ in a space of
+constant curvature $k$.
 
+If $\text{Ric}\geq k$, then $\text{Vol}(B_t(p))/\text{Vol}(B_{t,k})$ is a non
+increasing function.
+
+Moreover, if there are numbers  $0<s<r\leq i(p)$ such that
+$$
+\frac{\text{Vol}(B_s(p))}{\text{Vol}(B_{s,k}}=
+\frac{\text{Vol}(B_r(p))}{\text{Vol}(B_{r,k})}
+$$
+then $B_r(p)=B_{r,k}$ isometrically.
 \end{theorem}
 
 \begin{proof}
-Tome a função exponencial como uma carta parametrizando a esfera geodésica de
-raio $r$ com centro em $p$. Então
+Use the exponential map a parametrization of the geodesic sphere with radius
+$r$ and centre in $p\in M$. (This parametrization works at least locally, but why
+have we said in lecture that ``it's a global chart''?) Then
 $$
-\operatorname{Vol}_{S_r}=\int
-\operatorname{Vol}_{S_r}=
-\int_{S_r(0)}\operatorname{exp}_p^*\operatorname{Vol}_{S_r}
+\text{Vol}(S^n_r(p))=\int_{S^n_r(p)}\text{Vol}_{S^n_r(p)}=
+\int_{S^n_r(0)}\text{exp}_p^*\text{Vol}_{S^n_r}=
+\int_{S^n_r(0)}|\det d_{rv} \text{exp}_p|\text{Vol}_{S^n_r(0)}
 $$
-Portanto, estamos interessados em calcular 
-$$
-|\det d_{rv} \operatorname{exp}_p|
-$$
-Avaliando em uma base de vetores tangentes a $S_r(0)$, notamos que cada um deles
-nos dá um campo de Jacobi $J$ ao longo de $\gamma$.
+This determinant can be given by a basis of tangent vectors to $S_r(0)$, each of
+which yields a Jacobi field via Proposition 
+\ref{proposition-everyday-jacobi-field}. These Jacobi fields are the columns 
+of the matrix $\mathbb{J}$, which is the Jacobian matrix of the exponential we 
+are interested in computing.
 
-Como $\gamma'(r)\perp J$, derivando obtemos $A J=J'$ onde $A$ é o operador de
-forma de $S_r$ respeito ao normal interior $\gamma'(r)$ (cf. conta feita antes).
+Now we want to differentiate this with respect to $r$. By Exercise
+\ref{exercise-derivative-of-determinant}, we know that the derivative of the
+determinant of a one-parameter family of invertible matrices $\mathbb{J}(r)$ is
+given by $\det \mathbb{J}(r)\text{tr}(\mathbb{J}^{-1}(r)\mathbb{J}'(r))$.
 
-Mmm… no sé: creo que lo que quiero calcular realmente es
-$$
-\det J
-$$
-entonces no sé dondé entran ni $A$ ni $J'$… O sea si derivas con respecto a $r$
-pues va… pero si no…
+By the discussion in Section \ref{section-Riccati-equation}, we know that
+$AJ=J'$ where $A$ is the shape operator with respect to the unit normal
+$\gamma'(r)$ and $J$ is a Jacobi field defined by
+\ref{proposition-everyday-jacobi-field}.  This gives $A=J'J^{-1}$. These are the
+diagonal entries of the matrix $\mathbb{J}$, so that its trace, which depends
+only on the diagonal by Exercise 
+\ref{exercise-trace-is-independent-of-coordinates}, is precisely $H/(n-1)$ where
+$H$ satisfying this equation is defined as the mean curvature.
 
+This data translates to the following equation
+\begin{equation}
+\label{equation-Bishop-Gromov-proof1}
+\det\mathbb{J}'=\det\mathbb{J}H
+\end{equation}
+\begin{remark}[Pregunta]
+\label{remark-pregunta}
+Then it is argued that $H$ satisfies the following Riccati equation:
+$$
+H'+H^2+\mathcal{R}=0
+$$
+where $\mathcal{R}:=\text{Ric}(\gamma')+|A_0|^2$. I don't understand what is 
+$A_0$. Why does this hold? I think
+it's the key to take Eq. \ref{equation-Bishop-Gromov-proof1} to an equation of
+the kind 
+\begin{equation}
+\label{equation-Sturm-type1}
+\det\mathbb{J}''+\mathcal{R}\det\mathbb{J}=0
+\end{equation}
+so that we can apply Sturm. 
+\end{remark}
+\bigskip
+Notice that in the case of constant curvature $k$, Eq. 
+\ref{equation-Bishop-Gromov-proof1} becomes
+\begin{equation}
+\label{equation-Bishop-Gromov-proof2}
+\det\overline{\mathbb{J}}'=\det\overline{\mathbb{J}}k
+\end{equation}
+which in turn should yield an equation of Sturm type, as in Remark
+\ref{remark-pregunta}. Namely,
+\begin{equation}
+\label{equation-Sturm-type2}
+\det\overline{\mathbb{J}}''+k\det\overline{\mathbb{J}}=0
+\end{equation}
+Now we want to compare the volume of the sphere in $M$ with the volume of a
+sphere of the same raduis in the space of constant curvature 
+$\mathbb{Q}_k^{n+1}$:
+\begin{align*}
+\frac{\text{Vol}(S_r^{n}(p))}{\text{Vol}(S^{n}_{r,k})}&=
+\frac{\int_{S^n(0)}\det \mathbb{J}}{\int_{S^n(0)}\det\overline{\mathbb{J}}}
+=\frac{1}{\text{Vol}(S^n(0))}
+\int_{S^n(0)}\frac{\det\mathbb{J}}{\det\overline{\mathbb{J}}}
+\end{align*}
+By Sturm Theorem \ref{theorem-Sturm}, which we may apply since both 
+$\det\mathbb{J}$ and $\det\overline{\mathbb{J}}$ satisfy Eqs.
+ \ref{equation-Sturm-type1} and \ref{equation-Sturm-type2}, and moreover 
+they both vanish at $r=0$ and their derivatives are $1$ at $r=0$ by Exercise
+\ref{exercise-Jacobi-tensor-derivative}, and of course, since we are supposing
+that $\text{Ric}M\geq k$, we conclude that the integrand is a non {\bf
+decreasing} function.
+\begin{remark}[Pregunta]
+\label{remark-pregunta2}
+Según Sturm, el cociente de las funciones en cuestión, en este caso,  
+$\frac{\det\mathbb{J}}{\det\overline{\mathbb{J}}}$ debería ser una función no
+decreciente, pero el resultado que buscamos es que sea no {\bf creciente}.
+\end{remark}
+\bigskip
+Now we turn to computing the ratios of the volumes of balls of radius $r$. 
+\begin{align*}
+\frac{\text{Vol}(B_r(p))}{\text{Vol}(B_{r,k})}&=
+\frac{\int_{S^n(0)}\int_0^r\det\mathbb{J}(t)dt\text{Vol}S^n(0)}
+{\text{Vol}(S^n(0))\int_0^r \det\overline{\mathbb{J}}(t)dt}\\
+&=\frac{1}{\text{Vol}(S^n(0))} \frac{\int_0^r}{}
+\end{align*}
+\begin{remark}[Preguntas]
+\label{remark-pregunta3}
+I have two questions:
+\begin{enumerate}
+\item We have said in lecture that we may apply Fubini's theorem by Gauss'
+lemma. Why? By Gauss' Lemma the normal vectors are orthogonal to the spheres,
+the constructions related to Riccati equation are valid (cf. Section
+\ref{section-Riccati-equation}). By why does this allow to use Fubini? 
+\item We can pull out the volume in the denominator because the volumes of
+spheres in the space of constant curvature somehow does not depend on the radius
+ $r$. But how exactly? I think  $\det \overline{\mathbb{J}}(r)$ does depend 
+on $r$ (in the space of constant curvature), see Eq. 
+\ref{equation-Bishop-Gromov-proof2}.
+\end{enumerate}
+\end{remark}
+Then the equation continues to
+\begin{align*}
+&=\frac{1}{\text{Vol}(S^n(0))}
+\int_{S^n(0)}\frac{\int_0^r \det \mathbb{J}(t)dt \text{Vol}S^n(0)}
+{\int_0^r\det\overline{J}dt}\\
+&=\frac{1}{\text{Vol}(S^n(0))}
+\int_{S^n(0)}\frac{\int_0^r \frac{\det \mathbb{J}(t)}
+{\det\overline{\mathbb{J}}(t)}
+\det\overline{\mathbb{J}}(t)dt \text{Vol}S^n(0)}
+{\int_0^r\det\overline{\mathbb{J}}dt}\\
+&=\frac{1}{\text{Vol}(S^n(0))}
+\int_{S^n(0)}\frac{\int_0^r \frac{\det \mathbb{J}(t)}
+{\det\overline{\mathbb{J}}(t)}d\mu}{\mu[0,r]}\text{Vol}S^n(0)
+\end{align*}
+where we have introduced a measure 
+$\mu:=\det \overline{\mathbb{J}}dt$.
+
+By our discussion before, the integrand is a non decreasing function, almost as
+required.
+
+Finally, notice that by the rigidity part on Sturm's Theorem
+\ref{theorem-Sturm}, the condition
+$$
+\frac{\text{Vol}(B_s(p))}{\text{Vol}(B_{s,k}}=
+\frac{\text{Vol}(B_r(p))}{\text{Vol}(B_{r,k})}
+$$
+implies that $\det\mathbb{J}=\det\overline{\mathbb{J}}$ and $k=\mathcal{R}$. 
+
+\begin{remark}[Pregunta]
+\label{remark-pregunta4}
+I'm not sure exactly how this shows that $B_r(p)=B_{r,k}$ isometrically.
+\end{remark}
 \end{proof}
 
 \section{Toponogov's theorem}
 \label{section-Toponogov}
 
-\begin{slogan}
-The 
-\end{slogan}
-
-First recall
+First recall a result we already proved using Rauch's theorem
+\ref{theorem-Rauch}:
 
 \begin{theorem}[Toponogov, local version]
 \label{theorem-Toponogov-local}
@@ -585,28 +925,31 @@ $$
 $$
 \end{theorem}
 
-\begin{exercise}[Lista 7]
+Meaning that this theorem is actually an exercise:
+
+\begin{exercise}
 \label{exercise-Toponogov-from-Rauch}
-Prove the local version of Toponogov's theorem as a corollary of Rauch's
-Comparison Theorem \ref{theorem-Rauch}.
+Lista 7, Exercício 10. Prove the local version of Toponogov's theorem as a 
+corollary of Rauch's Comparison Theorem \ref{theorem-Rauch}.
 \end{exercise}
 
 \begin{proof}
-This is an application of Proposition \label{proposition:contraction} for $i$ as
+This is an application of Proposition \label{proposition-contraction} for $i$ as
 given by the condition of mapping $\gamma'_1(0)$ to $\gamma_2'(0)$ and the angle
 between them to the corresponding vectors and angle on $\tilde{M}$.
 \end{proof}
 
-The global version of Theorem \ref{theorem-Toponogov-local} is the following.
-Notice it coincides with our intuition from comparing plane triangles with
-spherical ones; spherical are fatter.
+The global version of that Theorem \ref{theorem-Toponogov-local} is the
+following. Notice it coincides with our intuition from comparing plane triangles
+with spherical ones; spherical are fatter.
 
-\begin{theorem}[Toponogov, hinge]
-\label{theorem-toponogov-hinge}
+\begin{theorem}[Toponogov, hinge version]
+\label{theorem-Toponogov-hinge}
 $M$ complete, $K \geq k$. $\gamma_1,\gamma_2$ normalized geodesics with
-$\gamma_1(0)=\gamma_2(0)$. Suppose $\gamma_1$ is minimizing. If $k>0$ suppose
-additionally that $\ell(\gamma_2) \leq \pi/\sqrt{k}$ (this is where conjugate
-points appear).
+$\gamma_1(0)=\gamma_2(0)$. Suppose $\gamma_1$ is minimizing.
+
+If $k>0$ suppose additionally that $\ell(\gamma_2) \leq \pi/\sqrt{k}$ (because
+that's where conjugate points appear).
 
 Suppose that $\tilde{\gamma}_1,\tilde{\gamma}_2$ is a corresponding hinge in
 $\mathbb{Q}_k^2$, that is, $\ell(\gamma_i)=\ell(\tilde{\gamma}_i)$ and
@@ -637,9 +980,13 @@ d(\tilde{o},\tilde{\gamma}_0(t)) \leq  d(o,\gamma_0(t))\qquad \forall t \in
 $$
 \end{theorem}
 
+\begin{proof}[Outline of proof]
+This is the one we proved in class. Define distance functions
+$\rho:=d(\sigma,\cdot)$ and $\tilde{\rho}:=\tilde{d}(\tilde{\sigma},\cdot)$.
+\end{proof}
 
-\begin{theorem}[Toponogov, geom]
-\label{theorem-}
+\begin{theorem}[Toponogov, hinge version 2]
+\label{theorem-Toponogov-hinge-2}
 Put another way (next lecture…) Let $\tilde{\gamma}_1$ and $\tilde{\gamma}_2$ 
 be a corresponding angle in $\mathbb{Q}_k^2$. Then
 $$
@@ -647,25 +994,22 @@ $$
 $$
 \end{theorem}
 
-\begin{remark}
-For me a more geometric statement is
+\begin{theorem}[Toponogov, angle version]
+\label{theorem-Toponogov-angle}
+\cite{Cheeger-Ebin} Theorem 2.2.(A). Let $M$ be a complete manifold with 
+$K_M\geq H$.
 
+Let $(\gamma_1,\gamma_2,\gamma_3)$ determine a geodesic triangle in $M$. Suppose
+$\gamma_1,$ $\gamma_3$ are minimal and if $H>0$, suppose $\ell(\gamma_2)\leq
+\frac{\pi}{\sqrt{H}}$. Then $M^H$, the simply connected 2-dimensional space of
+constant curvature $H$, there exists a geodesic triangle
+$(\tilde{\gamma}_1,\tilde{\gamma}_2,\tilde{\gamma}_3)$ such that
+$\ell(\gamma_i)=\ell(\tilde{\gamma}_i)$ and $\tilde{\alpha}_1 \leq\alpha_1$,
+$\tilde{\alpha}_3 \leq \tilde{\alpha}_3$.
 
-
-Suppose $\tilde{o}, \tilde{p}_1,\tilde{p}_2 \in \tilde{B}$ is a triple on 
-another manifold $\tilde{M}$ such that 
-$$
-d(\tilde{p}_1,\tilde{p}_2) \leq  d(o,p_1)+d(o,p_2)
-$$
-If the sectional curvature $K$ of $M$ is $K>0$, then suppose additionally that
-$\ell(\gamma_1$
-
-Then for any $t \in [0,\ell(\gamma_1)]$ and $s \in [0,\ell(\sigma)]$,
-$$
-\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
-$$
-So it's the same right? You look form $p_1$ instead…
-\end{remark}
+Except in case $H>0$ and $\ell(\gamma_i)=\frac{\pi}{\sqrt{H}}$ for some $i$, the
+triangle in $M^H$ is uniquely determined.
+\end{theorem}
 
 \section{Gromov's theorem}
 \label{section-Gromov-theorem}
@@ -732,8 +1076,8 @@ This says that $\{c_n\}$ is equicontinuous (the same $N$ works for all $n$) as a
 family of maps from 
 \end{proof}
 
-\section{Preisman Theorem}
-\label{section-Preisman-theorem}
+\section{Preissman Theorem}
+\label{section-Preissman-theorem}
 
 \begin{definition}
 \label{definition-translation}
@@ -742,10 +1086,15 @@ a geodesic of $M$ such that $f(\gamma)=\gamma$. That is, $f \circ \gamma$ is a
 reparametrization of $\gamma$.
 \end{definition}
 
-\begin{theorem}[Preisman]
-\label{theorem-Preisman}
+\begin{theorem}[Preissman]
+\label{theorem-Preissman}
 Let $M^n$ be compact with $K<0$. If $1 \neq  H \subset \pi_1(M)$ is abelian,
 then $H=\mathbb{Z}$.
+\end{theorem}
+
+\begin{theorem}
+\label{theorem-M-compact-K-negative-then-pi1-not-abelian}
+If $M$ is compact and $K<0$, then $\pi_{1}(M)$ is not abelian.
 \end{theorem}
 
 \section{Byers Theorem}
@@ -791,9 +1140,9 @@ $\Delta\rho \leq (n-1)/\rho$ on $M\setminus C_m(p)\cup\{p\}$.
 \label{section-Chegger-Gromoll-splitting-theorem}
 
 \begin{theorem}[Cheeger-Gromoll]
-\label{theorem-Cheeger-Gromoll}
+\label{theorem-splitting}
 Let $M$ be complete with  $\text{Ric}\geq0$. If $M$ has a line, then $M$ is
-isometric to $N\times\mathbb{R}$ for a compact manifold $N$.
+isometric to $N\times\mathbb{R}$ for some Riemannian manifold $N$.
 \end{theorem}
 
 \input{exercises-dg.tex}

@@ -10,6 +10,7 @@
 
 \tableofcontents
 
+
 \section{Toy deformations}
 \label{section-toy-deformations}
 
@@ -19,14 +20,28 @@ the twisted cubic.
 \subsection{Last entry (June 2)}
 \label{subsection-june-2}
 
-On Thursday I had a meeting with Sergey where he explained more details about how to do deformations using weights and how this translates to the resolution. It will take me some time to metabolize this discussion and I have to go super RG this month since exam is coming soon. After that RG course is over and I'll be much more available. But still I'll try to start the digestion of how to do deformations using weights. The \textbf{objective} is to get super good practice and acquaintance doing simple examples (the twisted cubic deforms to SR of three lines, this was the first nontrivial example of the deformation of a non-complete intersection, remember? after triangle and pentagon…).
+On Thursday I had a meeting with Sergey where he explained more details about
+how to do deformations using weights and how this translates to the resolution.
+It will take me some time to metabolize this discussion and I have to go super
+RG this month since exam is coming soon. After that RG course is over and I'll
+be much more available. But still I'll try to start the digestion of how to do
+deformations using weights. The \textbf{objective} is to get super good practice
+and acquaintance doing simple examples (the twisted cubic deforms to SR of three
+lines, this was the first nontrivial example of the deformation of a
+non-complete intersection, remember? after triangle and pentagon…).
 
-So basically just \textit{really} understand how to get from a twisted cubic to SR of three lines would be good enough for a next meeting---probably not tomorrow.
+So basically just \textit{really} understand how to get from a twisted cubic to
+SR of three lines would be good enough for a next meeting---probably not
+tomorrow.
 
 Here's what happened:
-$$
-\text{*picture of the board (stacks-project has no figures…)*} 
-$$
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{figures/toy-deformations-board}
+\caption{}
+\label{figure-toy-deformations-board}
+\end{figure}
+
 Here's the summary
 \begin{enumerate}
 \item The twisted cubic is
@@ -111,8 +126,69 @@ is crucial for understanding the picture.
 \item What is an instanton?
 \end{enumerate}
 
+\section{Quantum Cohomology}
+\label{section-quantum-cohomology}
+
+\subsection{Galkin seminar (June 20 2025)}
+\label{subsection-Galkin-June-20}
+
+{\bf Question.} Is it true that quantum cohomology is just simplicial cohomology
+classes with coefficients in $\mathbb{C}$ but with a different product?
+
+{\bf A.} (Adapted from Sergey's.) We extend the coefficients from $\mathbb{C}$
+to $\mathbb{C}[q]$ where $q$ is ``a formal variable''. So as a
+$\mathbb{C}[q]$-module ($HQ^*(X)$) this is the ``usual'' cohomology, but the
+product is not the cup product (however it coincides with cup-product module the
+ideal $(q)$).
+
+\begin{quotation}
+``Then geometrically you take Spec of such algebra and it
+fibers over $\text{Spec} \mathbb{C}[q] = A^1_\mathbb{C}$ with coordinate q
+(alias, any element of a commutative algebra can be consideredf as a function
+from its Spectrum to the affine line), and the you can take a fiber over any
+point a, which is the same as substituting q to a value (complex number) a.
+Functions on this fiber is the quotient algebra QH(X,a) = QH(X,C[q])/(q-a), the
+structure constants are obtained by sybstituting q by a."
+\end{quotation}
+
+{\bf Question.} What is that fibered construction good for?
+
+
+{\bf Theme.} Under what conditions $QH^{\text{ev}}_{\text{big}}(X)$ is
+generically semisimple?
+
+{\bf Results.} Odd Betti numbers and odd Hodge numbers will vanish. See
+Hertling, Manin, Teleman 2009.
+
+{\bf Beautiful question.} When is the cohomology $H^*(Y)$ of Hodge-Tate type,
+where $Y$ is a generic hyperplane section of the complex Grassmanian
+$\text{Gr}(n,k)$?
+
+{\bf Reference + remark.} Debarre-Voisin computed the Hodge diamond of $Y
+\subset \text{Gr}(3,10)$ when studying Hyper-Kähler fourfolds. Since this is not
+Hodge-Tate type, the small quantum-cohomology is not generically semisimple.
+
+\begin{theorem}[Galkin-Leung-L.-Xiong]
+\label{theorem-GLLX}
+For $\text{Gr}(k,n)$, the cohomology $H^{*}(Y)$ is of Hodge-Type if and only if
+\begin{itemize}
+\item $Y \subset \text{Gr}(1,n)\cong \text{Gr}(n-1,n)$ where $n\geq 1$.
+\item $Y \subset \text{Gr}(2,n) \cong \text{Gr}(n-2,n)$ where $n \geq 4$.
+\item $Y \subset\text{Gr}(3,n) \cong\text{Gr}(n-3,n)$ where $n=6,7,8$.
+\end{itemize}
+\end{theorem}
+
+Theorem \ref{theorem-GLLX} can be viewed as an {\bf ADE classification}. We call
+the above $Y$ a {\it Hodge-Tate hyperplane section}.
+
+{\bf Reference.} Try it online
+\url{https://cubicbear.github.io/PluckerHodge.html} 
+
+For Fano varieties, we have the Fano index \ref{definition-Fano-index}. In this
+case, $QH^*(X)|_{q=1}$ is naturally a $\mathbb{Z}_r$-graded algebra
+$\mathcal{A}$.
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
 \end{document}
-

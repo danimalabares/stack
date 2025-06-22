@@ -1,0 +1,61 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Differential Topology}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Poincaré-Hopf theorem}
+\label{section-Poincare-Hopf-theorem}
+
+\begin{definition}
+\label{definition-isolated-zero-vector-field}
+Let $x \in X$ such that $V(x)=0$ for some $V \in \mathfrak{X}(X)$. $x$ is an
+{\it isolated zero} of  $V$ is there is an open set $U \ni x$ such that for
+every $y \in U\setminus \{x\}$, $V(y) \neq 0$.
+\end{definition}
+
+\begin{definition}
+\label{definition-degree-zero-vector-field}
+Here's a construction I won't destrinchar agora:
+$$
+\text{ind}(V,x)=\text{wind}(\tilde{V}|_{\partial
+B_r(0),0}=\overset{\text{def}}{=}\left(\frac{\tilde{V}}{\|\tilde{V}\|}\Big|_{\partial
+B_r(0)}\right)
+$$
+\end{definition}
+
+\begin{theorem}[Poincaré-Hopf]
+\label{theorem-Poincare-Hopf}
+Let $X$ be a compact manifold without boundary and $V \in \mathfrak{X}(X)$ with
+isolated zeroes. Then
+$$
+\sum_{x \in X}\text{ind}_x=\chi(X)
+$$
+\end{theorem}
+
+\section{Hopf's theorem}
+\label{section-Hopf-theorem}
+
+\begin{theorem}[Hopf]
+\label{theorem-Hopf}
+Let $X$ be a compact, oriented and connected manifold (without boundary). Let
+$f,g:X \to S^n$. (Notice degree is well-defined because $X$ is compact and
+$S^n$ is connected.) Then
+$$
+f \sim g \iff \text{deg}f=\text{deg}g
+$$
+\end{theorem}
+
+Which says that 
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+

@@ -309,8 +309,36 @@ Finally, condition (3) of the lemma follows from
 Lemma \ref{lemma-cech-cohomology-quasi-coherent-trivial}.
 \end{proof}
 
+\section{Fano varieties}
+\label{section-Fano-varieties}
+
+\begin{definition}
+\label{definition-Fano-variety}
+A {\it Fano variety} is a projective variety with $-K_X$ ample.
+\end{definition}
+
+\begin{definition}
+\label{definition-Fano-index}
+$$
+r(X):=\text{min}\{r:\frac{c_1(X)}{r}\in H^{2}(X,\mathbb{Z})\}
+$$
+\end{definition}
+
+\begin{exercise}
+\label{exercise-Fano-vanishing-higher-cohomology}
+By Kodaira vanishing theorem \ref{theorem-Kodaira-vanishing}, 
+you can show that the cohomology $H^{i}(X,L)$ for
+a Fano variety $X$ vanishes. You just have to put $L=\mathcal{O}(k)$ with $k\geq
+-r$, where $r$ is the Fano index.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-Pic-H2-Fano}
+Show that  $\text{Pic}(X)\cong H^{2}(X,\mathbb{Z})$ holds for Fano varieties.
+\end{exercise}
+
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
 \end{document}
-
