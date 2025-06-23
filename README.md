@@ -11,7 +11,7 @@ the original documentation files.
 
 #How to compile
 
-So far we can only compile each topic separately so just go
+So far we can only compile each topic separately so just go, for example,
 
 ``make complex-geometry.pdf``
 
