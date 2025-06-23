@@ -25,6 +25,27 @@ The signature of a form quadratic form can be equivalently computed as the
 maximal dimension of an isotropic subspace, or as the maximal dimension of the
 subspace where the form is negative.
 
+\section{Fréchet derivative}
+\label{section-Fréchet-derivative}
+
+\begin{definition}
+\label{definition-Frechet-derivative}
+\cite{zo1}, Section 8.2.1, Definition 1. A function $f:E \to \mathbb{R}^n$
+defined on a set $E \subset \mathcal{R}^m$ is {\it differentiable} at the point
+$x \in E$, which is a limit point of $E$, if
+$$
+f(x+h)-f(x)=L(x)h+\alpha(x;h)
+$$
+where $L(x):\mathbb{R}^m\to \mathbb{R}^n$ is a function that is linear in $h$
+and $\alpha(x;h)=o(h)$ as $h\to 0$, $x+h\in E$.
+\end{definition}
+
+This means that (\href{Alguém sabe um jeito bom de mostrar A~(1\s) * Id
+?}{Wikipedia})
+$$
+\lim_{\|h\|\to 0} \frac{\|f(x+h)-f(x)-Ah\|}{\|h\|}=0
+$$
+
 \section{Arzelà-Ascoli Theorem}
 \label{section-Arzela-Ascoli-theorem}
 \begin{definition}[Equicontinuous family]

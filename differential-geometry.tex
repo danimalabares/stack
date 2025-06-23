@@ -76,11 +76,31 @@ The {\it curvature tensor} is
 R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z
 \end{equation}
 
+The {\it Ricci tensor} is
+\begin{align*}
+	\text{Ric}: TM\times TM &\longrightarrow \mathbb{R} \\
+	 \text{Ric}(X,Y)&=\frac{1}{n-1}\text{tr}(Z\mapsto R(Z,X)Y)
+\end{align*}
+It is symmetric.
+
+The {\it Ricci curvature} is
+\begin{align*}
+	\text{Ric}: T^1M &\longrightarrow \mathbb{R} \\
+	\text{Ric}(X)&\text{Ric}(X,X)=\frac{1}{n-1}\sum_{i=1}^{n-1}K(X,E_i)
+\end{align*}
+where $\{X,E_1,\ldots,E_{n-1}\}$ is an orthonormal basis.
+
+The {\it scalar curvature} is
+\begin{align*}
+	\text{scal}: M &\longrightarrow \mathbb{R} \\
+	\text{scal}(p)&=\frac{1}{n}\text{tr}\text{Ric}
+=\frac{1}{n}\sum_i\text{Ric}(e_i,e_i)
+\end{align*}
 If a manifold has constant curvature $c$,
 \begin{equation}
 \label{equation-constant-curvature}
 \left<R(X,Y)Z,W\right>=
-c(\left<X,Z\right>\left<Y,W\right>-\left<X,W\right>\left<Z,Y\right>
+c(\left<X,Z\right>\left<Y,W\right>-\left<X,W\right>\left<Z,Y\right>)
 \end{equation}
 since the right-hand-side of Equation \ref{equation-constant-curvature} is a
 so-called curvature tensor, i.e. a tensor satisfying the symmetries of $R$.
@@ -298,6 +318,37 @@ T_{\gamma(r)M}$ has the value of the Jacobi field depending on $w$ via
 Proposition \ref{proposition-everyday-jacobi-field} at time $r$.
 \end{exercise}
 
+\begin{proof}[Solution]
+By Rafael. First we present a naive computation. We will use that
+$A(t)(J(t))=J'(t)$,  $J(0)=0$ and $J'(0)\neq 0$. Let $\varepsilon>0$ and let
+$s>0$ be such that
+$$
+\frac{\|J(s)-J(0)-sJ'(0)\|}{s}<\frac{\varepsilon}{2}
+$$
+and
+$$
+\|J'(s)-J'(0)\|<\frac{\varepsilon}{2}.
+$$
+Then
+\begin{align*}
+\left\|A(s)(J(s))-\frac{J(s)}{s}\right\|&
+=\left\|J'(s)-\left(\frac{J(s)-J(0)}{s}\right)\right\|\\
+&\leq \|J'(s)-J'(0)\|+\frac{\|J(s)-J(0)-sJ'(0)\|}{s}\\
+&\leq\varepsilon/2+\varepsilon/2=\varepsilon
+\end{align*}
+This shows that $A=\frac{1}{s}J$ for small $s$, but we have differentiated as if
+we were in $\mathbb{R}^n$. A similar computation but
+picking $s$ such that
+$$
+\frac{|\left<J(s),e_i(s)\right>-\left<J(0),e_i(0)\right>
+-s\left<J'(0),e_i(0)\right>|}{s}<\varepsilon/2
+$$
+and
+$$
+|\left<J'(0),e_i(0)\right>-\left<J'(s),e_i(s)\right>|<\varepsilon/2
+$$
+for a parallel frame $e_i$ along $\gamma$ allows to conclude as desired.
+\end{proof}
 
 \section{Hopf-Rinow Theorem}
 \label{section-Hopf-Rinow-theorem}
@@ -316,6 +367,10 @@ all of $\mathbb{R}$).
 Moreover, each of the former conditions imply that there exists a minimizing 
 geodesic joining any two points.
 \end{theorem}
+
+\section{Hadamard's theorem}
+\label{section-Hadamard}
+
 \section{First Variation Formula}
 \label{section-first-variation}
 
@@ -331,6 +386,14 @@ $$
 
 \section{Second Variation Formula}
 \label{section-second-variation}
+
+The {\it second variation formula} reads
+\begin{equation}
+\label{equation-second-variation}
+E''(0)=\int_0^a |V'|-\int_0^a R_{\gamma'}V+
+\left<\gamma'(t),\nabla_{\partial_s}V(t)\right>|_{0}^a+
+\sum_{i}\left<\gamma'(t),V^-(t_i)-V^+(t_i)\right>
+\end{equation}
 
 Agora vou fazer uma pausa para lembrar como se escreve a forma do índica em
 geral. Por definição, a forma de índice é 
@@ -353,6 +416,52 @@ I_a(V,W)&=\int_0^a\left<V,W'\right>'-\int_0^a \left<V,W''\right>-\int_0^a \left<
 &=\left<V,W'\right>|_{0}^a-\int_0^a \left<V,W''+R_{\gamma'}W\right>
 \end{aligned}
 \end{equation}
+
+\section{Bonnet-Myers Theorem}
+\label{subsection-Bonnet-Myers-theorem}
+
+\begin{theorem}[Bonnet-Myers]
+\label{theorem-Bonnet-Myers}
+If $M$ is a complete manifold with $\text{Ric} \geq \frac{1}{r^2}$, then
+$\text{diam}M\leq \pi r$. In particular, $M$ is compact.
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+Let $p,q \in M$ be points with $d(p,q)>\pi r$. We will construct a Jacobi
+field vanishing at the endpoints, so that these points are conjugate and thus
+any geodesic $\gamma$ joining them cannot be minimizing.
+
+Let $w_i$ be vectors in $T_pM$ which along with $\gamma'(0)$ form an orthonormal
+basis. Define $W_i$ to be the parallel transport of $w_i$ along $\gamma$ and
+$J_i:=\sin(\pi t/\ell)W_i$.
+
+Computing the second variation formula, which reduces to the index of $J_i$,
+which we may write as in Eq. \ref{equation-index-form-alternative-formula} to
+obtain
+\begin{align*}
+\frac{1}{2}E''(0)&=-\int_0^\ell\left<J,J''-R_{\gamma'}J\right>
+\approx\int_0^\ell \sin(\pi t)(1+K(W_i,\gamma'(t))
+\end{align*}
+Summing over all indices $i$ we arrive at the Ricci curvature, which must be
+greater or equal than $1/r^2$ by hypothesis. In comparing with the length of the
+curve $\ell>\pi r$, we find that the integrand must be
+negative, which forces one of the indices to be negative.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Bonnet-Myers-implies-compact-universal-covering-and-finite-pi1}
+\cite{doc}, Chapter IX, Corollary 3.2. Let $M$ be a complete Riemannian manifold
+with $\text{Ric}\geq \delta>0$. Then the universal covering of $M$ is compact
+and has finite fundamental group.
+\end{lemma}
+
+\begin{proof}
+The universal cover with the pullback metric satisfies the same curvature
+hypothesis as $M$, making it compact by Bonnet-Myers Theorem
+\ref{theorem-Bonnet-Myers}. Then the leafs of the action of deck transformations
+must be finite, so that $\pi_1(M)=\text{Deck}(\pi)$ is finite.
+\end{proof}
+
 
 \section{Weinstein's theorem}
 \label{section-Weinstein-theorem}
@@ -509,13 +618,13 @@ For the metric result we just integrate along a curve realising the distance and
 compute.
 \end{proof}
 
-\section{Bonnet-Myers Theorem}
-\label{subsection-Bonnet-Myers-theorem}
+\section{Moore's theorem}
+\label{section-Moore}
 
-\begin{theorem}[Bonnet-Myers]
-\label{theorem-Bonnet-Myers}
-If $M$ is a complete manifold with $\text{Ric} \geq \frac{1}{r^2}$, then
-$\text{diam}M\leq \pi r$. In particular, $M$ is compact.
+\begin{theorem}[Moore]
+\label{theorem-Moore}
+Let $M^n \subset \tilde{M}^{n+p}$ be a compact submanifold of a Hadamard
+manifold $\tilde{M}$. If $K\leq \tilde{K}$, then $p\geq n$.
 \end{theorem}
 
 \section{Morse index theorem}
@@ -527,6 +636,73 @@ $$
 i(I_a):=\text{sup}\{\dim L \subset \mathfrak{X}_\gamma:I_a |_{L \times L}<0\}
 $$
 \end{definition}
+
+For the proof of Morse Index Theorem \ref{theorem-Morse-index} we will use the
+following objects
+\begin{equation}
+\label{equation-index-theorem-spaces}
+\mathcal{V}_a&=\{V \in \mathfrak{X}_\gamma:\text{d.p.p., }V(0)=0, V(a)=0\}\\
+\mathcal{V}_t^+&:=\{V \in \mathcal{V}_t:V(t_i)=0\}\\
+\mathcal{V}_t^-& :=\{V \in \mathcal{V}_t:V|_{[t_j,t_{j+1}]}\in
+\mathfrak{X}_{\gamma|_{[t_j,t_{j+1}]}}^J\}
+\end{equation}
+
+\begin{proposition}
+\label{proposition-kernel-of-index-form}
+\cite{doc}, Chapter X, Proposition 2.3. The kernel of the index form i
+$$
+\Ker I_t:=\{V \in \mathcal{V}_t:I_t(V,W)=0\forall W\in\mathcal{V}_t\}=
+V_t \cap \mathfrak{X}_\gamma^J 
+$$
+that is, it is composed of smooth Jacobi fields along $\gamma$.
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+The point here is to show that if $V \in \Ker$ then it is (1) a Jacobi
+ field in each interval where $V$ is smooth, and (2) smooth in the whole
+ interval.
+
+We use the fact that $V$ is in the kernel to show that (1) the norm of 
+$V-R_{\gamma'}V$ is zero, and (2) the left and right derivatives of $V$
+coincide. The first part involves multiplying by a positive function $f$ that
+vanishes at the singular points; this will make the ``singular part" of the
+index form, i.e. the sum, vanish, so that we get only with the integral part,
+which is the norm of the Jacobi equation, which will vanish since we are in the
+kernel. The second part I'm not sure---why do we need to show that $V$ is
+differentiable, or $C^2$ (since it's the solution of an ODE).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-index-form-is-degenerate-iff-conjugate-points}
+\cite{doc}, Chapter X, Corollary 2.4. The index form is degenerate if and only 
+if the initial and final points of $\gamma$ are conjugate. In this case, the 
+nullity, i.e. dimension of $\Ker I_a$ coincides with the nullity of $\gamma(a)$ 
+as a conjugate point of $\gamma(p)$, that is, the dimension of the space of 
+Jacobi fields vanishing at the endpoints.
+\end{lemma}
+
+\begin{proof}
+Just by Proposition \ref{proposition-kernel-of-index-form} and by the fact that
+$\mathcal{V}_a$ is defined as the smooth vector fields vanishing in the
+endpoints.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-V-is-direct-sum}
+\cite{doc}, Chapter XI, Proposition 2.5. 
+$\mathcal{V}_a=\mathcal{V}^+ \oplus \mathcal{V}^-$.
+\end{proposition}
+
+\begin{proof}
+Assume that the partition $0<t_1<\ldots<t_k=a$ of $[0,a]$ is such that every
+segment $\gamma|_{[t_{i-1},t_i]}$ is contained in a totally geodesic
+neighbourhood, so that no such segment can have conjugate points.
+
+Let $V \in \mathcal{V}_a$ and pick a field $J \in \mathcal{V}^-$ defined as the
+piecewise Jacobi field with pairwise boundary conditions $J(t_j)=V(t_j)$. The
+assumtion that $\gamma|_{[t_{i-1},t_i]}$ has no conjugate points ensures the
+uniqueness of such $J$. Then $V-J\in\mathcal{V}^+$ and we obtain the result.
+\end{proof}
 
 \begin{theorem}[Morse Index]
 \label{theorem-morse-index}
@@ -555,23 +731,8 @@ porque para qualquer escolha de vetores
  $v_1 \in T_{\gamma(t_1)}M,\ldots,v_{i-1}\in T_{\gamma(t_{i-1})}M$ existe
  um único campo $J \in \mathcal{V}^-$ tal que $J(t_j)=v_j$, por ser a solução
  da EDO com condições de contorno.
-\item (\cite{doc} Capítulo X, Proposição 2.3. A nulidade da forma do índice é
-$$
-\Ker I_t:=\{V \in \mathcal{V}_t:I_t(V,W)=0\forall W\in\mathcal{V}_t\}=
-V_t \cap \mathfrak{X}_\gamma^J 
-$$
-The point here is to show that if $V \in \Ker$ then it is (1) a Jacobi
- field in each interval where $V$ is smooth, and (2) smooth in the whole
- interval.
-
-We use the fact that $V$ is in the kernel to show that (1) the norm of 
-$V-R_{\gamma'}V$ is zero, and (2) the left and right derivatives of $V$
-coincide. The first part involves multiplying by a positive function $f$ that
-vanishes at the singular points; this will make the ``singular part" of the
-index form, i.e. the sum, vanish, so that we get only with the integral part,
-which is the norm of the Jacobi equation, which will vanish since we are in the
-kernel. The second part I'm not sure---why do we need to show that $V$ is
-differentiable, or $C^2$ (since it's the solution of an ODE).
+\item Usamos Proposition \ref{proposition-kernel-of-index-form}.
+\item …
 \end{enumerate}
 \end{proof}
 
@@ -599,7 +760,7 @@ negative, see Exercise \ref{exercise-l7-4}.
 \section{Cut locus}
 \label{section-cut-locus}
 
-\begin{definition}[Cut point]
+\begin{definition}
 \label{definition-cut-point}
 O {\it cut point} de  $p$ ao longo de $\gamma$ é $\gamma(\rho(\gamma))$ 
 onde
@@ -609,7 +770,7 @@ $$
 
 \end{definition}
 
-\begin{proposition}[Cut point characterization]
+\begin{proposition}
 \label{proposition-cut-point-characterization}
 \cite{doc} Chapter XIII, Proposition 2.2. Let $\gamma$ be a minimizing geodesic joining $p$ and $q$. Then $q$ is the cut
 point of $p$ if and only if either of the following conditions hold:
@@ -659,7 +820,7 @@ and the map $d_{tv}\text{exp}_pw$, for $w$ in the kernel, gives
 a Jacobi field. See Proposition \ref{proposition-critical-points-exp})
 \end{proof}
 
-\begin{exercise}[Diâmetros]
+\begin{exercise}
 \label{exercise-diametros}
 Calcule o diâmetro de $S^2$, $\mathbb{T}^2$, $\mathbb{R}P^{2}$.
 \end{exercise}
@@ -683,18 +844,18 @@ rapidamente que inicial; portanto geodésicas de comprimento maior que $\pi/2$
 não são minimizantes.
 \end{proof}
 
-\begin{lemma}[Cut point is reflexive]
+\begin{lemma}
 \label{lemma-cut-point-reflexive}
 If $q$ is the cut point of $p$ through $\gamma$, then $p$ is the cut point of
 $p$ through $\gamma$.
 \end{lemma}
 
-\begin{lemma}[Not in the cut locus implies minimizing]
+\begin{lemma}
 \label{lemma-not-cut-locus-minimizing}
 
 \end{lemma}
 
-\begin{proposition}[Distance to cut point is continuous]\leavevmode
+\begin{proposition}
 The function
 \begin{align*}
 	\rho: T^1_p &\longrightarrow [0,+\infty] \\
@@ -703,17 +864,17 @@ The function
 is continuous.
 \end{proposition}
 
-\begin{lemma}[Cut locus is a closed set]
+\begin{lemma}
 \label{lemma-cut-locus-closed}
 Because it's the image of the unit sphere in $T_pM$, which is closed.
 \end{lemma}
 
-\begin{lemma}[Cut locus is open, dense, homeomorphic to a ball, total measure]
+\begin{lemma}
 \label{lemma-cut-locus-topology}
 
 \end{lemma}
 
-\begin{lemma}[Outside the cut locus implies exists unique minimizing geodesic]
+\begin{lemma}
 \label{lemma-outside-cut-locus-exists-minimizing-geodesic}
 \cite{doc} Chapter XIII, Corollary 2.8. If $q \in M\setminus C_m(p)$, there exists a
  unique minimizing geodesic joining
@@ -734,7 +895,7 @@ shows that the exponential map $\text{exp}_p$
  is injective outside the cut locus of $p$. 
 This motivates the following definition.
 
-\begin{definition}[Injectivity radius]
+\begin{definition}
 \label{definition-injectivity-radius}
 The {\it injectivity radius} of a manifold $M$ is
 $$
@@ -746,7 +907,7 @@ $$
 \label{section-bishop-gromov}
 
 \begin{theorem}[Bishop-Gromov]
-\label{theorem-bishop-gromov}
+\label{theorem-Bishop-Gromov}
 Let $p \in M$ and $0\leq t \leq i(p)=d(p,C_m(p)$. Denote $B_t(p)$ the ball of
 raduis $t$ centered in $p$ and $B_{t,k}$ the ball of radius $t$ in a space of
 constant curvature $k$.
@@ -902,6 +1063,39 @@ implies that $\det\mathbb{J}=\det\overline{\mathbb{J}}$ and $k=\mathcal{R}$.
 \label{remark-pregunta4}
 I'm not sure exactly how this shows that $B_r(p)=B_{r,k}$ isometrically.
 \end{remark}
+\end{proof}
+
+\section{Cheng's Theorem}
+\label{section-Cheng-theorem}
+
+Cheng's theorem says what happens in case of equality in the conditions of 
+Bonnet-Myers Theorem \ref{theorem-Bonnet-Myers}.
+\begin{theorem}[Cheng]
+\label{theorem-Cheng}
+Let $M$ be a complete Riemannian manifold with $\text{Ric}\geq 1$. If 
+$\text{diam}M=\pi$ then $M=S^n$ isometrically.
+\end{theorem}
+
+\begin{proof}
+By Bonnet-Myers Theorem \ref{theorem-Bonnet-Myers}, $M$ is a compact manifold
+with diameter $\pi$. This means that $M$ is the closure of any ball of radius
+$\pi$. Then, by Bishop-Gromov Theorem \ref{theorem-Bishop-Gromov}, it's enough 
+to show the rigidity condition holds for radius $\pi$. That is, we must show
+that there is $s<\pi$ such that
+$$
+\frac{\text{Vol}(B_s(p))}{\text{Vol}(B_{s,1}}= 
+\frac{\text{Vol}(B_\pi(p)}{\text{Vol}B_{\pi,1}}
+$$
+Consider two points $p_1$ and $p_2$ at distance $\pi$. Then the balls of radius
+$\pi/2$ with center at these points cannot intersect. This says that
+$$
+\text{Vol}M\geq B_{\pi/2}(p_1)+B_{\pi/2}(p_2)
+$$
+But since the volume of $M$ is exactly the volume of $B_\pi(p)$ for any $p$, we
+see that
+$$
+\frac{\text{Vol}(B_\pi(p))}{2}\leq B_{\pi/2}(p_i),\qquad i=1,2
+$$
 \end{proof}
 
 \section{Toponogov's theorem}
@@ -1076,7 +1270,7 @@ This says that $\{c_n\}$ is equicontinuous (the same $N$ works for all $n$) as a
 family of maps from 
 \end{proof}
 
-\section{Preissman Theorem}
+\section{Preissman's Theorem}
 \label{section-Preissman-theorem}
 
 \begin{definition}
@@ -1092,23 +1286,30 @@ Let $M^n$ be compact with $K<0$. If $1 \neq  H \subset \pi_1(M)$ is abelian,
 then $H=\mathbb{Z}$.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}[Preissman]
 \label{theorem-M-compact-K-negative-then-pi1-not-abelian}
 If $M$ is compact and $K<0$, then $\pi_{1}(M)$ is not abelian.
 \end{theorem}
 
-\section{Byers Theorem}
+\section{Byers' Theorem}
 \label{section-Byers-theorem}
 
 \begin{lemma}
 \label{lemma-deck-fixes-a-geodesic-then-not-compact}
-Let $M^n$ be a complete manifold with $K\leq 0$. Suppose that every element of
+Let $M^n$ be a complete manifold with $K<0$. Suppose that every element of
 $\text{Deck}(\pi)$, where $\pi$ is the universal covering, fixes the same
  geodesic $\tilde{\gamma}$. Then $M$ is not compact.
 \end{lemma}
 
-\section{Busemann functions}
-\label{section-Busemann-functions}
+\begin{theorem}[Byers]
+\label{theorem-Byers}
+Let $M$ be compact, $K<0$ and $H$ soluble subgroup of $\pi_1(M)$, $H\neq \{e\}$.
+Then $H$ is cyclic infinite. Moreover, $\pi_1(M)$ does not have any cyclic
+subgroup of finite index.
+\end{theorem}
+
+\section{Cheeger-Gromoll Siplitting Theorem}
+\label{section-Chegger-Gromoll-splitting-theorem}
 
 \begin{theorem}[The Strong Maximum Principle]
 \label{theorem-strong-maximum-principle}
@@ -1136,8 +1337,6 @@ If $\text{Ric} \geq 0$, for $\rho:=d(p,\cdot)$, it holds that
 $\Delta\rho \leq (n-1)/\rho$ on $M\setminus C_m(p)\cup\{p\}$.
 \end{lemma}
 
-\section{Cheeger-Gromoll Siplitting Theorem}
-\label{section-Chegger-Gromoll-splitting-theorem}
 
 \begin{theorem}[Cheeger-Gromoll]
 \label{theorem-splitting}
