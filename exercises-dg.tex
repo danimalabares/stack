@@ -19,12 +19,52 @@ $$
 where $\overline{P}$ denotes the indices of the inverse of $P$.
 \end{proof}
 
+The following two lemmas are preparatory results for Exercise
+\ref{exercise-derivative-of-determinant}.
+
+\begin{lemma}
+\label{lemma-for-derivative-of-determinant1}
+Let $\gamma_1,...,\gamma_m:(a,b)\to\mathbb{R}^n$ be smooth curves and define 
+$f:(a,b)\to\mathbb{R}$ by $f(t)=\det(\gamma_1(t),\ldots,\gamma_n(t))$. Then
+$$
+f'(t_0)
+=\sum_{k=1}^{m}\det(\gamma_1(t_0),\ldots,\gamma'_k(t_0),\ldots,\gamma_m(t_0)).
+$$
+\end{lemma}
+
+\begin{proof}
+This follows from multilinearity of the determinant using the definition of
+derivative of a map $g:\mathbb{R}^n \to \mathbb{R}^m$ as given by
+$$
+g(x+h)-g(x)=L(x)h+\varepsilon(x;h)
+$$
+where $\varepsilon$ is $o(h)$, meaning that  $\lim_{h \to 0}
+\frac{\varepsilon(x;h)}{h}=0$.
+
+More exactly, since $\gamma_k$ are smooth we may write
+$$
+\gamma(t_0+h)=\gamma_k(t_0)+h\gamma'_k(t_0)+\varepsilon_k(h)
+$$
+We substitute into the determinant…
+\end{proof}
+
+\begin{lemma}
+\label{lemma-for-derivative-of-determinant2}
+Let $M \in \text{Mat}_{n\times n}(\mathbb{R})$ be any matrix. Let 
+$f:\mathbb{T}\to \mathbb{R}$ be defined by $f(t):=\det(\text{Id}+tM)$. Then 
+$f'(0)=\text{tr}(M)$.
+\end{lemma}
+
+\begin{proof}
+This follows easily from Lemma \ref{lemma-for-derivative-of-determinant1}.
+\end{proof}
+
 \begin{exercise}
 \label{exercise-derivative-of-determinant}
 Let $A(t)$ be a one parameter family of matrices. Compute $\det A(t)'$.
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}[Physicist's solution]
 The determinant of a matrix is given by the product of its eigenvalues
 $\lambda_i$. Taking logarithms we see that
 $$
@@ -37,7 +77,25 @@ $$
 $$
 with the caveat that we must confirm whether the functions $\lambda_i$ are
 differentiable. (Still pending…)
+\end{proof}
 
+\begin{proof}[Solution]
+Consider the determinant as a function 
+$\det:\text{GL}(n,\mathbb{R})\to\mathbb{R}$. Is total derivative at 
+$A \in \text{GL}(n,\mathbb{R})$ is a linear map 
+$\text{GL}(n,\mathbb{R})\to \mathbb{R}$ which when evaluated at a matrix
+$H\in\text{GL}(n\mathbb{R})$ is defined by
+$$
+\det(A)'H=\lim_{t\to0}\frac{\det(A+tH)-\det(A)}{t} 
+$$
+Now define $f(t):=\det(A+tH)$ so that the latter equation reads $f'(0)$. Then
+observe that
+$$
+f(t)=\det(A+tH)=\det(A(\text{Id}+tA^{-1}H)=\det(A)\det(\text{Id}+tA^{-1}H).
+$$
+By Lemma \ref{lemma-for-derivative-of-determinant2} we conclude that 
+$f(t)=\det(A)\text{tr}(A^{-1}H)$. Letting $H=A(t)'$ we obtain the result since
+by the chain rule $\det(A(t))'=\det(A(t))'A(t)'$.
 \end{proof}
 
 \begin{exercise}
@@ -116,6 +174,20 @@ f|}\right>}_{\frac{1}{2}\left|\frac{\nabla f}{|\nabla f|}\right|^2=0}\\
 
 \end{enumerate}
 \end{proof}
+
+\begin{exercise}
+\label{exercise-curvatures-in-product}
+Lista 5, Exercise 1. Let $(M_1,g_1)$ and $(M_2,g_2)$ be Riemannian manifolds and
+let $M_1\times M_2$ be equipped with the product metric $g:=g_1\oplus g_2$. Show
+that the curvature tensor, the Ricci curvature and the scalar curvature of $g$
+are given by
+\begin{enumerate}
+\item $R=\pi_1^*R_1+\pi_2^*\mathbb{R}^2$,
+\item $\text{Ric}=\pi_1^*\text{Ric}_1+\pi_2^*\text{Ric}_2$,
+\item $\text{scal}=\pi_1^*\text{scal}_1+\pi_2^*\text{scal}_2$
+\end{enumerate}
+where $\pi_i:M_1\times M_2\to M_i$ are the projections.
+\end{exercise}
 
 \section{Exercises: global differential geometry}
 \label{section-exercises-global-differential-geometry}
@@ -285,13 +357,26 @@ isomorphism $f$ that $M$ has a line. Fix a line $L$ in $\mathbb{R}^n$. Then its
 inverse image under $f$ is minimizing in $M \setminus K$, but there could be a
 curve that minimizes distance between some two points of $f^{-1}(L)$ that is not
 contained in $f^{-1}(L)$.
+
+Suppose that $f^{-1}(L)$ is not minimizing in $M$. Then there are two points $j$
+and $-j$ in $f^{-1}(L)$ and a minimizing geodesic $\sigma$ joining them and
+intersecting $K$. Then the path that joins any point before $j$ and any point
+after $j$ on $\sigma$, before $\sigma$ intersects $K$, is a minimizing segment
+contained in $M\setminus K$ and should thus be contained in $f^{-1}(M)$. This
+shows that $f^{-1}(K)$ accumulates near $K$, which is not possible.
 \end{proof}
 
 \begin{exercise}
 \label{exercise-S1xS1xR-admite-curvatura--1}
-Mostre que $S^1 \times S^1 \times \mathbb{R}$ admite uma métrica de curvatura 
-$K\equiv-1$. {\it Dica.} Teorema de Preissman \ref{theorem-Preissman}.
+Mostre que $S^1 \times S^1 \times \mathbb{R}$ {(\bf não?)} admite uma métrica de
+ curvatura $K\equiv-1$. {\it Dica.} Teorema de Preissman 
+\ref{theorem-Preissman}.
 \end{exercise}
+
+\begin{proof}[Solution]
+Porque $\mathbb{Z} \times \mathbb{Z}$ é abeliano mas não é isomorfo a
+$\mathbb{Z}$.
+\end{proof}
 
 \begin{exercise}
 \label{exercise-RPnxRPm-admite-curvatura-positiva}
@@ -301,7 +386,7 @@ curvatura positiva?
 
 \begin{proof}
 Se $m,n$ são os dois ímpares, são orientáveis, então o produto é orientável e de
-dimensão ímpar, e pelo Teorema de Synge \ref{theorem-Synge} deve ser
+dimensão par, e pelo Teorema de Synge \ref{theorem-Synge} deve ser
 simplesmente conexa, absurdo.
  
 Se as duas tem dimensão par, considere o recobrimento duplo orientável, que deve
@@ -309,10 +394,10 @@ ser compacto (pode usar Bonnet-Myers \ref{theorem-Bonnet-Myers}), com curvatura
 positiva e dimensão par, e portanto é simplesmente conexo. Ou seja, trata-se do
 recobrimento universal. Porém, ele é um recobrimento duplo e portanto a fibra
 tem dois elementos, e desse jeito o $\text{Deck}\cong
-\pi_{1}(\mathbb{R}P^{n}\times\mathbb{R}P^{m})$ deve ser $\mathbb{Z}_2$, mas não
-é.
+\pi_{1}(\mathbb{R}P^{n}\times\mathbb{R}P^{m})$ deve ser $\mathbb{Z}_2$, 
+mas não é.
 
-E se uma é de dimensão par e a outra ímpar…
+E se uma é de dimensão par e a outra ímpar… é igualzinho que no caso anterior.
 \end{proof}
 
 \begin{exercise}
@@ -485,14 +570,34 @@ parametrizada por comprimento de arco obtemos a condição dada na Definição
 \label{section-lista-6}
 
 \begin{exercise}
-\label{exercise-l6-3}
+\label{exercise-positive-scalar-but-no-positive-Ricci}
 Encontre um exemplo de variedade suave que admite alguma métrica Riemanniana com
 curvatura escalar positiva, mas não admite uma métrica com Riemanniana com Ricci
 positivo.
 \end{exercise}
 
 \begin{proof}[Solution]
-Precisamos de um espaço compacto para usar o teorema de B n
+Se o problema for para $\text{Ric}\geq \delta>0$, poderiamos usar o teorema de 
+Bonnet-Myers \ref{theorem-Bonnet-Myers} como segue. Um produto de uma esfera com
+uma reta tem curvatura escalar positiva, mas não admite uma métrica com 
+$\text{Ric}\geq\delta>0$ porque não é compacto.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-positive-Ricci-but-no-positive-sectional}
+Encontre um exemplo de variedade suave que admite uma métrica Riemanniana com
+Ricci positivo, mas não admite uma métrica Riemanniana com curvatura seccional
+positiva.
+\end{exercise}
+
+\begin{proof}[Solution]
+Considere $S^3\times S^1$. A métrica produto tem $\text{Ric}>0$, já que ele é a
+soma dos tensores de Ricci em cada fator de acordo ao Exercício 
+\ref{exercise-curvatures-in-product} (e cada um deles é constante 1 já que a 
+curvatura escalar da esfera é constante 1). Agora suponha que existe uma métrica
+com $K>0$. Então pelo teorema de Synge \ref{theorem-Synge}, como
+$S^3\times S^1$ é compacta, de dimensão par e orientável, o grupo fundamental
+dela deveria ser trivial, mas não é o caso.
 \end{proof}
 
 \begin{exercise}
@@ -503,7 +608,6 @@ comprimento $\ell(\gamma)$. Mostre que existem curvas livremente homotópicas a
 $\gamma$ em $M$, arbitrariamente próximas de $\gamma$, que possuem comprimento
 menor que $\ell(\gamma)$.
 \end{exercise}
-
 
 \section{Lista 7}
 \label{section-lista-7}
