@@ -21,6 +21,30 @@ $$
 $$
 \end{example}
 
+\begin{proposition}
+\label{proposition-map-preserves-connection-then-takes-geodesics-to-geodesics}
+Let $f:M \to \tilde{M}$ be a smooth map. If 
+$f_*(\nabla_XY)=(\nabla^f_Xf_*Y)^\top$ then $f$ takes geodesics to geodesics.
+\end{proposition}
+
+\begin{proof}
+Write out the formula above for the connections along a geodesic $\gamma$, that
+is, show that $f_*\nabla_{\frac{d}{dt}}^\gamma Y=\left(\nabla^{f\circ
+\gamma}_{\frac{d}{dt}}f_*Y\right)^\top$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-isommetry-preserves-connection}
+If $f:M \to \tilde{M}$ is an isometric immersion, then 
+$f_*(\nabla_XY)=(\nabla^f_Xf_*Y)^\top$.
+\end{lemma}
+
+\begin{proof}
+We have to check that $(\nabla^f_Xf_*Y)^\top$ is a torsion-free and compatible
+connection on $TM$.
+\end{proof}
+
+
 \section{Riemannian submersions and immersions}
 \label{section-Riemannian-submersions-and-immersions}
 
@@ -59,6 +83,24 @@ bundle is that subbundle?
 
 \section{Geodesics}
 \label{section-geodesics}
+
+\begin{proposition}
+\label{proposition-naturallity-of-exponential}
+If $f:M\to \tilde{M}$ is an isometry,
+$$
+\xymatrix{
+B_\varepsilon(0)\subset T_pM \ar[r]^{d_p f} \ar[d]_{\text{exp}_p} &
+B_\varepsilon(0)\subset T_{f(p)}\tilde{M} \ar[d]^{\text{exp}_{f(p)}} \\
+B_\varepsilon(p)\subset M \ar[r]_{f} & B_\varepsilon(f(p))\subset \tilde{M}
+}
+$$
+\end{proposition}
+
+\begin{proof}
+Isometry maps geodesics to geodesics by Lemma 
+\ref{lemma-isometry-maps-geodesics-to-geodesics}, then uniqueness of solutions
+of ODEs.
+\end{proof}
 
 \begin{proposition}[Totally Normal Neighbourhoods]
 \label{proposition-totally-normal-neighbourhoods}
@@ -167,6 +209,34 @@ Differentiating a Jacobi field enough times, we arrive to
 \end{equation}
 \end{proposition}
 
+
+Sometimes it's useful to work with
+
+\begin{definition}
+\label{definition-Jacobi-tensor}
+The {\it Jacobi tensor} is the map
+\begin{align*}
+	\overline{J}_t:  &\longrightarrow T_{\gamma(t)}M \\
+	 \overline{J}_t(w)&=d_{tv}\text{exp}_p(tw)
+\end{align*}
+\end{definition}
+
+\begin{exercise}
+\label{exercise-Jacobi-tensor-derivative}
+Show that $\bar{J}'(0)=\text{Id}$.
+\end{exercise}
+
+\begin{proof}
+Just notice that since $\bar{J}_t=d_{tv}\text{exp}_p(tw)$ is linear on
+$tw$ (because it's a differential) we have
+\begin{align*}
+\overline{J}'(0)&=\frac{d}{dt}\Big|_{t=0}(d_{tv}\text{exp}_p(tw))
+&=\frac{d}{dt}\Big|_{t=0}t\cdot (d_{tv}\text{exp}_p(w))\\
+&=d_{tv}\text{exp}_p(w)|_{t=0}+t\cdot(\text{something})|_{t=0}\\
+& =\text{Id}_{T_pM}
+\end{align*}
+\end{proof}
+
 \section{Conjugate points}
 \label{section-conjugate-points}
 
@@ -258,13 +328,13 @@ K(X,Y)=\tilde{K}(X,Y)+\left<AX,X\right>\left<AY,Y\right>-\left<AX,Y\right>^2
 \begin{exercise}
 \label{exercise-Gauss-sectional}
 Use Eq. \ref{equation-Gauss-hypersurface} to show that no 
-hypersurface $M \hookrightarrow \mathbb{R}^{n+1}$ can have constant
- negative curvature.
+hypersurface $M \hookrightarrow \mathbb{R}^{n+1}$ can have constant negative 
+curvature.
 \end{exercise}
 
 \begin{proof}[Solution]
 After substituting $\tilde{K}(X,Y)=0$, we see that Eq. 
-\ref{equation-Gauss-hypersurface} cannot be negative because it contains the
+\ref{equation-Gauss-hypersurface} cannot be negative because it is the
 determinant of the matrix
 $$
 \begin{pmatrix}
@@ -272,8 +342,25 @@ $$
 \left<AX,Y\right>&\left<AY,Y\right>
 \end{pmatrix}
 $$
-whose eigenvalues are…
+which is the matrix representation of the shape operator $A$ to the plane
+spanned by $X,Y$. (That's just a particular case of the simple fact that the
+representation of the matrix $A_i^j$ for $Ae_i=A_i^je_j$ is given by
+$\left<Ae_i,e_j\right>=A^k_i\left<e_k,e_j\right>=A^j_i$.)
+
+But… how to argue that this determinant can't be always negative?
+
+The eigenvalues are of this matrix are the principal curvatures. 
+So if sectional curvature was constant negative, this determinant would be 
+positive as it would be the product of two negative numbers. (Missing
+formalization: how to explicitly relate with $K$?)
 \end{proof}
+
+So, in case for a hypersurface of a constant sectional curvature $c$ manifold,
+we have {\it Gauss equation for constant sectional curvature}
+\begin{equation}
+\label{equation-Gauss-constant-sectional-curvature}
+K_M(X,Y)=c+\left<\alpha(X,Y),\alpha(Y,Y)\right>-\|\alpha(X,Y)\|^2
+\end{equation}
 
 \begin{example}
 \label{example-curvature-of-sphere}
@@ -300,12 +387,41 @@ metric is not Riemannian. In fact, the normal vector has norm $-1$, giving that
 hyperbolic space has constant curvature $-1$.
 \end{example}
 
+The {\it Codazzi equation} is
+\begin{equation}
+\label{equation-Codazzi}
+(R_{\nabla^f}(X,Y)Z)^\perp
+=(\nabla^\perp_X\alpha)(Y,Z)-(\nabla^\perp_Y,\alpha)(X,Z)
+\end{equation}
 
-\begin{remark}
-\label{remark-ricci-equation}
+Codazzi equation may help us prove… something cool about bundles I don't quite
+remember.
+
+And the {\it Ricci equation} is
+\begin{equation}
+\label{equation-Ricc}
+\left<R_{\nabla^f}(X,Y)\xi,\eta\right>
+=\left<R_{\nabla^\perp}(X,Y)\xi,\eta\right>
+-\left<[A_\xi,A_\eta]X,Y\right>
+\end{equation}
+
 Ricci equation may help prove that the normal bundle of a high codimension
 submanifold is trivial.
-\end{remark}
+
+\begin{theorem}[Fundamental theorem of submanifolds]
+\label{theorem-fundamental-theorem-of-submanifolds}
+Let $M$ be a simply connected Riemannian manifold and
+$(E^p,\widetilde{\left<\cdot,\cdot\right>},\tilde{\nabla})$ be a bundle over
+$M$ with $\tilde{\nabla}$ compatible with $\widetilde{\left<\cdot,\cdot\right>}$.
+Let $\tilde{\alpha}:\mathfrak{X}(M)\times \mathfrak{X}(M)\to E$ be a symmetric
+tensor. Suppose there is a constant $c$ such that
+$(E,\tilde{\nabla},\tilde{\alpha})$ satisfies Gauss equation for constant
+curvature \ref{equation-Gauss-constant-curvature}, Codazzi equation
+\ref{equation-Codazzi} and Ricci equation \ref{equation-Ricci}. 
+Then there exists a unique isometric
+immersion $f:M \to \mathbb{Q}_c^{n+p}$ and a bundle isomorphism $\varphi:E \to
+T^\perp_pM$ such that $\varphi\circ\tilde{\alpha}=\alpha_f$.
+\end{theorem}
 
 \section{Riccati equation}
 \label{section-Riccati-equation}
@@ -350,12 +466,9 @@ A'+A^2+R_{\gamma'}=0
 \end{equation}
 since we can let $J(r)$ be any vector whatsoever and make this construction
 work.
-
 \begin{exercise}
-\label{exercise-Jacobi-tensor-derivative}
-Show that $\overline{J}'(0)=\text{id}$, where $\overline{J}:T_pM \to
-T_{\gamma(r)M}$ has the value of the Jacobi field depending on $w$ via
-Proposition \ref{proposition-everyday-jacobi-field} at time $r$.
+\label{exercise-limit-of-shape-operator}
+Show that $\lim_{s\to0}sA(s)=\text{Id}$.
 \end{exercise}
 
 \begin{proof}[Solution]
@@ -377,8 +490,7 @@ Then
 &\leq\varepsilon/2+\varepsilon/2=\varepsilon
 \end{align*}
 This shows that $A=\frac{1}{s}J$ for small $s$, but we have differentiated as if
-we were in $\mathbb{R}^n$. A similar computation but
-picking $s$ such that
+we were in $\mathbb{R}^n$. A similar computation but picking $s$ such that
 $$
 \frac{|\left<J(s),e_i(s)\right>-\left<J(0),e_i(0)\right>
 -s\left<J'(0),e_i(0)\right>|}{s}<\varepsilon/2

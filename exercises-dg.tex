@@ -189,6 +189,22 @@ are given by
 where $\pi_i:M_1\times M_2\to M_i$ are the projections.
 \end{exercise}
 
+\begin{exercise}
+\label{exercise-fixed-point-set-of-isometry-is-totally-geodesic-submanifold}
+\cite{pet}, Proposition 5.6.5. Let $f:M\to M$ be an isometry. Show that the
+connected component of the fixed points of $f$ is a totally geodesic
+submanifold.
+\end{exercise}
+
+\begin{proof}
+The trick is to show that the eigenvectors of $df$ are in bijection with the
+fixed point set of $f$. For this consider an eigenvector, a geodesic realising 
+the vector, map it with $f$ and notice it must coincide with the original 
+geodesic because $f$ is an isometry and the point is a fixed point. This shows
+that the fixed point set is a submanifold since it is parametrized as a linear
+subspace under geodesic coordinate charts. It also shows that the fixes point
+set is totally geodesic.
+\end{proof}
 \section{Exercises: global differential geometry}
 \label{section-exercises-global-differential-geometry}
 
