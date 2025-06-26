@@ -209,7 +209,6 @@ Differentiating a Jacobi field enough times, we arrive to
 \end{equation}
 \end{proposition}
 
-
 Sometimes it's useful to work with
 
 \begin{definition}
@@ -230,12 +229,40 @@ Show that $\bar{J}'(0)=\text{Id}$.
 Just notice that since $\bar{J}_t=d_{tv}\text{exp}_p(tw)$ is linear on
 $tw$ (because it's a differential) we have
 \begin{align*}
-\overline{J}'(0)&=\frac{d}{dt}\Big|_{t=0}(d_{tv}\text{exp}_p(tw))
+\overline{J}'(0)&=\frac{d}{dt}\Big|_{t=0}(d_{tv}\text{exp}_p(tw))\\
 &=\frac{d}{dt}\Big|_{t=0}t\cdot (d_{tv}\text{exp}_p(w))\\
 &=d_{tv}\text{exp}_p(w)|_{t=0}+t\cdot(\text{something})|_{t=0}\\
-& =\text{Id}_{T_pM}
+&=\text{Id}_{T_pM}
 \end{align*}
 \end{proof}
+
+\begin{remark}
+\label{remark-dimension-of-space-of-Jacobi-fields}
+Lembre o seguinte fato geral mostrado em aula:
+\begin{equation}
+\label{equation:dimension-of-space-of-orthogonal-Jacobi-fields}
+\dim\{J \in \mathfrak{X}^J_\gamma:J(0)=0, J \perp \gamma\}=n-1
+\end{equation}
+Isso segue das seguintes observações:
+\begin{enumerate}
+\item $\dim\mathfrak{X}^J_\gamma=2n$ porque são soluções de $n$ equações
+diferenciais ordinárias de segunda ordem, i.e. cada campo de Jacobi está
+determinado pelas condições iniciais $J(0)$ e $J'(0)$. 
+\item $\dim \{J \in \mathfrak{X}^J_\gamma:J(0)=0\}=n$.
+\item $\dim \{J \in \mathfrak{X}^J_\gamma:J\perp \gamma'\}=2n-2$. Para
+confirmar isso note que pelas simetrias de $R$ e a equação de Jacobi tem-se
+que $\left<J,\gamma'\right>''=0$, pelo que $\left<J,\gamma'\right>=a+bt$
+para dois números reais $a,b$. Segue que qualquer $J \in
+\mathfrak{X}^J_\gamma$ se escreve como
+$J(t)=a\gamma'(t)+bt\gamma'(t)+\hat{J}(t)$ para algum $\hat{J}$
+perpendicular a  $\gamma'$. (Supondo que $|\gamma'|=1$.) Então se $J \perp
+\gamma$, temos que  $a=b=0$, então tiramos dois números do $2n$ que
+tínhamos.
+\item Segue \ref{equation:dimension-of-space-of-orthogonal-Jacobi-fields}.
+\end{enumerate}
+
+\end{remark}
+
 
 \section{Conjugate points}
 \label{section-conjugate-points}
@@ -702,13 +729,102 @@ orientation. Then $f$ has a fixed point.
 \end{theorem}
 
 \begin{proof}
-Suponha que $f$ não tem pontos mínimos. Defina uma função
+       A fórmula da segunda variação é a fonte de inspiração, olhe:
+$$
+E''(0)=\int |\dot V|^2-\int\left<R_ {\dot \gamma}V,V\right>+\left<\dot\gamma,\nabla_{\partial_s}f_s\right>|_{0}^a
+$$
+e pense: o que preciso para tirar algo bacano dessa formulinha?
+
+De alguma maneira nos damos conta de que isso tem a ver com os pontos fixos de
+uma isometria $f$. Suponha que $f$ não tem pontos fixos e busquemos uma
+contradição. Defina
 \begin{align*}
-	g: M &\longrightarrow \mathbb{R} \\
-	g(q) &=d(q,f(q)) 
+g: M &\longrightarrow \mathbb{R} \\
+g(q) &=d(q,f(q))
 \end{align*}
-Como $M$ é compacta e essa função é contínua, possui um ponto mínimo que
-chamamos de $p$. 
+
+então como $M$ é compacta e essa função é contínua, ela tem um ponto mínimo que
+chamamos de $p$. Temos que:
+$$
+0<g(p)=\operatorname{min}g\leq g(q)\qquad \forall q.
+$$
+
+Vamos usar a segunda fórmula da variação para achar um ponto que avaliado em $g$
+fica menor do que $g(p)$. Seja $\gamma$ a geodésica minimizante entre $p$ e
+$f(p)$ parametrizada por comprimento de arco (que existe porque $M$ compacta
+implica completa).
+
+Agora pegue um vetor $v \in T_pM$ unitário e ortogonal a $\dot \gamma$ (para que
+o termo com $R$ na fórmula da seg. var. fique $K$), transporte ele paralelamente
+ao longo de $\gamma$ para obter $V$, e pegue a variação por geodésicas
+\[h(s,t)=\operatorname{exp}_{\gamma(t)}(sV(t))=\gamma_{V(t)}(s).\]
+
+Então a 2nda fórmula fica beleza: como o campo é paralelo, o termo $|\dot V|^2$
+morre, o termo da curvatura fica $K$ e o termo com $\nabla_{\partial_s}f_s$
+morre também (porque as curvas verticais são geodésicas).
+
+Então como estamos em $K>0$, acaba que $E''(0)<0$, então existe uma vizinhança
+de $0$  onde as curvas $f(s,t)$ tem menor energia que $f(0,t)$ (para toda $s$
+nessa  vizinhança). Agora lembre que a $\ell^2 \leq dE$, e que no caso de
+geodésicas minimizantes se da a igualdade. Então fica que
+$$
+\frac{1}{d}\ell^2(c^s)\leq
+E(s)<E(0)=\frac{1}{d}\ell(\gamma)^2=\frac{1}{d}d(p,f(p))^2
+=\frac{1}{d}(\operatorname{min}g)^2
+$$
+lado esquerdo. Defina $\beta(s)$ como a curva ``vertical" no tempo 0, ie.
+$\beta(s)=f(s,0)$. Queremos mostrar que
+$$
+\frac{1}{d}d(\beta(s),f(\beta(s))^2\leq \frac{1}{d}\ell^2(c^s)
+$$
+Já que por definição, do lado esquerdo temos $\frac{1}{d}g(\beta(s))^2$, dando
+uma contradição com a equação anterior. Para confirmar essa desigualdade e
+concluir a prova só devemos mostrar que a curva $c^s$ liga $\beta(s)$ e
+$f(\beta(s))$, pois a distância entre esses dois pontos é menor do que o
+comprimento de qualquer curva que liga esses pontos.
+
+Ou seja, queremos que
+$$
+c^s(0)=\beta(s),\qquad c^s(d)=f(\beta(s))\qquad \forall s
+$$
+Ou seja, queremos que
+$$
+f \circ \beta=\gamma_{V(d)}
+$$
+Note que $\beta(s)=\gamma_{V(0)}(s)$. Então derive em $s=0$: \[f \circ
+\beta=f\circ\gamma_{V(0)}=\gamma_{V(d)}\iff f_{*,p}V(0)=V(d)=PV(0)\] onde $P$ é
+o transporte paralelo ao longo de $\gamma$ de $p=\gamma(0)$ a $\gamma(d)$.  Isso
+implica que queremos que \[P^{-1}f_{*,p}V(0)=V(0)\]
+
+Com um desenho muito convincente (ver Manfredo p. 225, esse agumentinho tá
+tranquilo) fica que como $f$ é uma isometria \[f_{*,p}\gamma'(0)=\gamma'(d)\]
+Decorre daí que $P^{-1}f_{*,p}\gamma'(0)=P^{-1}\gamma'(d)=\gamma'(0)$. Então
+podemos fixar nossa atenção em
+$$
+A:=P^{-1}f_{*,p}|_{\gamma'(p)^\perp}\in \mathsf{O}(n-1)
+$$
+Nosso objetivo é analisar o que acontece quando $A$ tem um ponto fixo, $V(0)$,
+pois essa é uma condição que queremos que seja verdade para que $f\circ \beta =
+\gamma_{V(d)}$.
+
+Agora segue o argumento dos eigenvalores que diz assim. Defina
+$A:=P^{-1}f_{*,p}$. Suponha que $A$ tem um ponto fixo. Os autovalores vem dados
+assim:
+$$
+\operatorname{Spec}A=\{\underbrace{\lambda_1,\overline{\lambda_1},\lambda_2,\overline{\lambda_2}}_{\text{par} },-1,\ldots,-1,1,\ldots,1\}
+$$
+Ou seja, os eigenvalores que não são 1 ou $-1$ não afetam o determinante. Daí
+concluímos que
+\begin{itemize}
+\item Se $n-1$ é ímpar, $f$ preserva orientação. Por que? Deixa os complexos do
+lado que não importam. Então pensa: se só tenho $-1$s, então tenho uma
+quantidade ímpar de $-1$s porque a dimensão é ímpar. Respira. Nesse caso $f$
+inverte orientação. Mas: $f$ deve ter pelo menos um $1$! Então a quantidade de
+$-1$s  é par. Então não: $f$ preserva orientação.
+\item se $n-1$ é par, $f$ reverte orientação.
+\end{itemize}
+E essas são as condições que precisamos para que $A$ tenha um ponto fixo e tudo
+funcione. Então bota isso aí na hipótese do teorema.
 \end{proof}
 
 \section{Synge's theorem}
@@ -765,6 +881,20 @@ would induce an orientation on $M$.
 \section{Index lemma}
 \label{subsection-index-lemma}
 
+\begin{lemma}[Index]
+\label{lemma-index}
+\cite{doc} Chapter X, Section 2, Lemma 2.2. Let $\gamma:[0,a]\to M$ be a
+geodesic without conjugate points (this means $\gamma(t)$ is not conjugate to
+$\gamma(0)$ on $(0,a]$). Let $J\in\mathfrak{X}_\gamma^J$ with
+$\left<J,\gamma'\right>=0$ and let $V$ be a piecewise differentiable vector
+field along $\gamma$ with $\left<V,\gamma'\right>=0$. Suppose $J(0)=0=V(0)$ and
+that there is  $t_0\in(0,a]$ such that $J(t_0)=V(t_0)$. Then
+$$
+I_{t_0}(J,J)\leq I_{t_0}(V,V)
+$$
+and equality holds if and only if $V=J$ on $[0,t_0]$.
+\end{lemma}
+
 \section{Rauch's comparison theorem}
 \label{section-Rauch}
 
@@ -807,6 +937,11 @@ $\tilde{f}$ is strictly positive. But this contradicts Equation
 Now suppose that $f(t_0)=\tilde{f}(t_0)$ for some $t_0 \in (0,a]$. Then Equation
 \ref{equation-Sturm} vanishes at $t_0$, and we conclude that $K \equiv
 \tilde{K}$ in $[0,t_0]$. Somehow this implies that $f$ also equals $\tilde{f}$…
+
+Here's ChatGPT in action: define $h(t):=f(t)-\tilde{f}(t)$. Notice that on
+$(0,t_0]$ it satisfies $h''+Kh=0$ with $h(0)=h'(0)=0$. But so does constant zero
+function, hence  $h\equiv0$. To extend to all of $[0,a]$ use uniqueness of
+ODEs again.
 \end{proof}
 
 \begin{theorem}[Rauch]
@@ -1370,7 +1505,16 @@ $$
 \section{Toponogov's theorem}
 \label{section-Toponogov}
 
-First recall a result we already proved using Rauch's theorem
+\begin{definition}
+\label{definition-geodesic-triangle}
+\cite{doc}, p. 285. A {\it geodesic triangle} is the set formed by three
+minimizing geodesics $\gamma_i$ so that
+$\gamma_{i+1}(0)=\gamma_i(\ell(\gamma_i))$ cyclically. (Just to note that for
+some authors geodesic triangles are minimizing by definition. Looks like for
+\cite{meyers} it's not the case.)
+\end{definition}
+
+First notice that the following result can be proved using Rauch's theorem
 \ref{theorem-Rauch}:
 
 \begin{theorem}[Toponogov, local version]
@@ -1387,14 +1531,6 @@ $$
 \tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}_2(s))\leq d(\gamma_1(t),\gamma_2(s))
 $$
 \end{theorem}
-
-Meaning that this theorem is actually an exercise:
-
-\begin{exercise}
-\label{exercise-Toponogov-from-Rauch}
-Lista 7, Exercício 10. Prove the local version of Toponogov's theorem as a 
-corollary of Rauch's Comparison Theorem \ref{theorem-Rauch}.
-\end{exercise}
 
 \begin{proof}
 This is an application of Proposition \ref{proposition-contraction} for $i$ as
@@ -1419,29 +1555,68 @@ $\mathbb{Q}_k^2$, that is, $\ell(\gamma_i)=\ell(\tilde{\gamma}_i)$ and
 $\angle(\gamma_1'(0),\gamma_2'(0)=
 \angle\tilde{\gamma}_1'(0),\tilde{\gamma}_2'(0)$. Then
 \begin{equation}
-\label{equation-Toponogov}
+\label{equation-Toponogov-hinge1}
 d(\gamma_1(\ell_1),\gamma_2(\ell_2)) \leq 
 \tilde{d}(\tilde{\gamma}_1(\ell_1),\tilde{\gamma}_2(\ell_2))
 \end{equation}
 \end{theorem}
 
+This is not intuitive for me: the distance between the remaining side should be
+fatter in the manifold that is more curved.
+
+The following version is equivalent to the hinge version and is intuitive for
+me:
+
+\begin{theorem}[Toponogov]
+\label{theorem-Toponogov-hinge2}
+Let $M$ be complete with $K\geq k$. If $\gamma_i$ is a minimizing geodesic
+triangle in $M$, then there is a unique minimizing geodesic triangle
+$\tilde{\gamma}_i$ in $\mathbb{Q}_k^2$ with
+$\ell(\tilde{\gamma}_i)=\ell(\gamma_i)$ for $i=0,1,2$, and such that
+\begin{equation}
+\label{equation-Toponogov-hinge2}
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s))\leq
+d(\gamma_1(t),\gamma_2(s)
+\end{equation}
+for all $t\in[0,\ell(\gamma_1)]$ and $s\in[0,\ell(\gamma_2)]$.
+\end{theorem}
+
+Another equivalent version:
+\begin{theorem}[Toponogov]
+\label{theorem-Toponogov-hinge3}
+Let $M$ be complete with $K\geq k$. If $\gamma_i$ is a minimizing geodesic
+triangle in $M$, then there is a unique minimizing geodesic triangle
+$\tilde{\gamma}_i$ in $\mathbb{Q}_k^2$ with
+$\ell(\tilde{\gamma}_i)=\ell(\gamma_i)$ for $i=0,1,2$ and such that
+\begin{equation}
+\label{equation-Toponogov-hinge3}
+\tilde{d}(\tilde{o},\tilde{\gamma}(t))\leq d(o,\gamma_0(t))
+\qquad \forall t\in[0,\ell(\gamma_0)]
+\end{equation}
+\end{theorem}
+All these versions are equivalent and we will only prove the following one:
 \begin{theorem}[Toponogov, metric version]
 \label{theorem-Toponogov-metric}
-Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, with
-$p_1\neq  p_2$. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
-$o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing.
+Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, distinct
+points. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
+$o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing (in the prove we
+show that $\gamma_2$ is minimizing too).
 Let $\gamma_0$ be a nonconstant geodesic joining $p_1$ to $p_2$ and suppose
 $$
 \ell(\gamma_0) \leq \ell(\gamma_1) +\ell(\gamma_2)
 $$
+(which is a weaker condition than asking that $\gamma_0$ is minimizing as well).
+
 If $k>0$ suppose additionally that $\ell(\gamma_0) \leq \pi/\sqrt{k}$.
 
 Then there exists a geodesic triangle $\{\tilde{\gamma}_i:i=1,2,0\}$ in
 $\mathbb{Q}_k^2$ such that $\ell(\tilde{\gamma}_i) = \ell(\gamma_i)$ and
-$$
-d(\tilde{o},\tilde{\gamma}_0(t)) \leq  d(o,\gamma_0(t))\qquad \forall t \in
-[0,\ell(\gamma_0)]
-$$
+\begin{equation}
+\label{equation-Toponogov-metric}
+\tilde{d}(\tilde{o},\tilde{\gamma}_0(t)) 
+\leq  d(o,\gamma_0(t))
+\qquad \forall t \in[0,\ell(\gamma_0)]
+\end{equation}
 \end{theorem}
 
 \begin{proof}[Outline of proof]
@@ -1449,25 +1624,22 @@ This is the one we proved in class. Define distance functions
 $\rho:=d(\sigma,\cdot)$ and $\tilde{\rho}:=\tilde{d}(\tilde{\sigma},\cdot)$.
 \end{proof}
 
-\begin{theorem}[Toponogov, hinge version 2]
-\label{theorem-Toponogov-hinge-2}
-Put another way (next lecture…) Let $\tilde{\gamma}_1$ be minimizing 
-and $\tilde{\gamma}_2$ 
-be a corresponding angle in $\mathbb{Q}_k^2$. Then
-$$
-\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
-$$
-\end{theorem}
-
 \begin{lemma}
 \label{lemma-equality-Toponogov}
-If equality holds in Eq. \ref{equation-Toponogov}, then $\gamma_1$ and
+If equality holds in Eq. \ref{equation-Toponogov-hinge1}, then $\gamma_1$ and
 $\gamma_2$ are the boundary of a totally geodesic surface $\Delta \subset M$ 
 with $K_\Delta \equiv k$.
 \end{lemma}
 
 \begin{proof}
-Using the map from Cartan's lemma.
+Using the map from Cartan's lemma. Use Rauch's theorem \ref{theorem-Rauch} to
+compare $M$ with $\mathbb{Q}_k$, and again to compare $\Delta$ with $M$. As you
+might expect, use Gauss' equation \ref{equation-Gauss} to show that the second
+fundamental form of $\Delta$ vanishes. The essence of the proof is that
+$\alpha(\gamma',\gamma')=0$ for the geodesics emanating from $p$, which is more
+or less straightforward, and then showing that also $\alpha(\sigma',\sigma')=0$
+for geodesics emanating from another vertex of the triangle, which requires to
+``look at things from another point of view''.
 \end{proof}
 
 \begin{theorem}[Toponogov, angle version]
