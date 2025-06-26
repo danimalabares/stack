@@ -311,18 +311,13 @@ its normal and tangent part thanks to Equation
 \ref{equation-immersion-bundle-decomposition}. By Lemma
 \ref{lemma-isometry-preserves-connection} we see that the tangent part is
 in fact the Levi-Civita connection of $M$ since it is a symmetric and torsion
-free connection on the tangent bundle. We also find that the normal part is a
+free connection on the tangent bundle. Since the Levi-Civita connection of
+$\tilde{M}$ is torsion free, the normal part is a
 symmetric tensor we call {\it second fundamental form}:
 \begin{equation}
 \label{equation-second-fundamental-form}
 \nabla^{f}_X f_*Y=f_*\nabla_XY+\alpha(X,Y)
 \end{equation}
-
-\begin{lemma}
-\label{lemma-normal-connection}
-$\nabla^\perp$ is a connection on $T^\perp M$.
-\end{lemma}
-
 In a similar fashion we take a normal section $\xi\in T^\perp M$. 
 We call the tangent part {\it shape operator}. The normal part is a connection 
 we call the {\it normal connection}.
@@ -330,6 +325,10 @@ we call the {\it normal connection}.
 \label{equation-shape-operator}
 \nabla^f_X\xi=-A_\xi X+\nabla^\perp_X\xi
 \end{equation}
+\begin{lemma}
+\label{lemma-normal-connection}
+$\nabla^\perp$ is a connection on $T^\perp M$.
+\end{lemma}
 Notice the adjointness relation
 \begin{equation}
 \label{equation-second-fundamental-form-and-shape-operator}
@@ -382,11 +381,6 @@ representation of the matrix $A_i^j$ for $Ae_i=A_i^je_j$ is given by
 $\left<Ae_i,e_j\right>=A^k_i\left<e_k,e_j\right>=A^j_i$.)
 
 But… how to argue that this determinant can't be always negative?
-
-The eigenvalues are of this matrix are the principal curvatures. 
-So if sectional curvature was constant negative, this determinant would be 
-positive as it would be the product of two negative numbers. (Missing
-formalization: how to explicitly relate with $K$?)
 \end{proof}
 
 So, in case for a hypersurface of a constant sectional curvature $c$ manifold,
@@ -680,7 +674,7 @@ I_a(V,W)&=\int_0^a\left<V,W'\right>'-\int_0^a \left<V,W''\right>-\int_0^a \left<
 \end{remark}
 
 \section{Bonnet-Myers Theorem}
-\label{subsection-Bonnet-Myers-theorem}
+\label{section-Bonnet-Myers-theorem}
 
 \begin{theorem}[Bonnet-Myers]
 \label{theorem-Bonnet-Myers}
@@ -886,7 +880,7 @@ would induce an orientation on $M$.
 \end{proof}
 
 \section{Index lemma}
-\label{subsection-index-lemma}
+\label{section-index-lemma}
 
 \begin{lemma}[Index]
 \label{lemma-index}
