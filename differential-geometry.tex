@@ -34,7 +34,7 @@ is, show that $f_*\nabla_{\frac{d}{dt}}^\gamma Y=\left(\nabla^{f\circ
 \end{proof}
 
 \begin{lemma}
-\label{lemma-isommetry-preserves-connection}
+\label{lemma-isometry-preserves-connection}
 If $f:M \to \tilde{M}$ is an isometric immersion, then 
 $f_*(\nabla_XY)=(\nabla^f_Xf_*Y)^\top$.
 \end{lemma}
@@ -301,14 +301,15 @@ differential of $\text{exp}_p$ has kernel.
  linearly dependent Jacobi fields.
 \end{proof}
 
-\section{Submanifolds}
-\label{section-submanifolds}
+\section{Isometric immersions}
+\label{section-isometric-immersions}
 
 Let $f:M \to \tilde{M}$ be an isometric immersion of Riemannian manifolds. When
 computing the covariant derivative along two vector fields 
 $X,Y \in\mathfrak{X}(M)$ we get a vetor field along $X$ that may be split into
 its normal and tangent part thanks to Equation 
-\ref{equation-immersion-bundle-decomposition}. We find that the tangent part is
+\ref{equation-immersion-bundle-decomposition}. By Lemma
+\ref{lemma-isometry-preserves-connection} we see that the tangent part is
 in fact the Levi-Civita connection of $M$ since it is a symmetric and torsion
 free connection on the tangent bundle. We also find that the normal part is a
 symmetric tensor we call {\it second fundamental form}:
@@ -316,6 +317,12 @@ symmetric tensor we call {\it second fundamental form}:
 \label{equation-second-fundamental-form}
 \nabla^{f}_X f_*Y=f_*\nabla_XY+\alpha(X,Y)
 \end{equation}
+
+\begin{lemma}
+\label{lemma-normal-connection}
+$\nabla^\perp$ is a connection on $T^\perp M$.
+\end{lemma}
+
 In a similar fashion we take a normal section $\xi\in T^\perp M$. 
 We call the tangent part {\it shape operator}. The normal part is a connection 
 we call the {\it normal connection}.
