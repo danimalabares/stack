@@ -3,15 +3,30 @@
 \begin{document}
 
 \title{Differential Geometry}
+\author{\href{http://github.com/danimalabares/stack}
+{github.com/danimalabares/stack}}
 \maketitle
 
 \phantomsection
 \label{section-phantom}
-
 \tableofcontents
 
 \section{Connections}
 \label{section-connections}
+
+\begin{proposition}[Everything I know about connections]
+\label{proposition-existence-of-pullback-connection}
+\end{proposition}
+
+\begin{lemma}
+\label{lemma-composition-of-pullback-connections}
+\cite{aulas}, p.5. If $g:M_1\to M_2$ and $f:M_2\to M_3$ are smooth maps of 
+manifolds and $E$ is a vector bundle over $M_3$, then
+$$
+g^* (f^* (E))=(f\circ g)^* (E)\qquad \text{and}\qquad
+(\nabla^f)^g=\nabla^{f\circ g}
+$$
+\end{lemma}
 
 \begin{example}
 \label{example-euclidean-connection}
@@ -21,20 +36,12 @@ $$
 $$
 \end{example}
 
-\begin{proposition}
-\label{proposition-map-preserves-connection-then-takes-geodesics-to-geodesics}
-Let $f:M \to \tilde{M}$ be a smooth map. If 
-$f_*(\nabla_XY)=(\nabla^f_Xf_*Y)^\top$ then $f$ takes geodesics to geodesics.
-\end{proposition}
-
-\begin{proof}
-Write out the formula above for the connections along a geodesic $\gamma$, that
-is, show that $f_*\nabla_{\frac{d}{dt}}^\gamma Y=\left(\nabla^{f\circ
-\gamma}_{\frac{d}{dt}}f_*Y\right)^\top$.
-\end{proof}
+The following three lemmas are fundamental properties of isometric
+immersions and will be used in Section \ref{section-isometric-immersions}. (Cf.
+Lista 3, Exercise 2.)
 
 \begin{lemma}
-\label{lemma-isometry-preserves-connection}
+\label{lemma-tangent-component-of-pullback-connection-by-ii-is-LC}
 If $f:M \to \tilde{M}$ is an isometric immersion, then 
 $f_*(\nabla_XY)=(\nabla^f_Xf_*Y)^\top$.
 \end{lemma}
@@ -44,6 +51,41 @@ We have to check that $(\nabla^f_Xf_*Y)^\top$ is a torsion-free and compatible
 connection on $TM$.
 \end{proof}
 
+\begin{lemma}
+\label{lemma-isometric-immersion-along-curve}
+Let $f:M \to \tilde{M}$ be an isometric immersion, $c$ is a smooth curve in $M$
+and $Y\in\mathfrak{X}_c$. Then
+$$
+f_*\nabla_{\frac{d}{dt}}^\gamma Y
+=\left(\nabla^{f\circ\gamma}_{\frac{d}{dt}}f_*Y\right)^\top
+$$
+\end{lemma}
+
+\begin{proof}
+This is just a mixture of Lemmas \ref{lemma-composition-of-pullback-connections}
+ and \ref{lemma-tangent-component-of-pullback-connection-by-ii-is-LC}.
+\end{proof}
+
+The following result accounts for the definition of totally geodesic
+submanifolds, cf. Definition \ref{definition-totally-geodesic-submanifold}.
+
+\begin{lemma}
+\label{lemma-totally-geodesic-submanifold}
+Let $f:M \to \tilde{M}$ be an isometric immersion and $\gamma:I\to M$ a smooth
+curve parametrized by arclength. Show that $\gamma$ is a geodesic of M
+if and only if its acceleration on $\tilde{M}$ is perpendicular to $M$, that is,
+$$
+\tilde{\nabla}^{f\circ\cong\gamma}_{\frac{d}{dt}}(f\circ\gamma)'\perp
+f_*(T_{\gamma(t)}M)
+$$
+\end{lemma}
+
+\begin{proof}
+Decompose the vector field 
+$\tilde{\nabla}^{f\circ\cong\gamma}_{\frac{d}{dt}}(f\circ\gamma)'$ in tangent and
+normal part. Then apply Lemma 
+\ref{lemma-tangent-component-of-pullback-connection-by-ii-is-LC}.
+\end{proof}
 
 \section{Riemannian submersions and immersions}
 \label{section-Riemannian-submersions-and-immersions}
@@ -118,34 +160,91 @@ The {\it curvature tensor} is
 R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z
 \end{equation}
 
-The {\it Ricci tensor} is
-\begin{align*}
-	\text{Ric}: TM\times TM &\longrightarrow \mathbb{R} \\
-	 \text{Ric}(X,Y)&=\frac{1}{n-1}\text{tr}(Z\mapsto R(Z,X)Y)
-\end{align*}
-It is symmetric.
+\begin{proposition}
+\label{proposition-symmetries-of-curvature-tensor}
+The curvature tensor is a tensor and
+\begin{enumerate}
+\item It is antisymmetric in the first two and last two entries,
+\item $\left<R(X,Y)Z,W\right>=\left<R(Z,W)X,Y\right>$, and
+\item Bianchi identity.
+\end{enumerate}
+\end{proposition}
 
-The {\it Ricci curvature} is
-\begin{align*}
-	\text{Ric}: T^1M &\longrightarrow \mathbb{R} \\
-	\text{Ric}(X)&\text{Ric}(X,X)=\frac{1}{n-1}\sum_{i=1}^{n-1}K(X,E_i)
-\end{align*}
-where $\{X,E_1,\ldots,E_{n-1}\}$ is an orthonormal basis.
+Given a dimension-2 vector subspace $\sigma\subset T_pM$, the {\it sectional
+curvature} of $M$ in $\sigma$ is
+\begin{equation}
+\label{equation-sectional-curvature}
+K(\sigma)=\frac{\left<R(u,v)v,u\right>}
+{\left<u,u\right>\left<v,v\right>-\left<u,v\right>^2}
+\end{equation}
+for any base $\{u,v\}$ of $\sigma$.
 
-The {\it scalar curvature} is
-\begin{align*}
-	\text{scal}: M &\longrightarrow \mathbb{R} \\
-	\text{scal}(p)&=\frac{1}{n}\text{tr}\text{Ric}
-=\frac{1}{n}\sum_i\text{Ric}(e_i,e_i)
-\end{align*}
-If a manifold has constant curvature $c$,
+\begin{lemma}
+\label{lemma-sectional-curvature-is-well-defined}
+Sectional curvature does not depend on the choice of base.
+\end{lemma}
+
+\begin{proposition}
+\label{proposition-curvature-like-tensor-determined-by-sectional-curvature}
+Let $R$ and $R'$ be two type $(0,4)$ tensors on a vector space $\mathbb{V}$. If
+their associated sectional curvatures $K$ and $K'$ are equal, then so are $R$
+and $R'$.
+\end{proposition}
+
+\begin{proof}
+Polarize and make lots of computations, cf. \cite{doc}.
+\end{proof}
+
+If a manifold has constant sectional curvature $c$,
 \begin{equation}
 \label{equation-constant-curvature}
 \left<R(X,Y)Z,W\right>=
 c(\left<X,Z\right>\left<Y,W\right>-\left<X,W\right>\left<Z,Y\right>)
 \end{equation}
-since the right-hand-side of Equation \ref{equation-constant-curvature} is a
-so-called curvature tensor, i.e. a tensor satisfying the symmetries of $R$.
+since the right-hand-side of Eq. \ref{equation-constant-curvature} is a
+so-called curvature tensor, i.e. a tensor satisfying the symmetries of $R$, and
+applying Proposition 
+\ref{proposition-curvature-like-tensor-determined-by-sectional-curvature}.
+
+The {\it Ricci tensor} is
+\begin{equation}
+\label{equation-Ricci-tensor}
+\begin{aligned}
+\text{Ric}: TM\times TM &\longrightarrow \mathbb{R} \\
+\text{Ric}(X,Y)&=\frac{1}{n-1}\text{tr}(Z\mapsto R(Z,X)Y)
+\end{aligned}
+\end{equation}
+It is symmetric.
+
+The {\it Ricci curvature} is
+\begin{equation}
+\label{equation-Ricci-curvature}
+\begin{aligned}
+\text{Ric}: T^1M &\longrightarrow \mathbb{R} \\
+\text{Ric}(X)=\text{Ric}(X,X)&=\frac{1}{n-1}\sum_{i=1}^{n-1}K(X,E_i)
+\end{aligned}
+\end{equation}
+where $\{X,E_1,\ldots,E_{n-1}\}$ is an orthonormal basis.
+
+The {\it scalar curvature} is
+\begin{equation}
+\label{equation-scalar-curvature}
+\begin{aligned}
+\text{scal}: M &\longrightarrow \mathbb{R} \\
+\text{scal}(p)&=\frac{1}{n}\text{tr}\text{Ric}
+=\frac{1}{n}\sum_i\text{Ric}(E_i,E_i)
+\end{aligned}
+\end{equation}
+
+\begin{lemma}
+\label{lemma-scalar-curvature-is-mean-of-sectional}
+$$
+\text{scal}(p)=\frac{1}{n}\sum_{i}\text{Ric}(e_i,e_i)
+=\frac{1}{n(n-1)}\sum_{i,j}K(e_i,e_j)
+=\frac{1}{\text{Vol}(S^{n-1})}\int_{\sigma\subset T_pM}K(\sigma)
+$$
+\end{lemma}
+
 
 \section{Jacobi Fields}
 \label{section-jacobi-fields}
@@ -318,8 +417,17 @@ symmetric tensor we call {\it second fundamental form}:
 \label{equation-second-fundamental-form}
 \nabla^{f}_X f_*Y=f_*\nabla_XY+\alpha(X,Y)
 \end{equation}
-In a similar fashion we take a normal section $\xi\in T^\perp M$. 
-We call the tangent part {\it shape operator}. The normal part is a connection 
+\begin{definition}
+\label{definition-totally-geodesic-submanifold}
+A submanifold $M\subset\tilde{M}$ is {\it totally geodesic} if its second
+fundamental form vanishes.
+\end{definition}
+Notice that Lemma \ref{lemma-totally-geodesic-submanifold} says that geodesics
+of a totally geodesic submanifold are geodesics of the ambient manifold.
+
+Now let's differentiate a normal section $\xi\in T^\perp M$. 
+We call the tangent part {\it shape operator}. By Lemma
+\ref{lemma-normal-connection} below, the normal part is a connection 
 we call the {\it normal connection}.
 \begin{equation}
 \label{equation-shape-operator}
@@ -349,26 +457,15 @@ which follows from substituting Eq. \ref{equation-second-fundamental-form}
 into Equation \ref{equation-curvature-tensor}.
 
 For the case of a hypersurface, the normal vector $\alpha(X,Y)$ must be
-proportional to the unit normal $\nu$, and by Eq.
+proportional to the unit normal $N$, and by Eq.
 \ref{equation-second-fundamental-form-and-shape-operator} the proportionally
-factor is exactly $\left<A_\nu X,Y\right>$. Using this and evaluating
+factor is exactly $\left<A_N X,Y\right>$. Using this and evaluating
  at an orthonormal pair $X,Y$ we obtain
 \begin{equation}
 \label{equation-Gauss-hypersurface}
 K(X,Y)=\tilde{K}(X,Y)+\left<AX,X\right>\left<AY,Y\right>-\left<AX,Y\right>^2
 \end{equation}
-
-\begin{exercise}
-\label{exercise-Gauss-sectional}
-Use Eq. \ref{equation-Gauss-hypersurface} to show that no 
-hypersurface $M \hookrightarrow \mathbb{R}^{n+1}$ can have constant negative 
-curvature.
-\end{exercise}
-
-\begin{proof}[Solution]
-After substituting $\tilde{K}(X,Y)=0$, we see that Eq. 
-\ref{equation-Gauss-hypersurface} cannot be negative because it is the
-determinant of the matrix
+Notice that we are looking at the determinant of the matrix
 $$
 \begin{pmatrix}
 \left<AX,X\right>&\left<AX,Y\right>\\ 
@@ -380,11 +477,13 @@ spanned by $X,Y$. (That's just a particular case of the simple fact that the
 representation of the matrix $A_i^j$ for $Ae_i=A_i^je_j$ is given by
 $\left<Ae_i,e_j\right>=A^k_i\left<e_k,e_j\right>=A^j_i$.)
 
-But… how to argue that this determinant can't be always negative?
-\end{proof}
+Notice that the Gaussian curvature of a surface in $\mathbb{R}^3$, defined as
+the determinant of the second fundamental form, coincides with sectional
+curvature when substituting $\tilde{K}\equiv0$ as is the case of the flat metric
+on euclidean space.
 
-So, in case for a hypersurface of a constant sectional curvature $c$ manifold,
-we have {\it Gauss equation for constant sectional curvature}
+For a hypersurface of a constant sectional curvature $c$
+manifold, we have {\it Gauss equation for constant sectional curvature}
 \begin{equation}
 \label{equation-Gauss-constant-sectional-curvature}
 K_M(X,Y)=c+\left<\alpha(X,Y),\alpha(Y,Y)\right>-\|\alpha(X,Y)\|^2
@@ -405,6 +504,19 @@ differentiating the vector field, that is, $\tilde{\nabla}_X\nu=\nu X$. And
 finally, who's $\nu$? It's the $-\text{id}$ if you chose the inner normal. So
  $\tilde{\nabla}_X\nu=-X$.
 \end{example}
+
+\begin{exercise}
+\label{exercise-Gauss-sectional}
+Use Eq. \ref{equation-Gauss-hypersurface} to show that no 
+hypersurface $M \hookrightarrow \mathbb{R}^{n+1}$ can have constant negative 
+curvature.
+\end{exercise}
+
+\begin{proof}[Solution]
+After substituting $\tilde{K}(X,Y)=0$, we see that Eq. 
+\ref{equation-Gauss-hypersurface} is determinant of the second fundamental form. 
+ But… how to argue that this determinant can't be always negative?
+\end{proof}
 
 \begin{example}
 \label{example-hyperbolic-space}
@@ -438,9 +550,10 @@ submanifold is trivial.
 
 \begin{theorem}[Fundamental theorem of submanifolds]
 \label{theorem-fundamental-theorem-of-submanifolds}
-Let $M$ be a simply connected Riemannian manifold and
-$(E^p,\widetilde{\left<\cdot,\cdot\right>},\tilde{\nabla})$ be a bundle over
-$M$ with $\tilde{\nabla}$ compatible with $\widetilde{\left<\cdot,\cdot\right>}$.
+See \cite{pet}, Exercise 3.4.21. Let $M$ be a simply connected Riemannian 
+manifold and $(E^p,\widetilde{\left<\cdot,\cdot\right>},\tilde{\nabla})$ be a 
+bundle over $M$ with $\tilde{\nabla}$ compatible with 
+$\widetilde{\left<\cdot,\cdot\right>}$.
 Let $\tilde{\alpha}:\mathfrak{X}(M)\times \mathfrak{X}(M)\to E$ be a symmetric
 tensor. Suppose there is a constant $c$ such that
 $(E,\tilde{\nabla},\tilde{\alpha})$ satisfies Gauss equation for constant
