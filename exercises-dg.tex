@@ -235,10 +235,22 @@ geodesic submanifolds of euclidean space are planes. We conclude that for this
 torus to be flat there will always be a principal flat direction (i.e. a null
 eigenvector of $\alpha$), but since its
 fundamental group is not trivial it is not a plane (!) and thus it is not a
-totally geodesic submanifold.
+totally geodesic submanifold. Oh! But that's as a submanifold of $\mathbb{R}^4$,
+what about as a submanifold of $S^3$?
 
-I think the null principal direction is: take a vector in one circle and a
-vector in the other circle. In the product metric
+It is natural to think that this manifold is the flat torus from Example
+\ref{example-flat-torus}. And it is, because it is diffeomorphic to a product.
+We can use the immersion $\mathbf{x}$ on a small domain as a local
+parametrization of $T^2$.  When differentiating the parametrization we notice
+that the tangent vectors are decomposed as a pair of vectors tangent to one
+circle or to the other. Then the metric induced from $\mathbb{R}^4$ and then by
+$S^3$ is exactly the product metric from Definition
+\ref{definition-product-metric}. By Exercise
+\ref{exercise-pullback-of-curvatures}, the curvature tensor on $S^1\times S^1$
+vanishes identically since the curvature tensor of any 1-manifold vanishes by
+antisymmetry in the first or two last entries. This means that this torus is
+flat. This says that its first fundamental form has determinant 1 when seen as a
+submanifold of $S^3$.
 
 \end{proof}
 

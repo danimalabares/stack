@@ -11,6 +11,21 @@
 \href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
 \tableofcontents
 
+\section{Riemannian metrics}
+\label{section-Riemannian-metrics}
+
+\begin{definition}
+\label{definition-product metric}
+Let $M_1$ and $M_2$ be Riemannian manifolds. The {\it product metric} on
+$M_1\times M_2$ is $\pi_1^*g_1+\pi_2^*g_2$.
+\end{definition}
+
+\begin{example}
+\label{example-flat-torus}
+It's $S^1\times\ldots\times S^1$ with the product metric.
+\end{example}
+
+
 \section{Connections}
 \label{section-connections}
 
@@ -245,6 +260,19 @@ $$
 $$
 \end{lemma}
 
+\begin{exercise}
+\label{exercise-curvatures-of-product-metric}
+Lista 5, Exercise 1. Let $(M_1,g_1)$ and $(M_2,g_2)$ be Riemannian manifolds and
+let $M_1\times M_2$ be equipped with the product metric $g:=g_1\oplus g_2$. Show
+that the curvature tensor, the Ricci curvature and the scalar curvature of $g$
+are given by
+\begin{enumerate}
+\item $R=\pi_1^*R_1+\pi_2^*R^2$,
+\item $\text{Ric}=\pi_1^*\text{Ric}_1+\pi_2^*\text{Ric}_2$,
+\item $\text{scal}=\pi_1^*\text{scal}_1+\pi_2^*\text{scal}_2$
+\end{enumerate}
+where $\pi_i:M_1\times M_2\to M_i$ are the projections.
+\end{exercise}
 
 \section{Jacobi Fields}
 \label{section-jacobi-fields}
@@ -444,28 +472,41 @@ Notice the adjointness relation
 \end{equation}
 which follows from computing $0=X\left<Y,\xi\right>$.
 
-\section{Gauss, Codazzi, and Ricci equations}
-\label{section-Gauss-Codazzi-Ricci}
-
-The {\it Gauss equation} is
+The {\it Gauss equation}
+$$
+(R_{\nabla^f}(X,Y)Z)^\top=R_\nabla(X,Y)Z-A_{\alpha(Y,Z)}X+A_{\alpha(X,Z)}Y
+$$
+may be derived by substituting Eq. \ref{equation-second-fundamental-form} 
+into Equation \ref{equation-curvature-tensor}. But most likely we will use the
+following form:
 \begin{equation}
 \label{equation-Gauss}
 \left<\tilde{R}(X,Y)Z,W\right>=\left<R(X,Y)Z,W\right>
 -\left<\alpha(X,Z),\alpha(Y,W)\right>+\left<\alpha(X,W),\alpha(Y,Z)\right>
 \end{equation}
-which follows from substituting Eq. \ref{equation-second-fundamental-form} 
-into Equation \ref{equation-curvature-tensor}.
+Substituting for $X=W$ and $Y=Z$ we obtain the equivalent equation 
+\begin{equation}
+\label{equation-Gauss-sectional-curvature}
+K(X,Y)=\tilde{K}(X,Y)+\left<\alpha(X,Y),\alpha(Y,Y)\right>-\|\alpha(X,Y)\|^2
+\end{equation}
 
-For the case of a hypersurface, the normal vector $\alpha(X,Y)$ must be
+Notice that we are seeing the determinant of the second fundamental form, which
+is the product of its eigenvalues, which may be defined as the {\it principal
+curvatures}. In particular, this shows that the Gaussian curvature of a surface 
+in $\mathbb{R}^3$, defined as the determinant of the second fundamental form, 
+coincides with sectional curvature when substituting $\tilde{K}\equiv0$ for
+ the flat metric on euclidean space. (!!!)
+
+In the case of a hypersurface, the normal vector $\alpha(X,Y)$ must be
 proportional to the unit normal $N$, and by Eq.
 \ref{equation-second-fundamental-form-and-shape-operator} the proportionally
 factor is exactly $\left<A_N X,Y\right>$. Using this and evaluating
  at an orthonormal pair $X,Y$ we obtain
 \begin{equation}
-\label{equation-Gauss-hypersurface}
+\label{equation-Gauss-sectional-curvature-shape-operator}
 K(X,Y)=\tilde{K}(X,Y)+\left<AX,X\right>\left<AY,Y\right>-\left<AX,Y\right>^2
 \end{equation}
-Notice that we are looking at the determinant of the matrix
+In this case we are looking at the determinant of the matrix
 $$
 \begin{pmatrix}
 \left<AX,X\right>&\left<AX,Y\right>\\ 
@@ -477,55 +518,141 @@ spanned by $X,Y$. (That's just a particular case of the simple fact that the
 representation of the matrix $A_i^j$ for $Ae_i=A_i^je_j$ is given by
 $\left<Ae_i,e_j\right>=A^k_i\left<e_k,e_j\right>=A^j_i$.)
 
-Notice that the Gaussian curvature of a surface in $\mathbb{R}^3$, defined as
-the determinant of the second fundamental form, coincides with sectional
-curvature when substituting $\tilde{K}\equiv0$ as is the case of the flat metric
-on euclidean space.
-
-For a hypersurface of a constant sectional curvature $c$
-manifold, we have {\it Gauss equation for constant sectional curvature}
-\begin{equation}
-\label{equation-Gauss-constant-sectional-curvature}
-K_M(X,Y)=c+\left<\alpha(X,Y),\alpha(Y,Y)\right>-\|\alpha(X,Y)\|^2
-\end{equation}
-
-\begin{example}
-\label{example-curvature-of-sphere}
-Using Eq. \ref{equation-Gauss-hypersurface} we can prove that the sectional
+\begin{example}[Sectional curvature of sphere]
+\label{example-sectional-curvature-of-sphere}
+Using Eq. \ref{equation-Gauss-sectional-curvature-shape-operator} we can prove that the sectional
 curvature of $S^n$ is 1 once we make sure that the shape operator of the sphere
 is the identity. And this follows from the fact that the connection on
 $\mathbb{R}^n$ is just directional derivative, see Example 
 \ref{example-euclidean-connection}.
 
-More explicitly, the normal component of $\tilde{\nabla}_X\nu$ will vanish (see
-discussion in Section \ref{section-Riccati-equation}, so that
-$\tilde{\nabla}_X\nu=-A_\nu X$. But the connection in Euclidean space is just
-differentiating the vector field, that is, $\tilde{\nabla}_X\nu=\nu X$. And
-finally, who's $\nu$? It's the $-\text{id}$ if you chose the inner normal. So
- $\tilde{\nabla}_X\nu=-X$.
+More explicitly, the normal component of $\tilde{\nabla}_X N$ will vanish (see
+discussion in Section \ref{section-Riccati-equation}), so that
+$\tilde{\nabla}_XN=-A_N X$. But the connection in Euclidean space is just
+differentiating the vector field, that is, $\tilde{\nabla}_X N=N X$. And
+finally, who's $N$? It's $-\text{id}$ if you chose the inner normal. So
+ $\tilde{\nabla}_X N=-X$.
 \end{example}
 
 \begin{exercise}
 \label{exercise-Gauss-sectional}
-Use Eq. \ref{equation-Gauss-hypersurface} to show that no 
+Use Eq. \ref{equation-Gauss-sectional-curvature-shape-operator} to show that no 
 hypersurface $M \hookrightarrow \mathbb{R}^{n+1}$ can have constant negative 
 curvature.
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}
 After substituting $\tilde{K}(X,Y)=0$, we see that Eq. 
-\ref{equation-Gauss-hypersurface} is determinant of the second fundamental form. 
+\ref{equation-Gauss-sectional-curvature-shape-operator} is determinant of the second fundamental form. 
  But… how to argue that this determinant can't be always negative?
 \end{proof}
 
-\begin{example}
+\begin{example}[Sectional curvature of hyperbolic space]
 \label{example-hyperbolic-space}
 \cite{doc}, Chapter VIII, Exercise 3. The unit normal of hyperbolic space in the
 hyperboloid model is also the identity. This allows for a similar computation,
-but Eq. \ref{equation-Gauss-hypersurface} doesn't hold exactly because the
+but Eq. \ref{equation-Gauss-sectional-curvature-shape-operator} doesn't hold exactly because the
 metric is not Riemannian. In fact, the normal vector has norm $-1$, giving that
 hyperbolic space has constant curvature $-1$.
 \end{example}
+
+\begin{exercise}[Clifford torus]
+\label{exercise-Clifford-torus}
+\cite{doc}, Chapter VI, Exercises 2 and 8. Show that the map
+$\mathbf{x}:\mathbb{R}^2\to\mathbb{R}^4$ given by
+$$
+\mathbf{x}(\theta,\varphi)
+=\frac{1}{\sqrt{2}}(\cos\theta,\sin\theta,\cos\varphi,\sin\varphi),
+\qquad(\theta,\varphi)\in\mathbb{R}^2
+$$
+is an immersion of $\mathbb{R}^2$ in the unit sphere $S^3\subset\mathbb{R}^4$,
+whose image is a torus $T^2$ with zero sectional curvature in the induced
+metric. Finally show that it is a minimal submanifold of $S^3$. This is called
+the {\it Clifford torus}.
+\end{exercise}
+
+\begin{proof}
+This map is an immersion since the derivatives of sine and cosine cannot vanish
+simultaneously. Its image is a torus since the map can be seen as a map
+from $S^1\times S^1$ to $\mathbb{R}^4$.
+
+It is natural to think that this manifold is the flat torus from Example
+\ref{example-flat-torus}. And it is, because it is diffeomorphic to a product.
+We can use the immersion $\mathbf{x}$ on a small domain as a local
+parametrization of $T^2$.  When differentiating the parametrization we notice
+that the tangent vectors are decomposed as a pair of vectors tangent to one
+circle or to the other. Then the metric induced from $\mathbb{R}^4$ and then by
+$S^3$ is exactly the product metric from Definition
+\ref{definition-product-metric}. By Exercise
+\ref{exercise-curvatures-of-product-metric}, the curvature tensor on $S^1\times S^1$
+vanishes identically since the curvature tensor of any 1-manifold vanishes by
+antisymmetry in the first or two last entries. This means that this torus is
+flat. This says that its first fundamental form has determinant 1 when seen as a
+submanifold of $S^3$.
+
+To see it is a minimal submanifold of $S^3$ it suffices to show it is totally 
+geodesic by Eq. \ref{equation-Gauss-hypersurface} and Lemma
+\ref{lemma-totally-geodesic-submanifold}. In other words, we may equivalently
+show that $\alpha\equiv0$ or that the geodesics of this torus are geodesics of
+$\mathbb{R}^n$.
+\end{proof}
+
+\begin{definition}
+\label{definition-minimal-immersion}
+An immersion $f:M\to\tilde{M}$ is called {\it minimal} if the trace of its shape
+operator vanishes at all points of $M$ for any choice of normal vector field.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-mean-curvature}
+Lista 4, Exercício 8. Let $(M,g)$ be a Riemannian manifold. Suppose that there
+is a function $f \in C^\infty(M)$ such that $0 \in \mathbb{R}$ is a regular
+value of $f$ and let $\Sigma:=f^{-1}(0)$.
+\begin{enumerate}
+\item Let $N=\frac{\nabla f}{|\nabla f| \in \mathfrak{X}^\perp(\Sigma)}$. Mostre
+que
+$$
+\left<\alpha_{\Sigma}(X,Y),N\right>=-\frac{\text{Hess}(f)(X,Y)}{|\nabla f|},
+$$
+para todos $X,Y \in \mathfrak{X}(\Sigma)$.
+
+\item Show that the mean curvature of $\Sigma$ is given by
+$$
+H_{\Sigma}=-\frac{1}{n}\mathsf{div}\left(\frac{\nabla f}{|\nabla f|}\right)
+$$
+\end{enumerate}
+{\it Note.} The notation in item (1) identifies fields using the differential of
+the inclusion map, as is customary.
+\end{exercise}
+
+\begin{proof}
+\begin{enumerate}
+\item One one hand,
+ $$
+\left<\alpha(X,Y),\nabla f\right>=-\left<Y,A_{\nabla f}X\right>
+$$
+by Eq. \ref{equation-second-fundamental-form-and-shape-operator}.
+On the other hand,
+$$
+\text{Hess}(f)(X,Y)=\left<\tilde{\nabla}_X \nabla f,Y\right>=
+\left<-A_{\nabla f}X+\nabla_X^\perp \nabla f,Y\right>,
+$$
+then multiply by $\frac{1}{|\nabla f|}$.
+
+\item To compute the divergence as the trace of the gradient we need an
+orthonormal frame of $M$. So let $E_i$ be an orthonormal frame of $\Sigma$ and
+add $\frac{\nabla f}{|\nabla f|}$ to obtain a frame of $M$. Then:
+\begin{align*}
+\text{div}\left(\frac{\nabla f}{|\nabla f|}\right)&=\sum
+\left<\tilde{\nabla}_{E_i}\frac{\nabla f}{|\nabla
+f|},E_i\right>+\underbrace{\left<\tilde{\nabla f}_{\frac{\nabla f}{|\nabla
+f|}}\frac{\nabla f}{|\nabla f|},\frac{\nabla f}{|\nabla
+f|}\right>}_{\frac{1}{2}\left|\frac{\nabla f}{|\nabla f|}\right|^2=0}\\
+&=\sum \left<-A_{\frac{\nabla f}{|\nabla f|}}E_i,E_i\right>\\
+&=-\text{tr}(X \mapsto A_{\frac{\nabla f}{|\nabla f|}}X=-nH_{\Sigma}(p)
+\end{align*}
+\end{enumerate}
+\end{proof}
 
 The {\it Codazzi equation} is
 \begin{equation}
