@@ -1,0 +1,205 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Seminars}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\tableofcontents
+
+\section{Differential Geometry}
+\label{section-differential-geometry}
+
+\section{Spheres with minimal equators}
+\label{section-spheres-with-minimal-equators}
+
+Lucas Ambrozio, 24 June 2025.
+
+{\bf Abstract.} We will discuss the connection between Riemannian metrics on the
+sphere with respect to which all equators are minimal hypersurfaces, and
+algebraic curvature tensors with positive sectional curvatures.
+
+\begin{definition}
+\label{definition-equator}
+An {\it $(n-k)$-equator} orthogonal to $\Pi$ is
+$$
+\Sigma_\Pi:=\{p\in\mathbb{S}^n:\left<p,x\right>=0\forall x\in\Pi\}
+$$
+for $\Pi$ a $k$-dimensional linear subspace of $\mathbb{R}^{n+1}$.
+\end{definition}
+
+\begin{remark}
+\label{remark-equators-are-totally-geodesic-with-usual-metric}
+
+\end{remark}
+
+{\bf Problem.} Characterize the set $\mathcal{M}_k(U)$ of metrics $g$ on an 
+open set $U\subset\mathbb{S}^n$ such that all $k$-equators $\Sigma_\Pi$ with
+ $\Sigma\cap U\neq\emptyset$ yield are minimal hypersurfaces $\Sigma\cap U$ 
+on $(U,g)$.
+
+\begin{remark}
+\label{remark-why-not-Rn}
+This problem can be thought as a problem of finding metrics on $\mathbb{R}^n$
+such that $k$-planes are minimal if we project the $k$-equators to
+$T_p\mathbb{S}^n$ and pullback those metrics to the sphere.
+\end{remark}
+
+Let $g\in\mathcal{M}_k(U)$ for $U\subset\mathbb{S}^n$ open and $n\geq 2$.
+
+\begin{theorem}[Beltrami, Schäfli]
+\label{theorem-Beltrami-Schafli}
+If $k=1$ then $g$ has constant sectional curvature.
+\end{theorem}
+
+\begin{theorem}[Hongan]
+\label{theorem-Hongan}
+If $1<k<n-1$ then $g$ has constant sectional curvature.
+\end{theorem}
+
+Then Hongan also managed to produce a classification of these metrics for
+$k=n-1$.
+
+\begin{remark}
+\label{remark-linear-invertible-preserving-equators-is-in-Mg}
+If $T\in \text{GL}(n+1,\mathbb{R})$, then
+\begin{align*}
+\varphi: \mathbb{S}^n &\longrightarrow \mathbb{S}^n \\
+x &\longmapsto \frac{Tx}{|Tx|}
+\end{align*}
+is a diffeomorphism that maps $k$-equators into $k$-equators. Thus if
+$g\in\mathcal{M}_k(\mathbb{S}^n)$ then so is $\varphi(T)^*g$.
+\end{remark}
+
+\begin{theorem}
+\label{theorem-equivariant-bijection}
+There exists a $\text{GL}(n+1,\mathbb{R})$ equivariant bijection
+$$
+\mathcal{M}_{n-1}(\mathbb{S}^n)\leftrightarrow \text{Curv}_+(\mathbb{R}^{n+1})
+$$
+where the set on the right-hand-side is the set of algebraic curvature tensors
+(also called curvature-like, i.e. with the same symmetries as the Riemannian
+curvature tensor) on $\mathbb{R}^{n+1}$ with positive sectional curvature.
+
+The group action is given as follows for $T\in\text{GL}(n+1,\mathbb{R})$:
+$$
+(R\cdot T)(x,y,z,w)=\frac{1}{|\det(T)|^{\frac{1}{n+1}}}R(Tx,Ty,Tz,Tw)
+$$
+\end{theorem}
+
+The point is that $\text{Curv}_+(\mathbb{R}^{n+1})$ is an open cone on a linear
+space. Here are two simple corollaries:
+
+\begin{lemma}
+\label{lemma-corollaries}
+\begin{enumerate}
+\item $\mathcal{M}_{n+1}(\mathbb{S}^n)$ is in bijection with an open positive
+cone of an $\frac{n(n+2)(n+1)^2}{12}$-dimensional real vector space.
+\item Every metric on $\mathcal{M}_{n-1}(\mathbb{S}^n)$ is invariant by the
+antipodal map.
+\end{enumerate}
+\end{lemma}
+
+{\bf Algorithm.} From any $R\in \text{Curv}_p(\mathbb{R}^{n+1})$ we obtain a
+symmetric positive definite (positive-definitiness comes from the positiveness
+of the curvature of $R$) 2-tensor  $k_R$ satisfying
+$$
+(k_R)_p(v,v)=R(pv,pv)>0
+$$
+Also, $k_R$ has the  {\it Killing property},
+i.e. that $\overline{\nabla}k(X,X,X)=0$ for all
+$X\in\mathfrak{X}(\mathbb{S}^n)$.
+
+Then we define a positive function on
+ $\mathbb{S}^n$ by
+\begin{equation}
+\label{equation-def-DR}
+D_R:=\left(\frac{d\text{Vol}_{k_R}}{dV_g}\right)^{\frac{4}{n-1}}
+\end{equation}
+and finally a Riemannian metric on $\mathbb{S}^n$ in
+$\mathcal{M}_{n-1}\mathbb{S}^n$ by
+$$
+g_R=\frac{1}{D_R}k_R
+$$
+And to go back, for $g \in \mathcal{M}_{n-1}(\mathbb{S}^n)$ define a positive 
+function on $\mathbb{S}^n$
+$$
+F_g:=\left(\frac{dV_g}{dV_{\overline{g}}}\right)^{\frac{4}{n-1}}
+$$
+Then let $k_g:=\frac{1}{F_g}g>0$, which is a positive definite Killing 2-tensor,
+from which we may define $R_g\in\text{Curv}_+(\mathbb{R}^{n+1})$ with
+$R_g(pv,pv)=(k_g)_p(v,v)$ for all $p,v\in T\mathbb{S}^n$.
+
+More corollaries:
+\begin{lemma}
+\label{lemma-corollaries2}
+\begin{enumerate}
+\item $g\in\mathcal{M}_{n-1}(\mathbb{S}^n)$ is analytic because it is a Killing
+tensor on $\mathbb{S}^n$, which are well-known.
+\item If $g$ is left-invatiant on $\mathbb{S}^3$, seen as unit quaternions, then
+$g\in\mathcal{M}_2(\mathbb{S}^3$. Moreover, for $a\geq b\geq c>0$,
+$$
+aL_i\odot L_i+bL_j\odot L_j+cL_k\odot L_k=k
+$$
+is Killing, $k>0$,  $D_k$ constant and thus $g=\frac{1}{\text{const.}}k
+\in\mathcal{M}_2(\mathbb{S}^3)$.
+\item $R$ curvature tensor of $(\mathbb{C}P^{2},g_{FS})$. We may not remember
+what's the curvature tensor, but we know the sectional curvature is $1\leq
+\text{sec}(R)\leq 4$,
+$$
+(k_R)_p(v,w)=\overline{g}(v,w)+3\overline{g}(Jp,v)\overline{g}(Jp,w)
+$$
+and $D_R=4^{\frac{4}{3-1}}=4$, so that by \ref{equation-def-DR} we obtain 
+$g_R=\frac{1}{4}k_R$, which is a Berger
+metric on $\mathbb{S}^3$ with scalar curvature 0.
+\end{enumerate}
+\end{lemma}
+
+\bigskip
+Now define
+$$
+\Sigma_V=\{p\in\mathbb{S}^n:\left<p,v\right>=0\}=V^{-1}(0)
+$$
+where $V(x):=\left<x,v\right>$ for all $x\in\mathbb{S}^n$. Then the normal
+vector field is $\nabla V/|\nabla V|_g$, and the second fundamental form is
+given by
+$$
+A=\frac{1}{|\nabla V|_g}\text{Hess}_gV
+$$
+and its mean curvature by
+$$
+H=\frac{1}{|\nabla V|_g}\left(\Delta_gV-\text{Hess}_gV\left(\frac{\nabla
+V}{|\nabla V|},\frac{\nabla V}{|\nabla V|}\right)\right)
+$$
+For every $v \in \mathbb{S}^n$ and $p\in\Sigma_V$, we see that $H_{\Sigma_V}=0$
+iff
+$$
+|\nabla V|^2_g(p)\Delta_gV(p)-\text{Hess}_gV(\nabla V(p),\nabla V(p))=0
+$$
+And for $\overline{g}$,
+$$
+\text{Hess}_{\overline{g}}V+V\overline{g}=0\implies
+\text{Hess}_{\overline{g}}V(X,X)=0
+$$
+for all $X\in T_p\mathbb{S}^n$ and $p\in\Sigma_v$. Then
+$$
+J_g(X,Y,Z)=g(\nabla_XY-\overline{\nabla}_XY,Z)
+$$
+$$
+J_g(X,Y,\nabla V)=\text{Hess}_{\overline{g}}-\text{Hess}
+$$
+{\bf Problems.}
+\begin{enumerate}
+\item Similar story for $\mathbb{C}P^{n},\mathbb{H}P^n$?
+\item Complete metrics on $\mathbb{R}^n$ with minimal hyperplanes.
+\item Find geometric invariants of metrics on $\mathcal{M}_{n-1}(\mathbb{S}^n)$
+(may be useful to study $(M^n,g)$, $n\geq 4$, $\text{sec}>0$.
+\end{enumerate}
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+

@@ -64,7 +64,7 @@ This follows easily from Lemma \ref{lemma-for-derivative-of-determinant1}.
 Let $A(t)$ be a one parameter family of matrices. Compute $\det A(t)'$.
 \end{exercise}
 
-\begin{proof}[Physicist's solution]
+\begin{proof}[Naive solution]
 The determinant of a matrix is given by the product of its eigenvalues
 $\lambda_i$. Taking logarithms we see that
 $$
@@ -189,8 +189,159 @@ are given by
 where $\pi_i:M_1\times M_2\to M_i$ are the projections.
 \end{exercise}
 
+\begin{exercise}
+\label{exercise-fixed-point-set-of-isometry-is-totally-geodesic-submanifold}
+\cite{pet}, Proposition 5.6.5. Let $f:M\to M$ be an isometry. Show that the
+connected component of the fixed points of $f$ is a totally geodesic
+submanifold.
+\end{exercise}
+
+\begin{proof}
+The trick is to show that the eigenvectors of $df$ are in bijection with the
+fixed point set of $f$. For this consider an eigenvector, a geodesic realising 
+the vector, map it with $f$ and notice it must coincide with the original 
+geodesic because $f$ is an isometry and the point is a fixed point. This shows
+that the fixed point set is a submanifold since it is parametrized as a linear
+subspace under geodesic coordinate charts. It also shows that the fixes point
+set is totally geodesic.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-Clifford-torus-preparation}
+\cite{doc}, Chapter VI, Exercise 2. Show that the map
+$\mathbf{x}:\mathbb{R}^2\to\mathbb{R}^4$ given by
+$$
+\mathbf{x}(\theta,\varphi)
+=\frac{1}{\sqrt{2}}(\cos\theta,\sin\theta,\cos\varphi,\sin\varphi),
+\qquad(\theta,\varphi)\in\mathbb{R}^2
+$$
+is an immersion of $\mathbb{R}^2$ in the unit sphere $S^3\subset\mathbb{R}^4$,
+whose image is a torus $T^2$ with zero sectional curvature in the induced
+metric.
+\end{exercise}
+
+\begin{proof}
+This map is an immersion since the derivatives of sine and cosine cannot vanish
+simultaneously. Its image is a torus since the map can be seen as a map
+from $S^1\times S^1$ to $\mathbb{R}^4$.
+
+To see it has zero sectional curvature
+it suffices to show it is totally geodesic by Eq.
+\ref{equation-Gauss-hypersurface} and Lemma
+\ref{lemma-totally-geodesic-submanifold}. In other words, we may equivalently
+show that $\alpha\equiv0$ or that the geodesics of this torus are geodesics of
+$\mathbb{R}^n$. But… of course this is impossible because the only totally
+geodesic submanifolds of euclidean space are planes. We conclude that for this
+torus to be flat there will always be a principal flat direction (i.e. a null
+eigenvector of $\alpha$), but since its
+fundamental group is not trivial it is not a plane (!) and thus it is not a
+totally geodesic submanifold.
+
+I think the null principal direction is: take a vector in one circle and a
+vector in the other circle. In the product metric
+
+\end{proof}
+
+\begin{exercise}[Clifford torus]
+\label{exercise-Clifford-torus}
+\cite{doc}, Chapter VI, Exercise 8. Consider an im
+\end{exercise}
+
+\begin{exercise}[Warped product]
+\label{exercise-wraped-product}
+See \cite{pet}. Para $(M,g_M)$ e $(N,g_N)$ e $f:M \to \mathbb{R}_+$, definimos o
+ {\it warped product} como sendo o produto cartesiano $M\times N$ com a métrica 
+ $g_M+f^2g_N$.
+
+Mostre que se os fatores são completos, o warped product é completo.
+\end{exercise}
+
+\begin{exercise}[Curvature of complex projective space]
+\label{exercise-curvature-of-CPn}
+Defina uma métrica Riemanniana  em $\mathbb{C}^{n+1}\setminus\{0\}$ do
+seguinte modo. Se $Z \in \mathbb{C}^{n+1}\setminus\{0\}$ e $V,W \in T_Z
+(\mathbb{C}^{n+1}\setminus\{0\})$,
+
+$$
+\left<V,W\right>_Z=\frac{\text{Re}(V,W)}{(Z,Z)}
+$$
+onde 
+$$
+(Z,W)=z_0\overline{w}_0+\ldots+z_n\overline{w}_n
+$$
+
+é o produto hermitiano em $\mathbb{C}^{n+1}$. Observe que a métrica
+$\left<\cdot,\cdot\right>$ restrita a $S^{2n+1}\subset
+\mathbb{C}^{n+1}\setminus\{0\}$ coincide com a métrica induzida por
+$\mathbb{R}^{2n+2}$.
+\begin{enumerate}
+
+\item Mostre que, para todo $0\leq \theta \leq 2\pi$, $e^{i\theta}:S^{2n+1}\to
+S^{2n+1}$ é uma isometria, e que, portanto, é possível definir uma métrica
+Riemanniana em $\mathbb{P}^n(\mathbb{C})$ de modo que a submersão $f$ seja
+Riemanniana.
+
+\item Mostre que, nesta métrica, a curvatura seccional de
+$\mathbb{P}^n(\mathbb{C})$ é dada por
+$$
+K(\sigma)=1+3\cos^2\varphi
+$$
+onde $\sigma$ é gerado pelo par ortonormal $X$, $Y$, $\cos
+\varphi=\left<\overline{X},i\overline{Y}\right>$, e $\overline{X}$,
+$\overline{Y}$ são os levantamentos horizontais de $X$ e $Y$, respetivamente. Em
+particular, $1 \leq  K(\sigma) \leq  4$.
+\end{enumerate}
+\end{exercise}
+
 \section{Exercises: global differential geometry}
 \label{section-exercises-global-differential-geometry}
+
+\begin{exercise}
+\label{exercise-Klingenberg-lemma}
+\cite{doc}, Chapter X, Exercise 1. Seja $M$ uma variedade Riemanniana
+completa com curvatura seccional $K \leq  K_0$ onde $K_0$ é uma constante
+positiva. Sejam $p,q \in M$ e seja $\gamma_0$ e $\gamma_1$ duas geodésicas
+distinas unindo $p$ a $q$ com  $\ell(\gamma_0) \leq  \ell(\gamma_1)$.
+Admita que $\gamma_0$ é homotópica a $\gamma_1$, isto é, existe uma família
+contínua de curvas $\alpha_t$, $t \in [0,1]$ tal que $\alpha_0 = \gamma_0$
+e $\alpha_1=\gamma_1$. Prove que existe $t_0 \in [0,1]$ tal que
+$$
+\ell(\gamma_0)+\ell(\alpha_{t_0}) \geq  \frac{2\pi}{\sqrt{K_0} }
+$$
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-Hadamard-via-Kingenberg}
+Use Klingenberg lemma from Exercise \ref{exercise-Klingenberg-lemma} to prove
+Hadamard's theorem.
+\end{exercise}
+
+\begin{proof}
+Suponha que $M$ é uma variedade completa, simplesmente conexa e com curvatura
+positiva. Por completitude, sabemos que para qualquer $p \in M$ o domínio de
+$\text{exp}_p$ é todo $T_pM$. Como $K\leq 0$, sabemos que $M$
+não pode ter pontos conjugados, de modo que $\text{exp}_p$ é um
+difeomorfismo local. Também por completitude sabemos que
+$\text{exp}_p$ é sobrejetiva: qualquer ponto $q$ está ligado a $p$
+mediante uma geodésica, e essa geodésica coincide com uma geodésica partindo de
+$p$ dada como a imagem de uma reta em $T_pM$ sob $\text{exp}_p$.
+
+Portanto, o desafio é provar que $\text{exp}_p$ também é injetiva.
+Suponha que não é o caso, i.e. considere dois pontos $v_1$ e $v_2$ em
+$T_pM$ tais que $\text{exp}_pv_1=\text{exp}_pv_2:=q$. As
+imagens das retas geradas por $v_1$ e $v_2$ sob $\text{exp}_p$ são
+duas geodésicas $\gamma_1$ e $\gamma_2$ em $M$ ligando $p$ e $q$.
+
+Como $M$ é simplesmente conexa, existe uma homotopia entre $\gamma_1$ e
+$\gamma_2$. Podemos aplicar o lema de Klingenberg para obter uma curva
+$\alpha_{K_0}$ tal que $$ \ell(\gamma_1)+\ell(\alpha_{K_0}) \geq
+2\pi/\sqrt{K_0} $$ para qualquer $K_0>0$. Isso mostra que o comprimento das
+curvas na homotopia não está limitado, o que não é possível já que a homotopia é
+uma função contínua definida em um compacto, pelo qual a sua imagem debe ser
+compacto e portanto limitado. {\bf Errado! Por exemplo, um círculo percorrido
+miles de vezes tem comprimento arbitrariamente grande e está contido num
+compacto.}
+\end{proof}
 
 \begin{exercise}
 \label{exercise-geodesica-sem-pontos-conjugados-e-localmente-minimizante}
@@ -217,39 +368,10 @@ algum passo na prova.
 \end{enumerate}
 \end{proof}
 
-\begin{exercise}[Warped product]
-\label{exercise-wraped-product}
-Para $(M,g_M)$ e $(N,g_N)$ e $f:M \to \mathbb{R}_+$, definimos o {\it warped
-product} como sendo o produto cartesiano $M\times N$ com a métrica 
- $g_M+f^2g_N$.
-
-Mostre que se os fatores são completos, o warped product é completo.
-\end{exercise}
-
-\begin{exercise}[Intersecting minimal hypersurfaces]
-\label{exercise-intersecting-minimal-hypersurfaces}
-$(M^n,g)$ completa $\operatorname{Ric}_M>0$. $A$, $B$ hipersuperfícies mínimas
-completas. Então  $A \cap B \neq \emptyset$.
-\end{exercise}
-
-\begin{proof}
-Suponha que existe uma $\gamma$ mínima com comprimento positivo ligando as 
-duas variedades. Tem dois caminhos:
-\begin{enumerate}
-\item Deixa o campo exponencial ao longo da $\gamma$ e ajusta nos extremos
-para fazer ele tangente às variedades. Nesse caso já tem que o temo
-$\left<f_{ss},\gamma'\right>|_{0}^a$ se anula. Então so mostrar que $I(V,V)$  é
-zero. {\bf Onde se usa que são mínimas? Intentar construir esta?}
-\item Começa com uma geodésica tangente e transporta paralelamente um vetor
-tangente $e_i$ a  $M_1$. Ele chega tangente a  $M_2$ porque a geodésica é
-minimizante (cf exer passado).
-\end{enumerate}
-\end{proof}
-
 \begin{exercise}
 \label{exercise-two-submanifolds}
-\cite{doc} Chapter IX, Exercise 5. Sejam $N_1$ e $N_2$ duas subvariedades fechadas e disjuntas de uma variedade
-Riemanniana compacta.
+\cite{doc} Chapter IX, Exercise 5. Sejam $N_1$ e $N_2$ duas subvariedades
+ fechadas e disjuntas de uma variedade Riemanniana compacta.
 \begin{enumerate}
 \item Mostre que a distância entre $N_1$ e $N_2$ é realizada por uma geodésica
 	$\gamma$ perpendicular a ambas $N_1$ e $N_2$.
@@ -258,20 +380,97 @@ $h(0,s) \in N_1$ e $h(\ell,s) \in N_2$, tem-se para a fórmula da segunda
 variação a seguinte expressão
 $$
 \frac{1}{2}E''(0)=I_{\ell}(V,V)+
-\left<V(\ell),S_{\gamma'(\ell)}^{(2)}V(\ell)\right>
--\left<V(0),S^{(2)}_{\gamma'(0)}(V(0))\right>
+\left<V(\ell),A_{\gamma'(\ell)}^{(2)}V(\ell)\right>
+-\left<V(0),A^{(1)}_{\gamma'(0)}(V(0))\right>
 $$
 \end{enumerate}
 \end{exercise}
 
+\begin{proof}
+\begin{enumerate}
+\item Since both submanifolds are compact, there exists a minimizing geodesic
+$\gamma$ joining them. Then we can apply the first variation formula. Consider a
+variation that fixes $\gamma$ everywhere but in a small neighbourhood of one of
+the contact points. We realise by Eq. \ref{equation-first-variation-formula}
+that it must be orthogonal. A similar procedure proves the other endpoint also
+arrives orthogonally.
+
+\item By the previous item, we
+know that $\gamma'$ is orthogonal to the curves $h(0,s)$ and $h(\ell,s)$. Then
+we can differentiate using the formula for normal sections at the endpoints of
+$\gamma$:
+$$
+\tilde{\nabla}_{V}\gamma'=A^{(i)}_{\gamma'}V+\nabla^{\perp,i}_V\gamma'
+$$
+When computing $V\left<\gamma',\gamma'\right>$ we obtain
+$\left<\nabla^{\perp,i}_V\gamma',\gamma'\right>=0$ since the shape operator is
+tangent to the submanifolds. If $M_1$ and $M_2$ are hypersurfaces we conclude 
+that the normal vector $\nabla^{\perp,i}_V\gamma'$ vanishes since it must be a 
+multiple of $\gamma'$. Otherwise I'm not sure why this term would vanish.
+
+Now, other than the Index form, in the Second Variation Formula
+\ref{equation-second-variation-formula} we have
+$\left<\nabla_{\partial_s}V,\gamma'\right>$. Notice that
+$$
+\left<f_s,f_t\right>_s=\left<f_{ss},f_t\right>+\left<f_s,f_{st}\right>
+$$
+The left-hand-side will vanish because the variation is orthogonal, giving the
+equality we want (modulo a sign) since $f_{st}$ is precisely
+$\tilde{\nabla}_V\gamma'$ by the Symmetry Lemma.
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}
+\label{exercise-intersecting-minimal-hypersurfaces}
+Let $(M^n,g)$ be a complete Riemannian manifold with $\text{Ric}_M>0$. 
+Suppose $M_1$, $M_2$ are minimal (compact?) complete hypersurfaces. Show that 
+$M_1 \cap M_2 \neq \emptyset$.
+\end{exercise}
+
+\begin{proof}
+Let $\gamma$ be a minimizing geodesic joining $p \in M_1$ to $q\in M_2$ and
+minimizing the distance between $M_1$ and $M_2$. Let $e_1,\ldots,e_{n-1}\in
+T_pM$ be such that along with $\gamma'(0)$ form an orthonormal basis of $T_pM$.
+Let $E_i$ be the parallel transport of $e_i$ along $\gamma$. Notice that
+$E_i(\ell)$ is tangent to $M_2$ since it is orthogonal to $\gamma'(\ell)$ and
+$M_2$ is a hypersurface, but it is not immediate that the variational curve will
+be contained in $M_2$ if we define the variation using the exponential map. This
+is essential for the second variational formula to vanish since $\gamma$ is
+minimizing among curves joining $M_1$ and $M_2$.
+
+We need to produce the variation not from the vector field but from the
+variational curves. Take rectifying coordinates for $M_1$ at $p$. Define the
+curve $c^i$ as the $i$-th coordinate curve on the whole neighbourhood of $p$
+along $\gamma$.
+
+Now take the velocity of $c^i$ for some $t>0$. Parallel transport this vector
+along $\gamma$ until it reaches a rectifying neighbourhood of $q$. Along the
+path of $\gamma$ we can use the exponential to define a variation. Once in the
+rectifying neighbourhood of $q$, we must define by hand the variational curves
+to ensure that the curve at $q$ is contained in $M_2$.
+
+Suppose that $\gamma(t_0)$ is in the rectifying neighbourhood of $q$. Consider a
+smooth function $\varphi:[t_0,\ell]\to \mathbb{R}$ that is zero at $t_0$ and $1$
+at $\ell$. We can smoothly deform the exponential curves to a curve contained in
+$M_2$ at $t=\ell$ by defining 
+$$
+c^s_i(t):=(1-\varphi)\text{exp}_{\gamma(t)}sE_i(t)+\varphi sE_i(t)
+$$ 
+Notice that the variational vector is orthogonal to $M_2$ at $q$, so that we may
+apply Exercise \ref{exercise-two-submanifolds}. Thus we can express the second
+variation formula in such a way that when summing over all indices we obtain the
+mean curvatures of each submanifold, which vanish, thus obtaining a
+contradiction with the hypothesis that $\text{Ric}>0$.
+\end{proof}
+
 \begin{exercise}
 \label{exercise-even-dimension-positive-K-compact-is-simply-connected}
-Prove que $M^{2n},K_M>0$ compact, então ela é simplesmente conexa.
+Prove que $M^{2n},K_M>0$ compacta, então ela é simplesmente conexa.
 \end{exercise}
 
 \begin{exercise}
 \label{exercise-odd-dimension-positive-K-is-orientable}
-$M^{2n+1}$, $K_M>0$ compacta \(\implies\) orientável.
+$M^{2n+1}$, $K_M>0$ compacta $\implies$ orientável.
 \end{exercise}
 
 \begin{proof}
@@ -304,11 +503,7 @@ $M\times N$, if it admits a metric with negative sectional curvature,
 must be a Hadamard manifold, so that $\tilde{M} \times N \cong \mathbb{R}^n$.
 Then the induced map on cohomology is injective map ({\bf why?})
 $\pi^* :H^{k}(M)\to H^{k}(\tilde{M} \times N)=H^{k}(\mathbb{R}^n)=0$. This means
-by Poincaré duality (ref?) that $H^{n-1}(M)\cong H_1(M)$ and by Hurewicz
-isomorphism (ref?) we know that the abelizanization of $\pi_1(M)$ must be
-trivial. Thus if $\pi_1(M)$ is abelian we are done. But unfortunately most
-likely it is not--- if $M$ has negative curvature then $\pi_{1}(M)$ cannot be
-abelian by Theorem \ref{theorem-M-compact-K-negative-then-pi1-not-abelian}. 
+by Poincaré duality that $0=H^{n}(M)\cong H_0(M)\neq 0$, a contradiction.
 \end{proof}
 
 \begin{exercise}
@@ -317,7 +512,7 @@ Show that $S^n \times \mathbb{R}$ does not admite a complete metric with
 $\text{Ric}>0$.
 \end{exercise}
 
-\begin{proof}[Solução]
+\begin{proof}
 If it did, then by Preissman theorem \ref{theorem-Preissman} then $S^n\times
 \mathbb{R}\cong N \times \mathbb{R}$, but the upshot is that that the latter 
 isomorphism is an isometry, and the $\mathbb{R}$ factor is flat, so we can't 
@@ -332,7 +527,7 @@ for some compact set $\tilde{K} \subset \mathbb{R}^n$. If $\text{Ric}M \geq 0$,
 then $M^n \cong \mathbb{R}^n$.
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}
 Since $M\setminus K$ is isometric to $\mathbb{R}^n\setminus \tilde{K}$, there
 must be a line (oops! this is not obvious). But suppose for now that there {\it
 is} a line on $M$. Then by the Splitting theorem \ref{theorem-splitting} there 
@@ -373,7 +568,7 @@ Mostre que $S^1 \times S^1 \times \mathbb{R}$ {(\bf não?)} admite uma métrica 
 \ref{theorem-Preissman}.
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}
 Porque $\mathbb{Z} \times \mathbb{Z}$ é abeliano mas não é isomorfo a
 $\mathbb{Z}$.
 \end{proof}
@@ -414,7 +609,7 @@ Let $M^n$ be a Hadamard manifold and $S^{n-1}_r \subset M$. Mostre que
 da esfera em $\mathbb{R}^n$ é $\frac{1}{r}$.
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}
 Considere uma geodésica que liga $p$, o centro da esfera, e o bordo dela.
 Considere um referencial de campos de Jacobi $J_i$. Lembre que cada um dele
 satisfaz $A J=J'$. Então
@@ -429,9 +624,9 @@ $M^n$ compact, $\text{Ric} \geq 0$, then $\tilde{M}=N \times \mathbb{R}^n$ for
 some compact manifold $N$, where  $\tilde{M}$ is the universal cover of $M$.
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}
 If $\tilde{M}$ is compact we are done. So suppose it is not. Then there exists a
-ray. We want to construct a line to use Preissman \ref{theorem-Preisman}.
+ray. We want to construct a line to use Splitting Theorem \ref{theorem-splitting}.
 Consider the fundamental domain of the cover $\tilde{M}$, which exists since
 $M$ is compact: we may take a finite covering of normal neighbourhoods of $M$,
 so that the preimage under $\pi$ is a compact set containing at least one
@@ -457,7 +652,7 @@ contained in $H_t^{\sigma}:\alpha([0,1]) \subset H_t^{\sigma}$. {\it Hint.}
 Suppose that it's false and use Toponogov.
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}
 Suppose that there is a geodesic $\gamma:[0,1]\to M$ with $\gamma(0),\gamma(1)
 \in M$, but it intersects $H_t^{\sigma}$. Consider the triangle joining $p$,
 $\sigma(t+s)$ and some other point.
@@ -513,7 +708,7 @@ a menos de suavizar a quina perto de $q$. Se as curvas se intersectam
 \cite{doc} Capítulo XII, Exercício 6. Uma geodésica $\gamma:[0,\infty)\to M$ em
 uma variedade Riemannana $M$ é um {\it raio partindo de $\gamma(0)$} se ela é
 minimizante entre $\gamma(0)$ e $\gamma(s)$ para todo  $s \in (0,\infty)$.
-Admita que $M$ é completa, não-compact, e seja $p \in M$. Mostre que $M$ contém
+Admita que $M$ é completa, não compacta, e seja $p \in M$. Mostre que $M$ contém
 um raio partindo de $p$.
 \end{exercise}
 
@@ -572,15 +767,46 @@ parametrizada por comprimento de arco obtemos a condição dada na Definição
 \begin{exercise}
 \label{exercise-positive-scalar-but-no-positive-Ricci}
 Encontre um exemplo de variedade suave que admite alguma métrica Riemanniana com
-curvatura escalar positiva, mas não admite uma métrica com Riemanniana com Ricci
+curvatura escalar positiva, mas não admite uma métrica Riemanniana com Ricci
 positivo.
 \end{exercise}
 
-\begin{proof}[Solution]
-Se o problema for para $\text{Ric}\geq \delta>0$, poderiamos usar o teorema de 
+\begin{proof}
+Se o problema for para $\text{Ric}\geq \delta>0$, poderíamos usar o teorema de 
 Bonnet-Myers \ref{theorem-Bonnet-Myers} como segue. Um produto de uma esfera com
 uma reta tem curvatura escalar positiva, mas não admite uma métrica com 
 $\text{Ric}\geq\delta>0$ porque não é compacto.
+
+{\bf Ideia errada:} Considere $S^1\times S^1$. É claro que na métrica produto
+temos curvatura escalar positiva (erro! As variedades de dimensão 1 tem tensor
+de curvatura nulo pela antisimetria nas primeiras (ou últimas) duas entradas!)
+pelo Exercício \ref{exercise-curvatures-in-product}. Como é uma superfície, a
+curvatura de Ricci coincide com a curvatura seccional. (Ricci é o promédio das
+curvaturas seccionais.) A curvatura seccional é a curvatura Gaussiana. Se
+$S^1\times S^1$ tivesse uma métrica com curvatura Gaussiana positiva, pelo
+teorema de Gauss-Bonnet teria característica de Euler positiva, mas a sua
+característica de Euler é zero. No nosso curso, aplicamos o teorema de Synge
+\ref{theorem-Synge} para uma variedade orientável de dimensão par com curvatura
+escalar positiva, que deve ter grupo fundamental trivial, uma contradição com o
+fato de que $\pi_{1}(S^1\times S^1)=\mathbb{Z}\times\mathbb{Z}$.
+
+Nem tudo está perdido: considere $\mathbb{R}P^{2}$. Na métrica induzida pela
+projeção quociente desde $S^2$ temos curvatura escalar constante 1, e é uma
+superfície, de modo que a curvatura seccional coincide com a curvatura de Ricci,
+aplicamos o teorema de Synge \ref{theorem-Synge}, mas agora $\mathbb{R}P^{2}$
+não é orientável, então seu grupo deveria ser $\mathbb{Z}_2$… pois é.
+
+Depois reparei que esse argumento está totalmente errado: no caso das
+superfícies nem só a curvatura escalar coincide com a Ricci… também com a
+seccional!
+
+ $S^3\times S^1$. Então sim: pelo teorema de
+Synge \ref{theorem-Synge}, uma variedade orientável de dimensão par com
+curvatura {\it escalar} positiva deveria ter grupo fundamental trivial, que não
+é o caso. Mas já não é verdade que a curvatura de Ricci coincide com a curvatura
+ seccional; poderíamos ter um plano com curvatura seccional negativa e ainda ter
+Ricci positivo. Temos que descartar a possibilidade de ter um plano com
+curvatura seccional não positiva.
 \end{proof}
 
 \begin{exercise}
@@ -590,24 +816,92 @@ Ricci positivo, mas não admite uma métrica Riemanniana com curvatura seccional
 positiva.
 \end{exercise}
 
-\begin{proof}[Solution]
+\begin{proof}
 Considere $S^3\times S^1$. A métrica produto tem $\text{Ric}>0$, já que ele é a
 soma dos tensores de Ricci em cada fator de acordo ao Exercício 
-\ref{exercise-curvatures-in-product} (e cada um deles é constante 1 já que a 
-curvatura escalar da esfera é constante 1). Agora suponha que existe uma métrica
-com $K>0$. Então pelo teorema de Synge \ref{theorem-Synge}, como
+\ref{exercise-curvatures-in-product} (a curvatura de Ricci de $S^3$ é 1, 
+enquanto que a curvatura escalar de $S^1$ é zero). Agora suponha que existe uma
+ métrica com $K>0$. Então pelo teorema de Synge \ref{theorem-Synge}, como
 $S^3\times S^1$ é compacta, de dimensão par e orientável, o grupo fundamental
 dela deveria ser trivial, mas não é o caso.
 \end{proof}
 
 \begin{exercise}
-\label{exercise-l6-6}
+\label{exercise-two-totally-geodesic-submanifolds}
+Let $(M,g)$ be a complete, connected Riemannian manifold with positive
+curvature. Let $M_1$ and $M_2$ be two totally geodesic submanifolds such that
+$\dim M_1+\dim M_2\geq n$. Show that $M_1\cap M_2\neq \emptyset$.
+\end{exercise}
+
+\begin{proof}[Solução]
+Suponha que a interseção não é vazia. Então existe uma geodésica minimizante não
+trivial que minimiza a distância entre $A$ e $B$. Sabemos que essa geodésica
+intersecta tanto $A$ quanto $B$ ortogonalmente. Queremos ver que $E''(0)<0$, ou
+seja que $\gamma$ não pode ser minimizante, uma contradição.
+
+Suponha que conseguimos construir uma variação de $\gamma$ tal que todos os
+pontos iniciais $f(s,0)$ estão em $A$, e o mesmo acontece com os pontos finais,
+i.e. $f(s,\ell) \in B$. Então as derivadas das curvas $f(s,0)$ e $f(s,\ell)$ em
+$s=0$ são perpendiculares a  $\gamma'(0)$ e $\gamma'(\ell)$. Ou seja, temos que
+$\left<\gamma'(0),\nabla_{\partial_s}V\right>|_{0}^\ell=0$.
+
+Suponha ainda que essa variação tem campo variacional paralelo. Então acabou
+porque a segunda fórmula da variação diz que \[E''(0)=-\int_0^\ell
+\left<R_{\gamma'}V,V\right><0\]
+
+Vamos construir essa variação. O passo inicial é fácil: pegamos qualquer vetor
+$v \in T_a A$ e transportamos paralelamente ao longo de $\gamma$ para obter o
+campo paralelo $V \in \mathfrak{X}_\gamma$. Como $A$ é totalmente geodésica, a
+variação $f(s,t):=\text{exp}_{\gamma(0)}(sV(0))$ fica dentro de $A$.
+
+Para concluir basta ver que $ V(\ell) \in T_bB$, já que $B$ também é totalmente
+geodésica. Isso segue da última hipótese. Podemos realizar esse processo para
+cada vetor básico de  $T_a A$, obtendo $\dim A$ vetores linearmente
+independentes em $T_bB$ (já que o transporte paralelo é uma isometria). Se
+nenhum deles ficasse em $T_bB$, poderíamos construir um espaço de dimensão $\dim
+A$ estritamente contido em $T_b M\setminus T_b B$, absurdo pois isso implicaria
+que $\dim A< \text{codim} B$, porém, $\dim A+ \dim B \geq n$.
+
+\textbf{Edit.} Depois de reler a prova do exercício seguinte, parece que não era
+necessário usar que $\gamma$ intersecta ortogonalmente $A$ e $B$, pois a
+variação que usei foi por geodésicas, então $\nabla_{\partial_s}V=0$.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-free-homotopy-variation}
 Seja $M^{2n}$ uma variedade Riemanniana de dimensão par, completa, orientável e
 com curvatura seccional $K>0$. Seja $\gamma$ uma geodésica fechada em $M$ de
 comprimento $\ell(\gamma)$. Mostre que existem curvas livremente homotópicas a
 $\gamma$ em $M$, arbitrariamente próximas de $\gamma$, que possuem comprimento
 menor que $\ell(\gamma)$.
 \end{exercise}
+
+\begin{proof}
+Considere qualquer vector unitário ortogonal a $\dot \gamma$, defina $V\in
+\mathfrak{X}_{\gamma}''$ como sendo o transporte paralelo de $v$ ao longo de
+$\gamma$. Note que $\dot V=0$. Defina a variação
+$f(s,t)=\text{exp}_{\gamma(t)}sV(t)$. Note que
+$\nabla_{\partial_s}f_s=0$.
+
+A segunda fórmula da variação nos diz que \[E''(0)=-\int_0^a \left<R_{\dot
+\gamma}V,V\right>=-\int_0^a K<0\] já que $K>0$. Como $\gamma$ é uma geodésica,
+temos que para $s$ pequeno \[\frac{1}{a}\ell^2(c^s)\leq E(s) < E(0)=
+\frac{1}{a}\ell^2(\gamma)\] Note que essa variação pode não preservar o
+fechamento das curvas. Para resolver isso olhemos ao seguinte desenho:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/free-homotopy-variation}
+\end{figure}
+Fica claro que se $V(0)=V(a)$ as curvas $c^s$ são fechadas para toda $s$. Então
+a condição que precisamos é que \[P^\gamma_{0,a}V(0)=V(a)\] onde $P$ é o
+transporte paralelo. Dito de outra forma, basta ver que $P$ tem um ponto
+fixo---além de $\gamma'(0)=\gamma'(a)$, que já é um ponto fixo. Esse argumento é
+uma imitação da prova do teorema de Weinstein: como $P$ preserva orientação, o
+determinante dele deve ser positivo, ou seja, o produto dos seus autovalores
+deve ser positivo. Restringindo-nos ao subespaço $\gamma'(0)^\perp$, que tem
+dimensão ímpar, concluímos que para que o produto dos autovalores de $P$ seja
+positivo, deve ter pelo menos um que seja $1$.
+\end{proof}
 
 \section{Lista 7}
 \label{section-lista-7}
@@ -657,8 +951,8 @@ geodésica minimizante $\sigma$ ligando $p$ e $q$.
 
 {\bf Intento pessoal (não funcionou):}  considere a variação por geodésicas 
 $$
-f(s,t):=\operatorname{exp}_{\gamma(t)}
-(s\operatorname{exp}_{\gamma(t)}^{-1}\sigma(t))
+f(s,t):=\text{exp}_{\gamma(t)}
+(s\text{exp}_{\gamma(t)}^{-1}\sigma(t))
 $$
 cujo campo de Jacobi 
 $$
@@ -741,11 +1035,11 @@ a nossa hipótese.
 Proposição 2.13, Cap. XIII \cite{doc}. Se a curvatura seccional $K$ de uma
 variedade Riemanniana completa $M$ satisfaz
 $$
-0< K_{\operatorname{min}}\leq K\leq K_{\operatorname{max}},
+0< K_{\text{min}}\leq K\leq K_{\text{max}},
 $$
 Então
 \begin{enumerate}
-\item $i(M) \geq \pi/\sqrt{K_{\operatorname{max}}}$, ou
+\item $i(M) \geq \pi/\sqrt{K_{\text{max}}}$, ou
 \item existe uma geodésica fechada $\gamma$ em $M$, cujo comprimento é menor do 
 que o de qualquer outra geodésica fechada em $M$, tal que
 $$
@@ -833,7 +1127,7 @@ que $M$ seja compacta para garantir a existência do ponto $q$.
 \medskip
 
 Para concluir seguimos a prova de \cite{doc}. Vamos a usar o exercício 6 da
-lista 6, (cf. \ref{exercise-l6-6}), onde mostrei que, nestas condições, i.e.
+lista 6, (cf. \ref{exercise-free-homotopy-variation}), onde mostrei que, nestas condições, i.e.
 $M$ de dimensão par, completa, orientável e com curvatura seccional positiva,
 existem curvas livremente homotópicas a qualquer geodésica fechada $\gamma$, que
 possuem comprimento menor que $\ell(\gamma)$. Lembre que essas curvas foram

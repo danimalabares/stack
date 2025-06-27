@@ -7,7 +7,8 @@
 
 \phantomsection
 \label{section-phantom}
-
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
 \tableofcontents
 
 \section{Connections}
@@ -20,6 +21,71 @@ $$
 \nabla_XY=X(Y^i)\partial_i
 $$
 \end{example}
+
+\begin{proposition}[Everything I know about connections]
+\label{proposition-existence-of-pullback-connection}
+\end{proposition}
+
+\begin{lemma}
+\label{lemma-composition-of-pullback-connections}
+\cite{aulas}, p.5. If $g:M_1\to M_2$ and $f:M_2\to M_3$ are smooth maps of 
+manifolds and $E$ is a vector bundle over $M_3$, then
+$$
+g^* (f^* (E))=(f\circ g)^* (E)\qquad \text{and}\qquad
+(\nabla^f)^g=\nabla^{f\circ g}
+$$
+\end{lemma}
+
+The following three lemmas are fundamental properties of isometric
+immersions and will be used in Section \ref{section-isometric-immersions}. (Cf.
+Lista 3, Exercise 2.)
+
+\begin{lemma}
+\label{lemma-tangent-component-of-pullback-connection-by-ii-is-LC}
+If $f:M \to \tilde{M}$ is an isometric immersion, then 
+$f_*(\nabla_XY)=(\nabla^f_Xf_*Y)^\top$.
+\end{lemma}
+
+\begin{proof}
+We have to check that $(\nabla^f_Xf_*Y)^\top$ is a torsion-free and compatible
+connection on $TM$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-isometric-immersion-along-curve}
+Let $f:M \to \tilde{M}$ be an isometric immersion, $c$ is a smooth curve in $M$
+and $Y\in\mathfrak{X}_c$. Then
+$$
+f_*\nabla_{\frac{d}{dt}}^\gamma Y
+=\left(\nabla^{f\circ\gamma}_{\frac{d}{dt}}f_*Y\right)^\top
+$$
+\end{lemma}
+
+\begin{proof}
+This is just a mixture of Lemmas \ref{lemma-composition-of-pullback-connections}
+ and \ref{lemma-tangent-component-of-pullback-connection-by-ii-is-LC}.
+\end{proof}
+
+The following result accounts for the definition of totally geodesic
+submanifolds, cf. Definition \ref{definition-totally-geodesic-submanifold}.
+
+\begin{lemma}
+\label{lemma-totally-geodesic-submanifold}
+Let $f:M \to \tilde{M}$ be an isometric immersion and $\gamma:I\to M$ a smooth
+curve parametrized by arclength. Show that $\gamma$ is a geodesic of M
+if and only if its acceleration on $\tilde{M}$ is perpendicular to $M$, that is,
+$$
+\tilde{\nabla}^{f\circ\cong\gamma}_{\frac{d}{dt}}(f\circ\gamma)'\perp
+f_*(T_{\gamma(t)}M)
+$$
+\end{lemma}
+
+\begin{proof}
+Decompose the vector field 
+$\tilde{\nabla}^{f\circ\cong\gamma}_{\frac{d}{dt}}(f\circ\gamma)'$ in tangent and
+normal part. Then apply Lemma 
+\ref{lemma-tangent-component-of-pullback-connection-by-ii-is-LC}.
+\end{proof}
 
 \section{Riemannian submersions and immersions}
 \label{section-Riemannian-submersions-and-immersions}
@@ -60,6 +126,24 @@ bundle is that subbundle?
 \section{Geodesics}
 \label{section-geodesics}
 
+\begin{proposition}
+\label{proposition-naturallity-of-exponential}
+If $f:M\to \tilde{M}$ is an isometry,
+$$
+\xymatrix{
+B_\varepsilon(0)\subset T_pM \ar[r]^{d_p f} \ar[d]_{\text{exp}_p} &
+B_\varepsilon(0)\subset T_{f(p)}\tilde{M} \ar[d]^{\text{exp}_{f(p)}} \\
+B_\varepsilon(p)\subset M \ar[r]_{f} & B_\varepsilon(f(p))\subset \tilde{M}
+}
+$$
+\end{proposition}
+
+\begin{proof}
+Isometry maps geodesics to geodesics by Lemma 
+\ref{lemma-isometry-maps-geodesics-to-geodesics}, then uniqueness of solutions
+of ODEs.
+\end{proof}
+
 \begin{proposition}[Totally Normal Neighbourhoods]
 \label{proposition-totally-normal-neighbourhoods}
 For all $p \in M$ there is a neighbourhood $W \ni p$ and a number $\delta>0$ 
@@ -76,34 +160,91 @@ The {\it curvature tensor} is
 R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z
 \end{equation}
 
-The {\it Ricci tensor} is
-\begin{align*}
-	\text{Ric}: TM\times TM &\longrightarrow \mathbb{R} \\
-	 \text{Ric}(X,Y)&=\frac{1}{n-1}\text{tr}(Z\mapsto R(Z,X)Y)
-\end{align*}
-It is symmetric.
+\begin{proposition}
+\label{proposition-symmetries-of-curvature-tensor}
+The curvature tensor is a tensor and
+\begin{enumerate}
+\item It is antisymmetric in the first two and last two entries,
+\item $\left<R(X,Y)Z,W\right>=\left<R(Z,W)X,Y\right>$, and
+\item Bianchi identity.
+\end{enumerate}
+\end{proposition}
 
-The {\it Ricci curvature} is
-\begin{align*}
-	\text{Ric}: T^1M &\longrightarrow \mathbb{R} \\
-	\text{Ric}(X)&\text{Ric}(X,X)=\frac{1}{n-1}\sum_{i=1}^{n-1}K(X,E_i)
-\end{align*}
-where $\{X,E_1,\ldots,E_{n-1}\}$ is an orthonormal basis.
+Given a dimension-2 vector subspace $\sigma\subset T_pM$, the {\it sectional
+curvature} of $M$ in $\sigma$ is
+\begin{equation}
+\label{equation-sectional-curvature}
+K(\sigma)=\frac{\left<R(u,v)v,u\right>}
+{\left<u,u\right>\left<v,v\right>-\left<u,v\right>^2}
+\end{equation}
+for any base $\{u,v\}$ of $\sigma$.
 
-The {\it scalar curvature} is
-\begin{align*}
-	\text{scal}: M &\longrightarrow \mathbb{R} \\
-	\text{scal}(p)&=\frac{1}{n}\text{tr}\text{Ric}
-=\frac{1}{n}\sum_i\text{Ric}(e_i,e_i)
-\end{align*}
-If a manifold has constant curvature $c$,
+\begin{lemma}
+\label{lemma-sectional-curvature-is-well-defined}
+Sectional curvature does not depend on the choice of base.
+\end{lemma}
+
+\begin{proposition}
+\label{proposition-curvature-like-tensor-determined-by-sectional-curvature}
+Let $R$ and $R'$ be two type $(0,4)$ tensors on a vector space $\mathbb{V}$. If
+their associated sectional curvatures $K$ and $K'$ are equal, then so are $R$
+and $R'$.
+\end{proposition}
+
+\begin{proof}
+Polarize and make lots of computations, cf. \cite{doc}.
+\end{proof}
+
+If a manifold has constant sectional curvature $c$,
 \begin{equation}
 \label{equation-constant-curvature}
 \left<R(X,Y)Z,W\right>=
 c(\left<X,Z\right>\left<Y,W\right>-\left<X,W\right>\left<Z,Y\right>)
 \end{equation}
-since the right-hand-side of Equation \ref{equation-constant-curvature} is a
-so-called curvature tensor, i.e. a tensor satisfying the symmetries of $R$.
+since the right-hand-side of Eq. \ref{equation-constant-curvature} is a
+so-called curvature tensor, i.e. a tensor satisfying the symmetries of $R$, and
+applying Proposition 
+\ref{proposition-curvature-like-tensor-determined-by-sectional-curvature}.
+
+The {\it Ricci tensor} is
+\begin{equation}
+\label{equation-Ricci-tensor}
+\begin{aligned}
+\text{Ric}: TM\times TM &\longrightarrow \mathbb{R} \\
+\text{Ric}(X,Y)&=\frac{1}{n-1}\text{tr}(Z\mapsto R(Z,X)Y)
+\end{aligned}
+\end{equation}
+It is symmetric.
+
+The {\it Ricci curvature} is
+\begin{equation}
+\label{equation-Ricci-curvature}
+\begin{aligned}
+\text{Ric}: T^1M &\longrightarrow \mathbb{R} \\
+\text{Ric}(X)=\text{Ric}(X,X)&=\frac{1}{n-1}\sum_{i=1}^{n-1}K(X,E_i)
+\end{aligned}
+\end{equation}
+where $\{X,E_1,\ldots,E_{n-1}\}$ is an orthonormal basis.
+
+The {\it scalar curvature} is
+\begin{equation}
+\label{equation-scalar-curvature}
+\begin{aligned}
+\text{scal}: M &\longrightarrow \mathbb{R} \\
+\text{scal}(p)&=\frac{1}{n}\text{tr}\text{Ric}
+=\frac{1}{n}\sum_i\text{Ric}(E_i,E_i)
+\end{aligned}
+\end{equation}
+
+\begin{lemma}
+\label{lemma-scalar-curvature-is-mean-of-sectional}
+$$
+\text{scal}(p)=\frac{1}{n}\sum_{i}\text{Ric}(e_i,e_i)
+=\frac{1}{n(n-1)}\sum_{i,j}K(e_i,e_j)
+=\frac{1}{\text{Vol}(S^{n-1})}\int_{\sigma\subset T_pM}K(\sigma)
+$$
+\end{lemma}
+
 
 \section{Jacobi Fields}
 \label{section-jacobi-fields}
@@ -129,16 +270,108 @@ at $s=0$ with velocity $w$.
 \end{proposition}
 
 \begin{example}[Jacobi Fields in constant curvature]
-\label{example-jacobi-fields-in-constant-curvature}
-If $M$ has constant curvature $k$, a Jacobi field is of the form
+\label{example-jacobi-fields-in-constant-curvature-condition}
+If $M$ has constant curvature $K$ and $\gamma$ is a normalized geodesic, a 
+Jacobi field is the solution of the equation
+\begin{equation}
+\label{equation-Jacobi-fields-in-constant-curvature-condition}
+J''+KJ=0
+\end{equation}
+This follows from Eq. \ref{equation-constant-curvature} since it implies that
+for any $X\in\mathfrak{X}_\gamma$, which we may take orthogonal to $\gamma'$,
 $$
+\left<X,R_{\gamma'}J\right>
+=K(\left<X,J\right>\left<\gamma',\gamma'\right>
+-\left<X,\gamma'\right>\left<J,\gamma'\right>)
+$$
+so that $R_{\gamma'}J=KJ$. The solutions of Eq.
+\ref{equation-Jacobi-fields-in-constant-curvature-condition} can be computed taking a
+parallel vector field $W$ along $\gamma$ orthogonal to $\gamma'$ and of unit
+length. Then
+\begin{equation}
+\label{equation-Jacobi-fields-in-constant-curvature}
 J(t)=\begin{cases}
-	\qquad & \\
-	\qquad &
+\sin(\sqrt{K}t)W(t)\qquad & K>0\\
+tW(t)\qquad &K=0\\
+\text{sinh}(\sqrt{-K}t)W(t)\qquad &K<0
 \end{cases}
-$$
-This follows from Equation \ref{equation-constant-curvature}, 
+\end{equation}
+provided that $J(0)=0$, $J'(t)\perp \gamma'(t)$ and $J'(0)=W(0)$.
 \end{example}
+
+\begin{proposition}
+\label{proposition-Jacobi-field-Taylor-expansion}
+Differentiating a Jacobi field enough times, we arrive to
+\begin{equation}
+\label{equation-Jacobi-field-Taylor-expansion}
+\|J(t)\|^2=\|w\|^2t^2-\frac{1}{3}\left<R(w,v)v,w\right>t^4+O(t^4).
+\end{equation}
+\end{proposition}
+
+Sometimes it's useful to work with
+
+\begin{definition}
+\label{definition-Jacobi-tensor}
+The {\it Jacobi tensor} is the map
+\begin{align*}
+	\overline{J}_t:  &\longrightarrow T_{\gamma(t)}M \\
+	 \overline{J}_t(w)&=d_{tv}\text{exp}_p(tw)
+\end{align*}
+\end{definition}
+
+\begin{exercise}
+\label{exercise-Jacobi-tensor-derivative}
+Show that $\bar{J}'(0)=\text{Id}$.
+\end{exercise}
+
+\begin{proof}
+Just notice that since $\bar{J}_t=d_{tv}\text{exp}_p(tw)$ is linear on
+$tw$ (because it's a differential) we have
+\begin{align*}
+\overline{J}'(0)&=\frac{d}{dt}\Big|_{t=0}(d_{tv}\text{exp}_p(tw))\\
+&=\frac{d}{dt}\Big|_{t=0}t\cdot (d_{tv}\text{exp}_p(w))\\
+&=d_{tv}\text{exp}_p(w)|_{t=0}+t\cdot(\text{something})|_{t=0}\\
+&=\text{Id}_{T_pM}
+\end{align*}
+\end{proof}
+
+\begin{remark}
+\label{remark-dimension-of-space-of-Jacobi-fields}
+Lembre o seguinte fato geral mostrado em aula:
+\begin{equation}
+\label{equation:dimension-of-space-of-orthogonal-Jacobi-fields}
+\dim\{J \in \mathfrak{X}^J_\gamma:J(0)=0, J \perp \gamma\}=n-1
+\end{equation}
+Isso segue das seguintes observações:
+\begin{enumerate}
+\item $\dim\mathfrak{X}^J_\gamma=2n$ porque são soluções de $n$ equações
+diferenciais ordinárias de segunda ordem, i.e. cada campo de Jacobi está
+determinado pelas condições iniciais $J(0)$ e $J'(0)$. 
+\item $\dim \{J \in \mathfrak{X}^J_\gamma:J(0)=0\}=n$.
+\item $\dim \{J \in \mathfrak{X}^J_\gamma:J\perp \gamma'\}=2n-2$. Para
+confirmar isso note que pelas simetrias de $R$ e a equação de Jacobi tem-se
+que $\left<J,\gamma'\right>''=0$, pelo que $\left<J,\gamma'\right>=a+bt$
+para dois números reais $a,b$. Segue que qualquer $J \in
+\mathfrak{X}^J_\gamma$ se escreve como
+$J(t)=a\gamma'(t)+bt\gamma'(t)+\hat{J}(t)$ para algum $\hat{J}$
+perpendicular a  $\gamma'$. (Supondo que $|\gamma'|=1$.) Então se $J \perp
+\gamma$, temos que  $a=b=0$, então tiramos dois números do $2n$ que
+tínhamos.
+\item Segue \ref{equation:dimension-of-space-of-orthogonal-Jacobi-fields}.
+\end{enumerate}
+
+\end{remark}
+
+
+\section{Conjugate points}
+\label{section-conjugate-points}
+
+\begin{definition}
+\label{definition-conjugate-points}
+A point $p \in M$ is {\it conjugate} to $q \in M$ along $\gamma$ if $\gamma$ is
+a geodesic joining $p$ and $q$ and there is a Jacobi field 
+$J\in\mathfrak{X}_\gamma^J$ such that $J(0)=0$ and  $J(\ell)=0$.
+\end{definition}
 
 \begin{proposition}[Critical points of exponential]
 \label{proposition-critical-points-exp}
@@ -166,28 +399,44 @@ differential of $\text{exp}_p$ has kernel.
  field vanishing at the points. Linearly dependent elements will give 
  linearly dependent Jacobi fields.
 \end{proof}
-\section{Submanifolds}
-\label{section-submanifolds}
+
+\section{Isometric immersions}
+\label{section-isometric-immersions}
 
 Let $f:M \to \tilde{M}$ be an isometric immersion of Riemannian manifolds. When
 computing the covariant derivative along two vector fields 
 $X,Y \in\mathfrak{X}(M)$ we get a vetor field along $X$ that may be split into
 its normal and tangent part thanks to Equation 
-\ref{equation-immersion-bundle-decomposition}. We find that the tangent part is
+\ref{equation-immersion-bundle-decomposition}. By Lemma
+\ref{lemma-isometry-preserves-connection} we see that the tangent part is
 in fact the Levi-Civita connection of $M$ since it is a symmetric and torsion
-free connection on the tangent bundle. We also find that the normal part is a
+free connection on the tangent bundle. Since the Levi-Civita connection of
+$\tilde{M}$ is torsion free, the normal part is a
 symmetric tensor we call {\it second fundamental form}:
 \begin{equation}
 \label{equation-second-fundamental-form}
 \nabla^{f}_X f_*Y=f_*\nabla_XY+\alpha(X,Y)
 \end{equation}
-In a similar fashion we take a normal section $\xi\in T^\perp M$. 
-We call the tangent part {\it shape operator}. The normal part is a connection 
+\begin{definition}
+\label{definition-totally-geodesic-submanifold}
+A submanifold $M\subset\tilde{M}$ is {\it totally geodesic} if its second
+fundamental form vanishes.
+\end{definition}
+Notice that Lemma \ref{lemma-totally-geodesic-submanifold} says that geodesics
+of a totally geodesic submanifold are geodesics of the ambient manifold.
+
+Now let's differentiate a normal section $\xi\in T^\perp M$. 
+We call the tangent part {\it shape operator}. By Lemma
+\ref{lemma-normal-connection} below, the normal part is a connection 
 we call the {\it normal connection}.
 \begin{equation}
 \label{equation-shape-operator}
 \nabla^f_X\xi=-A_\xi X+\nabla^\perp_X\xi
 \end{equation}
+\begin{lemma}
+\label{lemma-normal-connection}
+$\nabla^\perp$ is a connection on $T^\perp M$.
+\end{lemma}
 Notice the adjointness relation
 \begin{equation}
 \label{equation-second-fundamental-form-and-shape-operator}
@@ -208,34 +457,37 @@ which follows from substituting Eq. \ref{equation-second-fundamental-form}
 into Equation \ref{equation-curvature-tensor}.
 
 For the case of a hypersurface, the normal vector $\alpha(X,Y)$ must be
-proportional to the unit normal $\nu$, and by Eq.
+proportional to the unit normal $N$, and by Eq.
 \ref{equation-second-fundamental-form-and-shape-operator} the proportionally
-factor is exactly $\left<A_\nu X,Y\right>$. Using this and evaluating
+factor is exactly $\left<A_N X,Y\right>$. Using this and evaluating
  at an orthonormal pair $X,Y$ we obtain
 \begin{equation}
 \label{equation-Gauss-hypersurface}
 K(X,Y)=\tilde{K}(X,Y)+\left<AX,X\right>\left<AY,Y\right>-\left<AX,Y\right>^2
 \end{equation}
-
-\begin{exercise}
-\label{exercise-Gauss-sectional}
-Use Eq. \ref{equation-Gauss-hypersurface} to show that no 
-hypersurface $M \hookrightarrow \mathbb{R}^{n+1}$ can have constant
- negative curvature.
-\end{exercise}
-
-\begin{proof}[Solution]
-After substituting $\tilde{K}(X,Y)=0$, we see that Eq. 
-\ref{equation-Gauss-hypersurface} cannot be negative because it contains the
-determinant of the matrix
+Notice that we are looking at the determinant of the matrix
 $$
 \begin{pmatrix}
 \left<AX,X\right>&\left<AX,Y\right>\\ 
 \left<AX,Y\right>&\left<AY,Y\right>
 \end{pmatrix}
 $$
-whose eigenvalues are…
-\end{proof}
+which is the matrix representation of the shape operator $A$ to the plane
+spanned by $X,Y$. (That's just a particular case of the simple fact that the
+representation of the matrix $A_i^j$ for $Ae_i=A_i^je_j$ is given by
+$\left<Ae_i,e_j\right>=A^k_i\left<e_k,e_j\right>=A^j_i$.)
+
+Notice that the Gaussian curvature of a surface in $\mathbb{R}^3$, defined as
+the determinant of the second fundamental form, coincides with sectional
+curvature when substituting $\tilde{K}\equiv0$ as is the case of the flat metric
+on euclidean space.
+
+For a hypersurface of a constant sectional curvature $c$
+manifold, we have {\it Gauss equation for constant sectional curvature}
+\begin{equation}
+\label{equation-Gauss-constant-sectional-curvature}
+K_M(X,Y)=c+\left<\alpha(X,Y),\alpha(Y,Y)\right>-\|\alpha(X,Y)\|^2
+\end{equation}
 
 \begin{example}
 \label{example-curvature-of-sphere}
@@ -253,6 +505,19 @@ finally, who's $\nu$? It's the $-\text{id}$ if you chose the inner normal. So
  $\tilde{\nabla}_X\nu=-X$.
 \end{example}
 
+\begin{exercise}
+\label{exercise-Gauss-sectional}
+Use Eq. \ref{equation-Gauss-hypersurface} to show that no 
+hypersurface $M \hookrightarrow \mathbb{R}^{n+1}$ can have constant negative 
+curvature.
+\end{exercise}
+
+\begin{proof}[Solution]
+After substituting $\tilde{K}(X,Y)=0$, we see that Eq. 
+\ref{equation-Gauss-hypersurface} is determinant of the second fundamental form. 
+ But… how to argue that this determinant can't be always negative?
+\end{proof}
+
 \begin{example}
 \label{example-hyperbolic-space}
 \cite{doc}, Chapter VIII, Exercise 3. The unit normal of hyperbolic space in the
@@ -262,12 +527,42 @@ metric is not Riemannian. In fact, the normal vector has norm $-1$, giving that
 hyperbolic space has constant curvature $-1$.
 \end{example}
 
+The {\it Codazzi equation} is
+\begin{equation}
+\label{equation-Codazzi}
+(R_{\nabla^f}(X,Y)Z)^\perp
+=(\nabla^\perp_X\alpha)(Y,Z)-(\nabla^\perp_Y,\alpha)(X,Z)
+\end{equation}
 
-\begin{remark}
-\label{remark-ricci-equation}
+Codazzi equation may help us prove… something cool about bundles I don't quite
+remember.
+
+And the {\it Ricci equation} is
+\begin{equation}
+\label{equation-Ricc}
+\left<R_{\nabla^f}(X,Y)\xi,\eta\right>
+=\left<R_{\nabla^\perp}(X,Y)\xi,\eta\right>
+-\left<[A_\xi,A_\eta]X,Y\right>
+\end{equation}
+
 Ricci equation may help prove that the normal bundle of a high codimension
 submanifold is trivial.
-\end{remark}
+
+\begin{theorem}[Fundamental theorem of submanifolds]
+\label{theorem-fundamental-theorem-of-submanifolds}
+See \cite{pet}, Exercise 3.4.21. Let $M$ be a simply connected Riemannian 
+manifold and $(E^p,\widetilde{\left<\cdot,\cdot\right>},\tilde{\nabla})$ be a 
+bundle over $M$ with $\tilde{\nabla}$ compatible with 
+$\widetilde{\left<\cdot,\cdot\right>}$.
+Let $\tilde{\alpha}:\mathfrak{X}(M)\times \mathfrak{X}(M)\to E$ be a symmetric
+tensor. Suppose there is a constant $c$ such that
+$(E,\tilde{\nabla},\tilde{\alpha})$ satisfies Gauss equation for constant
+curvature \ref{equation-Gauss-constant-curvature}, Codazzi equation
+\ref{equation-Codazzi} and Ricci equation \ref{equation-Ricci}. 
+Then there exists a unique isometric
+immersion $f:M \to \mathbb{Q}_c^{n+p}$ and a bundle isomorphism $\varphi:E \to
+T^\perp_pM$ such that $\varphi\circ\tilde{\alpha}=\alpha_f$.
+\end{theorem}
 
 \section{Riccati equation}
 \label{section-Riccati-equation}
@@ -297,25 +592,24 @@ J(t)&=\nabla_{\partial_t}^ff_s=\nabla_{\partial_t}^f \partial_sf\\
 \end{align*}
 using that by our discussion above the normal derivative component vanishes. We
 conclude that
-$$
+\begin{equation}
+\label{equation-Jacobi-field-derivative-is-shape-operator}
 J'=AJ
-$$
+\end{equation}
 Finally we differentiate that to obtain
 $$
 J''=A'J+AJ'=A'J+A^2J
 $$
 that is,
-$$
+\begin{equation}
+\label{equation-Riccati}
 A'+A^2+R_{\gamma'}=0
-$$
+\end{equation}
 since we can let $J(r)$ be any vector whatsoever and make this construction
 work.
-
 \begin{exercise}
-\label{exercise-Jacobi-tensor-derivative}
-Show that $\overline{J}'(0)=\text{id}$, where $\overline{J}:T_pM \to
-T_{\gamma(r)M}$ has the value of the Jacobi field depending on $w$ via
-Proposition \ref{proposition-everyday-jacobi-field} at time $r$.
+\label{exercise-limit-of-shape-operator}
+Show that $\lim_{s\to0}sA(s)=\text{Id}$.
 \end{exercise}
 
 \begin{proof}[Solution]
@@ -337,8 +631,7 @@ Then
 &\leq\varepsilon/2+\varepsilon/2=\varepsilon
 \end{align*}
 This shows that $A=\frac{1}{s}J$ for small $s$, but we have differentiated as if
-we were in $\mathbb{R}^n$. A similar computation but
-picking $s$ such that
+we were in $\mathbb{R}^n$. A similar computation but picking $s$ such that
 $$
 \frac{|\left<J(s),e_i(s)\right>-\left<J(0),e_i(0)\right>
 -s\left<J'(0),e_i(0)\right>|}{s}<\varepsilon/2
@@ -371,43 +664,118 @@ geodesic joining any two points.
 \section{Hadamard's theorem}
 \label{section-Hadamard}
 
+\begin{theorem}[Hadamard]
+\label{theorem-Hadamard}
+If $M$ is a complete simply connected manifold with $K\leq 0$, then the 
+exponential map is a diffeomorphism.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
 \section{First Variation Formula}
 \label{section-first-variation}
 
+\begin{definition}
+\label{definition-energy}
+The {\it energy function} of a variation
+$f:(-\varepsilon,\varepsilon)\times[0,a]\to M$ is
+$$
+E(s):=\int_0^a\left<f_t,f_t\right>_s
+$$
+\end{definition}
+
+Recall Schwarz inequality from functional analysis:
+$$
+\left(\int_0^afg\right)^2\leq \int_0^af^2\int_0^ag^2
+$$
+Setting $f\equiv1$ and $g=f_t$ we obtain
+ \begin{equation}
+\label{equation-energy-bounds-length}
+\ell(\gamma)\leq aE(\gamma)
+\end{equation}
+
 \begin{theorem}[First Variation Formula]
 \label{theorem-first-variation-formula}
-If  $f:(-\varepsilon,\varepsilon)\times(-\delta,\delta) \to M$ is a variation of
-the geodesic $\gamma(-\delta,\delta)\to M$, then
-$$
-\frac{1}{2}E'(0)=-\int_a^b\left<V,\gamma''\right>+\left<V,\gamma'\right>|_{a}^b
-+\sum_{i=1}^{k-1}\left<V,\gamma'^{-}(t_{i})-\gamma'^{+}(t_i)\right>
-$$
+If  $f:(-\varepsilon,\varepsilon)\times[-0,a] \to M$ is a variation of
+the geodesic $\gamma:[0,a]\to M$, then
+\begin{equation}
+\label{equation-first-variation-formula}
+\frac{1}{2}E'(0)=-\int_0^a\left<V,\gamma''\right>+\left<V,\gamma'\right>|_{0}^a
++\sum_{i=1}^{k-1}\left<V,\gamma'(t_{i}^-)-\gamma'(t_i^+)\right>
+\end{equation}
 \end{theorem}
+
+\begin{proof}
+If $\gamma$ is smooth,
+\begin{align*}
+E'(s)&=\int_0^a\left<f_t,f_t\right>_s=2\int_0^a\left<f_{ts,t}\right>
+=2\int_0^a\left<f_s,f_{tt}\right>-\left<f_s,f_t\right>|_{0}^a
+\end{align*}
+using that
+$$
+\left<f_s,f_t\right>_t=\left<f_{st},f_t\right>+\left<f_s,f_{tt}\right>
+$$
+If $\gamma$ is not smooth, the integral of $\left<f_s,f_t\right>_t$ must be
+done part by part, obtaining the sum in Eq.
+\ref{equation-first-variation-formula}.
+\end{proof}
 
 \section{Second Variation Formula}
 \label{section-second-variation}
 
-The {\it second variation formula} reads
+\begin{theorem}[Second Variation Formula]
+\label{theorem-second-variation-formula}
+Let $f:(-\varepsilon,\varepsilon)\times[0,a] \to M$ be a variation of a smooth
+geodesic $\gamma$ with perhaps piecewise smooth variation field $V$. Then
 \begin{equation}
-\label{equation-second-variation}
+\label{equation-second-variation-formula}
 E''(0)=\int_0^a |V'|-\int_0^a R_{\gamma'}V+
 \left<\gamma'(t),\nabla_{\partial_s}V(t)\right>|_{0}^a+
-\sum_{i}\left<\gamma'(t),V^-(t_i)-V^+(t_i)\right>
+\sum_{i}\left<V(t_i),V'(t^-_i)-V'(t^+_i)\right>
 \end{equation}
+\end{theorem}
 
-Agora vou fazer uma pausa para lembrar como se escreve a forma do índica em
-geral. Por definição, a forma de índice é 
+\begin{proof}
+\begin{align*}
+E''(s)&
+=2\left(\int_0^a\left<f_s,f_{tt}\right>-\left<f_s,f_t\right>|_{0}^a\right)_s
+&=\int_0^a\left<f_{ss},f_{tt}\right>+\int_0^a\left<f_s,f_{t ts}\right>
+-\left<f_{ss},f_t\right>|_{0}^a-\left<f_s,f_{ts}\right>|_{0}^a
+\end{align*}
+Now substitute
 $$
-I_a(V,W):=\int_0^a
-\left<V'W'\right>-\int_0^a\left<R_{\gamma'}V,W\right>$$
- para quaisquer campos $V,W \in \mathfrak{X}_\gamma$.
+R_{\gamma'}V=R(V,\gamma')\gamma'=f_{t ts}-f_{tst}
+$$
+and
+$$
+\left<f_s,f_{ ts}\right>|_{0}^a=\int_0^a\left<f_s,f_{ ts}\right>_t
+=\int_0^a\left<f_{st},f_{ts}\right>+\int_0^a\left<f_s,f_{tst}\right>
+$$
+If the variational field is not differentiable we must be careful when applying
+the fundamental theorem of calculus.
+\end{proof}
 
-Então reescrevemos isso usando que a conexão ao longo de \(\gamma\) é métrica:
+\begin{definition}
+\label{definition-index-form}
+The {\it index form} is
+\begin{equation}
+\label{equation-index-form}
+I_a(V,W):=\int_0^a
+\left<V'W'\right>-\int_0^a\left<R_{\gamma'}V,W\right>
+\end{equation}
+for any $V,W \in \mathfrak{X}_\gamma$.
+\end{definition}
+
+\begin{remark}
+\label{remark-index-form-alternative-formula}
+Using that the connection is metric,
 \begin{align*}
 \left<V,W'\right>'&=\left<V',W'\right>+\left<V,W''\right>\\
 \implies  \left<V',W'\right>&=\left<V,W'\right>'- \left<V,W''\right>
 \end{align*}
-Substituindo obtemos que
+and substituting in the definition we obtain that
 \begin{equation}
 \label{equation-index-form-alternative-formula}
 \begin{aligned}
@@ -416,9 +784,10 @@ I_a(V,W)&=\int_0^a\left<V,W'\right>'-\int_0^a \left<V,W''\right>-\int_0^a \left<
 &=\left<V,W'\right>|_{0}^a-\int_0^a \left<V,W''+R_{\gamma'}W\right>
 \end{aligned}
 \end{equation}
+\end{remark}
 
 \section{Bonnet-Myers Theorem}
-\label{subsection-Bonnet-Myers-theorem}
+\label{section-Bonnet-Myers-theorem}
 
 \begin{theorem}[Bonnet-Myers]
 \label{theorem-Bonnet-Myers}
@@ -474,13 +843,102 @@ orientation. Then $f$ has a fixed point.
 \end{theorem}
 
 \begin{proof}
-Suponha que $f$ não tem pontos mínimos. Defina uma função
+       A fórmula da segunda variação é a fonte de inspiração, olhe:
+$$
+E''(0)=\int |\dot V|^2-\int\left<R_ {\dot \gamma}V,V\right>+\left<\dot\gamma,\nabla_{\partial_s}f_s\right>|_{0}^a
+$$
+e pense: o que preciso para tirar algo bacano dessa formulinha?
+
+De alguma maneira nos damos conta de que isso tem a ver com os pontos fixos de
+uma isometria $f$. Suponha que $f$ não tem pontos fixos e busquemos uma
+contradição. Defina
 \begin{align*}
-	g: M &\longrightarrow \mathbb{R} \\
-	g(q) &=d(q,f(q)) 
+g: M &\longrightarrow \mathbb{R} \\
+g(q) &=d(q,f(q))
 \end{align*}
-Como $M$ é compacta e essa função é contínua, possui um ponto mínimo que
-chamamos de $p$. 
+
+então como $M$ é compacta e essa função é contínua, ela tem um ponto mínimo que
+chamamos de $p$. Temos que:
+$$
+0<g(p)=\operatorname{min}g\leq g(q)\qquad \forall q.
+$$
+
+Vamos usar a segunda fórmula da variação para achar um ponto que avaliado em $g$
+fica menor do que $g(p)$. Seja $\gamma$ a geodésica minimizante entre $p$ e
+$f(p)$ parametrizada por comprimento de arco (que existe porque $M$ compacta
+implica completa).
+
+Agora pegue um vetor $v \in T_pM$ unitário e ortogonal a $\dot \gamma$ (para que
+o termo com $R$ na fórmula da seg. var. fique $K$), transporte ele paralelamente
+ao longo de $\gamma$ para obter $V$, e pegue a variação por geodésicas
+\[h(s,t)=\operatorname{exp}_{\gamma(t)}(sV(t))=\gamma_{V(t)}(s).\]
+
+Então a 2nda fórmula fica beleza: como o campo é paralelo, o termo $|\dot V|^2$
+morre, o termo da curvatura fica $K$ e o termo com $\nabla_{\partial_s}f_s$
+morre também (porque as curvas verticais são geodésicas).
+
+Então como estamos em $K>0$, acaba que $E''(0)<0$, então existe uma vizinhança
+de $0$  onde as curvas $f(s,t)$ tem menor energia que $f(0,t)$ (para toda $s$
+nessa  vizinhança). Agora lembre que a $\ell^2 \leq dE$, e que no caso de
+geodésicas minimizantes se da a igualdade. Então fica que
+$$
+\frac{1}{d}\ell^2(c^s)\leq
+E(s)<E(0)=\frac{1}{d}\ell(\gamma)^2=\frac{1}{d}d(p,f(p))^2
+=\frac{1}{d}(\operatorname{min}g)^2
+$$
+lado esquerdo. Defina $\beta(s)$ como a curva ``vertical" no tempo 0, ie.
+$\beta(s)=f(s,0)$. Queremos mostrar que
+$$
+\frac{1}{d}d(\beta(s),f(\beta(s))^2\leq \frac{1}{d}\ell^2(c^s)
+$$
+Já que por definição, do lado esquerdo temos $\frac{1}{d}g(\beta(s))^2$, dando
+uma contradição com a equação anterior. Para confirmar essa desigualdade e
+concluir a prova só devemos mostrar que a curva $c^s$ liga $\beta(s)$ e
+$f(\beta(s))$, pois a distância entre esses dois pontos é menor do que o
+comprimento de qualquer curva que liga esses pontos.
+
+Ou seja, queremos que
+$$
+c^s(0)=\beta(s),\qquad c^s(d)=f(\beta(s))\qquad \forall s
+$$
+Ou seja, queremos que
+$$
+f \circ \beta=\gamma_{V(d)}
+$$
+Note que $\beta(s)=\gamma_{V(0)}(s)$. Então derive em $s=0$: \[f \circ
+\beta=f\circ\gamma_{V(0)}=\gamma_{V(d)}\iff f_{*,p}V(0)=V(d)=PV(0)\] onde $P$ é
+o transporte paralelo ao longo de $\gamma$ de $p=\gamma(0)$ a $\gamma(d)$.  Isso
+implica que queremos que \[P^{-1}f_{*,p}V(0)=V(0)\]
+
+Com um desenho muito convincente (ver Manfredo p. 225, esse agumentinho tá
+tranquilo) fica que como $f$ é uma isometria \[f_{*,p}\gamma'(0)=\gamma'(d)\]
+Decorre daí que $P^{-1}f_{*,p}\gamma'(0)=P^{-1}\gamma'(d)=\gamma'(0)$. Então
+podemos fixar nossa atenção em
+$$
+A:=P^{-1}f_{*,p}|_{\gamma'(p)^\perp}\in \mathsf{O}(n-1)
+$$
+Nosso objetivo é analisar o que acontece quando $A$ tem um ponto fixo, $V(0)$,
+pois essa é uma condição que queremos que seja verdade para que $f\circ \beta =
+\gamma_{V(d)}$.
+
+Agora segue o argumento dos eigenvalores que diz assim. Defina
+$A:=P^{-1}f_{*,p}$. Suponha que $A$ tem um ponto fixo. Os autovalores vem dados
+assim:
+$$
+\operatorname{Spec}A=\{\underbrace{\lambda_1,\overline{\lambda_1},\lambda_2,\overline{\lambda_2}}_{\text{par} },-1,\ldots,-1,1,\ldots,1\}
+$$
+Ou seja, os eigenvalores que não são 1 ou $-1$ não afetam o determinante. Daí
+concluímos que
+\begin{itemize}
+\item Se $n-1$ é ímpar, $f$ preserva orientação. Por que? Deixa os complexos do
+lado que não importam. Então pensa: se só tenho $-1$s, então tenho uma
+quantidade ímpar de $-1$s porque a dimensão é ímpar. Respira. Nesse caso $f$
+inverte orientação. Mas: $f$ deve ter pelo menos um $1$! Então a quantidade de
+$-1$s  é par. Então não: $f$ preserva orientação.
+\item se $n-1$ é par, $f$ reverte orientação.
+\end{itemize}
+E essas são as condições que precisamos para que $A$ tenha um ponto fixo e tudo
+funcione. Então bota isso aí na hipótese do teorema.
 \end{proof}
 
 \section{Synge's theorem}
@@ -504,24 +962,52 @@ $$
 \begin{proof}
 First suppose $n$ is even and $M$ is orientable. Since $M$ is compact we must
 have that $K\geq \delta>0$. Now consider the universal cover $\tilde{M}$. Then
-it also satisfies the curvature bound (with the pullback metric)
-, making it compact as well by Bonnet-Myers \ref{theorem-Bonnet-Myers}. 
+it also satisfies the curvature bound (with the pullback metric), 
+making it compact as well by Bonnet-Myers \ref{theorem-Bonnet-Myers}. 
 Now pick a deck transformation, which must be
 orientation-preserving if we choose the orientation on $\tilde{M}$ (simply
 connected is always orientable) making the projection orientation-preserving.
 Then $f$ must have a fixed point by Weinstein's theorem \ref{theorem-Weinstein},
 which applies since we have shown that $\tilde{M}$ is compact. 
-However, deck transformations cannot have fixes points unless they are the
- identity: this is a consequence of the ``Unique lifting property", which a 
+
+However, deck transformations cannot have fixed points unless they are the 
+identity: this is a consequence of the Unique Lifting Property
+ \ref{proposition-unique-lifting-property}, which is a 
 slightly more general statement than the uniqueness of curve lifts that we 
 used for Klinenberg's lemma exercise \ref{exercise-l7-1}. 
-More exactly (cf. \ref{proposition-unique-lifting-property}): 
-given a covering space and to maps from any space into the base, these coincide
- if they agree at one point only.
+More exactly: given a covering space and two maps from any space into the base, 
+these coincide if they agree at one point only.
+
+If $M$ is not orientable we can show that the two-sheeted orientable cover of
+$M$ is its universal covering by the same arguments as above. Then the group of
+deck transformations is the group of two elements $\mathbb{Z}_2$ since the
+covering is two-sheeted.
+
+Now suppose $n$ is odd and consider the two-sheeted orientable cover of $M$.
+Then by Weinstein's theorem we can say that no deck transformation can be
+orientation reversing. But since $M$ is non-orientable, the single deck
+transformation generating the group of deck transformations, which is
+$\mathbb{Z}_2$, is not orientation preserving: if it was, then the quotient of
+the two-sheeted orientable covering by the action of the deck transformations
+would induce an orientation on $M$.
 \end{proof}
 
 \section{Index lemma}
-\label{subsection-index-lemma}
+\label{section-index-lemma}
+
+\begin{lemma}[Index]
+\label{lemma-index}
+\cite{doc} Chapter X, Section 2, Lemma 2.2. Let $\gamma:[0,a]\to M$ be a
+geodesic without conjugate points (this means $\gamma(t)$ is not conjugate to
+$\gamma(0)$ on $(0,a]$). Let $J\in\mathfrak{X}_\gamma^J$ with
+$\left<J,\gamma'\right>=0$ and let $V$ be a piecewise differentiable vector
+field along $\gamma$ with $\left<V,\gamma'\right>=0$. Suppose $J(0)=0=V(0)$ and
+that there is  $t_0\in(0,a]$ such that $J(t_0)=V(t_0)$. Then
+$$
+I_{t_0}(J,J)\leq I_{t_0}(V,V)
+$$
+and equality holds if and only if $V=J$ on $[0,t_0]$.
+\end{lemma}
 
 \section{Rauch's comparison theorem}
 \label{section-Rauch}
@@ -565,6 +1051,11 @@ $\tilde{f}$ is strictly positive. But this contradicts Equation
 Now suppose that $f(t_0)=\tilde{f}(t_0)$ for some $t_0 \in (0,a]$. Then Equation
 \ref{equation-Sturm} vanishes at $t_0$, and we conclude that $K \equiv
 \tilde{K}$ in $[0,t_0]$. Somehow this implies that $f$ also equals $\tilde{f}$…
+
+Here's ChatGPT in action: define $h(t):=f(t)-\tilde{f}(t)$. Notice that on
+$(0,t_0]$ it satisfies $h''+Kh=0$ with $h(0)=h'(0)=0$. But so does constant zero
+function, hence  $h\equiv0$. To extend to all of $[0,a]$ use uniqueness of
+ODEs again.
 \end{proof}
 
 \begin{theorem}[Rauch]
@@ -626,6 +1117,24 @@ compute.
 Let $M^n \subset \tilde{M}^{n+p}$ be a compact submanifold of a Hadamard
 manifold $\tilde{M}$. If $K\leq \tilde{K}$, then $p\geq n$.
 \end{theorem}
+
+\section{Focal points}
+\label{section-focal points}
+
+\begin{definition}
+\label{definition-focal-point}
+Let $M$ be a submanifold of $\tilde{M}$ and $p$ a point not in $M$. We say $p$
+is a {\it focal point} of $M$ if there is a geodesic $\gamma$ orthogonal to $M$
+and a Jacobi field $J\in\mathfrak{X}^J_\gamma$ such that
+$$
+J'(0)\in T_{\gamma(0)}M,\qquad J'(0)+A_{\gamma'(0)}J(0)\in T_{\gamma(0)}^\perp M
+$$
+\end{definition}
+
+\begin{proposition}
+\label{proposition-focal-points-are-singularities-of-normal-exponential}
+The focal points of $M$ are the singularities of $\text{exp}|_{T^\perp M}.$
+\end{proposition}
 
 \section{Morse index theorem}
 \label{section-morse-index}
@@ -940,7 +1449,8 @@ which yields a Jacobi field via Proposition
 of the matrix $\mathbb{J}$, which is the Jacobian matrix of the exponential we 
 are interested in computing.
 
-Now we want to differentiate this with respect to $r$. By Exercise
+Now we want to differentiate this with respect to $r$ because we aim to apply
+Sturm's theorem \ref{theorem-Sturm}. By Exercise
 \ref{exercise-derivative-of-determinant}, we know that the derivative of the
 determinant of a one-parameter family of invertible matrices $\mathbb{J}(r)$ is
 given by $\det \mathbb{J}(r)\text{tr}(\mathbb{J}^{-1}(r)\mathbb{J}'(r))$.
@@ -948,42 +1458,46 @@ given by $\det \mathbb{J}(r)\text{tr}(\mathbb{J}^{-1}(r)\mathbb{J}'(r))$.
 By the discussion in Section \ref{section-Riccati-equation}, we know that
 $AJ=J'$ where $A$ is the shape operator with respect to the unit normal
 $\gamma'(r)$ and $J$ is a Jacobi field defined by
-\ref{proposition-everyday-jacobi-field}.  This gives $A=J'J^{-1}$. These are the
-diagonal entries of the matrix $\mathbb{J}$, so that its trace, which depends
-only on the diagonal by Exercise 
-\ref{exercise-trace-is-independent-of-coordinates}, is precisely $H/(n-1)$ where
-$H$ satisfying this equation is defined as the mean curvature.
+\ref{proposition-everyday-jacobi-field}.  This gives $A=J'J^{-1}$. 
+
+Thediagonal entries of the matrix $\mathbb{J}$ are vectors of this kind, so that
+ its trace, which depends only on the diagonal by Exercise 
+\ref{exercise-trace-is-independent-of-coordinates}, is precisely the trace of
+the shape operator $A$, which we have defined as $H/(n-1)$ where
+$H$ is called the mean curvature.
 
 This data translates to the following equation
 \begin{equation}
 \label{equation-Bishop-Gromov-proof1}
 \det\mathbb{J}'=\det\mathbb{J}H
 \end{equation}
-\begin{remark}[Pregunta]
-\label{remark-pregunta}
-Then it is argued that $H$ satisfies the following Riccati equation:
+Now recall that any self-adjoint operator can be expressed uniquely as a
+multiple of the identity plus a symmetric traceless matrix (ref?). This allows 
+to write
+\begin{equation}
+\label{equation-Bishop-Gromov-proof2}
+A=H\text{Id}+A_0
+\end{equation}
+with $A_0$ symmetric and traceless. Differentiating Eq.
+\ref{equation-Bishop-Gromov-proof2} and using that the shape operator satisfies
+Riccati equation \ref{equation-Riccati} we shall obtain that
 $$
 H'+H^2+\mathcal{R}=0
 $$
-where $\mathcal{R}:=\text{Ric}(\gamma')+|A_0|^2$. I don't understand what is 
-$A_0$. Why does this hold? I think
-it's the key to take Eq. \ref{equation-Bishop-Gromov-proof1} to an equation of
-the kind 
+where $\mathcal{R}:=\text{Ric}(\gamma')+|A_0|^2$. Then
 \begin{equation}
 \label{equation-Sturm-type1}
-\det\mathbb{J}''+\mathcal{R}\det\mathbb{J}=0
+\det\mathbb{J}''+\mathcal{R}\det\mathbb{J}=0,
+\det\mathbb{J}(0)=,\det\mathbb{J}'(0)=1
 \end{equation}
-so that we can apply Sturm. 
-\end{remark}
 \bigskip
 Notice that in the case of constant curvature $k$, Eq. 
 \ref{equation-Bishop-Gromov-proof1} becomes
 \begin{equation}
-\label{equation-Bishop-Gromov-proof2}
+\label{equation-Bishop-Gromov-proof3}
 \det\overline{\mathbb{J}}'=\det\overline{\mathbb{J}}k
 \end{equation}
-which in turn should yield an equation of Sturm type, as in Remark
-\ref{remark-pregunta}. Namely,
+which in turn yields
 \begin{equation}
 \label{equation-Sturm-type2}
 \det\overline{\mathbb{J}}''+k\det\overline{\mathbb{J}}=0
@@ -1030,7 +1544,7 @@ the constructions related to Riccati equation are valid (cf. Section
 spheres in the space of constant curvature somehow does not depend on the radius
  $r$. But how exactly? I think  $\det \overline{\mathbb{J}}(r)$ does depend 
 on $r$ (in the space of constant curvature), see Eq. 
-\ref{equation-Bishop-Gromov-proof2}.
+\ref{equation-Bishop-Gromov-proof3}.
 \end{enumerate}
 \end{remark}
 Then the equation continues to
@@ -1059,12 +1573,14 @@ $$
 \frac{\text{Vol}(B_s(p))}{\text{Vol}(B_{s,k}}=
 \frac{\text{Vol}(B_r(p))}{\text{Vol}(B_{r,k})}
 $$
-implies that $\det\mathbb{J}=\det\overline{\mathbb{J}}$ and $k=\mathcal{R}$. 
-
-\begin{remark}[Pregunta]
-\label{remark-pregunta4}
-I'm not sure exactly how this shows that $B_r(p)=B_{r,k}$ isometrically.
-\end{remark}
+implies that $\det\mathbb{J}=\det\overline{\mathbb{J}}$ and $k=\mathcal{R}$.
+This makes $A_0=0$ from Eq. \ref{equation-Bishop-Gromov-proof2} so that $A$ is 
+proportional to the identity. By some mixture
+of Eqs. \ref{equation-Jacobi-fields-in-constant-curvature-condition} and 
+\ref{equation-Jacobi-field-derivative-is-shape-operator}, this means that the
+Jacobi fields along $\gamma$ are of the form Eq.
+\ref{equation-Jacobi-fields-in-constant-curvature}. In turn, this makes the map
+of Proposition \ref{proposition-contraction} an isometry. {\bf Who is $i$ then?}
 \end{proof}
 
 \section{Cheng's Theorem}
@@ -1103,7 +1619,16 @@ $$
 \section{Toponogov's theorem}
 \label{section-Toponogov}
 
-First recall a result we already proved using Rauch's theorem
+\begin{definition}
+\label{definition-geodesic-triangle}
+\cite{doc}, p. 285. A {\it geodesic triangle} is the set formed by three
+minimizing geodesics $\gamma_i$ so that
+$\gamma_{i+1}(0)=\gamma_i(\ell(\gamma_i))$ cyclically. (Just to note that for
+some authors geodesic triangles are minimizing by definition. Looks like for
+\cite{meyers} it's not the case.)
+\end{definition}
+
+First notice that the following result can be proved using Rauch's theorem
 \ref{theorem-Rauch}:
 
 \begin{theorem}[Toponogov, local version]
@@ -1121,16 +1646,8 @@ $$
 $$
 \end{theorem}
 
-Meaning that this theorem is actually an exercise:
-
-\begin{exercise}
-\label{exercise-Toponogov-from-Rauch}
-Lista 7, Exercício 10. Prove the local version of Toponogov's theorem as a 
-corollary of Rauch's Comparison Theorem \ref{theorem-Rauch}.
-\end{exercise}
-
 \begin{proof}
-This is an application of Proposition \label{proposition-contraction} for $i$ as
+This is an application of Proposition \ref{proposition-contraction} for $i$ as
 given by the condition of mapping $\gamma'_1(0)$ to $\gamma_2'(0)$ and the angle
 between them to the corresponding vectors and angle on $\tilde{M}$.
 \end{proof}
@@ -1151,29 +1668,69 @@ Suppose that $\tilde{\gamma}_1,\tilde{\gamma}_2$ is a corresponding hinge in
 $\mathbb{Q}_k^2$, that is, $\ell(\gamma_i)=\ell(\tilde{\gamma}_i)$ and
 $\angle(\gamma_1'(0),\gamma_2'(0)=
 \angle\tilde{\gamma}_1'(0),\tilde{\gamma}_2'(0)$. Then
-$$
+\begin{equation}
+\label{equation-Toponogov-hinge1}
 d(\gamma_1(\ell_1),\gamma_2(\ell_2)) \leq 
 \tilde{d}(\tilde{\gamma}_1(\ell_1),\tilde{\gamma}_2(\ell_2))
-$$
+\end{equation}
 \end{theorem}
 
+This is not intuitive for me: the distance between the remaining side should be
+fatter in the manifold that is more curved.
+
+The following version is equivalent to the hinge version and is intuitive for
+me:
+
+\begin{theorem}[Toponogov]
+\label{theorem-Toponogov-hinge2}
+Let $M$ be complete with $K\geq k$. If $\gamma_i$ is a minimizing geodesic
+triangle in $M$, then there is a unique minimizing geodesic triangle
+$\tilde{\gamma}_i$ in $\mathbb{Q}_k^2$ with
+$\ell(\tilde{\gamma}_i)=\ell(\gamma_i)$ for $i=0,1,2$, and such that
+\begin{equation}
+\label{equation-Toponogov-hinge2}
+\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s))\leq
+d(\gamma_1(t),\gamma_2(s)
+\end{equation}
+for all $t\in[0,\ell(\gamma_1)]$ and $s\in[0,\ell(\gamma_2)]$.
+\end{theorem}
+
+Another equivalent version:
+\begin{theorem}[Toponogov]
+\label{theorem-Toponogov-hinge3}
+Let $M$ be complete with $K\geq k$. If $\gamma_i$ is a minimizing geodesic
+triangle in $M$, then there is a unique minimizing geodesic triangle
+$\tilde{\gamma}_i$ in $\mathbb{Q}_k^2$ with
+$\ell(\tilde{\gamma}_i)=\ell(\gamma_i)$ for $i=0,1,2$ and such that
+\begin{equation}
+\label{equation-Toponogov-hinge3}
+\tilde{d}(\tilde{o},\tilde{\gamma}(t))\leq d(o,\gamma_0(t))
+\qquad \forall t\in[0,\ell(\gamma_0)]
+\end{equation}
+\end{theorem}
+All these versions are equivalent and we will only prove the following one:
 \begin{theorem}[Toponogov, metric version]
 \label{theorem-Toponogov-metric}
-Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, with
-$p_1\neq  p_2$. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
-$o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing.
+Let $M$ be a complete manifold and $K \geq k$. Let $o,p_1,p_2 \in M$, distinct
+points. Let $\gamma_1$ and $\gamma_2$ be normalized geodesics joining 
+$o$ to $p_1$ and to $p_2$. Suppose $\gamma_1$ is minimizing (in the prove we
+show that $\gamma_2$ is minimizing too).
 Let $\gamma_0$ be a nonconstant geodesic joining $p_1$ to $p_2$ and suppose
 $$
 \ell(\gamma_0) \leq \ell(\gamma_1) +\ell(\gamma_2)
 $$
+(which is a weaker condition than asking that $\gamma_0$ is minimizing as well).
+
 If $k>0$ suppose additionally that $\ell(\gamma_0) \leq \pi/\sqrt{k}$.
 
 Then there exists a geodesic triangle $\{\tilde{\gamma}_i:i=1,2,0\}$ in
 $\mathbb{Q}_k^2$ such that $\ell(\tilde{\gamma}_i) = \ell(\gamma_i)$ and
-$$
-d(\tilde{o},\tilde{\gamma}_0(t)) \leq  d(o,\gamma_0(t))\qquad \forall t \in
-[0,\ell(\gamma_0)]
-$$
+\begin{equation}
+\label{equation-Toponogov-metric}
+\tilde{d}(\tilde{o},\tilde{\gamma}_0(t)) 
+\leq  d(o,\gamma_0(t))
+\qquad \forall t \in[0,\ell(\gamma_0)]
+\end{equation}
 \end{theorem}
 
 \begin{proof}[Outline of proof]
@@ -1181,14 +1738,23 @@ This is the one we proved in class. Define distance functions
 $\rho:=d(\sigma,\cdot)$ and $\tilde{\rho}:=\tilde{d}(\tilde{\sigma},\cdot)$.
 \end{proof}
 
-\begin{theorem}[Toponogov, hinge version 2]
-\label{theorem-Toponogov-hinge-2}
-Put another way (next lecture…) Let $\tilde{\gamma}_1$ and $\tilde{\gamma}_2$ 
-be a corresponding angle in $\mathbb{Q}_k^2$. Then
-$$
-\tilde{d}(\tilde{\gamma}_1(t),\tilde{\gamma}(s)\leq d(\gamma_1(t),\gamma_2(s))
-$$
-\end{theorem}
+\begin{lemma}
+\label{lemma-equality-Toponogov}
+If equality holds in Eq. \ref{equation-Toponogov-hinge1}, then $\gamma_1$ and
+$\gamma_2$ are the boundary of a totally geodesic surface $\Delta \subset M$ 
+with $K_\Delta \equiv k$.
+\end{lemma}
+
+\begin{proof}
+Using the map from Cartan's lemma. Use Rauch's theorem \ref{theorem-Rauch} to
+compare $M$ with $\mathbb{Q}_k$, and again to compare $\Delta$ with $M$. As you
+might expect, use Gauss' equation \ref{equation-Gauss} to show that the second
+fundamental form of $\Delta$ vanishes. The essence of the proof is that
+$\alpha(\gamma',\gamma')=0$ for the geodesics emanating from $p$, which is more
+or less straightforward, and then showing that also $\alpha(\sigma',\sigma')=0$
+for geodesics emanating from another vertex of the triangle, which requires to
+``look at things from another point of view''.
+\end{proof}
 
 \begin{theorem}[Toponogov, angle version]
 \label{theorem-Toponogov-angle}
@@ -1324,11 +1890,6 @@ particular, if $f$ has a global maximum, then $f$ is constant.
 If $\Delta f>0$ then we can find a support function. Notice that Prof. Florit
 shows the theorem for functions satisfying $\Delta f \leq 0$.
 \end{proof}
-
-\begin{lemma}
-\label{lemma-}
-
-\end{lemma}
 
 The following lemma follows from the lemma above and gives a bound on the
 Laplacian of the distance function.
