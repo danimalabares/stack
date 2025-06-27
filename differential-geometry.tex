@@ -3,16 +3,24 @@
 \begin{document}
 
 \title{Differential Geometry}
-\author{\href{http://github.com/danimalabares/stack}
-{github.com/danimalabares/stack}}
 \maketitle
 
 \phantomsection
 \label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
 \tableofcontents
 
 \section{Connections}
 \label{section-connections}
+
+\begin{example}
+\label{example-euclidean-connection}
+The usual connection in $\mathbb{R}^n$ is given by 
+$$
+\nabla_XY=X(Y^i)\partial_i
+$$
+\end{example}
 
 \begin{proposition}[Everything I know about connections]
 \label{proposition-existence-of-pullback-connection}
@@ -27,14 +35,6 @@ g^* (f^* (E))=(f\circ g)^* (E)\qquad \text{and}\qquad
 (\nabla^f)^g=\nabla^{f\circ g}
 $$
 \end{lemma}
-
-\begin{example}
-\label{example-euclidean-connection}
-The usual connection in $\mathbb{R}^n$ is given by 
-$$
-\nabla_XY=X(Y^i)\partial_i
-$$
-\end{example}
 
 The following three lemmas are fundamental properties of isometric
 immersions and will be used in Section \ref{section-isometric-immersions}. (Cf.
