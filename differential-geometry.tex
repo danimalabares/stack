@@ -15,7 +15,7 @@
 \label{section-Riemannian-metrics}
 
 \begin{definition}
-\label{definition-product metric}
+\label{definition-product-metric}
 Let $M_1$ and $M_2$ be Riemannian manifolds. The {\it product metric} on
 $M_1\times M_2$ is $\pi_1^*g_1+\pi_2^*g_2$.
 \end{definition}
@@ -25,6 +25,29 @@ $M_1\times M_2$ is $\pi_1^*g_1+\pi_2^*g_2$.
 It's $S^1\times\ldots\times S^1$ with the product metric.
 \end{example}
 
+\begin{definition}
+\label{definition-gradient}
+Let  $f:M\to\mathbb{R}$. Define the {\it gradient} of $f$ as the (unique) vector
+field $\nabla f$ such that
+\begin{equation}
+\label{equation-gradient}
+\left<\nabla f,X\right>=Xf, \qquad \forall X\in\mathfrak{X}(M).
+\end{equation}
+\end{definition}
+
+Notice that for a frame $E_i$ with dual frame $E^i$ we have
+\begin{align*}
+\left<\nabla f,X\right>&=g_{ij}E^i\odot E^j(\nabla f,X)
+=g_{ij}(\nabla f)^iX^j\\
+Xf&=df(X)=(df)_iE^i(X)=(df)_iX^i\\
+\implies& g^{ij}(df)_iX^j=(\nabla f)^iX^i
+\end{align*}
+so substituting $X$ with a basic vector $E_i$ and $(df)_i$ with $\partial_if$ we
+obtain
+\begin{equation}
+\label{equation-gradient-in-coordinates}
+(\nabla f)^i=g^{ij}\partial_if \iff \nabla f=g^{ij}\partial_ifE_j
+\end{equation}
 
 \section{Connections}
 \label{section-connections}
@@ -81,11 +104,12 @@ This is just a mixture of Lemmas \ref{lemma-composition-of-pullback-connections}
  and \ref{lemma-tangent-component-of-pullback-connection-by-ii-is-LC}.
 \end{proof}
 
-The following result accounts for the definition of totally geodesic
-submanifolds, cf. Definition \ref{definition-totally-geodesic-submanifold}.
+The following result will be reminded when we define totally geodesic
+submanifolds, cf. Definition \ref{definition-totally-geodesic-submanifold},
+addressing the case when also the normal component vanishes:
 
 \begin{lemma}
-\label{lemma-totally-geodesic-submanifold}
+\label{lemma-geodesics-of-submanifold-characterization}
 Let $f:M \to \tilde{M}$ be an isometric immersion and $\gamma:I\to M$ a smooth
 curve parametrized by arclength. Show that $\gamma$ is a geodesic of M
 if and only if its acceleration on $\tilde{M}$ is perpendicular to $M$, that is,
@@ -140,6 +164,72 @@ bundle is that subbundle?
 
 \section{Geodesics}
 \label{section-geodesics}
+
+\begin{example}[Geodesics of sphere]
+\label{example-geodesics-of-Sn}
+The geodesics of $S^n$ are 
+\begin{equation}
+\label{equation-geodesics-of-Sn}
+\gamma(t)=\cos t p+\sin t v
+\end{equation}
+for $p \in S^n$ and $v\in T^1_pS^n$.
+
+Derivando como uma simples curva em $\mathbb{R}^{n+1}$, vemos que
+$\gamma''=-\gamma$, o que significa que $(\gamma'')^{\top}=0$, i.e. $\gamma$ é
+uma geodésica de $\mathbb{S}^n$.
+
+Sendo essa uma geodésica partindo de um ponto arbitrário numa direção
+arbitrária, concluimos por unicidade das geodésicas e \textit{rescaling lemma}
+que todas as geodésicas de $\mathbb{S}^n$ são como $\gamma$.
+\end{example}
+
+\begin{example}[Isometry group of sphere]
+\label{example-isometry-group-of-Sn}
+The isometry group of $S^n$ is
+$$
+\text{O}(n):=\{A\in\text{GL}(n+1):AA^{\mathbf{T}}=\text{Id}\}
+$$
+It's immediate that $\mathcal{O}(n+1)\subset \text{Isom}(S^n)$ since orthogonal
+transformations preserve euclidean product:
+\begin{align*}
+A A^{\mathbf{T}}&=\text{Id}\iff \sum_k A_{ik}A_{jk}=\delta_{ij}
+\iff Ae_i\cdot Ae_j=\delta_{ij}\\ 
+\iff Av\cdot Aw&= A\left( v^ie_i\right) \cdot A\left( w^je_j\right) 
+=v^iw^j (Ae_i)\cdot (Ae_j)
+=v^i\cdot w^j\delta_{ij}=v\cdot w
+\end{align*}
+For the other contention let $A:S^n \to S^n$ be an isometry.
+
+Vamos mostrar que $A$ é a restrição de uma função $\tilde{A} \in
+\mathsf{O}(n+1)$. Defina
+\begin{align*}
+\tilde{A}: \mathbb{R}^{n+1} &\longrightarrow \mathbb{R}^{n+1} \\
+(r,\theta) &\longmapsto rA(1,\theta)\\
+0&\longmapsto 0
+\end{align*}
+Se mostramos que $\tilde{A}$ é uma isometria linear, é claro que ela é um
+elemento de $\mathsf{O}(n+1)$ pela conta anterior. De fato, basta mostrar que
+$\tilde{A}$ é uma isometria, pois toda isometria de espaços de Banach que fixa
+a origem é linear (\cite{braga} Teo. 7.11).
+
+Para ver que $\tilde{A}$ é uma isometria de $\mathbb{R}^{n+1}$,
+\textbf{afirmo}  que a distância de $p$ a $q$ está totalmente determinada
+pelas normas  $\|p\|$ e $\|q\|$, e pela distancia esférica entre
+$\frac{p}{\|p\|}$ e $\frac{q}{\|q\|}$. Note que essa afirmação é na verdade
+um problema de geometria plana, pois todas essas quantidades podem ser descritas
+dentro do único plano que contém $0$, $p$ e $q$.
+
+Acabou que essa afirmação é simplesmente a lei dos cosenos, já que a distância
+esférica entre $\frac{p}{\|p\|}$ e $\frac{q}{\|q\|}$ é exatamente o angulo
+entre $p$ e $q$ (poque essa distância é um segmento de círculo máximo!):
+\[\text{lei dos cosenos:} \qquad d(p,q)^2=\|p\|^2+\|q\|^2-2\|p\|\|q\| \cos
+\angle(p,q) \]
+
+Em fim, $\tilde{A}$ é uma isometria porque
+$d_{\mathbb{R}^{n+1}}(p,q)=d_{\mathbb{R}^{n+1}}(\tilde{A}p,\tilde{A}q)$ pelo
+argumento anterior.
+\end{example}
+
 
 \begin{proposition}
 \label{proposition-naturallity-of-exponential}
@@ -450,8 +540,29 @@ symmetric tensor we call {\it second fundamental form}:
 A submanifold $M\subset\tilde{M}$ is {\it totally geodesic} if its second
 fundamental form vanishes.
 \end{definition}
-Notice that Lemma \ref{lemma-totally-geodesic-submanifold} says that geodesics
-of a totally geodesic submanifold are geodesics of the ambient manifold.
+
+\begin{lemma}
+\label{lemma-totally-geodesic-submanifold}
+A submanifold is totally geodesic if and only if every geodesic of $M$ is a
+geodesic of $\tilde{M}$.
+\end{lemma}
+
+\begin{proof}
+The direct implication is clear: if $\alpha \equiv 0$ and we take any curve
+contained in $M$, it will have zero acceleration in $M$ and $\tilde{M}$
+simultaneously. For the converse we check that all the eigenvalues
+of $\alpha$ are zero. Consider any tangent vector $v$ to $M$ and let $\gamma_v$
+be the geodesic in $M$ with initial velocity $v$. By hypothesis this geodesic
+will also be a geodesic of $\tilde{M}$, so that $\alpha(v,v)=0$. Diagonalizing
+$\alpha$ we see it must vanish identically.
+\end{proof}
+
+Lemma \ref{lemma-geodesics-of-submanifold-characterization} says what happens in
+general: a geodesic of the submanifold doesn't need to be a geodesic of the
+ambient manifold, but it will always have acceleration normal to the
+submanifold.
+
+\medskip\noindent
 
 Now let's differentiate a normal section $\xi\in T^\perp M$. 
 We call the tangent part {\it shape operator}. By Lemma
@@ -484,7 +595,9 @@ following form:
 \left<\tilde{R}(X,Y)Z,W\right>=\left<R(X,Y)Z,W\right>
 -\left<\alpha(X,Z),\alpha(Y,W)\right>+\left<\alpha(X,W),\alpha(Y,Z)\right>
 \end{equation}
-Substituting for $X=W$ and $Y=Z$ we obtain the equivalent equation 
+Substituting for $X=W$ and $Y=Z$ we obtain the equivalent (by Proposition
+\ref{proposition-curvature-like-tensor-determined-by-sectional-curvature}) 
+equation 
 \begin{equation}
 \label{equation-Gauss-sectional-curvature}
 K(X,Y)=\tilde{K}(X,Y)+\left<\alpha(X,Y),\alpha(Y,Y)\right>-\|\alpha(X,Y)\|^2
@@ -507,12 +620,13 @@ factor is exactly $\left<A_N X,Y\right>$. Using this and evaluating
 K(X,Y)=\tilde{K}(X,Y)+\left<AX,X\right>\left<AY,Y\right>-\left<AX,Y\right>^2
 \end{equation}
 In this case we are looking at the determinant of the matrix
-$$
+\begin{equation}
+\label{equation-matrix-of-shape-operator}
 \begin{pmatrix}
 \left<AX,X\right>&\left<AX,Y\right>\\ 
 \left<AX,Y\right>&\left<AY,Y\right>
 \end{pmatrix}
-$$
+\end{equation}
 which is the matrix representation of the shape operator $A$ to the plane
 spanned by $X,Y$. (That's just a particular case of the simple fact that the
 representation of the matrix $A_i^j$ for $Ae_i=A_i^je_j$ is given by
@@ -551,51 +665,11 @@ After substituting $\tilde{K}(X,Y)=0$, we see that Eq.
 \label{example-hyperbolic-space}
 \cite{doc}, Chapter VIII, Exercise 3. The unit normal of hyperbolic space in the
 hyperboloid model is also the identity. This allows for a similar computation,
-but Eq. \ref{equation-Gauss-sectional-curvature-shape-operator} doesn't hold exactly because the
+but Eq. \ref{equation-Gauss-sectional-curvature-shape-operator} doesn't hold 
+exactly because the
 metric is not Riemannian. In fact, the normal vector has norm $-1$, giving that
 hyperbolic space has constant curvature $-1$.
 \end{example}
-
-\begin{exercise}[Clifford torus]
-\label{exercise-Clifford-torus}
-\cite{doc}, Chapter VI, Exercises 2 and 8. Show that the map
-$\mathbf{x}:\mathbb{R}^2\to\mathbb{R}^4$ given by
-$$
-\mathbf{x}(\theta,\varphi)
-=\frac{1}{\sqrt{2}}(\cos\theta,\sin\theta,\cos\varphi,\sin\varphi),
-\qquad(\theta,\varphi)\in\mathbb{R}^2
-$$
-is an immersion of $\mathbb{R}^2$ in the unit sphere $S^3\subset\mathbb{R}^4$,
-whose image is a torus $T^2$ with zero sectional curvature in the induced
-metric. Finally show that it is a minimal submanifold of $S^3$. This is called
-the {\it Clifford torus}.
-\end{exercise}
-
-\begin{proof}
-This map is an immersion since the derivatives of sine and cosine cannot vanish
-simultaneously. Its image is a torus since the map can be seen as a map
-from $S^1\times S^1$ to $\mathbb{R}^4$.
-
-It is natural to think that this manifold is the flat torus from Example
-\ref{example-flat-torus}. And it is, because it is diffeomorphic to a product.
-We can use the immersion $\mathbf{x}$ on a small domain as a local
-parametrization of $T^2$.  When differentiating the parametrization we notice
-that the tangent vectors are decomposed as a pair of vectors tangent to one
-circle or to the other. Then the metric induced from $\mathbb{R}^4$ and then by
-$S^3$ is exactly the product metric from Definition
-\ref{definition-product-metric}. By Exercise
-\ref{exercise-curvatures-of-product-metric}, the curvature tensor on $S^1\times S^1$
-vanishes identically since the curvature tensor of any 1-manifold vanishes by
-antisymmetry in the first or two last entries. This means that this torus is
-flat. This says that its first fundamental form has determinant 1 when seen as a
-submanifold of $S^3$.
-
-To see it is a minimal submanifold of $S^3$ it suffices to show it is totally 
-geodesic by Eq. \ref{equation-Gauss-hypersurface} and Lemma
-\ref{lemma-totally-geodesic-submanifold}. In other words, we may equivalently
-show that $\alpha\equiv0$ or that the geodesics of this torus are geodesics of
-$\mathbb{R}^n$.
-\end{proof}
 
 \begin{definition}
 \label{definition-minimal-immersion}
@@ -603,7 +677,7 @@ An immersion $f:M\to\tilde{M}$ is called {\it minimal} if the trace of its shape
 operator vanishes at all points of $M$ for any choice of normal vector field.
 \end{definition}
 
-\begin{exercise}
+\begin{exercise}[Mean curvature and Hessian]
 \label{exercise-mean-curvature}
 Lista 4, Exercício 8. Let $(M,g)$ be a Riemannian manifold. Suppose that there
 is a function $f \in C^\infty(M)$ such that $0 \in \mathbb{R}$ is a regular
@@ -640,18 +714,200 @@ $$
 then multiply by $\frac{1}{|\nabla f|}$.
 
 \item To compute the divergence as the trace of the gradient we need an
-orthonormal frame of $M$. So let $E_i$ be an orthonormal frame of $\Sigma$ and
-add $\frac{\nabla f}{|\nabla f|}$ to obtain a frame of $M$. Then:
-\begin{align*}
-\text{div}\left(\frac{\nabla f}{|\nabla f|}\right)&=\sum
-\left<\tilde{\nabla}_{E_i}\frac{\nabla f}{|\nabla
-f|},E_i\right>+\underbrace{\left<\tilde{\nabla f}_{\frac{\nabla f}{|\nabla
-f|}}\frac{\nabla f}{|\nabla f|},\frac{\nabla f}{|\nabla
-f|}\right>}_{\frac{1}{2}\left|\frac{\nabla f}{|\nabla f|}\right|^2=0}\\
-&=\sum \left<-A_{\frac{\nabla f}{|\nabla f|}}E_i,E_i\right>\\
-&=-\text{tr}(X \mapsto A_{\frac{\nabla f}{|\nabla f|}}X=-nH_{\Sigma}(p)
-\end{align*}
+orthonormal frame of $M$. So let $E_i$ be the completion of 
+$\frac{\nabla f}{|\nabla f|}$ to an orthonormal frame of $M$ at a point of
+$\Sigma$. Then:
+\begin{equation}
+\begin{aligned}
+\text{div}\left(\frac{\nabla f}{|\nabla f|}\right)
+&=\sum_{i=1}^{n-1}
+\left<\tilde{\nabla}_{E_i}\frac{\nabla f}{|\nabla f|},E_i\right>
++\underbrace{\left<\tilde{\nabla}_{\frac{\nabla f}{|\nabla f|}}
+\frac{\nabla f}{|\nabla f|},\frac{\nabla f}{|\nabla f|}\right>}
+_{=\frac{1}{2}\frac{\nabla f}{|\nabla f|}
+\left<\frac{\nabla f}{|\nabla f|},\frac{\nabla f}{|\nabla f|}\right>=0}
+\label{equation-divergence-of-normalized-gradient}\\
+&=\sum_{i=1}^{n-1} \left<-A_{\frac{\nabla f}{|\nabla f|}}E_i,E_i\right>\\
+&=-\text{tr}\left(X \mapsto A_{\frac{\nabla f}{|\nabla f|}}X\right)\\
+&=-nH_{\Sigma}(p)
+\end{aligned}
+\end{equation}
 \end{enumerate}
+\end{proof}
+
+Notice that since the Laplacian of a function $f$ is defined as divergence of
+gradient, that is, as the trace of $Z\mapsto \nabla_Z\nabla f$, 
+we may write equivalently
+write,
+\begin{equation}
+\label{equation-immersion-Laplacian}
+\Delta_g f=\text{div}_g(\nabla f)=\text{tr}(Z \mapsto \nabla_Z\nabla f)
+=\sum_{i=1}^{n-1}\left<\nabla_{E_i}\nabla f,E_i\right>
+\end{equation}
+which is what we see in Eq. 
+\ref{equation-divergence-of-normalized-gradient} above, except that there we
+have the function $\frac{1}{|\nabla f|}$, but we can factor it out to (almost)
+obtain:
+\begin{equation}
+\label{equation-mean-curvature-for-level-sets}
+H=\frac{1}{|\nabla f|}\left(\Delta_g f-\text{Hess}_gf
+\left(\frac{\nabla f}{|\nabla f|},\frac{\nabla f}{|\nabla f|}\right)\right)
+\end{equation}
+{\bf Caveat of Eq. \ref{equation-mean-curvature-for-level-sets}.} This is
+Lucas Ambrozio's formula from his talk on Spheres with Minimal Equators (see
+\ref{section-spheres-with-minimal-equators}). I think I confirmed everything
+except the little $g$ on $\Delta_g$ and 
+$\text{Hess}_g$; I thought it meant that we have to use the metric $g$ of the
+immersed submanifold but that doesn't make much sense since we are evaluating
+these operators on the gradient, which is normal, so it's not a vector field on
+the submanifold. Also I
+think I proved that that $\text{Hess}$ part actually vanishes (for every level
+set submanifold) since it's just
+the derivative of the norm of the unit normal… so why would we even write it?
+
+\begin{example}[Equatorial spheres]
+\label{example-equatorial-spheres}
+Show that equatorial spheres are minimal hypersurfaces of $S^n$. (See 
+Definition \ref{definition-equator}.)
+\end{example}
+
+\begin{proof}
+To use Eq. \ref{equation-mean-curvature-for-level-sets} we just need to compute
+the submanifold Laplacian $\Delta_gf$ where $f(x):=\left<x,v\right>$ for a fixed
+$v$ which is just the normal vector defining the equator, i.e. the equator is
+just  $\Sigma:=f^{-1}(0)$, the normal plane to $v$ intersected with $S^n$. First
+we need to compute the gradient of $f$, which by Eq.
+\ref{equation-gradient-in-coordinates} is just
+$$
+\nabla f=g^{ij}\partial_ifE_j=\sum_{i,j}g^{ij}v^iE_j
+$$
+So that's a problem because in practice we don't know the coefficients of the
+metric, nor do we ever want to compute them. What this really says is: you don't
+know what's the gradient. The next step would be to compute the Laplacian by
+differentiating the gradient
+according to Eq. \ref{equation-immersion-Laplacian}:
+\begin{align*}
+\Delta_gf&=\sum_{i=1}^{n-1}\left<\nabla_{E_i}\nabla f,E_i\right>
+\end{align*}
+Which just takes me back to Eq.
+\ref{equation-divergence-of-normalized-gradient}. So, need
+to compute second fundamental form.
+
+The only easy way I see to do this is use the fact that the geodesics of the
+sphere are well-known by Example \ref{example-geodesics-of-Sn}. We just need to
+note that the equator is in fact a sphere and that any curve in the equator is a
+geodesic of the equator if and only if it is a geodesic of the whole $S^n$ (cf.
+Lemma \ref{lemma-totally-geodesic-submanifold}). But this is obvious by
+definition of equator: it's the unitary vectors in a hyperplane passing through
+the origin, and it is equipped with the metric induced from $S^n$, which in turn
+is induced from $\mathbb{R}^{n+1}$, so that geodesics of the equator are of the
+form Eq. \ref{equation-geodesics-of-Sn} by the same reasons as why the geodesics
+of $S^n$ of that form.
+
+The other way to do this, following \cite{doc}, Chapter VI, Exercises 8 (see also
+Exercise \ref{exercise-Clifford-torus}) is computing the shape operator of the
+submanifold with respect to $\mathbb{R}^{n+1}$ first, which is easy because
+Euclidean space is flat, and then computing the shape operator with respect to
+$S^n$. To do this we just need to compute inner products of the form
+$\left<A_{N_k}E_i,E_j\right>$ since these are exactly the entries of $A_{N_k}$
+in the basis $E_i$ (cf. Eq. \ref{equation-matrix-of-shape-operator}). But I will
+do this in the next example (maybe some day do it for $S^n$ too).
+\end{proof}
+
+\begin{exercise}[Clifford torus]
+\label{exercise-Clifford-torus}
+\cite{doc}, Chapter VI, Exercises 2 and 8. Show that the map
+$\mathbf{x}:\mathbb{R}^2\to\mathbb{R}^4$ given by
+$$
+\mathbf{x}(\theta,\varphi)
+=\frac{1}{\sqrt{2}}(\cos\theta,\sin\theta,\cos\varphi,\sin\varphi),
+\qquad(\theta,\varphi)\in\mathbb{R}^2
+$$
+is an immersion of $\mathbb{R}^2$ in the unit sphere $S^3\subset\mathbb{R}^4$,
+whose image is a torus $T^2$ with zero sectional curvature in the induced
+metric. Finally show that it is a minimal submanifold of $S^3$. This is called
+the {\it Clifford torus}.
+\end{exercise}
+
+\begin{proof}
+This map is an immersion since the derivatives of sine and cosine cannot vanish
+simultaneously. Its image is a torus since the map can be seen as a map
+from $S^1\times S^1$ to $\mathbb{R}^4$.
+
+It is natural to think that this manifold is the flat torus from Example
+\ref{example-flat-torus}. And it is, because it is diffeomorphic to a product.
+We can use the immersion $\mathbf{x}$ on a small domain as a local
+parametrization of $T^2$.  When differentiating the parametrization we notice
+that the tangent vectors are decomposed as a pair of vectors tangent to one
+circle or to the other. Then the metric induced from $\mathbb{R}^4$ and then by
+$S^3$ is exactly the product metric from Definition
+\ref{definition-product-metric}. By Exercise
+\ref{exercise-curvatures-of-product-metric}, the curvature tensor on $S^1\times
+S^1$ vanishes identically since the curvature tensor of any 1-manifold vanishes
+by antisymmetry in the first or two last entries. This means that this torus is
+flat. This says that its first fundamental form has determinant $-1$ when seen
+as a submanifold of $S^3$.
+
+To see it is a minimal submanifold of $S^3$ it suffices to show it is totally
+geodesic Lemma \ref{lemma-totally-geodesic-submanifold}. In other words, we may
+equivalently show that $\alpha\equiv0$ or that the geodesics of this torus are
+geodesics of $\mathbb{R}^n$. However, this time it is not so immediate what are
+the geodesics of $T^2$.
+
+The other way to do this, following \cite{doc}, Chapter VI, Exercises 8 (see also
+Exercise \ref{exercise-Clifford-torus}) is computing the shape operator of the
+submanifold with respect to $\mathbb{R}^4$ first, which is easy because
+Euclidean space is flat, and then computing the shape operator with respect to
+$S^3$. To do this we just need to compute inner products of the form
+$\left<A_{N_k}E_i,E_j\right>$ since these are exactly the entries of $A_{N_k}$
+in the basis $E_i$ (cf. Eq. \ref{equation-matrix-of-shape-operator}).
+
+Strategy: we need the following ingredients: a point $p$ in the submanifold, a
+basis $E_i$ of the tangent space of the submanifold and a basis $N_k$ of the
+normal space. For every basic normal vector $N_k$ we compute its shape operator
+as a matrix. Then we pass to $S^n$. We should only consider the normal vectors
+$N_k$ that are tangent to $S^n$---this way they are normal to the subsubmanifold
+$\Sigma$ as a submanifold of $S^n$. Then the trace of the shape operator with
+respect to those normals should be the mean curvature.
+
+Differentiating $\mathbf{x}$ as a local parametrization we see that
+$$
+e_1=\partial_\theta=(-\sin\theta,\cos\theta,0,0),\qquad 
+e_2=\partial_\varphi=(0,0,-\sin\varphi,\cos\varphi)
+$$
+are an orthonormal basis of $T_pT^2$, while
+$$
+n_1=\frac{1}{\sqrt{2}}(\cos\theta,\sin\theta,\cos\varphi,\sin\varphi),
+\qquad n_2=\frac{1}{\sqrt{2}}(-\cos\theta,-\sin\theta,\cos\varphi,\sin\varphi)
+$$
+are an orthonormal basis of $T_p^\perp T^2$. Only $n_2$ is tangent to $S^3$ at 
+$p$ since $n_1$ is in fact the position vector $p$, which is normal to $S^3$.
+
+Now observe that by Eqs.
+\ref{equation-second-fundamental-form-and-shape-operator} and
+\ref{equation-second-fundamental-form},
+$$
+\left<A_{n_2}e_i,e_j\right>=\left<n_k,\alpha(e_i,e_j)\right>
+=\left<n_k,\nabla^{\mathbb{R}^{n+1}}_{e_i}e_j
+-\nabla^{T^2}_{e_i}e_j\right>
+$$
+Now
+$$
+\nabla^{\mathbb{R}^{n+1}}_{\partial_\theta}\partial_\theta=
+-\cos\theta\partial_\theta-\sin\theta\partial_\theta
+$$
+so that
+$$
+\left<n_2,-\cos\theta\partial_\theta-\sin\theta\partial_\theta\right>
+=\frac{1}{\sqrt{2}}
+$$
+An analogous computation for $\partial_\varphi$ shows that
+$$
+A_{n_2}=\frac{1}{\sqrt{2}}\begin{pmatrix}
+1&0\\ 
+0&-1
+\end{pmatrix}
+$$
 \end{proof}
 
 The {\it Codazzi equation} is
