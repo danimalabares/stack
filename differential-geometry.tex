@@ -20,10 +20,20 @@ Let $M_1$ and $M_2$ be Riemannian manifolds. The {\it product metric} on
 $M_1\times M_2$ is $\pi_1^*g_1+\pi_2^*g_2$.
 \end{definition}
 
-\begin{example}
-\label{example-flat-torus}
-It's $S^1\times\ldots\times S^1$ with the product metric.
-\end{example}
+\begin{definition}
+\label{definition-flat-torus}
+$S^1\times\ldots\times S^1$ with the product metric is called the {\it flat
+torus}.
+\end{definition}
+
+\begin{exercise}[Warped product]
+\label{exercise-wraped-product}
+See \cite{pet}. Para $(M,g_M)$ e $(N,g_N)$ e $f:M \to \mathbb{R}_+$, definimos o
+ {\it warped product} como sendo o produto cartesiano $M\times N$ com a métrica 
+ $g_M+f^2g_N$.
+
+Mostre que se os fatores são completos, o warped product é completo.
+\end{exercise}
 
 \begin{definition}
 \label{definition-gradient}
@@ -48,6 +58,112 @@ obtain
 \label{equation-gradient-in-coordinates}
 (\nabla f)^i=g^{ij}\partial_if \iff \nabla f=g^{ij}\partial_ifE_j
 \end{equation}
+
+\begin{definition}
+\label{definition-divergence}
+For any $X\in \mathfrak{X}(M)$,
+$$
+\text{div}(X):=\text{tr}(v\mapsto \nabla_vX)
+$$
+\end{definition}
+
+\begin{lemma}
+\label{lemma-Laplacian-of-product}
+\cite{doc}, Chapter III, Exercise 9(b).
+\begin{equation}
+\label{equation-Laplacian-of-product}
+\Delta(fg)=f \Delta g + g \Delta f+2\left<\nabla f,\nabla g\right>
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Just compute.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-divergence-and-volume}
+\begin{equation}
+\label{equation-divergence-and-volume}
+di_X\text{Vol}=\text{div}X\text{Vol},\qquad \text{for all }X\in \mathfrak{X}(M).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Pick a geodesic frame $E_i$ (see Lemma \ref{lemma-geodesic-coordinates}) and
+its dual coframe $\varepsilon^i$, i.e. satisfying
+$\varepsilon^i(E_j)=\delta_{ij}$. Then $\operatorname{Vol}=\varepsilon^1
+\wedge \ldots \wedge \varepsilon^n$. Then for any $X=X^iE_i \in
+\mathfrak{X}(U)$,
+
+\begin{align*}
+i_X\operatorname{Vol}
+&=\varepsilon^1\wedge\ldots\wedge\varepsilon^n(X^iE_i,\cdot,\ldots,\cdot)
+=X^i\varepsilon^1\wedge\ldots\wedge\varepsilon^n(E_i,\cdot,\ldots,\cdot)
+\end{align*}
+How to compute that? Recall that for top-forms we have
+$$
+\varepsilon^1\wedge\ldots\wedge\varepsilon^n(Z_1,\ldots,Z_n)
+=\det(\varepsilon^i(Z_j))
+$$
+so for example if $n=3$
+\begin{align*}\varepsilon^1\wedge \varepsilon^2\wedge\varepsilon^3(E_1,Z_2,Z_3)
+&=\begin{vmatrix}
+\varepsilon^1(E_1)&\varepsilon^1(Z_2) &\varepsilon^1(Z_3)\\
+\varepsilon^2(E_1)&\varepsilon^2(Z_2)&\varepsilon^2(Z_3)\\
+\varepsilon^3(E_1)&\varepsilon^3(Z_2)&\varepsilon^3(Z_3)
+\end{vmatrix}
+=\begin{vmatrix}
+1&\varepsilon^1(Z_2) &\varepsilon^1(Z_3)\\
+0&\varepsilon^2(Z_2)&\varepsilon^2(Z_3)\\
+0&\varepsilon^3(Z_2)&\varepsilon^3(Z_3)
+\end{vmatrix}\\
+&=\varepsilon^2(Z_2)\varepsilon^3(Z_3)-\varepsilon^2(Z_3)\varepsilon^3(Z_2)
+=\varepsilon^2\wedge\varepsilon^3(Z_2,Z_3),\\
+\varepsilon^1\wedge\varepsilon^2\wedge\varepsilon^3(E_2,Z_2,Z_3)
+&=\begin{vmatrix}
+0&\varepsilon^1(Z_2) &\varepsilon^1(Z_3)\\
+1&\varepsilon^2(Z_2)&\varepsilon^2(Z_3)\\
+0&\varepsilon^3(Z_2)&\varepsilon^3(Z_3)
+\end{vmatrix}=-\varepsilon^1\wedge\varepsilon^3(Z_2,Z_3)
+\end{align*}
+and so on. When we sum over all $i$, we get
+$$
+X^i\varepsilon^1\wedge\ldots\wedge\varepsilon^n(E_i,\cdot,\ldots,\cdot)
+=\sum_{i}(-1)^{i+1}X^i\varepsilon^1\wedge\ldots\wedge\widehat{\varepsilon^i}
+\wedge\ldots\wedge\varepsilon^n.
+$$
+Now take exterior derivative of that, we get
+\begin{align*}
+d i_X\operatorname{Vol}
+&=\sum_i(-1)^{i+1}(dX^i)\wedge\varepsilon^1\wedge\ldots
+\wedge\widehat{\varepsilon^i}\wedge\ldots\wedge\varepsilon^n\\
+&+\sum_{i}(-1)^{i+1}X^i\wedge 
+d(\varepsilon^1\wedge\ldots\wedge\widehat{\varepsilon^i}\wedge\ldots
+\wedge\varepsilon^n)\end{align*}
+And then the first term actually is
+\begin{align*}
+\sum_i(-1)^{i+1}E_jX^i\varepsilon^j\wedge\varepsilon^1\wedge\ldots
+\wedge\widehat{\varepsilon^i}\wedge\ldots\wedge\varepsilon^n
+&=E_iX^i\operatorname{Vol}
+\end{align*}
+while the second term vanishes because look,
+\begin{align*}d \varepsilon^i(E_j,E_k)
+&=E_j\varepsilon^i(E_k)-E_k\varepsilon^i(E_j)-\varepsilon^i([E_j,E_k])\\
+&=-\varepsilon^i(\nabla_{E_j}E_k-\nabla_{E_k}E_j)\qquad \text{torsion!}
+\end{align*}
+which vanishes at $p$ because we said that this geodesic frame would have
+ vanishing Christoffel symbols at $p$. So we conclude:
+\[di_X \operatorname{Vol}=E_iX^i\operatorname{Vol}\]
+
+Now you just have to think what is divergence:
+\begin{align*}
+\operatorname{div}X&=\sum_{i}\left<\nabla_{E_i}X^jE_j,E_i\right>
+=\sum_{i}\left<E_iX^jE_j,E_i\right>+X^j\left<\nabla_{E_i}E_j,E_i\right>\\
+&=\sum_i \left<E_iX^jE_j,E_i\right>=\sum_iE_iX^j\left<E_j,E_i\right>=E_iX^i
+\end{align*}
+again using that we are a geodesic frame with vanishing covariant 
+derivative at $p$.
+\end{proof}
 
 \section{Connections}
 \label{section-connections}
@@ -213,7 +329,7 @@ $\tilde{A}$ é uma isometria, pois toda isometria de espaços de Banach que fixa
 a origem é linear (\cite{braga} Teo. 7.11).
 
 Para ver que $\tilde{A}$ é uma isometria de $\mathbb{R}^{n+1}$,
-\textbf{afirmo}  que a distância de $p$ a $q$ está totalmente determinada
+afirmo que a distância de $p$ a $q$ está totalmente determinada
 pelas normas  $\|p\|$ e $\|q\|$, e pela distancia esférica entre
 $\frac{p}{\|p\|}$ e $\frac{q}{\|q\|}$. Note que essa afirmação é na verdade
 um problema de geometria plana, pois todas essas quantidades podem ser descritas
@@ -255,6 +371,89 @@ For all $p \in M$ there is a neighbourhood $W \ni p$ and a number $\delta>0$
  such that for every $q \in W$, $B_\delta(q)$ is normal and
  $W \subset B_\delta(q)$. 
 \end{proposition}
+
+\begin{lemma}
+\label{lemma-geodesic-coordinates}
+At every point $p$ in $M$ there is an orthonormal frame 
+$\{E_i\} \subset \mathfrak{X}(U)$ such that 
+\begin{equation}
+\label{equation-normal-coordinates-vanishing-Christoffel-symbols}
+\Big(\nabla_{E_i}E_j\Big)_p=0
+\end{equation}
+(This means the Christoffel symbols of the connection vanish at the point $p$.)
+\end{lemma}
+
+\begin{proof}
+This frame can be obtained by taking geodesic coordinates at the point, an
+orthonormal base $\{e_i\}$ of $T_pM$, and taking parallel transport of the
+vectors $e_i$ along radial geodesics emanating from $p$. This immediately
+ensures that $E_i$ is orthonormal since parallel transport preserves angles.
+
+To check that Christoffel symbols vanish at $p$ we do as follows. 
+Take a random vector $v \in T_pM$ and its geodesic
+$\gamma_v(t)=\operatorname{exp}_p(tv)$. I drop the subindex $v$ for the next
+computations for the next computations. Then
+\begin{align*}
+0&=\nabla_{\frac{d}{dt}}^{\gamma}\gamma'
+=\nabla^{\gamma}_{\frac{d}{dt}}v^i(E_i\circ \gamma)
+\end{align*}
+where the $v=(v^1,\ldots,v^n)$. Indeed: this is very silly but, since the 
+coordinate chart of geodesic coordinates is $\operatorname{exp}_p^{-1}$, 
+the coordinate representation of $\gamma$ in this chart is as simple as
+$$
+\hat{\gamma}(t)=(\underbrace{\varphi}_{\text{chart}} \circ \gamma)(t)
+=\operatorname{exp}_p^{-1} \operatorname{exp}_p(tv)=tv.
+$$
+And the composition $E_i \circ \gamma$ just means that we take our local 
+frame \textit{along $\gamma$}. Continue:
+\begin{align*}
+&=v^i\nabla^{\gamma}_{\frac{d}{dt}}E_i\circ\gamma
+=v^i\nabla_{\gamma_{v,*} \frac{d}{dt}}E_i\\
+&=v^i\nabla_{v^jE_j}E_i=v^iv^j\nabla_{E_j}E_i\\&
+=v^iv^j\Gamma_{ji}^kE_k
+\end{align*}
+along $\gamma$. Now choose $v=e_1$. You get $\Gamma_{11}^k=0$ for all $k$ along $\gamma_{e_1}$. Now choose $v=e_2$, then $\Gamma_{22}^k=0$ along $\gamma_{e_2}$, so at least at $p$ they both vanish. And now choose $v=e_1+e_2$. You get
+\begin{align*}
+0=(v^1)^2 \underbrace{\Gamma_{1 1}^k}_{=0}
++v^1v^2 \Gamma_{1 2}^k+v^2v^1\Gamma_{2 1}^k
++(v^2)^2\underbrace{\Gamma_{2 2}^k}_{=0}
+\end{align*}
+So $\Gamma_{12}^k=0$ since Levi-Civita is torsion-free, i.e. symmetric. 
+And so on. So the all Christoffel symbols vanish at the same time at $p$.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-maximum-principle}
+\cite{doc}, Chapter III, Exercise 12. If $f$ is {\it subharmonic}, i.e. 
+$\Delta f\geq 0$, on $M$ 
+compact connected $\implies$ $f$ constant.
+\end{exercise}
+
+\begin{proof}
+To prove the theorem for subharmonic functions first we show that in fact they
+are harmonic via Eq. \ref{equation-divergence-and-volume} 
+on $X:= \nabla f$ and Stokes:
+$$
+\int_M \Delta f \operatorname{Vol}=\int_M \operatorname{div}X \operatorname{Vol}
+=\int_M d(i_X \operatorname{Vol})=\int_{\partial M}i_X \operatorname{Vol}=0
+$$
+meaning that the non-negative function $\Delta f$ is in fact 0, i.e. $f$ is
+harmonic. Now we do it again for $X:=\nabla(f^2/2)$:
+$$
+\int_M \Delta(f^2/2)\operatorname{Vol}
+=\int_M d(i_X \operatorname{Vol})
+=\int_{\partial M}i_X \operatorname{Vol}
+=0
+$$
+And then apply Eq. \ref{equation-Laplacian-of-product}:
+$$
+0=\int_M \Delta(f^2/2)\operatorname{Vol}
+=\int_M f \Delta f \operatorname{Vol}
++\int_M \left<\nabla f,\nabla f\right>\operatorname{Vol}
+$$
+First one vanishes because $f$ is harmonic, so second one is zero which says
+ $f$ is constant!
+\end{proof}
 
 \section{Curvature}
 \label{section-curvature}
@@ -351,7 +550,7 @@ $$
 \end{lemma}
 
 \begin{exercise}
-\label{exercise-curvatures-of-product-metric}
+\label{lemma-curvatures-of-product-metric}
 Lista 5, Exercise 1. Let $(M_1,g_1)$ and $(M_2,g_2)$ be Riemannian manifolds and
 let $M_1\times M_2$ be equipped with the product metric $g:=g_1\oplus g_2$. Show
 that the curvature tensor, the Ricci curvature and the scalar curvature of $g$
@@ -363,6 +562,43 @@ are given by
 \end{enumerate}
 where $\pi_i:M_1\times M_2\to M_i$ are the projections.
 \end{exercise}
+
+\begin{example}[Curvature of complex projective space]
+\label{example-curvature-of-CPn}
+Defina uma métrica Riemanniana  em $\mathbb{C}^{n+1}\setminus\{0\}$ do
+seguinte modo. Se $Z \in \mathbb{C}^{n+1}\setminus\{0\}$ e $V,W \in T_Z
+(\mathbb{C}^{n+1}\setminus\{0\})$,
+
+$$
+\left<V,W\right>_Z=\frac{\text{Re}(V,W)}{(Z,Z)}
+$$
+onde 
+$$
+(Z,W)=z_0\overline{w}_0+\ldots+z_n\overline{w}_n
+$$
+
+é o produto hermitiano em $\mathbb{C}^{n+1}$. Observe que a métrica
+$\left<\cdot,\cdot\right>$ restrita a $S^{2n+1}\subset
+\mathbb{C}^{n+1}\setminus\{0\}$ coincide com a métrica induzida por
+$\mathbb{R}^{2n+2}$.
+\begin{enumerate}
+
+\item Mostre que, para todo $0\leq \theta \leq 2\pi$, $e^{i\theta}:S^{2n+1}\to
+S^{2n+1}$ é uma isometria, e que, portanto, é possível definir uma métrica
+Riemanniana em $\mathbb{P}^n(\mathbb{C})$ de modo que a submersão $f$ seja
+Riemanniana.
+
+\item Mostre que, nesta métrica, a curvatura seccional de
+$\mathbb{P}^n(\mathbb{C})$ é dada por
+$$
+K(\sigma)=1+3\cos^2\varphi
+$$
+onde $\sigma$ é gerado pelo par ortonormal $X$, $Y$, $\cos
+\varphi=\left<\overline{X},i\overline{Y}\right>$, e $\overline{X}$,
+$\overline{Y}$ são os levantamentos horizontais de $X$ e $Y$, respetivamente. Em
+particular, $1 \leq  K(\sigma) \leq  4$.
+\end{enumerate}
+\end{example}
 
 \section{Jacobi Fields}
 \label{section-jacobi-fields}
@@ -526,7 +762,8 @@ computing the covariant derivative along two vector fields
 $X,Y \in\mathfrak{X}(M)$ we get a vetor field along $X$ that may be split into
 its normal and tangent part thanks to Equation 
 \ref{equation-immersion-bundle-decomposition}. By Lemma
-\ref{lemma-isometry-preserves-connection} we see that the tangent part is
+\ref{lemma-tangent-component-of-pullback-connection-by-ii-is-LC} we see that the
+ tangent part is
 in fact the Levi-Civita connection of $M$ since it is a symmetric and torsion
 free connection on the tangent bundle. Since the Levi-Civita connection of
 $\tilde{M}$ is torsion free, the normal part is a
@@ -535,32 +772,6 @@ symmetric tensor we call {\it second fundamental form}:
 \label{equation-second-fundamental-form}
 \nabla^{f}_X f_*Y=f_*\nabla_XY+\alpha(X,Y)
 \end{equation}
-\begin{definition}
-\label{definition-totally-geodesic-submanifold}
-A submanifold $M\subset\tilde{M}$ is {\it totally geodesic} if its second
-fundamental form vanishes.
-\end{definition}
-
-\begin{lemma}
-\label{lemma-totally-geodesic-submanifold}
-A submanifold is totally geodesic if and only if every geodesic of $M$ is a
-geodesic of $\tilde{M}$.
-\end{lemma}
-
-\begin{proof}
-The direct implication is clear: if $\alpha \equiv 0$ and we take any curve
-contained in $M$, it will have zero acceleration in $M$ and $\tilde{M}$
-simultaneously. For the converse we check that all the eigenvalues
-of $\alpha$ are zero. Consider any tangent vector $v$ to $M$ and let $\gamma_v$
-be the geodesic in $M$ with initial velocity $v$. By hypothesis this geodesic
-will also be a geodesic of $\tilde{M}$, so that $\alpha(v,v)=0$. Diagonalizing
-$\alpha$ we see it must vanish identically.
-\end{proof}
-
-Lemma \ref{lemma-geodesics-of-submanifold-characterization} says what happens in
-general: a geodesic of the submanifold doesn't need to be a geodesic of the
-ambient manifold, but it will always have acceleration normal to the
-submanifold.
 
 \medskip\noindent
 
@@ -672,6 +883,50 @@ hyperbolic space has constant curvature $-1$.
 \end{example}
 
 \begin{definition}
+\label{definition-totally-geodesic-submanifold}
+A submanifold $M\subset\tilde{M}$ is {\it totally geodesic} if its second
+fundamental form vanishes.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-totally-geodesic-submanifold}
+A submanifold is totally geodesic if and only if every geodesic of $M$ is a
+geodesic of $\tilde{M}$.
+\end{lemma}
+
+\begin{proof}
+The direct implication is clear: if $\alpha \equiv 0$ and we take any curve
+contained in $M$, it will have zero acceleration in $M$ and $\tilde{M}$
+simultaneously. For the converse we check that all the eigenvalues
+of $\alpha$ are zero. Consider any tangent vector $v$ to $M$ and let $\gamma_v$
+be the geodesic in $M$ with initial velocity $v$. By hypothesis this geodesic
+will also be a geodesic of $\tilde{M}$, so that $\alpha(v,v)=0$. Diagonalizing
+$\alpha$ we see it must vanish identically.
+\end{proof}
+
+Lemma \ref{lemma-geodesics-of-submanifold-characterization} says what happens in
+general: a geodesic of the submanifold doesn't need to be a geodesic of the
+ambient manifold, but it will always have acceleration normal to the
+submanifold.
+
+\begin{exercise}
+\label{exercise-fixed-point-set-of-isometry-is-totally-geodesic-submanifold}
+\cite{pet}, Proposition 5.6.5. Let $f:M\to M$ be an isometry. Show that the
+connected component of the fixed points of $f$ is a totally geodesic
+submanifold.
+\end{exercise}
+
+\begin{proof}
+The trick is to show that the eigenvectors of $df$ are in bijection with the
+fixed point set of $f$. For this consider an eigenvector, a geodesic realising 
+the vector, map it with $f$ and notice it must coincide with the original 
+geodesic because $f$ is an isometry and the point is a fixed point. This shows
+that the fixed point set is a submanifold since it is parametrized as a linear
+subspace under geodesic coordinate charts. It also shows that the fixes point
+set is totally geodesic.
+\end{proof}
+
+\begin{definition}
 \label{definition-minimal-immersion}
 An immersion $f:M\to\tilde{M}$ is called {\it minimal} if the trace of its shape
 operator vanishes at all points of $M$ for any choice of normal vector field.
@@ -753,6 +1008,7 @@ obtain:
 H=\frac{1}{|\nabla f|}\left(\Delta_g f-\text{Hess}_gf
 \left(\frac{\nabla f}{|\nabla f|},\frac{\nabla f}{|\nabla f|}\right)\right)
 \end{equation}
+
 {\bf Caveat of Eq. \ref{equation-mean-curvature-for-level-sets}.} This is
 Lucas Ambrozio's formula from his talk on Spheres with Minimal Equators (see
 \ref{section-spheres-with-minimal-equators}). I think I confirmed everything
@@ -763,7 +1019,9 @@ these operators on the gradient, which is normal, so it's not a vector field on
 the submanifold. Also I
 think I proved that that $\text{Hess}$ part actually vanishes (for every level
 set submanifold) since it's just
-the derivative of the norm of the unit normal… so why would we even write it?
+the derivative of the norm of the unit normal… so why would we even write it? If
+I'm not wrong, this shows that the level sets of harmonic functions are minimal 
+submanifolds.
 
 \begin{example}[Equatorial spheres]
 \label{example-equatorial-spheres}
@@ -841,8 +1099,8 @@ parametrization of $T^2$.  When differentiating the parametrization we notice
 that the tangent vectors are decomposed as a pair of vectors tangent to one
 circle or to the other. Then the metric induced from $\mathbb{R}^4$ and then by
 $S^3$ is exactly the product metric from Definition
-\ref{definition-product-metric}. By Exercise
-\ref{exercise-curvatures-of-product-metric}, the curvature tensor on $S^1\times
+\ref{definition-product-metric}. By Lemma 
+\ref{lemma-curvatures-of-product-metric}, the curvature tensor on $S^1\times
 S^1$ vanishes identically since the curvature tensor of any 1-manifold vanishes
 by antisymmetry in the first or two last entries. This means that this torus is
 flat. This says that its first fundamental form has determinant $-1$ when seen
@@ -910,6 +1168,180 @@ A_{n_2}=\frac{1}{\sqrt{2}}\begin{pmatrix}
 $$
 \end{proof}
 
+Here are some comments after reading \cite{Jost}, Section 5.4. Let $f:M\to N$ be
+an isometric immersion. This allows to use the vectors
+$$
+e_\alpha:=f_*\left(\frac{\partial }{\partial x^\alpha}\right)=
+\frac{\partial f^i}{\partial x^\alpha}\frac{\partial }{\partial f^i},
+$$
+(where $f^i$ are local coordinates of $N$ near $f(x)$ using that $f$ is an
+isometry) as a basis of
+$T_{f(x)}N$. Then, by Eq. \ref{equation-second-fundamental-form}, checking that
+$f(M)$ is then a minimal submanifold, i.e. that the trace of its second
+fundamental form vanishes, is to say that
+\begin{equation}
+\label{equation-isometric-immersion-basis}
+(\nabla^{N}_{e_\alpha}e_\alpha)^\perp=0
+\end{equation}
+where we are implicitly summing over $\alpha$.
+
+Choosing normal coordinates $\partial_\alpha$ at $M$, using Eq. 
+\ref{equation-normal-coordinates-vanishing-Christoffel-symbols} to obtain
+that the tangent part to the submanifold vanishes at the point, we get 
+\begin{equation}
+\label{equation-minimal-submanifold-in-normal-coordinates}
+\begin{aligned}
+(\nabla^N_{e_\alpha}e_\alpha)^\perp&=\nabla^N_{e_\alpha}e_\alpha\\
+&=\nabla^N
+_{\frac{\partial f^i}{\partial x^\alpha}\frac{\partial }{\partial f^i}}
+\frac{\partial f^j}{\partial x^\alpha}\frac{\partial }{\partial f^j}\\
+&=\frac{\partial^2 f^j}{(\partial x^\alpha)^2}\frac{\partial }{\partial f^j}
++\frac{\partial f^i}{\partial x^\alpha}\frac{\partial f^j}{\partial x^\alpha}
+\Gamma^j_{ik}\frac{\partial }{\partial f^j}\quad \text{for }j=1,\ldots,n.
+\end{aligned}
+\end{equation}
+And it is claimed that in arbitrary coordinates this is just
+\begin{equation}
+\label{equation-harmonic-map}
+\Delta_Mf^j+\gamma^{\alpha \beta}(x)\Gamma^j_{ik}(f(x))
+\frac{\partial f^i}{\partial x^\alpha}\frac{\partial f^k}{\partial x^\beta}=0
+\quad \text{for }j=1,\ldots,n.
+\end{equation}
+(It would be a nice exercise to perform the passage from normal to arbitrary 
+coordinates.)
+\begin{definition}
+\label{definition-harmonic-map}
+A map of manifolds satisfying Eq. \ref{equation-harmonic-map} is
+called {\it harmonic}.
+\end{definition}
+Notice that this is not asking that the coordinate
+functions of $f$ must be harmonic. Also notice that this says that images of
+harmonic isometric immersions are minimal by definition.
+
+\begin{lemma}
+\label{lemma-fibers-of-harmonic-submersion}
+Let $f:M\to N$ be a smooth (isometric, right?) submersion of 
+Riemannian manifolds. $f$ is
+harmonic if and only if its fibers are minimal submanifolds of $M$.
+\end{lemma}
+
+\begin{proof}
+Here's my idea: do the same trick as in Eqs.
+\ref{equation-isometric-immersion-basis} and 
+\ref{equation-minimal-submanifold-in-normal-coordinates} but now using
+$f^{-1}$ instead of $f$, which we may do since $f$ is a submersion. Since it is
+also an isometry, we get the same result, again with $f^{-1}$ instead of $f$.
+Then the claim becomes: $f$ is harmonic if and only $f$ its local inverse is
+harmonic. I think this might follow from taking the Laplacian of the composition
+$f f^{-1}=\text{Id}$, which must vanish because the identity is harmonic. A
+Leibniz rule should appear (modulo some other metric term? see Eq.
+\ref{equation-Laplacian-of-product}).
+\end{proof}
+
+\medskip\noindent
+
+Now we prove that the images of minimal isometric immersions are critical points
+of the volume functional.
+
+\begin{exercise}
+\label{exercise-minimal-isometric-immersions
+-are-critical-points-of-volume-functional}
+Consider an isometric immersion $f_0:(M,g) \to(\tilde{M},\tilde{g})$ and a
+vector field $\xi \in f^*T\tilde{M}$.
+
+Define a variation by:
+\begin{align*}
+f: (-\varepsilon,\varepsilon)\times M &\longrightarrow \tilde{M} \\
+f(s,p) &=\text{exp}_{p}(s \xi)
+\end{align*}
+
+Then $f_s:=f(s,\cdot):M \longrightarrow \tilde{M}$ is an immersion (isometric at
+$s=0$ by hypothesis). Now we define the volume functional, which simply 
+computes the volume of $M_s$:
+$$
+S(s):= \int_{M}\operatorname{Vol}_{f_s ^*\tilde{g}}
+=\int_M f_s^*\operatorname{Vol}_{\tilde{g}}.
+$$
+Compute $S'(0)$ and show that critical points of $S$ are immersed submanifolds with
+vanishing mean curvature for every normal vector.
+\end{exercise}
+
+\begin{proof}
+How to express volume in any coordinate system?
+\[\sqrt{\det (f^* _sg)_{ij}}dx^1\wedge\ldots\wedge dx^n\]
+Let's differentiate:
+\begin{align*}
+\frac{d}{ds}S(s)&=\frac{d}{ds}\int_M\operatorname{Vol}_{f^*_s\tilde{g}}
+=\frac{d}{ds}\int_M \sqrt{\det (f^* _sg)_{ij}}dx^1\wedge\ldots\wedge dx^n\\
+&=\int_M \frac{d}{ds}\sqrt{\det (f^* _sg)_{ij}}dx^1\wedge\ldots\wedge dx^n
+\end{align*}
+We must differentiate the square root of the determinant of a matrix. By
+Exercise \ref{exercise-derivative-of-determinant},
+$$
+\frac{d}{dt}\det A(t)=
+\det A(t) \cdot \operatorname{tr}\left(A(t)^{-1}\cdot \frac{d}{dt}A(t)\right)
+$$
+and using that we see that
+$$
+\frac{d}{dt}\sqrt{\det A(t)} =\frac{1}{2}\sqrt{\det A(t)} 
+\cdot\operatorname{tr}\left(A(t)^{-1}\cdot \frac{d}{dt}A(t)\right)
+$$
+So we put $A(s)=(f^*_s\tilde{g})_{ij}$. The good news is that square root of the
+determinant part is exactly the local coordinate function of
+$\operatorname{Vol}_{f_0^*\operatorname{Vol}_{\tilde{g}}}=\operatorname{Vol}_g$.
+Then we only have to integrate that other function, which hopefully is related
+to the mean curvature.
+
+Let's compute \begin{align*} \frac{d}{ds}\Big|_{s=0}(f_s^*\tilde{g})_{ij}
+&=\frac{d}{ds}\Big|_{s=0}f_s^*\tilde{g}\left(\partial_i,\partial_j\right)
+=\frac{d}{ds}\Big|_{s=0}\tilde{g}(f^s_*\partial_i,f^s_*\partial_j)\\
+&=\tilde{g}\left(\nabla^f_{\partial_s}f^s_*\partial_i,f^s_*\partial_j\right)
++\tilde{g}
+\left(f^s_*\partial_i,\nabla^f_{\partial_s}f_*^s\partial_j\right)\Big|_{s=0}\\
+&=\tilde{g}\left(\nabla^f_{\partial_s}f^0_*\partial_i,f_*^0\partial_j\right)
++\tilde{g}\left(f^0_*\partial_i,\nabla^f_{\partial_s}f_*^0\partial_j\right)\\
+&=\tilde{g}\left(\nabla^f_{\partial_i}f^0_*\partial_s,f_*^0\partial_j\right)
++\tilde{g}\left(f^0_*\partial_i,\nabla^f_{\partial_j}f_*^0\partial_s\right)
+\qquad  \text{symmetry lemma} \\ &=\tilde{g}(\nabla^f_{\partial_i}\xi,
+f_*^0\partial_j)
++\tilde{g}(f^0_*\partial_i,\nabla^f_{\partial_j}\xi)\end{align*} Where
+$\nabla^f$ is the pullback connection. The point is that we arrived at the
+variational field $\xi$. If we assume (for now) that $\xi$ is normal to $M$ then
+upon differentiation we get: $$ \nabla^f_{\partial_i}\xi=-A_{\xi}\partial_i+N $$
+where the normal component $N$ vanishes since it is orthogonal to the basic
+tangent vectors of $M$. We conclude that
+\begin{align*}
+\frac{d}{ds}\Big|_{s=0}(f_s^*\tilde{g})_{ij}
+&=\tilde{g}\left(-A_{\xi}\partial_i,\partial_j\right)
++\tilde{g}\left(\partial_i,-A_{\xi}\partial_j\right)\\
+&=\tilde{g}(\xi,\alpha(\partial_i,\partial_j))
++\tilde{g}(\alpha(\partial_j,\partial_i),\xi)\\
+&=2\tilde{g}(\xi,\alpha(\partial_i,\partial_j))\qquad\qquad \text{$\alpha$ is symmetric}\\
+&=-2\tilde{g}(A_{\xi}\partial_i,\partial_j)
+\end{align*}
+
+Now we have to multiply by the inverse matrix, which is just the inverse of the
+metric in $M$ because we are at $s=0$. Then we take trace and obtain the mean
+curvature, defined as the trace of the shape operator:
+\begin{align*}
+\operatorname{tr}\Big(g^{ij}g(A \partial_j,\partial_k)\Big)
+=g^{ij}g(A \partial_j,\partial_i)
+=g^{ij}g(A^\ell_j\partial_\ell,\partial_i)
+=g^{ij}A^\ell_jg_{\ell i}
+=\delta^{i}_jA^j_i
+=A^j_j
+\end{align*}
+We conclude that
+$$
+\frac{d}{ds}\Big|_{s=0}S(s)=-\int_M H \operatorname{Vol}_{g}
+$$
+\end{proof}
+
+
+
+\medskip\noindent
+
+Here are two other important equations in the theory of isometric immersions. 
 The {\it Codazzi equation} is
 \begin{equation}
 \label{equation-Codazzi}
@@ -922,7 +1354,7 @@ remember.
 
 And the {\it Ricci equation} is
 \begin{equation}
-\label{equation-Ricc}
+\label{equation-Ricci}
 \left<R_{\nabla^f}(X,Y)\xi,\eta\right>
 =\left<R_{\nabla^\perp}(X,Y)\xi,\eta\right>
 -\left<[A_\xi,A_\eta]X,Y\right>
@@ -2297,4 +2729,3 @@ isometric to $N\times\mathbb{R}$ for some Riemannian manifold $N$.
 \bibliographystyle{amsalpha}
 
 \end{document}
-
