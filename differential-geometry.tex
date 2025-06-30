@@ -346,7 +346,6 @@ $d_{\mathbb{R}^{n+1}}(p,q)=d_{\mathbb{R}^{n+1}}(\tilde{A}p,\tilde{A}q)$ pelo
 argumento anterior.
 \end{example}
 
-
 \begin{proposition}
 \label{proposition-naturallity-of-exponential}
 If $f:M\to \tilde{M}$ is an isometry,
@@ -1337,8 +1336,6 @@ $$
 $$
 \end{proof}
 
-
-
 \medskip\noindent
 
 Here are two other important equations in the theory of isometric immersions. 
@@ -1633,19 +1630,43 @@ negative, which forces one of the indices to be negative.
 \end{proof}
 
 \begin{lemma}
-\label{lemma-Bonnet-Myers-implies-compact-universal-covering-and-finite-pi1}
+\label{lemma-Bonnet-Myers-implies-compact-universal-covering-and-finite
+fundamental-group}
 \cite{doc}, Chapter IX, Corollary 3.2. Let $M$ be a complete Riemannian manifold
 with $\text{Ric}\geq \delta>0$. Then the universal covering of $M$ is compact
-and has finite fundamental group.
+and $M$ has finite fundamental group.
 \end{lemma}
 
 \begin{proof}
+
 The universal cover with the pullback metric satisfies the same curvature
 hypothesis as $M$, making it compact by Bonnet-Myers Theorem
-\ref{theorem-Bonnet-Myers}. Then the leafs of the action of deck transformations
-must be finite, so that $\pi_1(M)=\text{Deck}(\pi)$ is finite.
+\ref{theorem-Bonnet-Myers}. To confirm that the deck transformation group is
+finite notice that if we had an infinite orbit, we could find a limit point
+whose projection to the base would not admit a regular neighbourhood. 
 \end{proof}
 
+
+\begin{exercise}[Exercício 3]
+\label{exercise-positive-scalar-but-no-positive-Ricci}
+Encontre um exemplo de variedade suave que admite alguma métrica Riemanniana com
+curvatura escalar positiva, mas não admite uma métrica Riemanniana com Ricci
+positivo.
+\end{exercise}
+
+\begin{proof}
+Considere $S^2\times S^1$. A métrica produto tem curvatura escalar positiva,
+pois é a soma das curvaturas escalares em cada fator, onde a curvatura escalar
+de $S^2$ é constate $1$ quanto que a curvatura escalar de $S^1$ é constante
+zero. Suponha que $S^2\times S^1$ admite uma métrica com $\text{Ric}>0$. Como
+$S^2\times S^1$ é compacta, o fibrado unitário dela é compacto. Isso significa
+que existe uma constante $\delta$ tal que $\text{Ric}\geq \delta>0$. O 
+recobrimento universal de $S^2 \times S^1$ com a métrica de 
+recobrimento satisfaz as mesmas hipóteses de curvatura, de modo que podemos
+aplicar o teorema de Bonnet-Myers para concluir que é compacto e que o grupo de
+transformações de coberta, ou seja, o grupo fundamental de $S^2\times S^1$ é
+finito. 
+\end{proof}
 
 \section{Weinstein's theorem}
 \label{section-Weinstein-theorem}
@@ -1805,6 +1826,23 @@ transformation generating the group of deck transformations, which is
 $\mathbb{Z}_2$, is not orientation preserving: if it was, then the quotient of
 the two-sheeted orientable covering by the action of the deck transformations
 would induce an orientation on $M$.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-positive-Ricci-but-no-positive-sectional}
+Encontre um exemplo de variedade suave que admite uma métrica Riemanniana com
+Ricci positivo, mas não admite uma métrica Riemanniana com curvatura seccional
+positiva.
+\end{exercise}
+
+\begin{proof}
+Considere $S^3\times S^1$. A métrica produto tem $\text{Ric}>0$, já que ele é a
+soma dos tensores de Ricci em cada fator de acordo ao Exercício 
+\ref{exercise-curvatures-in-product} (a curvatura de Ricci de $S^3$ é 1, 
+enquanto que a curvatura escalar de $S^1$ é zero). Agora suponha que existe uma
+ métrica com $K>0$. Então pelo teorema de Synge \ref{theorem-Synge}, como
+$S^3\times S^1$ é compacta, de dimensão par e orientável, o grupo fundamental
+dela deveria ser trivial, mas não é o caso.
 \end{proof}
 
 \section{Index lemma}
