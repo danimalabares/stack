@@ -12,6 +12,288 @@
 
 \tableofcontents
 
+\section{Holomorphic functions}
+\label{section-holomorphic-functions}
+
+\begin{lemma}
+\label{lemma-holomorphic-function-characterization}
+\cite{lec}, Theorem 1.21. Let $U\subseteq\mathbb{C}^n$ be open and $f:U\to
+\mathbb{C}$. The following are equivalent:
+\begin{enumerate}
+\item $f$ is holomorphic (i.e. it is continuous and has a complex partial
+derivative with respect to each variable at each point of $U$)
+\item $f$ is smooth and satisfies the following Cauchy-Riemann equations:
+\begin{equation}
+\label{equation-Cauchy-Riemann-several-variables}
+\frac{\partial u}{\partial x^j}=\frac{\partial v}{\partial y^j},\qquad 
+\frac{\partial u}{\partial y^j}=-\frac{\partial v}{\partial x^j}
+\end{equation}
+where $z^j=x^j+\sqrt{-1}y^j$ and $f(s)=u(z)+\sqrt{-1}v(x)$.
+\item For each $p=(p^1,\ldots,p^n)\in U$ there exists a neighbourhood of $p$ in
+$U$ on which $f$ is equal to the sum of an absolutely convergent power series of
+the form
+\begin{equation}
+\label{equation-Taylor-series-several-variables}
+f(z)=\sum_{i_1,\ldots,i_n}a_{i_1,\ldots,i_n}(z^1-p^1)\ldots(z^n-p^n)
+\end{equation}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+I will prove that if $f$ is holomorphic then it has a Taylor series for $n=2$. 
+First apply Cauchy integral formula on each variable to obtain
+$$
+f(z^1,z^2)=\frac{1}{(2\pi\sqrt{-1})^2}
+\int_{\substack{|z^1-w^1|=r \\ |z^2-w^2|=r}}
+\frac{f(w^1,w^2)}{(w^1-z^1)(w^2-z^2)}dw^1dw^2
+$$
+Now observe:
+\begin{equation}
+\label{equation-multivariable-Cauchy}
+\frac{1}{w^1-z^1}=\frac{1}{w^1-p^1+p^1-z^1}
+=\frac{1}{w^1-p^1}\frac{1}{1-\frac{p^1-z^1}{w^1-p^1}}
+\end{equation}
+And on the right-hand-side we have a geometric series so that we may write
+$$
+\frac{1}{w^1-z^1}
+=\frac{1}{w^1-p^1}\sum_{k=0}^\infty\left(\frac{p^1-z^1}{w^1-p^1}\right)^k
+$$
+finally substituting this into (\ref{equation-multivariable-Cauchy}) we may take
+the products $(p^1-z^1)^{k_1}(p^2-z^2)^{k_2}$ out of the integral and define the
+remaining term as $a_{k_1k_2}$.
+\end{proof}
+
+\section{Weierstrass preparation theorem}
+\label{section-Weierstrass-preparation-theorem}
+
+\begin{definition}
+\label{definition-germ}
+A {\it germ} of a function near a point is a function defined on some open 
+neighbourhood of the point.
+\end{definition}
+
+\begin{definition}
+\label{definition-Weierstrass-polynomial}
+A {\it Weierstrass polynomial} is a polynomial whose coefficients are
+holomorphic functions.
+\end{definition}
+
+\begin{theorem}
+\label{theorem-Weierstrass-preparation}
+If $f:U\subset\mathbb{C}^n\to\mathbb{C}$ is holomorphic and $f$ is not
+identically zero in the coordinate axis $z_n$, there
+is a unique germ of a monic Weierstrass polynomial $g$ whose coefficients are
+holomorphic functions on the first $n-1$ variables 
+and a germ of a holomorphic 
+function $h$ with $h(0)\neq 0$ such that $f=gh$.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Gauss-UFD}
+If $R$ is a UDF, then $R[x]$ is a UFD.
+\end{lemma}
+
+\begin{lemma}
+\label{lemma-stalk-is-UFD}
+The stalk $\mathcal{O}_n:=\mathcal{O}_{\mathbb{C}^n,0}$ is a UFD.
+\end{lemma}
+
+\begin{proof}
+By induction on $n$. For $n=0$ it is trivial. Suppose $\mathcal{O}_{n-1}$ is a
+UFD. Then by Gauss' Lemma \ref{lemma-Gauss}, $\mathcal{O}_{n-1}[w]$ is a UFD
+too. Thus we may express any Weierstrass polynomial $g$ as a product of
+irreducible elements (uniquely up to multiplication by units).
+
+Let $f\in \mathcal{O}_n$. We want to express $f$ as a product of (unique up to
+multiplication by units) of irreducible elements. By Weierstrass Preparation
+Theorem \ref{theorem-Weierstrass-preparation} there is a Weierstrass polynomial
+$g\in\mathcal{O}_n[w]$ and a holomorphic function not vanishing on $0$ (i.e. a
+unit of $\mathcal{O}_n$) such that $f=gh$. By the previous remark $g$ is
+factored uniquely up to multiplication by units as $g=g_1\ldots g_m$. This shows
+existence of the factorization.
+
+To prove uniqueness suppose that $f=f_1\ldots f_k$ for some irreducible 
+$f_1,\ldots,f_k\in\mathcal{O}_n$. Choose coordinates such that each $f_i$ does
+not vanish identically on the
+$w$ axis, so that we may decompose each of them as  $f_i=g_i'h_i$ by Weierstrass
+Preparation Theorem. Since $f_i$ is irreducible, it follows that $g_i'$ is
+irreducible. Then we have that
+$$
+f=gh=\prod g_i'\prod h_i
+$$
+so by uniqueness in Weierstrass Preparation Theorem we conclude that $g=\prod
+g_i'$, and by uniqueness from the fact that  $\mathcal{O}_n[w]$ is a UFD we
+conclude that $g$ coincides with $\prod g_i'$ up to multiplication by units.
+\end{proof}
+
+\section{Complex manifolds}
+\label{section-complex-manifolds}
+
+\begin{definition}
+\label{definition-complex-manifold}
+A {\it complex manifold} $M$ is a smooth manifold admitting an open cover
+$\{U_\alpha\}$ and coordinate maps $\varphi_\alpha:U_\alpha\to\mathbb{C}^n$ such
+that $\varphi_\alpha\circ\varphi_\beta^{-1}$ is holomorphic on
+$\varphi_\beta(U_\alpha\cap U_\beta)\subset\mathbb{C}^n$ for all $\alpha,\beta$.
+\end{definition}
+
+\begin{definition}
+\label{definition-holomorphic-function-on-complex-manifold}
+A function on an open set $U\subset M$ is {\it holomorphic} if for all $\alpha$,
+$f\varphi_\alpha^{-1}$ is holomorphic on 
+$\varphi_\alpha(U\cap U_\alpha)\subset\mathbb{C}^n$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-holomorphic-function-sheaf}
+The sheaf $\mathcal{O}_M$ of holomorphic functions is a sheaf.
+\end{lemma}
+
+\section{Analytic varieties}
+\label{section-analytic-varieties}
+
+\begin{definition}
+\label{definition-analytic-variety}
+An {\it analytic variety} is a subset $V$ of an open set $U\subset \mathbb{C}^n$
+such that for any $p\in V$ there is a neighbourhood $U'\ni p$ such that $V\cap
+U'$ is given as the zero locus of a finite set of holomorphic functions
+$f_1,\ldots,f_k$ defined on $U'$.
+\end{definition}
+
+\begin{definition}
+\label{definition-analytic-hypersurface}
+An analytic variety is a {\it hypersurface} if it is given as the vanishing
+locus of a single holomorphic function.
+\end{definition}
+
+\begin{definition}
+\label{definition-irreducible-variety}
+An analytic variety $V\subset U\subset \mathbb{C}^n$ is {\it irreducible} if
+$V$ cannot be written as the union of two distinct analytic varieties 
+$V_1,V_2\subset U$, both distinct to $V$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-irreducible-analytic-hypersurface-irreducible-polynomial}
+If $V$ is an analytic hypersurface given locally as $V=\{f=0\}$, then $f$ is
+irreducible in $\mathcal{O}_p$.
+\end{lemma}
+
+\begin{proof}
+If $f=gh$ and neither of $g$ and $h$ are units and they are distinct, we could 
+express $V$ as the union of two distinct varieties: $V(g)$ and $V(h)$. (If one 
+of them, was a unit then the vanishing set would be all of $U$.)
+\end{proof}
+
+\section{Subvarieties}
+\label{section-subvarieties}
+
+\begin{definition}
+\label{definition-analytic-subvariety}
+\cite{gri}. An {\it analytic subvariety} $V$ of a complex manifold $M$ is a
+subset given locally as the zeros of a finite collection of holomorphic
+functions.
+\end{definition}
+
+For a smooth submanifold $M$ of a complex manifold $N$ we have the {\it normal 
+short exact sequence}
+$$
+\xymatrix{
+0\ar[r]&TM\ar[r]&TN\ar[r]&T^\perp M\ar[r]&0
+}
+$$
+If $M$ is a singular subscheme we have the {\it ideal short exact sequence}
+$$
+\xymatrix{
+0\ar[r]&\mathcal{I}_M\ar[r]&\mathcal{O}_N\ar[r]&\mathcal{O}_M\ar[r]&0
+}
+$$
+which follows from definition of a closed embedded subscheme.
+
+If $M$ is a singular analytic subvariety we also have an ideal short exact
+sequence, this time using the holomorphic function sheaves.
+
+\begin{lemma}
+\label{lemma-ideal-sheaf-is-line-bundle-schemes}
+The ideal sheaf of an irreducible codimension-1 closed subscheme of a smooth
+scheme is a line bundle.
+\end{lemma}
+
+\begin{proof}
+Since $M$ is codimension-1 irreducible, the ideal sheaf at every affine chart is
+a codimension-1 prime ideal. This means that there aren't any nontrivial prime
+ideals of $\mathcal{I}_X(\text{Spec}A):=I$. Let $f\in I$.
+Since $X$ is smooth, $O_X\text{Spec}A=A$ is a UFD. Then there exists an
+irreducible element $g\in I$ such that $gh=f$. The ideal generated by $g$ is
+prime and contained in $I$, so that $I$ is principal. This shows that
+$\mathcal{I}_M$ is locally principal, i.e. it is a line bundle.
+\end{proof}
+
+In the case of complex manifolds and analytic subvarieties, we have
+
+\begin{lemma}
+\label{lemma-ideal-sheaf-is-line-bundle-analytic-varieties}
+The ideal sheaf of an irreducible codimension-1 analytic subvariety of a smooth
+complex manifold is a line bundle.
+\end{lemma}
+
+\begin{proof}
+By definition, our subvariety $M$ is locally defined by the zeroes of a single 
+holomorphic function defined on the ambient manifold $X$. That is,
+at every $p\in M$ there is an open set $U\subset X$ such that $U\cap
+M=f^{-1}(0)$ for some $f\in\mathcal{O}_X(U)$. Since $U$ is an open set of a
+complex manifold, the ring $\mathcal{O}_X(U)$ is isomorphic to the ring
+$\mathcal{O}_n$ of holomorphic functions on $\mathbb{C}^n$ in a neighbourhood of
+the origin; that's by Definition \ref{definition-holomorphic-function} since a
+holomorphic function on a manifold is defined as such if its compoisition with
+the coordinate chart is a holomorphic function on $\mathbb{C}^n$.
+
+By Lemma
+\ref{lemma-irreducible-analytic-hypersurface-irreducible-polynomial}, since $M$
+is irreducible it follows that $f$ is irreducible and so is the ideal of
+functions vanishing on $M$.
+
+By Lemma \ref{lemma-stalk-is-UFD}, we prove identically as in Lemma 
+\ref{lemma-ideal-sheaf-is-line-bundle-schemes} that the ideal of functions
+vanishing on $M$ is principal.
+\end{proof}
+
+\section{Adjunction formula}
+\label{section-adjunction-formula}
+
+\begin{lemma}
+\label{lemma-adjunction-formula-for-curves-on-surfaces}
+Let $S$ be any curve on a surface $X$. Then
+\begin{equation}
+\label{equation-adjunction-formula-for-curves-on-surfaces}
+2p_a(S)-2=(S.S-K_X)
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If $S$ is nonsingular we may use the normal bundle short exact sequence. If
+$S$ is singular we need to use the ideal sheaf short exact sequence, which means
+we think of $S$ either as a closed embedded subscheme of $X$ or as an analytic 
+subvariety. Taking Euler class we obtain
+$$
+\chi\mathcal{O}(-S)+\chi\mathcal{O}_S=\chi\mathcal{O}_X
+$$
+Since $p_a(S):=1-\chi(\mathcal{O}_S)$, we obtain that
+$p_a(S)=1-\chi\mathcal{O}_X-\chi\mathcal{O}(-S)$. To compute
+$\chi\mathcal{O}(-S)$ we use Riemann-Roch formula
+\ref{equation-Riemann-Roch-for-curves-on-surfaces} for curves on surfaces, which
+gives
+$$
+\chi\mathcal{O}(-S)=\chi\mathcal{O}_X
++\frac{(\mathcal{O}(-S).\mathcal{O}(-S)+\omega_X^*)}{2}
+$$
+Taking duals on both entries of the intersection form and substituting in our
+previous expression for $p_a(S)$ we obtain the result.
+\end{proof}
 
 \section{Chow's theorem}
 \label{section-chow-theorem}
