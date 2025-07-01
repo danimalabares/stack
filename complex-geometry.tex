@@ -12,8 +12,42 @@
 
 \tableofcontents
 
-\section{Holomorphic functions}
-\label{section-holomorphic-functions}
+\section{Complex analysis in one variable}
+\label{section-complex-analysis-in-one-variable}
+
+\begin{lemma}
+\label{lemma-finite-Taylor-expansion}
+If $f$ is analytic in a connected open set $W\subset\mathbb{C}$ and $a \in W$,
+then we can write
+$$
+f(z)=f(a)+f'(a)(z-a)+\frac{f''(a)}{2!}(z-a)^2+\ldots
++\frac{f^{(n-1)}(a)}{(n-1)!}(z-a)^{n-1}+f_n(z)(z-a)^n
+$$
+for some function $f_n$ analytic on $W$.
+\end{lemma}
+
+\begin{theorem}
+\label{theorem-zeroes-are-isolated-and-have-finite-order}
+If $f:W\subset\mathbb{C}\to \mathbb{C}$ is a holomorphic function defined on an
+open set $W$ and $f(a)=0$ for some $a\in W$, and $f$ is not identically zero,
+then there is a disck $D_r(a)\subseteq W$ such that $f(z)\neq 0$ for $z \in
+D_r(a)\setminus\{a\}$ and a positive integer $m$ called the {\it order} or
+{\it multiplicity} of the zero $a$ such that  $f(z)=(z-a)^mh(z)$ for some
+holomorphic function $h$ that does not vanish at $a$. The order of a zero is
+equal to the smallest integer $m$ such that $f^{(m)}(a)\neq 0$.
+\end{theorem}
+
+\begin{proof}
+If $f$ is not identically zero, there must exist a first derivative $f^{
+(h)}(a)$ that is not zero, since otherwise $f$ would vanish identically in $W$.
+This follows from … 
+
+Then by Lemma \ref{lemma-finite-Taylor-expansion} we obtain that
+$f(z)=f_h(z-a)^n$.
+\end{proof}
+
+\section{Complex analysis in several variables}
+\label{section-complex-analysis-in-several-variables}
 
 \begin{lemma}
 \label{lemma-holomorphic-function-characterization}
@@ -81,7 +115,7 @@ holomorphic functions.
 \begin{theorem}
 \label{theorem-Weierstrass-preparation}
 If $f:U\subset\mathbb{C}^n\to\mathbb{C}$ is holomorphic and $f$ is not
-identically zero in the coordinate axis $z_n$, there
+identically zero in the coordinate axis $z_n:=w$, there
 is a unique germ of a monic Weierstrass polynomial $g$ whose coefficients are
 holomorphic functions on the first $n-1$ variables 
 and a germ of a holomorphic 
@@ -89,7 +123,12 @@ function $h$ with $h(0)\neq 0$ such that $f=gh$.
 \end{theorem}
 
 \begin{proof}
-
+Consider the function of one complex variable $f(0,\ldots,0,w)$. Since it has a
+zero at $0$ and is holomorphic, by Lemma 
+\ref{lemma-zeroes-are-isolated-and-have-finite-order} there is a smallest 
+integer $m$ such that $f^{(m)}(0)$ is not zero called the order of the zero $0$.
+By the Residue theorem $f(z,w)$ as a function of $w$ must have $m$ zeroes in a
+disk $\Delta(0,r_n)$. (?)
 \end{proof}
 
 \begin{lemma}
@@ -185,8 +224,8 @@ express $V$ as the union of two distinct varieties: $V(g)$ and $V(h)$. (If one
 of them, was a unit then the vanishing set would be all of $U$.)
 \end{proof}
 
-\section{Subvarieties}
-\label{section-subvarieties}
+\section{Analytic subvarieties}
+\label{section-analytic-subvarieties}
 
 \begin{definition}
 \label{definition-analytic-subvariety}

@@ -991,41 +991,40 @@ _{=\frac{1}{2}\frac{\nabla f}{|\nabla f|}
 
 Notice that since the Laplacian of a function $f$ is defined as divergence of
 gradient, that is, as the trace of $Z\mapsto \nabla_Z\nabla f$, 
-we may write equivalently
-write,
+we have for the ambient manifold Laplacian
 \begin{equation}
 \label{equation-immersion-Laplacian}
-\Delta_g f=\text{div}_g(\nabla f)=\text{tr}(Z \mapsto \nabla_Z\nabla f)
-=\sum_{i=1}^{n-1}\left<\nabla_{E_i}\nabla f,E_i\right>
+\Delta_{\tilde{g}} f=\text{div}_{\tilde{g}}(\nabla f)
+=\text{tr}(Z \mapsto \tilde{\nabla}_Z\nabla f)
+=\sum_{i=1}^{n-1}\left<\tilde{\nabla}_{E_i}\nabla f,E_i\right>
++\left<\tilde{\nabla}_{\nabla f}\nabla f,\nabla f\right>
 \end{equation}
-which is what we see in Eq. 
-\ref{equation-divergence-of-normalized-gradient} above, except that there we
-have the function $\frac{1}{|\nabla f|}$, but we can factor it out to (almost)
-obtain:
+where we must add an extra term since a frame for the ambient manifold
+also needs the normal vector. Then we have
+$$
+\Delta_{\tilde{g}}f-\text{Hess}_{\tilde{g}}(\nabla f,\nabla f)
+=\sum_{i=1}^{n-1}\left<\tilde{\nabla}_{E_i}\nabla f,E_i\right>
+$$
+If we multiply both sides by $\frac{1}{|\nabla f|}$, on the right hand side we
+arrive at the mean curvature $H$ by Eq.
+\ref{equation-divergence-of-normalized-gradient} (after applying Leibniz rule),
+ and on the left hand side…
 \begin{equation}
 \label{equation-mean-curvature-for-level-sets}
-H=\frac{1}{|\nabla f|}\left(\Delta_g f-\text{Hess}_gf
+H=\frac{1}{|\nabla f|}\left(\Delta_{\tilde{g}} f-\text{Hess}_{\tilde{g}}f
 \left(\frac{\nabla f}{|\nabla f|},\frac{\nabla f}{|\nabla f|}\right)\right)
 \end{equation}
 
 {\bf Caveat of Eq. \ref{equation-mean-curvature-for-level-sets}.} This is
 Lucas Ambrozio's formula from his talk on Spheres with Minimal Equators (see
-\ref{section-spheres-with-minimal-equators}). I think I confirmed everything
-except the little $g$ on $\Delta_g$ and 
-$\text{Hess}_g$; I thought it meant that we have to use the metric $g$ of the
-immersed submanifold but that doesn't make much sense since we are evaluating
-these operators on the gradient, which is normal, so it's not a vector field on
-the submanifold. Also I
-think I proved that that $\text{Hess}$ part actually vanishes (for every level
-set submanifold) since it's just
-the derivative of the norm of the unit normal… so why would we even write it? If
-I'm not wrong, this shows that the level sets of harmonic functions are minimal 
-submanifolds.
+\ref{seminars-section-spheres-with-minimal-equators}). 
+Now it's almost perfect except for
+putting the $\frac{1}{|\nabla f|}$ inside the Hessian…
 
 \begin{example}[Equatorial spheres]
 \label{example-equatorial-spheres}
 Show that equatorial spheres are minimal hypersurfaces of $S^n$. (See 
-Definition \ref{definition-equator}.)
+Definition \ref{seminars-definition-equator}.)
 \end{example}
 
 \begin{proof}
