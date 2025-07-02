@@ -365,6 +365,77 @@ Also, it can be shown directly for smooth hypersurfaces
 Every complex codimension-1 submanifold of $\mathbb{C}P^{n}$ is algebraic.
 \end{theorem}
 
+\section{Ampleness}
+\label{section-ampleness}
+
+\begin{definition}
+\label{definition-base-point}
+\begin{reference}
+\cite[Definition 2.3.25]{huc}
+\end{reference}
+Let $L$ be a holomorphic bundle on a complex manifold $X$. A point $x \in X$ is
+a {\it base point} of $L$ if $s(x)=0$ for all $s\inH^{0}(X,L)$. 
+\end{definition}
+
+\begin{definition}
+\label{definition-base-locus}
+\begin{reference}
+\cite[Definition 2.3.25]{huc}
+\end{reference}
+Let $L$ be a holomorphic bundle on a complex manifold $X$. 
+The {\it base locus} $\text{Bs}(L)$ is the sate of all base points of $L$.
+\end{definition}
+
+\begin{proposition}
+\label{proposition-canonical-map}
+\begin{reference}
+\cite[Proposition 2.3.26]{huc}
+\end{reference}
+Let $L$ be a holomorphic line bundle on a complex manifold $X$ and suppose that
+$s_0,\ldots,s_N\in H^{0}(X,L)$ is a basis. Then
+\begin{align*}
+\varphi_L: X\setminus\text{Bs}(L) &\longrightarrow \mathbb{P}^N \\
+x &\longmapsto (s_0(x):\ldots:s_N(x))
+\end{align*}
+defines a holomorphic map such that $\varphi^*
+_L\mathcal{O}_{\mathbb{P}^N}(1)\cong L|_{X\setminus\text{Bs}(L)}$.
+\end{proposition}
+
+\begin{definition}
+\label{definition-linear-system}
+\begin{reference}
+\cite[p. 86]{huc}
+\end{reference}
+The map $\varphi_L$ in Proposition \ref{proposition-canonical-map} is said to be
+associated to the {\it complete linear system} $H^{0}(X,L)$ (i.e. the sections
+of $L$ are what we call a complete linear system) whereas a subspace of 
+$H^{0}(X,L)$ is called a {\it linear system} of $L$.
+\end{definition}
+
+\begin{definition}
+\label{definition-globally-generated}
+\begin{reference}
+\cite[p. 86]{huc}
+\end{reference}
+$L$ is {\it globally generated} by the sections $s_0,\ldots,s_N$ if
+$\text{Bs}(L,s_0,\ldots,s_N)=\emptyset$.
+\end{definition}
+
+\begin{definition}
+\label{definition-ample}
+\begin{reference}
+\cite[Definition 2.3.28]{huc}
+\end{reference}
+A line bundle $L$ on a complex manifold is called {\it ample} if for some $k>0$
+and some linear system in $H^{0}(X,L^k)$ the associated map $\varphi$ is an
+embedding.
+\end{definition}
+
+\begin{slogan}
+By definition, a compact complex manifold is projective if and only if it admits
+an ample line bundle.
+\end{slogan}
+
 \section{Serre duality}
 \label{section-serre-duality}
 
