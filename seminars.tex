@@ -7,20 +7,107 @@
 
 \phantomsection
 \label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
 
 \tableofcontents
 
-\section{Differential Geometry}
-\label{section-differential-geometry}
+\section{Friday Seminar, PUC-Rio}
+\label{section-Friday-seminar}
 
-\section{Spheres with minimal equators}
-\label{section-spheres-with-minimal-equators}
+\subsection{Neutrinos}
+\label{subsection-neutrinos}
 
-Lucas Ambrozio, 24 June 2025.
+\noindent\bigskip
+Hiroshi Nunokawas, PUC-Rio. June 27, 2025.
+
+{\bf Abstract.} Hiroshi will come and tell us everything we (not) wanted to know
+about these mysterious particles, and are not going to be afraid to ask. In
+particular, about the neutrino oscillation, and the great matrices.
+
+\bigskip\noindent
+
+Protons and neutrons have very similar mass of $m_p\approx940$ MeV, while
+electrons have mass of $m_e \approx 0.5$ MeV. MeV is $10^{6}$ electronvolts,
+where one eV is approximately $1.6\times 10^{-19}$ J. This is standard in high
+energy physics, they use electronvolts instead of Joules. Recall that
+2J=1N$\times$1m.
+
+Most of the things we see are protons since they are so much larger than
+electrons. But protons nor neutrons are elementary particles.
+
+Here's the standard model:
+
+\medskip
+
+\begin{tabular}{c c c c}
+Quarks & $\begin{bmatrix} u\\d \end{bmatrix}_L $ & $\begin{bmatrix} c\\s
+\end{bmatrix}_L$ & $\begin{bmatrix} t\\b \end{bmatrix}_L$\\
+Leptons & $\begin{bmatrix} \nu_e\\e^- \end{bmatrix}_L $ & $\begin{bmatrix}
+\nu_\mu\\ \mu^-
+\end{bmatrix}_L$ & $\begin{bmatrix} \nu_\tau\\ \tau^- \end{bmatrix}_L$\\
+Generation & 1st & 2nd & 3rd\\
+Bosons & $g$, $\gamma$ , $\omega^\pm$, $z$ \\
+Higgs Bosson & $H$
+\end{tabular}
+
+\medskip
+
+It is very particular that nature repeats itself three times. The $L$ in those
+matrix actually means left-handed, and accounts for chirality. Only left-handed
+fermions have weak interaction. Right-handed have electromagnetic interaction,
+gravitational interaction, but not weak interaction.
+
+And then there's neutrinos. They have negative helicity (chirality). Being
+left-handed, mathematically, means to have helicity $-1$. I think this means
+that the spin is left-handed. But chirality and helicity are not the same:
+helicity is observer-dependent, and chirality is not. Almost all neutrinos we
+can see (\% 99.99999…) have negative helicity, but not all of them.
+
+Consider the following:
+$$
+n+\nu_e\leftrightarrow p+e^-
+$$
+But it's not completely correct: we'd better put $d$ instead of $n$, and $u$
+instead of $p$: the $d$ and $u$ quarks, instead of the neutrons and protons.
+
+Now consider the following reaction: a neutron decays into a proton, an electron
+and an antineutrino:
+$$
+n\to p+e^+\overline{\nu}_e
+$$
+Protons is very stable, that's why we are here. But neutron decays in only 15
+minutes.
+
+By experimental data, we can conclude that neutrinos' mass is consistent with
+zero. But if they have mass, it should be much smaller than the electron's $m_v
+\leq 0.5$ eV. And the electron is already the lightest fermion!
+
+If the mass of the neutrino was zero, i.e. $m_\nu=0$, then $v_\nu=c$ in vacuum,
+which would imply that 
+$$
+\xymatrix{
+\nu_e\ar[r]^{L}&\nu_e\ar[r]&\nu_e\\
+0:00&0:00&0:00
+}
+$$
+meaning: time doesn't pass! And this means the state of the particle cannot
+change.
+
+\section{Differential Geometry Seminar, IMPA}
+\label{section-differential-geometry-seminar-impa}
+
+\subsection{Spheres with minimal equators}
+\label{subsection-spheres-with-minimal-equators}
+
+\noindent\bigskip
+Lucas Ambrozio, IMPA. June 24, 2025.
 
 {\bf Abstract.} We will discuss the connection between Riemannian metrics on the
 sphere with respect to which all equators are minimal hypersurfaces, and
 algebraic curvature tensors with positive sectional curvatures.
+
+\bigskip\noindent
 
 \begin{definition}
 \label{definition-equator}
@@ -33,7 +120,8 @@ for $\Pi$ a $k$-dimensional linear subspace of $\mathbb{R}^{n+1}$.
 
 \begin{remark}
 \label{remark-equators-are-totally-geodesic-with-usual-metric}
-
+Equators are totally geodesic hypersurfaces with the usual sphere metric, which
+implies they are minimal hypersurfaces.
 \end{remark}
 
 {\bf Problem.} Characterize the set $\mathcal{M}_k(U)$ of metrics $g$ on an 
@@ -43,10 +131,12 @@ on $(U,g)$.
 
 \begin{remark}
 \label{remark-why-not-Rn}
-This problem can be thought as a problem of finding metrics on $\mathbb{R}^n$
-such that $k$-planes are minimal if we project the $k$-equators to
+This problem can be thought of as a problem of finding metrics on $\mathbb{R}^n$
+such that $k$-planes are minimal. To see why project the $k$-equators to
 $T_p\mathbb{S}^n$ and pullback those metrics to the sphere.
 \end{remark}
+
+\medskip\noindent
 
 Let $g\in\mathcal{M}_k(U)$ for $U\subset\mathbb{S}^n$ open and $n\geq 2$.
 
@@ -170,10 +260,11 @@ $$
 A=\frac{1}{|\nabla V|_g}\text{Hess}_gV
 $$
 and its mean curvature by
-$$
+\begin{equation}
+\label{equation-mean-curvature-for-level-sets-V}
 H=\frac{1}{|\nabla V|_g}\left(\Delta_gV-\text{Hess}_gV\left(\frac{\nabla
 V}{|\nabla V|},\frac{\nabla V}{|\nabla V|}\right)\right)
-$$
+\end{equation}
 For every $v \in \mathbb{S}^n$ and $p\in\Sigma_V$, we see that $H_{\Sigma_V}=0$
 iff
 $$

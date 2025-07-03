@@ -11,24 +11,27 @@ the original documentation files.
 
 #How to compile
 
-So far we can only compile each topic separately so just go, for example,
+To compile just do, for example
 
-``make complex-geometry.pdf``
+``latexmk -pdf complex-geometry.tex``
 
-(except for ``exercises-dg.tex``, this is included in ``differential-geometry.tex`` 
-hehe, just for now)
-
-Official Stacks Project repo uses a python script to compile the whole book. 
-I didn't manage to set that working (an attempt is at ``scripts`` directory) 
-but feel free to try.
-
-Also if you are working on any file you can use 
+Or
 
 ``latexmk -pdf -pvc complex-geometry.tex``
 
 for continuous compilation.
 
-Then do
+
+Ideally we would use ``make`` as in
+
+``make complex-geometry.pdf``
+
+but for some reason this isn't working great lately.
+Official Stacks Project repo uses a python script to compile the whole book. 
+I didn't manage to set that working (an attempt is at ``scripts`` directory) 
+but feel free to try.
+
+This works:
 
 ``make clean``
 

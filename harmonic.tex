@@ -1,0 +1,130 @@
+\input{preamble}
+
+\begin{document}
+
+\title{}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
+
+\tableofcontents
+
+{\bf Goal.} Understand harmonic maps $T^2 \to S^3$. Then gauge theory and
+algebraic geometry (spectral data).
+
+Let $M$ be a compact Riemann surface, $G$ be a compact Lie group with a
+bi-invariant metric and $f:M\to G$ a smooth map.
+
+\begin{example}[To keep in mind]
+\label{example-torus}
+$M=T^2$ and $G=\text{SU}(2)\cong S^3$.
+\end{example}
+
+\begin{definition}
+\label{definition-connection}
+A {\it connection} is a map
+$$
+\nabla^A:\Omega^{0}(M;G)\to \Omega^{1}(M;E)
+$$
+where $\Omega^{p}(M;E)=\Gamma(M,\Lambda^{p}T^*M\otimes E)$.
+\end{definition}
+
+Consider the pullback bundle of $(TG,\nabla^{LC})$ over $M$, which we denote by
+$(E,\nabla^A)$.
+
+Locally, we can express
+$$
+\nabla^A_{\text{loc}}=d+A
+$$
+where $A$ is the {\it connection matrix}, a mtrix of 1-forms.
+
+Extend  $\nabla^A$ to an operator
+$$
+d_A:\Omega^{p}(M;E)\to \Omega^{p+1}(M;E)
+$$
+by Leibniz rule
+$$
+d_A(\alpha\wedge\beta=d\alpha\wedge\beta+(-1)^{|\alpha|}\alpha\wedge d_A\beta
+$$
+And we have a {\it curvature} given by
+$$
+F_A=d^2_A\in\Omega^{2}(M,;\text{End}(E))
+$$
+
+\begin{lemma}
+\label{lemma-derivative-of-differential}
+$d_A(df)=0$
+\end{lemma}
+
+\begin{proof}
+If $\alpha\in\Omega^{1}(M;E)$ and $X,Y\in\mathfrak{X}(M)$,
+$$
+d_A(\alpha)(X,Y)=\nabla_X^A(\alpha(Y))-\nabla_Y^A(\alpha(X))-\alpha([X,Y])
+$$
+So for $\alpha=df$… (use that LC is torsion-free!)
+\end{proof}
+
+\begin{definition}
+\label{definition-Hodge-star}
+The {\it Hodge star operator} is
+$$
+d^*_A=-*d_A*
+$$
+where
+\begin{align*}
+*: \Omega^{p}(M;E) &\longrightarrow \Omega^{2-p}(M;E) \\
+\alpha\otimes s &\longmapsto *\alpha\otimes s
+\end{align*}
+since our manifold is dimension 2.
+\end{definition}
+
+\begin{definition}
+\label{definition-energy-functional}
+$$
+E(f)=\frac{1}{2}\int_M|df|^2d\text{Vol}
+$$
+\end{definition}
+
+\begin{lemma}
+\label{lemma-critical-points-of-energy-functional}
+The critical points of $E$ satisfy
+$$
+\tau(f):=\text{tr}_g(\nabla df)=0
+$$
+where $\nabla df$ is the {\it induced connection} on $T^*M\otimes E$, i.e.
+$$
+\nabla(df)(X,Y)=\nabla_X^A(df(Y))-df(\nabla_X^gY)
+$$
+\end{lemma}
+
+\begin{lemma}
+\label{lemma-harmonic}
+$f$ is harmonic if and only if $d_A^*(df)=0$.
+\end{lemma}
+
+\begin{proof}
+Choose coordinates such that $\nabla^g_XY$ vanishes at the point. Then
+$$
+\tau(f)=\nabla^A_{e_1}(df(e_1))+\nabla^A_{e_1}(df(e_2))
+$$
+Let's compute $d_A^*(df)=-*d_A*(df)$. First we find that $*df=e^2s_1-e^1s_2$ for
+a dual frame $e^i$ and now no longer writing the tensor product. Then we get
+that 
+\begin{align*}
+d_A(*df)&=de^2\otimes s_1-e^2\nabla^A(s_1)-
+\end{align*}
+
+\end{proof}
+\begin{proof}
+
+\end{proof}
+
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+
