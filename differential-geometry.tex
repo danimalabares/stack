@@ -11,6 +11,9 @@
 \href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
 \tableofcontents
 
+\section{Differential of a map}
+\label{section-differential}
+
 \section{Riemannian metrics}
 \label{section-Riemannian-metrics}
 
@@ -1375,6 +1378,128 @@ immersion $f:M \to \mathbb{Q}_c^{n+p}$ and a bundle isomorphism $\varphi:E \to
 T^\perp_pM$ such that $\varphi\circ\tilde{\alpha}=\alpha_f$.
 \end{theorem}
 
+\section{Harmonic maps}
+\label{section-harmonic-maps}
+
+{\bf Goal.} Understand harmonic maps $T^2 \to S^3$. Then gauge theory and
+algebraic geometry (spectral data).
+
+Let $M$ be a compact Riemann surface, $G$ be a compact Lie group with a
+bi-invariant metric and $f:M\to G$ a smooth map.
+
+\begin{example}[To keep in mind]
+\label{example-torus}
+$M=T^2$ and $G=\text{SU}(2)\cong S^3$.
+\end{example}
+
+\begin{definition}
+\label{definition-connection}
+A {\it connection} is a map
+$$
+\nabla^A:\Omega^{0}(M;G)\to \Omega^{1}(M;E)
+$$
+where $\Omega^{p}(M;E)=\Gamma(M,\Lambda^{p}T^*M\otimes E)$.
+\end{definition}
+
+Consider the pullback bundle of $(TG,\nabla^{LC})$ over $M$, which we denote by
+$(E,\nabla^A)$.
+
+Locally, we can express
+$$
+\nabla^A_{\text{loc}}=d+A
+$$
+where $A$ is the {\it connection matrix}, a mtrix of 1-forms.
+
+Extend  $\nabla^A$ to an operator
+$$
+d_A:\Omega^{p}(M;E)\to \Omega^{p+1}(M;E)
+$$
+by Leibniz rule
+$$
+d_A(\alpha\wedge\beta=d\alpha\wedge\beta+(-1)^{|\alpha|}\alpha\wedge d_A\beta
+$$
+And we have a {\it curvature} given by
+$$
+F_A=d^2_A\in\Omega^{2}(M,;\text{End}(E))
+$$
+
+\begin{lemma}
+\label{lemma-derivative-of-differential}
+$d_A(df)=0$
+\end{lemma}
+
+\begin{proof}
+If $\alpha\in\Omega^{1}(M;E)$ and $X,Y\in\mathfrak{X}(M)$,
+$$
+d_A(\alpha)(X,Y)=\nabla_X^A(\alpha(Y))-\nabla_Y^A(\alpha(X))-\alpha([X,Y])
+$$
+So for $\alpha=df$… (use that LC is torsion-free!)
+\end{proof}
+
+\begin{definition}
+\label{definition-Hodge-star}
+The {\it Hodge star operator} is
+$$
+d^*_A=-*d_A*
+$$
+where
+\begin{align*}
+*: \Omega^{p}(M;E) &\longrightarrow \Omega^{2-p}(M;E) \\
+\alpha\otimes s &\longmapsto *\alpha\otimes s
+\end{align*}
+since our manifold is dimension 2.
+\end{definition}
+
+\begin{definition}
+\label{definition-energy-functional}
+$$
+E(f)=\frac{1}{2}\int_M|df|^2d\text{Vol}
+$$
+\end{definition}
+
+\begin{definition}
+\label{definition-harmonic-map}
+A {\it harmonic map} of smooth manifolds $f:M\to N$ is a critical point of the
+energy functional.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-critical-points-of-energy-functional}
+The critical points of $E$ satisfy
+$$
+\tau(f):=\text{tr}_g(\nabla df)=0
+$$
+where $\nabla df$ is the {\it induced connection} on $T^*M\otimes E$, i.e.
+$$
+\nabla(df)(X,Y)=\nabla_X^A(df(Y))-df(\nabla_X^gY)
+$$
+\end{lemma}
+
+\begin{lemma}
+\label{lemma-harmonic}
+$f$ is harmonic if and only if $d_A^*(df)=0$.
+\end{lemma}
+
+\begin{proof}
+Choose coordinates such that $\nabla^g_XY$ vanishes at the point. Then
+$$
+\tau(f)=\nabla^A_{e_1}(df(e_1))+\nabla^A_{e_1}(df(e_2))
+$$
+Let's compute $d_A^*(df)=-*d_A*(df)$. First we find that $*df=e^2s_1-e^1s_2$ for
+a dual frame $e^i$ and now no longer writing the tensor product. Then we get
+that 
+\begin{align*}
+d_A(*df)&=de^2\otimes s_1-e^2\nabla^A(s_1)-
+\end{align*}
+
+\end{proof}
+
+\begin{remark}
+\label{remark-harmonic-functions}
+In the case of a function $f:\Omega\subset\mathbb{C}\to \mathbb{R}$ we obtain
+the usual Laplacian (Exercise!).
+\end{remark}
+
 \section{Riccati equation}
 \label{section-Riccati-equation}
 
@@ -1483,6 +1608,52 @@ exponential map is a diffeomorphism.
 
 \begin{proof}
 
+\end{proof}
+
+\section{Manifolds of constant sectional curvature}
+\label{section-manifolds-of-constant-sectional-curvature}
+
+The following theorem and proof where explained by Dimitri Korshunov (IMPA) at
+Geometric Structures Seminar on July 3, 2025.
+
+{\bf Abstract.} Crystallographic group is a discrete co-compact subgroup of the
+group of isometries of a Euclidean space. A theorem of Bieberbach says that it
+contains a subgroup of translations of finite index. Or, in other words, any
+compact flat Riemannian manifold is a finite quotient of a flat torus. We will
+prove this theorem following a streamlined geometric argument of Vinberg.
+
+\begin{theorem}[Bieberbach]
+\label{theorem-Bieberbach}
+In particular, any flat manifold is a quotient of a torus.
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+First we show that it suffices to find only one pure translation, that is, an
+inductive argument shows that if we have a pure translation, then we can find
+others. Perhaps this is the hardest part.
+ 
+Then we obtain some bounds in operator norm for the pure translations, this part
+looks straightforward.  One of these bounds is that $\|[A,B]-\text{Id}\|\leq
+2\|\text{Id}-A\|\|\text{Id}-B\|$. The other of the bounds is roughly as follows.
+For $g=Ax+a$ and $h=Bx+b$, we have that $[g,h]=[A,B]x+c$ for some $c$ whose norm
+we shall bound by $r$ later.
+
+We use the first bound to show that if two elements in the group are close to
+the identity, then their commutator will be even closer. This shows that there
+is a finite set of small generators $g_1,\ldots,g_k$. Each of them is of the
+form $g_i=A_ix+a_i$.
+
+To arrive at a contradiction suppose that there are no pure translations to
+obtain a contradiction.
+
+Let $r(g)$ be the norm of the translational part of a transformation $g$. Let
+$r$ be the maximum of the translational parts of the $g_i$. 
+Let $S:=\{g:r(g)<r\}$. It's a finite set. Let $g_0$ be minimal in $S$. After
+some discussion we show that the linear part of $g_0$ commutes with the linear
+part of $g_i$ for all $i$. In fact, this implies that $g_0$ itself is in the
+center of the group.
+
+Finally we obtain a contradiction with compactness… simple argument.
 \end{proof}
 
 \section{First Variation Formula}

@@ -12,40 +12,6 @@
 
 \tableofcontents
 
-\section{Complex analysis in one variable}
-\label{section-complex-analysis-in-one-variable}
-
-\begin{lemma}
-\label{lemma-finite-Taylor-expansion}
-If $f$ is analytic in a connected open set $W\subset\mathbb{C}$ and $a \in W$,
-then we can write
-$$
-f(z)=f(a)+f'(a)(z-a)+\frac{f''(a)}{2!}(z-a)^2+\ldots
-+\frac{f^{(n-1)}(a)}{(n-1)!}(z-a)^{n-1}+f_n(z)(z-a)^n
-$$
-for some function $f_n$ analytic on $W$.
-\end{lemma}
-
-\begin{theorem}
-\label{theorem-zeroes-are-isolated-and-have-finite-order}
-If $f:W\subset\mathbb{C}\to \mathbb{C}$ is a holomorphic function defined on an
-open set $W$ and $f(a)=0$ for some $a\in W$, and $f$ is not identically zero,
-then there is a disck $D_r(a)\subseteq W$ such that $f(z)\neq 0$ for $z \in
-D_r(a)\setminus\{a\}$ and a positive integer $m$ called the {\it order} or
-{\it multiplicity} of the zero $a$ such that  $f(z)=(z-a)^mh(z)$ for some
-holomorphic function $h$ that does not vanish at $a$. The order of a zero is
-equal to the smallest integer $m$ such that $f^{(m)}(a)\neq 0$.
-\end{theorem}
-
-\begin{proof}
-If $f$ is not identically zero, there must exist a first derivative $f^{
-(h)}(a)$ that is not zero, since otherwise $f$ would vanish identically in $W$.
-This follows from … 
-
-Then by Lemma \ref{lemma-finite-Taylor-expansion} we obtain that
-$f(z)=f_h(z-a)^n$.
-\end{proof}
-
 \section{Complex analysis in several variables}
 \label{section-complex-analysis-in-several-variables}
 
@@ -284,7 +250,7 @@ M=f^{-1}(0)$ for some $f\in\mathcal{O}_X(U)$. Since $U$ is an open set of a
 complex manifold, the ring $\mathcal{O}_X(U)$ is isomorphic to the ring
 $\mathcal{O}_n$ of holomorphic functions on $\mathbb{C}^n$ in a neighbourhood of
 the origin; that's by Definition \ref{definition-holomorphic-function} since a
-holomorphic function on a manifold is defined as such if its compoisition with
+holomorphic function on a manifold is defined as such if its composition with
 the coordinate chart is a holomorphic function on $\mathbb{C}^n$.
 
 By Lemma
@@ -322,19 +288,34 @@ $S$ is singular we need to use the ideal sheaf short exact sequence, which means
 we think of $S$ either as a closed embedded subscheme of $X$ or as an analytic 
 subvariety. Taking Euler class we obtain
 $$
-\chi\mathcal{O}(-S)+\chi\mathcal{O}_S=\chi\mathcal{O}_X
+\chi(\mathcal{O}(-S))+\chi(\mathcal{O}_S)=\chi(\mathcal{O}_X)
 $$
 Since $p_a(S):=1-\chi(\mathcal{O}_S)$, we obtain that
-$p_a(S)=1-\chi\mathcal{O}_X-\chi\mathcal{O}(-S)$. To compute
-$\chi\mathcal{O}(-S)$ we use Riemann-Roch formula
+$p_a(S)=1-\chi(\mathcal{O}_X)-\chi(\mathcal{O}(-S))$. To compute
+$\chi(\mathcal{O}(-S))$ we use Riemann-Roch formula
 \ref{equation-Riemann-Roch-for-curves-on-surfaces} for curves on surfaces, which
 gives
 $$
-\chi\mathcal{O}(-S)=\chi\mathcal{O}_X
+\chi(\mathcal{O}(-S))=\chi(\mathcal{O}_X)
 +\frac{(\mathcal{O}(-S).\mathcal{O}(-S)+\omega_X^*)}{2}
 $$
 Taking duals on both entries of the intersection form and substituting in our
 previous expression for $p_a(S)$ we obtain the result.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-singular-curve-on-K3-has-positive-self-intersection}
+Let $S$ be a singular, irreducible complex curve on a K3 surface. Prove that
+$(S.S)\geq 0$.
+\end{exercise}
+
+\begin{proof}
+This is just an application of Eq.
+\ref{equation-adjunction-formula-for-curves-on-surfaces}. Since
+$K_X=\mathcal{O}_X$ it suffices to show that $p_a(S)$ is not zero. This follows
+fact that $S$ is singular, since its arithmetic genus is defined as the genus of
+its normalization, which must be strictly positive since there exists at least
+one singularity.
 \end{proof}
 
 \section{Chow's theorem}
@@ -381,7 +362,7 @@ Every complex codimension-1 submanifold of $\mathbb{C}P^{n}$ is algebraic.
 \cite[Definition 2.3.25]{huc}
 \end{reference}
 Let $L$ be a holomorphic bundle on a complex manifold $X$. A point $x \in X$ is
-a {\it base point} of $L$ if $s(x)=0$ for all $s\inH^{0}(X,L)$. 
+a {\it base point} of $L$ if $s(x)=0$ for all $s\in H^{0}(X,L)$. 
 \end{definition}
 
 \begin{definition}
@@ -441,6 +422,33 @@ embedding.
 \begin{slogan}
 By definition, a compact complex manifold is projective if and only if it admits
 an ample line bundle.
+\end{slogan}
+
+\begin{exercise}
+\label{exercise-L-ample-implies-Lotimes2-globally-generated}
+Let $L$ be an ample bundle on a K3 surface $M$. Prove that $L^{\otimes 2}$ is
+globally generated (that is, for each $x \in M$ there exists a section $h \in
+H^{0}(L^{\otimes 2})$ which does not vanish in $x$).
+\end{exercise}
+
+\begin{proof}
+Let $D$ be a divisor in the line system $|L|:=\mathbb{P}H^{0}(L)$, which is a
+smooth curve by Bertini's theorem \ref{theorem-Bertini}. Restrict the
+
+
+First we must find a curve on the surface. We expect to know the genus of this
+curve. Restrict the line bundle to the curve and find a contradiction if there
+was a base point.
+\end{proof}
+
+\section{Bertini's theorem}
+\label{section-Bertini-theorem}
+
+\begin{slogan}
+In \(\mathbb{C}^n\) many complex hypersurfaces can be written as regular level
+sets of globally defined holomorphic functions. But in a compact complex
+manifold, this is never possible, because all global holomorphic functions are
+constants. Instead, we can use sections of line bundles.
 \end{slogan}
 
 \section{Serre duality}

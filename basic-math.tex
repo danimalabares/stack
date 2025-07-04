@@ -25,6 +25,45 @@ The signature of a form quadratic form can be equivalently computed as the
 maximal dimension of an isotropic subspace, or as the maximal dimension of the
 subspace where the form is negative.
 
+\section{Adjoint}
+\label{section-adjoint}
+
+\begin{definition}
+\label{definition-adjoint}
+Let  $A:(V,\left<\cdot,\cdot\right>_V) \to (W,\left<\cdot,\cdot\right>_W)$ be a 
+linear transformation of inner product vector spaces, its {\it adjoint} is the
+map
+$$
+A^{\dag}:W\to V
+$$
+satisfying
+\begin{equation}
+\label{equation-adjoint}
+\left<Av,w\right>_W=\left<v,A^\dag w\right>_V
+\end{equation}
+\end{definition}
+
+Let $G$ be a matrix representation for $\left<\cdot,\cdot\right>_V$ and $H$ for
+$\left<\cdot,\cdot\right>_W$. Then Eq. \ref{equation-adjoint} is
+$$
+v^{\mathbf{T}}A^{\mathbf{T}}Hw=(Av)^{\mathbf{T}}Hw=v^{\mathbf{T}}GA^\dag w
+$$
+So
+\begin{equation}
+\label{equation-adjoint-transpose}
+A^{\mathbf{T}}H=GA^\dag \iff A^\dag:=G^{-1}A^{\mathbf{T}}H
+\end{equation}
+which gives the relationship between the usual transpose matrix and the adjoint.
+
+\begin{definition}
+\label{definition-Frobenius-norm}
+In the space of matrices we define {\it Frobenius norm} as
+\begin{equation}
+\label{equation-Frobenius-norm}
+\|A\|^2=\text{tr}A^\dag A=\text{tr}(G^{-1}A^{\mathbf{T}}HA
+\end{equation}
+\end{definition}
+
 \section{Fréchet derivative}
 \label{section-Fréchet-derivative}
 
