@@ -78,7 +78,7 @@ A {\it Weierstrass polynomial} is a polynomial whose coefficients are
 holomorphic functions.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Weierstrass preparation theorem]
 \label{theorem-Weierstrass-preparation}
 If $f:U\subset\mathbb{C}^n\to\mathbb{C}$ is holomorphic and $f$ is not
 identically zero in the coordinate axis $z_n:=w$, there
@@ -89,12 +89,21 @@ function $h$ with $h(0)\neq 0$ such that $f=gh$.
 \end{theorem}
 
 \begin{proof}
+
+Since $f$ is not identically zero near $0$, then there is a point that we may
+suppose is in the $z_n$-axis where $f$ is not zero.
+
 Consider the function of one complex variable $f(0,\ldots,0,w)$. Since it has a
-zero at $0$ and is holomorphic, by Lemma 
-\ref{lemma-zeroes-are-isolated-and-have-finite-order} there is a smallest 
-integer $m$ such that $f^{(m)}(0)$ is not zero called the order of the zero $0$.
-By the Residue theorem $f(z,w)$ as a function of $w$ must have $m$ zeroes in a
-disk $\Delta(0,r_n)$. (?)
+zero at $0$, is holomorphic, and is not identically zero, the zero $0$ must be
+of finite order $m$ (cf. Lemma
+\ref{complex-analysis-lemma-zeroes-are-isolated-and-have-finite-order}). Recall
+that $m$ is the smallest integer $m$ such that $f^{(m)}(0)$.
+
+We want to apply the Argument Principle
+\ref{complex-analysis-theorem-argument-principle}.
+
+We want to count the number of zeros that $f(0,…,0,w)$.
+
 \end{proof}
 
 \begin{lemma}
@@ -153,6 +162,102 @@ $\varphi_\alpha(U\cap U_\alpha)\subset\mathbb{C}^n$.
 \label{lemma-holomorphic-function-sheaf}
 The sheaf $\mathcal{O}_M$ of holomorphic functions is a sheaf.
 \end{lemma}
+
+\section{Riemann surfaces}
+\label{section-Riemann-surfaces}
+
+\begin{definition}
+\label{definition-meromorphic-function-on-Riemann-surface}
+\begin{reference}
+\cite[p. 45]{Donaldson}
+\end{reference}
+A {\it meromorphic function on a Riemann surface} is a holomorphic map to the
+Riemann sphere which is not identically equal to $\infty$.
+\end{definition}
+
+\begin{definition}
+\label{definition-pole-of-meromorphic-function-on-Riemann-surface}
+\begin{reference}
+\cite[p. 45]{Donaldson}
+\end{reference}
+A {\it pole} of a meromorphic function on a Riemann surface is any point $x$ 
+such that $F(x)=\infty$.
+\end{definition}
+
+\begin{definition}
+\label{definition-pole-of-meromorphic-function-on-Riemann-surface}
+\begin{reference}
+\cite[p. 45]{Donaldson}
+\end{reference}
+The {\it order} of a pole of a meromorphic function on a Riemann surface is the
+integer $k_x$ such that the coordinate representation of $f$ is $f(x)=z^{k_x}$
+near $x$.
+\end{definition}
+
+\begin{proposition}
+\label{proposition-degree-is-constant}
+\begin{reference}
+\cite[p. 46]{Donaldson}
+\end{reference}
+Let $F:X\to Y$ be a proper, non-constant holomorphic map between connected
+Riemann surfaces. Then the integer $d(y)=\# f^{-1}(y)$ does not depend on $y \in
+Y$.
+\end{proposition}
+
+\begin{proof}
+Using local representation of $f$ as $z^k$. But see also \ref{MilnorDT}: this
+number is locally constant because we can find a neighbourhood $V$ of any point 
+$y$ such that any other $y'$ in this neighbourhood has the same number of
+preimages. Using compactness fix neighbourhoods $U_i$ of all the preimages of 
+$y$, using that $y$ is a regular value we may suppose the $f$ is a
+diffeomorphism at the $U_i$, and then define 
+$V:=\cap V_i\setminus f(M\setminus\cup U_i)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-meromorphic-function-with-one-pole-of-order-1-gives-Riemann-sphere}
+Let $X$ be a compact Riemann surface. If there is a meromorphic function on $X$
+having exactly one pole, and that pole has order 1, then $X$ is equivalent to
+the Riemann sphere.
+\end{lemma}
+
+\begin{proof}
+A meromorphic function has no critical points! That is, $\infty$ is a regular
+value, having one preimage by hypothesis. Then the degree of $f$ is one, so that
+it must be a bijection (why?). And it has no crticial points… (why?) So by Lemma
+something, its inverse must be holomorphic.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-canonical-bundle-of-Riemann-surface-has-no-base-points}
+Show that the canonical bundle $K$ of a Riemann surface $S$ has no base points.
+\end{exercise}
+
+\begin{proof}
+Suppose $p$ is a base point of $K$. We want to construct a meromorphic function
+with exactly one pole and use Lemma
+\ref{lemma-meromorphic-function-with-one-pole-of-order-1-gives-Riemann-sphere}
+to arrive at a contradiction. Any such function is an element of
+$H^{0}(\mathcal{O}(p))$. Note that by Serre duality we have:
+$$
+H^{0}(\mathcal{O}(p))=H^{0}(\mathcal{O}(p)\otimes K^*\otimes K)
+=H^{1}(K(-p))^*
+$$
+So it's enough to show that $H^{1}(K(-p))$ is not zero. So consider the sheaf 
+exact sequence twisted by the ideal sheaf $\mathcal{I}_p=\mathcal{O}_S(-p)$ 
+of $p$:
+$$
+\xymatrix{
+0\ar[r]&K(-p)\ar[r]&K\ar[r]&K(p)\ar[r]&0
+}
+$$
+Then we use the exact sequence in cohomology to prove that $H^{1}(K(-p))$ is not
+zero. First, $H^{1}(K(p))=0$ because by Serre duality it has the same dimension
+as the space of holomorphic functions vanishing at $p$, which is only the zero
+function since $M$ is compact. Next, $H^{1}(K)$ is not zero because by Dolbeault
+theorem it is $H^{1,1}(M,\mathbb{R})$ which contains real 2-forms. Then
+$H^{1}(K(-p))$ cannot be zero because it surjects onto a nontrivial space.
+\end{proof}
 
 \section{Analytic varieties}
 \label{section-analytic-varieties}
@@ -263,12 +368,26 @@ By Lemma \ref{lemma-stalk-is-UFD}, we prove identically as in Lemma
 vanishing on $M$ is principal.
 \end{proof}
 
-\section{Riemann-Roch for curves on surfaces}
-\label{section-Riemann-Roch-for-curves-on-surfaces}
+\begin{definition}
+\label{definition-sheaf-associated-to-effective-Cartier-divisor}
+Let $D:=S$ be an effective Cartier divisor, that is, an analytic hypersurface of
+a complex manifold. The ideal sheaf $\mathcal{I}_S:=\mathcal{O}_X(-S)$ of $S$ is
+the dual line bundle of the {\it line bundle associated to the divisor $D$},
+which is denoted by $\mathcal{O}_X(D)$.
+\end{definition}
 
+\section{Riemann-Roch formulas}
+\label{section-Riemann-Roch}
 
-
-
+\begin{theorem}[Riemann-Roch for Riemann surfaces]
+\label{theorem-Riemann-Roch-for-Riemann-surfaces}
+Let $D$ be a divisor on a compact Riemann surface $X$, that is, $D$ is a
+collection of $d$ points on $X$.
+\begin{equation}
+\label{equation-Riemann-Roch-for-Riemann-surfaces}
+h^0(D)-h^0(K-D)=d-g+1
+\end{equation}
+\end{theorem}
 
 \section{Adjunction formula}
 \label{section-adjunction-formula}
@@ -432,13 +551,97 @@ H^{0}(L^{\otimes 2})$ which does not vanish in $x$).
 \end{exercise}
 
 \begin{proof}
-Let $D$ be a divisor in the line system $|L|:=\mathbb{P}H^{0}(L)$, which is a
-smooth curve by Bertini's theorem \ref{theorem-Bertini}. Restrict the
+\begin{reference}
+\href{https://math.stackexchange.com/questions/5081481/
+ample-line-bundle-on-a-k3-surface-implies-l-otimes-2-is-base-point-free/
+5081492?noredirect=1#comment10928708_5081492}{StackExchange}
+\end{reference}
+As an outline for exposition:
+\begin{enumerate}
+\item Show that $L$ has sections (by ampleness+Kodaira Vanishing+Riemann-Roch), 
+pick a section $C$ and note that if 
+$L^{\otimes2}$ had base points they would be in $C$.
+\item Show that restriction map is surjective (Kodaira Vanishing).
+\item Show that inclusion map is not surjective. For this it's enough to show
+that $\dim|D|=\dim|D-p|+1$. This follows by writing the formula of Riemann-Roch
+for both of these Weil divisors (have to pass to Weil divisors). But you will
+need to make sure that $h^0(K-D)$ and $h^0(K-(D-p))$ are zero.
+\end{enumerate}
 
+First we need to show that $L$ has sections. To see this I will shot that since
+$L$ is ample, $L^2>0$. Indeed, if $mL$ is very ample we apply by Riemann-Roch,
+ Kodaira Vanishing and the fact that $\chi(\mathcal{O}_X)=2$ on a K3 to obtain 
+$h^0(mL)=2+\frac{1}{2}m^2L^2$ which must be positive since $mL$ has sections by
+being very ample. Notice $L^2$ cannot be zero as $h^0(mL)=2$ would imply we have
+an embedding of a K3 surface into $\mathbb{P}^1$.
 
-First we must find a curve on the surface. We expect to know the genus of this
-curve. Restrict the line bundle to the curve and find a contradiction if there
-was a base point.
+Applying again Riemann-Roch and Kodaira vanishing we see that $h^0(L)>0$. Let
+$C$ be a section of $L$.
+
+Notice that if $L^{\otimes 2}$
+had any base points, they would have to be on $C$. Indeed, since $C$ is the
+vanishing set of a section $s\in H^{0}(L)$, we must have $s \otimes s \in
+H^{0}(L^{\otimes 2})$ vanishing in any base point of $L^{\otimes 2}$.
+
+Then we consider the ideal exact sequence for $C$ and tensor by $L^{\otimes 2}$
+to obtain
+$$
+\xymatrix{
+0\ar[r]&L^{\otimes 2}(-C)\ar[r]&L^{\otimes 2}\ar[r]&
+L^{\otimes 2}\otimes\mathcal{O}_C\ar[r]&0
+}
+$$
+Notice that the term on the left is actually $L$ since the ideal sheaf
+$\mathcal{O}_M(-C)=\mathcal{I}_C$ is dual to $L$ because $C$ is defined as the
+vanishing set of a section of $L$. Passing to cohomology we obtain
+ $$
+\xymatrix{
+H^{0}(L^{\otimes 2})\ar[r]&H^{0}(L^{\otimes 2}\otimes \mathcal{O}_C)\ar[r]&
+H^{1}(L)
+}
+$$
+where the latter term vanishes by Kodaira Vanishing because $L$ is ample.
+This says that every section of $L^{\otimes 2}|_C$ is the
+restriction to $C$ of a section of $L^{\otimes 2}$. In turn this shows that it's
+enough to show that the bundle $L^{\otimes 2}$ has no base points along $C$.
+
+By adjunction formula for (possibly singular) curves on smooth surfaces and by 
+the fact that $M$ is smooth, we see that $2p_a(C)-2=(L.L)$ so that
+$$
+4p_a(C)-4=(2L.L)=\text{deg}_C(L^{\otimes 2})
+$$
+Notice that since $L^2>0$ we exclude the cases that $p_a(C)=0,1$.
+
+To conclude pick a point $p\in C$. Saying that $p$ is not a base point of
+$L^{\otimes 2}|_{C}$ is the same as saying that not every section of $L^{\otimes
+2}|_{C}$ vanishes at $p$, that is, that 
+$h^0(L^{\otimes 2}|_{C}(-p))<h^0(L^{\otimes 2}|_{C})$.
+
+Now I will prove that since the degree of $L^{\otimes 2}|_{C}$ and $L^{\otimes
+2}|_{C}(p)$ is greater than $2p_a(C)$ we have that 
+$h^0(\omega_C\otimes (L^{\otimes2}|_{C})^\vee)=0
+=h^0(\omega_C\otimes (L^{\otimes 2}|_{C}(-p))^\vee)$. For this we need to see these line
+bundles as Weil divisors by simply taking sections, whose vanishing sets are 
+finite sets of points with multiplicities. Then their degree is the sum of the
+multiplicities.  This definition makes degree additive with respect to tensor
+product (we may take local sections and sum degrees). By Riemann-Roch on the curve
+$C$, we know that $\text{deg}\omega_C=2p_a-2$. Then
+
+$$
+\text{deg}_C(\omega_C\otimes L^{\otimes 2})
+=\text{deg}_C(\omega_C)+\text{deg}_C(L^{\otimes 2})
+=2p_a-2-(4p_a(C)-4)<0
+$$
+and a similar computation works for $L^{\otimes 2}(-p)$ as it has the same
+degree of $L^{\otimes 2}$ minus 1. This implies that neither of these bundles
+can have sections since any section would provide a linearly equivalent
+effective divisor. This would be a contradiction since both
+$L^{\otimes 2}$ and $L^{\otimes 2}(-p)$ have sections. Therefore 
+$h^0(\omega_C\otimes (L^{\otimes2}|_{C})^\vee)=0
+=h^0(\omega_C\otimes (L^{\otimes 2}|_{C}(-p))^\vee)$ as claimed.
+
+Finally we apply Riemann-Roch to $L^{\otimes 2}$ and $L^{\otimes 2}(-p)$ to
+obtain that $h^0(L^{\otimes 2})>h^0(L^{\otimes 2}(-p))$.
 \end{proof}
 
 \section{Bertini's theorem}
@@ -473,9 +676,12 @@ $$
 \section{Kodaira Vanishing theorem}
 \label{section-Kodaira-vanishing-theorem}
 
-\begin{theorem}[Kodaira]
+\begin{theorem}[Kodaira Vanishing]
 \label{theorem-Kodaira-vanishing}
-\cite{sea}, 21.5.8. Suppose $k$ is a field of characteristic 0, and $X$ is a
+\begin{reference}
+\cite[21.5.8]{sea}
+\end{reference}
+Suppose $k$ is a field of characteristic 0, and $X$ is a
 smooth projective $k$-variety. Then for any ample invertible sheaf $L$,
 $H^{i}(X,K_X \otimes L)=0$ for $i>0$.
 \end{theorem}
@@ -484,8 +690,59 @@ $H^{i}(X,K_X \otimes L)=0$ for $i>0$.
 No proof in \cite{sea}.
 \end{proof}
 
+\section{Kodaira Embedding theorem}
+\label{section-Kodaira-Embedding-theorem}
+
+The forward implication is easy and sometimes not considered as part of the
+theorem.
+
+Compare this theorem with Nakai-Moishezon Criterion
+\ref{algebraic-geometry-theorem-Nakai-Moishezon-criterion}.
+
+\begin{theorem}[Kodaira Embedding]
+\label{theorem-Kodaira-embedding}
+\begin{reference}
+\cite[Theorem 10.12]{lec}
+\end{reference}
+Suppose $M$ is a compact complex manifold. A holomorphic line bundle $L\to M$ is
+ample if and only if it is positive. Thus $M$ is projective if and only if it
+admits a holomorphic line bundle.
+\end{theorem}
+
+\begin{proof}
+The easy implication as follows. If $L$ is ample then there is $N$ such that
+$L^{\otimes N}$ is very ample, meaning by Misha's definition that the canonical
+map is an embedding such that $L^{\otimes N}=\varphi^*\mathcal{O}(1)$, which has
+degree 1 by definition as in \cite[15.4.14]{sea}.
+\end{proof}
+
+\section{Hypercomplex manifolds}
+\label{section-hypercomplex-manifolds}
+
+\begin{exercise}
+\label{exercise-SU2-invariant-forms}
+Prove that the subspace of $\text{SU}(2)$-invariant forms is finite dimensional.
+\end{exercise}
+
+\begin{proof}
+Idea: show that
+Hodge star $*\omega$ is in the $\text{SU}(2)$-orbit of $\omega$ and conclude
+that $\int \omega\wedge *\omega=0$, implying that $\|\omega\|=0$.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-closed-fundamental-forms-on-almost-hypercomplex-manifold}
+
+\end{exercise}
+
+\begin{proof}
+Idea: find a counterexample. The easiest should be a Kummer surface. It looks
+possible to find an almost hypercomplex structure on $\mathbb{C}^2$ passing to
+the torus and then to the $\mathbb{Z}_2$ quotient, but not clear what will
+happen after blowing up.
+\end{proof}
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
 \end{document}
-

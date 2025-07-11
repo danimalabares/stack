@@ -53,6 +53,94 @@ say ``$s$ is equal to $s'$ in $\mathcal{F}_x$'' to indicate
 that $s_x = s'_x$. Other authors use the terminology
 ``germ of $s$ at $x$''.
 
+\bigskip\noindent
+
+Here's my unexpected encounter with the definition of tensor product of sheaves.
+It's not the ``fiber is tensor product of fibers'' construction, but actually
+just some notion of ``change of ring'' sheaf that ends up being adjoint to
+some ``restriction'' sheaf. The setting is a mapping of presheaves {\it of
+rings} over a space $X$… (I think the usual definition is this one taking
+$\mathcal{O}_1$ as the other presheaf we want to tensor).
+
+Immediately after introducing this notion there's the definition of sheaf, then
+stalks, abelian sheaves, some other notions like an ``algebraic structure'' and
+then tensor product will be defined after sheafification---because the following
+definition is in general not a sheaf.
+
+Furthermore, I add that Vakil leaves it as an exercise to define the tensor
+product of two $\mathcal{O}_X$ modules (with a hint of defining the presheaf
+tensor product and sheafifying), which makes me think that after all it {\it is}
+just the intuitive definition. Before diving in, also by Vakil (Exercise 26.K):
+the stalk of the tensor product is the tensor product of the stalks.
+
+\medskip\noindent
+
+Suppose that $\mathcal{O}_1 \to \mathcal{O}_2$ is a
+morphism of presheaves of rings on $X$. In this case,
+if $\mathcal{F}$ is a presheaf of $\mathcal{O}_2$-modules
+then we can think of $\mathcal{F}$ as a presheaf of
+$\mathcal{O}_1$-modules by using the composition
+$$
+\mathcal{O}_1 \times \mathcal{F}
+\to
+\mathcal{O}_2 \times \mathcal{F}
+\to
+\mathcal{F}.
+$$
+We sometimes denote this by $\mathcal{F}_{\mathcal{O}_1}$
+to indicate the restriction of rings. We call this
+the {\it restriction of $\mathcal{F}$}. We obtain the
+restriction functor
+$$
+\textit{PMod}(\mathcal{O}_2)
+\longrightarrow
+\textit{PMod}(\mathcal{O}_1)
+$$
+
+\medskip\noindent
+On the other hand, given a presheaf of $\mathcal{O}_1$-modules
+$\mathcal{G}$
+we can construct a presheaf of $\mathcal{O}_2$-modules
+$\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G}$
+by the rule
+$$
+\left(\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G}\right)(U)
+=
+\mathcal{O}_2(U) \otimes_{\mathcal{O}_1(U)} \mathcal{G}(U)
+$$
+The index $p$ stands for ``presheaf'' and not ``point''.
+This presheaf is called the tensor product presheaf. We obtain
+the {\it change of rings} functor
+$$
+\textit{PMod}(\mathcal{O}_1)
+\longrightarrow
+\textit{PMod}(\mathcal{O}_2)
+$$
+
+\begin{lemma}
+\label{lemma-adjointness-tensor-restrict-presheaves}
+With $X$, $\mathcal{O}_1$, $\mathcal{O}_2$, $\mathcal{F}$ and
+$\mathcal{G}$ as above there exists a canonical bijection
+$$
+\Hom_{\mathcal{O}_1}(\mathcal{G}, \mathcal{F}_{\mathcal{O}_1})
+=
+\Hom_{\mathcal{O}_2}(
+\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G},
+\mathcal{F}
+)
+$$
+In other words, the restriction and change of rings functors
+are adjoint to each other.
+\end{lemma}
+
+\begin{proof}
+This follows from the fact that for a ring map
+$A \to B$ the restriction functor and the change
+of ring functor are adjoint to each other.
+\end{proof}
+
+
+
 \section{Locally ringed spaces}
 \label{section-locally-ringed-spaces}
 
@@ -218,6 +306,27 @@ Lemma \ref{lemma-invertible} we conclude that $\mathcal{L}$
 is locally free of rank $1$ by
 Lemma \ref{lemma-finite-presentation-stalk-free}.
 \end{proof}
+
+Now I introduce some of the properties of line bundles, Cartier divisors and so
+on.
+
+\begin{lemma}
+\label{lemma-Cartier-effective-and-invertible-sheaf}
+The ideal sheaf of an effective Cartier divisor (a subscheme locally defined by
+the vanishing of a single function) is an invertible sheaf.
+\end{lemma}
+
+\begin{proof}
+We just need to check that the generator of the ideal sheaf at any affine set is
+not a zerodivisor. This follows from the ideal sheaf exact sequence, which
+implies that multplication by the generator is injective:
+ $$
+\xymatrix{
+0\ar[r]&I\cong A\ar[r]&A\ar[r]&A/I\ar[r]&0
+}
+$$
+\end{proof}
+
 
 \section{Ampleness}
 \label{section-ampleness}
@@ -668,6 +777,72 @@ we conclude that (\ref{item-c-i-q}) implies (\ref{item-qc-i-gg}).
 This ends the proof of the proposition.
 \end{proof}
 
+The following proofs were used for Exercise 
+\ref{complex-geometry-exercise-L-ample-implies-Lotimes2-globally-generated}.
+
+\begin{lemma}
+\label{lemma-divisor-has-sections-implies-deg-geq-0}
+Let $D$ be a divisor on a complete, nonsingular curve $X$. 
+If  $h^0(D)\neq 0$ then $\text{deg}D\geq0$.
+\end{lemma}
+
+\begin{proof}
+If $D$ has sections, we can take the zero locus of any of its sections to
+produce an effective divisor linearly equivalent to $D$. Since degree depends
+only on linear equivalence and effective divisors have non negative degree.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-divisor-is-base-point-free-iff-dimension-condition}
+\begin{reference}
+\cite[IV, Proposition 3.1(a)]{hart}
+\end{reference}
+Let $D$ be a divisor on a complete, nonsingular curve $X$. 
+Then the complete linear system has no base
+points if and only if for every point $P\in X$,
+$$
+\dim|D-P|=\dim|D|-1
+$$
+\end{proposition}
+
+\begin{proof}
+To show that $D$ has no base points amounts to showing that not every section of
+$D$. That is, that the injective map $0\to H^{0}(D-p)\to H^{0}(D)$ is not 
+surjective.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-degree-of-divisor-geq-2g-implies-base-point-free}
+\begin{reference}
+\cite[IV, Corollary 3.2(a), Examples 1.3.3, 1.3.4]{hart}
+\end{reference}
+Let $D$ be a divisor on a curve $X$ of genus $g$. 
+If $\text{deg}D\geq 2g$, then
+$|D|$ has no base points.
+\end{lemma}
+
+\begin{proof}
+First we prove that $\text{deg}D\geq 2g$ implies that $D$ and $D-P$ are  
+{\it nonspecial}, i.e. that
+$h^0(K-D)=0=h^0(K-(D-P))$. Then we apply Riemann-Roch to both $D$ and $D-P$ and
+the fact that  $\text{deg}(D-P)=\text{deg}(D)-1$ to find that
+$\dim|D-P|=\dim|D|-1$ and apply Proposition 
+\ref{proposition-divisor-is-base-point-free-iff-dimension-condition}.
+
+To prove that $D$ is nonspecial first apply Riemann-Roch to $K$ to obtain that
+$\text{deg}K=2g-2$. Indeed, $h^0(0)=1$ and $h^0(K)=p_g$ by Serre duality on
+$H^1(\mathcal{O}_X)$ recalling definition of genus as $h^1(\mathcal{O}_X)$. 
+Then apply Riemann-Roch to both $D$ and  $K-D$ to prove
+that $\text{deg}D>2g-2$ implies $\text{deg}(K-D)<0$; start with
+$$
+h^0(K-D)-h^0(K-(K-D))=-(h^0(D)-h^0(K-D))
+$$
+An analogous result will be valid for $D-P$ since its degree is also greater
+than $2g-2$.
+
+Then apply Lemma
+\ref{lemma-divisor-has-sections-implies-deg-geq-0}.
+\end{proof}
 
 \section{Closed immersions of locally ringed spaces}
 \label{section-closed-immersion}
@@ -1134,10 +1309,137 @@ Finally, condition (3) of the lemma follows from
 Lemma \ref{lemma-cech-cohomology-quasi-coherent-trivial}.
 \end{proof}
 
-\section{Curves}
-\label{section-curves}
+\section{Hilbert polynomial}
+\label{section-Hilbert-polynomial}
 
+The fact that $M$ is finitely generated is what makes the following two
+definitions make sense.
 
+\begin{definition}
+\label{definition-Hilbert-function}
+The {\it Hilbert function} of a finitely generated graded $S=k[x_0,\ldots,x_r]$ 
+-module $M$ is
+$$
+H_M(d)=\dim_kM_d
+$$
+\end{definition}
+
+\begin{definition}
+\label{definition-sysygy}
+Define $F_0$ to be the free $S$-module on the generators of $M$. Elements in the
+ kernel $M_1$ of the inclusion are called {\it sysygies}. By Hilbert's basis
+theorem, $M_1$ is also finitely generated, so we may choose a set of generators
+and repeat this process.
+\end{definition}
+
+\begin{theorem}[Hilbert Syzygy Theorem]
+\label{theorem-Hilbert-syzygy}
+\begin{reference}
+\cite[Theorem 1.1]{sys}
+\end{reference}
+Any finitely generated $S$-module $M$ has a finite graded free resolution
+$$
+\xymatrix{
+0\ar[r]&F_m\ar[r]^{\varphi_m}&\ar[r]&F_{m-q}\ar[r]&\cdots\ar[r]&
+F_1\ar[r]^{\varphi_1}&F_0
+}
+$$
+Moreover, we may take $m\leq r+1$, the number of variables in $S$.
+\end{theorem}
+
+\begin{lemma}
+\label{lemma-Hilbert-function}
+Suppose that $S=k[x_0,\ldots,x_r]$ is a polynomial ring. If the graded
+$S$-module $M$ has finite free resolution
+$$
+\xymatrix{
+0\ar[r]&F_m\ar[r]^{\varphi_m}&F_{m-1}\ar\cdots[r]&F_1\ar[r]^{\varphi_1}&
+\ar[r]&F_0
+}
+$$
+with each $F_i$ a finitely generated free module,
+$F_i=\bigoplus_{j}S(-a_{i,j})$, then
+\begin{equation}
+\label{equation-Hilbert-function}
+H_M(d)=\sum_{i=0}(-1)^i\sum_{j}\binom{r+d-a_{i,j}}{r}
+\end{equation}
+\end{lemma}
+
+\begin{lemma}
+\label{lemma-Hilbert-function-becomes-polynomial}
+There is a polynomial $P_M(d)$ called the {\it Hilbert polynomial} such that, if
+$M$ has free resolution as above, then $P_M(d)=H_M(d)$ for 
+$d\geq\text{max}_{i,j}\{a_{i,j}-r\}$.
+\end{lemma}
+
+\begin{proof}
+When $d$ satisfies this bound then the binomial coefficients in Eq.
+\ref{equation-Hilbert-function} are polynomials of degree $r$ in $d$.
+\end{proof}
+
+\begin{theorem}[Hilbert-Serre]
+\label{theorem-Hilbert-Serre}
+\begin{reference}
+\cite[I, Theorem 7.5]{hart}
+\end{reference}
+Let $M$ be a finitely generated graded $S=k[x_0,\ldots,x_n]$. Then there exists
+a unique polynomial $p_M$ such that $p_M(\ell)=\dim S_\ell$ for large enough
+$\ell$.
+\end{theorem}
+
+\begin{definition}
+\label{definition-Hilbert-polynomial}
+\begin{reference}
+\cite[I, p. 52]{har}
+\end{reference}
+The polynomial $P_M$ of Hilbert-Serre Theorem \cite{Hilbert-Serre} is the {\it
+Hilbert polynomial} of the finitely generated $k[x_0,\ldots,x_n]$-module $M$.
+\end{definition}
+
+\begin{definition}
+\label{definition-degree-of-projective-variety}
+\begin{reference}
+\cite[p. 52]{hart}
+\end{reference}
+If $Y\subset \mathbb{P}^n$ is an algebraic set of dimension $r$, we define the
+{\it degree of $Y$} to be $r!$ times the leading coefficient of the Hilbert
+polynomial of the homogeneous coordinate ring $S(Y)$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-very-ample-bundle-self-intersection-is-degree-of-surface}
+\begin{reference}
+\cite[V, Exercise 1.2]{har}
+\end{reference}
+Let $H$ be a very ample divisor on the surface $X$, corresponding to a
+projective embedding $X\subseteq\mathbb{P}^N$. If we write the Hilbert
+polynomial of $X$ as $P(z)=\frac{1}{2}az^2+bz+c$, show that $a=H^2$,
+$b=\frac{1}{2}H^2+1-\pi$, where $\pi$ is the genus of a nonsingular curve
+representing $H$, and $c=1+p_a$.
+\end{exercise}
+
+\section{Nakai-Moishezon Criterion}
+\label{section-Nakai-Moishezon-criterion}
+
+\begin{theorem}[Nakai-Moishezon Criterion]
+\label{theorem-Nakai-Moishezon-criterion}
+\begin{reference}
+\cite[V, Theorem 1.10]{hart}
+\end{reference}
+A divisor $D$ on the surface $X$ is ample if and only if $D^2>0$ and $D.C>0$ for
+all irreducible curves $C$ in $X$.
+\end{theorem}
+
+\begin{proof}
+The direct implication is easy: since $D$ is ample,  $mD$ is very ample for some
+$m$, so that $m^2D^2$ is the self-intersection number of $mD$. By exercise
+\ref{exercise-very-ample-bundle-self-intersection-is-degree-of-surface},
+ $D^2$ is the leading coefficient of the Hilbert polynomial of $X$ as a 
+subscheme of $\mathbb{P}^n$. This means that $D^2$ is twice the leading
+coefficient of the Hilbert polynomial of a projective variety for large enough
+$m$, so that it must be a positive number (it's the dimension of one of the
+graded components of the coordinate ring of the surface).
+\end{proof}
 
 \section{Fano varieties}
 \label{section-Fano-varieties}

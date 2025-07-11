@@ -202,8 +202,7 @@ matrix actually means left-handed, and accounts for chirality. Only left-handed
 fermions have weak interaction. Right-handed have electromagnetic interaction,
 gravitational interaction, but not weak interaction.
 
-\section{Neutrinos}
-\label{section-neutrinos}
+\medskip
 
 And then there's neutrinos. They have negative helicity (chirality). Being
 left-handed, mathematically, means to have helicity $-1$. I think this means
@@ -240,6 +239,36 @@ $$
 $$
 meaning: time doesn't pass! And this means the state of the particle cannot
 change.
+
+\section{Quantum surfaces}
+\label{section-quantum-surfaces}
+
+Consider $\varphi:\Sigma\hookrightarrow \mathbb{R}^n$ given by coordinate
+functions $x_1,\ldots,x_n$. Define the {\it classical Schild action} by
+$$
+S^{\text{cl}}_\alpha(x)=\int_\Sigma
+\omega\left[\sum_{i<j}\left\{x_i,x_j\right\}^2 \right]^\alpha
+$$
+Now let $\mathcal{H}$ be a finite-dimensional Hilbert space and $X_1,\ldots,X_n$ are
+observables, i.e., self-adjoint operators. Define the {\it quantum Schild
+action} by
+$$
+S_\alpha^q(X)=\text{tr}_{\mathcal{H}}\left(-\sum_{i<j}[X_i,X_j]^2\right)^\alpha
+$$
+Notice that if the $X_i$ commute then $S_\alpha^q$ vanishes. That is, just as
+the classical Schild functional measures areas, the quantum Schild functional
+is a measure of commutativity.
+
+\section{Stochastic thermodynamics}
+\label{section-stochastic-thermodynamics}
+
+Just to recall that there is an analogue of length functional given by some sort
+of information function $\iota$. It looks something like
+$$
+\ell(\tau)=\int_0^\tau \iota_x
+$$
+As I understand, the notion of information is somehow inversely proportional to
+entropy: zero entropy means you have all the information.
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
