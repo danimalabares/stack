@@ -1,0 +1,234 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Complex Analysis}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
+
+\tableofcontents
+
+\section{Cauchy-Riemann equations}
+\label{section-Cauchy-Riemann-equations}
+
+\begin{definition}
+\label{definition-holomorphic-function}
+A function $f:W\subset \mathbb{C} \to \mathbb{C}$ is {\it holomorphic} at $z_0
+\in U$ if
+$$
+\lim_{z\to z_0} \frac{f(z_0-z)-f(z_0)}{z-z_0}
+$$
+exists. This is equivalent to
+$$
+\lim_{h\to 0} \frac{f(z_0+h)-f(z_0)}{h}
+$$
+where $h$ is a complex parameter.
+\end{definition}
+
+\begin{theorem}
+\label{theorem-Cauchy-Riemann}
+Let $f:W\subset\mathbb{C}\to \mathbb{C}$ be a function. Let $z=x+iy$ coordinates
+in $\mathbb{C}$. Define $f:=u+iv$ and
+$z_0=x_0+iy_0 \in U$. $f$ is holomorphic at $z_0$ if and only if
+$$
+\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\qquad \frac{\partial v}{\partial x}=-\frac{\partial u}{\partial y}
+$$
+\end{theorem}
+
+\section{Integration}
+\label{section-integration}
+
+\begin{theorem}[Cauchy]
+\label{theorem-Cauchy}
+If $f(z)$ is analytic in an open disk $\Delta$, then
+\begin{equation}
+\label{equation-Cauchy-theorem}
+\int_\gamma f(z)dz=0
+\end{equation}
+for every closed curve $\gamma$ in $\Delta$.
+\end{theorem}
+
+\begin{proof}
+I prove this using Stokes theorem. The fact that $f$ is holomorphic says that
+$\overline{\partial}f=0$. In turn, $d=\partial+\overline{\partial}$, so that
+$df=\partial f$, which is a $(1,0)$-form (just as $\overline{\partial}$ maps
+functions to $(0,1)$-forms… (must justify…)). This makes $d(fdz)=df\wedge dz$ a
+$(2,0)$-form, but there are no such forms on $\mathbb{C}$ (because there are no
+holomorphic or antiholomorphic 2-forms on a complex dimension 1 space).
+\end{proof}
+
+\begin{theorem}
+\label{theorem-Cauchy-removable}
+Let $f$ be analytic in the region $\Delta'$ by omitting a finite number of
+points $\dseta_j$ from an open disk $\Delta$. If $f$ satisfies that
+\begin{equation}
+\label{equation-removable-singularity}
+\lim_{z\to\zeta_j} (z-\zeta_j)f(z)=0
+\end{equation}
+for all $j$, then Eq. \ref{equation-Cauchy-theorem} holds for any closed curve
+$\gamma$ in $\Delta'$.
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+It suffices to prove that Eq. \ref{equation-removable-singularity} implies that
+we can extend $f$ to a holomorphic function on all of $\Delta$ and apply Stokes
+as in Theorem \ref{theorem-Cauchy}. But that won't work: for that we need Cauchy
+integral formula, and that's why I'm here: to prove Cauchy integral formula.
+
+So I think it might be using logarithmic derivative. The limit above allows to
+write
+$$
+|f(z)|\leq \frac{\varepsilon}{|z-\zeta_j|}
+$$
+Then integrate. On the left we can bound the integral of $f$ after applying
+integral triangle inequality, and on the right we have logarithmic derivative of
+$z-\zeta_j$. This will be a fixed number (the index, see Definition
+\ref{definition-index}), so that we have effectively bounded the integral.
+\end{proof}
+
+\section{Cauchy integral formula}
+\label{section-Cauchy-integral-formula}
+
+\begin{slogan}
+The index of a curve about a point tells us how many times a curve winds about 
+the point.
+\end{slogan}
+
+\begin{lemma}
+\label{lemma-index-is-multiple-of-2pii}
+\begin{reference}
+\cite[Section 2.2, Lemma 1]{ahl}
+\end{reference}
+If the piecewise differentiable closed curve $\gamma$ does not pass through the
+point $a$, then the value of the integral
+$$
+\int_\gamma\frac{dz}{z-a}
+$$
+is a multple of $2\pi i$.
+\end{lemma}
+
+\begin{proof}
+We are tempted to simply write the integrand as the logarithmic derivative of
+the function $f(z)=z-a$. But this isn't quite right, we must be careful with the
+domain of the logarithm. But it is instructive to see the computation:
+$$
+\int_\gamma\frac{dz}{z-a}=\int_\gamma d \text{log}(z-a)=
+\int_\gamma d\text{log}|z-a|+i\int_\gamma d \text{arg}(z-a)
+$$
+If  $\gamma$ is closed then $\text{log}|z-a|$ would return to its initial value
+and $\text{arg}(z-a)$ increases or decreases by a multiple of $2\pi$.
+\end{proof}
+
+\begin{definition}
+\label{definition-index}
+The {\it index} of the point $a$ with respect to the closed curve $\gamma$ is
+\begin{equation}
+\label{equation-index}
+n(\gamma,a):=\frac{1}{2\pi i}\int_\gamma\frac{dz}{z-a}
+\end{equation}
+\end{definition}
+
+\begin{theorem}
+\label{theorem-Cauchy-integral-formula}
+\begin{reference}
+\cite[Section 2.2, Theorem 6]{ahl}
+\end{reference}
+Suppose that $f(z)$ is analytic in an open disk $\Delta$, and let $\gamma$ be a
+closed curve in $\Delta$. For any point not on $\gamma$,
+\begin{equation}
+\label{equation-Cauchy-formula-with-index}
+n(\gamma,a)f(a)=\frac{1}{2\pi i}\int_\gamma\frac{f(z)dz}{z-a}
+\end{equation}
+where $n(\gamma,a)$ is the index of $a$ with respect to $\gamma$.
+\end{theorem}
+
+\begin{proof}
+This is a simple application of Theorem \ref{theorem-Cauchy-removable} for the
+function
+$$
+F(z):=\frac{f(z)-f(a)}{z-a}
+$$
+Notice the limit condition holds, so that the integral vanishes!
+\end{proof}
+
+\section{Zeroes of a holomorphic function}
+\label{section-zeroes}
+
+\begin{lemma}
+\label{lemma-finite-Taylor-expansion}
+If $f$ is analytic in a connected open set $W\subset\mathbb{C}$ and $a \in W$,
+then we can write
+$$
+f(z)=f(a)+f'(a)(z-a)+\frac{f''(a)}{2!}(z-a)^2+\ldots
++\frac{f^{(n-1)}(a)}{(n-1)!}(z-a)^{n-1}+f_n(z)(z-a)^n
+$$
+for some function $f_n$ analytic on $W$.
+\end{lemma}
+
+\begin{theorem}
+\label{theorem-zeroes-are-isolated-and-have-finite-order}
+If $f:W\subset\mathbb{C}\to \mathbb{C}$ is a holomorphic function defined on an
+open set $W$ and $f(a)=0$ for some $a\in W$, and $f$ is not identically zero,
+then there is a disck $D_r(a)\subseteq W$ such that $f(z)\neq 0$ for $z \in
+D_r(a)\setminus\{a\}$ and a positive integer $m$ called the {\it order} or
+{\it multiplicity} of the zero $a$ such that  $f(z)=(z-a)^mh(z)$ for some
+holomorphic function $h$ that does not vanish at $a$. The order of a zero is
+equal to the smallest integer $m$ such that $f^{(m)}(a)\neq 0$.
+\end{theorem}
+
+\begin{proof}
+If $f$ is not identically zero, there must exist a first derivative $f^{
+(h)}(a)$ that is not zero, since otherwise $f$ would vanish identically in $W$.
+This follows from … 
+
+Then by Lemma \ref{lemma-finite-Taylor-expansion} we obtain that
+$f(z)=f_h(z-a)^n$.
+\end{proof}
+
+\section{Argument Principle}
+\label{section-argument-principle}
+
+\begin{theorem}[Argument Principle and Rouché theorem]
+\label{theorem-argument-principle-and-Rouche-theorem}
+\begin{reference}
+\cite[Chapter 5, Theorem 18]{ahl}
+\end{reference}
+If $f$ is meromorphic in $\Omega$ with zeros $a_j$ and $b_k$, then
+\begin{equation}
+\label{equation-argument-principle}
+\frac{1}{2\pi i}\int_\gamma\frac{f'(\zeta)}{f(\zeta)}d\zeta
+=\sum_{i}n(\gamma,a_i)-\sum_{k}n(\gamma,b_k)
+\end{equation}
+\end{theorem}
+
+\begin{lemma}[Rouché theorem]
+\label{lemma-Rouche-theorem}
+\begin{reference}
+\cite[Chapter 5, Corollary, p. 153]{ahl}
+\end{reference}
+Let $\gamma$ be homologous to zero in $\Omega$ and such that $n(\gamma,z)$ is
+either 0 or 1 for any point $z$ not on $\gamma$. Suppose that $f$ and $g$ are
+analytic in $\Omega$ and satisfy that $|f-g|<|f|$ on $\gamma$. Then $f$ and $g$
+have the same number of zeros enclosed by $\gamma$.
+\end{lemma}
+
+Compare with Misha's version
+
+\begin{theorem}[Rouché theorem]
+\label{theorem-Rouche-theorem-Mishas-version}
+Let $f_t$ be a family of holomorphic functions on a disk  $\Delta$, continuously
+depending on a parameter $t\in \mathbb{R}$ and non-zero everywhere on its
+boundary $\partial\Delta$. Prove that the number of zeros of $f_t$ in $\Delta$
+is constant.
+\end{theorem}
+
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+
