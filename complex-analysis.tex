@@ -45,10 +45,44 @@ $$
 \section{Integration}
 \label{section-integration}
 
+The complex integram may first be defined for a complex-valued function $f$
+defined on a real integral as
+$$
+\int_a^bf=\int_a^b u + i \int_a^b
+$$
+And then for curves as
+$$
+\int_\gamma f:=\int_a^b f(\gamma(t))\gamma'(t)dt
+$$
 A natural question is: what's the essential difference between complex and real
-analysis? What is the power behind Cauchy-Riemann equations? I think Stokes
-theorem will not hold for $C^1$ functions. Or is it only the fundamental theorem
-of line integrals?
+analysis? What is the power behind Cauchy-Riemann equations?
+
+Recall
+\begin{theorem}[Stokes]
+\label{theorem-Stokes}
+\begin{reference}
+\cite[Chapter 4, Theorem 1]{ahl}
+\end{reference}
+The line integral $\int_\gamma p dx +q dy$ defined in $\Omega$ depends on the
+end points of $\gamma$ if and only if there exists a function $U(x,y)$ in
+$\Omega$ with the partial derivatives $\partial U/\partial x=p$ and 
+$\partial U/\partial y=q$, that is, if $pdx +qdy$ is exact.
+\end{theorem}
+
+\begin{proof}
+Fundamental theorem of calculus.
+\end{proof}
+So, when computing a complex integral $\int_\gamma f$, we are interested in
+knowing when is the form $fdz$ exact. Which says that there is a function $F$
+such that $\partial_x F=f$ and $\partial_y F=if$. In fact, this is the same as
+asking that $F$ satisfies the Cauchy-Riemann equations (provided $f$ is
+continuous).
+
+Thus, the integral $\int_\gamma f$ for continuous $f$ depends only on the end
+points of $\gamma$ if and only if $f$ is the derivative of an analytic function
+in $\Omega$.
+
+\medskip\noindent
 
 The theory of complex integration has to do with homology. The following
 result does not hold for domains that are not simply connected:
@@ -294,6 +328,23 @@ $f(z)=f_h(z-a)^n$.
 
 \section{Argument Principle}
 \label{section-argument-principle}
+
+A simple version of the Argument Principle does not need Residue theorem:
+
+\begin{exercise}
+\label{exercise-argument-principle}
+Let $f$ be a holomorphic function on a disk, non-zero on $\partial \Delta$, and
+let $S_k(f):=\frac{1}{2\pi\sqrt{-1}}\int_{\partial\Delta}\frac{f'}{f}z^kdz$.
+Prove the $S_k(f)=\sum d_i\alpha_i^k$ where $\alpha_i$ are all zeroes of $f$ and
+$d_i$ their multiplicities.
+\end{exercise}
+
+\begin{proof}[Proof of something else]
+Either by Ahlfor's argument or by an idea of mine, using the ideas in the
+previous sections of this document it's easy to prove that the integral above,
+for $k=0$, gives the sum of the winding numbers…
+\end{proof}
+
 
 \begin{theorem}[Argument Principle]
 \label{theorem-argument-principle-and-Rouche-theorem}
