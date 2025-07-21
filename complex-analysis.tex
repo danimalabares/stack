@@ -339,12 +339,23 @@ Prove the $S_k(f)=\sum d_i\alpha_i^k$ where $\alpha_i$ are all zeroes of $f$ and
 $d_i$ their multiplicities.
 \end{exercise}
 
-\begin{proof}[Proof of something else]
-Either by Ahlfor's argument or by an idea of mine, using the ideas in the
-previous sections of this document it's easy to prove that the integral above,
-for $k=0$, gives the sum of the winding numbers…
-\end{proof}
+\begin{proof}
+We use Lemma \ref{lemma-finite-Taylor-expansion} to write
+$f(z)=(z-z_1)h_1(z)$ where $z_1$ is a zero of $f$. Applying that to $h_1$ for
+another zero  $z_2$ of $f$ we obtain 
+$f(z)=(z-z_1)(z-z_2)\ldots(z-z_n)h(z)$. Computing the quotient we obtain
+$$
+\frac{f'(z)}{f(z)}=\frac{\text{derivative of
+$(z-z_1)\ldots(z-z_n)$}}{(z-z_1)\ldots(z-z_n)}+\frac{h'(z)}{h(z)}
+$$
+The right hand term will vanish upon integration since it is a holomorphic
+function (with no poles because $h(z)\neq 0$). The left-hand term will give a
+sum of $\frac{1}{z-z_i}$ upon differentiation. As it is, the result of
+integration is the sum of the orders of each zero i.e. the number of zeroes
+counted without multiplicity.
 
+Multiplying by $z^k$ yields the desired result by Cauchy formula.
+\end{proof}
 
 \begin{theorem}[Argument Principle]
 \label{theorem-argument-principle-and-Rouche-theorem}
@@ -379,6 +390,21 @@ depending on a parameter $t\in \mathbb{R}$ and non-zero everywhere on its
 boundary $\partial\Delta$. Prove that the number of zeros of $f_t$ in $\Delta$
 is constant.
 \end{theorem}
+
+\begin{proof}
+Consider the map $t\mapsto f_t\mapsto S(f_t)$, which is continuous by hypothesis
+and because $S$, being an integral, is continuous. Then we obtain a continuous
+map $\mathbb{R}\to\mathbb{R}$ with integer values, meaning it must be constant.
+\end{proof}
+
+A similar argument may be used to prove that a holomorphic function $F$ defined
+on $\Delta\times\Delta$ gives a holomorphic map 
+\begin{equation}
+\label{equation-zeros-on-polydisk}
+y_0\mapsto \int_{\partial\Delta}\frac{F'(x,y_0)}{F(x,y_0)}\phi(x)dx
+=\sum_id_i\phi(\alpha_i)
+\end{equation}
+for any holomorphic function $\phi:\Delta\to\mathbb{C}$.
 
 \section{Holomorphic functions in several variables}
 \label{section-holomorphic-functions-in-several-variables}
@@ -778,11 +804,83 @@ coefficients.
 \section{Weierstrass preparation theorem}
 \label{section-Weierstrass-preparation-theorem}
 
+We denote by $B_r(z_1,\ldots,z_{n-1})$ the ball of radius $r$ in
+$\mathbb{C}^{n-1}\subset\mathbb{C}^n$.
+
+\begin{exercise}
+\label{exercise-polydisks}
+Let $F$ be a holomorphic function on a neighbourhood of $0$ in $\mathbb{C}^n$,
+such that $\lim_{z_n\to 0} \frac{F(0,z_n)}{z_n^k}\neq 0,\infty$.
+Consider the projection map $\Pi:\mathbb{C}^n\to\mathbb{C}^{n-1}$ 
+$(z_1,\ldots,z_n)\mapsto (z_1,\ldots,z_{n-1})$.
+\begin{enumerate}
+\item Prove that for an appropriate pair $r,r'$, the resitriction of $F$ to the
+polydisk $\Delta(n-1,1):=B_r(z_1,\ldots,z_{n-1})\times\Delta_{r'}(z_n)$ nowhere
+vanishes on the set $\Pi^{-1}(\partial\Delta_{r'}(z_n))$.
+\item Prove that in this case the resitriction of $F$ to this polydisk has
+precisely $k$ zeroes $\alpha_1,\ldots,\alpha_k$ on each fiber of $\Pi$.
+\item Prove that $\sum_{i=1}^k \alpha_i^d$ is a holomorphic function on
+$B_r(z_1,\ldots,z_{n-1})$.
+\item Prove that any elementary symmetric polynomial on $\alpha_i$ gives a
+holomorphic function on $B_r(z_1,\ldots,z_{n-1})$.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\begin{enumerate}
+\item Suppose that for every $(r,r')$ there are points 
+$z_1\in B_r(z_1,\ldots,z_{n-1})$ and $z_n\in \partial\Delta_{r'}(z_n)$
+where $F$ vanishes. Then we obtain a convergent sequence where $F$
+vanishes, and by Identity Principle \ref{theorem-identity-several-variables} we
+conclude that $F$ mus be identically zero.
+\item This is just applying Argument principle, i.e. the integral 
+$\frac{1}{2\pi\sqrt{-1}}\int_{\partial \Delta}\frac{F'(y_0,z)}{F(y_0,z)}dz$ 
+equals the number of zeroes. Since it is a continuous (holomorphic?) function on
+$\Delta_y$ and integer valued, it must be constant.
+
+The condition that $\lim_{z_n\to0}\frac{F(0,z_n)}{z_n^k}\neq 0,\infty$ means
+that the fiber at 0 has a zero of order $k$:
+$$
+\frac{F(0,z_n)}{z_n^k}=\frac{F(0)}{z_n^k}+F'(0)\frac{z_n}{z_n^k}+\ldots
++\frac{F^{(k)}(0)}{k!}\frac{z_n^k}{z_n^k}+\ldots
+$$
+Thus, on other fibers we can have
+more zeroes, but without multiplicities they are always $k$.
+\item 
+\end{enumerate}
+\end{proof}
+
 \begin{definition}
 \label{definition-Weierstrass-polynomial}
-A {\it Weierstrass polynomial} is a polynomial whose coefficients are
-holomorphic functions.
+A {\it Weierstrass polynomial} is a function $f \in \mathcal{O}_{n-1}[z_n]$,
+that is, a function which is polynomial in the last variables with coefficients
+that are analytic functions on the first $n-1$ variables.
 \end{definition}
+
+\begin{exercise}
+\label{exercise-Weierstrass-preparation-theorem}
+Let $F$ be an analytic function in a neighbourhood of $0$ in $\mathbb{C}^n$,
+such that $\lim_{z_n\to 0}\neq 0,\infty$. Consider the projection map
+$\Pi:\mathbb{C}^n\to\mathbb{C}^{n-1}$, 
+$(z_1,\ldots,z_n)\mapsto(z_1,\ldots,z_{n-1})$, and let 
+$P(z_n)\in \mathcal{O}_{n_-1}[z_n]$ be the Weierstrass polynomial given by 
+$P(z_n)=\sum_{i=0}^ke_iz_n^i$, where $e_i$ are the elementary symmetric
+polynomials on the zeros $\alpha_1,\ldots,\alpha_k$ defined in the previous
+exercise. Prove that $F=P(z_n)u$, where $u$ is a germ of an invertible
+holomorphic function.
+\end{exercise}
+
+\begin{proof}
+For every $y_0$ we can write
+$$
+F(y_0,z_n)=(z_n-\alpha_1)\ldots(z_n-\alpha_n)h(z_n)
+$$
+where implicitly all $\alpha_i$ and $h$ depend on $y_0$. The product of 
+$(z_n-\alpha_i)$ is the definition of $P$. Varying $y_0$ we obtain the result.
+\end{proof}
+
+This argument works for every function that has a zero of order $k$ in
+$0\in\mathbb{C}^n$.
 
 \begin{theorem}[Weierstrass preparation theorem]
 \label{theorem-Weierstrass-preparation}
@@ -795,21 +893,25 @@ function $h$ with $h(0)\neq 0$ such that $f=gh$.
 \end{theorem}
 
 \begin{proof}
-
 Since $f$ is not identically zero near $0$, then there is a point that we may
 suppose is in the $z_n$-axis where $f$ is not zero.
 
 Consider the function of one complex variable $f(0,\ldots,0,w)$. Since it has a
-zero at $0$, is holomorphic, and is not identically zero, the zero $0$ must be
-of finite order $m$ (cf. Lemma
-\ref{complex-analysis-lemma-zeroes-are-isolated-and-have-finite-order}). Recall
-that $m$ is the smallest integer $m$ such that $f^{(m)}(0)$.
+zero at $0$ (why?), is holomorphic, and is not identically zero, the zero $0$
+must be of order $k$. We have shown that there is a choice of $r$ and  $r'$ such
+that for every $y_0 \in B_r(z_1,\ldots,z_{n-1})\times \Delta_{r'}(z_n)$ the
+number of zeroes of $F(y_0,z_n)$ is $k$.
 
-We want to apply the Argument Principle
-\ref{complex-analysis-theorem-argument-principle}.
+We also showed that the Newton polynomials $p_d=\sum_{i=1}^k\alpha_i^d$ are
+holomorphic functions of $y_0$. We also showed that the elementary symmetric
+polynomials can be expressed in terms of $p_i$, so that the former are also
+holomorphic functions of $y_0$.
 
-We want to count the number of zeros that $f(0,…,0,w)$.
-
+Then we define for every $y_0$ the elementary symmetric polynomial on
+$\alpha_i$, $P(z_n)=\prod_{i=1}^k(z_n-\alpha_i)$ where $\alpha_i$ are the roots 
+of $F(y_0,z_n)$. Since the elementary symmetric polynomials are holomorphic
+functions, it follows that $P$ is a Weierstrass polynomial. Varying $y_0$ we
+obtain the desired expression. 
 \end{proof}
 
 \begin{lemma}
