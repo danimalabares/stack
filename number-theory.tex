@@ -1,0 +1,48 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Number theory}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
+
+\tableofcontents
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\section{Unique factorization domains}
+\label{section-UFD}
+
+\begin{lemma}
+\label{lemma-Gauss}
+If $R$ is a UFD then $R[x]$ is a (U)FD.
+\end{lemma}
+
+\begin{proof}
+By induction on the degree of $f \in R[x]$. Write $f=cf'$ for
+$c=\text{gcd}(\text{coefficients of $f$})$. Then I claim that $f=cf'$ is a
+factorization of $f$ into irreducible elements. $f'$ is irreducible because it
+is linear and primitive; that is, writing $f'=c'f''$ is impossible because
+there is no way to factor a non-unit number from the coefficients of $f'$;
+indeed, in such case, $cc'$ would be a {\it larger} common factor of $f$. Here I
+define larger as follows using that $R$ is UFD: if $a=a_1\ldots a_k$ and
+$b=b_1\ldots b_\ell$ then the gdc is the product of all common factors of $a$
+and $b$.
+
+To conclude our induction now suppose that degree-$n$ elements have
+factorization and let $f$ be of degree $n+1$. If $f$ is irreducible we are done.
+Otherwise $f$ can be expressed as the product of two positive degree elements,
+each of which is expressed in a product of irreducibles.
+
+For now I won't prove uniqueness.
+\end{proof}
+
+
+
+\end{document}
+
