@@ -55,7 +55,10 @@ $$
 \int_\gamma f:=\int_a^b f(\gamma(t))\gamma'(t)dt
 $$
 A natural question is: what's the essential difference between complex and real
-analysis? What is the power behind Cauchy-Riemann equations?
+analysis? What is the power behind Cauchy-Riemann equations? The answer is in
+the proof of Cauchy integral theorem \ref{theorem-Cauchy}: Stokes theorem, which
+in dimension 2 is called Green's theorem, gives an integrand with Cauchy-Riemann
+equations.
 
 Recall
 \begin{theorem}[Stokes]
@@ -98,6 +101,15 @@ for every closed curve $\gamma$ in $\Delta$.
 \end{theorem}
 
 \begin{proof}
+Recall that Green's theorem says that
+$$
+\int_{\partial\Delta}(vdx+udy)=\int_\Delta d(vdx+udy)
+=\int_\Delta(\partial_xu-\partial_vy)\text{Vol}
+$$
+There's Cauchy-Riemann equations!
+\end{proof}
+
+\begin{proof}[Alternative idea]
 I prove this using Stokes theorem. The fact that $f$ is holomorphic says that
 $\overline{\partial}f=0$. In turn, $d=\partial+\overline{\partial}$, so that
 $df=\partial f$, which is a $(1,0)$-form (just as $\overline{\partial}$ maps
@@ -161,7 +173,7 @@ $$
 is a multple of $2\pi i$.
 \end{lemma}
 
-\begin{proof}
+\begin{proof}[Non-proof]
 We are tempted to simply write the integrand as the logarithmic derivative of
 the function $f(z)=z-a$. But this isn't quite right, we must be careful with the
 domain of the logarithm. But it is instructive to see the computation:
@@ -170,7 +182,13 @@ $$
 \int_\gamma d\text{log}|z-a|+i\int_\gamma d \text{arg}(z-a)
 $$
 If  $\gamma$ is closed then $\text{log}|z-a|$ would return to its initial value
-and $\text{arg}(z-a)$ increases or decreases by a multiple of $2\pi$.
+and $\text{arg}(z-a)$ increases or decreases by a multiple of $2\pi$. The actual
+proof by Ahlfors is different.
+
+Still, the proof for a circle about a point $z_0$ is also trivial: this is just
+the case of the integral $\int_{\partial\Delta}\frac{dz}{z-z_0}$, but the curve
+here is  $\gamma(t)=e^{it}+z_0$ so that when substituting in the parametrization
+we obtain $\int_0^{2\pi}\frac{ie^{it}}{(e^{it}+z_0)-z_0}=2\pi i$.
 \end{proof}
 
 \begin{definition}
@@ -214,7 +232,9 @@ and more generally
 $$
 f^{(n)}(z)=\frac{n!}{2\pi i}\int_\gamma \frac{f(\zeta)}{(\zeta-z)^{n+1}}
 $$
-A technical lemma is used by Ahlfors to confirm that indeed we can differentiate
+Though we can just say that integrals can be differentiating by splitting into
+real and imaginary part, and using the real derivative, a technical lemma is 
+used by Ahlfors to confirm that indeed we can differentiate
 under the integral sign.
 
 \begin{lemma}
@@ -225,7 +245,7 @@ under the integral sign.
 The importance of this result is that it shows that a holomorphic function has
 derivatives of all degrees.
 
-Let us state
+Then we state two interesting results:
 
 \begin{theorem}[Morera]
 \label{theorem-Morera}
@@ -275,7 +295,8 @@ $1/P(z)$ is bounded (use Riemann sphere argument).
 
 The following theorem is one of those examples where there should be no theorem.
 The proof if just looking at Cauchy integral formula and noticing that the
-function defined at the singularity via the integral around it is holomorphic.
+function defined at the singularity via the integral around it is holomorphic by
+Lemma \ref{lemma-technical-lemma}.
 
 \begin{theorem}[Removable singularity theorem]
 \label{theorem-removable-singularity}
@@ -285,11 +306,17 @@ $\Omega$ that coincides with $f$ on $\Omega'$ if and only if
 $\lim_{z \to z_0} (z-z_0)f(z)=0$. Such a function is unique.
 \end{theorem}
 
-Applying this fact any finite number of times to the function
+Consider the function
 $$
 F(z)=\frac{f(z)-f(z_0)}{z-z_0},
 $$
-which has a removable singularity at $z_0$, we obtain the first result of the 
+which has $\lim_{z\to z_0} (z-z_0)F(z)=0$. Then we apply the theorem and find
+that the holomorphic function extending $F$, say $f_1$, is actually $f'$ at
+$z_0$ by definition. This says $f(z)=f(z_0)+f_1(z)(z-z_0)$. Applying the same
+argument to $f_1$ yields $f_1(z)=f_1(z_0)+f_2(z)(z-z_0)$ for some function
+$f_2$ that is $f''$ at $z_0$.
+
+Repeating this process yields the first result of the 
 next section.
 
 \section{Zeroes of a holomorphic function}
@@ -664,9 +691,16 @@ types of polynomials in this ring.
 \begin{definition}
 \label{definition-symmetric-polynomial}
 Let $e_i \in \mathbb{Z}[\alpha_1,\ldots,\alpha_n]$ be the coefficients of the
-polynomial $\prod_{i=1}^n(1+\alpha_i)$. Then $e_i$ are called {\it elementary
+polynomial 
+$$
+t^n+e_1t^{n-1}+\ldots+e_{n-1}t+e_n:=\prod_{i=1}^n(1+\alpha_i)
+$$ Then $e_i$ are called {\it elementary
 symmetric polynomials} on $\alpha_i$.
 \end{definition}
+
+Notice that $e_1=\sum_i\alpha_i=p_1$ for the Newton polynomial $p_1$ defined as
+follows. Also $e_n=\prod_{i}\alpha_i$, and in general $e_k=\sum_{1\leq
+i_1<\ldots<i_k\leq n}\alpha_{i_1}\ldots\alpha_{i_k}$.
 
 \begin{definition}
 \label{definition-Newton-polynomial}
@@ -893,25 +927,50 @@ function $h$ with $h(0)\neq 0$ such that $f=gh$.
 \end{theorem}
 
 \begin{proof}
-Since $f$ is not identically zero near $0$, then there is a point that we may
-suppose is in the $z_n$-axis where $f$ is not zero.
+{\bf Step 0.} In practice we may not be given a function that is nonvanishing on
+the $z_n$-axis. However, by Exercise \ref{exercise-principal-parts} we can take
+a coordinate change that preserves the order of the zero.
 
-Consider the function of one complex variable $f(0,\ldots,0,w)$. Since it has a
-zero at $0$ (why?), is holomorphic, and is not identically zero, the zero $0$
-must be of order $k$. We have shown that there is a choice of $r$ and  $r'$ such
-that for every $y_0 \in B_r(z_1,\ldots,z_{n-1})\times \Delta_{r'}(z_n)$ the
-number of zeroes of $F(y_0,z_n)$ is $k$.
+{\bf Step 1} Then $f(0,z_n)$ is a holomorphic function with a zero on $0$. By
+the Taylor expansion we know that this zero must be isolated, so that there is a
+number $r_n>0$ such that $f(0,z_n)\neq 0$ for  $0<|z_n|\leq r_n$.
 
-We also showed that the Newton polynomials $p_d=\sum_{i=1}^k\alpha_i^d$ are
-holomorphic functions of $y_0$. We also showed that the elementary symmetric
-polynomials can be expressed in terms of $p_i$, so that the former are also
-holomorphic functions of $y_0$.
+Since the circle $|z_n|=r_n$ is compact and $f(0,z_n)\neq 0$ on this circle, we
+can fix $r'>0$ such that $f(z',z_n)\neq 0$ for $z'<r'$ and $|z_n|<
+r_n+\varepsilon$.
 
-Then we define for every $y_0$ the elementary symmetric polynomial on
-$\alpha_i$, $P(z_n)=\prod_{i=1}^k(z_n-\alpha_i)$ where $\alpha_i$ are the roots 
-of $F(y_0,z_n)$. Since the elementary symmetric polynomials are holomorphic
-functions, it follows that $P$ is a Weierstrass polynomial. Varying $y_0$ we
-obtain the desired expression. 
+{\bf Step 2 (Argument principle).} By Exercise
+\ref{exercise-argument-principle}, we know that $S_k$ counts the number of
+zeroes of $f(0,z_n)$ on $\Delta_{r_n}$.
+
+The map $S_k$ is holomorphic just because the
+complex derivative, defined as a limit, can go into the integral giving a
+well-defined complex number; thus we can differentiate infinitely many times and
+obtain a Taylor expansion.
+
+Also, $S_0(z')$ is constant because it is an integer (the number of zeroes at
+the fiber $z'$), so it's constant by continuity of $S_0$. Thus we have functions
+$w_1(z'),\ldots,w_s(z')$. Now we apply argument principle with multiplication by
+$z^k$ to obtain $S_k(z')=\sum w_i(z')^k$ (without multiplicities).
+
+{\bf Step 3 (Elementary symmetric polynomials.)} The Newton polynomials
+$p_k=\sum_{i=1}^sw_i^k$ are just $S_k$, so they are holomorphic functions
+of $z'$. We showed that the elementary symmetric polynomials $e_i$ can be
+expressed in terms of $p_i$, that is, $e_i\in\mathbb{Q}[p_1,\ldots,p_k]$, so
+that the $e_i$ are also holomorphic functions of $z'$. This makes 
+$g:=\prod_{i=1}^k(z_n-w_i(z'))$ a holomorphic function, i.e. a Weiestrass
+polynomial.
+
+{\bf Step 4.} Just apply Cauchy formula to figure out
+the final equation. That is, we can factor out the zeroes of a holomorphic
+function by Removable Singularity Theorem \ref{theorem-removable-singularity}.
+This literally yields
+$f(z',z_n)=\left(\prod_{i}z_n-w_i(z')\right)h_{z'}(z_n):=gh$.
+
+The classical way is to notice that the function $f/g$ is holomorphic in $z_n$
+because $f$ and $g$ have the same zeroes, and we write the integral formula to
+complete to a holomorphic function (but I think it should be enough with my
+argument).
 \end{proof}
 
 \begin{lemma}

@@ -1441,6 +1441,104 @@ $m$, so that it must be a positive number (it's the dimension of one of the
 graded components of the coordinate ring of the surface).
 \end{proof}
 
+\section{Continued fractions}
+\label{section-continued-fractions}
+
+Definition of HJ continued fraction. For $i>2$ they are in bijection with
+$\mathbb{Q}_{>1}$.
+
+The basic diagram of this course starts with a surface $S$ (eg. Hirzebruch
+surface $S=\mathbb{F}_m$). Blowing up leads to $X$, and contracting Wahl chains
+on $X$ leads to $W$, a normal projective surface that has only Wahl
+singularities. Then we construct $\mathbb{Q}$-Gorenstein smoothings $W_t$.
+(These  $\mathbb{Q}$-Gorenstein smoothings have Milnor number =0.)
+
+Continued fractions have minimal models:
+\begin{itemize}
+\item $[1,1]$ means a 0 curve,  $\mathbb{P}^1$.
+\item $[1]$ means a  $-1$ curve,  $\mathbb{P}^1$.
+\item For $\frac{m}{q}\in\mathbb{Q}_{>1}$, the continued fraction
+$[e_1,\ldots,e_r]$ means a chain, which is a sequence of lines that intersect
+transversally with $-e_1,\ldots,-e_r$. This is mapped to $\frac{1}{m}(1,q)$.
+\end{itemize}
+
+{\bf Third lecture.}
+
+Here's some slogans/recap:
+\begin{enumerate}
+\item The most important cyclic quotient singularities (c.q.s.) are Wahl
+$\frac{1}{n^2}(na-1)$. There is a model to deal with this kind o singularities
+using continued fractions. This is very silly but what I picked up is that ``you
+add a 2 in the end and add +1 to the first number'', so for example
+$[4]\rightsquigarrow[5,2]\rightsquigarrow[6,2,2]$. But on the second step the
+$[5,2]$ also goes to $[2,5,3]$ in a way I don't understand. This is called the
+Wahl algorithm.
+\item (See [KSB88]) There is a notion of $M$-resolution, which is a drawing of 
+several curves $\Gamma_i$ intersecting at points $P_i$ that may be Wahl 
+singularities or 
+smooth points with the key property that $\Gamma_i\cdot K\geq 0$. We have
+``toric boundary for $P_i$''. These $M$-resolutions are in 1-1 correspondence
+with smoothings of $\frac{1}{m}(1,q)$, and in turn in 1-1 correspondence with
+continued fractions $K\left(\frac{m}{m-q}\right)=\{k_1,\ldots,k_s]:
+1\leq k_i\leq b_i\;\forall i\}$ where $\frac{m}{m-q}=[b_1,\ldots,b_s]$.
+\end{enumerate}
+
+\medskip\noindent
+
+Today we consider the fibers to be $W_t=\mathbb{P}^2$ and
+try to find $W$. Set $m_1,m_2,m_3\in\mathbb{Z}_{>0}$. Define
+$$
+\mathbb{P}(m_1,m_2,m_3):=
+\mathbb{P}^2/(\mathbb{Z}/m_1\oplus\mathbb{Z}/m_2\oplus\mathbb{Z}/m_3)
+=\mathbb{C}^3\setminus\{0\}/(\lambda\in\mathbb{C}^*\lambda(x,y,z)
+=(\lambda^{m_1}x,\lambda^{m_2}y,\lambda^{m_3}z))
+$$
+For $\text{gdc}(d,m_i)=1$ we have
+$\mathbb{P}(dm_1,dm_2,dm_3)=\mathbb{P}(m_1,m_2,m_3)$.
+
+For a triangle $xyz=0$ given by three lines $\Gamma_i$ we have cqs singularities
+of the kind $\frac{1}{m_1}(m_2,m_3)$. In this case
+$K_W=-(m_1+m_2+m_3)\xi=-\Gamma_1-\Gamma_2-\Gamma_3$ for
+$\xi^2=\frac{1}{m_1m_2m_3}$, and $\text{Cl}(W)=\mathbb{Z}\left<\xi\right>$.
+Since these are Wahl singularities, we must have that the $m_i$ are squares,
+i.e. $m_i=n_i^2$ for some $n_i$. We must have:
+\begin{align*}
+K_W^2=(m_1+m_2+m_3)^2\frac{1}{m_1m_2m_3}=9&=K^2_{\mathbb{P}^2}\\
+\implies (n_1^2+n_2^2+n_3^2)-9n_1^2n_2^2n_3^2&=0\\
+\implies (n_1^2+n_2^2+n_3^2-2n_1n_2n_3)\cdot(\text{positive factor})&=0\\
+\implies n_1^2+n_2^2+n_3^2&=3n_1n_2n_3
+\end{align*}
+The last equation is known as {\it Markov equation}.
+
+\begin{example}
+\label{example-Hirzebruch-surface}
+For $\mathbb{P}(1,1,4)=W$, a triangle with a Wahl singularity
+$\frac{1}{4}(1,1)$ in one vertex. Blowing up gives the Hirzebruch surface
+$\mathbb{F}_4$, so that a minimal resolution is the triangle. Compare with
+[\href{https://arxiv.org/pdf/2504.19929}{Hacking-Prokhorov-2010}]. This example
+satisfies the Markov equation for $n_1=1,n_2=1,n_3=2$.
+\end{example}
+
+\begin{theorem}[[HP2010]]
+\label{theorem-HP2010}
+If $\mathbb{P}^2\rightsquigarrow W$ with only log terminal singularities then
+$W$ is a partial $\mathbb{Q}$-Gorenstein smoothing of $\mathbb{P}(a^2,b^2,c^2)$
+where $a^2+b^2+c^2=3abc$.
+\end{theorem}
+By the Markov equation condition all the singularities must be Wahl. The triple
+$(a,b,c)$ is called {\it Markov triple}. Any permutation of a Markov triple is
+another Markov triple. Is $(a,b,c)$ is Markov then so is $(a,b,3ab-c)$. This
+allows to construct a {\it Markov tree}. There is so-called Markov conjecture
+(due to Frobenius) still unsolved.
+
+\section{Stanley Reisner}
+\label{section-}
+
+Antes de introduzir matroides, Os conjuntos $f_s$, que são os conjuntos de
+tamanho $s$, eles tem um significado geométrico?
+
+
+
 \section{Fano varieties}
 \label{section-Fano-varieties}
 
@@ -1472,5 +1570,6 @@ Show that  $\text{Pic}(X)\cong H^{2}(X,\mathbb{Z})$ holds for Fano varieties.
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
+
 
 \end{document}

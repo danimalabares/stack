@@ -259,6 +259,105 @@ theorem it is $H^{1,1}(M,\mathbb{R})$ which contains real 2-forms. Then
 $H^{1}(K(-p))$ cannot be zero because it surjects onto a nontrivial space.
 \end{proof}
 
+\section{Belyi functions}
+\label{section-Belyi-functions}
+
+To understand Belyi functions we start by considering meromorphic functions
+$f:X\to \mathbb{C}P^{1}$ as ramified coverings:
+
+\begin{proposition}
+\label{proposition-meromorphic-functions-are-ramified-coverings}
+\begin{reference}
+\cite[Proposition 1.8.9]{lando}
+\end{reference}
+A nonconstant meromorphic function $f:X\to\mathbb{C}P^{1}$, considered as a
+mapping of the underlying topological space, is a ramified covering of the
+sphere $S^2\cong\mathbb{C}P^{1}$.
+\end{proposition}
+
+Be careful: isomorphic complex ramified coverings produce isomorphic Riemann
+surfaces (by definition), but the converse is certainly false. The same Riemann
+surface may be obtained by many different and pairwise non-isomorphic coverings.
+Just consider different meromorphic functions on the same surface.
+
+\medskip\noindent
+
+The following paragraph is an approximate quote:
+
+Proposition \ref{proposition-meromorphic-functions-are-ramified-coverings}, and
+the fact that every Riemann surface admits a meromorphic function (which can be
+seen by Riemann-Roch, cf. \cite[Fact 1.8.6]{lando}) show that every Riemann
+surface may be represented by a ramified covering of $\mathbb{C}P^{1}$. The
+following theorem, which affirms the converse statement, is one of the most
+fundamantal:
+
+\begin{theorem}[Riemann's existence theorem]
+\label{theorem-Riemann-existence}
+\begin{reference}
+\cite[Theorem 1.8.14]{lando}
+\end{reference}
+Suppose a base star is fixed in $\mathbb{C}P^{1}$, and the squence of its
+terminal vertices is $R=[y_1,\ldots,y_k]$. Then for any constellation
+$[g_1,\ldots,g_k]$, $g_i \in S_n$, there exists a compact Riemann surface $X$
+and a meromorphic function $f:X \to \mathbb{C}P^{1}$ such that $y_1,\ldots,y_k$
+are the critical values of $f$ (i.e. $f'$ vanishes at these points) and
+$g_1,\ldots,g_k$ are the corresponding monodromy permutations. The ramified
+covering $f:X\to \mathbb{C}P^{1}$ is independent of the choice of the base star
+in a given homotopy type and is unique up to isomorphism.
+\end{theorem}
+
+\begin{proof}
+The heart of this theorem is the correspondence between constellations, which
+are abstract sets of permutations whose product is the identity and act
+transitively on the set of $n$ elements (and are also maps on surfaces), and the
+monodromy group of a covering. Indeed: for a regular point $y_0$ of a degree-$n$
+convering we get an action of the symmetric group of $n$ elements on the fiber
+$E:=\pi^{-1}(y_0)$; taking each generator of the fundamental group to be any of
+these permutations we obtain a constallation (cf \cite[Construction
+1.2.13]{lando}.
+
+The other way around, \cite[Proposition 1.2.15]{lando}, we can define a group
+homomorphism $\pi(S^2\setminus\{p_i\},y_0)\to G$ where $G$ is the group of the
+constellation; the fact that the it is indeed a group homomorphism is due to the
+fact that both sets of generators satisfy the property that their product is
+identity. Then for any point $x$ in the set of $n$ elements we can consider its
+stabilizer. This corresponds to a subgroup $M_x$ of
+$\pi(S^2\setminus\{p_i\},y_0)$. Such a subgroup determines a finite-sheeted
+covering of $S^2\setminus\{p_i\}$. The covering is connected since $G$ acts
+transitively on $E$. {\it Habemus superficie}.
+\end{proof}
+
+The surprising result by Belyi is that for the case $k=3$ it will happen that
+the corresponding Riemann surfaces will be defined over $\overline{\mathbb{Q}}$,
+the field of algebraic numbers. Therefore, the absolut Galois group
+$\text{Aut}(\overline{\mathbb{Q}}|\mathbb{Q})$ (that is, the automorphism group
+of the field $\overline{\mathbb{Q}}$) acts on them, and thus on
+$3$-constellations as well. The mysterious nature of the group and the
+simplicity of the objects on which it acts, gave rise to the following term
+which may look a bit strange: {\it theory of dessins d'enfants}.
+
+\begin{definition}
+\label{definition-Riemann-surface-defined-over-field}
+\begin{reference}
+\cite[Definition 1.8.8]{lando}
+\end{reference}
+If it is possible to realize a Riemann surface $X$ by a system of equations with
+coefficients in a subfield $K\subseteq\mathbb{C}$, then we say that $X$ is {\it
+defined over $K$}.
+\end{definition}
+
+\begin{theorem}[Belyi]
+\label{theorem-Belyi}
+\begin{reference}
+\cite[Theorem 2.1.1]{lando}
+\end{reference}
+A Riemann surface $X$ admits a model over the field $\overline{ \mathbb{Q}}$ of
+algebraic numbers if and only if there exists a covering $X\to \overline{
+\mathbb{C}}$ unramified outside $\{0,1,\infty\}$. In such a case, the
+meromorphic function $f$ can also be chosen in such a way that it will be
+defined over $\overline{\mathbb{Q}}$.
+\end{theorem}
+
 \section{Analytic varieties}
 \label{section-analytic-varieties}
 
@@ -293,6 +392,33 @@ irreducible in $\mathcal{O}_p$.
 If $f=gh$ and neither of $g$ and $h$ are units and they are distinct, we could 
 express $V$ as the union of two distinct varieties: $V(g)$ and $V(h)$. (If one 
 of them, was a unit then the vanishing set would be all of $U$.)
+\end{proof}
+
+\begin{definition}
+\label{definition-germ-of-set}
+\begin{reference}
+\cite[Definition 1.1.21]{huc}
+\end{reference}
+The {\it germ} of a set in the origin $0\in \mathbb{C}^n$ is given by a subset
+$X \subset \mathbb{C}^n$. To subsets $X,Y$ define the same germ if there exists
+an open neighbourhood $0 \in U\subset \mathbb{C}^n$ with $U\cap X=U\cap Y$. A
+germ is called {\it analytic} if there are functions $f_1,\ldots,f_k\in
+\mathcal{O}_n$ such that $X$ and $Z(f_1,\ldots,f_k)$ define the same germ.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-analytic-germ-is-irreducible-iff-prime-ideal}
+\cite[Lemma 1.1.28]{huc}
+An analytic germ $X$ is irreducible if and only iff $I(X)$ is a prime ideal.
+\end{lemma}
+
+\begin{proof}
+If $X$ is irreducible let $fg\in I(X)$. Then $V(I(X))\subset V(f)\cup V(g)$. But
+since $X$ is irreducible we cannot express $X \cap (V(f) \cup  V(g))$ unless
+either of $V(f)$ or $V(g)$ are trivial or equal to $X \cap V(f)$ or $X \cap
+V(g)$.
+
+The converse I won't need right now.
 \end{proof}
 
 \section{Analytic subvarieties}
@@ -339,7 +465,127 @@ prime and contained in $I$, so that $I$ is principal. This shows that
 $\mathcal{I}_M$ is locally principal, i.e. it is a line bundle.
 \end{proof}
 
-In the case of complex manifolds and analytic subvarieties, we have
+In the case of complex manifolds and analytic subvarieties, we can prove this
+completely via Weierstrass preparation theorem. We only need the following other
+results:
+
+\begin{lemma}
+\label{lemma-ideal-of-irreducible-hypersurface-is-height-1-prime}
+The ideal of an irreducible analytic hypersurface is a height-1 prime ideal.
+\end{lemma}
+
+\begin{proof}
+The fact that it is prime comes from the fact that $X$ is irreducible. Now
+suppose that $0 \subset \mathfrak{p} \subset I$ with strict contentions. Then
+$V(\mathfrak{p})$ is an analytic variety that contains $X$. Since $X$ is
+codimension 1, we have that $V(\mathfrak{p})$ coincides with $X$ at regular
+points. In a neighbourhood of a regular point we thus have 
+$\mathfrak{p}=I(V(\mathfrak{p}))=I$ by the Nullstellensatz.
+\end{proof}
+
+
+\begin{lemma}
+\label{lemma-Gauss-UFD}
+If $R$ is a UFD, then $R[x]$ is a UFD.
+\end{lemma}
+
+I will not prove the complete statement. The only fact I need from this
+reasoning is that every element of $\mathcal{O}_n$ has an irreducible factor.
+
+\begin{lemma}
+\label{lemma-polynomials-over-UFD-have-irreducible-factor}
+If $R$ is a UFD then every element in $R[x]$ has an irreducible factor.
+\end{lemma}
+
+\begin{proof}
+Let $f\in R[x]$. Consider the field of fractions $F$ of $R$. Then $f$ has a
+factorization into irreducibles in $F[x]$: if $f$
+is linear it is irreducible since every constant is a unit; if $f$ has higher
+degree we use induction (suppose $f=gh$ and decompose $g$ and $h$ into
+irreducibles). Thus we can write $f=g_1\ldots g_r$.
+
+We may also write $g_1=cg_1'$ where $c$ is the gcd of the coefficients of $g_1$.
+(Apparently not in every ring we can pick a gdc, but at least in $R$ we can
+since it is a UFD; just write all elements as products of irreducibles and pick
+the greatest in common.)
+
+Now observe that an irreducible element of $F[x]$ that is also primitive (i.e.
+the gdc of its coefficients is 1) must be irreducible in $R[x]$. Indeed, if
+$g_1=pq$ for $p,q \in R[x]$, since $g_1$ is irreducible in $F[x]$ and  $p,q \in
+F[x]$ we must have that, say, $p \in F$. But since $p \in R[x]$, in fact $p\in
+R$. Thus $p$ is a common divisor of the coefficients of $g_1$, a contradiction
+since $g_1$ is primitive.
+\end{proof}
+
+The following statement is enough to show that the ideal sheaf of a
+codimension-1 subvariety is locally principal:
+
+\begin{lemma}
+\label{lemma-}
+Any element of $\mathcal{O}_n$ has an irreducible factor.
+\end{lemma}
+
+\begin{proof}
+By induction on $n$. For $n=0$ it is trivial. Suppose that any element of
+$\mathcal{O}_{n-1}$ has an irreducible factor.
+
+By Weierstrass Preparation theorem \ref{theorem-Weierstrass-preparation} we may
+write $f=gh$ for $g\in \mathcal{O}_{n-1}[z_n]$ and $h$ not vanishing at zero. By
+Lemma \ref{lemma-polynomials-over-UFD-have-irreducible-factor}, $g$ has an
+irreducible factor $g_1$. Then all we have to do is show that $g_1$ is
+irreducible in $\mathcal{O}_n$.
+
+To obtain a contradiction suppose that $g_1$ is reducible in
+$\mathcal{O}_n$. Then we can write $g_1=h_1h_2$ for $h_i$ not units in
+$\mathcal{O}_n$, that is, $h_i$ have a zero at zero. Then we may apply
+Weierstrass Preparation theorem to both $h_i$ and obtain $h_i=u_ip_i$. Then we
+can write $g_1u_1^{-1}u_2^{-1}=p_1p_2$. This says that $g_1$ divides $p_1p_2$ in
+$\mathcal{O}_n$.
+
+Since the proof of Weierstrass polynomials uses the elementary symmetric
+polynomials as coefficients, which are monic as elements of
+$\mathcal{O}_{n-1}[z_n]$, e can apply highschool division algorithm in
+$\mathcal{O}_{n-1}[z_n]$. Indeed, we multiply $p_1p_2$ by a polynomial $q$ so
+that $q(p_1p_2)$ has the same degree as $g_1$, thus obtaining a reminder of
+smaller degree. That is, we obtain $g_1=q(p_1p_2)+r$.
+
+When we restrict these functions to the $(0,z_n)$ axis we see that $r$ must
+vanish in all the roots of $g_1$ and $p_1p_2$. But $r$ must be a polynomial in
+$z_n$ of degree smaller than $g_1$ by division algorithm, so it can only have so
+many zeroes if it vanishes completely. 
+This shows that $g_1=q(p_1p_2)$ in $\mathcal{O}_{n-1}[z_n]$, none of which are
+units, that is, $g_1$ is reducible in $\mathcal{O}_{n-1}[z_n]$, which is a
+contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-stalk-is-UFD}
+The stalk $\mathcal{O}_n:=\mathcal{O}_{\mathbb{C}^n,0}$ is a UFD.
+\end{lemma}
+
+\begin{proof}
+By induction on $n$. For $n=0$ it is trivial. Suppose $\mathcal{O}_{n-1}$ is a
+UFD. Then by Gauss' Lemma \ref{lemma-Gauss}, $\mathcal{O}_{n-1}[w]$ is a UFD
+too. Thus we may express any Weierstrass polynomial $g$ as a product of
+irreducible elements (uniquely up to multiplication by units).
+
+Let $f\in \mathcal{O}_n$. We want to express $f$ as a product of (unique up to
+multiplication by units) of irreducible elements. By Weierstrass Preparation
+Theorem \ref{theorem-Weierstrass-preparation} there is a Weierstrass polynomial
+$g\in\mathcal{O}_n[w]$ and a holomorphic function not vanishing on $0$ (i.e. a
+unit of $\mathcal{O}_n$) such that $f=gh$. By the previous remark $g$ is
+factored uniquely up to multiplication by units as $g=g_1\ldots g_m$. This shows
+existence of the factorization.
+
+To prove uniqueness suppose that $f=f_1\ldots f_k$ for some irreducible
+$f_1,\ldots,f_k\in\mathcal{O}_n$. Since $f$ does not vanish in the $w$ axis,
+neither can each $f_i$, so that we may decompose each of them as  $f_i=g_i'h_i$
+by Weierstrass Preparation Theorem. Since $f_i$ is irreducible, it follows that
+$g_i'$ is irreducible. Then we have that $$ f=gh=\prod g_i'\prod h_i $$ so by
+uniqueness in Weierstrass Preparation Theorem we conclude that $g=\prod g_i'$,
+and by uniqueness from the fact that  $\mathcal{O}_n[w]$ is a UFD we conclude
+that $g$ coincides with $\prod g_i'$ up to multiplication by units.
+\end{proof}
 
 \begin{lemma}
 \label{lemma-ideal-sheaf-is-line-bundle-analytic-varieties}
