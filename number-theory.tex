@@ -42,7 +42,18 @@ each of which is expressed in a product of irreducibles.
 For now I won't prove uniqueness.
 \end{proof}
 
+\begin{lemma}
+\label{lemma-in-UFD-irreducible-elements-generate-prime-ideals}
+In a UFD, irreducible elements generate prime ideals.
+\end{lemma}
 
+\begin{proof}
+Let $f$ be irreducible. Suppose that $pq\in(f)$. Then $pq=fg$ for some  $g\in
+R$. Then $p_1\ldots p_kq_1\ldots q_\ell=fg_1\ldots g_m$. But since $f$ is
+irreducible and factorization is unique we conclude that $f$ must be one of the
+ $p_i$ or one of the $q_i$. Then $f$ divides $p$ or $q$, i.e. either $p\in(f)$
+or $q\in(f)$.
+\end{proof}
 
 \end{document}
 
