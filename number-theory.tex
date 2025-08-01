@@ -15,15 +15,241 @@
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
-\section{Unique factorization domains}
+\section{Unique factorization domains and the Gauss lemma}
 \label{section-UFD}
 
+The point of the Gauss lemma is that a polynomial $f$ over the field of fractions
+$F$ of a UFD $R$ can be expressed as a rational number called the content of $f$
+times a polynomial over $R$ called the primitive part. The point of the Gauss
+lemma is that it allows us to make sure that the content will in fact be an
+element of $R$.
+
+\medskip\noindent
 \begin{lemma}
-\label{lemma-Gauss}
-If $R$ is a UFD then $R[x]$ is a (U)FD.
+\label{lemma-polynomials-over-fields-are-UFD}
+If $F$ is a field then $F[x]$ is a UFD.
 \end{lemma}
 
 \begin{proof}
+The existence of the factorization is an easy induction on the degree of $f\in
+R[x]$. If $f$ has degree zero, then we are done. If $f$ has positive degree and
+is irreducible, we are done. If $f$ has positive degree and it is reducible,
+i.e. $f=gh$, then both $g$ and $h$ have strictly smaller degree and we may apply
+induction hypothesis to obtain a decomposition of each factor into irreducible
+elements.
+
+To prove uniqueness suppose that $f$ has two factorizations in irreducible
+elements  $f_1\ldots f_k=f_1'\ldots f_\ell'$. Then $f_1|f_1'\ldots f_\ell'$, so
+that it must divide some $f_i'$ 
+\end{proof}
+
+The true definition of content is the following
+
+\begin{definition}
+\label{definition-order-of-fraction}
+Let $a \in F$. If $p \in R$ is irreducible, define the {\it order} of $a$ at $p$
+to be the number $r$ such that $a=p^rb$ for some fraction $b$ that does not have
+$p$ as factor in the numerator nor in the denominator.
+\end{definition}
+
+We can pick the fraction $a$ so that its denominator and numerator have no prime
+factor in common, making the order unique by the uniqueness of the factorization
+in $R$.
+
+\begin{definition}
+\label{definition-content}
+\begin{reference}
+\cite[p. 181]{Lang-algebra}
+\end{reference}
+The {\it  order of $f\in R[x]$ at $p$} is the minimium order of
+$p$ in any of the coefficients of $f$. The {\it content} of $f$ is the product
+of every irreducible factor $p$ of $f$ raised to its order.
+\end{definition}
+
+As explained in the beginning of this section, the point of the Gauss
+lemma is that it will allow us to make sure that the content of $f$ is an
+element of $R$.
+
+\begin{lemma}[True Gauss lemma]
+\label{lemma-true-Gauss}
+\begin{reference}
+\cite{Chapter 4, Theorem 2.1}{Lang-algebra}
+\end{reference}
+Let $R$ be a UFD and $F$ its fraction field. Let $f,g\in F[x]$. Then the
+$\text{cont}(fg)=\text{cont}(f)\text{cont}(g)$.
+\end{lemma}
+
+This clearly implies that the product of two primitive polynomials being
+primitive, and the converse I think is true as well.
+
+\begin{lemma}
+\label{lemma-R-UFD-implies-R[x]-UFD}
+\begin{reference}
+\cite[Chapter 4, Theorem 2.3]{Lang-algebra}
+\end{reference}
+If $R$ is a UFD then $R[x]$ is a UFD.
+\end{lemma}
+
+\begin{proof}
+Let $f\in R[x]$ be distinct from 0. Since $F[x]$ is UFD we can write
+$f=f_1\ldots f_k$. Taking primitive part on both sides and using Gauss lemma we
+get $c\text{pp}(f)=c \text{pp}(f_1)\ldots\text{pp}(f_k)$. The importance of
+Gauss lemma is that $c \in R$, so that we may split it as a product of
+irreducibles of $R$, which are irreducibles of $R[x]$ as well. The primitive
+parts of the factors are also irreducible in $R[x]$, for if $c_i$ is the content
+of $f_i$ we observe that $c_i\text{pp}(f_i)=f_i$ is irreducible in $F[x]$ and
+thus we couldn't factor $\text{pp}(f_i)$ into two nonunit elements of $R[x]$.
+
+The uniqueness of the factorization follows from the uniqueness of the
+factorization in $F[x]$, for another factorization in $R[x]$ would be a
+factorization in $F[x]$, making the number of factors the same and equality up
+to a rational number. After taking primitive part we see that the rational
+number must be $1$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-in-UFD-irreducible-elements-generate-prime-ideals}
+In a UFD, irreducible elements generate prime ideals.
+\end{lemma}
+
+\begin{proof}
+Let $f$ be irreducible. Suppose that $pq\in(f)$. Then $pq=fg$ for some  $g\in
+R$. Then $p_1\ldots p_kq_1\ldots q_\ell=fg_1\ldots g_m$. But since $f$ is
+irreducible and factorization is unique we conclude that $f$ must be one of the
+ $p_i$ or one of the $q_i$. Then $f$ divides $p$ or $q$, i.e. either $p\in(f)$
+or $q\in(f)$.
+\end{proof}
+
+\section{Unique factorization domains (alternative approach)}
+\label{section-UFD-alternative}
+
+
+Following is the universal definition of lcm and gdc:
+
+\begin{definition}
+\label{definition-lcm-and-gdc-universal}
+A {\it least common multiple} of $a,b \in R$ is an element $d$ such that if for
+every $c\in R$, if $a,b|c$ then $d|c$.
+
+A {\it greatest common divisor} of $a,b \in R$ is an element $d$ such that
+for every  $c \in R$,  if $c|a,b$ then  $c|d$.
+\end{definition}
+
+But it looks like it shall be easier (and most surely equivalent) to define them
+as follows:
+
+\begin{definition}
+\label{definition-lcm-and-gdc-polynomial}
+A {\it least common multiple} of $f,g \in R[x]$ is the monic polynomial $d$ of
+smallest degree such that $f,g|d$.
+
+A {\it greatest common divisor} of $f,g\in R[x]$ is the monic polynomial $d$ of
+greatest degree such that $d|f,g$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-existence-of-lcm-and-gcd}
+If $R$ is a UFD, in $R[x]$ there exist lcm and mcd, and are unique up to 
+multiplication by units.
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{lemma}
+\label{lemma-gcd-for-polynomials}
+If $d$ is the gcd of $f,g \in K[x]$ then there exist $p,q \in R[x]$ such that
+$pf+qg=d$.
+\end{lemma}
+
+
+
+\begin{lemma}
+\label{lemma-primitive-part-unique-up-to-unit}
+$\text{pp}(f)$ is unique up to multiplication by unit.
+\end{lemma}
+
+\begin{proof}
+This follows from uniqueness up to units of gdc and lcm.
+\end{proof}
+
+\begin{definition}
+\label{definition-primitive-part}
+If $f\in F[x]$, define its {\it primitive part} to be a primitive polynomial
+$\text{pp}(f)$ such that $c\text{pp}(f)=df$ where
+\begin{itemize}
+\item $d\in R$ is the minimum common
+factor of the denominators of the coefficients of $f$, which may be defined as
+the product of the least elements among all the factors (in their unique
+factorization) of the denominators such that $df \in R[x]$.
+\item $c\in R$ is the greatest common divisor of the coefficients of $df$, which
+may be defined as the product of the greatest number of common elements in the
+factorizations of each of the coefficients in $df$.
+\end{itemize}
+\end{definition}
+
+\begin{lemma}[Gauss]
+\label{lemma-Gauss}
+Let $R$ be a ring and $F$ its field of fractions. A primitive polynomial $f\in
+R[x]$ is irreducible in $F[x]$ if and only if it is irreducible in $R[x]$.
+\end{lemma}
+
+\begin{proof}
+The direct implication is easy: suppose $f$ is irreducible in $F[x]$ and let
+$f=gh$ for $g,h\in R[x]$. Then $g,h$ are also in $F[x]$ so that either of them
+must be a unit of $F$, i.e. a fraction. But since they are polynomials in
+$R[x]$, then it must be an element of $R$. But since $f$ is primitive we obtain
+a contradiction unless the number is a unit.
+
+For the converse, suppose that $f$ is irreducible in $R[x]$. To obtain a 
+contradiction suppose that $f=gh$ in $F[x]$ with $g,h$ not units in $F[x]$.
+Then $f=c\text{pp}(f)=c\text{pp}(g)\text{pp}(h)$ by the True Gauss lemma. 
+Notice that we cannot take primitive parts of $g$ and $h$ separately since this
+would give perhaps rational contents.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-irreducible-in-Fx-implies-primitive-part-irreducible}
+If $f\in F[x]$ is irreducible (in $F[x]$), then its primitive part
+$\text{pp}(f)$ is irreducible in $R[x]$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $\text{pp}(f)=gh$ for two non-unit polynomials $g,h\in F[x]$.
+Multiplying by $c$ as in Definition \ref{definition-primitive-part} we obtain
+$c\text{pp}(f)=cgh \implies df=cgh \implies f=\frac{c}{d}gh$, a contradiction
+since $f$ is irreducible in $F[x]$. This shows that
+$\text{pp}(f)$ is irreducible in $F[x]$. By Gauss lemma, since $\text{pp}(f)$ is
+irreducible in $F[x]$ and primitive, it must be irreducible in $R[x]$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Gauss-lemma-corollary}
+If $R$ then $R[x]$ is a UFD.
+\end{lemma}
+
+\begin{proof}
+Let $f\in R[x]$. Let $c$ be the greatest common divisor of the coefficients of
+$f$, so that $f=cf'$. Factor $f'$ in $F[x]$ as $f'=f_1'\ldots f_k'$. Take
+primitive parts to write $f=c'\text{pp}(f_1')\ldots \text{pp}(f_k')$. By Lemma
+\ref{lemma-irreducible-in-Fx-implies-primitive-part-irreducible} each of the
+$\text{pp}(f_i')$ is primitive in $R[x]$. By the True Gauss lemma we get that
+$c'=c\in R$. Since $R$ is a UFD we also obtain that
+$c'$ may be factored into irreducible elements of $R$, which are also
+irreducible in $R[x]$.
+
+Uniqueness of the factorization follows from uniqueness of the factorization in
+$F[x]$ and Gauss lemma: suppose that $f$ may also be factored into irreducible
+elements of $R[x]$ as $g_1\ldots g_\ell$. We wish to show that this is a
+factorization in irreducible elements of $F[x]$, which we know to be unique up
+to multiplication by units of $F$. To show this we use the converse implication
+of Gauss lemma \ref{lemma-Gauss}: after taking primitive parts to obtain
+$\text{pp}(g_i)$, which are irreducible and primitive elements of $R[x]$, which
+must be irreducible in $F[x]$. Then $i=\ell$, the constants coincide and
+$\text{pp}(g_i)=\text{pp}(f_i)$. Since taking primitive part is unique up to
+multiplication by unit, we are done.
+
 By induction on the degree of $f \in R[x]$. Write $f=cf'$ for
 $c=\text{gcd}(\text{coefficients of $f$})$. Then I claim that $f=cf'$ is a
 factorization of $f$ into irreducible elements. $f'$ is irreducible because it
@@ -38,21 +264,6 @@ To conclude our induction now suppose that degree-$n$ elements have
 factorization and let $f$ be of degree $n+1$. If $f$ is irreducible we are done.
 Otherwise $f$ can be expressed as the product of two positive degree elements,
 each of which is expressed in a product of irreducibles.
-
-For now I won't prove uniqueness.
-\end{proof}
-
-\begin{lemma}
-\label{lemma-in-UFD-irreducible-elements-generate-prime-ideals}
-In a UFD, irreducible elements generate prime ideals.
-\end{lemma}
-
-\begin{proof}
-Let $f$ be irreducible. Suppose that $pq\in(f)$. Then $pq=fg$ for some  $g\in
-R$. Then $p_1\ldots p_kq_1\ldots q_\ell=fg_1\ldots g_m$. But since $f$ is
-irreducible and factorization is unique we conclude that $f$ must be one of the
- $p_i$ or one of the $q_i$. Then $f$ divides $p$ or $q$, i.e. either $p\in(f)$
-or $q\in(f)$.
 \end{proof}
 
 \end{document}
