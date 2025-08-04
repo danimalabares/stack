@@ -1567,9 +1567,513 @@ a Fano variety $X$ vanishes. You just have to put $L=\mathcal{O}(k)$ with $k\geq
 Show that  $\text{Pic}(X)\cong H^{2}(X,\mathbb{Z})$ holds for Fano varieties.
 \end{exercise}
 
+\section{Moduli spaces of sheaves}
+\label{section-moduli-spaces-of-sheaves}
 
+The goal is the following. $X$ smooth projective variety over $\mathbb{C}$. We
+want to define a moduli space of sheaves up to some kind of isomorphism. Also
+give some discrete invariants. And give structure of scheme which ``respects
+limits''.
+
+{\bf Functor of points.} For a given scheme $X$, the set
+$\text{Hom}(\text{Spec}\mathbb{C},X)$ is the set of points of $X$ (why?). This motivates
+defining a functor $h_X:\text{Sch}\to \text{Sets}$ by $h_X(S)=\text{Hom}(S,X)$,
+and morphisms are just mapped via composition.
+
+And there's more: given a morphism of schemes $\varphi:X\to Y$ we can produce a
+(natural transformation?) $h_\varphi:h_X \to h_Y$.
+
+\begin{slogan}
+Schemes are functors.
+\end{slogan}
+
+\begin{definition}
+\label{definition-representable-functor-by-scheme}
+A functor $F$ is called {\it representable (by a scheme)} if there is a scheme
+$X$ such that $F\cong h_X$ and we say $X$ is a {\it fine moduli space for $X$}.
+\end{definition}
+
+\begin{remark}
+\label{remark-uniqueness-of-representable-functor}
+If $X$ exists it is unique.
+\end{remark}
+
+\begin{example}
+\label{example-quotient-sheaf}
+$X$ scheme,
+$$
+\text{Quot}_X:(\text{Sch})\to (\text{Sets})
+$$
+$$
+\text{Quot}_X(S)=\{
+\mathcal{O}_{X \times S}^{\oplus n}\to\mathcal{F}
+:\mathcal{F} \text{ is a flat sheaf}\}\Big/ \sim
+$$
+and morphisms are mapped by pullback.
+\end{example}
+
+I think here flat accounts for a continuously varying family of copies of $X$
+over $S$, i.e. the product $X \times S$.
+
+\begin{theorem}
+\label{theorem-Quot-is-represented}
+$\text{Quot}_X$ is represented by a projective scheme.
+\end{theorem}
+
+Almost all examples of moduli spaces are quotients.
+
+\medskip\noindent
+
+The one example of a moduli space everybody knows is…
+
+\begin{example}[Projective space is a quotient]
+\label{example-projective-space-is-a-quotient}
+Take $X=$ point, and then
+$$
+F(S)=\{\mathcal{O}_S^{\oplus n+1}\to \mathcal{L}\}\cong h_{\mathbb{P}^n}
+$$
+where $\mathcal{L}$ is a line bundle on $S$.
+\end{example}
+
+\begin{definition}
+\label{definition-universal-family}
+If $F$ is represented by a scheme $X$ and $\eta:F(S)\to h_X(S)$ in part we have
+a bijection
+\begin{align*}
+F(X) &\longrightarrow h_X(X):=\text{Hom}(X,X) \\
+U &\longmapsto \text{id}
+\end{align*}
+\end{definition}
+
+\bigskip\noindent
+
+Again, flat means continuously varying. Consider first
+$$
+\mathcal{M}(S)=\{\mathcal{F}\text{a fheaf on $X\times S$ flat over }S\}/\sim
+$$
+and
+$$
+\mathcal{M}(f:T \to S)=f^*
+$$
+and equivalence is given by: $\mathcal{F}\sim \mathcal{G}$ iff there exists a
+line bundle $\mathcal{L}$ on $S$ such that 
+$\mathcal{F}\cong \mathcal{G}\otimes\pi^*S$.
+
+{\bf Problem.} $X:=\mathbb{P}^1$ and rank 2 sheaves on $\mathbb{P}^1$. In this
+case […]
+
+{\bf Fact.} Fine moduli spaces are rare.
+
+\begin{definition}
+\label{definition-coarse-moduli-space}
+A {\it coarse moduli space} of  $X$ is a scheme $X$ with a natural
+transformation $\eta:F \to h_X$ such that
+\begin{itemize}
+\item $\eta_{\eta \times \mathbb{C}}:F(hec \mathbb{C}) \to h_X(hec \mathbb{C}$
+is hij.
+\item For all $Y$ and $F \to h_T$ we have [$F \to h_Y$, $F\to h_X$, $\exists !
+h_X \to h_Y$.
+\end{itemize}
+\end{definition}
+
+{\bf Summary.}
+\begin{enumerate}
+\item Schemes are functors.
+\item The best moduli spaces are represented functors, they are called fine.
+These have universal families, and all [all what?] are pullbacks of from the
+universal family.
+\end{enumerate}
+
+\subsection{Discrete data}
+\label{subsection-discrete-data}
+
+$X$ projective and $H$ an ample divisor on $X$. The {\it Hilbert polynomial} is
+$$
+P(\mathcal{F},m):=\chi(\mathcal{F}\otimes \mathcal{O}(m))
+$$.
+
+{\bf Fact.} $P(\mathcal{F},m)=\sum_{i=0}^{\dim
+X}\alpha_i(\mathcal{F})\frac{m^i}{i!}$.
+
+The {\it rank of $\mathcal{F}$} is
+$\text{rk}(\mathcal{F}):=\frac{\alpha_d(\mathcal{F})}{\alpha_d(\mathcal{O}_X)}$.
+And $\alpha_d(\mathcal{O}_X)$ is the {\it degree} of $\mathfrak{X}$ w.r.t
+$\mathcal{O}(1)$.
+
+The {\it reduced Hilbert polynomial} is
+$P(\mathcal{F},m):=\frac{P(\mathcal{F},m)}{\alpha_d(\mathcal{F})}$. The {\it
+slope} of $\mathcal{F}$ is
+$\mu_H(\mathcal{F}):=\frac{c_1(\mathcal{F})H^{d-1}}{\text{rk}\mathcal{F}}$.
+
+Example (curve of genus $g$ using Rieman-Roch).
+
+\section{Derived categories}
+\label{section-derived-categories}
+
+\begin{definition}
+\label{definition-abelian-category}
+An {\it abelian category} $\mathcal{A}$ is a category such that
+\begin{enumerate}
+\item $\forall X,Y \in \mathcal{A}$, $\text{Hom}{\mathcal{A}}(X,Y)$ is an
+abelian group such that $\text{Hom}_{\mathcal{A}}(X,Y)\times\text{Hom}(Y,Z)\to
+\text{Hom}(X,Y)$ is bilinear.
+\item There is a zero object $0_{\mathcal{A}}$ such that for every $A \in
+\mathcal{A}$, $\text{Hom}(0_{\mathcal{A}},A)=\text{Hom}(A,0)=0$.
+\item There exist finite products.
+\item For every  $f \in \text{Hom}(A,B)$ there exist kernel and cokernel such
+that
+$$
+\xymatrix{
+\Ker f\ar[r]&A\ar[r]^{f}&B\ar[r]&\Coker f
+}
+$$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{definition-additive-category}
+$\mathcal{A}$ satisfying 1-3 is called  {\it additive category}.
+\end{definition}
+
+Examples: abelian groups, $R$-modules, $\text{Coh}(X)$. Non-example: vector
+bundles over $X$, it is an additive category but not abelian.
+
+\medskip\noindent
+
+Now consider the category $\text{Com}(\mathcal{A})$, the category of complexes
+in $\mathcal{A}$, with quasi-isomorphisms:
+
+\begin{definition}
+\label{definition-quasi-isomorphism}
+$f\in \text{Hom}_{\text{Com}(\mathcal{A})}(A',B')$ is a {\it quasi-isomorphism}
+if it induces isomorphisms $H^i(f):H^i(A^{\bullet})\cong H^i(B^{\bullet})$ for
+all $i$.
+\end{definition}
+
+\begin{definition}
+\label{definition-derived-category}
+Let $\mathcal{A}$ be an abelian category. The {\it derived category} of
+$\mathcal{A}$ is the localization $\text{Com}(\mathcal{A})[QIS]^{-1}$, where
+$QIS$ is the class of quasi-isomorphisms.
+\end{definition}
+
+But what is localization? Given a class of morphisms $S$ inside the class of
+morphisms of a given category, the localization will allow us to invert these
+morphisms.
+
+\begin{definition}
+\label{definition-localization-of-category}
+Let $\mathcal{C}$ be a category, $S$ a class of morphisms in
+$\mathcal{C}$ and $\text{Iso}(\mathcal{C})$ the class of all isomorphisms of
+$\mathcal{C}$. The {\it localization} of $\mathcal{C}$ with respect to $S$ is
+the category $\mathcal{C}[S]^{-1}$ with an isomorphism 
+$$
+Q:\mathcal{C}\to \mathcal{C}[S]^{i-\mathcal{A}}
+$$
+that satisfy
+\begin{enumerate}
+\item $Q(S) \subset \text{Iso}(\mathcal{C}[S]^{-1})$
+\item (Universality.) For any $F:\mathcal{C}\to \tilde{\mathcal{C}}$ and
+$Q:\mathcal{C}\to \mathcal{C}[S^{-1}]$ there exists a unique
+$G:\mathcal{C}[S^{-1}]\to \tilde{ \mathcal{C}}$ making the diagram commute, i.e.
+$F=GQ$.
+\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+\label{exercise-uniqueness-of-localization}
+Show that if $\mathcal{C}[S^{-1}]$ exists, it must be unique up to isomorphism.
+\end{exercise}
+
+\begin{definition}
+\label{definition-bounded-derived-category}
+If instead of $\text{Com}(\mathcal{A})$ we consider
+$$
+\text{Com}^b(\mathcal{A}):=\{A^{\bullet} \in \text{Com}(\mathcal{A}):
+A^i=0\forall  |i|\gg 0\}
+$$
+Then we obtain the {\it bounded derived category} $D^b(\mathcal{A})$.
+\end{definition}
+
+\subsection*{Motivation}
+\label{subsection-motivation}
+
+Let $X$ be a smooth projective variety over $\mathbb{C}$. Then
+we can associate $X\rightsquigarrow \text{Coh}(X)$.
+
+\begin{theorem}[Gabriel]
+\label{theorem-Gabriel}
+Let $X$ and $Y$ be smooth projective varieties. If $\text{Coh}(X)\cong
+\text{Coh}(Y)$ then $X\cong Y$.
+\end{theorem}
+
+This means we may reconstruct $X$ from its coherent sheaf category. But it is
+not such an interesting invariant. It's more interesting the derived category.
+So the motivation for studying derived categories are:
+
+\begin{enumerate}
+\item (Beilinson 1979.) $\text{Coh}(\mathbb{P}^n)\hookrightarrow
+D^b(\mathbb{P}^n)$ gives good information about coherent sheaves on
+$\mathbb{P}^n$.
+\item (Mukai.) If $\mathcal{A}$ is an abelian variety and $\hat{\mathcal{A}}$ is
+the dual abelian variety, $D^b(\mathcal{A})\cong D^b(\hat{\mathcal{A}})$.
+\item (Bondal, Orlov, 1990's.) Let $X$ be a smooth projective variety with an
+ample or anti-ample canonical bundle $\omega_X$. Suppose that $D^b(X)\cong
+D^b(Y)$ for a smooth projective variety $Y$. Then $Y \cong X$.
+\end{enumerate}
+
+\begin{remark}
+\label{remark-derived-category-with-tensor-product}
+If you consider not only the bounded derived category $D^b(X)$ but consider it
+with the tensor product $D^b \times D^b(X) \xrightarrow{\otimes} D^b(X)$ allow
+to reconstruct $X$.
+\end{remark}
+
+I hope you are now convinced this is interesting.
+
+\subsection*{Explicit description of localization under some assumption}
+\label{subsection-explicit-description-of-localization}
+
+If $S$ satisfies some properties then $\mathcal{C}[S^{-1}]$ can be explicitly
+described. The conditions are:
+
+\begin{enumerate}
+\item All identities should belong to $S$ and if any two morphisms from $f,g$
+and $f \circ g$ (whenever composition is defined) belong to $S$, then all three
+belong to $S$.
+\item For any diagram 
+$$
+\xymatrix{
+X\ar[d]^{f}&W\ar[l]^{\tilde{s}\in S}\ar[d]\\
+Z&\ar[l]^{s\in S}Y
+}
+$$
+can be completed (the arrows from $W$ should be dashed) to a commutative square.
+\item If for $f,g\in \text{Hom}_{\mathcal{C}}(A,B)$ and $u:B \to U$ such athat
+$u\circ f=u\circ g$ there exists
+$t:C \to A$ such that $ft=gt$, that is,
+$$
+\xymatrix{
+C\ar[r]^{t}&A\ar[r]^{f,g}&B\ar[r]^{u}&U
+}
+$$
+\end{enumerate}
+
+The quasi-isomorphisms don't satisfy condition 2.
+
+\begin{proposition}
+\label{proposition-caracterization-of-derived-category}
+Let $\mathcal{C}$ be a category and $S\subset \text{Mor}(\mathcal{C})$ satisfy
+right Ore conditions. Then $\mathcal{C}[S^{-1}]$ can be described as follows:
+\begin{itemize}
+\item $\text{Ob}(\mathcal{C}[S^{-1}]=\text{Ob}(\mathcal{C})$.
+\item $\text{Mor}_{\mathcal{C}[S^{-1}]}(A,B)=\{\text{equivalence classes of
+roofs}\}$, where a roof is
+$$
+\xymatrix{
+& C\ar[dl]^{s\in S}\ar[dr]^{f}\\
+A&&B
+}
+$$
+where $fs^{-1}\sim gt^{-1}$ if there exists a commutative diagram
+$$
+\xymatrix{
+& & \tilde{W} \ar[ld]^{a \in S} \ar[dr]^{b \in S} & & \\
+& C \ar[ld]^{s \in S} \ar[rr]^{f} & & \tilde{C} \ar[rd]^{t} & \\
+A & & & & B
+}
+$$
+and composition is defined as follows:
+$$
+\xymatrix{
+& & \tilde{W}\ar[ld]^{a \in S}\ar[dr]^{b \in S}\\
+&Z\ar[ld]^{s \in S}\ar[dr]^{f} & & & \tilde{Z}\ar[d]\ar[dl]^{t}\\
+A & &B & & C
+}
+$$
+where
+$$
+(fs^{-1})\circ (gt^{-1})=(sa^{-1})\circ(gb)
+$$
+\end{itemize}
+\end{proposition}
+
+$\mathcal{C}[S^{-1}]$ always exists but morphisms are difficult to describe. The
+proof of the proposition is an exercise:
+
+\begin{proof}
+\begin{enumerate}
+\item This is an equivalence relation.
+\item Composition doesn't depend on $a$ and $b$.
+\item Composition doesn't depend on the choice of the roof in equivalence
+classes.
+\item Composition is associative.
+\item $\text{Id}_X \times \text{Id}_X^{-1}$ is identity morphism.
+\end{enumerate}
+\end{proof}
+
+{\bf Definition of} $Q:\mathcal{C} \to \mathcal{C}[S^{-1}]$. (Missing.)
+
+{\bf Universal property.}
+
+$$
+\xymatrix{
+\mathcal{C}\ar[r]^{F}\ar[rd]^{Q}&  \tilde{\mathcal{C}}\\
+&\mathcal{C}[S^{-1}]\ar[u,dashed]
+}
+$$
+defines a universal property.
+
+\begin{proposition}
+\label{proposition-Ore-conditions}
+Let $\mathcal{C}$ be an additive category and $S$ satisfy right Ore conditions.
+Then $\mathcal{C}[S^{-1}]$ is also additive and $Q:\mathcal{C} \to
+\mathcal{C}[S^{-1}]$ is additive.
+\end{proposition}
+
+\begin{proof}
+Some indications, then exercise.
+\end{proof}
+
+The point is that with Ore conditions you can really define what is addition of
+fractions.
+
+\subsection*{Ore conditions for category of complexes}
+\label{subsection-Ore-conditions-for-category-of-complexes}
+
+Let $\mathcal{C}=\text{Com}(\mathcal{A})$ and $S=\text{QIS}$. Then QIS {\bf does
+not} satisfy Ore conditions: second and third properties fail. But we can
+consider instead the homotopy category $\mathcal{H}(\mathcal{A})$. But what is 
+that.
+
+\begin{definition}
+\label{definition-homotopy-category}
+\begin{enumerate}
+\item 
+A morphism $f \in \text{Hom}_{\text{Com}\mathcal{A}}(A^{\bullet},B^{\bullet})$
+is {\it homotopically equivalent to zero}, i.e. $f \sim_{\text{hom}}0$ if for
+all $i\in \mathbb{Z}$, $h^i:A^i \to B^i$ such that 
+$f^i=d_B^{-1}\circ h^i \circ d_A^i$.
+$$
+\xymatrix{
+A^{i-1}\ar[r]&A^{i}\ar[r]\ar[ld,dashed]^{h^i}\ar[d]^{f^i}&A^{i+1}
+\ar[ld,dashed]^{h^{i+1}}\\
+B^{i-1}\ar[r]& B^i\ar[r]& B^{i+1}
+}
+$$
+\item $f\sim_{\text{hom}}g$ are {\it homotopically equivalent} if $f-g
+\sim_{\text{hom}}0$.
+\item The {\it homotopy category}  $\mathcal{H}(\mathcal{A})$ of $\mathcal{A}$
+has objects $\text{Ob}(\mathcal{H}(\mathcal{A})=\text{Com}(\mathcal{A})$ and
+morphisms
+$$
+\text{Hom}_{\mathcal{H}(\mathcal{A})}(A^{\bullet},B^{\bullet})
+=\text{Hom}_{\text{Com}\mathcal{A}}(A,B )\Big/\{f\sim_{\text{hom}}0\}.
+$$
+\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+\label{exercise-homotopy-category}
+\begin{enumerate}
+\item $f\sim_{\text{hom}}0$, $H^i(f):H^i(A)\xrightarrow{0}H^i(B)$.
+\item Morphisms homotopic to zero form an ideal in $\text{Com}(\mathcal{A})$,
+that is, abelian subgroups w.r.t. compositions.
+\item $\mathcal{H}(\mathcal{A})$ is an additive category and
+$\text{Com}(\mathcal{A}) \to \mathcal{H}(\mathcal{A})$ is additive.
+\end{enumerate}
+\end{exercise}
+
+{\bf Objectives.}
+\begin{enumerate}
+\item QIS satisfy the Ore conditions in $\mathcal{H}(\mathcal{A})$.
+\item $D(\mathcal{A})=\text{Com}(\mathcal{A})[\text{QIS}^{-1}]
+\cong \mathcal{H}(\mathcal{A})[\text{QIS}^{-1}]$. This will allow to describe
+$D(\mathcal{A})$ explicitly as an additive category.
+\item $\mathcal{H}(\mathcal{A})$ and $D(\mathcal{A})$ are not abelian, but
+triangulated!
+\end{enumerate}
+
+When we lose the property of an abelian category, we lose the notion of exact
+sequence.
+
+\section{Geometric Invariant theory}
+\label{section-GIT}
+
+{\bf Plan.} 
+\begin{enumerate}
+\item Quotients by finite groups.
+\item Linear algebraic groups.
+\item GIT (affine case).
+\item GIT (general case).
+\end{enumerate}
+
+\begin{proposition}
+\label{proposition-1}
+$\mathcal{O}(X)^G$ is finitely generated and $\mathcal{O}(X)$ is a finite module
+over $\mathcal{O}(X)^G$
+\end{proposition}
+
+Let $Y = \text{Spec}B$ and $\pi:X\to Y$ a dominant, finite morphism, which
+implies it is surjective.
+
+\begin{proposition}
+\label{proposition-2}
+The set-theoretic fibers of $\pi$ are the orbits $Gx$
+\end{proposition}
+
+\begin{proof}
+$\pi$ is $G$-invariant, i.e. constant on orbits.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-2-second}
+The quotient map $\pi$ is open and if $U\subset X$ is open, affine, $G$-stable, 
+then the restriction $\pi|_{U}$ is the quotient map $U\to U/G$.
+\end{proposition}
+
+\begin{proposition}
+\label{proposition-quotient-map-is-categorical-quotient}
+$f:X\to Z$ $G$-invariant morphism, then there is a unique morphism $\varphi:Y
+\to Z$ such that $f=\varphi \circ\pi$. This says that $\pi$ is the categorical
+quotient.
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+It is clear that $\varphi$ exists as a map of sets. It is continuous since
+$\pi$ is open surjective. $\varphi^\sharp:\mathcal{O}_Z \to
+\varphi_*(\mathcal{O}_Y)$.
+\end{proof}
+
+\begin{example}
+\label{example-quotients}
+ \begin{enumerate}
+\item $G=\mu_n$ the roots of unity of order $n$ (prime to $p$). $G$ acts on
+$\mathbb{A}^2$ by $g(x,y)=(gx,gy)$.  $\mathcal{O}(\mathbb{A}^2)=k[x,y]$ and
+$\mathcal{O}(\mathbb{A}^2)=k[x^n,x^{n-1}y,\ldots,xy^{n-1},y^n]$.
+$\mathbb{A}^2/G$ is a singular surface.
+\item $G=S_n$ symmetric group, acts on $\mathbb{A}^n$ permuting the coordinates.
+$\mathcal{O}(\mathbb{A}^n)=k[x_1,\ldots,x_n]$,
+$\mathcal{O}(\mathbb{A}^2)^G=k[e_1,\ldots,e_n]$ where $e_i$ is the $i$-th
+symmetric function. The quotient
+$\pi:\mathbb{A}^n\xrightarrow{(e_1,\ldots,e_n)}\mathbb{A}^n$ is finite, flat of
+degree $n!$.
+\item (Symmetric products.) $X=Z^n$, $Z$ affine algebraic variety, $G=S_n$
+acting by permuting copies of $Z$. Then $X/G=Z^{(n)}$, the $n$-th symmetric
+product of $Z$. Points of $Z^{(n)}=$effective $0$-cycles in $Z$ of degree $n$ =
+$z_1+\ldots+z_n$, $(z_i \in Z)$ = $n_1z_1+\ldots+n_kz_k$ where $z_i$ are
+distinct and $n_i$ are primitive integers with some $n$.
+\end{enumerate}
+\end{example}
+
+\subsection*{Local structure of quotients}
+\label{subsection-local-structure-of-quotients}
+
+See Mumford, Abelian Varieties. 
 \bibliography{my}
 \bibliographystyle{amsalpha}
+
+
 
 
 \end{document}

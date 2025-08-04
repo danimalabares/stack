@@ -15,6 +15,43 @@
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
+\section{Greatest common divisor and least common multiple}
+\label{section-gcd-and-lcm}
+
+Following is the universal definition of lcm and gdc:
+
+\begin{definition}
+\label{definition-lcm-and-gdc-universal}
+A {\it least common multiple} of $a,b \in R$ is an element $d$ such that if for
+every $c\in R$, if $a,b|c$ then $d|c$.
+
+A {\it greatest common divisor} of $a,b \in R$ is an element $d$ such that
+for every  $c \in R$,  if $c|a,b$ then  $c|d$.
+\end{definition}
+
+But it looks like it shall be easier to define them
+as follows:
+
+\begin{definition}
+\label{definition-lcm-and-gdc-polynomial}
+A {\it least common multiple} of $f,g \in R[x]$ is the monic polynomial $d$ of
+smallest degree such that $f,g|d$.
+
+A {\it greatest common divisor} of $f,g\in R[x]$ is the monic polynomial $d$ of
+greatest degree such that $d|f,g$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-existence-of-lcm-and-gcd}
+If $R$ is a UFD, in $R[x]$ there exist lcm and mcd, and are unique up to 
+multiplication by units.
+\end{lemma}
+
+\begin{proof}
+We can order by degree, and those of the same degree order by the leading
+term… but this requires an order in $R$.
+\end{proof}
+
 \section{Unique factorization domains and the Gauss lemma}
 \label{section-UFD}
 
@@ -25,6 +62,42 @@ lemma is that it allows us to make sure that the content will in fact be an
 element of $R$.
 
 \medskip\noindent
+
+\begin{lemma}
+\label{lemma-irreducible-is-prime}
+If $R$ is a UFD then irreducible elements are prime.
+\end{lemma}
+
+\begin{proof}
+If $f$ is irreducible and $f|ab$ then $f$ must be an element of the unique
+factorization of $a$ or $b$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-gcd-linear-combination}
+There exist elements  $p,q \in R[x]$ such that $fp+gq=\text{gcd}(f,g)$.
+\end{lemma}
+
+\begin{proof}
+By defining $d$ as the element of least degree of the form $fp+gq$, we obtain
+that $d$ must be $\text{gcd}(f,g)$. Indeed, we first check by highschool
+division that $d$ must divide any element of the form $fx+gy$. In particular
+$d$ divides both $f$ and $g$, so $d \leq \text{gcd}(f,g)$. Also, since
+$\text{gcd}(f,g)$ divides both $f$ and $g$, it divides $d=xf+yg$. (Indeed, if
+$c:=\text{gcd}(f,g)$ is such that $ca=f,cb=g$ then $c(ax+by)=cax+cby=fx+gy=d$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relatively-prime-and-divides-implies-divides}
+If $a|bc$ and $(a,b)=1$, then $a|c$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-gcd-linear-combination}, there exist elements $p,q$ such
+that $ap+bq=1\implies apc+bcq=c$, so that $a$ divides both summands and thus
+divides $c$.
+\end{proof}
+
 \begin{lemma}
 \label{lemma-polynomials-over-fields-are-UFD}
 If $F$ is a field then $F[x]$ is a UFD.
@@ -40,7 +113,11 @@ elements.
 
 To prove uniqueness suppose that $f$ has two factorizations in irreducible
 elements  $f_1\ldots f_k=f_1'\ldots f_\ell'$. Then $f_1|f_1'\ldots f_\ell'$, so
-that it must divide some $f_i'$ 
+that it must divide some $f_i'$, which implies that 
+$\text{deg}f_1 \leq\text{deg}f_i$. Similarly, $f_1'$ must divide some $f_i$,
+meaning that $\text{deg}f_1'\leq \text{deg}f_i$. Supposing that we arrange the
+$f_i$ and $f_i'$ in ascending order of degree, we obtain that $f_i=f_i'$ for all
+$i$.
 \end{proof}
 
 The true definition of content is the following
@@ -63,7 +140,8 @@ in $R$.
 \end{reference}
 The {\it  order of $f\in R[x]$ at $p$} is the minimium order of
 $p$ in any of the coefficients of $f$. The {\it content} of $f$ is the product
-of every irreducible factor $p$ of $f$ raised to its order.
+of every irreducible factor $p$ of $f$ raised to its order. A polynomial is
+called {\it primitive} if it has content 1.
 \end{definition}
 
 As explained in the beginning of this section, the point of the Gauss
@@ -81,6 +159,27 @@ $\text{cont}(fg)=\text{cont}(f)\text{cont}(g)$.
 
 This clearly implies that the product of two primitive polynomials being
 primitive, and the converse I think is true as well.
+
+\begin{proof}
+Since $\text{cont}(bf)=b\text{cont}(f)$ it's enough to suppose that  $f$ and $g$
+are primitive. Indeed, taking content of $fg$ we obtain on one hand
+$\text{cont}(fg)$ and on the other hand
+$\text{cont}(\text{cont}(f)\text{pp}(f)\text{cont}(g)\text{pp}(g))
+=\text{cont}(f)\text{cont}(g)\text{cont}(\text{pp}(f)\text{pp}(g))$. 
+Thus we would finish if we show that the product of two primitive polynomials is
+primitive.
+
+Put another way, it's enough to show will show that if $f,g$ are primitive (as
+are the primitive parts of $f$ and $g$ in the preceding paragraph) then $fg$ is
+primitive. This means that I will show that any $p$ is not a factor of all the
+coefficients in $fg$. A coefficient of $fg$ looks as
+$c_j=\sum_{i=0}^ja_ib_{j-i}$.  Since $f,g$ are primitive then $p$ cannot divide
+all $a_i$ and all $b_i$.  Thus we can pick the maximum $a_s$ and the maximum
+$b_t$ that $p$ does not divide. Then the $c_j$ containing the product $a_sb_t$
+will not be divided by $p$, for $p$ cannot divide $a_sb_t$ because it is prime,
+but will divide the remaining terms in the sum $c_j$; thus if $p$ divided $c_j$
+it would also divide $a_sb_t$lmail.
+\end{proof}
 
 \begin{lemma}
 \label{lemma-R-UFD-implies-R[x]-UFD}
@@ -122,47 +221,6 @@ or $q\in(f)$.
 
 \section{Unique factorization domains (alternative approach)}
 \label{section-UFD-alternative}
-
-
-Following is the universal definition of lcm and gdc:
-
-\begin{definition}
-\label{definition-lcm-and-gdc-universal}
-A {\it least common multiple} of $a,b \in R$ is an element $d$ such that if for
-every $c\in R$, if $a,b|c$ then $d|c$.
-
-A {\it greatest common divisor} of $a,b \in R$ is an element $d$ such that
-for every  $c \in R$,  if $c|a,b$ then  $c|d$.
-\end{definition}
-
-But it looks like it shall be easier (and most surely equivalent) to define them
-as follows:
-
-\begin{definition}
-\label{definition-lcm-and-gdc-polynomial}
-A {\it least common multiple} of $f,g \in R[x]$ is the monic polynomial $d$ of
-smallest degree such that $f,g|d$.
-
-A {\it greatest common divisor} of $f,g\in R[x]$ is the monic polynomial $d$ of
-greatest degree such that $d|f,g$.
-\end{definition}
-
-\begin{lemma}
-\label{lemma-existence-of-lcm-and-gcd}
-If $R$ is a UFD, in $R[x]$ there exist lcm and mcd, and are unique up to 
-multiplication by units.
-\end{lemma}
-
-\begin{proof}
-
-\end{proof}
-
-\begin{lemma}
-\label{lemma-gcd-for-polynomials}
-If $d$ is the gcd of $f,g \in K[x]$ then there exist $p,q \in R[x]$ such that
-$pf+qg=d$.
-\end{lemma}
-
 
 
 \begin{lemma}
