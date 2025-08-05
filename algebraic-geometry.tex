@@ -1439,6 +1439,11 @@ $m$, so that it must be a positive number (it's the dimension of one of the
 graded components of the coordinate ring of the surface).
 \end{proof}
 
+\section{Deformation theory}
+\label{section-deformation-theory}
+
+
+
 \section{Continued fractions}
 \label{section-continued-fractions}
 
@@ -1707,6 +1712,198 @@ $\mu_H(\mathcal{F}):=\frac{c_1(\mathcal{F})H^{d-1}}{\text{rk}\mathcal{F}}$.
 
 Example (curve of genus $g$ using Rieman-Roch).
 
+\begin{definition}
+\label{definition-Gieseker-and-mu-stability}
+$\mathcal{F}$ is {\it Gieseker/$\mu$-semistable} w.r.t. $H$ if
+\begin{itemize}
+\item $P_\varepsilon(\mathfrak{m})\leq P_{\mathcal{F}}(\mathfrak{m})$ for all $0
+\neq  \varepsilon \subset \mathcal{F}$ proper subsheaf.
+\item $\mu_{M}(\varepsilon) \leq  \mu_{M}(\mathcal{F})$ of rank $0<r \leq r-1$.
+\end{itemize}
+If the inequality is strict then $\mathcal{F}$ is called {\it stable}.
+\end{definition}
+
+\begin{example}
+\label{example-G-and-mu-stability-coincide-in-curve}
+$X$ a curve, $d=\text{deg}\mathcal{F}$, $r=\text{rk}\mathcal{F}$,
+$p=\text{deg}Hm+\frac{d}{r}+1-g$. Then $\mu$-stability is the same as
+G-stability.
+\end{example}
+In general:
+$$
+\mu\text{-stability}\implies \text{ G-stability }\implies \text{G semi-stability
+}\implies \mu \text{ semi-stability}
+$$
+\begin{remark}
+\label{remark-stability-depends-on-H}
+Stability depends on the choice of $H$.
+\end{remark}
+
+\begin{example}[Stability depends on choice of ample divisor]
+\label{example-stability-depends-on-choice-of-ample-divisor}
+$X=\mathbb{P}^1\times \mathbb{P}^1$, then $\text{Pic}(X)
+=\mathbb{Z}[\ell]\oplus\mathbb{Z}[m]$ where $\ell^2=m^2=0$ and $\ell m=1$.
+Consider $\mathcal{F}$ given by
+\begin{equation}
+\label{equation-extensions}
+\xymatrix{
+0\ar[r]&\mathcal{O}_X(\ell-3m)\ar[r]&\mathcal{F}\ar[r]&\mathcal{O}_X(3m)
+\ar[r]&0
+}
+\end{equation}
+Then $c_1(\mathcal{F})=\ell$ and $c_2(\mathcal{F})=(\ell-3m)(3m)=3$. Then
+$L=\ell+sm$; $L'=\ell+7m$. We will show
+that $\mathcal{F}$ is semistable w.r.t. $L$ but not w.r.t. $L'$. We do have
+non-trivial extensions as in the sequence \ref{equation-extensions}. These are
+parametrized by 
+$$
+\text{Ext}^1(\mathcal{O}_X(3m)), \mathcal{O}_X(-3m)\cong
+H^{1}(X,\mathcal{O}_X(\ell-6m))\cong \ldots \cong \mathbb{C}^{10}
+$$
+So it is semi-stable w.r.t. $L$.
+
+Suppose $\mathcal{O}(s) \subset \mathcal{F}$. We want to show that
+$\mu(\mathcal{O}(s)) \leq  \mu(\mathcal{F})$. 
+
+We claim that we have either $\mathcal{O}(s)\hookrightarrow \mathcal{O}(3m)$ or
+$\mathcal{O}(s)\hookrightarrow \mathcal{O}(\ell-3m)$. Claim was proved and
+further computations showed the required inequality, so $\mathcal{F}$ is
+$\mu$-semistable w.r.t. $L$. On the other side, $\mathcal{F}$ is not semistable
+w.r.t.  $L'$ since $\mathcal{O}(\ell-3m) \hookrightarrow  \mathcal{F}$ (so here
+I realise that probably taking Chern class will be monotonous with respect to
+this inclusion…) which gives
+$\mu_{L'}(\mathcal{O}(\ell-3m))=(\ell-3m)(\ell+7m)=4\not \leq \frac{7}{2}$.
+\end{example}
+
+\begin{example}[Results on $\mu$-stability]
+\label{example-results-on-mu-stability}
+\begin{itemize}
+\item All line bundles are stable.
+\item If $0\to L_0 \to \mathcal{F} \to L_1 \to 0$ is a non-trivial extension
+with degree $L_0=0$, $\text{deg}(L_1)=1$, $L_i$ line bundles, then
+$\mathcal{F}$ is stable.
+\item $E_i$ semi-stable shows $E_1\oplus E_2$ is semistable if and only if
+$\mu(E_i)=\mu(E_2)$.
+\item $E$ is $\mu$-semistable if and only if for all $L$ line bundles $E \otimes
+L$ is semistable.
+\item $E$ is semistable then $E^{\vee}$ is semi-stable.
+\item $E_1,E_2$ semistable then $E_1 \otimes E_2$ is semistable.
+\end{itemize}
+\end{example}
+
+Now we explain some {\bf easy criteria.} (I think it's easy because we find a
+condition on cohomology that is equivalent to stability.)
+
+\begin{definition}
+\label{definition-norm-sheaf}
+$\mathcal{F}$ a reflexive sheaf on $\mathbb{P}^n$ of rank $r$. We define
+$\mathcal{F}_{\text{norm}}:=\mathcal{F}(k)$ where $k$ is the unique integer such
+that $c_1(\mathcal{F}(k))\in \{-r+1,\ldots,c\}$.
+\end{definition}
+
+\begin{proposition}[Cohomological characterization of stability]
+\label{proposition-cohomological-characterization-of-stability}
+$\mathcal{F}$ reflexive sheaf of rank  $2$, then $\mathcal{F}$ is $\mu$-stable
+if and only if $H^{0}(\mathbb{P}^n,\mathcal{F}_{\text{norm}})=0$.
+\end{proposition}
+
+\begin{proof}
+$\mathcal{F}$ vector bundle of rank $r$ on a smooth projective variety with
+$\text{Pic}=\mathbb{Z}$.
+\begin{itemize}
+\item If $H^{0}(X,(\Lambda^{z}\mathcal{F})_{\text{norm}})=0$ for all $z \in
+\{1,\ldots,r-1\}$ then $\mathcal{F}$ is $\mu$-stable.
+\item If $H^{0}(X,\Lambda^{z}\mathcal{F})_{\text{norm}}(-1))=0$ for all $z \in
+\{1,\ldots,r-1\}$, then $\mathcal{F}$ is $\mu$-semi-stable.
+\end{itemize}
+\end{proof}
+
+\begin{example}
+\label{example-Omega1-on-projective-space-is-stable}
+$\Omega_{\mathbb{P}^n}$ is stable, and also $T_{\mathbb{P}^1}$. The cohomologies
+vanish using Bott.
+\end{example}
+
+\begin{example}
+\label{example-lots-of-Os}
+
+\end{example}
+
+{\bf Filtrations.} $H$ ample, $\mathcal{F}$ torsion free sheaf, then there
+exists a unique filtration $0 \hookrightarrow  \mathcal{F}_0\subset
+\mathcal{F}_1\subset\ldots\subset\mathcal{F}_m=\mathcal{F}$ with
+$E_i=\mathcal{F}_i/\mathcal{F}_{i+1}$ $\mu$-semi-stable w.r.t. $H$ and
+$\mu(E_1)>\mu(E_2)>\ldots>\mu(E_m)$. This is called {\it Harder-Narorimnan
+filtrations}.
+
+Given any Chern classes, can we guarantee the existence of a sheaf with these
+Chern classes? No.
+
+\begin{theorem}[Bogomolov inez]
+\label{theorem-Bogomolov}
+$X$ smooth, projective variety of dimension $\geq 2$, $H$ ample. If
+$\mathcal{F}$ is torsion-free, $\mu$ semi-stable sheaf w.r.t. all
+$$
+\Delta(\mathcal{F}):=(2rc_2(\mathcal{F})\underbrace{-}_{\text{discriminant}}
+(r-1)c_1(\mathcal{F})^2)H^{n-2}\geq 0
+$$
+where $r=\text{rk}(\mathcal{F})$ and $\dim X=n$.
+\end{theorem}
+
+\subsection*{Boundedness}
+\label{subsection-boundedness}
+
+We need further preparation before we can define moduli spaces.
+
+\begin{definition}
+\label{definition-bounded-family}
+A family of isomorphism classes of coherent sheaves on $X$ is called {\it
+bounded} if there exists $S$ of \underline{finite type} and an $O_{S \times X}$
+sheaf $F$ such that the family is contained in $\{ \mathcal{F}_{S \times X}|s
+\text{ closed in }S\}$
+\end{definition}
+
+\begin{definition}
+\label{definition-m-regularity}
+A coherent sheaf is called {\it $m$-regular} if $H^{i}(X,\mathcal{F}(m-i))=0$
+for all $i>0$.
+\end{definition}
+
+\begin{proposition}
+\label{proposition-m-regularity}
+If $\mathcal{F}$ is $m$-regular,
+\begin{itemize}
+\item $F$ is $m'$ regular for all $m' \geq m$.
+\item $F(m)$ is globally generated.
+\end{itemize}
+\end{proposition}
+
+\begin{definition}
+\label{definition-regular-infimum}
+$\text{reg}\mathcal{F}:
+=\text{inf}\{m \in \mathbb{Z}:\mathcal{F}\text{ is $m$-regular}\}$
+\end{definition}
+
+\begin{lemma}
+\label{lemma-}
+The following are equivalent:
+\begin{itemize}
+\item $\{\mathcal{F}_i\}_{i \in I}$ is bounded
+\item The set of Hilbert polynomials $\{P(\mathcal{F}_i)\}_{i \in I}$ is finite
+and there exists a bound $\rho$ such that $\text{reg}\mathcal{F}_i\leq \rho$ for
+all $i \in I$.
+\end{itemize}
+\end{lemma}
+
+The following is a difficult result that we shall only state and use.
+
+\begin{theorem}
+\label{theorem-}
+$X$ projective, $H$ ample, $P$ a fixed polynomial of degree $d$. The family of
+torsion-free sheaves with Hilbert polynomial $P$ is bounded.
+\end{theorem}
+
+
 \section{Derived categories}
 \label{section-derived-categories}
 
@@ -1918,8 +2115,8 @@ classes.
 
 $$
 \xymatrix{
-\mathcal{C}\ar[r]^{F}\ar[rd]^{Q}&  \tilde{\mathcal{C}}\\
-&\mathcal{C}[S^{-1}]\ar[u,dashed]
+\mathcal{C}\ar[r]^{F}\ar[dr]^{Q}&  \tilde{\mathcal{C}}\\
+&\mathcal{C}[S^{-1}]\ar[u]^{dashed}
 }
 $$
 defines a universal property.
@@ -1956,8 +2153,9 @@ all $i\in \mathbb{Z}$, $h^i:A^i \to B^i$ such that
 $f^i=d_B^{-1}\circ h^i \circ d_A^i$.
 $$
 \xymatrix{
-A^{i-1}\ar[r]&A^{i}\ar[r]\ar[ld,dashed]^{h^i}\ar[d]^{f^i}&A^{i+1}
-\ar[ld,dashed]^{h^{i+1}}\\
+A^{i-1}\ar[r]&
+A^{i}\ar[r]\ar[dl]_{dashed}^{h^i}\ar[d]^{f^i}&
+A^{i+1}\ar[dl]_{\text{dashed}}^{h^{i+1}}\\
 B^{i-1}\ar[r]& B^i\ar[r]& B^{i+1}
 }
 $$
@@ -1996,6 +2194,353 @@ triangulated!
 
 When we lose the property of an abelian category, we lose the notion of exact
 sequence.
+
+{\bf Goal.} Now we shall prove that QIS satisfy right Ore conditions on
+$\mathfrak{X}(f)$ and $D(\mathcal{A})\cong \mathcal{H}[\text{QIS}]^{-1}$.
+
+\begin{definition}
+\label{definition-shift-functor}
+The {\it shift functor} is given by
+\begin{align*}
+[1]: \text{Com}(\mathcal{A}) &\longrightarrow \text{Com}(\mathcal{A}) \\
+A^\bullet &\longmapsto (A^\bullet[1])
+\end{align*}
+where
+$$
+(A^\bullet[1])^i=A^{i+1},\qquad  d_{A[1]}=-d_A
+$$
+\end{definition}
+
+\begin{definition}
+\label{definition-mapping-cone}
+For a morphsm $f \in
+\text{Hom}_{\text{Com}(\mathcal{A})}(A^\bullet,B^{\bullet})$, its {\it mapping
+cone} is the complex
+$$
+\text{Cone}(f):=B^{\bullet}\oplus A^{\bullet}[1]
+$$
+with
+\begin{align*}
+d_{\text{Cone}(f)}^i: A^{i+1}\oplus B^{i} &\longrightarrow A^{i+2}\oplus B^{i+1} \\
+(a^{i+1},b^i) &\longmapsto (-d_Aa^{i+1},d_Bb^i+f(a^{i+1}))
+\end{align*}
+\end{definition}
+
+\begin{exercise}
+\label{exercise-cone-is-complex}
+$\text{Cone}(f) \in \text{Com}(\mathcal{A})$.
+\end{exercise}
+
+Exact sequence in $\text{Com}(\mathcal{A})$:
+$$
+\xymatrix{
+0\ar[r]&B\ar[r]&\text{Cone}(f)\ar[r]&A^{\bullet}[1]\ar[r]&0
+}
+$$
+\begin{definition}
+\label{definition-contractible-complex}
+$A^\bullet \in \mathcal{H}(\mathcal{A})$ is {\it contractible} if $\mathcal{A}
+\cong 0$ in $\mathcal{H}(\mathcal{A})$, that is,
+$\text{Id}_{A^{\bullet}}\sim_{\text{hom}}0$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-isomorphism-iff-cone-contractible}
+$f \in \text{Hom}(A^{\bullet},B^{\bullet})$ is isomorphism in
+$\mathcal{H}(\mathcal{A})$ if and only if $\text{Cone}(f)$ is contractible.
+\end{exercise}
+
+\begin{definition}
+\label{definition-Hom-of-complexes}
+Let  $A^{\bullet},B^{\bullet}\in \text{Com}(\mathcal{A})$. Then we define
+$\underline{\text{Hom}}(A^{\bullet},B^{\bullet}) \in \text{Com}(\text{Ab})$,
+$$
+\text{Hom}^i(A,B)=\prod_{n \in \mathbb{Z}}\text{Hom}(A^n,B^{n+i})
+$$
+\begin{align*}
+d^i_{\underline{\text{Hom}}}: \underline{\text{Hom}}(A,B)^i &\longrightarrow
+\underline{\text{Hom}}(A,B)^{i+1} \\
+f=\prod f^n &\longmapsto g
+\end{align*}
+and $g^n=d_Bf^n-(-1)^i f^{n+1}d_A$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-Hom}
+\begin{enumerate}
+\item Check that $\underline{\text{Hom}}$ is a complex.
+\item $\Ker
+d^i_{\underline{\text{Hom}}}
+=\text{Hom}_{\text{Com}(\mathcal{A})}(A^{\bullet},B^{\bullet}[i])$.
+\item $\text{Im}d^{i-1}_{\text{Hom}}=\{fsim_{\text{hom}}0\}$
+\end{enumerate}
+\end{exercise}
+
+Notation:
+$\text{Hom}^i(A^{\bullet},B^{\bullet})=\text{Hom}(A^{\bullet},B^{\bullet}[i])$. 
+
+\begin{lemma}
+\label{lemma-cone-long-exact-sequence}
+Consider the following composition
+$$
+\xymatrix{
+A^\bullet\ar[r]_f&  B^{\bullet}\ar[r]^b&  \text{Cone}(f)\ar[r]^a &
+A^{\bullet}[1]
+}
+$$
+(which is your first {\it distinguished triangle in life}) induces the following
+long exact sequence for all $C^{\bullet \in \text{Com}(\mathcal{A})}$:
+$$
+\xymatrix{
+\cdots\ar[r]&\text{Hom}^i_{\mathcal{H}(\mathcal{A})}(C^{\bullet},A^{\bullet})\ar[r]&\text{Hom}_{\mathcal{H}}(\mathcal{A})^i(C^{\bullet},B^{\bullet})\ar[r]&\text{Hom}^i_{\mathcal{H}(\mathcal{A})}(C,\text{Cone}(f))\ar[r]&\text{Hom}^{i+1}_{\mathcal{H}(\mathcal{A})}(C^{\bullet},A^{\bullet})\ar[r]&\cdots
+}
+$$
+and the same happens for
+$\text{Hom}^i_{\mathcal{H}(\mathcal{A})}(\cdot,C^{\bullet})$.
+\end{lemma}
+
+It is very important that we went in $\mathcal{H}(\mathcal{A})$!
+
+\begin{proof}[Idea of proof]
+(The long exact sequence is the cohomology exact sequence associated
+to a short exact sequence. Also some exercise from the past is hidden in the
+details.)
+
+The short exact sequence
+$$
+\xymatrix{
+0\ar[r]&B^{\bullet}\ar[r]&\text{Cone}(f)\ar[r]&A[1]\ar[r]&0
+}
+$$
+splits. This gives
+$$
+\xymatrix{
+0\ar[r]&B^i\ar[r]&B^i\oplus A^{i+1}\ar[r]&A^{i+1}\ar[r]&0
+}
+$$
+Which in turn gives
+$$
+\xymatrix{
+0\ar[r]&\underline{\text{Hom}}(C^{\bullet},B^{\bullet})
+\ar[r]&\underline{\text{Hom}}(C^{\bullet},\text{Cone}(f))
+\ar[r]&\underline{\text{Hom}}(C^{\bullet},A[1]\ar[r]&0
+}
+$$
+and {\it then} we take the cohomology long exact sequence.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-simple}
+$bf=ab=fa[-1]=0$ in $\mathcal{H}(\mathcal{A})$.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-right-Ore-conditions-not-in-Com}
+Prove that the right Ore conditions are not satisfied in
+$\text{Com}(\mathcal{A})$.
+\end{exercise}
+
+\begin{proposition}
+\label{proposition-QIS-satisfy-right-Ore-conditions-in-homotopy-category}
+QIS satisfy the right Ore conditions in $\mathcal{H}(\mathcal{A})$.
+\end{proposition}
+
+\begin{proof}
+In lecture we proved condition 1 and part of condition 2 of the right Ore
+conditions, see Subsection
+\ref{subsection-explicit-description-of-localization}. Finishing the proof was
+left as exercise, including Ore condition 3.
+\end{proof}
+
+\bigskip\noindent
+Now we shall show that
+$$
+D(\mathcal{A})\cong \mathcal{H}(\mathcal{A})[\text{QIS}]
+$$
+$$
+H:\text{Com}(\mathcal{A}\to \mathcal{H}(\mathcal{A})
+$$
+\begin{proposition}
+\label{proposition-localization-functor}
+The localization functor
+$$
+\xymatrix{
+Q:\text{Com}(\mathcal{A})\ar[d]_H\ar[r]
+& D(\mathcal{A})\cong\mathcal{H}(\mathcal{A})[\text{QIS}]^{-1}\\
+\mathcal{H}(\mathcal{A})\ar[ur]_{Q'}
+}
+$$
+can be be decomposed as $Q' \circ H$. Moreover $Q' \cong
+\mathcal{H}(\mathcal{A})$, where
+$Q_{\mathcal{H}(\mathcal{A})}:\mathcal{H}(\mathcal{A}) \to
+\mathcal{H}(\mathcal{A})[\text{QIS}]^{-1}$.
+\end{proposition}
+
+\begin{proof}
+Done in class, with some exercises for us to complete.
+\end{proof}
+
+This shows that the derived category is equivalent to the homotopy category with
+localization. We have the following corollary:
+
+\begin{lemma}
+\label{lemma-}
+We can specifically describe
+$$
+D(\mathcal{A}): \text{Ob}(D(\mathcal{A}) = \text{Com}(\mathcal{A})
+$$
+$$
+\text{Hom}_{D(\mathcal{A})}(A^{\bullet},B^{\bullet})
+=\{\text{equivelnce classes of roofs}\}
+$$
+Recall that a roof is
+$$
+\xymatrix{
+& C\ar[dl]_{\in S}\ar[dr]\\
+A& & B
+}
+$$
+\end{lemma}
+
+\bigskip\noindent
+Now we shall show that $D(\mathcal{A})$ is additive. (Or have we already proved
+this? ie. from the corollary?)
+
+\bigskip\noindent
+Why $\mathcal{H}(\mathcal{A})$ and $D(\mathcal{A})$ are not abelian: there are
+not so many injective and surjective morphisms.
+
+\begin{exercise}
+\label{exercise-no-injective-surjective-morphisms-in-derived-categories}
+$f \in \text{Hom}_{\mathcal{H}(\mathcal{A})} (A^{\bullet},B^{\bullet})$ is
+injective if and only if there exists  $g: B \to A^{\bullet} \in
+\text{Hom}_{\mathcal{H}(\mathcal{A})} (B^{\bullet},A^{\bullet})$ such that $g
+\circ f=\text{id}_A$. Formulate the same for surjections.
+\end{exercise}
+
+\subsection{Some properties of the derived category}
+\label{subsection-some-properties-of-the-derived-category}
+
+For every $i \in \mathbb{Z}$ define
+\begin{align*}
+\mathcal{A} &\longrightarrow D(\mathcal{A}) \\
+A &\longmapsto A[i], \quad \{0 \to \overset{i}{A} \to 0\}
+\end{align*}
+
+So $A[i]$ is {\it that} complex. It is ``concentrated in degree i''
+
+{\bf Goal:} understand morphisms between $M,N[i]$.
+
+\begin{definition}
+\label{definition-embedding-in-Com}
+Let $A \in \text{Com}(\mathcal{A})$. For all $n$, 
+$$
+\tau_{\leq n}(A^{\bullet})^i:=\begin{cases}
+A^i\qquad &i<n \\
+\Ker d^n\qquad &i=n\\
+0,\quad &i>n
+\end{cases}
+$$ 
+then 
+$$
+\tau_{\geq  n}(A^{\bullet})^i=\begin{cases}
+0\qquad
+ &i<n \\
+A^n/\text{Im}d^{n-1}\qquad &i=n\\
+A^i,\qquad &i>n
+\end{cases}
+$$
+and $A^{\bullet}\to\tau_{\geq n}A^{\bullet}$.
+\end{definition}
+
+Then
+$$
+\tau_{\leq n}:\text{Com}(\mathcal{A}) \to \text{Com}(\mathcal{A})
+$$
+defines a functor $\tau_{\leq n}(\text{QIS})\subset \text{QIS}$ 
+where 
+$$
+\tau_{\leq }(f \sim _{\text{hom}}0) \subset \sim_{\text{hom}}0
+\implies
+$$
+\begin{align*}
+\tau_{\leq n}: \mathcal{H}(\mathcal{A}) &\longrightarrow
+\mathcal{H}(\mathcal{A}) \\
+D(\mathcal{A}) &\longmapsto D(\mathcal{A})
+\end{align*}
+the same for $\tau_{\geq n}$.
+
+\medskip
+The following lemma allows us to understand how are morphisms behaved.
+
+\begin{lemma}
+\label{lemma-Homs}
+Let $A,B \in \mathcal{A}$. Then
+ \begin{enumerate}
+\item $\text{Hom}_{D(\mathcal{A})}(A,B[-i])=0$ for all $i>0$.
+\item $\text{Hom}_{\mathcal{A}}(A,B)=\text{Hom}_{D(\mathcal{A})}(A,B)$.
+\end{enumerate}
+In particular, $\mathcal{A} \hookrightarrow A(\mathcal{A})$ is fully-faithful.
+\end{lemma}
+
+Now we introduce a notion of Ext, which will recover the usual Ext (derived
+functors).
+
+\begin{definition}
+\label{definition-Ext}
+For $i>0$,
+$$
+\text{Ext}^i_{\mathcal{A}}(A,B)=\text{Hom}_{D(\mathcal{A})}(A,B[i]).
+$$
+\end{definition}
+
+\begin{definition}[Yoneda]
+\label{definition-Yoneda}
+For $i>0$ let
+$$
+\text{Ext}_Y^i(A,B):=\{\text{equivalence classes of exact sequences}
+\begin{aligned}
+\xymatrix{
+B\ar[r]&  K^{i-1}\ar[r]&  K^{i-2}\ar[r]& \cdots\ar[r]&K^0\ar[r]&A
+}
+\end{aligned}
+\}
+$$
+and say that two such sequences are equivalent if there is a commutative diagram
+$$
+\xymatrix{
+B\ar[r]&  K^{i-1}\ar[r]\ar[d]&  K^{i-2}\ar[r]\ar[d]& \cdots\ar[r]\ar[d]
+&K^0\ar[r]\ar[d]&A\\
+B\ar[r]&  \tilde{K}^{i-1}\ar[r]&  \tilde{K}^{i-2}\ar[r]& \cdots\ar[r]
+&\tilde{K}^0\ar[r]&A
+}
+$$
+and are equivalent if there exists a sequence of equivalent elements
+$$
+K \sim K_0 \sim \ldots \sim \tilde{K}
+$$
+\end{definition}
+
+\begin{proposition}
+\label{proposition-Ext}
+$$
+\text{Ext}_{\mathcal{A}}^i(A,B) \cong \text{Ext}_Y^i(A,B)
+$$
+\end{proposition}
+
+\begin{proof}
+Sketched in class.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-derived-and-homotopy-categories-abelian-characterization}
+$D(\mathcal{A})$ and  $\mathcal{H}(\mathcal{A})$ are abelian if and only if
+$\mathcal{A}$ is semisimple, that is, all exact sequences in $\mathcal{A}$
+split. If $\mathcal{A}$ is semisimple, then $D(\mathcal{A})\cong \bigoplus_{i
+inn \mathbb{Z}}\mathcal{A}[-i]$.
+\end{exercise}
+
+
 
 \section{Geometric Invariant theory}
 \label{section-GIT}
@@ -2059,17 +2604,272 @@ symmetric function. The quotient
 $\pi:\mathbb{A}^n\xrightarrow{(e_1,\ldots,e_n)}\mathbb{A}^n$ is finite, flat of
 degree $n!$.
 \item (Symmetric products.) $X=Z^n$, $Z$ affine algebraic variety, $G=S_n$
-acting by permuting copies of $Z$. Then $X/G=Z^{(n)}$, the $n$-th symmetric
+acting by permuting copies of $Z$. Then $X/G:=Z^{(n)}$, the $n$-th symmetric
 product of $Z$. Points of $Z^{(n)}=$effective $0$-cycles in $Z$ of degree $n$ =
 $z_1+\ldots+z_n$, $(z_i \in Z)$ = $n_1z_1+\ldots+n_kz_k$ where $z_i$ are
-distinct and $n_i$ are primitive integers with some $n$.
+distinct and $n_i$ are positive integers with some $n$.
 \end{enumerate}
 \end{example}
 
 \subsection*{Local structure of quotients}
 \label{subsection-local-structure-of-quotients}
 
-See Mumford, Abelian Varieties. 
+See Mumford, Abelian Varieties.
+
+\begin{definition}
+\label{definition-free-locus}
+Points with trivial stabilizer.
+\end{definition}
+
+The local structure of  the symmetric product variety $Z^{(n)}$ 
+at the point $x$ is the stabilizer
+$$
+G_x=S_{n_1}\times\ldots\times S_{n_2}\subset S_n=G
+$$
+and we get
+$$
+Z^{(n_1)}\times\ldots\times Z^{n_r} = X/G_x \to Z^{(n)}=X/G
+$$
+which is étale at the image of $x$.
+
+\begin{proposition}
+\label{proposition-variety-smooth-then-symmetric-product-smooth}
+If $Z$ is smooth then $Z^{(n)}$ is smooth.
+\end{proposition}
+
+\begin{proof}
+Using power series rings.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-simension-geq2-then-symmetric-product-singular}
+If $\dim Z \geq 2$ then $Z^{(n)}$ is singular.
+\end{proposition}
+
+\begin{proof}
+Done in lecture.
+\end{proof}
+
+\medskip\noindent
+Then we have the {\it Hilbert scheme characteristic morphism}
+\begin{align*}
+\gamma: \text{Hilb}_n(Z) &\longrightarrow Z^{(n)} \\
+W\subset Z &\longmapsto \sum_{z \in Z}\dim (\mathcal{O}_{W,z}z
+\end{align*}
+where $W$ must be {\bf finite of length }$n$. See Binger, Linear determinants
+(older) or J. Bertin, The punctual Hilbert Scheme.
+
+If $Z$ is smooth of dimension 1 then $\gamma$ is an isomorphism. If $Z$ is of
+dimension 2 then $\gamma$ is a resolution. In general $\gamma$ is an isomorphism
+above $Z_{f_2}^{(n)}$.
+
+\subsection*{Linear algebraic groups}
+\label{subsection-linear-algebraic-groups}
+\begin{definition}
+\label{definition-algebraic-group}
+An {\it algebraic group} is a variety $G$ equipped with morphisms
+\begin{align*}
+m: G\times G &\longrightarrow G \\
+(g,h) &\longmapsto gh
+\end{align*}
+and
+\begin{align*}
+i: G &\longrightarrow G \\
+g &\longmapsto g^{-1}
+\end{align*}
+with an element $e \in G$ which satisfies the group axioms.
+\end{definition}
+
+(In fact this is the same as a group scheme of finite type over $k$.)
+
+\begin{example}
+\label{example-algebraic-groups}
+\begin{enumerate}
+\item Finite groups.
+\item $\mathbb{G}_a=$additive group = $(\mathbb{A}^1,+)$ and $\mathbb{G}_m$
+=multiplicative group = $(\mathbb{A}^1\setminus\{0\},\times)$.
+\item $\text{GL}_n$ = general linear group. This is a principal open subset
+($\det \neq 0$), an affine variety.
+\item Classical groups $\text{SL}_n,\text{O}_n,\text{Sp}_{2n}$ closed in 
+$\text{GL}_n$. Also 
+$\text{PGL}_n=\text{GL}_n/\mathbb{G}_n:I_n\hookrightarrow\text{GL}_{n^2}$.
+\item $(E,0)$ elliptic curve; there is a unique algebraic group law + with
+neutral element $0$. (Abelian varieties.)
+\end{enumerate}
+\end{example}
+
+\begin{proposition}
+\label{proposition-connected-components-of-algebraic-group}
+$G$ algebraic group, $G^0$ connected component of $e$: $G^0$ is a closed normal
+subgroup of $G$ and the connected components of $G$ are the $gG^0$ for $g \in
+G$. Moreover, $G^0$ is irreducible and $G$ is smooth (which is obvious because
+it is smooth somewhere and we may just translate).
+\end{proposition}
+$$
+\xymatrix{
+1\ar[r]&G^0\ar[r]&G\ar[r]&\pi_0(G)\ar[r]&1
+}
+$$
+\begin{definition}
+\label{definition-action-of-algebraic-group}
+An {\it action} of an algebraic group $G$ on a variety $X$ is a morphism $a:G
+\times X \to X$ which satisfies the axioms of an action:
+$$
+a(g,x)=g\cdot x,\qquad  g\cdot(h\cdot x)=gh\cdot x,\qquad  e\cdot x=x
+$$
+The {\it orbit} of $x \in X$ is $G\cdot x=\{g\cdot x|g \in G\}$. The {\it
+stabilizer} $G_x$ is $\{g \in G|g\cdot x=x\}$, which is a closed subgroup of
+$G$.
+\end{definition}
+
+\begin{proposition}
+\label{proposition-properties-of-orbit}
+\begin{enumerate}
+\item Each orgbit $G\cdot x$ is locally closed, smooth of dimension
+$\dim(G)-\dim(G_x)$.
+\item The orbit map $G \to G\cdot x$, $g \mapsto  g\cdot x$ is faithfully flat.
+\item $\overline{G\cdot x}\setminus G\cdot x$ is a union of orbits of smaller
+dimension.
+\item Closed orbits exist.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Should be easy.
+For example, to see it's faithfully flat you just notice it is flat somewhere
+(if it is connected, is it connected?) and then use homogeneity again.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-bound-on-dimension-of-orbit-gives-open-set}
+For any $n \geq 1$, the set $\{x \in X|\dim(G\cdot x)\geq n\}$ is open. That is,
+$\{x \in X|\dim(G_x)\leq n\}$ is open.
+
+In particular, the points with finite stabilizer form an open subset.
+\end{proposition}
+
+\begin{proof}
+Use
+\begin{align*}
+\gamma: G \times X &\longrightarrow X\times X \\
+(g,x) &\longmapsto (g\cdot x,x)
+\end{align*}
+\end{proof}
+
+\begin{lemma}
+\label{lemma-homomorphism-of-algebraic-groups}
+Let $f:G \to H$ be an homomorphism of algebraic groups. Then $\Ker (f)$ is a
+normal subgroup of $G$. $\text{Im}(f)$ is a
+closed subgroup of $H$ of dimension $\dim(G)-\dim \Ker f$.
+\end{lemma}
+
+\begin{example}
+\label{example-}
+$G=\text{SL}_2$ acts on $k[x,y]_n:=V_n$ (these are called the {\it binary forms 
+of degree $n$}) by linear change of variables.
+\end{example}
+
+\begin{definition}
+\label{definition-linear-algebraic-group}
+An algebraic group is {\it linear} if $G \hookrightarrow \text{GL}_n$ for some
+$n$.
+\end{definition}
+
+\begin{example}
+\label{example-multiplicative-group-is-linear}
+$\mathbb{G}_a=\left\{\begin{pmatrix}
+1&t\\ 
+0&q
+\end{pmatrix}\right\}$ is linear.
+\end{example}
+
+\begin{proposition}
+\label{proposition-co-action}
+$G$ linear algebraic group,  $X$ a $G$-variety, $G$ acts on
+$\mathcal{O}(X)=\Gamma(X,\mathcal{O}_X)$ via $(g\cdot f)(x)=f(g^{-1}\cdot x)$
+then $\mathcal{O}(X)$ is a union of f.d. $G$-stable subspaces on which $G$ acts
+algebraically.
+\end{proposition}
+
+\begin{proof}
+From the action $a:G \times X \to X$ we get the {\it co-action} 
+\begin{align*}
+a^\sharp: \mathcal{O}(X) &\longrightarrow \mathcal{O}(G \times X) \\
+f &\longmapsto \sum_{i=1}^n(\varphi_i \otimes \psi_i)
+\end{align*}
+\end{proof}
+
+\begin{definition}
+\label{definition-}
+A finite dimensional vector space $V$ is called a $G$-module if $V$ is equipped
+with an action of $G$ via a homomorphism of algebraic groups 
+$G \to \text{GL}(V)$.
+
+A  {\it $G$-module} is a vector space $V$ equipped with a linear action og the
+group $G$ such that $V=$ union of finite dimensional $G$-submodules.
+\end{definition}
+
+\begin{proposition}
+\label{proposition-}
+ \begin{enumerate}
+\item $X$ affine $G$-variety, $G$ linear algebraic group, then $X
+\hookrightarrow  V$ finite dimensional $G$-module as a closed $G$-stable
+subvariety.
+\item Every affine algebraic group is linear.
+\end{enumerate}
+\end{proposition}
+
+Let $X$ be an affine $G$-variety. Then
+\begin{align*}
+\mathcal{O}(X) &\longrightarrow \mathcal{O}(G\times X)
+=\mathcal{O}(X)[t,t^{-1}] \\
+f &\longmapsto \sum_{n \in \mathbb{Z}}f_n t^n
+\end{align*}
+
+In particular, every $\mathbb{G}_m$-module is semisimple: every nonzero
+$G$-module contains a nonzero fixed point. Indeed, let $V$ be a
+finite-dimensional $G$-module. Let $v \in V$ be a $\mathbb{G}_a$-eigenvector.
+Then $g\cdot v=\gamma(g)v$ for ? $X \in
+\mathcal{O}(\mathbb{G}_a)^{\times}=k^{\times}$ taking $g=0$ yields $X=1$.
+
+$G$ connected algebraic group, then $G$ is {\it unipotent} if it is an iterated
+extension of copies of $\mathbb{G}_a$. Then every nonzero $G$-module contains a
+nonzero fixed point.
+
+As an example consider $G=\text{SL}_2$
+
+\section{Quivers}
+\label{section-quivers}
+
+\begin{definition}
+\label{definition-quiver}
+A {\it quiver} is a set of vertices $Q_0$, a set of arrows $Q_1$ equipped with
+the maps of source $s$ and target $t$ that to each arrow they assign the point
+that is source or target of the arrow.
+\end{definition}
+
+\begin{definition}
+\label{definition-representation-of-quiver}
+A {\it representation} of a quiver is a set of finite dimensional vector spaces
+equipped with maps between them realising a given quiver (incomplete…).
+\end{definition}
+
+There is a notion of projective representation, which I missed to write. But it
+is analogous to the injective representation:
+
+\begin{definition}
+\label{definition-injective-representation-of-quivers}
+Given a quiver $Q$, the {\it injective representation} of $Q_0$ is given by, for
+$i \in Q_0$,
+$$
+I(i)_j=\begin{cases}
+k\qquad &i=j \\
+k^{d'}\qquad &j \neq i
+\end{cases}
+$$
+where $d'$ is the number of paths from $j$ to $i$.
+\end{definition}
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
