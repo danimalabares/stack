@@ -139,6 +139,19 @@ $A \to B$ the restriction functor and the change
 of ring functor are adjoint to each other.
 \end{proof}
 
+\subsection{Tipologia dos feixes}
+\label{subsection-tipologia-dos-feixes}
+
+\begin{definition}
+\label{definition-tipologia-dos-feixes}
+A sheaf of $\mathcal{A}$-modules $\mathcal{F}$ over a sheaf of rings 
+$\mathcal{A}$ (on a topological space $X$) is called
+\begin{itemize}
+\item 
+\end{itemize}
+\end{definition}
+
+
 \section{Locally ringed spaces}
 \label{section-locally-ringed-spaces}
 
@@ -1442,7 +1455,98 @@ graded components of the coordinate ring of the surface).
 \section{Deformation theory}
 \label{section-deformation-theory}
 
+The following definition is from [lucas-defos]:
 
+\begin{definition}
+\label{definition-deformation}
+Let $X$ be an algebraic $\mathbb{C}$-scheme.
+\begin{enumerate}
+\item A {\it deformation} of $X$ is a Cartesian diagram $\xi$
+$$
+\xymatrix{
+X\ar[r]\ar[d]&\mathcal{X}\ar[d]^{\pi}\\
+\text{Spec}\mathbb{C}\ar[r]^s&S
+}
+$$
+where $\pi$ is a flat surjective morphism of algebraic $\mathbb{C}$-schemes and
+$S$ is connected. (Recall that flatness accounts for ``continuity''.)
+\item A {\it local deformation} of $X$ is a deformation $\xi$ where
+$S=\text{Spec}A$ for $A$ a noetherian local $\mathbb{C}$ algebra with residue
+field $\mathbb{C}$.
+\item An {\it infinitesimal deformation of $X$} is a local deformation with $A$
+an artinian local $\mathbb{C}$-algebra with residue field $\mathbb{C}$. $X$ is
+called {\it rigid} if all infinitesimal deformations are trivial.
+\item An {\it inifinitesimal deformation of order $n$} is an infinitesimal
+deformation when $S=\text{Spec}(\mathbb{C}[t]/(t^{n+1})$.
+\end{enumerate}
+\end{definition}
+
+So what is the deformation space? Is it a moduli space of curves, that is,
+points are curves obtained by deforming the curve? Or is it the fibration whose
+fibers are curves and there is a central fiber that is the original curve?
+
+There is the following interpretation in [continued-fractions] p. 39: the space
+of first order deformation classes of $X$ is $D(\mathbb{C}[t]/(t^2)$. This is
+said to ````represent'' the tangent space $\mathbb{T}^1_X$ of the hypothetical
+deformation space of $X$''. (I put double quotations because the word
+``represent'' is quoted in the original text.) Further, if $X$ is nonsingular
+and compact, then $\mathbb{T}^1_X=H^{1}(X,T_X)$.
+
+Which basically I interpret as: the dimension of the deformation space of a
+smooth compact variety is $H^{1}(X,T_X)$.
+
+\begin{example}
+\label{example-moduli-space-of-nonsingular-Riemann-surfaces-of-genus-g}
+\begin{reference}
+\cite[Example 3.1]{continued-fractions}
+\end{reference}
+Fix $g \geq 2$. The dimension of the deformation space of a nonsingular
+projective curve $X$ is $2g-2$. This is ``the dimension of the moduli space of
+curves of genus $g$''.
+ 
+We can compute this number by Riemann-Roch formula on the bundle $-K_X$. 
+Indeed, since $X$ is a curve, $\Omega_X^1=K_X$ and thus $-K_X=T_X$. We get
+\begin{align*}
+h^0(-K)-h^0(K-(-K))&=\text{deg}(-K)-g+1\\
+&=-2g+2-g+1\qquad \text{degree additive and $\text{deg}K=2g-2$}\\
+&=-3g+3
+\end{align*}
+Now by Serre duality $h^0(K-(-K))=h^1(-K)=h^1(T_X)$, and it turns out that a
+Riemann surface of genus $g \geq 2$ has no holomorphic vector fields, so that
+$h^0(-K)=h^0(T_X)=0$.
+\end{example}
+
+An analogous computation may be used to solve
+
+\begin{exercise}
+\label{exercise-deformations-of-curves-in-K3}
+Let $C$ be a smooth genus $g$ curve which can be embedded in a K3 surface  $M$,
+and $X$ the family of all deformations of $C$ in $M$.
+\begin{enumerate}
+\item Prove that $\dim X \leq  g$.
+\item Let $\mathcal{X}_g$ be the space of all curves of genus $g$ (smooth?)
+which can be possibly embedded to a K3 surface. Prove that each irreducible
+component $Z$ of $\mathcal{X}_g$ satisfies $\dim_\mathbb{C} \leq  g+19$. Deduce
+that there exists a compact complex curve which cannot be embedded in a K3
+surface.
+\end{enumerate}
+\end{exercise}
+
+\begin{proof}
+\begin{enumerate}
+\item As explained earlier, we are interested in computing $H^1(T_C)$. By
+Riemann-Roch for $-K_C=T_C$ on a K3 surface,
+$$
+\chi(-K_C)=2+\frac{1}{2}(-K_C,-K_C)
+$$
+but $\chi(-K_C)=h^0(T_C)-h^1(T_C)$ and there are no holomorphic vector fields on
+$C$ as long as it has genus $\geq 2$. To compute the self-intersection number
+$(K_C,K_C)=(T_C,T_C)$ we may use the genus formula 
+$2g-2=(\mathcal{O}(C),\mathcal{O}(C))$.
+Here recall that since $C$ is smooth, $\mathcal{O}(C)$ is the normal bundle of
+$C$ in $X$.
+\end{enumerate}
+\end{proof}
 
 \section{Continued fractions}
 \label{section-continued-fractions}
@@ -1689,7 +1793,7 @@ These have universal families, and all [all what?] are pullbacks of from the
 universal family.
 \end{enumerate}
 
-\subsection{Discrete data}
+\subsection*{Discrete data}
 \label{subsection-discrete-data}
 
 $X$ projective and $H$ an ample divisor on $X$. The {\it Hilbert polynomial} is
@@ -1902,11 +2006,242 @@ The following is a difficult result that we shall only state and use.
 $X$ projective, $H$ ample, $P$ a fixed polynomial of degree $d$. The family of
 torsion-free sheaves with Hilbert polynomial $P$ is bounded.
 \end{theorem}
+\clearpage
+\begin{proposition}
+\label{proposition-semi-stable-sheaves-are-bounded-on-curves}
+Let $X$ be a curve of genus $g$ with fixed Hilbert polynomial. The semi-stable
+sheaves on $X$ are bounded.
+\end{proposition}
+
+\begin{proof}
+Let $E$ be a semis-stable sheaf. We want $m$ such that $H^{1}(X,E(m-1))$. We
+apply Serre Duality as follows:
+$$
+H^{1}(X,E(m-1))\overset{\text{S.D.}}{=}\text{Hom}(E,\omega(1-m))^\vee
+$$Then $E \to \omega(m+1)$ $\implies$ $\omega^\vee(m-1)\to E^\vee$. $E$ is
+semi-stable then $-\text{deg}(\omega^\vee)\leq \frac{\text{deg}(E^\vee)}{r}$
+which implies that $-2g+2+m-1\leq -\frac{d}{r}$ for $d=\text{deg}E$, and then
+$m\leq  2g-2-\frac{d}{r}+1$. If we take $m>2g-2\frac{d}{r}+1$.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-}
+If  $E$ is a stable sheaf, then $\text{Hom}(E,E)=\mathbb{C}$.
+\end{proposition}
+
+\begin{proof}
+If $f:E \to E$ factors through $E \to F \to F$ and is not surjective, then
+$\mu(E)<\mu(F)<\mu(E)$ $\implies$ $f$ is injective. As an exercise, prove that
+$E$ is stable if and only if for all $E \to F$ surjective we have that
+$\mu(E)<\mu(F)$.
+\end{proof}
+
+\subsection*{Construction of the moduli space of semi-stable sheaves}
+\label{subsection-construction-of-the-moduli-space-of-semi-stable-sheaves}
+$$
+\mathcal{M}^p(s)=\left\{ \substack{\text{$\mathcal{F}$ on $X\times S$,
+pet over $S$}
+ \\ \text{with Hilbert polynomial $P$}} \right\} \Big/\sim
+$$
+where $\mathcal{F}\sim \mathcal{G}$ $\iff$ there exists $L$ on $S$ such that
+$\mathcal{F}\otimes \pi^*L \cong \mathcal{G}$ where 
+$X \times S\xrightarrow{\pi}\mathcal{G}$.
+
+$\mathcal{F}$ is a semi-stable sheaf is  $\exists $ $m$ such that
+$\mathcal{F}$ is $m$-regular, which implies that $\mathcal{F}(m)$ is globally
+generated.
+
+{\bf Warning.} Following are several formulas I don't understand and just copied
+from the board as they were.
+ $$
+\dim H^{0}(X,\mathcal{F}(m))=P(m)
+$$
+$$
+H^{i}(X,\mathcal{F}(m-1))=0\qquad \forall i>0
+$$
+$$
+V=\mathcal{O}_X^{\oplus P(m)}\to \mathcal{F}(m)\to 0
+$$
+$$
+\implies \left[ \mathcal{O}_X^{\oplus P(m)}(-m) \to \mathcal{F} \to 0 \right]
+\in \text{Quot}(\mathcal{H},P)
+$$
+Let $R$ be open locus in $\text{Quot}(\mathcal{H},P)$ such that
+\begin{itemize}
+\item $\mathcal{F}$ is semi-stable.
+\item $H^{0}(\mathcal{H}(m))\cong H^{0}(\mathcal{F}(m))$.
+\end{itemize}
+$\text{GL}(V)\mathbb{y} R$ by $g[\rho]=\pi \circ g$ for $\rho \in R$. 
+$$
+\xymatrix{
+\mathcal{O}^{\oplus p(m)}\ar[r]^{\rho}\ar[d]_{g,\cong}&  \mathcal{F}\\
+\mathcal{O}_X^{\oplus p(m)}\ar[ur]
+}
+$$
+We want
+``$R/\text{GL}(V)$''.
+
+\begin{theorem}
+\label{theorem-exists-coarse-moduli-space-of-semi-stable-sheaves-with-fixed
+-Hilbert-polynomial}
+There exists a coarse moduli space $M_{X,P}$ of semi-stable sheaves with fixed
+Hilbert polynomial $P$, $\mathcal{M}_{X,P}$ is projective and
+$\mathcal{M}_{X,P}^s$ of stable sheaves with Hilbert polynomial $P$.
+\end{theorem}
+
+{\bf Fact.} The GIT (semi-)stability coincides with the Gieseker
+(semi-)stability. Reference: Huybrechts-Lehu, Moduli of Sheaves.
+
+{\bf Remarks on working with stacks.}
+
+\begin{itemize}
+\item Instead of constructing sheaves which are coarse/fine moduli spaces we may
+find more general geometric objects called ``stacks''.
+\item Advantage: Quotients always exist: 
+$G \mathbb{y} X \rightsquigarrow [X/G]$.
+\item Stacks have universal families.
+\item Disadvantage: we need to work with more general moduli functors. Instead
+of $\mathcal{M}:(\text{Sch}) \to (\text{Sets})$, we substitute $(\text{Sets})$
+with a 2-category.
+\item Disadvantage: not all algebraic stacks have coarse moduli spaces but if
+the number of automorphisms of points (is finite?)
+\item Disadvantage: may not be projective (even if proper/compact).
+\end{itemize}
+
+In sum, we may not be able to produce a moduli space, and even if we can, it may
+not be projective.
+
+Even in the easiest situation we can have, we don't have universal family:
+
+\begin{example}[The line bundles of degree $d$ on $\mathbb{P}^1$ do not have
+universal family]
+\label{example-moduli-space-of-line-bundles-of-degree-d-over-P1-
+do-not-have-universal-family}
+Line bundles on $\mathbb{P}^1$ of degree $d$ are $\mathcal{O}(d)$. Them
+$\mathcal{M}=\text{Spec}\mathbb{C}$. It does not have a universal family:
+$$
+\xymatrix{
+\mathcal{O}_{\mathbb{P}^1}\ar[r]\ar[d]&\mathbb{C}\ar[d]\\
+\mathbb{P}^1\ar[r]&\text{Spec}\mathbb{C}
+}
+$$
+and $\mathcal{O}(d) \neq \mathcal{O}_{\mathbb{P}^1}$, $d\neq 0$.
+\end{example}
+
+\subsection*{Remarks on stacks}
+\label{subsection-remarks-on-stacks}
+
+The following was not defined properly. As a stack,
+$$
+\text{Pic}_{\mathbb{P}^1,d}=\left[ \cdot/\mathbb{G}_m \right] = B\mathbb{G}_m
+$$
+parametrized by $\mathbb{G}_m$-bundles.
+$$
+\xymatrix{
+\mathcal{L}\setminus\{\text{zero section}\}\ar[r]\ar[d]&\Gamma^A?\ar[d]\\
+\mathbb{P}^1\ar[r]_\varphi&B\mathbb{G}_m
+}
+$$
+
+{\bf Tangent space.} The tangent space of $\mathcal{M}_{X,P}$, in $\ni E$, is
+$\text{Ext}^1(E,E)$ if $\text{Ext}^2(E,E)=0 \implies  \mathcal{M}_{X,P}$ is
+smooth. ($\text{Ext}$ groups are defined in Algebra, Section
+\ref{algebra-section-ext}, also appears to be a theorem in deformation theory.)
+
+\begin{example}
+\label{example-moduli-space-of-curves-is-smooth}
+Let $X$ be a curve. $E$ is a vector bundle of rank $n$, then
+$$
+\text{Ext}^2(E,E)=H^{2}(X,E \otimes E^{\vee})=0
+$$
+then the moduli space is smooth.
+\end{example}
+
+The dimension of the stack is $\dim T_{\mathcal{M},E}-\dim \text{Aut}(E)$, which
+is just $\dim (\text{Ext}^1(E,E) - \dim \text{Ext}^0(E,E)$, which in turn says
+that $\mathcal{X}(X,E \otimes E^\vee)=V^2(f-g)$.
+
+{\bf Question 2.} Once we have a moduli space we want so study its geometry. 
+What can we say about $\mathcal{M}_{X,P,H}$?
+
+Let $X$ be a projective surface and $E$ a vector bundle. 
+Let $r = \text{rk} E$, $L = \Lambda^{n}E$. Consider
+$\mathcal{M}_{X,P,H}(r,L,n)$.
+$n=c_2(E)$ 
+
+\begin{theorem}
+\label{theorem-moduli-space-that-is-normal-generaically-smooth-irreducible-
+quasi-projective-variety}
+If $\Delta=2rm-(r-1)L^2 \gg 0$ then $\mathcal{M}_{X,H}(r,L,n)$ is a normal,
+generically smooth irreducible quasi-projective variety. (If $\Delta$ is small
+then it is not true.)
+\end{theorem}
+
+\begin{theorem}
+\label{theorem-birrational-moduli-spaces}
+Fix $H,H'$ ample. For $\Delta \gg 0$, $\mathcal{M}_{X,H}(r,L,n)$ and
+$\mathcal{M}_{X,H}(r,L,n)$ are birrational.
+\end{theorem}
+
+An idea: there are ample cones, and walls between them, and when you cross the
+wall, you get to a birrational thing.
+
+\begin{definition}
+\label{definition-wall}
+Let $C_X$ be the ample cone $\mathbb{R} \otimes \text{Num}(X)$. For 
+$\xi \in\text{Num}(X)$, 
+$W^\xi:=C_X \cap \{x \in \text{Num}(X) \otimes\mathbb{R}:x\cdot\xi=0\}$. 
+$W^\xi$ is called a {\it wall} of type 
+$(c_1,c_2) \iff \exists G \in\text{Pic}(X)$ with $\xi = G$ such that 
+\begin{itemize}
+\item $G+c_1$ is divisible by $2$ in $\text{Pic}(X)$
+\item $c_1^2-4c_2 \leq G^2 <0$.
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+\label{remark-wall-not-zero-if-exists-ample-with-condition}
+$W^\xi \neq 0$ if there exists an ample line bundle $L$ with $L\xi =0$,
+$W(c_1,c_2)=\bigcup_{\xi}W^1$.
+\end{remark}
+
+\begin{definition}
+\label{definition-chamber}
+A {\it chamber} is a connected component of $C_x\setminus W(c_1,c_2)$.
+\end{definition}
 
 
 \section{Derived categories}
 \label{section-derived-categories}
 
+{\bf Upshot.} The derived category of an abelian category is the localization of
+its homotopy category with respect to the class of quasi-isomorphisms.
+\begin{itemize}
+\item The objects of $D(\mathcal{A})$ are complexes in $\mathcal{A}$ and the
+arrows are equivalence classes of roofs.
+\item $D(\mathcal{A})$ is additive but not abelian unless $\mathcal{A}$ is
+semisimple.
+\item $D(\text{Vect}_k)=$ graded vector spaces.
+\item For all $A,B\in \mathcal{A}$,
+$$
+\text{Hom}_{D(\mathcal{A})}(A,B[i])=
+\begin{cases}
+0\qquad &i<0 \\
+\text{Hom}_{\mathcal{A}}(A,B)\qquad &i=0\\
+\text{Ext}^i(A,B)\qquad &i>0
+\end{cases}
+$$
+\item A sequence
+$$
+\xymatrix{
+A\ar[r]^f&B\ar[r]^b&\text{Cone}(f)\ar[r]^a&A[I]\ar[r]&0
+}
+$$
+gives long exact sequences $\text{Hom}^\bullet_{D(\mathcal{A})}(C,\cdot)$ and 
+$\text{Hom}^\bullet_{D(\mathcal{A})}(\cdot,C)$, which are the distinguished
+triangles.
+\end{itemize}
+\medskip
 \begin{definition}
 \label{definition-abelian-category}
 An {\it abelian category} $\mathcal{A}$ is a category such that
@@ -2396,7 +2731,7 @@ $$
 Recall that a roof is
 $$
 \xymatrix{
-& C\ar[dl]_{\in S}\ar[dr]\\
+& C\ar[dl]_{\text{QIS}\ni S}\ar[dr]^{f}\\
 A& & B
 }
 $$
@@ -2418,7 +2753,7 @@ injective if and only if there exists  $g: B \to A^{\bullet} \in
 \circ f=\text{id}_A$. Formulate the same for surjections.
 \end{exercise}
 
-\subsection{Some properties of the derived category}
+\subsection*{Some properties of the derived category}
 \label{subsection-some-properties-of-the-derived-category}
 
 For every $i \in \mathbb{Z}$ define
@@ -2540,8 +2875,274 @@ split. If $\mathcal{A}$ is semisimple, then $D(\mathcal{A})\cong \bigoplus_{i
 inn \mathbb{Z}}\mathcal{A}[-i]$.
 \end{exercise}
 
+\subsection*{Triangulated categories}
+\label{subsection-triangulated-categories}
 
+\begin{definition}
+\label{definition-triangulated-category}
+An additive category $\mathcal{T}$ is a {\it triangulated category} if it has
+the following structures:
+\begin{itemize}
+\item $[1]:\mathcal{T} \to \mathcal{T}$ autoequiv.
+\item Class of sequences of the form
+$$
+\xymatrix{
+A\ar[r]&B\ar[r]&C\ar[r]&A[1]
+}
+$$
+which are called {\it distinguished triangles}, and satisfy the following
+axioms:
+\begin{itemize}
+\item (Axiom 1.)
+\begin{itemize}
+\item $\xymatrix{
+A\ar[r]^{\text{id}}&A \ar[r]& 0\ar[r]&A[1]
+}$ is a distinguished triangle.
+\item Any triangle $A \to B \to C \to A[I]$ isomorphic to a distinguished
+triangle is a distinguished triangle.
+\item Any morphism $(A \xrightarrow{f}B)\in \mathcal{T}$ can be completed to a
+distinguished triangle $A\xrightarrow{f}B \to \mathcal{K} \to A[I]$, and
+$\mathcal{K}$ is called the {\it cone} of $f$.
+\end{itemize}
+\item (Axiom 2.) A triangle
+$$
+\xymatrix{
+A\ar[r]^f &  B \ar[r]^g &  C\ar[r]^h & A[1]
+}
+$$
+is distinguished if and only if
+$$
+\xymatrix{
+B\ar[r]^g &  C \ar[r]^g &  A[1]\ar[r]^{f[1]} & B[1]
+}
+$$
+is distinguihsed.
 
+\item (Axiom 3.) For any two distinguished triangles
+$$
+\xymatrix{
+A\ar[r]^f\ar[d]_a &  B \ar[r]\ar[d]^b &  C \ar@{.>}[d]^{u}\ar[r]& 
+A[1]\ar[d]^{a[1]}\\
+A'\ar[r]_{f'}& B'\ar[r]& C'\ar[r]&A'[1]
+}
+$$
+and any $a,b$ such that $bf=f'a$ there exists $u$ that makes the above diagram
+commute (it is not unique!)
+
+\item (Octahedral axiom.) Any two distinguished triangles with a common vertex 
+of the form 
+$$
+\xymatrix{
+X\ar[r]^u& Y\ar[r]^v\ar[d]& Z\ar[r]&X[I]\\
+& Y'\ar[d]\\
+& W\ar[d]\\
+& Y[I]
+}
+$$
+can be
+completed to the following commutative diagram:
+$$
+\xymatrix{
+X\ar[d]_{=}\ar[r]^u& Y\ar[r]^v\ar[d]&  Z\ar[r]&  X[|]\ar[d]^=\\
+X\ar[r]&  Y'\ar[d]\ar[r]&  Z'\ar[d]\ar[r]& X[|]\ar[d]^{u[I]}\\
+& W\ar[r]^=\ar[d]_h & W\ar[r]^h\ar[d]&  Y[|]\\
+& Y[|]\ar[r]_{v[|]}&Z[|]
+}
+$$
+\end{itemize}
+\end{itemize}
+\end{definition}
+
+{\bf Properties.} Let $X\xrightarrow{f}Y\xrightarrow{g}Z\xrightarrow{h}X[I]$ be
+a distinguished triangle.
+
+\begin{lemma}
+\label{lemma-properties-of-distinguished-triangles}
+\begin{enumerate}
+\item $gf=hg=f[1]h=0$.
+\item It induces the following sequence
+$$
+\xymatrix{ 
+\cdots\ar[r]&Z[-1]\ar[r]& X\ar[r]& Y\ar[r]& Z\ar[r]&X[1]
+\ar[r]&Y[1]\ar[r]& Z[1]\ar[r]&\cdots
+}
+$$
+such that any sequence of length $h$ (contained in it?) is a distinguished
+triangle.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+$$
+\xymatrix{
+Y\ar[r]^g\ar[d]_=& Z\ar[d]_=\ar[r]^h& C[1]\ar[r]^{f[1]}\ar[d]&
+Y[1]\ar[d]^{g[1]}\\
+Z\ar[r]^{=}&Z\ar[r]& 0\ar[r]&Z[1]
+}
+$$
+and by axiom 3 we get $gf=0$. By Axiom 2 we get the second statement.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-long-exact-sequences-for-distinguished-triangles}
+If $X \to Y \to Z \to X[1]$ is a distinguished triangle, then for every $U \in
+\mathcal{T}$ we have the following long exact sequences:
+$$
+\xymatrix{
+\cdots\ar[r]&\text{Hom}(U,X[i])\ar[r]&\text{Hom}(U,Y[i]\ar[r]&
+\text{Hom}(U,Z[i])\ar[r]&\text{Hom}(U,X[i+1]\ar[r]&\cdots
+}
+$$
+and the same happens for $\text{Hom}(\cdot,U)$
+\end{lemma}
+
+\begin{proof}
+Done in lecture, uses previous lemma and Axiom 3.
+\end{proof}
+
+We have the following corollary:
+
+\begin{lemma}
+\label{lemma-two-isomorphisms-give-an-isomorphism}
+If in Axiom 3 two morphisms are isomorphisms, then the constructed one is also
+an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Exercise. {\bf Hint.} Use Yoneda lemma.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-inverses-in-distinguished-triangles}
+If $A\xrightarrow{f}B\xrightarrow{g}C\xrightarrow{h}A[1]$ is a distinguished
+triangle, then $h=0$ if and only if $f$ has a left inverse, if and only if $g$
+has a right inverse. 
+\end{exercise}
+
+As a corollary,
+
+\begin{lemma}
+\label{lemma-cone-of-morphism-is-unique}
+The cone of a morphism is unique up to isomorphism.
+\end{lemma}
+
+However, the cone is not functorial, which is a problem.
+
+\medskip\noindent
+Now we want to show that the homotopy category $\mathcal{H}(\mathcal{A})$ of an
+abelian category $\mathcal{A}$ has a triangulated structure. 
+We need to say which are the distinguished triangles: but we already did this
+for the derived category: they are
+$$
+\xymatrix{
+A\ar[r]^f&B\ar[r]^b&\text{Cone}(f)\ar[r]^a&A[I]\ar[r]&0
+}
+$$
+
+\begin{theorem}
+\label{theorem-homotopy-category-is-triangulated}
+$\mathcal{H}(\mathcal{A})$ is triangulated.
+\end{theorem}
+
+\begin{proof}
+It looks like Axiom 1 should be immediate from our construction. Also Axiom 2
+(indeed, we have a notion of $\text{Cone}(f)$ which we obviously expect to
+satisfy the property of the cone $\mathcal{K}$. Axiom 3 uses an exercise using
+the notion of cylinder. Proving the octahedral axiom is also an exercise with a
+big hint.
+\end{proof}
+
+{\bf $D(\mathcal{A})$ is triangulated.} Let $\mathcal{C}$ be triangulated, and
+$S$ a class of morphisms satisfying the right Ore conditions. We know that
+$\mathcal{C}[S]^{-1}$ is an additive category, but when is it triangulated?
+
+\begin{definition}
+\label{definition-compatible-class-of-morphisms}
+$S$ is {\it compatible} with a triangulated structure if
+\begin{enumerate}
+\item $s \in S$, $S[1]\in S$,
+\item In Axiom 3, if $a,b \in S$ then we can choose $u \in S$.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+\label{proposition-compatible-class-gives-triangulated-localization}
+It $\mathcal{T}$ is triangulated an $S$ satisfies the right Ore conditions and
+is compatible with the triangulated structure of $\mathcal{T}$ then
+$\mathcal{T}[S]^{-1}$ is triangulated.
+\end{proposition}
+
+\begin{proof}
+Axioms 1-3 proved, Octahedral axiom is exercise with hint.
+\end{proof}
+
+We finally obtain:
+
+\begin{lemma}
+\label{lemma-derived-category-is-triangulated}
+$D(\mathcal{A})$ is triangulated.
+\end{lemma}
+
+\begin{proof}
+Two or three lines, uses 5 lemma, uses long exact sequences of $\text{Hom}$.
+\end{proof}
+
+\subsection*{Derived functors}
+\label{subsection-derived-functors}
+
+\begin{definition}
+\label{definition-additive-exact-functor}
+An additive functor $F:\mathcal{T} \to \mathcal{T}'$ between triangulated
+categories is {\it exact} if
+\begin{enumerate}
+\item $F \circ [1]_{\mathcal{T}}=[1]_{\mathcal{T}'}\circ F$.
+\item Maps distinguished triangles to distinguished triangles.
+\end{enumerate}
+\end{definition}
+
+\medskip\noindent
+Here are some bounded notions:
+\begin{align*}
+\text{Com}^\bullet(\mathcal{A})&\\
+\text{Com}^+(\mathcal{A})&=\{A\in \text{Com}(\mathcal{A})
+|A^i=0,\quad i\ll 0\}\\
+\text{Com}^-(\mathcal{A})&=\{A\in \text{Com}(\mathcal{A})|i \gg 0\}\\
+\text{Com}^b(\mathcal{A})&=\{A \in \text{Com}(\mathcal{A})||i|\gg 0\}
+\end{align*}
+each of which gives a derived category $D^*$ for $*=b,+$ or $-$.
+
+Now consider an exact functor of abelian categories $F:\mathcal{A} \to
+\mathcal{B}$. We would like to obtain a functor
+$D^*(\mathcal{A}) \to D^*(\mathcal{B})$.
+
+In general functors are not exact. Thus our goal now is:
+\begin{itemize}
+\item From a left exact functor $F:\mathcal{A} \to \mathcal{B}$ obtain
+$RF:D^+(\mathcal{A})\to D^+(\mathcal{B})$,
+\item From a right exact functor $G:\mathcal{A}\to \mathcal{B}$ obtain
+$LG:D^-(\mathcal{A})\to D^-(\mathcal{B})$.
+\end{itemize}
+Given an additive category $\mathcal{I} \subset \mathcal{A}$ of injective
+objects in $\mathcal{A}$, we have  $\mathcal{H}^* (\mathcal{I})\subset 
+\mathcal{H}^* (\mathcal{A}) \xrightarrow{G_{\mathcal{A}}}D^*(\mathcal{A})$.
+
+\begin{lemma}
+\label{lemma-embedding-of-injective-subcategory}
+Suppose that $\mathcal{A}$ has enough injective objects, 
+$\forall A^\bullet \in \mathcal{A}$ can be embedded 
+$A \hookrightarrow I \in\mathcal{I}$. Then 
+$i:\mathcal{H}^+(\mathcal{I}) \to D^+(\mathcal{A})$ is an equivalence.
+\end{lemma}
+
+\begin{proof}
+Not proved.
+\end{proof}
+
+Suprisingly (to me) it looks like the category of coherent sheaves has not
+enough injective objects. Because the derived category of coherent sheaves is
+supposed to be mirrored with the Fukaya category of lagrangian subvarieties… so
+probably we want our category to have exact functors i.e. lots of injective
+objects.
 \section{Geometric Invariant theory}
 \label{section-GIT}
 
@@ -2764,7 +3365,7 @@ closed subgroup of $H$ of dimension $\dim(G)-\dim \Ker f$.
 \end{lemma}
 
 \begin{example}
-\label{example-}
+\label{example-SL2-acts-on-homogeneous-polynomials}
 $G=\text{SL}_2$ acts on $k[x,y]_n:=V_n$ (these are called the {\it binary forms 
 of degree $n$}) by linear change of variables.
 \end{example}
@@ -2800,8 +3401,8 @@ f &\longmapsto \sum_{i=1}^n(\varphi_i \otimes \psi_i)
 \end{proof}
 
 \begin{definition}
-\label{definition-}
-A finite dimensional vector space $V$ is called a $G$-module if $V$ is equipped
+\label{definition-G-module}
+A finite dimensional vector space $V$ is called a {\it $G$-module} if $V$ is equipped
 with an action of $G$ via a homomorphism of algebraic groups 
 $G \to \text{GL}(V)$.
 
@@ -2810,7 +3411,7 @@ group $G$ such that $V=$ union of finite dimensional $G$-submodules.
 \end{definition}
 
 \begin{proposition}
-\label{proposition-}
+\label{proposition-G-modules}
  \begin{enumerate}
 \item $X$ affine $G$-variety, $G$ linear algebraic group, then $X
 \hookrightarrow  V$ finite dimensional $G$-module as a closed $G$-stable
@@ -2836,7 +3437,270 @@ $G$ connected algebraic group, then $G$ is {\it unipotent} if it is an iterated
 extension of copies of $\mathbb{G}_a$. Then every nonzero $G$-module contains a
 nonzero fixed point.
 
-As an example consider $G=\text{SL}_2$
+As an example consider $G=\text{SL}_2$. (We saw that it is not linearly
+reductive in the sense described in the next section.)
+
+\subsection*{Quotients by linearly reductive groups}
+\label{subsection-quotients-by-linearly-reductive-groups}
+
+\begin{definition}
+\label{definition-linearly-reductive-group}
+A linear algebraic group $G$ is {\it linearly reductive} if every $G$-module is
+semi-simple.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-linearly-reductive-characterization}
+$G$ is linearly reductive if and only if the functor 
+$(\text{$G$-modules})\to(\text{vector spaces})$, $V \mapsto V^G$ is exact.
+\end{exercise}
+
+\begin{theorem}
+\label{theorem-linearly-reductive-normal-unipotent-connected-subgroups-are-
+trivial}
+ If $G$ is linearly reductive then every connected normal unipotent subgroup $U$ 
+of $G$ is trivial. The converse is true in characteristic zero.
+\end{theorem}
+
+\begin{proof}
+($\implies$) Let $V$ be a $G$-module, $V\neq 0$ and $U$ as in the statement.
+Then $V^U\neq 0$ is a $G$-module. Let $W$ be a $G$-module. 
+Then $V=V^U \oplus W$. [Missing]
+
+($\impliedby$) We show this for $k= \mathbb{C}$. View $G \supset K$ compact
+subgroup, Zariski dense (eg. $C^* \supset S^1$ or 
+$\text{GL}_n(\mathbb{C})\supset \text{U}_n$.) [Missing]
+\end{proof}
+
+\begin{definition}
+\label{definition-reductive-linear-algebraic-group}
+A linear algebraic group $G$ is {\it reductive} if it has a nontrivial connected
+unipotent normal subgroup.
+\end{definition}
+
+The following definition is from StacksProject, \texttt{brauer.tex}:
+
+\begin{definition}
+\label{definition-simple}
+Let $A$ be a $k$-algebra.
+We say an $A$-module $M$ is {\it simple} if it is nonzero and
+the only $A$-submodules are $0$ and $M$.
+We say $A$ is {\it simple} if the only two-sided ideals of $A$ are
+$0$ and $A$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-Reynolds-operator}
+$G$ linearly reductive, $V$ a $G$-module. Then
+\begin{enumerate}
+\item There is a unique projection of $G$-modules $R_V:V \to V^G$ called the
+{\it Reynolds operator}.
+\item 
+$$
+\xymatrix{
+V\ar[d]_{R_V}\ar[r]^f&  W\ar[d]_{R_V}\\
+V^G\ar[r]^{f^G}&W^G
+}
+$$
+commutes.
+\item $A$ a $G$-algebra, $B:=A^G$. Then $R_A(ab)=bR_A(a)$ for all $a \in A$, $b
+\in B$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+\item There is a unique decomposition $V=V^G \oplus V'$ where $V'$ is the sum of
+nontrivial simple $G$-submodules.
+\item Implied by the decomposition $V=V^G \oplus V'$.
+\item 
+$$
+\xymatrix{
+V\ar[d]_{R_A}\ar[r]^b&  W\ar[d]_{R_A}\\
+V^G\ar[r]^{b}&W^G
+}
+$$
+commutes.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Hilbert,Nagata]
+\label{theorem-linearly-reductive-action-
+implies-invariant-sections-finitely-generated}
+If $G$ is a linearly reductive group acting on an affine variety $X$, then
+$\mathcal{O}(X)^G$ is finitely generated.
+\end{theorem}
+
+\begin{proof}
+Done in class, uses $R_A$ and graded Nakayama lemma.
+\end{proof}
+
+\medskip\noindent	
+$\mathcal{O}(X)^G \subset \mathcal{O}(X)$ yields $\pi:X\to Y$, a $G$-invariant
+morphism of affine varieties, giving a good quotient.
+
+\begin{proposition}
+\label{proposition-projection}
+\begin{enumerate}
+\item $\pi$ is regular.
+\item If  $Z \subset X$ is closed and $G$-stable, then $\pi|_{Z}$ if the good
+quotient of $Z$.
+\item If $Z,Z'\subset X$ are closed $G$-stable and disjoint, then $\pi(Z)$,
+$\pi_i(Z')$ are disjoint.
+\item Every fiber of $\pi$ contains a unique closed $\mathbb{G}$-orbit.
+\end{enumerate}
+But if $U\subset X$ is open affine $G$-stable, then $\pi|_{U}$ is not the good
+quotient.
+\end{proposition}
+
+\begin{example}
+\label{example-Hopf-surface?}
+$G=\mathbb{G}_n$ acts on $\mathbb{A}^n$ by scalar, i.e. 
+$g(x_1,\ldots,x_n)=(gx_1,\ldots,gx_n)$. Then $\mathcal{O}(\mathbb{A}^n)^G=k$,
+$\pi:\mathbb{A}^n \to \bullet$,
+but $f_nU=D(f)$, where $f$ is a nonzero linear form,
+$$
+\mathcal{O}(U)^{\mathbb{G}_m}=\bigcup_{d \geq 0}\frac{k[x_1,\ldots,x_n]}{f^d}
+$$
+\end{example}
+
+{\bf Notation:} $Y=X//G$, the space of closed orbits.
+
+\begin{definition}
+\label{definition-stable-point}
+A point $x \in X$ is called {\it stable} if its orbit $G\cdot x \subset X$ is
+closed and the stabilizer  $G_x$ is finite.
+\end{definition}
+
+This definition is different from that in Mumford's book on GIT (our definition
+there is called {\it properly} stable point.)
+
+\begin{proposition}
+\label{proposition-stable-points}
+The set of stable points $X^s$ is open, $G$-stable and $\pi(X^s)=Y^s$ is open.
+Moreover, $X^s=\pi^{-1}(Y^s)$ and $X^s \to Y^s$ is a geometric quotient.
+\end{proposition}
+
+Warning: there might not be any stable points at all! (But it looks like there
+are some ways to get around this.)
+
+\begin{proof}
+The first trick very elementary; just playing with orbits. 
+Let $x_0 \in X$ be stable. Then
+$$
+G\cdot x_0 \subset \pi^{-1}\pi(x_0)=\{ x \in X 
+: \overline{G\cdot x}\supset G\cdot x\}=G\cdot x_0
+$$
+since $\dim (G\cdot x_0)=\dim G$.
+
+Then, roughly, remove higher dimensional orbits, and since the remaining orbits
+have all the same dimension, then they are all closed.
+
+The final assertion $X^s \to Y^s$ is similar to what we did. No deep arguments.
+\end{proof}
+
+\begin{example}
+\label{example-action-of-SL2-on-forms}
+$G=\text{SL}_n$ acts on $X=k[x_1,\ldots,x_n]_d$ by linear change of variables.
+Let's consider some values. If $d=1$, then the quotient is  $X//G=\text{pt}$.
+For $d=2$, the quadractic forms, we have the discriminant $\Delta$ as an 
+invariant, and in fact $\mathcal{O}(\Delta)=k[\Delta]$ {\bf (A nice exercise!)}. 
+Actually it looks like $\pi=\Delta:X \to \mathbb{A}^1$, and the stabilizer of 
+$f$ is $\text{SO}(f)$, no stable points.
+
+For $d \geq 3$, and $n \geq 5$, then $\mathcal{O}(X)^G$ is not known! But we
+also have the discriminant $\Delta \in \mathcal{O}(X)^G$ and in fact (Jordan) if
+$\Delta(f) \neq 0$ then $f$ is stable. Let us prove this fact (we don't know how
+did Jordan proved this): we show that $G_f$ is finit and stable, i.e.
+$\text{Lie}(G_f)=0$. The Lie algebra of $\text{SL}_2$, the traceless matrices,
+acts on $X$ by
+$$
+A\cdot f= \sum_{i=1}^n \ell_i \frac{\partial f}{\partial x_i}
+$$
+where $\ell_i = \sum_{j=1}^n a_{ij}x_j$. Then $A\cdot f=0$. Now 
+$\Delta(f) \neq 0$ iff $\frac{\partial f}{\partial x_j}$ have no nontrivial
+common zero, iff, $\frac{\partial f}{\partial x_j}$ form a regular sequence.
+This says that the ring Cohen-Macaulay. Then
+$$
+\ell_i \frac{\partial f}{\partial x_i}
+=\sum_{i \neq  j}\ell_j \frac{\partial f}{\partial x_j}
+$$
+which in turn implies that
+$$
+\ell_i \in \left(\frac{\partial f}{\partial x_j}, \; j \neq  i\right)
+\iff \ell_i=0 \forall  i
+$$
+… which says {\it what?}
+\end{example}
+
+\medskip\noindent
+Let $X$ be a projective $G$-variety, $G$ linearly reductive, $L \to X$ an ample
+line bundle
+$$
+R(X,L)=\bigoplus_{n=0}^{\infty} \Gamma(X,L^{\otimes n})
+$$
+which is a graded, finitely generated algebra, then $X=\text{Proj}R(X,L)$. If
+$G$ acts on $R(X,L)$ ``compatibly'', then $R(X,L)^G$ is finitely generated:
+$$
+\text{Proj}R(X,L)^G=X//G
+$$
+and we get a birational map
+$$
+\xymatrix{
+X\ar[r]^{bir}& X//G\\
+U\ar[u]_{hook}\ar[ur]^{\pi}
+}
+$$
+where $U$ is the domain of definition.
+
+If $G$ is finite, then  $X= \mathbb{P}(V)$, $V$ finite dimensional $G$-module. 
+$L = \mathcal{O}_X(1)$: $G$ acts on $L$ and hence on $R(X,L)$ (``{\it I'll explain
+details soon}'')
+
+We have a finite ring extension $R(X,L)^G = R(X,L)$, and we get
+$$
+X=\text{Proj}R(X,L) \to \text{Proj}R(X,L)^G=Y
+$$
+
+\medskip\noindent
+Now let $G$ be an algebraic group, $X$ a $G$-variety, $f:L \to X$ a line
+bundle.
+
+\begin{definition}
+\label{definition-G-linearization}
+A  {\it $G$-liearization} of $L$ is a $G$-action on $L$ such that $f$ is
+equivariant and $g:L_x \to L_{g\cdot x}$ is linear for all $g \in G, x \in X$.
+That is, the $G$-action on $L$ commutes with the $\mathbb{G}_m$-action by
+multiplication on fibers.
+\end{definition}
+
+Then we get an action on the section ring: $G$ acts on 
+$L^{\times}=L\setminus \{\text{zero section}\}$ and hence
+$\mathcal{O}(L^{\times})$ is a $G$-module. As we said before,
+ $\mathcal{O}(L^{\times})=\bigoplus_{n \in \mathbb{Z}}\Gamma(X,L^{\otimes n})$
+is a graded module, and the grading corresponds to the $G$-action! That is, 
+this is a $G$-module structure on $\Gamma(X,L^{\otimes n})$. And $R(X,L)$ is a
+graded $G$-algebra.
+
+\begin{definition}
+\label{definition-semi-stable-line-bundle}
+$X$ a $G$-variety, $L$ a $G$-linearized line bundle on $X$ and $x \in X$. We say
+$x$ is {\it semi-stable} w.r.t. $L$ if there exists $n \geq 1$ and 
+$\sigma \in \Gamma(X,L^{\otimes n})^G$ and that $x \in X_\sigma$ and 
+$X_\sigma$ is affine.
+
+$x$ is  {\it stable} if in addition $G\cdot x$ is closed in $X_\sigma$ 
+and $G_x$ is finite.
+\end{definition}
+
+\begin{theorem}[Mumford]
+\label{theorem-Mumford}
+The set of semis-stable points $X^{ss}(L)\subset X$ is open, $G$-stable and has 
+a good quotient $\pi:X^{ss}(L) \to Y(L)$. (Notice everything depends on the 
+line bundle.) The set of stable poins $X^s(L)$ is open $G$-stable and equal to 
+$\pi^{-1}\pi(X^s(L))$ and $\pi|_{X^s(L)}$ is a geometric quotient.
+\end{theorem}
+
 
 \section{Quivers}
 \label{section-quivers}
