@@ -1534,17 +1534,13 @@ surface.
 
 \begin{proof}
 \begin{enumerate}
-\item As explained earlier, we are interested in computing $H^1(T_C)$. By
-Riemann-Roch for $-K_C=T_C$ on a K3 surface,
-$$
-\chi(-K_C)=2+\frac{1}{2}(-K_C,-K_C)
-$$
-but $\chi(-K_C)=h^0(T_C)-h^1(T_C)$ and there are no holomorphic vector fields on
-$C$ as long as it has genus $\geq 2$. To compute the self-intersection number
-$(K_C,K_C)=(T_C,T_C)$ we may use the genus formula 
-$2g-2=(\mathcal{O}(C),\mathcal{O}(C))$.
-Here recall that since $C$ is smooth, $\mathcal{O}(C)$ is the normal bundle of
-$C$ in $X$.
+\item As explained earlier, we are interested in computing $h^1(T_C)$. By
+adjunction formula $2g-2=(\mathcal{O}(C),\mathcal{O}(C))$.
+Here recall that since $C$ is smooth, $\mathcal{O}(C)$ is the conormal bundle of
+$C$ in $X$. Also if $g \geq 2$ we know that $h^0(T_C)=0$, so that
+$\chi(\mathcal{O}_C)=h^1(T_C)$, which is the dimension of the deformation space.
+So the question is how to relate the self-intersection number of the conormal
+bundle of $C$ with $h^1(T_C)$.
 \end{enumerate}
 \end{proof}
 
@@ -3143,6 +3139,314 @@ enough injective objects. Because the derived category of coherent sheaves is
 supposed to be mirrored with the Fukaya category of lagrangian subvarieties… so
 probably we want our category to have exact functors i.e. lots of injective
 objects.
+
+\subsection*{Semiorthogonal decompositions}
+\label{subsection-semiorthogonal-decompositions}
+
+{\bf Idea.} To split $D^*(\mathcal{A})$ in smaller pieces that are easier.
+
+\begin{definition}
+\label{definition-strictly-full-triangulated-subcategory}
+$\mathcal{A} \subset \mathcal{T}$ is a {\it strictly full triangulated
+subcategory} if
+\begin{itemize}
+\item $\text{Hom}_{\mathcal{A}}(A,B)=\text{Hom}_{\mathcal{T}}(A,B)$ for all $A,B
+\in \mathcal{A}$.
+\item If  $B \in \mathcal{T}$ is isomorphic to an object from $\mathcal{A}$,
+then $B \in \mathcal{A}$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+\label{definition-semiorthogonal-decomposition}
+Let $\mathcal{T}$ be a triangulated category and $\mathcal{A}$, $\mathcal{B}$
+strictly full trinagulated subcategories in $\mathcal{T}$. Then
+$\mathcal{T}=\left<\mathcal{A},\mathcal{B}\right>$ is a {\it semiorthogonal
+decomposition} if
+\begin{itemize}
+\item $\text{Hom}_{\mathcal{T}}(B,A)=0$ for all $B \in \mathcal{B}$ and $A\in
+\mathcal{A}$.
+\item For all $T \in \mathcal{T}$ there exists a distinguished triangle
+$$
+T_B \to T \to T_{\mathcal{A}}\to T_{\mathcal{B}}[1]
+$$
+where $T_B \in \mathcal{B}$ and $T_\mathcal{A} \in \mathcal{A}$.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[Properties of semiorthogonal decomposition]
+\label{proposition-properties-of-semiorthogonal-decomposition}
+\begin{enumerate}
+\item Functoriality: for any $f \in T \to T'$,
+$$
+\xymatrix{
+T_{\mathcal{B}}\ar@{.>}[d]_{\exists f_{\mathcal{B}}}\ar[r]& T\ar[d]^f\ar[r]
+& T_{\mathcal{A}}\ar@{.>}[d]^{f_{\mathcal{A}}}\ar[r]& T_{\mathcal{B}}[1]\\
+T_{\mathcal{B}}'\ar[r]& T'\ar[r]& T'_{\mathcal{A}}\ar[r]& T'_{\mathcal{B}}[1]
+}
+$$
+there exist $f_{\mathcal{B}}$ and $f_{\mathcal{A}}$ as in the diagram.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For $f_{\mathcal{A}}$,apply $\text{Hom}_{\mathcal{T}}(\cdot,T_{\mathcal{A}}')$ 
+to the upper distinguished triangle, obtain a long exact sequence…
+\end{proof}
+
+Functoriality: defnote by $\alpha:\mathcal{A} \hookrightarrow  \mathcal{T}$ the
+inclusion, then we have a functor $\alpha^*:\mathcal{T} \to \mathcal{A}$ given
+by $T \to T_{\mathcal{A}}$, $f \mapsto  f_{\mathcal{A}}$. Similarly for
+$\beta:\mathcal{B} \hookrightarrow  \mathcal{T}$ we have a functor $\beta
+^*:\mathcal{T} \to \mathcal{B}$ by $T \to T_{\mathcal{B}}$, $f \mapsto
+f_{\mathcal{B}}$.
+
+\begin{lemma}
+\label{lemma-alpha-and-beta-adjoint}
+$\alpha^*$ is left adjoint to $\alpha$ and $\beta^*$ is right adjoint to $\beta.$
+\end{lemma}
+
+\begin{proof}
+We have for any $A \in \mathcal{A}$,
+$\text{Hom}_{\mathcal{A}}(\alpha^*T,A)=\text{Hom}_{\mathcal{T}}(T,\alpha_*A)$.
+But that is equal to $\text{Hom}_{\mathcal{A}}(\mathcal{T}_{\mathcal{A}},A)$.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-orthogonal}
+If $\mathcal{T}=\left<\mathcal{A},\mathcal{B}\right>$, then
+$$
+\mathcal{B}=\mathcal{A}^\perp=\left<B \in \mathcal{T} |
+\text{Hom}(B,A), \forall A \in \mathcal{A}\right>:=\Ker \alpha^*
+$$
+(the $\perp$ sign should be on the left of $\mathcal{A}$ but I don't know how to
+write this) and 
+$$
+\mathcal{A}=\mathcal{B}^\perp=\left<A \in \mathcal{T} |
+\text{Hom}(B,A)=0,\forall B \in \mathcal{B}\right>:=\Ker B
+$$
+(here the $\perp$ is correct on the right side of $\mathcal{B}$).
+\end{exercise}
+
+This construction can be reversed.
+
+\begin{definition}
+\label{definition-left-and-right-admissible-subcategories}
+A strictly full subcategory $\mathcal{A} \hookrightarrow  \mathcal{T}$ is called
+\begin{itemize}
+\item {\it left admissible} is there exists $\alpha^*:\mathcal{T} \to
+\mathcal{A}$ left adjoint,
+\item {\it right admissible} is there exists $\alpha^!:\mathcal{T} \to
+\mathcal{A}$ right adjoint.
+\end{itemize}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-admissible-implies-semiorthogonal-decomposition}
+If $\mathcal{A} \hookrightarrow  \mathcal{T}$ is left admissible, then
+$\mathcal{T}=\left<\mathcal{A},\mathcal{A}^\perp\right>$ is semiorthogonal
+decomposition. If
+$\mathcal{B} \hookrightarrow  \mathcal{T}$ is right admissible then
+$\mathcal{T}=\left<\mathcal{B}^\perp, \mathcal{B}\right>$ is semiorthogonal
+decomposition.
+\end{lemma}
+
+\begin{proof}
+Uses a remark, Yoneda lemma.
+\end{proof}
+
+\begin{proposition}[Bondall, Van der Borgh]
+\label{proposition-Bondall-Van-der-Borgh}
+If $\mathcal{T}$ is smooth and proper (if $\mathcal{T}=D^b(X)$, where $X$ is
+smooth and proper, we call $\mathcal{T}$ smooth and proper) then
+$\mathcal{A} \subset \mathcal{T}$ is left admissible $\iff$ $\mathcal{A}$ is
+right admissible $\iff$ $\mathcal{A}$ is smooth proper. If $\mathcal{A}$ is
+smooth and proper and $\mathcal{A} \hookrightarrow  \mathcal{T}$ then
+$\mathcal{A}$ is left and right admissible.
+\end{proposition}
+
+\medskip\noindent
+If $D^b(C) \hookrightarrow  \mathcal{T}$ is fully faithful, then it is left and
+right admissible.
+
+{\bf Question.} When can we construct a full faithful embedding
+ $$
+D^b(\text{pt})\cong D^b(\text{mod}k) \hookrightarrow  \mathcal{T}?
+$$
+Let \begin{align*}
+D^b(\text{mod}k) &\longrightarrow \mathcal{T} \\
+k &\longmapsto E
+\end{align*}
+and define
+$$
+\varphi_E:V^\bullet \to V^\bullet \otimes E
+$$
+where $V^\bullet$ is a graded vector space.
+
+When is $\varphi_E$ full faithful? Some computations show that $\varphi_E$ is
+fully faithful if and only if $\text{Hom}(E,E)=k$. Recall from 
+\texttt{categories.tex} that
+
+\begin{definition}
+\label{definition-faithful}
+Let $F : \mathcal{A} \to \mathcal{B}$ be a functor.
+\begin{enumerate}
+\item We say $F$ is {\it faithful} if
+for any objects $x, y \in \Ob(\mathcal{A})$ the map
+$$
+F : \Mor_\mathcal{A}(x, y) \to \Mor_\mathcal{B}(F(x), F(y))
+$$
+is injective.
+\item If these maps are all bijective then $F$ is called
+{\it fully faithful}.
+\end{enumerate}
+\end{definition}
+
+\medskip\noindent
+\begin{definition}
+\label{definition-exceptional-object}
+$E inn \mathcal{T}$ is exceptional if 
+$$
+\text{Hom}(E,E[i])=
+\begin{cases}
+k\qquad &i=0 \\
+0\qquad &i \neq 0
+\end{cases}
+$$
+\end{definition}
+
+\begin{lemma}
+\label{lemma-exeptional-implies-fully-faithful}
+If $E$ is exceptional then $\varphi_E:D(\text{pt}) \to \mathcal{T}$ is a fully
+faithful embedding. Then
+$$
+\mathcal{T}=\left<\varphi_E(D^b(\text{pt})^\perp,E\right>=
+\left<E^\perp,\varphi_E(D^b(\text{pt}))\right>
+$$
+\end{lemma}
+
+{\bf Notation.} In this case,
+$\mathcal{T}=\left<E,E^\perp\right>=\left<E^\perp,E\right>$, where on the first
+bracket the $\perp$ should be on the left side of $E$.
+
+\begin{example}
+\label{example-all-line-bundles-are-exceptional-on-Fano}
+On  $\mathbb{P}^n$, $\mathcal{O}(i)$ is exceptional. More general, if $X$ is
+Fano (i.e. smooth projective with $-K_X$ ample), then any line bundle on  $X$ is
+ample.
+\end{example}
+
+\begin{proof}
+$\text{Ext}^i(\mathcal{L},\mathcal{L})=H^{i}(X,\mathcal{O}_X)$,
+$H^{0}(X,\mathcal{O})=\mathbb{k}$ and $H^{>0}(X,\mathcal{O})=0$ by Kodaira
+Vanishing.
+\end{proof}
+
+For Fano varieties we have nontrivial semiorthogonal decomposition.
+
+\begin{remark}
+\label{remark-CY-have-no-semiorthogonal-decomposition}
+If $K_X \cong \mathcal{O}_X$ then there is no semiorthogonal decomposition of
+$D^b(X)$ (for K3 or abelian).
+\end{remark}
+
+Back to Fano,
+\begin{definition}
+\label{definition-semiorthogonal-decomposition-for-several-categories}
+Let $\mathcal{A}_1,\ldots,\mathcal{A}_n \in \mathcal{T}$ be strictly full
+subcategories and $\mathcal{T}=\left<\mathcal{A}_1,\ldots,\mathcal{A}_n\right>$ 
+a {\it semiorthogonal decomposition}
+\begin{itemize}
+\item $\text{Hom}(\mathcal{A}_j,\mathcal{A}_i)=0$ for all $j>i$.
+ \item For all $T$ there is a chain of morphisms
+ $$
+0 = T_n \to T_{n-1}\to \ldots \to T_1 \to T_0=T
+$$
+such that $\text{Cone}(T_i \to T_{i-1}) \in \mathcal{A}_i$.
+\end{itemize}
+\end{definition}
+
+\begin{exercise}
+\label{exercise-functoriality-and-cone}
+Prove functoriality of $T to \text{Cone}(T_i \to T_j)$ for $i>j$.
+\end{exercise}
+
+\begin{definition}
+\label{definition-exceptional-collection-of-objects}
+A collection of objects $E_1,\ldots, E_n$ is {\it exceptional} if
+ \begin{enumerate}
+\item For all $i$, $E_i$ is exceptional.
+\item $\text{Hom}(\left<E_i\right>,\left<E_j\right>)=0$ for all $i>j$, where
+$\left<E_j\right>$ is a minimal triangulated category generated by $E_i$.
+\end{enumerate}
+\end{definition}
+
+We have a corollary:
+
+\begin{lemma}
+\label{lemma-exceptional-collection-gives-semiorthogonal-decomposition}
+If $E_1,\ldots,E_n$ is an exceptional collection, then
+$$
+\mathcal{T}=\left<E_1,\ldots,E_n,\left<E_1,\ldots,E_n\right>^\perp\right>
+=\left<\left<E_1,\ldots,E_n\right>^\perp,E_1,\ldots,E_n\right>
+$$
+(where $\perp$ should be on the left of the bracket in the first appearence) 
+is a semiorthogonal decomposition.
+\end{lemma}
+
+\begin{definition}
+\label{definition-full-exceptional-collection}
+If $\left<E_1,\ldots,E_n\right>^\perp=0$ (equivalently with $\perp$ on the
+left).
+\end{definition}
+
+\begin{exercise}
+\label{exercise-exceptional-collections-for-Fano}
+Let $X$ be a Fano variety with $-K_X=mH$ for $H$ ample ($m$ is the index of
+$X$). Then for every line bundle $\mathcal{L}$,
+$$
+(\mathcal{L}(-m+1)H,\ldots,\mathcal{L}(-H)\mathcal{L})
+$$
+is an exceptional collection.
+\end{exercise}
+
+\begin{proof}
+Use Serre duality and Kodaira Vanishing.
+\end{proof}
+
+\medskip\noindent
+Here is the promised theorem from the beginning of this minicourse:
+
+\begin{theorem}[Beilinson]
+\label{theorem-Beilinson}
+$D^b(\mathbb{P}^n)=\left<\mathcal{O}(-n),\ldots,\mathcal{O}\right>$ is a full
+exceptional collection.
+\end{theorem}
+
+This means that we can classify all objects of $D^b(\mathbb{P}^n)$. Because 
+whenever we have a semiorthogonal decomposition we get 
+these chains of morphisms, i.e. for all $D^b(\mathbb{P}^n)$ there exists a chain 
+$$
+0=T_n \to \ldots \to T_0=T
+$$
+such that $\text{Cone}(T_i \to T_{i-1}) \in \left<\mathcal{O}(-i)\right> \cong
+D^b(\text{pt})$.
+
+Probably this is the content of \cite{Beilinson-derived}.
+
+\begin{proof}[Proof of Beilinson theorem]
+Consider the Koszul complex
+$$
+0\to \mathcal{O}(-n-1)\to\ldots \to \Lambda^{2}V^\vee \otimes \mathcal{O}(-2)
+\to V^{\vee}\otimes \mathcal{O}(-1) to \mathcal{O} \to0
+$$
+This implies that
+$$
+\mathcal{O}(n-1) \in \left< \mathcal{O}(-n),\ldots,\mathcal{O}\right>
+$$
+… proof completed in class.
+\end{proof}
+
 \section{Geometric Invariant theory}
 \label{section-GIT}
 
@@ -3701,7 +4005,11 @@ line bundle.) The set of stable poins $X^s(L)$ is open $G$-stable and equal to
 $\pi^{-1}\pi(X^s(L))$ and $\pi|_{X^s(L)}$ is a geometric quotient.
 \end{theorem}
 
-
+\begin{proposition}
+\label{proposition-on-projectivization-of-V}
+Let $x \in \mathbb{P}(V)$ and $x \in [v]$
+\end{proposition}
+\input{GIThoy.tex}
 \section{Quivers}
 \label{section-quivers}
 
