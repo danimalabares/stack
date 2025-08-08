@@ -1538,9 +1538,24 @@ surface.
 adjunction formula $2g-2=(\mathcal{O}(C),\mathcal{O}(C))$.
 Here recall that since $C$ is smooth, $\mathcal{O}(C)$ is the conormal bundle of
 $C$ in $X$. Also if $g \geq 2$ we know that $h^0(T_C)=0$, so that
-$\chi(\mathcal{O}_C)=h^1(T_C)$, which is the dimension of the deformation space.
+$\chi(T_C)=h^1(T_C)$, which is the dimension of the deformation space.
 So the question is how to relate the self-intersection number of the conormal
 bundle of $C$ with $h^1(T_C)$.
+
+Since $g$ is smooth we can use the normal exact sequence
+$$
+\xymatrix{
+0\ar[r]&T_C\ar[r]&T_X|_{C}\ar[r]&\mathcal{O}(C)\ar[r]&0
+}
+$$
+and taking cohomology long exact sequence we obtain
+$$
+\xymatrix{
+\cdots\ar[r]&H^{0}(T_X)\ar[r]&H^{0}(\mathcal{O}(C))\ar[r]&H^{1}(T_C)\ar[r]&\\
+H^{1}(T_X)\ar[r]&H^{1}(\mathcal{O}_C)\ar[r]& \cdots
+}
+$$
+
 \end{enumerate}
 \end{proof}
 
@@ -2002,7 +2017,7 @@ The following is a difficult result that we shall only state and use.
 $X$ projective, $H$ ample, $P$ a fixed polynomial of degree $d$. The family of
 torsion-free sheaves with Hilbert polynomial $P$ is bounded.
 \end{theorem}
-\clearpage
+
 \begin{proposition}
 \label{proposition-semi-stable-sheaves-are-bounded-on-curves}
 Let $X$ be a curve of genus $g$ with fixed Hilbert polynomial. The semi-stable
@@ -2124,6 +2139,8 @@ $$
 and $\mathcal{O}(d) \neq \mathcal{O}_{\mathbb{P}^1}$, $d\neq 0$.
 \end{example}
 
+
+
 \subsection*{Remarks on stacks}
 \label{subsection-remarks-on-stacks}
 
@@ -2203,8 +2220,86 @@ $W(c_1,c_2)=\bigcup_{\xi}W^1$.
 
 \begin{definition}
 \label{definition-chamber}
-A {\it chamber} is a connected component of $C_x\setminus W(c_1,c_2)$.
+A {\it chamber} is a connected component of $C_X\setminus W(c_1,c_2)$. (Perhaps
+this is the same as $C_X \setminus \bigcup_{\xi}W\xi$.)
 \end{definition}
+
+\begin{theorem}[Qin]
+\label{theorem-Qin}
+The moduli space $M_{X,H}(2c_1,c_2)$ of rank 2 locally free sheaves only depends
+on the chamber of $H$.
+\end{theorem}
+
+\begin{remark}
+\label{remark-remarks}
+\begin{itemize}
+\item $c_1^2-4c_2<0$ is Bogomolov inequality.
+\item  $G^2<0$ is Hodge index theorem
+\item $F \subset E$ destabilizing line bundle $F$ $\iff$ $H$  
+$c_1(F)>\frac{c_1(E)H}{2}$ $\iff$ $(\underbrace{2c_1(F)-c_1(E)}_{=G})H>0$
+$\implies$ $2c_1(F)=c_1(G)+c_1(E) \implies c_1(G)+c_1(E)$ is divisible by 2.
+\item Suppose we have $0 \to F \to E \to M \otimes |_{Z}\to 0$ with $M$ a line
+bundle, $Z$ codimension 2 in $X$.
+\end{itemize}
+\end{remark}
+
+[Lots of computations I missed.]
+
+\begin{exercise}
+\label{exercise-P1timesP1}
+$X=\mathbb{P}^1\times \mathbb{P}^1$, $E$ of rank 2, $c_1=\ell$, $c_2=3$.
+$G=a\ell+bm$, $G^2=2ab \implies ab<0$, $\Delta=c_1^2-4c_2\leq G^2=ab\implies
+-12\leq 2ab<0$, $(a+1)\ell+bm$ divisible by $2$, then $a+1$ is even.
+
+I understand the walls and chambers were computed:
+$L_0=(\ell+7m)\in C_0$,
+$L_1=(\ell+5m) \in C_1$ and $L_2=(\ell+3m) \in C_2$.
+
+We have
+ \begin{itemize}
+\item For $L$ in  $C_0$, $\mathcal{M}(2,\ell,3)=\emptyset$. (Proved.)
+\item For $L$ in $C_1$, $\mathcal{M}(2,\ell,3)\cong \mathbb{P}^5$.
+\item For $L$ in $C_2$, $\mathcal{M}(2,\ell,3)$ is an open in $\mathbb{P}^3$.
+\end{itemize}
+\end{exercise}
+
+For more general rank:
+
+\begin{theorem}
+\label{theorem-general-rank}
+$F \subset E$ a subsheaf of rank $r'<r$, $\mu_H(F)=\mu_H(E)$, then 
+$\xi=rc_1(F)-r'c_1(E)$ satisfies $\xi H=0$ and 
+$\frac{r^2}{4}\Delta \leq \xi^2<0$, with $e_2$ $\iff$ $\xi=0$.
+\end{theorem}
+
+\begin{theorem}
+\label{theorem-smooth-irreducible-projective-surface-moduli-are-birrational}
+$X$ smooth irreducible projective surface, $H,H'$ ample and $\Delta\gg 0$. Then
+$\mathcal{M}_{X,H}$ and $\mathcal{M}_{X,H'}$ are birational (any rank).
+\end{theorem}
+
+For dimension $\geq 3$, the moduli space of sheaves is in general smooth or
+irreducible.
+
+\begin{theorem}[Ein]
+\label{theorem-Ein}
+Let $C$ be a smooth projective 3-fold, $c_1,H \in \text{Pic}(X)$, $H$ ample.
+Assume there exists $a,b$ such that $ac_1=bH$. $\mathcal{M}_{X,H}$ rank 2 vector
+bundle on $X$, $\mu$ stable with respect to $d:=c_2H$. $\mu(d)=F$ irreducible
+component of $\mathcal{M}_{X,H}(c_1,c_2)$, $\implies $ 
+$\lim_{d \to \infty} m(d)=\infty$.
+\end{theorem}
+
+\begin{example}
+\label{example-}
+In DT (Donaldson-Thomas?) theory, $X$ 3-fold,
+$$
+I(X,P)=\left\{Z \subset X: \substack{Z \text{ a curve with} \\ 
+\text{fixed Hilbert polynomial}}\right\}
+$$
+$P(u)=3u+1$ twisted cubics have  $P(u)=3u+1$. But genus 1 curves with a
+point also have  $P(u)=3u+1$. $I(\mathbb{P}^3,3n+1)$ has several components.
+\end{example}
 
 
 \section{Derived categories}
@@ -4007,9 +4102,221 @@ $\pi^{-1}\pi(X^s(L))$ and $\pi|_{X^s(L)}$ is a geometric quotient.
 
 \begin{proposition}
 \label{proposition-on-projectivization-of-V}
-Let $x \in \mathbb{P}(V)$ and $x \in [v]$
+Let $x \in \mathbb{P}(V)$ and $x \in [v]$.
+\begin{enumerate}
+\item $x \in \mathbb{P}(V)^{ss}$ $\iff$ $0 \not \in \overline{G\cdot v}$.
+\item $x\in \mathbb{P}(V)^s$ $\iff$ $v \in V^s$ i.e. $G\cdot v$ is closed in $V$
+and $G_v$ is finite.
+\end{enumerate}
 \end{proposition}
-\input{GIThoy.tex}
+
+\begin{proof}
+Done in class.
+\end{proof}
+
+The following is our first example of moduli space.
+
+\begin{example}[Smooth hypersurfaces of degree $d$ in $\mathbb{P}^n$]
+\label{example-smooth-hypersurfaces}
+The isomorphism classes of such surfaces are given by: take degree $d$
+polynomials, projectivize, take away diagonal ( this gives an open set) and
+finally quoetient by $\text{SL}_{n+1}$:
+\begin{align*}
+\{\text{isom. classes}\}&=\mathbb{P}(k[x_0,\ldots,x_n]_d)_{\Delta}
+/\text{SL}_{n+1}\overset{\text{open}}{\hookrightarrow }\\
+\mathbb{P}(\cdot)^1/\text{SL}_{n+1}& \hookrightarrow  
+\mathbb{P}(\cdot)^n//\text{SL}_{n+1}
+\end{align*}
+a projective variety, normal, very singular.
+\end{example}
+
+\begin{remark}
+\label{remark-categorial-quotient-yields-coarse-moduli-space}
+$G \mathbb{y} X$ categorical quotient $\pi:X \to Y$, then $\pi$ yields a coarse
+moduli space for
+$$
+\xymatrix{
+X\ar[r]\ar[rd]& [X/G]\ar@{.>}[d]\\
+&Y
+}
+$$
+\end{remark}
+
+\begin{proof}
+$\text{Hom}(S,[X/G])$ is a category, not a set as usual. Its objects are
+$$
+\xymatrix{
+P\ar[d]_{\substack{\text{principal} \\ \mathbb{G}\text{-bundle}}}
+\ar[r]^{\substack{G\text{-equivariant} \\ \text{morphism }b}}&X\\
+S
+}
+$$
+and morphisms are
+$$
+\xymatrix{
+&X\\
+P\ar[ur]^{b'}\ar[rr]^\varphi \ar[dr]&  &  P\ar[ul]^b\ar[dl]\\
+&S
+}
+$$
+(continues…)
+\end{proof}
+
+\subsection{Hilbert-Mumford criterion}
+\label{subsection-Hilbert-Mumford-criterion}
+
+\begin{definition}
+\label{definition-one-parameter-subgroup}
+A {\it one-parameter subgroup} of  $G$ is a homomorphism
+$\lambda:\mathbb{G}_m \to G$. If $G \mathbb{y} X$ and $x \in X$, we say that
+$$
+\lim_{t \to 0}\lambda(t) 
+$$
+exists and equals $y \in X$ if $\mathbb{A}^1\setminus\{0\}=\mathbb{G}_m \to X$,
+$t \mapsto \lambda(t)\cdot x$ extends to $\mathbb{A}^1 \to X$, $0 \mapsto y$.
+\end{definition}
+
+\begin{theorem}[Hilbert-Mumford criterion]
+\label{theorem-Hilbert-Mumford-criterion}
+$V$ finite-dimensional $G$-module, $G$ linearly reductive, $v \in V$,
+$\overline{G\cdot v}\supset G\cdot v$ closed orbit. There exists a one-paremeter
+subgroup $\lambda$ such that $\lim_{t \to 0} \lambda(t)\cdot v \in G\cdot w$.
+\end{theorem}
+
+We will not prove this theorem. Here are some corollaries.
+
+\begin{lemma}
+\label{lemma-unstable}
+$v \not \in V^{ss} \iff \exists  \lambda$ such that 
+$\lim_{t\to_0}\lambda(t)\cdot v =0$. Then $v$ is called {\it unstable} and 
+$$
+\{\text{unstable points}\}=\text{{\it nilcone}} \mathcal{N}(V)=V.
+$$
+\end{lemma}
+
+\begin{lemma}
+\label{lemma-orbit-is-closed-iff-limit-lies-in-orbit}
+$G\cdot v$ is closed $\iff$ $\lim_{t \to 0} \lambda(t)\cdot v$ exists, then it
+lies in $G\cdot v$.
+\end{lemma}
+
+\begin{proposition}
+\label{proposition-orbit-is-affine-iff-stabilizer-is-linearly-reductive}
+$G\cdot v$ is affine $\iff$ $G_v$ is linearly reductive.
+\end{proposition}
+
+\begin{proof}
+($\implies$) $G_v = H \iff G\cdot v G/H=G//H$.
+
+($\impliedby$) We show that the functor
+\begin{align*}
+(\text{left $H$-modules}) &\longrightarrow (\text{f.d. vector spces}) \\
+V &\longmapsto V^H
+\end{align*}
+(continues…)
+\end{proof}
+
+We can characterize stable points using this proposition.
+
+\begin{lemma}
+\label{lemma-stable-point-iff-orbit-is-closed-and-not-fixed-by-nontrivial-1PS}
+$v \in V^s$ $\iff$ $G\cdot v$ is closed and $v$ is fixed by no nontrivial
+one-parameter subgroup.
+\end{lemma}
+
+\begin{proof}
+The reason is that if $G_v=H$ is linearly reductive then $H^0$ is generated by
+images of a one-parameter subgroup.
+\end{proof}
+
+\begin{example}[Stable points for $SL_2$ acting on degree $d$ polynomials]
+\label{example-stable-points-for-SL2-acting-on-degree-d-polynomials}
+If $G=\text{SL}_2$ in characterstic zero, then
+$$
+\lambda(t)=\begin{pmatrix}
+t&0\\ 
+0&t^{-1}
+\end{pmatrix}
+$$
+every nontrivial one-parameter subgroup of $G$ is conjugate to $\lambda(t)^n$
+for a unique $n \geq 1$. $V=V_d=k[x,y]_d\ni x^e y^{d-e}$.
+$$
+\lambda(t) x^e y^{d-e}=t^{d-2e}x^ey^{d-e}
+$$
+$f \in V$ is unstable $\iff$ $\exists g \in G$ such that $gb \in \left<
+x^{d/2-t}y^{d/2+1},\ldots, y^d\right>$ if dimension is even, and $
+\left<x^{(d-1)/2}y^{(d+1)/2},\ldots, y^d\right>$ if dimension is odd, $\iff$
+$f$ has no root of multiplicity $d/2$. $f \not \in V^s$ $\iff$ $f$ has no root
+of multiplicity $\geq d/2$.
+
+If $d$ is odd then $V^s=V^{ss}$. If $d$ is even then $x^{d/2}y^{d/2}$ has a
+closed orbit and is fixed by $\\text{Im}(\lambda)$.
+\end{example}
+
+\subsection*{Hyperelliptic curves}
+\label{subsection-hyperelliptic-curves}
+
+Let $C \to \mathbb{P}^1$ be a smooth projective curve of degree $2$, genus $g$,
+branched in $2g+2$ distinct points, uniquely determined by the branch divisor.
+\begin{gather*}
+\{\text{isomorphism classes of hyperellipetic curves of genus $g$}\}\\
+=\mathbb{P}(V_{2g+2})_\Delta/\text{SL}_2 \hookrightarrow
+\mathbb{P}(V_{2g+2})^{ss}//\text{SL}_2
+\end{gather*}
+projective normal of dimension $2g-3$.
+
+\subsection*{Local structure of quotients}
+\label{subsection-local-structure-of-quotients}
+$X$ affine $G$-variety, $G$ reductive, $x\in X$ such that $G\cdot x$ is closed,
+$H=G_x$ (reductive).
+
+\begin{theorem}
+\label{theorem-}
+There exists an affine $H$-stable (locally ?) subvariety $S \subset X$ such that
+the sequence
+$$
+\xymatrix{
+(g,s)H\ar[r]^{\text{mapsto}}&g\cdot s\\
+(G\times S)/H\ar[d]\ar[r]&  X\ar[d]\\
+S//H\ar[r]&  X//G\\
+x\ar[r]_{mapsto} &\overline{x}
+}
+$$
+$h(g,s)=(gh^{-1},hs)$ is cartesian with étale horizontal arrows. If $x \in X$ is
+smooth, then there is an $H$-equivariant morphism.
+\begin{align*}
+S &\longrightarrow T_x(X)/T_x(G\cdot x)=N_{G\cdot x/X,x} \\
+x &\longmapsto 0
+\end{align*}
+\end{theorem}
+
+This finishes the statement of the theorem. The last map may be interpreted as
+the inverse of the exponential map from differential geometry.
+
+A corollary:
+
+\begin{lemma}
+\label{lemma-}
+If $G_x=e$ then $X \to X//G$ is a principal $G$-bundle in a $G$-stable
+neighbourhood of $x$.
+\end{lemma}
+
+\begin{exercise}
+\label{exercise-also-works-for-G-finite-and-S-open}
+$G$ finite, works with $S\subset X$ open.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-}
+$G=\text{SL}_2$, $V=V_G$, $x^3y^3 \in V_G$, stabilizer
+$=\mathbb{G}_m=\text{Im}(\lambda)$. Prove that $V_G//\text{SL}_2$ is singular at
+the image of $x^3y^3$. ($S=\mathbb{G}_m$-module with weights $-6,-4,0,4,6$.)
+{\bf Hint.} To
+check for non-smoothness you can check that $\mathcal{O}(S)^{\mathbb{G}_m}$ is
+not a polynomial ring; this is equivalent to non-smoothness for the quotient,
+and it should be easy to find: you just find that there are too many generators.
+\end{exercise}
+
 \section{Quivers}
 \label{section-quivers}
 
