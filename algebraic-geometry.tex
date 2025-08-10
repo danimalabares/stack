@@ -1538,28 +1538,56 @@ surface.
 \end{enumerate}
 \end{exercise}
 
+\begin{exercise}
+\label{exercise-}
+Let $C$ be a smooth curve embedded in a K3 surface $X$. Show that the dimension
+of the deformation space of $C$ is $\leq g$.
+\end{exercise}
+
 \begin{proof}
-\begin{enumerate}
-\item As explained earlier, we are interested in computing $h^1(T_C)$. By
-adjunction formula $2g-2=(\mathcal{O}(C),\mathcal{O}(C))$.
-Here recall that since $C$ is smooth, $\mathcal{O}(C)$ is the conormal bundle of
-$C$ in $X$. Also if $g \geq 2$ we know that $h^0(T_C)=0$, so that
-$\chi(T_C)=h^1(T_C)$, which is the dimension of the deformation space.
-So the question is how to relate the self-intersection number of the conormal
-bundle of $C$ with $h^1(T_C)$. A natural guess is that
-$(\mathcal{O}(C),\mathcal{O}(C))=2h^1(T_C)$, but that's totally a guess.
+%\begin{enumerate}
+%\item 
+It looks like the dimension of the deformation space is just 
+$h^1(\mathcal{T}_C)$.
 
-Now remember \cite[p. 146]{gri} Adjunction formula I that the normal bundle
-$\mathcal{N}$ of a hypersurface 
+By
+adjunction formula $2g-2=(\mathcal{O}(C),\mathcal{O}(C))$. Applying Riemann-Roch
+to $\mathcal{O}(C)$ (which is by definition the dual of the ideal sheaf of $C$,
+which is a line bundle on $X$), we obtain that
+$\chi(\mathcal{O}(C))=2+\frac{1}{2}(\mathcal{O}(C),\mathcal{O}(C))$. Then
+$\boxed{\chi(\mathcal{O}(C))=g+1}$. Now I want to compute $h^1(\mathcal{T}_C)$ from
+$\chi(\mathcal{O}(C))$.
+ 
+If $g \geq 2$ we know that $h^0(\mathcal{T}_C)=0$, so that
+$\boxed{\chi(\mathcal{T}_C)=h^1(\mathcal{T}_C)}$.
 
+Also recall from \cite[p. 146]{gri} that the normal bundle
+$\mathcal{N}$ of a hypersurface of a smooth variety $X$ satisfies
+$\mathcal{N}^\vee\cong\mathcal{O}_X(-C)|_{C}$. Taking duals we get that
+$\mathcal{N}\cong\mathcal{O}_X(C)|_{C}$, so that 
+$\boxed{\chi(\mathcal{N})=g+1}$.
 
-
-Since $g$ is smooth we can use the normal exact sequence
+Since $C$ is smooth we can use the normal exact sequence
 $$
 \xymatrix{
-0\ar[r]&T_C\ar[r]&T_X|_{C}\ar[r]&\mathcal{N}\ar[r]&0
+0\ar[r]&\mathcal{T}_C\ar[r]&\mathcal{T}_X|_{C}\ar[r]&\mathcal{N}\ar[r]&0
 }
 $$
+Taking Euler characteristic we see that
+$\chi(\mathcal{T}_C)+\chi(\mathcal{N})=\chi(\mathcal{T}_X|_{C})$. 
+This means that we should be done once we compute $\chi(\mathcal{T}_X|_{C})$. I
+know that $h^0(\mathcal{T}_X)=0$ and $h^1(\mathcal{T}_X)=20$ by $X$ being a K3
+surface, but I'm not sure what happens when we restrict to $C$.
+
+\bigskip
+To compute the
+latter Euler characteristic, which is given by definition by
+$\chi(\mathcal{T}_X|_{C})=h^0(\mathcal{T}_X|_{C})-h^1(\mathcal{T}_X|_{C})$, we
+first note that $h^0(\mathcal{T}_X|_{C})=0$, because this is the dimension of
+the global holomorphic vector fields on $X$
+restricted to $C$, which is constant along $C$ since $X$ is
+smooth. And then this number is actually zero by Hodge numbers of a K3 surface.
+
 and taking cohomology long exact sequence we obtain
 $$
 \xymatrix{
@@ -1568,7 +1596,7 @@ H^{1}(T_X)\ar[r]&H^{1}(\mathcal{N})\ar[r]& \cdots
 }
 $$
 
-\end{enumerate}
+%\end{enumerate}
 \end{proof}
 
 \section{Continued fractions}
