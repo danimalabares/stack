@@ -1285,6 +1285,211 @@ does not have a rational tail for all $s \in S$.
 \end{enumerate}
 \end{definition}
 
+\begin{itemize}
+\item The twistor diagram.
+$$
+\xymatrix{
+&  \ell_\infty \ar@{.>}[dr]\ar[dl]\\
+\mathbb{C}P^{2} \ar@{^{(}->}[rr]& &
+\mathbb{C}P^{3}\ar[dd]_{\substack{\text{twistor} \\ \text{map}}}\\ \\
+\mathbb{C}^2\ar@{^{(}->}[u]
+\mathbb{R}^4 \ar[u]\ar[rr]& &S^4
+}
+$$
+\item Instantons are solutions to some Yang-Mills solution.
+\item Expository paper of Donaldson arXiv:2205.08639
+\item ADHM construction, 1978. The first appearance of Algebraic Geometry in
+Mathematical Physics. See Hitchin-Kobayashi correspondence.
+\item Donaldson: ``unashamedly computational''.
+\item Expository paper by Simon.
+\item Take bundle $(E,\nabla)$ with an anti-self dual (ADS) 
+connection on $S^4$ and pullback to $\mathbb{C}P^{3}$ via the
+twistor map
+$$
+\tau[x:y:z:w]=[x+jy:z+jw] \qquad \text{note: $\tau^{-1}(p)=\mathbb{C}P^{1}$}
+$$
+Then:
+\begin{itemize}
+\item Restriction to fibres are trivial.
+\item Invariant under anti holomorphic involution (check this formula!) 
+$[x:y:z:w] \mapsto [-y:x:-w:z]$.
+\item $\mathcal{E}$ is also an instanton bundle.
+\item Penrose Transform: $H^1(\mathcal{E}(-2)) \cong \Ker \Delta=0$ where
+$\Delta$ is a Laplacian.
+\item Definition of instanton sheaf on $\mathbb{P}^3$ via $c_1(E)=0$ and some
+vanishing of cohomologies.
+\item Passage from [differential equations? algebraic geometry?] 
+to linear algebra: via {\it monads}. The point is that instanton sheaf is
+equivalent to  ``$E$ being the cohomology of a linear monad''; theorem by Horps
+in the 60's, and is the main tool used by ADHM. Indeed, ADHM equations come from
+the cohomology sequences of the so-called monads.
+\item Mathamatical inst bund:= locally free instanton sheaves.
+\end{itemize}
+\end{itemize}
+
+\noindent
+{\bf Properties.}
+\begin{itemize}
+\item The only instanton of rank 1 on $\mathbb{P}^3$ is the structure sheaf.
+\item non-trivial rank 2 locally free instanton sheaf ois  $\mu_0stable$
+\item double dual is locally free and also instanton
+\item non-trivial rank 2 instanton sheaaf is Fieseker stable
+therefore it makes sance fo define moduls space of instanton sheaves as an open
+subset of $\mathcal{M}(c)=\mathcal{G}(k,0,2,0)$.
+\end{itemize}
+
+Then studied the irreducibility (Tikhomirov) and smoothness (Jardim-Verbitsky,
+2014. Uses ``3rd hyperkähler quotient'') of $\mathcal{I}(c)$, the moduli
+space of rank 2 locally gree instanton sheaves of charge $c.$ But nobody likes
+this results; want new proofs.
+
+In contrast, $\mathcal{M}(c)$ of rank 2-instanton sheaves of charge $c$ is not
+irreducible in general!
+$\mathcal{M}(1)$ and $\mathcal{M}(2)$ are irreducible, $\mathcal{M}(3)$ has
+exactly 2 irreducible components of dimension 21;
+ $\mathcal{M}(4)$ has 4 irredicuble components: 
+the locally free is irreducible, and the other 3 that intersect the closure of
+the locally
+free, $\overline{\mathcal{I}(c)}$. 3 components of dimension 29 and one of dimension 32
+
+\begin{remark}
+\label{remark-}
+In general the $\mu$ moduli space is not projective, but the Gieseker is.
+\end{remark}
+
+
+\noindent
+{\bf Is $\mathcal{M}(c)$ connected?} Use $\mathbb{C}^*$ action. True for $c \leq
+4$; every component intersects $\overline{\mathcal{I}(c)}$ in this range!
+
+\begin{definition}[Elementary transformation]
+\label{definition-elementary-transformation}
+$F$ of rank 2 locally free instanton, $Q$ of rank 0 instanton with 1 dimensional
+sheaf $h^p Q(-2)$ for $p = 0,1$. So in this conditions if we have an epimorphism
+ $$
+F \overset{\varphi,\text{ surj}}{\to}\} Q
+$$
+we get that $\Ker \varphi$ is an instanton.
+\end{definition}
+
+So  we might be interested in
+$$
+E \hookrightarrow E^{* *}\xrightarrow{\text{surj.}} Q_E
+$$
+Let's have a look at $\mathcal{M}(3)=\overline{\mathcal{I}(3)}\cup
+\overline{C(0,1,3}$. Consider a generic line bundle of degree 0 on a planar
+cubic (cwhich is encoded in that we have intersection of something of cimension
+1 and something of simension 3), $L inn \text{Pic}^0(C)$ so we have an
+epimorphism
+$$
+\xymatrix{
+0\ar[r]&E\ar[r]&\mathcal{O}_{\mathbb{P}^3}\oplus
+\mathcal{O}_{\mathbb{P}^3}\ar[r]&(i_* L)\ar[r]&0
+}
+$$
+yielding a bundle $E$ as previously outlined.
+
+So we are studying the components via pushforwards of sheaves on complete
+intersection curves inside $\mathbb{P}^3$ 
+
+``when we do alementary transformation of rational (not rationl?) we get
+something on the boundary of locally free.''
+
+\medskip\noindent
+{\bf Perverse instanton sheaves.} Like an instnaton sheaf in monad description
+but with some restrictions on the cohomologies. This leads to definition of {\it
+$0$-rimensional instanton}, a perverse instanton such that $\mathcal{H}^0=0$.
+
+\medskip\noindent
+{\bf Instantons and quivers.}
+
+\medskip\noindent
+{\bf Framed instantons.} Fix a line $j:L\to \mathbb{P}^3$ and $E$ a perverse
+sheaf; a {\it framing} at $L$ is an isomorphis [missing].
+
+Apply GIT to the ADHM data to construct a moduli space 
+$$
+\mathcal{P}(r,c)=\mathcal{V}(r,c)^{\text{st}}/\!/\text{GL}(V_c)
+$$
+and it will follow that $\mathbb{P}(?,?)$ is connected.
+
+\medskip\noindent
+Considerations on quaternionic spaces lead to generalization of what has been
+discussed so far to higher dimensions. I.e. an {\it instanton sheaf} on
+$\mathbb{P}^n$ is… [other cohomological conditions]
+sheaf
+
+Why are instantons interesting? They are the simplest; may provide examples for
+Bridgeland stability.
+
+In Kuznetsov (2012) and Faenzi (2014) introduced {\it rank 2 instanton bundles
+on Fano 3-folds}. An {\it instanton bundle} on $X$ is a $\mu$-stable … and some
+Chern class is called the {\it charge}. An {\it
+instanton sheaf} (introduced by Marcos-Gaia) is ….
+
+ ``Since we are imposing $\mu$-stability on the defintion we can consider the
+moduli $\mathcal{I}_X(c) \subset \mathcal{G}_X(2,-r_X,c,0)$''.
+
+There's also monad representations as an ingredient.
+
+
+\medskip\noindent
+Here are two questions that invite us to join the instanton fever:
+
+\medskip\noindent
+{\bf Task 1.} Construct rank 2-instanton sheaves that do not deform into locally
+free ones, and obtain the new irreducible components of
+$\mathcal{G}(2,-r_X,c,0)$.
+
+\medskip\noindent
+{\bf Task 2.} Nonlocally instanton sheaves that can be deformed into non-locally
+free ones: the {\it instanton boundary}
+$\overline{\mathcal{I}(c)}/\mathcal{I}(X)$[formula right?]
+
+
+\medskip\noindent
+{\bf Recipe to construct your own instanton.}
+\begin{enumerate}
+\item (Make a bunch of instantons.) Find an appropriate curve to 
+use Serre correspondence to find some rank 2 instanton sheaf:
+$$
+\xymatrix{
+0\ar[r]&\mathcal{O}_{\mathbb{P}^3}(-1)\ar[r]&\underbrace{E}_{\exists
+}\ar[r]&\mathcal{I}_{\sqcup \text{lines}}\ar[r]&0
+}
+$$
+where $E$ is a locally free instanton of charge = the number of lines $-1$.
+
+\item (Is your family of instantons generic?) You look at the $\text{Ext}$s.
+``Therefore, the family of instantons only defines a locally closed subset
+within a generically smooth irreducible component of $\mathcal{G}$''.
+
+\item ``Find suitable rank 0 intranton sheaves to perform an elementary
+transformations on the examples obtained in Step 1.'' But they are non-locally
+free.
+
+\item Now I have my instantons, I know they are locally free: but how to prove
+that the elementary transformations deform to locally free ones? Looks like
+the challenge is to prove that the deformation is locally free.
+\end{enumerate}
+
+In the papers by the group there are several particular cases when the
+deformations are locally free. But they don't have a general result that would
+work for 3-folds.
+
+\medskip\noindent
+{\bf What you need to call a thing an instanton.}
+\begin{itemize}
+\item Minimal cohomology possible; try to kill as much cohomology as you can.
+\item Fixing $c_1$ (which may determine other Chern classes).
+\item Some stability condition like $\mu$-stability or quiver stability. Here is
+an example that is not $\mu$-semistable: 
+$T\mathbb{P}^3(-1)\oplus\Omega_{\mathbb{P}^3}(1)$
+\item Whenever possible, look for a monadic representation. (The monadic
+representation comes from ADHM --- the beginnings of this theory. And it's still
+here!)
+\end{itemize}
+
 \section{Coherent sheaves}
 \label{section-coherent-sheaves}
 
@@ -1726,6 +1931,17 @@ a Fano variety $X$ vanishes. You just have to put $L=\mathcal{O}(k)$ with $k\geq
 \label{exercise-Pic-H2-Fano}
 Show that  $\text{Pic}(X)\cong H^{2}(X,\mathbb{Z})$ holds for Fano varieties.
 \end{exercise}
+
+\begin{remark}
+\label{remark-derived-category-of-Fano-3-folds-with-vanishing-simplicial
+-cohomology}
+\begin{reference}
+Marcos Jardim, CIMPA 2025 Florianópolis, Lecture 2.
+\end{reference}
+If $H^3(X,\mathbb{Z})=0$ of a Fano 3-fold, then its derived category is
+generated by 4 elements.
+\end{remark}
+
 
 \section{Moduli spaces of sheaves}
 \label{section-moduli-spaces-of-sheaves}

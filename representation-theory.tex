@@ -1,0 +1,43 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Representation Theory}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
+
+\tableofcontents
+
+\section{Borel-Weil-Bott theorem}
+\label{section-Borel-Weil-Bott-thoerem}
+
+Borel-Weil-Bott theorem is a device for computing cohomologies of sheaves.
+
+Take the Grassmanian $\text{Gr}(n,k)$, which may be obtained as a quotient $G$
+of a group $G$ by a parabolic subgroup $P$. We would like it if $P$ was a
+semisimple group since those are classified, but unfortunately it is not. 
+So instead we use so-called Levi quotient denoted by $L$ which is semisimple
+and allows us to understand the cohomologies of the variety $G/P$.
+
+Fortunately the representation theory of $\text{Gr}(k,n)$ is well known, in fact
+we get $\text{GL}_k \times \text{GL}_{n-k}$.
+
+There are functors associated to $L$, which are described by a sequence of
+numbers $a_1,\ldots,a_n$. Along with other sequences of numbers
+$k_1,\ldots,k_\ell$, and $\rho$ (the latter is a concept in representation
+theory but we may ultimately think of it as another sequence of numbers) we may
+construct an action of the symmetric group $S^n$ acting on these sequences and
+obtain a result concerning the cohomology $H^{\ell(\sigma)}(L)$, and in
+particular we find that if two entries in our list of numbers coincide, the
+cohomology will vanish.
+
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+

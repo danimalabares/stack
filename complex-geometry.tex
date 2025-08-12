@@ -635,6 +635,23 @@ h^0(D)-h^0(K-D)=d-g+1
 \end{equation}
 \end{theorem}
 
+\begin{exercise}
+\label{exercise-no-holomorphic-vector-fields-for-g-geq2}
+Prove that if $X$ is a complex smooth curve with $g\geq 2$ then $h^0(T_X)=0$.
+\end{exercise}
+
+\begin{proof}
+First you notice that the dimension of the holomorphic 1-forms is the genus.
+This is just because the genus $p_a$ is defined as $h^1(\mathcal{O}_X)$, which
+is just $h^0(K_X)$ by Serre duality. Then you say well if you have a holomorphic
+vector field, pair it with the nonzero holomorphic 1-form. This gives a nonzero
+function, but it must be constant because $X$ is compact. Then it is actually
+nowhere vanishing. This says the vector field cannot vanish anywhere, which
+means the tangent bundle of the curve is trivial. Apparently elliptic curves,
+i.e. $g=1$ are the 
+\end{proof}
+
+
 \begin{theorem}[Riemann-Roch for line bundles on surfaces]
 \label{theorem-Riemann-Roch-for-line-bundles-on-surfaces}
 Let $L$ be a line bundle on a complex surface $X$, and $K_X=\Omega^2X$ the
