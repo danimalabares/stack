@@ -997,6 +997,35 @@ degree 1 by definition as in \cite[15.4.14]{sea}.
 Prove that the subspace of $\text{SU}(2)$-invariant forms is finite dimensional.
 \end{exercise}
 
+\begin{proof}[Proof by Arpan.]
+Consider the Hodge star operator with respect to the Riemannian metric on $M$.
+\begin{enumerate}
+\item A closed anti-self-dual form is harmonic. Indeed, by some 
+characterization a
+form is harmonic $\iff$ it is $d$-closed and $d^*$-closed. So if $\alpha$ is
+self-dual and $d$-closed we get $d^*\alpha=(-1)^{-\bullet}*d*\alpha=0$ since
+$d\alpha=0$.
+\item The space of harmonic forms is finite-dimensional (analysis, cf. Fredholm
+theory).
+\item I should be able to prove that $\text{SU}(2)$-invariant closed form is
+self-dual.
+\begin{enumerate}
+\item Define $\Lambda^+:=$self-dual 2-forms and $\Lambda^-:=$anti-self dual
+2-forms. {\bf Claim.} $\Lambda^2=\Lambda^+ \oplus \Lambda^-$.
+\item {\bf Claim.} $\Lambda^+=\text{span}(\omega_I,\omega_J,\omega_K)$.
+\item {\bf Claim.} $\omega_I,\omega_J$ and $\omega_K$ are
+$\text{SU}(2)$-invariant.
+
+The last two items imply that $\text{SU}(2)\Lambda^+=\Lambda^+$.
+\item {\bf Claim.} $\text{SU}(2)\mathbb{y}\Lambda^+$ has no fixed points.
+
+We conclude that if $\alpha$ is $\text{SU}(2)$-invariant (i.e. a fixed point of
+$\text{SU}(2)\mathbb{y}\Lambda^2$) it's positive part will vanish, so that
+$\alpha$ is anti-self-dual.
+\end{enumerate}
+\end{enumerate}
+\end{proof}
+
 \begin{proof}
 Idea: show that
 Hodge star $*\omega$ is in the $\text{SU}(2)$-orbit of $\omega$ and conclude
