@@ -1,0 +1,60 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Algebra}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
+
+\tableofcontents
+
+\section{Algebras}
+\label{section-algebras}
+
+It appears that an algebra is defined using a morphism:
+
+\begin{definition}
+\label{definition-algebra}
+\item
+\label{item-ring-homomorphism-finite-presentation}
+$\varphi : R_1 \to R_2$ is {\it of finite presentation}, or
+{\it $R_2$ is a finitely presented $R_1$-algebra},
+see Definition \ref{definition-finite-type},
+\item
+\label{item-ring-homomorphism-finite-type}
+$\varphi : R_1 \to R_2$ is {\it of finite type}, or
+{\it $R_2$ is a finite type $R_1$-algebra},
+see Definition \ref{definition-finite-type},
+\item
+\label{item-ring-homomorphism-finite}
+$\varphi : R_1 \to R_2$ is {\it finite}, or
+{\it $R_2$ is a finite $R_1$-algebra}
+\end{definition}
+
+Where we have referred to
+
+\begin{definition}
+\label{definition-finite-type}
+Let $R \to S$ be a ring map.
+\begin{enumerate}
+\item We say $R \to S$ is of {\it finite type}, or that {\it $S$ is a finite
+type $R$-algebra} if there exist an $n \in \mathbf{N}$ and an surjection
+of $R$-algebras $R[x_1, \ldots, x_n] \to S$.
+\item We say $R \to S$ is of {\it finite presentation} if there
+exist integers $n, m \in \mathbf{N}$ and polynomials
+$f_1, \ldots, f_m \in R[x_1, \ldots, x_n]$
+and an isomorphism of $R$-algebras
+$R[x_1, \ldots, x_n]/(f_1, \ldots, f_m) \cong S$.
+\end{enumerate}
+\end{definition}
+
+There's lots of properties in Stacks-Project about this.
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
+

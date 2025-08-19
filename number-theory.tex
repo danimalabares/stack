@@ -12,9 +12,6 @@
 
 \tableofcontents
 
-\bibliography{my}
-\bibliographystyle{amsalpha}
-
 \section{Greatest common divisor and least common multiple}
 \label{section-gcd-and-lcm}
 
@@ -62,6 +59,8 @@ lemma is that it allows us to make sure that the content will in fact be an
 element of $R$.
 
 \medskip\noindent
+The following lemma shows that in UFDs irreducibles are primes, but this is not
+true in general. (Counterexample in $\mathbb{Z}[\sqrt{-5}]$.)
 
 \begin{lemma}
 \label{lemma-irreducible-is-prime}
@@ -73,30 +72,120 @@ If $f$ is irreducible and $f|ab$ then $f$ must be an element of the unique
 factorization of $a$ or $b$.
 \end{proof}
 
-\begin{lemma}
-\label{lemma-gcd-linear-combination}
-There exist elements  $p,q \in R[x]$ such that $fp+gq=\text{gcd}(f,g)$.
-\end{lemma}
+In fact, showing that irreducibles are prime would be enough for our purpose of
+showing that $F[x]$ is a UFD when $F$ is a field. We shall be able to prove this
+(without the assumption of UFD as above) via Bachet-Bézout theorem; which we
+state first in its version for integer numbers:
 
-\begin{proof}
-By defining $d$ as the element of least degree of the form $fp+gq$, we obtain
-that $d$ must be $\text{gcd}(f,g)$. Indeed, we first check by highschool
-division that $d$ must divide any element of the form $fx+gy$. In particular
-$d$ divides both $f$ and $g$, so $d \leq \text{gcd}(f,g)$. Also, since
-$\text{gcd}(f,g)$ divides both $f$ and $g$, it divides $d=xf+yg$. (Indeed, if
-$c:=\text{gcd}(f,g)$ is such that $ca=f,cb=g$ then $c(ax+by)=cax+cby=fx+gy=d$.
-\end{proof}
+\begin{theorem}[Bachet-Bézout for integers]
+\label{theorem-Bachet-Bezout-for-integers}
+\begin{reference}
+\cite[Theorem 1.7]{MMST}
+\end{reference}
+Let $a,b \in \mathbb{Z}$ (what is the essential property of $\mathbb{Z}$ that
+makes this true?). Then
+there exist $x,y \in \mathbb{Z}$ with
+ $$
+ax+by=\text{gcd}(a,b)
+$$
+Therefore, if $c \in \mathbb{Z}$ divides both $a$ and $b$ then $c$ divides
+$\text{gcd}(a,b)$ as well.
+\end{theorem}
 
 \begin{lemma}
 \label{lemma-relatively-prime-and-divides-implies-divides}
-If $a|bc$ and $(a,b)=1$, then $a|c$.
+Let $a,b,c \in \mathbb{Z}$. If $a|bc$ and $(a,b)=1$, then $a|c$.
 \end{lemma}
 
 \begin{proof}
-By Lemma \ref{lemma-gcd-linear-combination}, there exist elements $p,q$ such
+By Theorem \ref{theorem-Bachet-Bezout-for-integers}, 
+there exist elements $p,q$ such
 that $ap+bq=1\implies apc+bcq=c$, so that $a$ divides both summands and thus
 divides $c$.
 \end{proof}
+
+\begin{theorem}[Division algorithm for polynomials]
+\label{theorem-division-algoritm-for-polynomials}
+\begin{reference}
+\cite[Theorem 1.48]{MMST}
+\end{reference}
+Let $F$ be a field. Given two polynomials $f,g \in F[x]$ there are two unique
+$q,r \in F[x]$ such that
+$$
+f=qg+r,\qquad \text{deg}r<\text{deg}g.
+$$
+{\bf Remark.} We use the hypothesis that $F$ is a field to take a fraction with
+denominator the leading coefficient of $g$; that is, the theorem is valid if the
+leading coefficient of $g$ is a unit.
+\end{theorem}
+
+\begin{proof}
+We may suppose that $\text{deg}f \geq \text{deg}g$ for if not we just pick
+$q=0$ and $r=f$. Now we use induction. 
+If $\text{deg}f=\text{deg}g=0$ then $f$ and $g$ are numbers and the result is
+obvious since $F$ is a field.
+
+If $\text{deg}f>0$ we do as follows. Suppose $\text{deg}f=n$ and
+$\text{deg}g=m$. Write $f(x)=a_nx^n+f_1(x)$ and $g(x)=b_mx^m+g_1(x)$. Notice
+that
+$$
+\frac{a_nx^n}{b_mx^m}g(x)=a_nx^n+\frac{a_n}{b_m}x^{n-m}g_1(x)
+$$
+so that $f(x)-\frac{a_n}{b_m}x^{n-m}g(x)=f_1(x)-\frac{a_n}{b_m}x^{n-m}g_1(x)$.
+This is a polynomial of strictly less degree than that of $f$, so that we can
+use induction hypothesis to write it as $qg+r$ with $\text{deg}r<m$. Then
+$$
+f(x)=g(x)\left(q(x)+\frac{a_n}{b_m}x^{n-m}\right)+r(x).
+$$
+\end{proof}
+
+Recall that the greatest common divisor of two polynomials $f$ and $g$ 
+is the {\it monic}
+polynomial of least degree that divides both $f$ and $g$.
+
+\begin{theorem}[Bachet-Bézout for polynomials over field]
+\label{theorem-Bachet-Bezout-for-polynomials-over-field}
+\begin{reference}
+\cite[Theorem 1.53]{MMST}
+\end{reference}
+Let $F$ be a field and $f,g\in F[x]$. 
+There exist elements  $p,q \in F[x]$ such that $fp+gq=\text{gcd}(f,g)$.
+\end{theorem}
+
+\begin{proof}
+Let $d=fp+gq$ be the monic polynomial of least degree of the form $fx+gy$. 
+Notice that the existence of $d$ monic comes from $F$ being a field
+We claim that $d=\text{gcd}(f,g)$.  
+Indeed, we first check by division algorithm
+that $d$ divides both $f$ and $g$, so 
+$\text{deg}d \leq \text{deg}\text{gcd}(f,g)$. Also, since
+$\text{gcd}(f,g)$ divides both $f$ and $g$, it divides $d=xf+yg$. (Indeed, if
+$c:=\text{gcd}(f,g)$ is such that $ca=f,cb=g$ then $c(ap+bq)=cap+cbq=fp+gq=d$.) 
+Thus $\text{deg}d=\text{deg}\text{gcd}(f,g)$, and since both are monic we are
+done.
+\end{proof}
+
+Finally we obtain
+
+\begin{lemma}
+\label{lemma-irreducible-is-prime-in-F[x]}
+Let $F$ be a field. Irreducible elements of $F[x]$ are prime. That is, if $f|gh$
+then $f|g$ or $f|h$ for any $f,g,h \in F[x]$.
+\end{lemma}
+
+\begin{proof}
+Let $d=\text{gcd}(f,g)$. Then $dp=f$ and $dq=g$. If $d$ is not $1$ 
+we get that $p$ is a unit. Then $gp$ is a multiple by a unit of $g$ which is
+divided by $f$: $gp=dpq=fq$. That's good enough.
+
+Now suppose that $d=1$. Then by Bachet-Bézout Theorem
+\ref{theorem-Bachet-Bezout-for-polynomials-over-field} 
+there are $p,q \in F[x]$ such that $fp+gq=1$. Then $fph+gqh=h$. Since by
+hypothesis $f|gh$ we conclude that $f$ divides both summands, so $f|h$.
+\end{proof}
+
+Applying this last lemma over and over again we get that if $f|f_1\ldots f_k$
+then $f$ must divide $f_i$ for some $i$.
 
 \begin{lemma}
 \label{lemma-polynomials-over-fields-are-UFD}
@@ -111,15 +200,34 @@ i.e. $f=gh$, then both $g$ and $h$ have strictly smaller degree and we may apply
 induction hypothesis to obtain a decomposition of each factor into irreducible
 elements.
 
-To prove uniqueness suppose that $f$ has two factorizations in irreducible
-elements  $f_1\ldots f_k=f_1'\ldots f_\ell'$. Then $f_1|f_1'\ldots f_\ell'$, so
-that it must divide some $f_i'$, which implies that 
-$\text{deg}f_1 \leq\text{deg}f_i$. Similarly, $f_1'$ must divide some $f_i$,
-meaning that $\text{deg}f_1'\leq \text{deg}f_i$. Supposing that we arrange the
-$f_i$ and $f_i'$ in ascending order of degree, we obtain that $f_i=f_i'$ for all
-$i$.
+To prove uniqueness suppose that there exists an element in $F[x]$ that admits
+more than one factorization in irreducible elements 
+up to multiplication by units. Choose $f$ so that
+$\text{deg}f$ is minimal among all such elements.
+
+Write two factorizations of $f$ in irreducible elements as 
+$f_1\ldots f_k=f_1'\ldots f_\ell'$ . Suppose that the factors are in
+ascending order of degree.
+
+We have that $f_1|f_1'\ldots f_\ell'$, so
+that $f_1$ must divide some $f_{i'}'$ 
+by Lemma \ref{lemma-irreducible-is-prime-in-F[x]}. 
+Since $f'_{i'}$ is irreducible and $f_1$ is
+not a unit, we conclude that $f_{i'}=f_1 u$ for some unit $u$. In particular
+$\text{deg}f_1 =\text{deg}f'_{i'}\geq \text{deg}f'_1$. 
+Similarly, $f_1'$ must divide some $f_i$, so that $f'_1=f_i$ and
+that $\text{deg}f_1'=\text{deg}f_{i}\geq \text{deg}f_1$. 
+Then $\text{deg}f_1=\text{deg}f'_1=\text{deg}f_i=\text{deg}f'_{i'}$. 
+If $f_1$ does not equal $f_1'$ we may reorder the primed elements so that 
+$f'_{i'}$ is the first one.
+
+Then $f/f_1=f_2\ldots f_k=f_2'\ldots f_{\ell}'$. But $\text{deg}f/f_1$ has
+degree strictly smaller than $f$. Since $\text{deg}f$ is minimal among all
+elements that admit more than one factorization, we conclude that $k=\ell$ and
+$f_i=f'_i$ for all $i$.
 \end{proof}
 
+\medskip\noindent
 The true definition of content is the following
 
 \begin{definition}
@@ -181,7 +289,7 @@ but will divide the remaining terms in the sum $c_j$; thus if $p$ divided $c_j$
 it would also divide $a_sb_t$lmail.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[Gauss]
 \label{lemma-R-UFD-implies-R[x]-UFD}
 \begin{reference}
 \cite[Chapter 4, Theorem 2.3]{Lang-algebra}
@@ -323,6 +431,10 @@ factorization and let $f$ be of degree $n+1$. If $f$ is irreducible we are done.
 Otherwise $f$ can be expressed as the product of two positive degree elements,
 each of which is expressed in a product of irreducibles.
 \end{proof}
+
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
 
 \end{document}
 

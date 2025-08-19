@@ -384,8 +384,8 @@ $V_1,V_2\subset U$, both distinct to $V$.
 
 \begin{lemma}
 \label{lemma-irreducible-analytic-hypersurface-irreducible-polynomial}
-If $V$ is an analytic hypersurface given locally as $V=\{f=0\}$, then $f$ is
-irreducible in $\mathcal{O}_p$.
+If $V$ is an irreducible analytic hypersurface given locally as $V=\{f=0\}$, 
+then $f$ is irreducible in $\mathcal{O}_p$.
 \end{lemma}
 
 \begin{proof}
@@ -444,7 +444,11 @@ $$
 0\ar[r]&\mathcal{I}_M\ar[r]&\mathcal{O}_N\ar[r]&\mathcal{O}_M\ar[r]&0
 }
 $$
-which follows from definition of a closed embedded subscheme.
+Here the ideal sheaf is defined as the kernel of the induced map 
+$i_*:\mathcal{O}_{\widetilde{M}} \to i_*\mathcal{O}_M$. That is, it is the sheaf
+that to every open set assigns the ring of functions vanishing along $M$.
+
+
 
 If $M$ is a singular analytic subvariety we also have an ideal short exact
 sequence, this time using the holomorphic function sheaves.
@@ -467,21 +471,33 @@ $\mathcal{I}_M$ is locally principal, i.e. it is a line bundle.
 
 In the case of complex manifolds and analytic subvarieties, we can prove this
 completely via Weierstrass preparation theorem. We only need the following other
-results:
+results…
+
+But what if all this was nonsense? A hypersurface is defined as a subset given
+locally by the vanishing of a single holomorphic function. Then the ideal sheaf,
+defined as the subring of functions vanishing along the subvariety, must be
+principal. Indeed, suppose that $S \cap U=f^{-1}(0)$ for some open set 
+$U \subset M$. Let $g \in \mathcal{O}_M(U)$ vanish along $S \cap U$, that is, 
+$g \in \mathcal{I}_S(U)$. 
+Then at a regular point of both $g$ and $f$, 
+by the inverse function theorem there is an open neighbourhood $U'$ such that 
+the set $g^{-1}(0)$ is a smooth manifold of codimension 1. 
+Since $S \cap U'$ is also $f^{-1}(0)$ at this point, we conclude that 
+$f^{-1}(0)=g^{-1}(0)$. That is, $V(f)=V(g)$. Then 
 
 \begin{lemma}
 \label{lemma-ideal-of-irreducible-hypersurface-is-height-1-prime}
 The ideal of an irreducible analytic hypersurface is a height-1 prime ideal.
 \end{lemma}
 
-\begin{proof}
-The fact that it is prime comes from the fact that $X$ is irreducible. Now
-suppose that $0 \subset \mathfrak{p} \subset I$ with strict contentions. Then
-$V(\mathfrak{p})$ is an analytic variety that contains $X$. Since $X$ is
-codimension 1, we have that $V(\mathfrak{p})$ coincides with $X$ at regular
-points. In a neighbourhood of a regular point we thus have 
-$\mathfrak{p}=I(V(\mathfrak{p}))=I$ by the Nullstellensatz.
-\end{proof}
+\begin{proof} The fact that it is prime comes from the fact that $X$ is
+irreducible. Now suppose that $0 \subset \mathfrak{p} \subset I$ with strict
+contentions. Then $V(\mathfrak{p})$ is an analytic variety that contains $X$.
+At regular points, $X$ is a smooth manifold of codimension 1, so that there
+cannot be an intermediate manifold between $X$ and the ambient manifold $M$.
+Thus $V(\mathfrak{p})$ coincides with $X$ at regular points. In a neighbourhood
+of a regular point we thus have $\mathfrak{p}=I(V(\mathfrak{p}))=I$ by the
+Nullstellensatz.  \end{proof}
 
 
 \begin{lemma}
@@ -994,7 +1010,9 @@ degree 1 by definition as in \cite[15.4.14]{sea}.
 
 \begin{exercise}
 \label{exercise-SU2-invariant-forms}
-Prove that the subspace of $\text{SU}(2)$-invariant forms is finite dimensional.
+Let $M$ be a compact hypercomplex manifold of real dimension 4, equipped with a
+quaternionic Hermitian structure, and $V$ the space of closed
+$\text{SU}(2)$-invariant 2-forms. Prove that $V$ is finite-dimensional.
 \end{exercise}
 
 \begin{proof}[Proof by Arpan.]

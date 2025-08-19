@@ -12,39 +12,191 @@
 
 \tableofcontents
 
-I start by recalling what is actually an algebra (I always remembered this as
-``a vector space over some field equipped with a product''):
-
-\begin{itemize}
-\label{item-ring-homomorphism-finite-presentation}
-$\varphi : R_1 \to R_2$ is {\it of finite presentation}, or
-{\it $R_2$ is a finitely presented $R_1$-algebra},
-see Definition \ref{definition-finite-type},
-\item
-\label{item-ring-homomorphism-finite-type}
-$\varphi : R_1 \to R_2$ is {\it of finite type}, or
-{\it $R_2$ is a finite type $R_1$-algebra},
-see Definition \ref{definition-finite-type},
-\item
-\label{item-ring-homomorphism-finite}
-$\varphi : R_1 \to R_2$ is {\it finite}, or
-{\it $R_2$ is a finite $R_1$-algebra},
-\end{itemize}
+\section{Basic definitions and examples}
+\label{section-basic-definitions-and-examples}
 
 \begin{definition}
-\label{definition-finite-type}
-Let $R \to S$ be a ring map.
+\label{definition-algebra}
+An {\it algebra} is a vector space over a field $\mathbb{F}$ endowed with a
+binary operation that is bilinear
+\begin{align*}
+a(\lambda b+\mu c)&=\lambda ab+\mu ac\\
+(\lambda b + \mu c) a &= \lambda b a + \mu c a
+\end{align*}
+\end{definition}
+
+\begin{definition}
+\label{definition-Lie-algebra}
+A {\it Lie algebra} is an algebra $\mathfrak{g}$ 
+with a product $[\cdot,\cdot]$ we call 
+{\it bracket} that satisfies
 \begin{enumerate}
-\item We say $R \to S$ is of {\it finite type}, or that {\it $S$ is a finite
-type $R$-algebra} if there exist an $n \in \mathbf{N}$ and an surjection
-of $R$-algebras $R[x_1, \ldots, x_n] \to S$.
-\item We say $R \to S$ is of {\it finite presentation} if there
-exist integers $n, m \in \mathbf{N}$ and polynomials
-$f_1, \ldots, f_m \in R[x_1, \ldots, x_n]$
-and an isomorphism of $R$-algebras
-$R[x_1, \ldots, x_n]/(f_1, \ldots, f_m) \cong S$.
+\item $[x,x]=0\qquad \forall x\in \mathfrak{g}$,
+\item (Jacobi identity.)
 \end{enumerate}
 \end{definition}
+
+\begin{definition}
+\label{definition-simple-Lie-algebra}
+A {\it simple Lie algebra} is a Lie algebra that has no nontrivial proper
+ideals.
+\end{definition}
+
+As a rule of thumb I keep in mind the following silly computation:
+$$
+\text{log}\det A=\text{log} \prod_{i}\lambda_i=\sum \text{log}\lambda_i
+=``\text{tr}\text{log}A''
+$$
+And recall that exponent map goes from $T_eG= \mathfrak{g} \to G$, so that
+logarithm would go from $G\to \mathfrak{g}$. This is why I remember that the
+condition on a classical Lie group of 
+{\it having determinant 1} goes to {\it having vanishing trace} in the 
+Lie algebra. (Because $\text{log}1=0$.)
+
+\begin{example}[Classical Lie algebras]
+\label{example-classical-Lie-algebras}
+\begin{enumerate}
+\item The {\it special linear Lie algebra} 
+$$
+\mathfrak{sl}_n=\{\text{Mat}_n|Tr(A)=0\}
+$$
+which is just obvious from the slogan above.
+\item The {\it special orthogonal Lie algebra} 
+$$
+\mathfrak{so}_n=\{A\in \text{Mat}_n|A+A^{\mathbf{T}}=0\}
+$$
+which is obvious from: $\text{SO}(n)=$isometries, so
+$\left<v,v\right>=\left<Av,Av\right>=\left<v,A^{\mathbf{T}}Av\right>$, so
+$\text{SO}(n)=\{A \in \text{Mat}_n:A^{-1}=A^{\mathbf{T}}\}$, and then
+$0=
+\text{log}1=\text{log}(A A^{\mathbf{T}})=\text{log}A+\text{log}A^{\mathbf{T}}$.
+
+\item The {\it symplectic Lie algebra}
+$$
+\mathfrak{sp}_{2n}=\{A \in \text{Mat}_{2n}:\Omega A+A^{\mathbf{T}}\Omega=0\}
+$$
+where $\Omega=\begin{pmatrix}
+0&\text{Id}_n\\ 
+-\text{Id}_n & 0
+\end{pmatrix}$.
+
+{\bf Pending.} Why this makes sense?
+\end{enumerate}
+\end{example}
+
+\begin{example}
+\label{example-associative-algebra-gives-Lie-algebra}
+If $A$ is an associative Lie algebra, then $A$ with the bracket  $[a,b]=ab-ba$
+is a Lie algebra, denoted by  $A_-$. (It is an exercise to verify Jacobi's
+identity.) This gives  $\mathfrak{gl}_V:=\text{End}(V)_-$.
+\end{example}
+
+\begin{definition}
+\label{definition-Lie-subalgebra}
+A {\it Lie subalgebra} is a vector subspace $\mathfrak{h} \subset \mathfrak{g}$
+such that $[\mathfrak{h},\mathfrak{h}] \subset \mathfrak{h}$.
+\end{definition}
+
+\begin{definition}
+\label{definition-ideal}
+A subspace $\mathfrak{h}\subset \mathfrak{g}$ is called an {\it ideal} if
+$[\mathfrak{h},\mathfrak{g}]\subset\mathfrak{h}$.
+\end{definition}
+
+\section{Killing form}
+\label{section-Killing-form}
+
+\begin{definition}
+\label{definition-ad}
+For any finite dimensional Lie algebra  $\mathfrak{g}$ and $x \in \mathfrak{g}$
+we write
+$$
+\text{ad}(x)=[x,-]
+$$
+\end{definition}
+
+\begin{definition}
+\label{definition-Killing-form}
+The {\it Killing form} is
+$$
+\kappa(x,y)=\text{Tr}_{\mathfrak{g}}\text{ad}x\text{ad}y
+$$
+\end{definition}
+
+\begin{exercise}
+\label{exercise-invariant-bilinear-form-on-simple-Lie-algebra-is-symmetric}
+Prove that an invariant bilinear form on a simple Lie algebra must in fact be
+symmetric.
+\end{exercise}
+
+\begin{definition}
+\label{definition-semisimple-Lie-algebra}
+A {\it semisimple Lie algebra} is a direct sum of simple ones
+$$
+\mathfrak{g}=\mathfrak{g}_1\oplus\ldots\oplus\mathfrak{g}_s
+$$
+\end{definition}
+
+\begin{theorem}[Cartan]
+\label{theorem-Cartan}
+The finite dimensional Lie algebra $\mathfrak{g}$ is semisimple if and only if
+its Killing form is nondegenerate.
+\end{theorem}
+
+\section{Engel's Theorem}
+\label{section-Engel-theorem}
+
+\section{Nilpotent and solvable Lie algebras}
+\label{section-nilpotent-and-solvable-Lie-algebras}
+
+\section{Lie's theorem}
+\label{section-Lie-theorem}
+
+Lie's theorem says that solvable Lie algebras over closed fields of
+characterstic not zero have weights.
+
+\begin{definition}
+\label{definition-weight-space}
+Let $\mathfrak{h}$ be a Lie algebra, 
+$\pi:\mathfrak{h}\to\mathfrak{gl}_V$ a representation of $\mathfrak{h}$ 
+and $\lambda \in \mathfrak{h}^*$. The {\it weight space} of $\mathfrak{h}$
+attached to $\lambda$ is
+$$
+V_\lambda^{\mathfrak{h}}:=\{v \in V|\pi(h)v=\lambda(h)v,\; 
+\forall h \in \mathfrak{h}\}.
+$$
+If $V_\lambda^{\mathfrak{h}}\neq 0$, we say that $\lambda$ is a {\it weight} for
+$\pi$.
+\end{definition}
+
+My first impression on this is concept is: a weight of a representation is a
+functional for which there is at least one vector (like an eigenvector) with the
+property that 
+multiplying this vector times any other vector coming from the Lie algebra 
+is a multiple of the vector (so the weight gives me kind of an eigenvalue).
+\begin{lemma}[Lie's Lemma]
+\label{lemma-Lie}
+Some condition on invariance used for…
+\end{lemma}
+
+\begin{theorem}[Lie's theorem]
+\label{theorem-Lie}
+Let $\mathfrak{g}$ be a solvable Lie algebra and $\pi$ a representation of
+$\mathfrak{g}$ on a finite dimensional vector space $V \neq 0$, over an
+algebraically closed field $\mathbb{F}$ of characterstic 0. 
+Then there exists a weight $\lambda \in \mathfrak{g}^*$ for $\pi$ 
+(that is, $V_\lambda^\mathfrak{g} \neq \{0\}$.
+\end{theorem}
+
+\begin{exercise}
+\label{exercise-corollaries-of-Lie-theorem}
+Show the following two corollaries of Lie's theorem:
+\end{exercise}
+
+
+\section{Weights}
+\label{section-weights}
+
 
 
 
