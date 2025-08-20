@@ -289,6 +289,189 @@ $$
 \item Find geometric invariants of metrics on $\mathcal{M}_{n-1}(\mathbb{S}^n)$
 (may be useful to study $(M^n,g)$, $n\geq 4$, $\text{sec}>0$.
 \end{enumerate}
+
+\section{UFF Algebraic Geometry Seminar}
+\label{section-UFF-algebraic-geometry-seminar}
+
+\subsection{Smoothable compactified Jacobians of nodal curves}
+\label{subsection-smoothable-compactified-Jacobians-of-nodal-curves}
+
+\noindent\bigskip
+Nicola Pagani, University of Liverpool and Bologna. August 20, 2025.
+
+{\bf Abstract.} Building from examples, we introduce an abstract notion of a
+'compactified Jacobian' of a nodal curve. We then define a compactified Jacobian
+to be 'smoothable' whenever it arises as the limit of Jacobians of smooth
+curves. We give a complete combinatorial characterization of smoothable
+compactified Jacobians in terms of some 'vine stability conditions', which we
+will also introduce. This is a joint work with Fava and Viviani.
+
+\bigskip\noindent
+
+
+
+Let $C$ be a smooth curve and $d \in \mathbb{Z}$. Define
+$$
+J^d_C=\{L:\text{$L$ is a line bundle of degree $d$}\}/\sim
+$$
+which is a smooth projective variety of dimension $g(C)$.
+
+If $C$ is nodal we still can consider $J^d_C$.
+\begin{enumerate}
+\item One connected component. Then the Jacobian is $\mathbb{P}^1$ minus two
+points. This is not universally closed, so it is not proper.
+\item Two components intersecting at one point. 
+The pullback of the normalization splits the degree in
+intintely many ways, givieng that $J^{-1}_C$ is an infinite set of points. This
+is not of finite type, so it is not proper.
+\item The curve has two components intersecting at two points. 
+This gives $J^{-2}_C$,
+ which is a mixture of the two former items. (Probably not proper too.)
+\end{enumerate}
+
+\medskip\noindent
+Now consider
+$$
+\text{TF}_C^d=\{\mathcal{F}:
+\text{coherent on $C$, torsion-free, rank-1 on $C$}\}/\sim
+$$
+This satisfies the existence oart of the valu point of properness.
+
+Now we consider the moduli. Now we consider the ideal sheaf of the (singular?)
+point(s?):
+\begin{enumerate}
+\item One component. The stack is proper!
+\item Two components intersecting once. Now we get stacky points, 
+$x=[\bullet/\mathbb{G}_m]$. These points have generic stabilizer. The resulting
+stack is not separated because a morphism of a curve, say $\mathbb{P}^1$ minus a
+point … there are infinitely many ways to extend a morphism from this thing to a
+line bundle. So you cannot include any of these stacky points. Recall that a
+sheaf is {\it simple} if its automorphism group is $\mathbb{G}_m$.
+\item  The ideal sheaf of both nodes 
+$\mathcal{I}(N_1,N_2)$ has a positive dimensional automorphism
+group. The stack is not proper.
+\end{enumerate}
+
+\begin{definition}
+\label{definition-fine-compactified-Jacobian}
+A {\it fined compactified Jacobian} of $C$ is an open connected substack of
+$\text{TF}^d(C)$ that is also proper.
+\end{definition}
+
+\begin{remark}
+\label{remark-algebraic-space}
+This thing is automatically an algebraic space.
+\end{remark}
+
+\begin{definition}
+\label{definition-compactified-Jacobian}
+A {\it compactified Jacobian} is an open connected of $\text{TF}^d(C)$ that
+admits a proper, good moduli space.
+\end{definition}
+
+Consider the Artin stack $\mathfrak{X} \xrightarrow{\Gamma}X$ […]
+ is a {\it good
+moduli space} if 
+\begin{enumerate}
+\item Every moduli factors
+$$
+\xymatrix{
+\mathfrak{X} \ar[r]\ar[rd]&\mathcal{I}\text{ (ACC. space)}\\
+& X
+}
+$$
+\item $\pi_*\mathcal{O}_{\mathfrak{X}}=\mathcal{O}_X$.
+\end{enumerate}
+
+\medskip\noindent
+We expect to find a notion of stability condition to produce these things 
+[…] $[\bullet/ \mathbb{G}_m]$ would be the polystable representative.
+
+\begin{definition}
+\label{definition-smoothable-compactified-Jacobian}
+A compactified Jacobian $\overline{J_C}$ is {\it smoothable} if all smoothings 
+$\mathcal{C}\to \Delta=\{0,\eta\}$ (with $\mathcal{C}_0=C$), 
+$$
+J^d_{\mathcal{C}_\eta}\cup C \to \overline{J_C}
+$$
+is proper.
+\end{definition}
+
+\medskip\noindent
+
+\begin{definition}
+\label{definition-connected}
+Let $X$ be a curve.
+$$
+\text{BCON}(X)=\{Y \subseteq X\text{s.t. }Y,Y^c \text{ are connected}\}
+$$
+\end{definition}
+
+\begin{definition}
+\label{definition-v-satbility}
+A $v$-curve is a generalization of items (2) and (3) in the lists above 
+[it looks like two long snakes $\sim$ that intersect several times, and $t$ is
+the number of nodes]. 
+A {\it $v$-condition} is a pair $n=(n_1,n_2)$ such that 
+$$
+n_1+n_2=\begin{cases}
+d+1-t\qquad &\text{we say the s.c. is nondegenerate} \\
+d-t\qquad &\text{degenerate}
+\end{cases}
+$$
+$\mathcal{F}$ on $X$ is  {\it $n$-(semi)stable} if 
+$\text{deg}\mathcal{F}_{X_i}>n_i$ ($\text{deg}\mathcal{F}_{X_i}\geq n_i$) 
+for $i=1,2$.
+\end{definition}
+$\mathcal{F}_{X_i}=\mathcal{F}|_{X_i}$ torsion.
+$$
+\text{deg}(\mathcal{F}_{X_i})+\text{deg}(\mathcal{F}_{X_2})
+=d-|\text{sing}(F)|.
+$$
+Then 
+$$
+\overline{J_C}(n)=\{\mathcal{F}\text{ is semistable}\},
+$$
+a smooth compact Jacobian.
+
+\begin{definition}
+\label{definition-n-degeneracy}
+A {\it degeneratation} of $v$-stab. on $X$ is $n:\text{BCON}(X) \to \mathbb{Z}$
+such that
+\begin{enumerate}
+\item 
+$$
+n_Y+n_{Y^c}+|Y \cap Y^c|=
+\begin{cases}
+d+1\qquad &\text{ we say $Y$ is $n$-nondegenerate} \\
+d\qquad &\text{$Y$ is $n$-degenerate}
+\end{cases}
+$$
+\item $Y_i$ no pa. common component $n_{Y_1}+n_{Y_2}+\ldots$
+$$
+\xymatrix{
+&Y_1\ar[dr]\ar[dl]\\
+Y_2\ar[ur]\ar[rr]&&Y_3\ar[ll]\ar[ul]
+}
+$$
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[-, et al]
+\label{theorem-bijection-stability-conditions-and-nodal-curves}
+(bijection between stability conditions and nodal curves) The map
+$$
+\left\{ \substack{\text{sm. comp.} \\ \text{Jac of $X$}} \right\} \to
+\left\{ \substack{\text{$v$-stab.} \\ \text{cond. of $X$}} \right\} 
+$$
+$$
+n\mapsto \overline{J_X}(n)=\{n\text{-semistable sheaves}\}
+$$
+is a bijection. (The arrow should be from right to left!)
+\end{theorem}
+
+F. Viviani had proved it for fine compact Jacobians.
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
