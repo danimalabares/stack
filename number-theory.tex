@@ -154,7 +154,7 @@ There exist elements  $p,q \in F[x]$ such that $fp+gq=\text{gcd}(f,g)$.
 
 \begin{proof}
 Let $d=fp+gq$ be the monic polynomial of least degree of the form $fx+gy$. 
-Notice that the existence of $d$ monic comes from $F$ being a field
+Notice that the existence of $d$ monic comes from $F$ being a field.
 We claim that $d=\text{gcd}(f,g)$.  
 Indeed, we first check by division algorithm
 that $d$ divides both $f$ and $g$, so 
@@ -228,33 +228,39 @@ $f_i=f'_i$ for all $i$.
 \end{proof}
 
 \medskip\noindent
-The true definition of content is the following
-
-\begin{definition}
-\label{definition-order-of-fraction}
-Let $a \in F$. If $p \in R$ is irreducible, define the {\it order} of $a$ at $p$
-to be the number $r$ such that $a=p^rb$ for some fraction $b$ that does not have
-$p$ as factor in the numerator nor in the denominator.
-\end{definition}
-
-We can pick the fraction $a$ so that its denominator and numerator have no prime
-factor in common, making the order unique by the uniqueness of the factorization
-in $R$.
-
+The true definition of content can be done in three steps:
 \begin{definition}
 \label{definition-content}
 \begin{reference}
 \cite[p. 181]{Lang-algebra}
 \end{reference}
-The {\it  order of $f\in R[x]$ at $p$} is the minimium order of
-$p$ in any of the coefficients of $f$. The {\it content} of $f$ is the product
-of every irreducible factor $p$ of $f$ raised to its order. A polynomial is
+\begin{enumerate}
+\item (Order of a fraction $a$ at a prime $p$.) 
+Let $a \in F$. If $p \in R$ is irreducible, the {\it order} of $a$ at $p$
+to be the number $r$ such that $a=p^rb$ for some fraction $b$ that does not have
+$p$ as factor in the numerator nor in the denominator. (To understand the point
+of the Gauss lemma, notice that the order
+can be a fraction, i.e. if $p$ is a factor of the denominator.)
+\item (Order of a polynomial $f \in F[x]$ at a prime $p$.) 
+The {\it  order of $f\in F[x]$ at $p$} is the minimium order of
+$p$ in any of the coefficients of $f$. (Defining this number as the {\bf
+minimum} ensures that the primitive part of $f$ (see below) has all coefficients
+in $R$. It also follows that the gcd of the 
+coefficients of the primitive part is 1.)
+\item (Content of $f \in F[x]$) The {\it content} of $f$ is the product
+of every irreducible factor $p$ of $f$ raised to its order.
+\item (Primitive polynomial.) A polynomial is
 called {\it primitive} if it has content 1.
+\end{enumerate}
 \end{definition}
 
 As explained in the beginning of this section, the point of the Gauss
 lemma is that it will allow us to make sure that the content of $f$ is an
-element of $R$.
+element of $R$, i.e. not a fraction.
+
+Also, in the definition of order of a fraction $a$ at a prime $p$, notice
+ the order well-defined, i.e. unique, by the uniqueness of the factorization
+in $R$.
 
 \begin{lemma}[True Gauss lemma]
 \label{lemma-true-Gauss}
@@ -300,7 +306,7 @@ If $R$ is a UFD then $R[x]$ is a UFD.
 \begin{proof}
 Let $f\in R[x]$ be distinct from 0. Since $F[x]$ is UFD we can write
 $f=f_1\ldots f_k$. Taking primitive part on both sides and using Gauss lemma we
-get $c\text{pp}(f)=c \text{pp}(f_1)\ldots\text{pp}(f_k)$. The importance of
+get $c\text{pp}(f)=c \text{pp}(f_1)\ldots\text{pp}(f_k)$. The importance of the
 Gauss lemma is that $c \in R$, so that we may split it as a product of
 irreducibles of $R$, which are irreducibles of $R[x]$ as well. The primitive
 parts of the factors are also irreducible in $R[x]$, for if $c_i$ is the content
