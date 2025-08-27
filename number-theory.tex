@@ -137,6 +137,7 @@ use induction hypothesis to write it as $qg+r$ with $\text{deg}r<m$. Then
 $$
 f(x)=g(x)\left(q(x)+\frac{a_n}{b_m}x^{n-m}\right)+r(x).
 $$
+The uniqueness of $q$ and $r$ follows from considering the division  …
 \end{proof}
 
 Recall that the greatest common divisor of two polynomials $f$ and $g$ 
@@ -153,12 +154,24 @@ There exist elements  $p,q \in F[x]$ such that $fp+gq=\text{gcd}(f,g)$.
 \end{theorem}
 
 \begin{proof}
-Let $d=fp+gq$ be the monic polynomial of least degree of the form $fx+gy$. 
+Consider the set
+$$
+I:=\{fx+gy:x,y \in F[x]\}.
+$$
+Let $d=fp+gq$ be the monic polynomial of least degree 
+of the form $fx+gy$, for $x,y \in F[x]$.
 Notice that the existence of $d$ monic comes from $F$ being a field.
-We claim that $d=\text{gcd}(f,g)$.  
+We claim that $d=\text{gcd}(f,g)$. 
 Indeed, we first check by division algorithm
-that $d$ divides both $f$ and $g$, so 
-$\text{deg}d \leq \text{deg}\text{gcd}(f,g)$. Also, since
+that $d$ divides both $f$ and $g$: 
+suppose that $f=dq+r$ with $\text{deg}r<\text{deg}d$. 
+Then, if $r=f-dq=f(1-xq)-yg$ is not zero, 
+dividing by its leading coefficient gives an element in $I$ 
+of degree strictly smaller than the degree of $d$, a contradiction.
+Thus $r$ is zero. The same argument shows that $d|g$, and we conclude that
+Thus $\text{deg}d \leq \text{deg}\text{gcd}(f,g)$. 
+
+Now, since
 $\text{gcd}(f,g)$ divides both $f$ and $g$, it divides $d=xf+yg$. (Indeed, if
 $c:=\text{gcd}(f,g)$ is such that $ca=f,cb=g$ then $c(ap+bq)=cap+cbq=fp+gq=d$.) 
 Thus $\text{deg}d=\text{deg}\text{gcd}(f,g)$, and since both are monic we are
@@ -209,7 +222,7 @@ Write two factorizations of $f$ in irreducible elements as
 $f_1\ldots f_k=f_1'\ldots f_\ell'$ . Suppose that the factors are in
 ascending order of degree.
 
-We have that $f_1|f_1'\ldots f_\ell'$, so
+We have that $f_1|f_1'\ldots f_{k'}$, so
 that $f_1$ must divide some $f_{i'}'$ 
 by Lemma \ref{lemma-irreducible-is-prime-in-F[x]}. 
 Since $f'_{i'}$ is irreducible and $f_1$ is
@@ -218,14 +231,40 @@ $\text{deg}f_1 =\text{deg}f'_{i'}\geq \text{deg}f'_1$.
 Similarly, $f_1'$ must divide some $f_i$, so that $f'_1=f_i$ and
 that $\text{deg}f_1'=\text{deg}f_{i}\geq \text{deg}f_1$. 
 Then $\text{deg}f_1=\text{deg}f'_1=\text{deg}f_i=\text{deg}f'_{i'}$. 
-If $f_1$ does not equal $f_1'$ we may reorder the primed elements so that 
-$f'_{i'}$ is the first one.
 
-Then $f/f_1=f_2\ldots f_k=f_2'\ldots f_{\ell}'$. But $\text{deg}f/f_1$ has
-degree strictly smaller than $f$. Since $\text{deg}f$ is minimal among all
-elements that admit more than one factorization, we conclude that $k=\ell$ and
+Then I thought: I need a common divisor for $f_1\ldots f_k$ and 
+$f_1'\ldots f_{k'}'$. So look at the gcd. If it was 1, then this means by
+Bachet-Bézout Theorem \ref{theorem-Bachet-Bezout-for-polynomials-over-field}
+that there exist polynomials $p,q \in F[x]$ such that
+$$
+p(\underbrace{f_1,\ldots f_k}_{=f})
++q(\underbrace{f_1'\ldots f_{k'}'}_{=f})=1
+$$
+which implies that $f \in F$, which in turn
+says that $f$ is irreducible (since all elements of $F$ are units and thus
+irreducibles), so that there are no factorizations at all.
+Then we must suppose that the gcd of the two factorizations has
+positive degree. This is just saying that $f_i=f'_{i'}$ for some $i$ and
+$i'$.
+
+Then we consider the quotient $f/f_1=f/f_1'$. This means that we apply the
+Division Algorithm \ref{theorem-division-algoritm-for-polynomials}
+to  $f$ and  $f_1$, and obtain two quotients with reminder
+zero, which by uniqueness of the Division Algorithm gives the equality
+$f_2\ldots f_k=f_2'\ldots f_{k'}'$.
+This quotient has degree strictly less than $\text{deg} f$ and has two distinct
+factorizations in irreducibles. Since $f$ is minimal among all
+elements that admit more than one factorization, we conclude that $k=k'$ and
 $f_i=f'_i$ for all $i$.
 \end{proof}
+
+\begin{remark}
+\label{remark-not-the-same-as-in-Z}
+Notice that the proof given for integers does not work identically,
+for in this case we cannot conclude that $f_1=f_1'$ directly from putting the
+factors in order of degree (we can conclude that they have the same degree, but
+not that they arr the same polynomial!).
+\end{remark}
 
 \medskip\noindent
 The true definition of content can be done in three steps:
@@ -305,19 +344,41 @@ If $R$ is a UFD then $R[x]$ is a UFD.
 
 \begin{proof}
 Let $f\in R[x]$ be distinct from 0. Since $F[x]$ is UFD we can write
-$f=f_1\ldots f_k$. Taking primitive part on both sides and using Gauss lemma we
-get $c\text{pp}(f)=c \text{pp}(f_1)\ldots\text{pp}(f_k)$. The importance of the
-Gauss lemma is that $c \in R$, so that we may split it as a product of
-irreducibles of $R$, which are irreducibles of $R[x]$ as well. The primitive
-parts of the factors are also irreducible in $R[x]$, for if $c_i$ is the content
-of $f_i$ we observe that $c_i\text{pp}(f_i)=f_i$ is irreducible in $F[x]$ and
-thus we couldn't factor $\text{pp}(f_i)$ into two nonunit elements of $R[x]$.
+$f=f_1\ldots f_k$. Notice that the primitive parts of the $f_i$ coincide
+with the primitive part of the product $f_1\ldots f_k$ by
+the Gauss Lemma: 
+\begin{align*}
+f&=c(f_1\ldots f_k)\text{pp}(f_1\ldots f_k),\\
+f&=c(f_1)\text{pp}(f_1)\ldots c(f_k)\text{pp}(f_k)
+\end{align*}
+and we cancel the content part dividing (using that we are in a field) by the
+Gauss Lemma.
+
+We also apply the Gauss Lemma to conclude that
+$c(f)=c(f_1)\ldots c(f_k)$, being the content of a polynomial with coefficients
+in $R$, must be in $R$ as well, so that we can decompose it as a product of
+irreducibles since $R$ is a UFD.
+
+To obtain a factorization in irreducibles we only need to show that each of the
+$\text{pp}(f_i)$ is irreducible in $R[x]$.
+To see this suppose that 
+$\text{pp}(f_i)=gh$. $c(f_i)\text{pp}(f_i)=f_i$ is irreducible
+in $F[x]$, so either $c(f_i)g$ or $h$ is a unit of $F$. Then 
+either $g$ or $h$ are in $R$. But the gcd of 
+the coefficients of $\text{pp}(f_i)$ is 1, so, since we have factored
+an element of $R$ from $\text{pp}(f_i)$, it must be 1.
 
 The uniqueness of the factorization follows from the uniqueness of the
 factorization in $F[x]$, for another factorization in $R[x]$ would be a
-factorization in $F[x]$, making the number of factors the same and equality up
-to a rational number. After taking primitive part we see that the rational
-number must be $1$.
+factorization in $F[x]$, making the number of factors the same,
+and equality of the factorizations up
+to a fraction $u$,
+which is a unit of $F[x]$. We just need to make sure $u$ is a unit of $R$.
+Write uniqueness of the factorization in $F[x]$ as: 
+$f_1=uf_1'$ and $f_i=f_i'$ for $i\neq 1$.
+It is clear that $u \in R$, since otherwise $f_1$ couldn't
+be a polynomial in $R[x]$. But since $f_1$ is irreducible in $R$ and $f_1$ 
+is not a unit (of $R$), we conclude that $u$ is a unit of $R$.
 \end{proof}
 
 \begin{lemma}
