@@ -1,0 +1,193 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Categories}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
+
+\tableofcontents
+
+\section{Definitions}
+\label{section-definition-categories}
+
+\noindent
+We recall the definitions, partly to fix notation.
+
+\begin{definition}
+\label{definition-category}
+A {\it category} $\mathcal{C}$ consists of the following data:
+\begin{enumerate}
+\item A set of objects $\Ob(\mathcal{C})$.
+\item For each pair $x, y \in \Ob(\mathcal{C})$ a set of morphisms
+$\Mor_\mathcal{C}(x, y)$.
+\item For each triple $x, y, z\in \Ob(\mathcal{C})$ a composition
+map $ \Mor_\mathcal{C}(y, z) \times \Mor_\mathcal{C}(x, y)
+\to \Mor_\mathcal{C}(x, z) $, denoted $(\phi, \psi) \mapsto
+\phi \circ \psi$.
+\end{enumerate}
+These data are to satisfy the following rules:
+\begin{enumerate}
+\item For every element $x\in \Ob(\mathcal{C})$ there exists a
+morphism $\text{id}_x\in \Mor_\mathcal{C}(x, x)$ such that
+$\text{id}_x \circ \phi = \phi$ and $\psi \circ \text{id}_x = \psi $ whenever
+these compositions make sense.
+\item Composition is associative, i.e., $(\phi \circ \psi) \circ \chi =
+\phi \circ ( \psi \circ \chi)$ whenever these compositions make sense.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{definition-functor}
+A {\it functor} $F : \mathcal{A} \to \mathcal{B}$
+between two categories $\mathcal{A}, \mathcal{B}$ is given by the
+following data:
+\begin{enumerate}
+\item A map $F : \Ob(\mathcal{A}) \to \Ob(\mathcal{B})$.
+\item For every $x, y \in \Ob(\mathcal{A})$ a map
+$F : \Mor_\mathcal{A}(x, y) \to \Mor_\mathcal{B}(F(x), F(y))$,
+denoted $\phi \mapsto F(\phi)$.
+\end{enumerate}
+These data should be compatible with composition and identity morphisms
+in the following manner: $F(\phi \circ \psi) =
+F(\phi) \circ F(\psi)$ for a composable pair $(\phi, \psi)$ of
+morphisms of $\mathcal{A}$ and $F(\text{id}_x) = \text{id}_{F(x)}$.
+\end{definition}
+
+\section{Monomorphisms}
+\label{section-monomorphisms-and-epimorphisms}
+
+\begin{definition}
+\label{definition-mono-epi}
+Let $\mathcal{C}$ be a category and let $f : X \to Y$ be
+a morphism of $\mathcal{C}$.
+\begin{enumerate}
+\item We say that $f$ is a {\it monomorphism} if for every object
+$W$ and every pair of morphisms $a, b : W \to X$ such that
+$f \circ a = f \circ b$ we have $a = b$.
+\item We say that $f$ is an {\it epimorphism} if for every object
+$W$ and every pair of morphisms $a, b : Y \to W$ such that
+$a \circ f = b \circ f$ we have $a = b$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{definition-presheaves-injective-surjective}
+Let $\mathcal{C}$ be a category, and let $\varphi : \mathcal{F}
+\to \mathcal{G}$ be a map of presheaves of sets.
+\begin{enumerate}
+\item We say that $\varphi$ is {\it injective} if for every object
+$U$ of $\mathcal{C}$ the map $\varphi_U : \mathcal{F}(U)
+\to \mathcal{G}(U)$ is injective.
+\item We say that $\varphi$ is {\it surjective} if for every object
+$U$ of $\mathcal{C}$ the map $\varphi_U : \mathcal{F}(U)
+\to \mathcal{G}(U)$ is surjective.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-mono-epi}
+The injective (resp.\ surjective) maps defined above
+are exactly the monomorphisms (resp.\ epimorphisms) of
+$\textit{PSh}(\mathcal{C})$. A map is an isomorphism
+if and only if it is both injective and surjective.
+\end{lemma}
+
+\section{Presheaves}
+\label{section-presheaves}
+
+\begin{definition}
+\label{definition-presheaves-sets}
+A {\it presheaf of sets} on $\mathcal{C}$ is a contravariant
+functor from $\mathcal{C}$ to $\textit{Sets}$. {\it Morphisms
+of presheaves} are transformations of functors. The category
+of presheaves of sets is denoted $\textit{PSh}(\mathcal{C})$.
+\end{definition}
+
+\section{Internal Hom}
+\label{section-internal-hom}
+
+\noindent
+{\bf Upshot.} Internal Hom is when the
+Hom set of two objects in some category
+is in also an object of the category.
+Down-to-earth, that for two sheaves $\mathcal{F},\mathcal{G}$,
+$U\mapsto \Hom(\mathcal{F}(U),\mathcal{G}(U)$ 
+is also a sheaf, called $\SheafHom$.
+
+\medskip\noindent
+I start with Stacks Project approach.
+
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $\mathcal{F}$, $\mathcal{G}$ be $\mathcal{O}_X$-modules.
+Consider the rule
+$$
+U \longmapsto \Hom_{\mathcal{O}_X|_U}(\mathcal{F}|_U, \mathcal{G}|_U).
+$$
+It follows from the discussion in Sheaves, Section
+\ref{sheaves-section-glueing-sheaves} that this is a sheaf of
+abelian groups. In addition, given an element
+$\varphi \in \Hom_{\mathcal{O}_X|_U}(\mathcal{F}|_U, \mathcal{G}|_U)$
+and a section $f \in \mathcal{O}_X(U)$ then we can define
+$f\varphi \in \Hom_{\mathcal{O}_X|_U}(\mathcal{F}|_U, \mathcal{G}|_U)$
+by either precomposing with multiplication by $f$ on $\mathcal{F}|_U$
+or postcomposing with multiplication by $f$ on $\mathcal{G}|_U$ (it gives
+the same result). Hence we in fact get a sheaf of $\mathcal{O}_X$-modules.
+We will denote this sheaf
+$\SheafHom_{\mathcal{O}_X}(\mathcal{F}, \mathcal{G})$.
+There is a canonical ``evaluation'' morphism
+$$
+\mathcal{F}
+\otimes_{\mathcal{O}_X}
+\SheafHom_{\mathcal{O}_X}(\mathcal{F}, \mathcal{G})
+\longrightarrow
+\mathcal{G}.
+$$
+For every $x \in X$ there is also a canonical morphism
+$$
+\SheafHom_{\mathcal{O}_X}(\mathcal{F}, \mathcal{G})_x
+\to
+\Hom_{\mathcal{O}_{X, x}}(\mathcal{F}_x, \mathcal{G}_x)
+$$
+which is rarely an isomorphism.
+
+\medskip\noindent
+{\bf Cartesian closed category} In the category of sets there is a bijection
+$\Hom(X\times Y, Z)\cong \Hom(X, \text{Hom}(Y, Z))$ that depends
+naturally on $X$, $Y$ and $Z$. The notions related to this bijection are
+“Cartesian closed category”, “currying” and “internal Hom”.
+
+\begin{definition}
+\label{definition-Cartesian-closed-category}
+A category $\mathcal{C}$ is {\it Cartesian closed} if:
+\begin{enumerate}
+\item $\mathcal{C}$ has all finite products 
+(Caveat: some require that $\mathcal{C}$ has all finite limits)
+\item For any object $Y$ the functor $- \times Y$ has a right adjoint,
+which we will denote by $\text{Map}(Y,-)$ or by $-^Y$ .
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+\label{remark-currying}
+By section 3 \href{https://ncatlab.org/nlab/show/internal+hom }{here}, the
+second property above implies that we get a functor 
+$\text{Map}(-,-) :\mathcal{C}^{\text{op}} \times \mathcal{C} \to \mathcal{C}$,
+and moreover we get natural isomorphisms 
+$\Hom(X, \text{Map}(Y, Z)) \cong \Hom(X \times Y, Z)$
+and $\text{Map}(X, \text{Map}(Y, Z))\cong \text{Map}(X \times Y, Z)$.
+\end{remark}
+
+
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+
+
+\end{document}
+
