@@ -137,7 +137,15 @@ use induction hypothesis to write it as $qg+r$ with $\text{deg}r<m$. Then
 $$
 f(x)=g(x)\left(q(x)+\frac{a_n}{b_m}x^{n-m}\right)+r(x).
 $$
-The uniqueness of $q$ and $r$ follows from considering the division  …
+To prove uniqueness suppose that $f=q_1g+r_1=q_2g+r_2$.
+Then
+$$
+(q_1-q_2)g=r_1-r_2
+$$
+Taking degrees we see that the degree of this polynomial should be,
+by the right-hand-side less than the degree of $g$,
+and by the left hand side more than the degree of $g$.
+Then the degree must be zero and $q_1=q_2$, $r_1=r_2$.
 \end{proof}
 
 Recall that the greatest common divisor of two polynomials $f$ and $g$ 
