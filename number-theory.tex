@@ -12,6 +12,34 @@
 
 \tableofcontents
 
+\section{Rings}
+\label{section-rings}
+
+\begin{definition}
+\label{definition-domain}
+A ring $R$ is called a {\it domain} if it has no proper zero divisors,
+that is, if $ab=0$ then $a=0$ or $b=0$.
+\end{definition}
+
+\section{Polynomial rings}
+\label{section-polynomial-rings}
+
+\begin{lemma}
+\label{lemma-ring-of-polynomials-in-one-indeterminante-
+over-domain-is-domain}
+The ring of polynomials in one indeterminante over
+a domain $R$ is a domain.
+\end{lemma}
+
+\begin{proof}
+Suppose that $fg=0$ for $f,g \in R[x]$. Then 
+the leading coefficient of $fg$ is $a_nb_m$
+where $f=\sum_{i=1}^n a_ix^i$ and $g=\sum_{i=1}^mb_ix^i$.
+Since $a_nb_m=0$, then $a_n=0$ or $b_m=0$,
+but this is a contradiction since $R$ is a
+domain and $a_n \neq 0$, $b_m \neq 0$.
+\end{proof}
+
 \section{Greatest common divisor and least common multiple}
 \label{section-gcd-and-lcm}
 
@@ -234,34 +262,12 @@ We have that $f_1|f_1'\ldots f_{k'}$, so
 that $f_1$ must divide some $f_{i'}'$ 
 by Lemma \ref{lemma-irreducible-is-prime-in-F[x]}. 
 Since $f'_{i'}$ is irreducible and $f_1$ is
-not a unit, we conclude that $f_{i'}=f_1 u$ for some unit $u$. In particular
-$\text{deg}f_1 =\text{deg}f'_{i'}\geq \text{deg}f'_1$. 
-Similarly, $f_1'$ must divide some $f_i$, so that $f'_1=f_i$ and
-that $\text{deg}f_1'=\text{deg}f_{i}\geq \text{deg}f_1$. 
-Then $\text{deg}f_1=\text{deg}f'_1=\text{deg}f_i=\text{deg}f'_{i'}$. 
+not a unit, we conclude that $f_{i'}=f_1 u$ for some unit $u$.
 
-Then I thought: I need a common divisor for $f_1\ldots f_k$ and 
-$f_1'\ldots f_{k'}'$. So look at the gcd. If it was 1, then this means by
-Bachet-Bézout Theorem \ref{theorem-Bachet-Bezout-for-polynomials-over-field}
-that there exist polynomials $p,q \in F[x]$ such that
-$$
-p(\underbrace{f_1,\ldots f_k}_{=f})
-+q(\underbrace{f_1'\ldots f_{k'}'}_{=f})=1
-$$
-which implies that $f \in F$, which in turn
-says that $f$ is irreducible (since all elements of $F$ are units and thus
-irreducibles), so that there are no factorizations at all.
-Then we must suppose that the gcd of the two factorizations has
-positive degree. This is just saying that $f_i=f'_{i'}$ for some $i$ and
-$i'$.
-
-Then we consider the quotient $f/f_1=f/f_1'$. This means that we apply the
-Division Algorithm \ref{theorem-division-algoritm-for-polynomials}
-to  $f$ and  $f_1$, and obtain two quotients with reminder
-zero, which by uniqueness of the Division Algorithm gives the equality
-$f_2\ldots f_k=f_2'\ldots f_{k'}'$.
-This quotient has degree strictly less than $\text{deg} f$ and has two distinct
-factorizations in irreducibles. Since $f$ is minimal among all
+Then we apply cancellation law using that $R[x]$ is a domain
+to obtain $uf_2\ldots f_k=f_2'\ldots f'_{k'}$ is a
+polynomial with two distinct factorizations.
+Since $f$ is minimal among all
 elements that admit more than one factorization, we conclude that $k=k'$ and
 $f_i=f'_i$ for all $i$.
 \end{proof}
