@@ -616,6 +616,232 @@ there exists a simple root $\alpha_i$ such that
 \end{enumerate}
 \end{theorem} 
 
+\section{On wrapped Floer homology barcode entropy and hyperbolic sets}
+\label{section-wrapped-Floer-homology-barcode-entropy-and-hyperbolic-sets}
+
+\noindent
+Rafael Fernandes, UC Santa Cruz.
+Differential Geometry Seminar, IMPA. 
+September 4, 2025.
+
+\medskip {\bf Abstract.} In this talk, we will discuss the interplay between the
+wrapped Floer homology barcode and topological entropy. The concept of barcode
+entropy was introduced by Çineli, Ginzburg, and Gürel and has been shown to be
+related to the topological entropy of the underlying dynamical system in various
+settings. Specifically, we will explore how, in the presence of a topologically
+transitive, locally maximal hyperbolic set for the Reeb flow on the boundary of
+a Liouville domain, barcode entropy is bounded below by the topological entropy
+restricted to the hyperbolic set.
+
+\medskip\noindent
+
+Let $M^n$ be a manifold.
+$\omega \in \Omega^2(M)$ is {\it symplectic} if $d \omega=0$ and it is
+nondegenerate.
+
+\begin{example}
+\label{example-Rn-is-symplectic}
+$\mathbb{R}^n$ is symplectic with canonical Darboux form.
+\end{example}
+
+Recall the definition of Hamiltonian vector field
+associated to a function $H \in C^\infty(M)$.
+
+\begin{definition}
+\label{definition-nondegenerate-diffeomorphism}
+A diffeomorphism $\varphi:M \to M$ is called
+{\it non-degenerate} if $\Phi(\varphi)\cap\Delta \subset M\times M$
+(pitchfork, i.e. transversal intersection!).
+\end{definition}
+
+Let $M^{2n}$ be a closed symplectic manifold. Arnold's conjecture says
+\begin{enumerate}
+\item If $\varphi=\varphi_H$ (Hamiltonian flow) is nondegenerate, then
+$$
+\# \text{Fix}(\varphi_H) \geq \sum_{i=0}^{2n}\dim H_i(M,k)=\dim H_*(M,k)
+$$
+\item If $\varphi=\varphi_H$ is degenerate, then
+$$
+\# \text{Fix}(\varphi)\geq \text{Cl}(M)+1
+$$
+where $\text{Cl}(M)$ is the maximum number of homology classes
+we can add before getting to zero.
+\end{enumerate}
+
+Why do we care? Because
+$$
+\# \text{Fix}(\varphi_H)\leftrightarrow\{\text{1-periodic 
+orbits of $X_H$}\}
+$$
+
+Idea by Floer. Construct an invariant that would 
+say something about periodic orbits.
+
+\medskip\noindent
+{\bf Question.} Can Floer theory capture other ``dynamical information''? 
+(Other than the periodic orbits.)
+
+\medskip\noindent
+A {\it persistence module} is a pair $(V,\Pi)$, where $V=\{V_t\}_{t \in
+\mathbb{R}}$ is a family of $\mathbb{F}$-vector spaces
+and $\Pi=\{\Pi_{st}\}_{s \leq  t}$ is a family of maps such that
+\begin{enumerate}
+\item $\Pi_{ss}=, \Pi_{ts}\circ \Pi_{rt}=\Pi_{rs}$.
+\item $\exists  s \subset \mathbb{R}$ such that
+$\Pi_{s t}$ is an isomorphism for $s,t$ in the same connected component of
+$R\setminus S$.
+\item $\Pi_{s t}$ have finite rank.
+\item $\exists s_0$ $V_s=\{0\}$, $s \leq s_0$.
+\item $V_t= \lim_{s \to t} V_s$ (lower limit!!)
+\end{enumerate}
+
+\begin{theorem}
+\label{theorem-persistence-module-is-sum-of-integral}
+Any persistence module is a sum of integral persistence modules,
+$$
+(V,\Pi) \cong \bigoplus_{I \in B(V)}F(I).
+$$
+\end{theorem}
+
+\begin{example}
+\label{example-hart-and-sphere}
+Heart and sphere. There is a noise in the persistence module
+of the heart due to an unnecessary critical point.
+\end{example}
+
+$(M^{2n},\omega)$ a {\it Liouville domain} is a compact
+symplectic manifold and $X \in \mathfrak{X}(M)$ 
+with $X \cap\partial M$ (pitchfork, i.e. transversal intersection!)
+pointing outwards
+and preserved by the symplectic form, i.e. $\mathcal{L}_X \omega=\omega$
+($\omega=d \alpha$).
+
+When we restrict $\omega$ to the boundary,
+we obtain a contact form and get some
+interesting dynamics.
+
+A Lagrangian $(L,\partial L) \subset (M,\partial M)$ 
+is {\it asympotically conical} if
+\begin{enumerate}
+\item $\partial L \subset \partial M$ is Legendrian.
+\item $L \cap [1-\varepsilon,1] \times \partial M=
+[1-\varepsilon,1] \times \partial L$.
+\end{enumerate}
+
+\begin{remark}
+\label{remark-}
+Take a Hamiltonian $H: \hat{M}\to \mathbb{R}$ such that
+$$
+\begin{cases}
+H(r,x)=h(r)\qquad &r=1 \\
+H(r,x)=rT-B\qquad &
+\end{cases}
+$$
+then $X_H=h'(r)R_\alpha$.
+
+For $L_0,L,A\subset$ Lagrangians, $H$ linear at infinite,
+then $A_{H}^{L_0 \to L_1}$, 
+\begin{align*}
+A_{H}^{L_0 \to L_1}: P_{L_0\to L_1}  &\longrightarrow \mathbb{R} \\
+\gamma &\longmapsto \int_0^1 \gamma^* \alpha- \int_0^1H(x(t))dt
+\end{align*}
+where $P_{L_0\to L} =\{\gamma:[0,1] \to \hat{M}:\gamma(0) \in L_0,
+\gamma(1) \in L_1\}
+$ is the set of chords.
+\end{remark}
+
+\begin{remark}
+\label{remark-1-chords-are-crticial-points}
+$\text{crit}(A_{H}^{L_0 \to L_1}=\{\text{1-chords of $X_H$ from 
+ $L_0$ to $L_1$}\}$.
+\end{remark}
+
+Putting a metric on $P_{L_0 \to L_1}$ we can consider $\varphi:\mathbb{R} \times
+[0,1] \to \hat{M}$, solutions of some PDE which is some kind
+of generalization of a gradient, $- \nabla A_{H}^{L_0 \to L_1}$.
+These solutions can be put in a moduli space
+$$
+\tilde{\mathcal{M}}(x_-,x_+,H,J)=\{\varphi\text{ solutions s.t. …}\}
+$$
+Then we define a boundary operator $\partial$.
+\begin{theorem}
+\label{theorem-homology}
+$\partial^2=0$
+\end{theorem}
+
+So that we have a homology, called {\it wrapped Floer homology}
+$HW^t(H,L_0,L_1,J)$
+
+\begin{remark}
+\label{remark-embedding}
+We have $H \leq  K \rightsquigarrow HW^t(H,L_0,L_1,J) \to
+HW^t(K,L_0,L_1,K)$.
+\end{remark}
+
+\begin{definition}
+\label{definition-direct-limit}
+For $t \geq 0$
+$$
+HW^t(M,L_0,L_1)=\underline{\lim }_H HW^t(H,L_0,L_1,J)
+$$
+\end{definition}
+
+(Where we have taken direct limit.)
+
+\begin{proposition}
+\label{proposition-persistence-module}
+$t \to HW^t(M,L_0,L_1)$ is a peristence module $B(M,L_0,L_1).$
+\end{proposition}
+
+Finally we can define {\it barcode entropy}. Fix $\varepsilon>0$,
+$t \geq 0$,
+$$
+b_\varepsilon(M,L_0,L_1,t)=
+\# \{\text{ of bars in }B(M,L_0,L_1) \text{with length $\geq \varepsilon$ 
+and start before $t$}\}
+$$
+Then
+$$
+\bar{h}^{HW}(M_0,L_0,L_1)=
+\lim_{\varepsilon \to 0} \text{lim sup}_{t \to \infty} 
+\frac{\text{log}^+(b_\varepsilon(M,L_0,L_1,t)}{t}
+$$
+
+\medskip\noindent
+Consider a contact manifold $(\Sigma,\lambda,L_0,L_1)$ 
+and $A$ the Lagrangians. (Example raising question of filling.)
+
+\begin{theorem}[M '24]
+\label{theorem-entropy-is-independent-of-filling}
+$\bar{h}^{HW}$ is independent of the filling.
+\end{theorem}
+
+\begin{theorem}[M '24]
+\label{theorem-bound}
+$\bar{h}^{HW}(M,L_0,L_1) \leq  h_{\text{top}}(\alpha)$.
+\end{theorem}
+
+\begin{theorem}[M '25]
+\label{theorem-restriction}
+Consider $(M,L_0,L_1)$. 
+Let $K$ be a compact topologically transitive hyperbolic set
+for the Reeb flow $\alpha$. Assume $W_\delta ^s (q) \subset \partial L_0$,
+$W_\delta^s(p) \subset \partial L_1$. Then
+$$
+\bar{h}^{HW}(M,L_0,L_1)\geq  h_{\text{top}}(\alpha |_{K})>0.
+$$
+\end{theorem}
+Which says it captures dynamics beyond unconditional phenomena.
+In lower dimensions these tend to coincide, but in higher dimension we don't
+know. ``associated to the sup over hyperbolic sets […]''
+
+Here's a conjecture:
+$$
+\text{sup}_{L_0,L_1}\bar{h}^{HW}(M,L_0,L_1)=h_{\text{top}}(\alpha).
+$$
+
+
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
