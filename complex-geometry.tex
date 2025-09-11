@@ -421,14 +421,100 @@ V(g)$.
 The converse I won't need right now.
 \end{proof}
 
+\section{Sheaf of holomorphic functions}
+\label{section-sheaf-of-holomorphic-functions}
+
+For a definition of sheaf
+see Algebraic Geometry Definition 
+\ref{algebraic-geometry-definition-sheaf}.
+
+\begin{lemma}
+\label{lemma-O_X-is-a-sheaf}
+Let $X$ be a complex manifold of complex dimension $n$.
+
+The functor
+\begin{align*}
+\mathcal{O}_X: \mathit{Open}_X^{\text{op}} &\longrightarrow \mathit{Set}
+\\
+U &\longmapsto \mathcal{O}_X(U):=\{f:U\to \mathbb{C}^n:
+f \text{ is holomorphic}\}\\
+i:V \hookrightarrow V &\longmapsto 
+\mathcal{O}_X(i):\mathcal{O}_X(U) \to \mathcal{O}_X(V)
+\end{align*}
+where $\mathcal{O}_X(i)$ is given by restriction,
+is a sheaf.
+\end{lemma}
+
+\begin{proof}
+$\mathcal{O}_X$ is a presheaf,
+i.e. a functor,
+by definition: restriction
+maps the identity to the identity
+and preserves compositions.
+
+To check the condition of being a sheaf let
+$U_i$ be an open cover of some open set $U$ of $X$
+and $f_i:U_i \to X$ sections of $\mathcal{O}_X(U_i)$,
+that is, holomorphic functions, which
+coincide pairwise in intersections.
+Then it is obvious that the function $f:U \to \mathbb{C}$,
+$x \mapsto f_i(x)$ for any $U_i \ni x$ 
+is well defined. It is also holomorphic
+since holomorphicity is a condition defined on
+open sets.
+\end{proof}
+
 \section{Analytic subvarieties}
 \label{section-analytic-subvarieties}
 
 \begin{definition}
 \label{definition-analytic-subvariety}
-\cite{gri}. An {\it analytic subvariety} $V$ of a complex manifold $M$ is a
+\begin{reference}
+\cite{GH}
+\end{reference}
+An {\it analytic subvariety} $V$ of a complex manifold $M$ is a
 subset given locally as the zeros of a finite collection of holomorphic
 functions.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-ideal-sheaf-is-a-sheaf}
+Let $V \subset X$ be an analytic subvariety
+of a complex manifold $X$.
+Then
+\begin{align*}
+\mathcal{I}_V: \mathit{Open}^{\text{op}}_X &\longrightarrow \mathit{Set} \\
+U &\longmapsto \mathcal{I}_V(U):=\{f|_{U\cap V}:f \in \mathcal{O}_X(U)\}\\
+i:U' \hookrightarrow  U & \longmapsto 
+\mathcal{I}_V(i):\mathcal{I}_V(U) \to \mathcal{I}_V(U')
+\end{align*}
+where $\mathcal{I}_V(i)$ is given by restriction of
+functions,
+is a sheaf.
+\end{lemma}
+
+\begin{proof}
+The proof the $\mathcal{I}_V$ is a 
+presheaf (i.e. a functor)
+is immediate by definition,
+see Lemma \ref{lemma-O_X-is-a-sheaf}.
+
+To check it is also a sheaf take
+a cover $U_i$ of some open set $U$ of $X$ and
+functions $f_i \in \mathcal{I}_V(U_i)$.
+By definition, for every such $f_i$ we have
+a function $\tilde{f}_i \in \mathcal{O}_X(U_i)$ 
+such that $f_i=\tilde{f}_i$.
+We then glue the $\tilde{f}_i$
+to obtain a function $\tilde{f} \in \mathcal{O}_X(U)$
+and restrict it to $V$.
+\end{proof}
+
+\begin{definition}
+\label{definition-ideal-sheaf}
+Let $V \subset X$ be an analytic subvariety
+of a complex manifold $X$.
+The {\it ideal sheaf} is $\mathcal{I}_V$ as above.
 \end{definition}
 
 For a smooth submanifold $M$ of a complex manifold $N$ we have the {\it normal 
@@ -452,7 +538,24 @@ If $M$ is a singular analytic subvariety we also have an ideal short exact
 sequence, this time using the holomorphic function sheaves.
 
 \medskip\noindent
-The ideal sheaf for hypersurfaces is a line bundle.
+Notice that for any open set $U\subset X$,
+$\mathcal{I}_V(U)$ is an ideal of $\mathcal{O}_X(U)$. (Indeed,
+if a function vanishes at $V$ then its product
+with any other function will also vanish.)
+
+In the case that $V$ is an irreducible subvariety,
+this ideal is prime: if $fg \in \mathcal{I}_V(U)$,
+then $V(f) \cup  V(g) \supset V\cap U$ 
+so that $(V(f) \cup  V(g))\cap V = V\cap U$,
+and then it must be true that $V(f)\cap V\subseteq V(g)\cap V$
+or that $V(f)\cap V \supseteq V(g)\cap V \cap U$
+since $V$ is irreducible, and thus, say,
+$V(f)\supseteq V \cap U$,
+that is, $I(V(f))\subseteq V \cap U$
+so that $f \in I(V \cap U)$.
+
+If we further ask that $V$ is a hypersurface,
+then $\mathcal{I}_V$ is locally principal.
 Indeed, if $f \in \mathcal{I}_V(U)$ is the 
 defining function of some hypersurface
 $V$ of a variety $X$ on an open set $U \subset X$,
@@ -488,14 +591,7 @@ The ideal of an irreducible analytic hypersurface is a height-1 prime ideal.
 
 \begin{proof} 
 The fact that it is prime comes from the fact that $X$ is
-irreducible: if $gh \in I$ and neither of $g,h \in I$, then $X$ would be locally
-expressed as the union $V(g) \cup  V(h)$. Indeed: $(gh) \subset I$ implies
-$V(gh)=V(g)\cup V(h) \supset V(I)=X$. Then consider the intersection with $X$,
-that is, $V(g)\cap X$ and $V(h)\cap X$, 
-which algebraically means considering the
-the ideals $I \cup \{f\}$ and $I \cup \{g\}$. Then we have expressed $X$ as 
-a union of two varieties, so that one of them must be contained in the other by
-the irreducibility of $X$.
+irreducible as explained above.
 
 Now suppose that $0 \subset \mathfrak{p} \subseteq I$.
 Then $V(\mathfrak{p})$ is an analytic variety that contains $X$.
@@ -627,7 +723,7 @@ normal bundle.
 \begin{theorem}[Adjunction formula I]
 \label{theorem-adjunction-formula-1}
 \begin{reference}
-\cite[p.146]{gri}
+\cite[p.146]{GH}
 \end{reference}
 If $Y$ is a smooth hypersurface of a smooth complex manifold $X$, then
 $\mathcal{O}_X(Y) \simeq \mathcal{N}_{Y/X}$.
