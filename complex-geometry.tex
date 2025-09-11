@@ -163,6 +163,44 @@ $\varphi_\alpha(U\cap U_\alpha)\subset\mathbb{C}^n$.
 The sheaf $\mathcal{O}_M$ of holomorphic functions is a sheaf.
 \end{lemma}
 
+\section{Hodge star}
+\label{section-Hodge-star}
+
+The construction of the Hodge star in  \cite[Section 5.1]{voi}
+is essentially: map $\alpha \in \Lambda^{n-k}$ to the operator 
+$\alpha \wedge - \in \Hom(\Lambda^{k},\Lambda^n)$
+and then use the metric to identify $\Hom(\Lambda^k,\Lambda^n)$
+with $\Lambda^k$. Notice that the latter
+means that we take a form $\alpha$ and
+we map it to the morphism
+which maps $\cdot$ to the top-form 
+$g(\alpha,\cdot)\text{Vol}$.
+This says that for all $\alpha \in \Lambda^k$ 
+and $\beta \in \Lambda^{n-k}$
+\begin{equation}
+\label{equation-Hodge-star}
+\alpha\wedge*\beta=(\alpha,\beta)\text{Vol}.
+\end{equation}
+
+\begin{lemma}
+\label{lemma-Hodge-star-squared}
+\begin{reference}
+\cite[Lemma 5.5]{voi}
+\end{reference}
+The operator $*$ satisfies the identity
+\begin{equation}
+\label{equation-Hodge-star-squared}
+*^2=(-1)^{k(n-k)} \text{ on }A^k(X).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Observe that $*$ is an isometry,
+use skew-commutativity of product to obtain
+the $(-1)^{k(n-k)}$
+and finally Equation \ref{equation-Hodge-star}.
+\end{proof}
+
 \section{Riemann surfaces}
 \label{section-Riemann-surfaces}
 
@@ -1073,11 +1111,16 @@ self-dual and $d$-closed we get $d^*\alpha=(-1)^{-\bullet}*d*\alpha=0$ since
 $d\alpha=0$.
 \item The space of harmonic forms is finite-dimensional (analysis, cf. Fredholm
 theory).
-\item I should be able to prove that $\text{SU}(2)$-invariant closed form is
-self-dual.
+\item I should be able to prove that an $\text{SU}(2)$-invariant closed form is
+anti self-dual.
 \begin{enumerate}
 \item Define $\Lambda^+:=$self-dual 2-forms and $\Lambda^-:=$anti-self dual
-2-forms. {\bf Claim.} $\Lambda^2=\Lambda^+ \oplus \Lambda^-$.
+2-forms. Notice that $\Lambda^2=\Lambda^+ \oplus \Lambda^-$,
+this is by \ref{lemma-Hodge-star-squared}, since we can
+see $*$ as an involutive endomorphism of $\Lambda^2$,
+so that it has eigenvalues $\pm 1$, given the
+desired decomposition as its eigenspace decomposition.
+
 \item {\bf Claim.} $\Lambda^+=\text{span}(\omega_I,\omega_J,\omega_K)$.
 \item {\bf Claim.} $\omega_I,\omega_J$ and $\omega_K$ are
 $\text{SU}(2)$-invariant.
