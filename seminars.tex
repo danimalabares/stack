@@ -12,6 +12,205 @@
 
 \tableofcontents
 
+\section{A primer on symplectic groupoids}
+\label{section-a-primer-on-symplectic-groupoids}
+
+\noindent
+Camilo Angulo, Jilin University.
+Geometric Structures Seminar, IMPA. 
+February 13, 2025.
+
+\medskip
+{\bf Abstract.} 
+In the late 17th century, Simeon Denis Poisson discovered an operation that
+helped encoding and producing conserved quantities. This operation is what we
+now know as a Lie bracket, an infinitesimal symmetry, but what is its global
+counterpart? Symplectic groupoids are one possible answer to this question. In
+this talk, we will introduce all the basic concepts to define symplectic
+groupoids, and their role in Poisson geometry. We will discuss key examples, and
+applications. The talk will be accessible to those familiar with differential
+geometry, but no prior knowledge of groupoids will be assumed.  
+
+
+\medskip\noindent
+{\bf Part 1. Poisson geometry.}
+
+Hamiltonian formalism. Recall that being a conserved quantity \(f \in
+C^\infty(X)\) is the same thing as \(\{H,f\}=0\).
+
+\begin{itemize} \item We have seen that it is always possible to take quotient
+of a symplectic manifold with a group action to obtain a  Poisson
+manifold.  \item Then we have found a way to produce a symplectic foliation
+from a 2-vector \(\pi \in \mathfrak{X}^2(M):=\Lambda^{2}(TM)\).  \item
+
+\begin{remark}
+\[\left\{ \text{Lie algebra on \(\mathfrak{g}\)}
+\right\} \xrightarrow{1-1}\left\{ \text{Linear Poisson bracket on
+\(\mathfrak{g}^*\)}  \right\}  \]
+\end{remark} 
+
+\item We saw very nice examples
+of foliation that have to do with Lie algebras. So \(\mathfrak{b}^*_3\) which
+gives the ``open book foliation", and \(\mathfrak{e}^*\) that gives a foliation
+by cylinders.
+\end{itemize}
+
+\medskip\noindent
+{\bf Part 2. Symplectic realizations.}
+
+Consider
+\[(\Sigma,\omega) \xrightarrow{\mu}(M,\pi)\]
+
+
+\iffalse\begin{tikzcd}
+	T_p\Sigma \arrow[r,"d_p\mu"]\arrow[d,"\omega^\flat"]&T_xM\\
+	T_p^*\Sigma &  T^*_pM\arrow[l,"(d\mu)^*",swap]\arrow[u,"\pi ^\sharp"]
+\end{tikzcd}\]\fi
+So that 
+\[\pi ^\sharp=d_p\mu \circ \omega^{-1} \circ(d\mu)^*\]
+
+
+
+\begin{lemma}
+\(\dim (\Sigma) \geq  2 \dim (M) - \operatorname{rk}(\pi_x)\) for all \(x \in M\).
+\end{lemma}
+
+\begin{proof}
+Done in seminar.
+\end{proof}
+
+\begin{example}
+\((\mathbb{R}^2,0)\). So the map
+\begin{align*}
+	(\mathbb{R}^4,dx \wedge du + dy \wedge dv) &\longrightarrow  \mathbb{R}^2\\
+	(x,y,u,v) &\longmapsto (x,y)
+\end{align*}
+
+\end{example}
+
+\begin{exercise}
+Find the symplectic realization \(\omega\) in \((\mathbb{R}^4, \omega ) \xrightarrow{\mu}(\mathbb{R}^2,(x^2+y^2)\partial_x \wedge \partial_y\)
+
+\begin{align*}
+	(\mathbb{R}^4, \omega) &\longrightarrow (\mathbb{R}^2,(x^2+y^2) \partial_x \wedge \partial _y) \\
+	(x,y,z,w) &\longmapsto (x,y)
+\end{align*}
+
+Also find the symplectic realization of \(\operatorname{ a f f }^*\) with \(\{x,y\}=x\).
+\end{exercise}
+
+\medskip\noindent
+{\bf Part 3: Groupoids}
+
+\medskip\noindent
+{\bf Motivation}
+\begin{enumerate}
+\item Fundamental grupoid: objects are points in the manifold and arrows are paths.
+\item \(S^1 \mathbb{y} S^2\) by rotation does not give a nice quotient because there are two singular points. Consider the groupoid  \(S^1 \times S^2\) of orbits. These are the arrows. The points are just the points of \(S^2\).
+\item Consider a foliation (like Möbius foliation of circles; where there is a singular circle, the soul). You can do the same thing as in fundamental groupid  leafwise. Arrows then are equivalence classes of paths that live inside leaves. This is called monodromy of a foliation. Again objects are points.
+\item You can take a quotient of monodromy using a connection given by the foliation. This allows to identify certain paths between the leaves. This is called {\it holonomy (of a foliatiation)}. (So you can make this notion match the usual holonomy given by riemmanian connection.)
+
+{\bf Upshot.}
+	So the point is taking some sort of function space on these groupoids you can gather the information given by the non-smooth quotient (like in the case of the sphere rotating). So this groupoid motivation says how to get some structure that resembles a non smooth quotient.
+\item Last motivation: the grid of squares has a tone of symmetries. If you restrict to just a few squares you loose so many symmetries. But there's a grupoid hidden in there that tells you what you intuition knows about this finite grid of squares.
+\end{enumerate}
+
+\begin{definition}
+A {\it groupoid} is a category where all morphisms are invertible.
+\end{definition}
+
+So there is a kind of product among the objects, given by composition but:
+ not every two pair of objects can be multiplied!---only those whose
+source and target match. So that's the lance about grupoids.
+
+Just so you make sure you understand: the groupoid \(G\) is the morphisms of the category. The objects are points (of a manifold).
+
+\begin{definition}
+{\it Lie grupoid} is when the following diagram is inside category of smooth manifolds and \(s,t\) (source and target maps) are submersions:
+$$
+\xymatrix{
+G^{(2)}\ar[r]^m& G\ar[r]^ s_t & M\ar[r]^u&G
+}
+$$
+\end{definition}
+
+\begin{proposition}[Properties of Lie groupoids]
+\begin{itemize}
+\item \(m\) is also a submersion.
+\item \(i\) (inversion) is a diffeomorphism.
+\item  \(u\) (unit=identity) is an embbeding.
+\end{itemize}
+\end{proposition}
+
+\begin{definition}
+Consider \(x \in M\) and the inverse image of source map: \(s^{-1}(x)=\{\text{arrows that start at \(x\)} \}\). Now if you act with \(t\) on this set you get {\it the orbit} of \(x\): \(\{\text{\(y \in M\) such that there is an arrow from \(x\) to \(y\)} \}\).
+
+And there also {\it an isotropy} \(G_x=\{g \in G: \text{\(g\) goes from \(x\) to \(x\)} \}\)
+\end{definition}
+
+\begin{example}
+\begin{enumerate}
+\item \(G=M\),  \(M=M\).
+ \item Lie groups.
+	\item Lie group bundles.
+\item \(G=M \times M\), \(M =M\).
+ \item Fundamental groupoid. Isotropy group is fundamental group! And orbit is…\clearpage universal cover!
+\item Subgroupoids.
+\item  Foliations.
+\item If you have a normal group action \(G \mathbb{y} M\) you construct a groupoid action with groupoid \(G \times M\) and objects \(M\), with product given on the group part of the product. Orbits are orbits. Isotropy group is isotropy group.
+ \item Principal bundles.
+\end{enumerate}
+\end{example}
+
+{\bf Back to Poisson.}
+
+There's also a notion of Lie algebroid. Which is strange. But the point is that to every Poisson manifold there is a Lie algebroid.
+
+So the question is whether there is a Lie groupoid associated to that Lie algebroid. Not always.
+
+\medskip\noindent
+{\bf Big question}[Fernandez and ?]
+When a symplectic manifold is integrable?
+
+
+(Remember that integrating means go from algebra(oid) to group(oid).
+
+And the point is that:
+
+\medskip\noindent
+When you {\it can} go back, you get a \textit{ symplectic groupoid}.
+
+\begin{remark}
+Look for Kontsevich's notes on Weinstein!
+\end{remark}
+
+\begin{remark}
+History: Weinstein did this intending to do quantization (geometric?) on Poisson manifolds. (That involves a \(C^*\)algebra coming from the symplectic groupoid.)
+\end{remark}
+
+\begin{definition}
+A {\it symplectic groupoid} is a groupoid \(G, M\) together with  \(\omega \in \Omega^2(M)\) such that \(\omega\) is symplectic and multiplicative, meaning that \(\partial  \omega =0\), that is, \(\iff m^*\omega=\operatorname{pr}_1^*\omega+\operatorname{pr}^*_2\omega\in \Omega^{2}(G^{(2)})\iff\) take two vectors \( X_k,Y_k \in TG\), and \(\omega(X_0 \star Y_0,X_1\star Y_1) =  \omega(X_0,Y_0) + \omega (X_1,Y_1)\)
+\end{definition}
+
+\begin{theorem}
+If \((G, \omega)\) is a symplectic groupoid, then
+\begin{enumerate}
+\item \(\exists !\) poisson structure on \(M\) 
+\item for which \(t: G \to M\) is a symplectic realization,
+\item  Leaves are connected components of orbits,
+\item \(\mathsf{Lie}(G)\cong T^*M\) via \(X \mapsto -u ^*(i_X \omega\).
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+Look for Alejandro Cabrera, Kontsevich. There are two things one is de Rham and the other… from the future: simplicial?
+\end{remark}
+
+\medskip\noindent
+{\bf Upshot.} The obstruction to knowing when symplectic groupoid exists is ``variation of symplectic form \(\omega=(1+t^2) \omega_{S^2}\)". So how does the symplectic group vary from leaf to leaf. So there are two situations in which the thing doesn't work.
+
+
+
 \section{Neutrinos}
 \label{section-neutrinos}
 
@@ -93,6 +292,8 @@ $$
 $$
 meaning: time doesn't pass! And this means the state of the particle cannot
 change.
+
+
 
 \section{Spheres with minimal equators}
 \label{section-spheres-with-minimal-equators}
@@ -1033,8 +1234,113 @@ and $p^*\omega_{\text{can}}$.
 \end{proposition}
 
 [More computations I missed]
+
+\section{A theorem on complexifications of Lie groups}
+
+\section{Holomorphic extensions of s-proper Lie groupoids}
+\label{section-holomorphic-extensions-of-s-proper-Lie-groupoids}
+
+\noindent
+Rui L. Fernandes, ?.
+Symplectic Geometry Seminar, IMPa. 
+September 17, 2025.
+
+\medskip {\bf Abstract.} Every smooth manifold admits a compatible analytic
+structure, and a classical result of Whitney–Bruhat states that any analytic
+manifold has a holomorphic extension. Lie groups also admit compatible analytic
+structures, and another classical result, due to C. Chevalley, shows that any
+compact Lie group has a holomorphic extension to a complex Lie group. D.
+Martínez Torres has shown that any proper Lie groupoid admits a compatible
+analytic structure. I will discuss an extension of the classical results of
+Whitney–Bruhat and Chevalley, establishing that any s-proper Lie groupoid has a
+holomorphic extension. This talk is based on recent joint work with Ning Jiang
+(arXiv:2508.18036).
+
+\medskip\noindent
+
+\begin{theorem}[Whitney-Beuhat]
+\label{theorem-Whitney-Beuhat}
+If $M$ is analytic there exists a complex manifold  $M_\mathbb{C}$
+together with an analytic map $i: M \to M_\mathbb{C}$ 
+which is totally real ($T_HM_{\mathbb{C}}=TM \oplus J(TM)$)
+and
+\begin{enumerate}
+\item For every complex manifold $X$ and every
+analytic map $\phi:N \to X$ there exists $\phi^*:U \to X$ 
+holomorphic contained open $M \subset U \subset M_\mathbb{C}$.
+\item If $\psi:V \to X$ holomorphic on $M \subset V \subset M_\mathbb{C}$ then
+$\psi=\phi^*$ where $\phi=\psi \circ i$ on a possibly
+smaller open contained in $U \cap V$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Chevalley]
+\label{theorem-Chevalley}
+If $G$ is a Lie group, there exists a complex
+Lie group $G_{\mathbb{C}}$ and a morphism $i:G \to G_\mathbb{C}$ 
+satisfying the following universal property.
+For every complex Lie group $H$ and morphism
+$\phi:G \to H$ there exists a unique
+holomorphic map $\phi^*:G_\mathbb{C} \to H$ such that
+$\phi=\phi^* \circ i$.
+\end{theorem}
+
+Here's the construction of $G_\mathbb{C}$:
+
+$$
+\xymatrix{
+N\subset \tilde{G}\ar[r]\ar[d]&G^*\ar[d]\\
+\tilde{G}/N \simeq G\ar[r]_{i}&G_\mathbb{C}=G^* /\overline{i^*N}
+}
+$$
+where $\tilde{G}$ is the universal cover group of $G$,
+ $G^*$ is the group that integrates to 
+the complexification of the Lie algebra of $G$,
+i.e. $\text{Lie}(G^*)=\mathfrak{g}_\mathbb{C}$
+and $\overline{i^*(N)}$ is the smallest closed
+normal complex Lie subgroup of $G^*$
+containing $i^*(N)$.
+
+\begin{example}
+\label{example-complexification-groupoid}
+$$
+\xymatrix{
+\widehat{\text{SL}_2(\mathbb{R})}\ar[d]\ar[dr]\\
+\text{SL}_2(\mathbb{R})\ar@{^{(}->}[r]&\text{SL}_2(\mathbb{C})
+}
+$$
+which is a simple case,
+but consider instead $\tilde{\text{SL}_2}(\mathbb{R})\times \mathbb{R}$ 
+and the normal subgroup $N=\left<a\right>\times \left<\lambda\right>$ 
+for irrational $\lambda$. 
+Then we obtain
+$$
+\xymatrix{
+\widehat{\text{SL}_2(\mathbb{R})}\times\mathbb{R}\ar[r]\ar[d]
+&\text{SL}_2(\mathbb{C})\times\mathbb{C}\ar[d]\\
+\widehat{\text{SL}_2(\mathbb{R})}\times\mathbb{R}/N\simeq G\ar[r]&
+G_\mathbb{C}
+}
+$$
+and $G_\mathbb{C}$ is 3 complex dimensions! It is not
+$\text{SL}_2(\mathbb{C})\times\mathbb{C}$.
+
+\end{example}
+
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
+
 \end{document}
+
+
+
+
+
+
+
+
+
+
 
