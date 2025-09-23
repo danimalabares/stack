@@ -1324,23 +1324,289 @@ G_\mathbb{C}
 $$
 and $G_\mathbb{C}$ is 3 complex dimensions! It is not
 $\text{SL}_2(\mathbb{C})\times\mathbb{C}$.
-
 \end{example}
 
+
+\section{Everything you always to know about polygons but were
+afraid to ask}
+\label{section-everything-you-awlways-wanted-to-know}
+
+\noindent
+Alessia Mandini, UFF.
+GAAG, IMPA. 
+22 September, 2025.
+
+\medskip
+{\bf Abstract.} Moduli spaces of polygons form a family of Kähler
+manifolds that can be constructed as a Kähler reduction of coadjoint orbits.
+These spaces have deep connections to various areas of mathematics, including
+symplectic and algebraic geometry as well as representation theory. In this
+talk, I will define these spaces and explore their connections. I will then
+discuss wall-crossing phenomena in these spaces and demonstrate how it can be
+used to determine their cohomology rings. Finally, I will introduce the
+hyperkähler analogue of these spaces, known as hyperpolygon spaces, and describe
+some of their generalizations.
+
+\medskip\noindent
+
+
+
+Plan of the talk
+\begin{enumerate}
+\item Polygons in $\mathbb{R}^3$ and relations with
+other moduli spaces.
+\item Polygons in other spaces.
+\end{enumerate}
+
+Let $\alpha=(\alpha_1,\ldots,\alpha_n)\in \mathbb{R}^n_{>0}$.
+Consider $S^2$ with its usual symplectic, Kähler form.
+Also consider the product of several spheres.
+There's a Hamiltonian action of $\text{SO}(3)$ by rotations.
+The moduli space of polygons is
+the symplectic reduction obtained with this
+Hamilatonian action,
+$$
+M(\alpha)=\prod S^2_{\alpha_i}/\!/\text{SO}(3).
+$$
+
+Why is it called the space of polygons?
+We think that
+$$
+[v_1,\ldots,v_n] \in M(\alpha) \iff \sum_{i=1}^nv_i=0
+$$
+are polygons.
+
+When smooth, $M(\alpha)$ is a $(n-3)$-complex-dimensional
+Kähler manifold. Consider
+$$
+\varepsilon_I(\alpha)=\sum_{i \in I}\alpha_i
+-\sum_{j \in I^c}\alpha_j
+$$
+for some index set $I \subseteq \{1,\ldots, n\}$.
+$M(\alpha)$ is {\it smooth} if $\varepsilon_I(\alpha)
+\neq 0$ for all $I\subseteq \{1,\ldots,n\}$.
+If so, we say $\alpha$ is {\it generic}.
+
+\begin{theorem}[Kapovich-Millson]
+\label{theorem-Kapovich-Millson}
+$M(\alpha)$ is a complex analytic space
+with (eventually) isolated singularity
+(homogeneous quadratic cones).
+\end{theorem}
+
+\begin{example}
+\label{examples-polygon-moduli-spaces}
+\begin{enumerate}
+\item $(n=3.)$ Then $M(\alpha)$ is either empty or a point.
+
+\item $(n=4.)$ $M(\alpha)$ is either empty or a sphere.
+\end{enumerate}
+\end{example}
+
+\begin{remark}[Hausmann-Knutson]
+\label{remark-Hausmann-Knutson}
+Let $M_n$ be the space of all $n$-gons
+modulo rigid motions. Then $M_n$ 
+can be equipped with a Poisson structure
+for which $M(\alpha)$ are the symplectic
+leaves. 
+
+\medskip\noindent
+{\bf Polygons as quiver varieties.}
+Consider the star-shaped quiver,
+which is a distinguished point with some points around it,
+and arrows from every point to the distinguished one.
+Let the distinguished point be $V_0=\mathbb{C}^2$ and
+the rest $\mathbb{C}$. Then a representation of this quiver
+is
+$$
+\text{Rep}Q=\bigoplus_{i=1}^n \Hom(\mathbb{C},\mathbb{C}^2)=\mathbb{C}^{2n}.
+$$
+Now put
+$$
+K=(U(2) \times U(1)^n)/\Delta
+$$
+where $\Delta$ is the diagonal $S^1$.
+This gives a Hamiltonian action on $\mathbb{C}^{2n}$
+as follows. For
+$$
+(A,\lambda_1,\ldots,\lambda_n)\cdot (q_1,\ldots,q_n)
+$$
+we map
+$q_i \mapsto  A^{-1}q_i \lambda_i$.
+That is
+\begin{align*}
+\mu: \mathbb{C}^{2n} &\longrightarrow K^* \\
+(q_1,\ldots,q_n) &\longmapsto 
+\left(\sum_{n=1}^n (q_iq_i^* ),\ldots,\frac{1}{2}|q_i|^2\ldots\right)
+\end{align*}
+
+\begin{theorem}[Hausmann-Knutson]
+\label{theorem-Hausmann-Knutson}
+$$
+\mathbb{C}^{2n}/\!/_{(0,\alpha)}K=M(\alpha)
+$$
+\end{theorem}
+
+\begin{proof}
+Uses 
+\begin{align*}
+\mathbb{R}^3  &\xrightarrow{\simeq} \mathfrak{su}(2)^* \\
+v_i &\longmapsto (q_iq_i^*)_0
+\end{align*}
+\end{proof}
+\end{remark}
+
+$$
+\xymatrix{
+&\mathbb{C}^{2n}\ar[dl]_{/\!/_\alpha U(1)^n}
+\ar[dr]^{/\!/U(2)}\\
+\prod S^2 \ar[dr]_{/\!/_\alpha \text{SO}(3)}
+ &  &  \text{Gr}(2,\mathbb{C}^n)\ar[dl]^{/\!/_\alpha U(1)^n}\\
+&M(\alpha).
+}
+$$
+So we have (I think former symplectic reduction)
+$$
+\mu_{U(1)^n}:\text{Gr}(2,\mathbb{C}^n)\to \mathbb{R}^n
+$$
+\medskip\noindent
+{\bf Walls and wall crossing.}
+The walls are
+$$
+W_I=\{\alpha \in \mathbb{R}^n_{>0}:\varepsilon_I(\alpha)=0\}
+$$
+for $I \subseteq \{1,\ldots,n\}$.
+
+To understand wall crossing suppose we have
+a wall $W_I$, with $a^c$ in the wall,
+$\alpha^+$ on one side and $\alpha^-$ on the other.
+
+Not that
+$$
+\varepsilon_I(\alpha^+)>0 \iff
+\sum_{k \in I}\alpha_i^+> 
+\sum_{ j \in I^c}\alpha_j^+
+$$
+Define
+\begin{align*}
+M_{I^c}(\alpha^+)
+&=\{(v_1,\ldots,v_n) \in M(\alpha^+):
+v_i=\lambda v_j \forall i,j \in I^c, \lambda>0\}\\
+&=M(\tilde{\alpha}),\qquad \tilde{\alpha}=
+\left(\alpha_{i_1},\ldots,\alpha_{i_k},\sum_{j \in I^c}\alpha_j\right)
+\end{align*}
+Then $\varepsilon_I(\alpha^+)<0$ 
+implies $M_I(\alpha^-) \subseteq M(\alpha^-)$.
+
+$$
+\xymatrix{
+&\tilde{M} \subseteq E=M_I \times M_{I^c}\ar[dd]^{\text{blow up}}\\
+M(\alpha^+)\ar[dr]&  &  M(\alpha^-)\ar[dl]\\
+&M(\alpha^c)
+}
+$$
+\begin{remark}
+\label{remark-moduli-spaces-of-polygons-proportional}
+\begin{itemize}
+\item $M(\alpha)\cong M(\sigma(\alpha))$
+for $\sigma$ a permutation on the order of sets.
+\item $M(\alpha)$ is conformally symplectomorphic
+to $M(\lambda \alpha)$ for all $\lambda>0$.
+\end{itemize}
+\end{remark}
+
+\begin{definition}
+\label{definition-short-and-long}
+Let $\alpha \in \mathbb{R}^n_{>0}$.
+$I \subseteq \{1,\ldots,n\}$ is {\it short} 
+if $\varepsilon_I(\alpha)<0$ and {\it long}
+if  $\varepsilon_I(\alpha)>0$.
+\end{definition}
+
+\begin{example}
+\label{example-wall-crossing}
+We did an example of wall crossing.
+The relevant manifolds $M_{I^c}(\alpha)$ and $M_I(\alpha)$ 
+were projective spaces.
+\end{example}
+
+\medskip\noindent
+Now recall our first quotient
+$$
+\xymatrix{
+\mu_{U(1)}^{-1}(\alpha)\subseteq \text{Gr}(2,\mathbb{C}^n)
+\ar[d]^{/\!/U(1)^n}\\
+M(\alpha)
+}
+$$
+Let $c_i$ be the first Chern
+classes associated to the
+$n$ $S^1$-bundles above
+(by taking reduction in stages).
+
+\begin{theorem}[Haussmann-Knutson,M.]
+\label{theorem-Haussmann-Knutson-M}
+The $c_i$ generate the cohomology of $M(\alpha)$.
+\end{theorem}
+
+\begin{theorem}[Guillemin-Stenberg]
+\label{theorem-Guillemin-Stenberg}
+In this setup, for $\alpha$ generic,
+$$
+H(M)=\mathbb{C}[c_1,\ldots,c_n]/\text{Ann}(\text{Vol}(M(\alpha)))
+$$
+i.e., $Q(c_1,\ldots,c_n) \in \text{Ann}(\text{Vol}M(\alpha))$ 
+$\iff$ $Q\left(\frac{\partial }{\partial \alpha_i},\ldots,
+\frac{\partial }{\partial \alpha_1}\right)
+\text{Vol}(M(\alpha))=0$
+\end{theorem}
+
+\begin{theorem}[Takakura, The Koi]
+\label{theorem-Takakura-The-Koi}
+$$
+\text{Vol}(M(\alpha))
+=-\frac{(2\pi)^{n-3}}{(n-3)!}
+\sum_{I\text{ long}}(-1)^{n-|I|}\varepsilon_I(\alpha)^{n-3}.
+$$
+\end{theorem}
+
+\begin{example}
+\label{example-Delta1}
+According to Example \ref{example-wall-crossing} (which I
+did not copy) we find that
+$\alpha_1 \in \Delta_1$ gives $\text{Vol}(M(\alpha_1))=2\pi^3(1-2\alpha_3)^2$
+and
+$$
+H(M(\alpha_1))=\mathbb{C}[c_3]/(c_3^3)
+$$
+\end{example}
+
+\medskip\noindent
+{\bf Polygon game.}
+Let $G$ be a Lie group and $\mathfrak{g}$ its Lie algebra.
+Then the co-adjoint orbits
+$\mathfrak{g}^*  \supseteq \mathcal{O}_{\xi_i}$ 
+are symplectic manifolds with the KKS form.
+Then
+\begin{align*}
+G\mathbb{y} \Pi \mathcal{O}_{\xi_i}  &\longrightarrow \mathfrak{g}^* \\
+(A_i,\ldots\alpha_n) &\longmapsto \sum A_i
+\end{align*}
+Then the quotient
+$$
+M(\xi)=\Pi \mathcal{O}_{\xi_i}/\!/_0 G
+$$
+generalizes the previous construction,
+which we get with $G=\text{SU}(2)$.
+
+\begin{theorem}[Sotillo-Floentins-Gadihl]
+\label{theorem-Sotillo}
+Wall-crossing for $\text{SU}(m)$.
+\end{theorem}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
