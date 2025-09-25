@@ -1326,15 +1326,14 @@ and $G_\mathbb{C}$ is 3 complex dimensions! It is not
 $\text{SL}_2(\mathbb{C})\times\mathbb{C}$.
 \end{example}
 
-
-\section{Everything you always to know about polygons but were
+\section{Everything you always wanted to know about polygons but were too
 afraid to ask}
 \label{section-everything-you-awlways-wanted-to-know}
 
 \noindent
 Alessia Mandini, UFF.
 GAAG, IMPA. 
-22 September, 2025.
+September 22 and 23, 2025.
 
 \medskip
 {\bf Abstract.} Moduli spaces of polygons form a family of Kähler
@@ -1600,13 +1599,647 @@ $$
 generalizes the previous construction,
 which we get with $G=\text{SU}(2)$.
 
+It could be interesting to investigate
+which of the next constructions can be generalized
+to other Lie groups.
+
 \begin{theorem}[Sotillo-Floentins-Gadihl]
 \label{theorem-Sotillo}
 Wall-crossing for $\text{SU}(m)$.
 \end{theorem}
 
-\bibliography{my}
-\bibliographystyle{amsalpha}
+\medskip\noindent
+{\bf Bending action.}
+We consider a polygon of $n$ sides
+and put some diagonals that don't intersect.
+We introduce some
+notion of ``bending'' that allows
+to define a Hamiltonian function.
+In turn, this defines a torus action on $M(\alpha)$
+and a moment map. 
+
+For $n=2$ we obtain the moment map
+\begin{align*}
+\mu: M(\alpha) &\longrightarrow \mathbb{R}^2 \\
+p &\longmapsto (\ell_1(p),\ell(p))
+\end{align*}
+and we can see the moment polytope in $\mathbb{R}^2$.
+
+\begin{remark}
+\label{remark-nonvanishing-and-nonintersecting-diagonals}
+Any system of $(n-3)$ non-vanishing
+and non-intersecting diagonals determine
+a torus action $T^{n-3}\mathbb{y} M(\alpha)$.
+\end{remark}
+
+\medskip\noindent
+{\bf Relations of polygon spaces to other moduli spaces.}
+Representations of the fundamental group
+of the punctured sphere in $SU(2)$, i.e.
+$$
+\text{Rep}(\pi_1(S^2\setminus \{p_1,\ldots,p_n\},\text{SU}(2))/\text{SU}(2) 
+\cong
+M(\alpha)
+$$ 
+This can be put very explicitly:
+\begin{align*}
+&\text{Rep}(\pi_1(S^2\setminus \{p_1,\ldots,p_n\},\text{SU}(2))\\
+&=\{(g_1,\ldots,g_n)\in \text{SU}(2)^n:g_1\cdot\ldots\cdot g_n=\text{Id},
+t_rg_i=2\cos\pi \alpha_i\}
+\end{align*}
+See [Agapito-Godinho]. That's all we
+will say about this example.
+
+\medskip\noindent
+Now consider the moduli space of parabolic bundles.
+Consider a holomorphic bundle of rank 2 over $\mathbb{C}P^{2}$.
+Choose some points $D=\{x_1,\ldots,x_n\}$ in $\mathbb{C}P^{2}$ 
+and a flag
+$E_{x_i}=E^{x_i,1}\supseteq E^{x_i,2}\supseteq \{0\}$ 
+for every $x_i \in D$. Each of the
+$E_{x_i,j}$ is isomorphic to $\mathbb{C}$
+(1-dimensional).
+A {\it quasi-parabolic bundle} 
+is an holomorphic bundle $E$
+with such a choice of flag.
+A {\it parabolic bundle} is a quasi-parabolic
+bundle with a choice of parabolic weights
+$0< \beta_1(x_i)< \beta_2(x_i)<1$.
+
+There is also a notion of stability:
+\begin{align*}
+\text{pdeg}E&=\text{deg}E+ \sum_{i=1}^n (\beta_1(x_i)+\beta_2(x_i))\\
+\mu(E)&=\frac{\text{pdeg}(E)}{\text{rank}(E)}
+\end{align*}
+We say $E$ is {\it (semi)stable} if
+$µ(E)> \mu(L)$ ($\mu(E) \geq \mu(L)$)
+for any $L \subseteq E$ parabolic
+subbundle.
+
+Then we obtain that $\mathcal{M}_{\pi,d}(\beta)$
+is the moduli space of (semi)-stable
+parabolic bundles on $\mathbb{P}^1$ 
+of rank $r$ and degree $d$.
+In particular $\mathcal{M}_{2,0}(\beta)$
+is the moduli space of (semi)-stable parabolic
+bundles on $\mathbb{P}^1$ of rank 2 and degree 0
+holomorphically trivial.
+
+\begin{theorem}[Jeffrey, Godinho, M.]
+\label{theorem-Jeffrey-Godinho}
+For generic $ \alpha$,
+$M(\alpha)$ is diffeomorphic to
+$\mathcal{M}_{2,0}(\beta)$ 
+whenever $\alpha_i=\beta_2(x_i)-\beta_1(x_i)$.
+\end{theorem}
+
+\begin{proof}[Idea of proof]
+The correspondence can be made quite explicit
+as a map
+\begin{align*}
+M(\alpha) &\longrightarrow \mathcal{M}_{2,0}(\beta) \\
+[q_1,\ldots,q_n] &\longmapsto \substack{E=\mathbb{C}P^{1}\times\mathbb{C}^2
+ \\ E_{x_i}\supset E_{x_i,1}\supset X_{x_i,2}\supset \{0\}}\end{align*}
+
+\end{proof}
+
+\medskip\noindent
+Now consider the quiver variety we described above:
+$$
+\text{Rep}Q=\bigoplus_{i=1}^n \Hom(\mathbb{C},\mathbb{C}^2)=\mathbb{C}^{2n}.
+$$
+Now put
+$$
+K=(U(2) \times U(1)^n)/\Delta
+$$
+where $\Delta$ is the diagonal $S^1$.
+
+But this time put
+$$
+\text{Rep}\tilde{Q}=\bigoplus_{i=1}^n \Hom(\mathbb{C},\mathbb{C}^2)
+\oplus \bigoplus_{i=1}^n \Hom(\mathbb{C}^2,\mathbb{C})
+$$
+We also have an action of $K$, and we get
+$$
+K \mathbb{y} \text{Rep}\tilde{Q} = T^*  \mathbb{C}^{2n},
+$$
+a so-called {\it hyperHamiltonian action}.
+The quotient
+$$
+X(\alpha)=/\!/\!/_{\substack{(0,\alpha) \\ (0,0)}}K=
+\frac{\mu_{\mathbb{R}}1(0,\alpha) \wedge \mu^{-1}_{\mathbb{C}}(0,0)}{K}
+$$
+called {\it hyperpolygon space}.
+
+Here
+\begin{align*}
+\mu_\mathbb{R}:T^*\mathbb{C}^{2n}&\to \mathcal{K}^* \\
+\mu_{\mathbb{C}}:T^*\mathbb{C}^{2n}&  \to \mathcal{K}_{\mathbb{C}}^* \\
+(q_1,\ldots,q_n,p_1,\ldots,p_n)&  \mapsto 
+(\sum_{i=1}^n(p_i,q_i)_0,\ldots)
+\end{align*}
+It turns out that $X(\alpha)$ is smooth
+if and only if $\varepsilon_1(\alpha)=0$ for all
+$I \subseteq \{ 1,\ldots,n\}$.
+When smooth,  $X(\alpha)$ is a hyperkähler manifold
+(non-compact, unfortunately),
+$M(\alpha)=\{[0_{1i},0] \in X(\alpha)\}$.
+
+\begin{theorem}[Boalch]
+\label{theorem-Boalch}
+$X(\alpha)$ is the moduli space of polygons for $\text{GL}(2,\mathbb{C})$.
+\end{theorem}
+
+\medskip\noindent
+{\bf Parabolic Higgs bundles.}
+Let $E$ be a parabolic bundle as before, i.e.
+$E \in \mathcal{M}_{0,2}(\beta)$.
+A {\it Higgs field on $E$} is
+$$
+\phi \in H^{0}(\mathbb{P}^1,\text{SPEnd}(E) \otimes K_{\mathbb{P}^1}(D)))
+$$
+where a {\it strongly parabolic endomorphism} is  $f:E \to E$
+such that $f(E_{x_i})\subseteq E_{x_{i+1}}$ for all $i$.
+(Fix details!)
+
+A {\it parabolic Higgs bundle} is (probably the pair $(E,\phi)$).
+A parabolic Higgs bundle $(E,\phi)$ is {\it (semi)stable}
+if  $\mu(E) > \mu(L)$ ($\mu(E) \geq \mu(L)$) for all 
+$L$ parabolic Higgs subbundle.
+
+Then $\mathcal{N}_{r,a}^{0,1}(\beta)$ is the moduli
+space of parabolic Higgs bundles over $\mathbb{P}^1$ 
+with rank $r$ and degree $d$ (with fixed determinant,
+and traceless; two notions that we will not define here).
+
+
+\begin{theorem}[Goldinho, M.; Biswar, Florentino, Godinho, M.]
+\label{theorem-GBSFG}
+Let $\alpha$ be generic, let $\beta$ 
+be such that $\alpha_i=\beta_2(x_i)-\beta_1(x_i)$.
+Then the hyperpolygon space $X(\alpha)$ 
+is symplectomorphic to the moduli space
+of parabolic HIggs bundles over $\mathbb{P}^1$, $\beta$-stable,
+holomorphically trivial (with fixed determinant and trace-free).
+
+
+\begin{proof}[Idea of proof]
+We can define a correspondence
+\begin{align*}
+X(\alpha) &\longrightarrow \mathcal{H}(\beta) \\
+[p,q] &\longmapsto \substack{E=\mathbb{C}P^{1}\times \mathbb{C}^2
+ \\ E_{x_i}\simeq E_{x_i,1}\supset E_{x_i,2\supset \{0\}}}
+\end{align*}
+No we can use the moment map condition
+that the sum of the residues is zero,
+where $\text{Res}_{x_i}\phi=(p_i,q_i)$
+where $\phi$ is the unique function
+that satisfies the last equality by
+the residue theorem.
+\end{proof}
+\end{theorem}
+
+\medskip\noindent
+{\bf Wall-crossing for moduli spaces of parabolic bundles.}
+See ``Translation''from Thaddeus.
+What happens is that there is an $S^1$-action on $X(\alpha)$ given by
+$$
+\lambda\cdot[p,q]=[\lambda p,q].
+$$
+(This can be paralleled with the $S^1$-action on $\mathcal{H}(\beta)$,
+given by $\lambda\cdot[E,\phi]=[E,\lambda\phi]$.)
+
+This action has a moment map
+$$
+\mu_{S^1}([p,q])=\frac{1}{2}\sum_{i}|p_i|^2
+$$
+Fixed points are [Konno]
+$$
+X_S=\{[p,q] \in X(\alpha):
+S,S^c \text{ are straight, }p_j=0 \forall j \in S\}
+$$
+for all $|S|\geq 2$ short. Here $S\subseteq \{1,\ldots,n\}$ 
+is {\it straight} if $q_i=\lambda_j q_j$
+for $\lambda_j>0$ $\forall  i,j \in S$ 
+(which in the case of polygons means the edges are aligned).
+
+Let $U_S$ be the flow down from $X_S$
+Then, crossing a wall  $W_I$ as defined above,
+i.e. $W_I=\{\alpha \in \mathbb{R}^n_{>0}:\varepsilon_S(\alpha)=0\}$,
+``replaces'' $U_S$ by $U_{S^c}$.
+
+Let $\alpha$ and $\tilde{\alpha}$ be generic,
+then $X(\alpha)$ is diffeomorphic to $X(\tilde{\alpha})$.
+The wall crossing for $M(\alpha)$
+involves
+\begin{align*}
+M_S(\alpha^+)&=U_S \cap M(\alpha^+)\\
+M_{S^c}(\alpha^-)&=U_{S^c}\cap M(\alpha)
+\end{align*}
+This is thought of as a Mukai transform.
+
+\medskip\noindent
+{\bf Generalization.}
+See [Florentino, Godinho, Sotillo] for wall crossing.
+See also [Fisher] PhD thesis, [Fisher, Rayan].
+[Hausel et al], [Rayan-Schopnick].
+
+\section{Vertex algebras and special holonomy on quadratic Lie algebras}
+\label{section-vertex-algebras-and-special-holonomy-on-quadratic-Lie-algebras}
+
+\noindent
+Mario García Fernandez, ICMAT.
+GAAG, IMPA. 
+September 24, 2025.
+
+\medskip
+{\bf Abstract.} 
+
+The chiral de Rham complex (CDR) is a sheaf of vertex algebras on any smooth
+manifold, introduced by Malikov, Schechtman and Vaintrob, which provides a
+formal quantization of the non-linear sigma model in mathematical physics.
+Motivated by the algebra of chiral symmetries in two-dimensional superconformal
+field theories, vertex algebra embeddings on the CDR have been studied for
+special holonomy Riemannian manifolds, thanks mainly to the work of Heluani,
+Zabzine, and collaborators, with interesting applications to the elliptic genus.
+In these lectures, we will discuss extensions of some of these results to the
+case of special holonomy manifolds with skew-torsion. The presence of torsion
+typically allows for continuous symmetries in the geometry, with an enhanced
+interplay with Lie theory and algebra, as well as the application of techniques
+from generalized geometry.
+
+
+\medskip\noindent
+Based on joint work with Luis Álvarez Cónsul,
+Andoni De Arriba de la Hera. arXiv:2012.01851 (IMRN '24).
+
+\medskip\noindent
+{\bf Motivation.}
+Let $(M^n,g)$ be a Riemannian spin manifold with
+parallel spinor $\nabla^g \varphi=0$.
+Then $\text{hol}(g) \subset G_\varphi \subseteq \text{SO}(n)$,
+and $\text{Ric}(g)=0$.
+
+There is a construction by Markov-S-V that puts a sheaf
+of vertex algebras $\mathcal{V} \to M^n$.
+How to construct special embeddings of trivial vertex algebras
+in the cohomology of $\mathcal{V}$, i.e.
+$\mathcal{V}_\varphi \hookrightarrow H^*(\mathcal{V})$
+by Heluani et al.
+
+\medskip\noindent
+Applications. Construction of topological invariants.
+Elliptic genus, [Borisov-L].
+How to understand mirror symmetry using vertex algebras [Borisov].
+Holography [Witten].
+
+\medskip\noindent
+{\bf Geometry in algebra.}
+We shall do geometry in quadratic Lie algebras.
+Recall that a {\it quadratic Lie algebra} is
+ $(\mathfrak{g},[\cdot,\cdot], (\cdot,\cdot))$ where
+$(\mathfrak{g},[\cdot,\cdot])$ is a Lie algebra
+(in this course we use $\mathbb{R}$ as base field)
+and $(\cdot,\cdot)$ is a symmetric bilinear invariant form.
+
+\begin{example}
+\label{example-quadratic-Lie-algebra}
+Let $R$ be a Lie algebra with
+$\left<\cdot,\cdot\right>_R: R \otimes R \to \mathbb{R}$.
+Take $\mathfrak{g}=R \oplus R^*$,
+and pick $H \in \Lambda^{3}R^*$.
+Put $H(a,b,c)=\left<[a,b],c\right>$, and define
+$$
+[v+\alpha,w+\varphi]=[v,w]-\varphi([v,-])+\alpha([v,-])+H(v,w,-)
+$$
+for $v,w \in R$ and $\varphi,\alpha \in R ^*$. This turns out to be a bracket.
+
+If you like geometry you can pick $K$ compact, $\text{Lie}K=R$,
+this is ``Generalized geometry on $T K \oplus T^* K$'' 
+à la Hitchin.
+\end{example}
+
+\medskip\noindent
+QLA:
+\begin{itemize}
+\item Courant algebroids /$\{*\}$.
+\item  Symplectic supermanifolds.
+\end{itemize}
+
+\medskip\noindent
+\begin{definition}
+\label{definition-generalizaed}
+\begin{enumerate}
+\item A {\it (generalized) metric} on $(\mathfrak{g},(\cdot,\cdot))$ is
+$G \in \text{End}(\mathfrak{g})$ with $G^2=\text{Id}$, $(G,G)=(\cdot,\cdot)$,
+
+This gives $\mathfrak{g}=V_+ \oplus V_-$ where $G$ acts as identity on the
+first term and as $-\text{Id}$ on the second one.
+$(G_-,-)$ is a non-degenerate pairing.
+$(-,-)_{V_I}$ non-degenerate tensor.
+
+\item A divergence $\varphi \in \mathfrak{g} ^*$.
+
+\item A {\it connection} is 
+$$
+D: \mathfrak{g} \to \mathfrak{g}^* \otimes \mathfrak{g}
+$$
+such that $(D_ab,c)+(b,D_ac)=0$.
+So that $D \in \mathfrak{g}^*  \otimes \Lambda^{2}\mathfrak{g}$ 
+(where we identify $\mathfrak{g}$ with its dual using the pairing).
+
+$D$ is  {\it compatible} with $G$ if
+$[D_a,G]=0$. This condition says that $D$ splits into four operators:
+$$
+\xymatrix{
+D^+_+&  &  D_+^-\\
+&  D\ar[ul]\ar[ur]\ar[dl]\ar[dr]\\
+D^+_-& & D_-^-
+}
+$$
+\item  Let $a \in \mathfrak{g}$, $a=a_++a_-$.
+A {\it generalized connection} satisfies
+$D_a^+=[a_-,b_+]_+ +[a_+,b_-]_-$. (This will happen to things
+living in $\mathcal{D}^0$, see below.)
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{definition-}
+Given $D$ define
+\begin{enumerate}
+\item $\varphi_D(a)=-\text{tr}Da$.
+\item $\text{Torsion}(AX):T_D \in \Lambda^{2}\mathfrak{g}^*$,
+$$
+T_D(a,b,c)=(D_ab-D_ba-[a,b],c)+(D_ca,b).
+$$
+(Just copying the definition of torsion.)
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-}
+Define $\mathcal{D}^0(G,\varphi)=\{D:G\text{-compatible }, \varphi_D=\varphi\}$.
+Then this is non-empty, but is not a point.
+Furthermore, $\forall  D \in \mathcal{D}^0(G,\varphi)$,
+$$
+D_{a_-}b_+=[a_-,b_+]_+,\qquad 
+D_{a_+}b_-=[a_+,b_-]_-.
+$$
+\end{lemma}
+
+(Checking non-emptyness is just writing out the equations.)
+
+\medskip\noindent
+Given $G$ consider $Cl (V_+)$,
+ $a_+\cdot a_+=(a_+,a_+)$ for $a_+ \in V_+$.
+
+Fix an irreducible representation for $Cl(V_+)$: $S_+$.
+Given  $D \in \mathcal{D}^0(G,\varphi)$:
+\begin{enumerate}
+\item $D_-^{\delta_+} \in V_-^* \otimes \text{End}((S_+)\supset
+V_-^*\otimes \Lambda^{2}V_+ \ni D_-^+$.
+\item An operator like Dirac operator:
+\begin{align*}
+\underline{D}^+: S_+ &\longrightarrow S_+ \\
+\zeta &\longmapsto \sum_{j=1}^{\dim V}e_j^+\cdot D_{e_j^+}\zeta.
+\end{align*}
+\end{enumerate}
+
+\begin{lemma}
+\label{lemma-independendant}
+$D^{S_+}$ and $\underline{D}^+$ are independnt of
+$D \in \mathcal{D}^0(G,\varphi)$.
+\end{lemma}
+
+\begin{definition}
+\label{definition-Killing-spinor-equations}
+$(G,\varphi,\zeta)$, $\varphi \in S_+$ satisfies
+{\it Killing spinor equations} if
+$$
+KSE\qquad \underbrace{D_-^{S_+}\zeta=0,}_{\text{Gravitino Eq.}}\qquad 
+\underbrace{\underline{D}^+\varphi=0
+}_{\text{Dilatino Eq.}}$$
+\end{definition}
+
+Expectation.
+\begin{enumerate}
+\item $\mathcal{M}=\{(G,\varphi,\zeta):KSE\}/\mathfrak{g}$ special metric.
+\item Given a solution $(G,\varphi,\zeta)$
+then 
+$$
+V_{(g,\varphi,\zeta)}\hookrightarrow V^k(\mathfrak{g}).
+$$
+(Where I think $V^k(\mathfrak{g})$ is the Kac-Moody affinization.)
+\end{enumerate}
+
+\begin{remark}
+\label{remark-Lie-algebra}
+In the case $T K \oplus T^*K: \mathcal{M}$ 2-stack. See [Bursztyn].
+\end{remark}
+
+\begin{lemma}
+\label{lemma-Ricci-tensors}
+Associated to $(G,\varphi)$ there are
+well-defined ``Ricci tensors''
+$\text{Ric}^+ \in V_- \otimes V_+$,
+$\text{Ric}^- \in V_+ \otimes V_-$.
+$$
+\text{Ric}^+(a_-,b_+)=\text{Tr}(C_+ \to R_D(c_+,a_-)b_+)
+$$
+$$
+R_D(a,b)=[D_a,D_b]_c-D_{[a,b]}c,\qquad D \in \mathcal{D}^0(G,\varphi).
+$$
+\begin{remark}
+\label{remark-in-geometric-setup}
+In geometric setup, the vanishing of the Ricci corresponds to
+the motion equations of some physical supersymmetry theory.
+\end{remark}
+
+\begin{proposition}
+\label{proposition-KSE}
+If $(G,\varphi,\zeta)$ is solution of KSE, then
+ $\text{Ric}^+_{G,\phi}=0$.
+If $[\varphi,G]=0 \implies \text{Ric}^-_{G,\varphi}=0$.
+\end{proposition}
+\end{lemma}
+
+\begin{proof}
+$\text{Ric}^+(a-,-)\cdot \varphi=[\underline{D}^+,D_{a_-}^{S_+}\zeta
+-D_{D_+a_-}^{S_+}\zeta=0$.
+$[\varphi,G]=0 \implies  \text{Ric}^+(a_-,b_+)=\text{Ric}^-(b_+,a_-)$.
+\end{proof}
+
+\medskip\noindent
+{\bf Generalized Ricci flow.}
+Finding solutions to these equations.
+Evaluating by
+$$
+G_t^{-1}\partial_tG_t=-2(\text{Ric}^+-\text{Ric}^-)
+$$
+$\Hom(V_+,V_-) \oplus \Hom(V_-,V_+)$.
+$G G+G - G=0$, $G=\text{Id}_{V_+}-\text{Id}_{V_-}$.
+
+\begin{exercise}
+\label{exercise-}
+\begin{enumerate}
+\item Prove STE for GRF.
+\item Assuming there exists a solution of KSE, prove long
+time existence and convergence. (See theorem by Streets, Jordan, GF;
+and a book by Streets, GF.)
+\end{enumerate}
+\end{exercise}
+
+\begin{remark}
+\label{remark-sigma-model}
+For physicists the generalized Ricci flow (GRF) is the GRF of a $2d$
+$\sigma$-model with target a compact Lie group 
+$K$,  $\mathfrak{g}=R \oplus R^*$
+\end{remark}
+
+Let's explain something in this situation.
+consider a compact Lie group $K$ and $\mathfrak{g}=R \oplus R^*$.
+A generalized metric: $\mathfrak{g}=V_+ \oplus V_-$,
+$(-,-)|_{V_\pm}$ non-degenerate,
+$(-,-)|_{V_+}>0$.
+$V_+=\mathcal{C}^b\{X+g(X)\}$,
+$X \in R$, $g \in S^2(R^*)$, $b \in \Lambda^{2}R^*$,
+$H=H_0+\overline{\partial}$.
+
+\medskip\noindent
+{\bf Case $\dim V_+=2n$.}
+Complex pure spinor $\varphi$ on $V_+$ is
+equivalent $V_+ \otimes \mathbb{C}=\ell \oplus \overline{\ell}$,
+where $\ell=\{0 \in V_+ \oplus \mathbb{C}:0 \cdot\zeta=0\}$.
+$(\ell,\ell)=0$, $(\overline{\ell},\overline{\ell})=0$.
+
+This gives a complex structure
+$J_\zeta:V_+ \to V_+$, $J_\zeta=i \text{Id}_\ell-i \text{Id}_{\overline{\ell}}$.
+
+\begin{lemma}
+\label{lemma-solutions-KSE}
+$(G,\varphi,\zeta)$ with $\zeta$ pure satisfies KSE if and only if
+\begin{enumerate}
+\item $[\ell,\ell]\subset \ell$.
+\item Take bars $\{\varepsilon_j,\overline{\varepsilon}_j\}^n_{j=0}$,
+$\varepsilon_j \in \ell$, $\overline{\varepsilon}_j\in \overline{\ell}$
+$(\varepsilon_j,\overline{\varepsilon}_j) = s_{j,k}$.
+$\sum_{j=1}^n[\varepsilon_j,\overline{\varepsilon}_j=-J_\zeta \varphi_+$.
+\end{enumerate}
+\end{lemma}
+(This sum is a moment map condition.)
+
+Consider $\mathcal{L}=\{\ell \subset \mathfrak{g} \otimes \mathbb{C}:
+\dim\ell=n,\ell\cap\overline{0},(-,-)|_{\ell \oplus \overline{\ell}}
+\text{non-degenerate}\}$.
+This is a complex manifold.
+$T_\ell \mathcal{L} 
+\cong \Hom(\ell,\overline{\ell}\oplus V_- \oplus \mathbb{C})$,
+$V_- \otimes \mathbb{C}=(\ell \oplus \overline{\ell})^\perp$
+Pick a vector $\dot \ell = \dot J + \dot G \in 
+\Hom(\ell,\overline{\ell}\oplus V_- \oplus \mathbb{C})$
+That is, $\dot J \in \Hom(\ell, \overline{\ell})$,
+$\dot J :V_+ \to V_+$,
+$\dot J J+ J \dot J=0$. (Deformations of the complex structure.)
+$G \in \Hom(V_+,V_-) \oplus \Hom(V_-,V_+)$.
+
+\begin{proposition}[Romero]
+\label{proposition-Romero}
+$\mathcal{L}$ has a pseudo-Kähler structure
+preserved by the $\mathfrak{g}$-action and there exists
+a moment map
+\begin{align*}
+\mu: \mathcal{L} &\longrightarrow \mathfrak{g}^* \\
+\ell &\longmapsto
+\frac{i}{2}\sum_{j=1}^n[\varepsilon_j,\overline{\varepsilon}_j],-),
+\end{align*}
+which is the quantity we mentioned in Lemma above.
+\end{proposition}
+
+\begin{proof}
+Use the natural complex structure on the space of complex structures
+(found by Fujiki),
+$$
+\text{tr}_{V_+}(J \dot G_2,\dot G_1)-\text{tr}_{V_+}(J \dot J_{\varepsilon}
+\dot J_1).
+$$ 
+\end{proof}
+
+Problem: prove that 
+$\mathcal{M}=\{(G,\varphi,\zeta):\zeta\text{ puse}\}/\mathfrak{g}$
+is a pseudo-Kähler manifold.
+
+\begin{enumerate}
+\item Pseudo-Kähler.
+\item Shifter symplectic stuff.
+\end{enumerate}
+
+\begin{example}
+\label{example-SU2xSU1}
+Take $K=\text{SU}(2)\times\text{U}(1)\cong S^3\times S^1$
+and $\mathfrak{g}=R \oplus R^*$.
+Take generators $v_1,v_2,v_3$ of $\text{SU}(2)$ and $v_4$ of $\text{U}(1)$.
+We have $[v_2,v_3]=-v_1$, $[v_3,v_1]=-v_2$, $[v_1,v_2]=-v_3$.
+Put $H_\ell=\ell v^{123}$. $\ell \in \mathbb{R}$. $x,a \in \mathbb{R}_{>0}$.
+$$
+g_{x,a}=\frac{a}{x}\left(\sum_{i=1}^3\omega^{\otimes 2}
++x^2 (v^4)^{\otimes 2}\right)
+$$
+$$
+V_+=\{ x+g_{xa}\}\subset \mathfrak{g}
+$$
+$$
+I_X v_4=xv_1,\qquad U_X v_2=v_3, \qquad \varphi=-xv_4
+$$
+\end{example}
+
+\begin{exercise}
+\label{exercise-solution-of-KSE}
+If $\ell=\frac{a}{x} \implies $ solution of KSE.
+\end{exercise}
+
+Furthermore $[\varphi_+,\ell] \subset \ell$
+(holomorphic divergence).
+
+The $a$ parameter is naturally complexified by  $b=yv^{23}$.
+$y+ia=z$. 
+$$
+V=\text{log} \left(\frac{\omega^2_{x,n}}{v^{1234}}\right)=\text{log}a.
+$$
+KSV hyperbolic metric, metric on $\mathbb{H}$.
+
+\medskip\noindent
+{\bf $\dim V_+=7$}.
+A real spinor on $V_+$ is equivalent to $\phi \in (\Lambda^{3}V_+^* )_{>0}$.
+The space $\text{GL}(\mathbb{R}^7)\mathbb{y}\Lambda^{3}(V_+^*)$.
+The space of spinors $S_+=\mathbb{R}^8
+=\mathbb{R}^7\oplus\mathbb{R}\left<\varphi\right>$.
+$\phi(x,y,z)=\left<x\cdot y\cdot z\cdot \zeta,\zeta\right>$.
+
+\begin{remark}
+\label{remark-7}
+$v^1,\ldots,v^7 \cong \mathbb{R}^6 \oplus \mathbb{R}$.
+$\phi=(v^{12}+v^{34}+v^{56})\wedge v^7+
+\text{Re}((v^1+i v^2)\wedge(v^3+iv^4)\wedge(v^5+iv^6))$.
+\end{remark}
+
+\begin{example}
+\label{example-SU2+SU2+R}
+Take $R=\text{SU}(2)\oplus \text{SU}(2)\oplus \mathbb{R}$.
+$\mathfrak{g}=R \oplus R^*$.
+$e,s \in \mathbb{R}$, $H=sv^{123}+\ell v^{456}$.
+$\phi=\omega \wedge \zeta+\Omega^+$,
+$\zeta=\sqrt{\varepsilon/\ell}v^7$,
+$\omega=\sqrt{s\ell}(v^{14}+v^{25}-v^{36})$,
+$\Omega^+=\sqrt{s^3}v^{123}+\ell \sqrt{s}v^{156}-\ell \sqrt{s}v^{345}$.
+\end{example}
+
+
+
+
+\bibliography{my} \bibliographystyle{amsalpha}
+
+
 
 
 \end{document}
