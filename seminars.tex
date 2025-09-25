@@ -2234,6 +2234,208 @@ $\omega=\sqrt{s\ell}(v^{14}+v^{25}-v^{36})$,
 $\Omega^+=\sqrt{s^3}v^{123}+\ell \sqrt{s}v^{156}-\ell \sqrt{s}v^{345}$.
 \end{example}
 
+\section{Non-Kähler Hodge Lefschetz theory
+and the Bianchi identity}
+\label{section-non-kahler-hodge-lefschetz-theory-and-bianchi-identity}
+
+\noindent
+Arpan Saha, UNICAMP.
+Geometric Structures Seminar, IMPA. 
+September 25, 2025.
+
+\medskip
+{\bf Abstract.} 
+
+Being Kähler imposes severe constraints on the cohomology of compact complex
+manifolds such as the Hard Lefschetz property, and the question of how far this
+generalises beyond the class of Kähler manifolds has been of great interest for
+a while. In this talk, I shall report on ongoing joint work with Mario García
+Fernández and Raúl González Molina that abstracts out the definition of a
+variation of Hodge--Lefschetz structure and provides evidence that, under
+certain natural assumptions, such a structure exists more generally on
+distinguished subspaces within moduli spaces of Bismut--Ricci-flat metrics that
+are pluriclosed up to source terms. In particular, these distinguished subspaces
+may be regarded as replacements for the Kähler cone, with affine structure
+modelled on a subspace of the (1,1) Aeppli cohomology of the compact complex
+manifold.
+
+\medskip\noindent
+{\bf Broad motivation.}
+As we move on the parameter space associated
+to a CY manifold we encounter walls.
+The Kähler cone is contained in this
+parameter space, and we may cross 
+its walls. When we cross a wall
+we obtain a birational transformation
+(I think this means that the moduli
+on either side are birational).
+But the Kähler condition is not a 
+birational invariant.
+
+\medskip\noindent
+{\bf Hodge-Lefschetz theory.}
+For $(X,J,\omega)$ Kähler,
+the cohomology $H^{\bullet}(X)$ comes with:
+\begin{itemize}
+\item the Lefschetz operator $L$,
+given by $[\omega]\wedge-$.
+
+\item Hodge star operator.
+\item $\Lambda=* L *$ satisfying
+the $\mathfrak{sl}_2$ relations:
+$$
+[L,\Lambda]=H,\qquad [H,L]=2L,\qquad [H,\Lambda]=-2\Lambda.
+$$
+These relations are equivalent to 
+the Hard Lefschetz property that
+$$
+L^q:H^{d-q} \to H^{d+q}.
+$$
+\item The Poincaré pairing
+(which is a different pairing from Lefschetz)
+of the form
+$$
+H^{d-q}\cong (H^{d+q})
+$$
+given by integration.
+
+\item Hodge-Riemann bilinear relations
+which is a positive definite form given by
+$\int_X\cdot \wedge *\cdot$.
+
+\end{itemize}
+
+\noindent
+Moving about on the Kähler cone gives 
+a variation of Hodge-Lefschetz structure.
+
+\begin{definition}
+\label{definition-variation-of-hodge-lefschetz-structure}
+A {\it variation of Hodge Lefschetz structure (VHLS)} 
+of weight $d$ over a manifold $K$ consists of
+\begin{itemize}
+\item a graded real vector bundle
+$E=\bigoplus_{q=0}^d E^q \to K$
+with $\text{rk}_\mathbb{R}E^0=1$.
+
+\item An isomorphism $E^0 \otimes TK \xrightarrow{\simeq}E^1$
+(this is reminiscent of the usual definition
+of variations of Hodge structures, and 
+we will not use it in this talk).
+
+\item Endomorphism fields
+$L, \Lambda,H \in \mathcal{A}^0(K,\text{End}(E))$
+satisfying the $\mathfrak{sl}_2$ relations
+that
+$$
+[L,\Lambda]=H,\qquad [H,L]=2L,\qquad [H,\Lambda]=-2\Lambda.
+$$
+and that
+$$
+H|_{E_q}=(2q-d)|_{\text{id}_{E^q}}.
+$$
+\item An involution $* \in \mathcal{A}^0(K,\text{End}(E))$
+such that $* L *=\Lambda$.
+
+\item A nondegenerate symmetric pairing
+$P \in \mathcal{A}^0(\mathcal{K},E^* \otimes E^*)$
+w.r.t. $L$ and $*$ are self-adjoint.
+
+\item (like the Gauss-Manin connection)
+a flat connection $D: \mathcal{A}^0(K,E)\to\mathcal{A}^1(K,E)$
+such that $DH=0=DP$.
+\end{itemize}
+The VHLS is said to be {\it positive} if $P(*-,-)$ 
+is positive definite.
+\end{definition}
+
+\noindent
+{\bf Calabi's dream beyond Kähler manifolds.}
+Let $(X,\Omega)$ be a compact Calabi-Yau manifold,
+where $\Omega$ is the volume form.
+In general such a manifold is not Kähler.
+
+\begin{example}[Non-Kähler manifolds]
+\label{example-non-kahler}
+These manifolds are not Kähler:
+Heisenberg algebra quotiented by some lattice,
+torus bundle, Hopf surface.
+\end{example}
+
+\noindent
+By [Yau], the Kähler cone is the moduli
+space of Kähler Ricci-flat metrics.
+
+We look for PDEs on  $X$ such that
+\begin{itemize}
+\item Assumption C (Calabi). Moduli
+space of alutions is an open set $K$ 
+of an affine space modelled on
+a subspace $\mathbb{V}$ of
+$(1,1)$-Aeppli cohomology group,
+which is given by
+$$
+H^{1,1}_A(X)=\frac{\Ker \partial\overline{\partial}|_{\Omega^{1,1}}}
+{\text{Im} \partial+\text{Im}\overline{\partial}}
+$$
+
+\item Assumtion D (dilaton).
+A volume function $v:K\to \mathbb{R}_{>0}$
+such that $\underline{d}\text{log} V$ 
+is nowhere zero (where $\underline{d}$ denotes
+Aeppli differential), and the bilinear form
+$g_K:=-Dd \text{log}V$
+is nondegenerate (basically the Hessian metric).
+(Ideally this would be positive definite.)
+
+\item Assumption V (vector field).
+$Z=g_K^{-1}d \text{log}V$
+is such that $DZ$ is invertible
+(when thought of as an endomorphism)
+$g_K(Z,Z)=d \in \mathbb{Z}_{>0}$,
+ $$
+(D_{(DZ)^{-1}})^{d+1}V=0,
+$$
+\end{itemize}
+
+\begin{remark}
+\label{remark-pairing}
+$$
+(D_{(DZ)^{-1}})^dV=\int_X \wedge \wedge \wedge.
+$$
+\end{remark}
+
+\begin{theorem}[García Fernández-González Molina-AS]
+\label{theorem-GGA}
+If assumptions C, D and V all hold with  $d \leq 3$,
+then $K$ admits a VHLS of weight $d$.
+\end{theorem}
+
+\begin{proof}[Idea of proof for $d=3$]
+$$
+E=\underbrace{\mathbb{R}_K}_{E^0} \oplus \underbrace{TK}_{E^1}
+\oplus \underbrace{T^*K}_{E^2} \oplus \underbrace{\mathbb{R}_K^*}_{E^3}.
+$$
+Define $L$ in each of the terms of the direct sum as
+$$
+L1=Z,\qquad Lv=D^2_vV,\qquad L_\alpha=i_Z\alpha
+$$
+and $*$ as
+$$
+*1=V 1^\vee,\qquad  *v=VD^2_0 \text{log}V=Vg_K(v,-).
+$$
+\end{proof}
+
+\medskip\noindent
+Recall the Hull-Strominger
+system, which is given by two conditions
+on the connection and the metric
+$$
+d\left(\|\Omega\|_\omega \frac{\omega^{n-1}}{(n-1)!}\right)=0,\qquad 
+F_\theta \wedge \frac{\omega^{n-1}}{(n-1)!}=0.
+$$
+This determines $d d^c\omega=\alpha\left<F_\theta \wedge F_\theta\right>$.
+
 
 
 
