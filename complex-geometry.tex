@@ -510,117 +510,102 @@ open sets.
 \begin{reference}
 \cite{GH}
 \end{reference}
-An {\it analytic subvariety} $V$ of a complex manifold $M$ is a
+An {\it analytic subvariety} $Y$ of a complex manifold $X$ is a
 subset given locally as the zeros of a finite collection of holomorphic
 functions.
 \end{definition}
 
 \begin{lemma}
-\label{lemma-ideal-sheaf-is-a-sheaf}
-Let $V \subset X$ be an analytic subvariety
-of a complex manifold $X$.
+\label{lemma-structure-sheaf-of-subvariety}
+Let $Y \subset X$ be an analytic subvariety
+of a complex manifold $X$
+equipped with the subspace topology.
 Then
 \begin{align*}
-\mathcal{I}_V: \mathit{Open}^{\text{op}}_X &\longrightarrow \mathit{Set} \\
-U &\longmapsto \mathcal{I}_V(U):=\{f|_{U\cap V}:f \in \mathcal{O}_X(U)\}\\
-i:U' \hookrightarrow  U & \longmapsto 
-\mathcal{I}_V(i):\mathcal{I}_V(U) \to \mathcal{I}_V(U')
+\mathcal{O}_Y: \mathit{Open}_Y^{\text{op}} &\longrightarrow \mathit{Set} \\
+U\cap Y &\longmapsto \{f|_{U \cap Y}:f \in \mathcal{O}_X(U)\}
 \end{align*}
-where $\mathcal{I}_V(i)$ is given by restriction of
-functions,
+
+\noindent
 is a sheaf.
 \end{lemma}
 
 \begin{proof}
-The proof the $\mathcal{I}_V$ is a 
-presheaf (i.e. a functor)
-is immediate by definition,
-see Lemma \ref{lemma-O_X-is-a-sheaf}.
-
-To check it is also a sheaf take
-a cover $U_i$ of some open set $U$ of $X$ and
-functions $f_i \in \mathcal{I}_V(U_i)$.
-By definition, for every such $f_i$ we have
-a function $\tilde{f}_i \in \mathcal{O}_X(U_i)$ 
-such that $f_i=\tilde{f}_i$.
-We then glue the $\tilde{f}_i$
-to obtain a function $\tilde{f} \in \mathcal{O}_X(U)$
-and restrict it to $V$.
+This is a presheaf for the same reasons as
+the sheaf $\mathcal{O}_X$ is a presheaf.
+The fact that it is a sheaf follows
+from the fact that $\mathcal{O}_X$ is a 
+sheaf and by definition of subspace topology;
+namely for any family of functions
+defined over an open cover $\{U_i \cap Y\}$
+of some open set  $U\cap Y$ we can reconstruct a function
+on $U$ that restricted to $U \cap Y$ is as desired.
 \end{proof}
+
+Recall that any map of sheaves of groups
+has well-defined kernel, see Lemma
+\ref{algebraic-geometry-lemma-sheaves-valued-on-groups-have-kernels}.
 
 \begin{definition}
 \label{definition-ideal-sheaf}
-Let $V \subset X$ be an analytic subvariety
+Let $Y \subset X$ be an analytic subvariety
 of a complex manifold $X$.
-The {\it ideal sheaf} is $\mathcal{I}_V$ as above.
+The {\it ideal sheaf} of $Y$, denoted $\mathcal{I}_Y$,
+is the kernel
+of the restriction map $\mathcal{O}_X \to \mathcal{O}_Y$.
 \end{definition}
 
-For a smooth submanifold $M$ of a complex manifold $N$ we have the {\it normal 
-short exact sequence}
-$$
-\xymatrix{
-0\ar[r]&TM\ar[r]&TN\ar[r]&T^\perp M\ar[r]&0
-}
-$$
-If $M$ is a singular subscheme we have the {\it ideal short exact sequence}
+\noindent
+This just says that $\mathcal{I}_X(U)$ is the
+set of functions $f \in \mathcal{O}_X$ that
+vanish under the restriction map, i.e.
+that vanish at points of $Y$.
+
+Since the restriction map is surjective, 
+we have the following short exact sequence:
 $$
 \xymatrix{
 0\ar[r]&\mathcal{I}_M\ar[r]&\mathcal{O}_N\ar[r]&\mathcal{O}_M\ar[r]&0
 }
 $$
-Here the ideal sheaf is defined as the kernel of the induced map 
-$i_*:\mathcal{O}_{\widetilde{M}} \to i_*\mathcal{O}_M$. That is, it is the sheaf
-that to every open set assigns the ring of functions vanishing along $M$.
-
-If $M$ is a singular analytic subvariety we also have an ideal short exact
-sequence, this time using the holomorphic function sheaves.
 
 \medskip\noindent
 Notice that for any open set $U\subset X$,
-$\mathcal{I}_V(U)$ is an ideal of $\mathcal{O}_X(U)$. (Indeed,
-if a function vanishes at $V$ then its product
+$\mathcal{I}_Y(U)$ is an ideal of $\mathcal{O}_X(U)$. (Indeed,
+if a function vanishes at $Y$ then its product
 with any other function will also vanish.)
 
-In the case that $V$ is an irreducible subvariety,
-this ideal is prime: if $fg \in \mathcal{I}_V(U)$,
-then $V(f) \cup  V(g) \supset V\cap U$ 
-so that $(V(f) \cup  V(g))\cap V = V\cap U$,
-and then it must be true that $V(f)\cap V\subseteq V(g)\cap V$
-or that $V(f)\cap V \supseteq V(g)\cap V \cap U$
-since $V$ is irreducible, and thus, say,
-$V(f)\supseteq V \cap U$,
-that is, $I(V(f))\subseteq V \cap U$
-so that $f \in I(V \cap U)$.
+\medskip\noindent
+Now the adventure of proving that the ideal
+sheaf is a line bundle for hypersurfaces begins.
 
-If we further ask that $V$ is a hypersurface,
-then $\mathcal{I}_V$ is locally principal.
-Indeed, if $f \in \mathcal{I}_V(U)$ is the 
+See Algebraic Geometry Lemma 
+\ref{algebraic-geometry-lemma-ideal-sheaf-is-line-bundle-schemes}
+for the proof that the ideal sheaf of an irreducible codimension-1
+closed subscheme of a smooth scheme is a line bundle.
+Now I will try to prove this for the case of an analytic subvariety
+of a (smooth) complex manifold.
+
+First notice that in
+the case that $Y$ is an irreducible subvariety,
+this ideal is prime: if $fg \in \mathcal{I}_Y(U)$,
+then $V(f) \cup  V(g) \supset Y\cap U$ 
+so that $(V(f) \cup  V(g))\cap Y = Y\cap U$,
+and then it must be true that $V(f)\cap Y\subseteq V(g)\cap Y$
+or that $V(f)\cap Y \supseteq V(g)\cap Y \cap U$
+since $Y$ is irreducible, and thus, say,
+$V(f)\supseteq Y \cap U$,
+that is, $I(V(f))\subseteq Y \cap U$
+so that $f \in I(Y \cap U)$.
+
+If we further ask that $Y$ is a hypersurface,
+we want to show that $\mathcal{I}_Y$ is locally principal.
+If $f \in \mathcal{I}_Y(U)$ is the 
 defining function of some hypersurface
-$V$ of a variety $X$ on an open set $U \subset X$,
-we shall have that $\mathcal{I}_V(U)=(f)$. 
-That is, if $g$ also vanishes at $V\cap U$,
+$Y$ of a variety $X$ on an open set $U \subset X$,
+we shall have that $\mathcal{I}_Y(U)=(f)$. 
+That is, if $g$ also vanishes at $Y\cap U$,
 we want to see that $g = fh$ for some $h \in \mathcal{O}_X(U)$.
-
-\begin{lemma}
-\label{lemma-ideal-sheaf-is-line-bundle-schemes}
-The ideal sheaf of an irreducible codimension-1 closed subscheme of a smooth
-scheme is a line bundle.
-\end{lemma}
-
-\begin{proof}
-Since $M$ is codimension-1 irreducible, the ideal sheaf at every affine chart is
-a codimension-1 prime ideal. This means that there aren't any nontrivial prime
-ideals of $\mathcal{I}_X(\text{Spec}A):=I$. Let $f\in I$.
-Since $X$ is smooth, $O_X\text{Spec}A=A$ is a UFD (why?). Then there exists an
-irreducible element $g\in I$ such that $gh=f$. The ideal generated by $g$ is
-prime (again because $A$ is a UFD) 
-and contained in $I$, so that $I$ is principal. This shows that
-$\mathcal{I}_M$ is locally principal, i.e. it is a line bundle.
-\end{proof}
-
-In the case of complex manifolds and analytic subvarieties, we can imitate
-this proof as long as we prove that $\mathcal{O}_n$ is a UFD and the follwing
-lemma:
 
 \begin{lemma}
 \label{lemma-ideal-of-irreducible-hypersurface-is-height-1-prime}
@@ -699,7 +684,8 @@ is irreducible it follows that $f$ is irreducible and so is the ideal of
 functions vanishing on $M$.
 
 By Lemma \ref{lemma-stalk-is-UFD}, we prove identically as in Lemma 
-\ref{lemma-ideal-sheaf-is-line-bundle-schemes} that the ideal of functions
+\ref{algebraic-geometry-lemma-ideal-sheaf-is-line-bundle-schemes} 
+that the ideal of functions
 vanishing on $M$ is principal.
 \end{proof}
 
