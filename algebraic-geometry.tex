@@ -79,7 +79,391 @@ say ``$s$ is equal to $s'$ in $\mathcal{F}_x$'' to indicate
 that $s_x = s'_x$. Other authors use the terminology
 ``germ of $s$ at $x$''.
 
-\bigskip\noindent
+\section{Abelian sheaves}
+\label{section-abelian-sheaves}
+
+The following may be used to define the ideal
+sheaf of a variety:
+
+\begin{lemma}
+\label{lemma-sheaves-valued-on-groups-have-kernels}
+Let $X$ be a topological space and
+$\mathcal{F}$ and $\mathcal{G}$ be sheaves over $X$
+with values on $\mathit{Grp}$.
+For every morphism of sheaves
+$f:\mathcal{F}\to \mathcal{G}$,
+\begin{align*}
+\Ker f: \mathit{Open}_X^{\text{op}} &\longrightarrow \mathit{Sets} \\
+U &\longmapsto \Ker f(U)\\
+(i:V \to U)&\longmapsto 
+\substack{
+\Ker f(i):\Ker f(U) \to \Ker f(V)\\
+x \mapsto x}
+\end{align*}
+is a sheaf over $X$.
+\end{lemma}
+
+\begin{proof}
+First observe that the correspondence
+on morphisms is well-defined. Indeed, 
+$\Ker f(U)\subset \mathcal{F}(U) \subset \mathcal{F}(V)$ 
+when $V \subset U$, and we just apply $f(U)$ 
+to notice that $\Ker f(V) \subset \Ker f(U)$.
+
+To see this is a presheaf notice it is obvious
+that the identity is mapped to the identity
+by definition of the correspondence of morphisms.
+It is also obvious that composition is preserved.
+
+To see it is a sheaf consider an open
+cover $U_i$ of $U$, and elements $x_i \in \Ker f(U_i)$.
+Then use the property of $\mathcal{F}$ being
+a sheaf to reconstruct an element $x \in \mathcal{F}(U)$,
+whose image under $f$ will be mapped to the
+identity element of $\mathcal{G}(U)$ because
+it does so in every point of the cover of $U$.
+Thus $x$ is in $\Ker f(U)$ as desired.
+\end{proof}
+
+\medskip\noindent
+More formally,
+
+\begin{definition}
+\label{definition-abelian-presheaves}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item A {\it presheaf of abelian groups on $X$} or an
+{\it abelian presheaf over $X$}
+is a presheaf of sets $\mathcal{F}$ such that for each open
+$U \subset X$ the set $\mathcal{F}(U)$ is endowed with
+the structure of an abelian group, and such that all restriction
+maps $\rho^U_V$ are homomorphisms of abelian groups, see
+Lemma \ref{lemma-abelian-presheaves} above.
+\item A {\it morphism of abelian presheaves over $X$}
+$\varphi : \mathcal{F} \to \mathcal{G}$ is a morphism of presheaves
+of sets which induces
+a homomorphism of abelian groups $\mathcal{F}(U) \to \mathcal{G}(U)$
+for every open $U \subset X$.
+\item The category of presheaves of abelian groups on $X$ is denoted
+$\textit{PAb}(X)$.
+\end{enumerate}
+\end{definition}
+
+\medskip\noindent
+\begin{definition}
+\label{definition-abelian-sheaf}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item An {\it abelian sheaf on $X$} or
+{\it sheaf of abelian groups on $X$}
+is an abelian presheaf on $X$ such that the underlying presheaf of
+sets is a sheaf.
+\item The category of sheaves of abelian groups
+is denoted $\textit{Ab}(X)$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Let $X$ be a topological space.
+In the case of an abelian presheaf $\mathcal{F}$ the sheaf
+condition with regards to an open covering $U = \bigcup U_i$
+is often expressed by saying that the complex of abelian groups
+$$
+0 \to \mathcal{F}(U)
+\to \prod\nolimits_i \mathcal{F}(U_i)
+\to \prod\nolimits_{(i_0, i_1)} \mathcal{F}(U_{i_0} \cap U_{i_1})
+$$
+is exact. The first map is the usual one, whereas the second
+maps the element $(s_i)_{i \in I}$ to the element
+$$
+(
+s_{i_0}|_{U_{i_0} \cap U_{i_1}} -
+s_{i_1}|_{U_{i_0} \cap U_{i_1}}
+)_{(i_0, i_1)}
+\in \prod\nolimits_{(i_0, i_1)} \mathcal{F}(U_{i_0} \cap U_{i_1})
+$$
+
+In fact, the notion of kernel of a sheaf
+is not really defined as I did in the beginning of this section,
+but in the next one, along with several other
+important things.
+
+\section{The abelian category of sheaves of modules}
+\label{section-kernels}
+
+\noindent
+I guess that the reason to introduce
+coherent sheaves is not the search for an
+abelian category, after all.
+Looks like the pathologies avoided
+by the definition of coherence are not
+so obvious---something like ``wildly infinitely generated''.
+
+\medskip\noindent
+Let $(X, \mathcal{O}_X)$ be a ringed space, see
+Sheaves, Definition \ref{sheaves-definition-ringed-space}.
+Let $\mathcal{F}$, $\mathcal{G}$ be sheaves of $\mathcal{O}_X$-modules, see
+Sheaves, Definition \ref{sheaves-definition-sheaf-modules}.
+Let $\varphi, \psi : \mathcal{F} \to \mathcal{G}$
+be morphisms of sheaves of $\mathcal{O}_X$-modules.
+We define $\varphi + \psi : \mathcal{F} \to \mathcal{G}$
+to be the map which on each open $U \subset X$ is the
+sum of the maps induced by $\varphi$, $\psi$. This is
+clearly again a map of sheaves of $\mathcal{O}_X$-modules.
+It is also clear that composition of maps of
+$\mathcal{O}_X$-modules is bilinear with respect to this
+addition. Thus $\textit{Mod}(\mathcal{O}_X)$ is a pre-additive
+category, see Homology, Definition \ref{homology-definition-preadditive}.
+
+\medskip\noindent
+We will denote $0$ the sheaf of $\mathcal{O}_X$-modules
+which has constant value $\{0\}$ for all open $U \subset X$.
+Clearly this is both a final and an initial object of
+$\textit{Mod}(\mathcal{O}_X)$. Given a morphism
+of $\mathcal{O}_X$-modules $\varphi : \mathcal{F} \to \mathcal{G}$
+the following are equivalent:
+(a) $\varphi$ is zero, (b) $\varphi$ factors through $0$,
+(c) $\varphi$ is zero on sections over each open $U$, and
+(d) $\varphi_x = 0$ for all $x \in X$. See
+Sheaves, Lemma \ref{sheaves-lemma-points-exactness}.
+
+\medskip\noindent
+Moreover, given a pair
+$\mathcal{F}$, $\mathcal{G}$ of sheaves of $\mathcal{O}_X$-modules
+we may define the direct sum as
+$$
+\mathcal{F} \oplus \mathcal{G} = \mathcal{F} \times \mathcal{G}
+$$
+with obvious maps $(i, j, p, q)$ as in Homology, Definition
+\ref{homology-definition-direct-sum}. Thus $\textit{Mod}(\mathcal{O}_X)$
+is an additive category, see
+Homology, Definition \ref{homology-definition-additive-category}.
+
+\medskip\noindent
+Let $\varphi : \mathcal{F} \to \mathcal{G}$ be a morphism
+of $\mathcal{O}_X$-modules. We may define $\Ker(\varphi)$
+to be the subsheaf of $\mathcal{F}$ with sections
+$$
+\Ker(\varphi)(U) =
+\{ s \in \mathcal{F}(U) \mid \varphi(s) = 0 \text{ in } \mathcal{G}(U)\}
+$$
+for all open $U \subset X$. It is easy to see that this is indeed
+a kernel in the category of $\mathcal{O}_X$-modules. In other words,
+a morphism $\alpha : \mathcal{H} \to \mathcal{F}$ factors
+through $\Ker(\varphi)$ if and only if $\varphi \circ \alpha = 0$.
+Moreover, on the level of stalks we have
+$\Ker(\varphi)_x = \Ker(\varphi_x)$.
+
+\medskip\noindent
+On the other hand, we define
+$\Coker(\varphi)$ as the sheaf of $\mathcal{O}_X$-modules
+associated to the presheaf of $\mathcal{O}_X$-modules defined
+by the rule
+$$
+U
+\longmapsto
+\Coker(\mathcal{F}(U)\to \mathcal{G}(U)) =
+\mathcal{G}(U)/\varphi(\mathcal{F}(U)).
+$$
+Since taking stalks commutes with taking sheafification, see
+Sheaves, Lemma \ref{sheaves-lemma-stalk-sheafification} we
+see that $\Coker(\varphi)_x = \Coker(\varphi_x)$.
+Thus the map $\mathcal{G} \to \Coker(\varphi)$ is surjective
+(as a map of sheaves of sets),
+see Sheaves, Section \ref{sheaves-section-exactness-points}.
+To show that this is a cokernel, note that if
+$\beta : \mathcal{G} \to \mathcal{H}$ is a morphism of $\mathcal{O}_X$-modules
+such that $\beta \circ \varphi$ is zero, then you get for every
+open $U \subset X$ a map induced by $\beta$ from
+$\mathcal{G}(U)/\varphi(\mathcal{F}(U))$ into $\mathcal{H}(U)$.
+By the universal property of sheafification (see
+Sheaves, Lemma \ref{sheaves-lemma-sheafification-presheaf-modules})
+we obtain a canonical map $\Coker(\varphi) \to \mathcal{H}$
+such that the original $\beta$ is equal to
+the composition
+$\mathcal{G} \to \Coker(\varphi) \to \mathcal{H}$.
+The morphism $\Coker(\varphi) \to \mathcal{H}$ is unique
+because of the surjectivity mentioned above.
+
+\begin{lemma}
+\label{lemma-abelian}
+Let $(X, \mathcal{O}_X)$ be a ringed space. The category
+$\textit{Mod}(\mathcal{O}_X)$ is an abelian category. Moreover
+a complex
+$$
+\mathcal{F} \to \mathcal{G} \to \mathcal{H}
+$$
+is exact at $\mathcal{G}$ if and only if for all $x \in X$ the
+complex
+$$
+\mathcal{F}_x \to \mathcal{G}_x \to \mathcal{H}_x
+$$
+is exact at $\mathcal{G}_x$.
+\end{lemma}
+
+\begin{proof}
+By Homology, Definition \ref{homology-definition-abelian-category}
+we have to show that image and coimage agree. By Sheaves,
+Lemma \ref{sheaves-lemma-points-exactness} it is enough to show
+that image and coimage have the same stalk at every $x \in X$.
+By the constructions of kernels and cokernels above these stalks
+are the coimage and image in the categories of $\mathcal{O}_{X, x}$-modules.
+Thus we get the result from the fact that the category of modules
+over a ring is abelian.
+\end{proof}
+
+\noindent
+Actually the category $\textit{Mod}(\mathcal{O}_X)$ has many more properties.
+Here are two constructions we can do.
+\begin{enumerate}
+\item Given any set $I$ and for each $i \in I$ a $\mathcal{O}_X$-module
+we can form the product
+$$
+\prod\nolimits_{i \in I} \mathcal{F}_i
+$$
+which is the sheaf that associates to each open $U$ the
+product of the modules $\mathcal{F}_i(U)$. This is also the
+categorical product, as in
+Categories, Definition \ref{categories-definition-product}.
+\item Given any set $I$ and for each $i \in I$ a $\mathcal{O}_X$-module
+we can form the direct sum
+$$
+\bigoplus\nolimits_{i \in I} \mathcal{F}_i
+$$
+which is the {\it sheafification} of the presheaf
+that associates to each open $U$ the
+direct sum of the modules $\mathcal{F}_i(U)$.
+This is also the categorical coproduct, as in
+Categories, Definition \ref{categories-definition-coproduct}.
+To see this you use the universal property of sheafification.
+\end{enumerate}
+Using these we conclude that all limits and colimits exist in
+$\textit{Mod}(\mathcal{O}_X)$.
+
+\begin{lemma}
+\label{lemma-limits-colimits}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+\begin{enumerate}
+\item All limits exist in $\textit{Mod}(\mathcal{O}_X)$.
+Limits are the same as the corresponding limits of presheaves of
+$\mathcal{O}_X$-modules (i.e., commute with taking
+sections over opens).
+\item All colimits exist in $\textit{Mod}(\mathcal{O}_X)$.
+Colimits are the sheafification of the corresponding colimit in
+the category of presheaves. Taking colimits commutes with taking
+stalks.
+\item Filtered colimits are exact.
+\item Finite direct sums are the same as the corresponding
+finite direct sums of presheaves of $\mathcal{O}_X$-modules.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+As $\textit{Mod}(\mathcal{O}_X)$ is abelian (Lemma \ref{lemma-abelian})
+it has all finite limits and colimits
+(Homology, Lemma \ref{homology-lemma-colimit-abelian-category}).
+Thus the existence of limits and colimits and their description follows from
+the existence of products and coproducts and their description
+(see discussion above) and
+Categories, Lemmas \ref{categories-lemma-limits-products-equalizers} and
+\ref{categories-lemma-colimits-coproducts-coequalizers}.
+Since sheafification commutes with taking stalks we see that
+colimits commute with taking stalks. Part (3) signifies that given
+a system $0 \to \mathcal{F}_i \to \mathcal{G}_i \to \mathcal{H}_i \to 0$
+of exact sequences of $\mathcal{O}_X$-modules over a directed set $I$
+the sequence $0 \to \colim \mathcal{F}_i \to \colim \mathcal{G}_i \to
+\colim \mathcal{H}_i \to 0$ is exact as well. Since we can check
+exactness on stalks (Lemma \ref{lemma-abelian}) this follows from the case
+of modules which is
+Algebra, Lemma \ref{algebra-lemma-directed-colimit-exact}.
+We omit the proof of (4).
+\end{proof}
+
+\noindent
+The existence of limits and colimits
+allows us to consider exactness properties of
+functors defined on the category of $\mathcal{O}$-modules
+in terms of limits and colimits, as in
+Categories, Section \ref{categories-section-exact-functor}.
+See Homology, Lemma \ref{homology-lemma-exact-functor} for a
+description of exactness
+properties in terms of short exact sequences.
+
+\begin{lemma}
+\label{lemma-exactness-pushforward-pullback}
+Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+be a morphism of ringed spaces.
+\begin{enumerate}
+\item The functor
+$f_* : \textit{Mod}(\mathcal{O}_X) \to \textit{Mod}(\mathcal{O}_Y)$
+is left exact. In fact it commutes with all limits.
+\item The functor
+$f^* : \textit{Mod}(\mathcal{O}_Y) \to \textit{Mod}(\mathcal{O}_X)$
+is right exact. In fact it commutes with all colimits.
+\item Pullback $f^{-1} : \textit{Ab}(Y) \to \textit{Ab}(X)$
+on abelian sheaves is exact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Parts (1) and (2) hold because $(f^*, f_*)$ is an adjoint pair
+of functors, see
+Sheaves, Lemma \ref{sheaves-lemma-adjoint-pullback-pushforward-modules}
+and
+Categories, Section \ref{categories-section-adjoint}.
+Part (3) holds because exactness can be checked on stalks
+(Lemma \ref{lemma-abelian})
+and the description of stalks of the pullback, see
+Sheaves, Lemma \ref{sheaves-lemma-pullback-abelian-stalk}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-j-shriek-exact}
+Let $j : U \to X$ be an open immersion of topological spaces.
+The functor $j_! : \textit{Ab}(U) \to \textit{Ab}(X)$
+is exact.
+\end{lemma}
+
+\begin{proof}
+Follows from the description of stalks
+given in Sheaves, Lemma \ref{sheaves-lemma-j-shriek-abelian}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-section-direct-sum-quasi-compact}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $I$ be a set. For $i \in I$, let $\mathcal{F}_i$
+be a sheaf of $\mathcal{O}_X$-modules.
+For $U \subset X$ quasi-compact open the map
+$$
+\bigoplus\nolimits_{i \in I} \mathcal{F}_i(U)
+\longrightarrow
+\left(\bigoplus\nolimits_{i \in I} \mathcal{F}_i\right)(U)
+$$
+is bijective.
+\end{lemma}
+
+\begin{proof}
+If $s$ is an element of the right hand side, then
+there exists an open covering $U = \bigcup_{j \in J} U_j$
+such that $s|_{U_j}$ is a finite sum
+$\sum_{i \in I_j} s_{ji}$ with $s_{ji} \in \mathcal{F}_i(U_j)$.
+Because $U$ is quasi-compact we may assume that the
+covering is finite, i.e., that $J$ is finite.
+Then $I' = \bigcup_{j \in J} I_j$ is a finite subset of
+$I$. Clearly, $s$ is a section of the subsheaf
+$\bigoplus_{i \in I'} \mathcal{F}_i$. The result follows
+from the fact that for a finite direct sum sheafification
+is not needed, see Lemma \ref{lemma-limits-colimits} above.
+\end{proof}
+
+
+
+
+
+
+\section{Tensor product of sheaves}
+\label{section-tensor product of sheaves}
 
 Here's my unexpected encounter with the definition of tensor product of sheaves.
 It's not the ``fiber is tensor product of fibers'' construction, but actually
