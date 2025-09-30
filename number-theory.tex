@@ -77,6 +77,76 @@ We can order by degree, and those of the same degree order by the leading
 term… but this requires an order in $R$.
 \end{proof}
 
+\section{Euclidean domains}
+\label{section-Euclidean-domains}
+
+\begin{definition}
+\label{definition-Euclidean-domain}
+A domain $R$ is an {\it Euclidean domain} if there
+is a function  $\varphi:R\to \mathbb{Z}_+$, the positive integers,
+such that
+\begin{enumerate}
+\item $\varphi(ab)\geq \varphi(a)$ for all $a,b \in R$,
+\label{item-valuation}
+\item For all $a,b \in R$ with $\varphi(a) \geq \varphi(b)$,
+there are $q,r \in R$ such that
+$$
+a=bq+r\qquad \text{and} \qquad\varphi(r)<\varphi(b).
+$$
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+\label{remark-equivalence-for-valuation}
+Item \ref{item-valuation} is equivalent to
+asking that if $a$ divides $b$ then
+$\varphi(a) \leq \varphi (b)$.
+\end{remark}
+
+\begin{theorem}[Euclidean algorithm for polynomial rings]
+\label{theorem-Euclidean-algorithm-for-polynomial-rings}
+Let $R$ be a domain and $f,g \in R[x]$
+with the leading coefficient of $g$ a unit
+and $\text{deg}(f)\geq \text{deg}(g)$. Then
+there are polynomials $q,r \in R[x]$ such that
+$f=qg+r$ with $\text{deg}(r)<\text{deg}g$.
+\end{theorem}
+
+\begin{proof}
+Since $\text{deg}(r)$ must be smaller than $\text{deg}q$
+and the leading coefficient of a product is the
+product of the leading coefficients of the factors,
+we readily see that the leading coefficient of $q$ must
+be $L(f)/L(g)$ and of degree $n-m$, where $L$ is the leading
+coefficient function and $\text{deg}(f)=n$, $\text{deg}(g)=m$.
+
+We are lead to the following natural strategy:
+write $g=L(g)x^m+g_1$ for some $g_1$ of degree
+strictly smaller than $m$. Likewise, write
+$f=L(f)x^n+f_1$.
+
+Then multiply $g$ with the leading term of $q$ to obtain
+\begin{align*}
+g \left(\frac{L(f)}{L(g)}x^{n-m}\right)&=(L(g)x^m+g_1)
+\left(\frac{L(f)}{L(g)}x^{n-m}\right)\\
+&=L(f)x^n+g_1\left(\frac{L(f)}{L(g)}x^{n-m}\right).
+\end{align*}
+Add $f_1$ on both sides to obtain $f$:
+\begin{align*}
+g\left(\frac{L(f)}{L(g)}x^{n-m}\right)+f_1&=L(f)x^n+f_1+
+g_1\left(\frac{L(f)}{L(g)}x^{n-m}\right)\\
+\iff f&=g\left(\frac{L(f)}{L(g)}x^{n-m}\right)+f_1
+-g_1\left(\frac{L(f)}{L(g)}x^{n-m}\right)
+\end{align*}
+We have great candidates for $q$ and $r$, except that put this way
+it is not necessarily true that the remainder will have degree
+strictly smaller than $g$. However, it is true that it
+will have degree strictly smaller than the degree of $f$. 
+Then we can just repeat
+the process until we arrive at a reminder with degree
+strictly smaller than the degree of $g$.
+\end{proof}
+
 \section{Unique factorization domains and the Gauss lemma}
 \label{section-UFD}
 
@@ -384,15 +454,27 @@ an element of $R$ from $\text{pp}(f_i)$, it must be 1.
 
 The uniqueness of the factorization follows from the uniqueness of the
 factorization in $F[x]$, for another factorization in $R[x]$ would be a
-factorization in $F[x]$, making the number of factors the same,
-and equality of the factorizations up
+factorization in $F[x]$
+Indeed, to see this suppose that $f=gh$ with $g,h \in F[x]$.
+Then take contents. The content of  $f$ must be a unit
+for otherwise $f$ the principal part would have to be
+trivial, and $f$ is not a constant.
+By the Gauss Lemma the contents of $g$ and $h$ are units.
+Then we are left with $f=\text{pp}(g)\text{pp}(h)$, an equation
+in $R[x]$ that makes either of the principal parts a unit of
+$R[x]$.
+
+Then any factorization in $R[x]$ has the
+same number of factors,
+and any two factorizations are equal up
 to a fraction $u$,
 which is a unit of $F[x]$. We just need to make sure $u$ is a unit of $R$.
 Write uniqueness of the factorization in $F[x]$ as: 
 $f_1=uf_1'$ and $f_i=f_i'$ for $i\neq 1$.
 It is clear that $u \in R$, since otherwise $f_1$ couldn't
-be a polynomial in $R[x]$. But since $f_1$ is irreducible in $R$ and $f_1$ 
-is not a unit (of $R$), we conclude that $u$ is a unit of $R$.
+be a polynomial in $R[x]$. But since $f_1$ is irreducible in $R[x]$
+and $f_1'$ is not a unit of $R[x]$, 
+we conclude that $u$ is a unit of $R[x]$.
 \end{proof}
 
 \begin{lemma}
