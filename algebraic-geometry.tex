@@ -549,8 +549,8 @@ $A \to B$ the restriction functor and the change
 of ring functor are adjoint to each other.
 \end{proof}
 
-\subsection{Tipologia dos feixes}
-\label{subsection-tipologia-dos-feixes}
+\medskip\noindent
+Tipologia dos feixes.
 
 \begin{definition}
 \label{definition-tipologia-dos-feixes}
@@ -564,10 +564,4339 @@ $\mathcal{A}$ (on a topological space $X$) is called
 \section{Locally ringed spaces}
 \label{section-locally-ringed-spaces}
 
-\section{Morphisms}
-\label{section-morphisms}
+\noindent
+Recall that we defined ringed spaces
+in Sheaves, Section \ref{sheaves-section-ringed-spaces}.
+Briefly, a ringed space is a pair $(X, \mathcal{O}_X)$ consisting
+of a topological space $X$ and a sheaf of rings $\mathcal{O}_X$.
+A morphism of ringed spaces $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+is given by a continuous map $f : X \to Y$ and an $f$-map of sheaves
+of rings $f^\sharp : \mathcal{O}_Y \to \mathcal{O}_X$. You can
+think of $f^\sharp$ as a map $\mathcal{O}_Y \to f_*\mathcal{O}_X$, see
+Sheaves, Definition \ref{sheaves-definition-f-map} and
+Lemma \ref{sheaves-lemma-f-map}.
 
-Induced map on rings, etc.
+\medskip\noindent
+A good geometric example of this to keep in mind is
+$\mathcal{C}^\infty$-manifolds and morphisms of
+$\mathcal{C}^\infty$-manifolds. Namely, if $M$ is a
+$\mathcal{C}^\infty$-manifold, then the sheaf $\mathcal{C}^\infty_M$
+of smooth functions is a sheaf of rings on $M$. And any
+map $f : M \to N$ of manifolds is smooth if and only if
+for every local section $h$ of $\mathcal{C}^\infty_N$
+the composition $h \circ f$ is a local section of $\mathcal{C}^\infty_M$.
+Thus a smooth map $f$ gives rise in a natural way to a morphism
+of ringed spaces
+$$
+f : (M , \mathcal{C}^\infty_M) \longrightarrow (N, \mathcal{C}^\infty_N)
+$$
+see Sheaves, Example \ref{sheaves-example-continuous-map-ringed}.
+It is instructive to consider what happens to stalks. Namely, let
+$m \in M$ with image $f(m) = n \in N$. Recall that the stalk
+$\mathcal{C}^\infty_{M, m}$ is the ring of germs of smooth
+functions at $m$, see
+Sheaves, Example \ref{sheaves-example-germs-functions}.
+The algebra of germs of functions on $(M, m)$ is a local ring with maximal
+ideal the functions which vanish at $m$.
+Similarly for $\mathcal{C}^\infty_{N, n}$. The map on stalks
+$f^\sharp : \mathcal{C}^\infty_{N, n} \to \mathcal{C}^\infty_{M, m}$
+maps the maximal ideal into the maximal ideal, simply
+because $f(m) = n$.
+
+\medskip\noindent
+In algebraic geometry we study schemes. On a scheme the sheaf of rings
+is not determined by an intrinsic property of the space.
+The spectrum of a ring $R$
+(see Algebra, Section \ref{algebra-section-spectrum-ring}) endowed
+with a sheaf of rings constructed out of $R$ (see below),
+will be our basic building block. It will turn out that
+the stalks of $\mathcal{O}$ on $\Spec(R)$ are the local
+rings of $R$ at its primes. There are two reasons to introduce
+locally ringed spaces in this setting: (1) There is in general
+no mechanism that assigns to a continuous map of spectra a
+map of the corresponding rings. This is why we add as an extra datum
+the map $f^\sharp$. (2) If we consider morphisms
+of these spectra in the category of ringed spaces, then the
+maps on stalks may not be local homomorphisms. Since our
+geometric intuition says it should we introduce locally ringed spaces
+as follows.
+
+\begin{definition}
+\label{definition-locally-ringed-space}
+Locally ringed spaces.
+\begin{enumerate}
+\item A {\it locally ringed space $(X, \mathcal{O}_X)$}
+is a pair consisting of a
+topological space $X$ and a sheaf of rings $\mathcal{O}_X$ all of whose stalks
+are local rings.
+\item Given a locally ringed space $(X, \mathcal{O}_X)$ we say that
+$\mathcal{O}_{X, x}$ is the {\it local ring of $X$ at $x$}.
+We denote $\mathfrak{m}_{X, x}$ or simply $\mathfrak{m}_x$
+the maximal ideal of $\mathcal{O}_{X, x}$. Moreover, the
+{\it residue field of $X$ at $x$} is the residue field
+$\kappa(x) = \mathcal{O}_{X, x}/\mathfrak{m}_x$.
+\item A {\it morphism of locally ringed spaces}
+$(f, f^\sharp) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+is a morphism of ringed spaces such that for all $x \in X$
+the induced ring map $\mathcal{O}_{Y, f(x)} \to \mathcal{O}_{X, x}$ is a
+local ring map.
+\end{enumerate}
+\end{definition}
+
+\noindent
+We will usually suppress the sheaf of rings $\mathcal{O}_X$
+in the notation when discussing locally ringed spaces. We will
+simply refer to ``the locally ringed space $X$''.
+We will by abuse of notation think of $X$ also as
+the underlying topological space. Finally we will denote
+the corresponding sheaf of rings
+$\mathcal{O}_X$ as the {\it structure sheaf of $X$}.
+In addition, it is customary to denote the maximal ideal
+of the local ring $\mathcal{O}_{X, x}$ by
+$\mathfrak{m}_{X, x}$ or simply $\mathfrak{m}_x$.
+We will say ``let $f : X \to Y$ be a morphism of locally ringed
+spaces'' thereby suppressing the structure sheaves even further.
+In this case, we will by abuse of notation think of $f : X\to Y$
+also as the underlying continuous map of topological spaces.
+The $f$-map corresponding to $f$ will customarily
+be denoted $f^\sharp$. The condition that $f$ is a morphism
+of locally ringed spaces can then be expressed by saying that
+for every $x\in X$ the map on stalks
+$$
+f^\sharp_x : \mathcal{O}_{Y, f(x)} \longrightarrow \mathcal{O}_{X, x}
+$$
+maps the maximal ideal $\mathfrak m_{Y, f(x)}$ into
+$\mathfrak m_{X, x}$.
+
+\medskip\noindent
+Let us use these notational conventions to show that the
+collection of locally ringed spaces and morphisms of locally
+ringed spaces forms a category. In order to see this we have
+to show that the composition of morphisms of locally ringed
+spaces is a morphism of locally ringed spaces. OK, so let
+$f : X \to Y$ and $g : Y \to Z$ be morphism of locally
+ringed spaces. The composition of $f$ and $g$ is defined in
+Sheaves, Definition \ref{sheaves-definition-composition-maps-ringed-spaces}.
+Let $x \in X$. By
+Sheaves, Lemma \ref{sheaves-lemma-compose-f-maps-stalks}
+the composition
+$$
+\mathcal{O}_{Z, g(f(x))}
+\xrightarrow{g^\sharp}
+\mathcal{O}_{Y, f(x)}
+\xrightarrow{f^\sharp}
+\mathcal{O}_{X, x}
+$$
+is the associated map on stalks for the morphism $g \circ f$.
+The result follows since a composition of local ring
+homomorphisms is a local ring homomorphism.
+
+\medskip\noindent
+A pleasing feature of the definition is the fact that the functor
+$$
+\textit{Locally ringed spaces}
+\longrightarrow
+\textit{Ringed spaces}
+$$
+reflects isomorphisms (plus more).
+Here is a less abstract statement.
+
+\begin{lemma}
+\label{lemma-isomorphism-locally-ringed}
+\begin{slogan}
+An isomorphism of ringed spaces between locally ringed spaces is an
+isomorphism of locally ringed spaces.
+\end{slogan}
+Let $X$, $Y$ be locally ringed spaces.
+If $f : X \to Y$ is an isomorphism of
+ringed spaces, then $f$ is an isomorphism
+of locally ringed spaces.
+\end{lemma}
+
+\begin{proof}
+This follows trivially from the corresponding fact in algebra:
+Suppose $A$, $B$ are local rings. Any isomorphism of rings
+$A \to B$ is a local ring isomorphism.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Open immersions of locally ringed spaces}
+\label{section-open-immersion}
+
+\begin{definition}
+\label{definition-immersion-locally-ringed-spaces}
+Let $f : X \to Y$ be a morphism of locally ringed spaces.
+We say that $f$ is an {\it open immersion} if
+$f$ is a homeomorphism of $X$ onto an open subset
+of $Y$, and the map $f^{-1}\mathcal{O}_Y \to \mathcal{O}_X$
+is an isomorphism.
+\end{definition}
+
+\noindent
+The following construction is parallel to
+Sheaves, Definition \ref{sheaves-definition-restriction} (3).
+
+\begin{example}
+\label{example-open-subspace}
+Let $X$ be a locally ringed space.
+Let $U \subset X$ be an open subset.
+Let $\mathcal{O}_U = \mathcal{O}_X|_U$
+be the restriction of $\mathcal{O}_X$ to $U$.
+For $u \in U$ the stalk $\mathcal{O}_{U, u}$
+is equal to the stalk $\mathcal{O}_{X, u}$, and hence is a
+local ring. Thus $(U, \mathcal{O}_U)$ is a locally ringed
+space and the morphism $j : (U, \mathcal{O}_U) \to (X, \mathcal{O}_X)$
+is an open immersion.
+\end{example}
+
+\begin{definition}
+\label{definition-open-subspace}
+Let $X$ be a locally ringed space.
+Let $U \subset X$ be an open subset.
+The locally ringed space $(U, \mathcal{O}_U)$
+of Example \ref{example-open-subspace} above
+is the {\it open subspace of $X$ associated to $U$}.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-open-immersion}
+Let $f : X \to Y$ be an open immersion of
+locally ringed spaces. Let $j : V = f(X) \to Y$
+be the open subspace of $Y$ associated to the image of $f$.
+There is a unique isomorphism $f' : X \cong V$ of
+locally ringed spaces such that $f = j \circ f'$.
+\end{lemma}
+
+\begin{proof}
+Let $f'$ be the homeomorphism between $X$ and $V$ induced by $f$. Then
+$f = j \circ f'$ as maps of topological spaces. Since there
+is an isomorphism of sheaves
+$f^\sharp : f^{-1}(\mathcal{O}_Y) \to \mathcal{O}_X$, there is an isomorphism
+of rings
+$f^\sharp : \Gamma(U, f^{-1}(\mathcal{O}_Y)) \to \Gamma(U, \mathcal{O}_X)$
+for each open subset $U \subset X$. Since
+$\mathcal{O}_V = j^{-1}\mathcal{O}_Y$ and $f^{-1} = f'^{-1} j^{-1}$
+(Sheaves, Lemma \ref{sheaves-lemma-pullback-composition}) we
+see that $f^{-1}\mathcal{O}_Y = f'^{-1}\mathcal{O}_V$, hence
+$\Gamma(U, f'^{-1}(\mathcal{O}_V)) \to \Gamma(U, f^{-1}(\mathcal{O}_Y))$
+is an isomorphism
+for every $U \subset X$ open. By composing these we get an isomorphism of rings
+$$
+\Gamma(U, f'^{-1}(\mathcal{O}_V)) \to \Gamma(U, \mathcal{O}_X)
+$$
+for each open subset $U \subset X$, and therefore an isomorphism of sheaves
+$f^{-1}(\mathcal{O}_V) \to \mathcal{O}_X$. In other words, we have an
+isomorphism $f'^{\sharp} : f'^{-1}(\mathcal{O}_V) \to \mathcal{O}_X$ and
+therefore an isomorphism of locally ringed spaces
+$(f', f'^{\sharp}) : (X, \mathcal{O}_X) \to (V, \mathcal{O}_V)$
+(use Lemma \ref{lemma-isomorphism-locally-ringed}).
+Note that $f = j \circ f'$ as morphisms of locally ringed spaces
+by construction.
+
+\medskip\noindent
+Suppose we have another morphism
+$f'' : (X, \mathcal{O}_X) \to (V, \mathcal{O}_V)$ such that $f = j \circ f''$.
+At any point $x \in X$, we have $j(f'(x)) = j(f''(x))$ from which it follows
+that $f'(x) = f''(x)$ since $j$ is the inclusion map; therefore $f'$ and $f''$
+are the same as morphisms of topological spaces. On structure sheaves,
+for each open subset $U \subset X$ we have a commutative diagram
+$$
+\xymatrix @R=5em{
+\Gamma(U, f^{-1}(\mathcal{O}_Y)) \ar[d]_\cong\ar[r]^\cong &
+\Gamma(U, \mathcal{O}_X) \\
+\Gamma(U, f'^{-1}(\mathcal{O}_V)) \ar@/^/[ru]^{f'^\sharp}
+\ar@/_/[ru]_{f''^\sharp} &
+}
+$$
+from which we see that $f'^\sharp$ and $f''^\sharp$ define
+the same morphism of sheaves.
+\end{proof}
+
+\noindent
+From now on we do not distinguish between open subsets
+and their associated subspaces.
+
+\begin{lemma}
+\label{lemma-restrict-map-to-opens}
+Let $f : X \to Y$ be a morphism of locally ringed spaces.
+Let $U \subset X$, and $V \subset Y$ be open subsets.
+Suppose that $f(U) \subset V$. There exists a unique
+morphism of locally ringed spaces $f|_U : U \to V$ such
+that the following diagram is a commutative square of
+locally ringed spaces
+$$
+\xymatrix{
+U \ar[d]_{f|_U} \ar[r] & X \ar[d]^f \\
+V \ar[r] & Y
+}
+$$
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+In the following we will use without further mention the following
+fact which follows from the lemma above. Given any morphism
+$f : Y \to X$ of locally ringed spaces, and any open subset
+$U \subset X$ such that $f(Y) \subset U$, then there exists
+a unique morphism of locally ringed spaces $Y \to U$ such that
+the composition $Y \to U \to X$ is equal to $f$. In fact, we will
+even by abuse of notation write $f : Y \to U$ since this rarely
+gives rise to confusion.
+
+
+
+
+
+
+
+
+
+\section{Closed immersions of locally ringed spaces}
+\label{section-closed-immersion}
+
+\noindent
+We follow our conventions introduced in
+Modules, Definition \ref{modules-definition-closed-immersion}.
+
+\begin{definition}
+\label{definition-closed-immersion-locally-ringed-spaces}
+Let $i : Z \to X$ be a morphism of locally ringed spaces.
+We say that $i$ is a {\it closed immersion} if:
+\begin{enumerate}
+\item The map $i$ is a homeomorphism of $Z$ onto a closed subset of $X$.
+\item The map $\mathcal{O}_X \to i_*\mathcal{O}_Z$ is surjective;
+let $\mathcal{I}$ denote the kernel.
+\item The $\mathcal{O}_X$-module $\mathcal{I}$
+is locally generated by sections.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-closed-local-target}
+Let $f : Z \to X$ be a morphism of locally ringed spaces.
+In order for $f$ to be a closed immersion it suffices
+that there exists an open covering $X = \bigcup U_i$ such
+that each $f : f^{-1}U_i \to U_i$ is a closed immersion.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{example}
+\label{example-closed-subspace}
+Let $X$ be a locally ringed space.
+Let $\mathcal{I} \subset \mathcal{O}_X$ be a sheaf
+of ideals which is locally generated by sections as a sheaf
+of $\mathcal{O}_X$-modules. Let $Z$ be the support of
+the sheaf of rings $\mathcal{O}_X/\mathcal{I}$.
+This is a closed subset of $X$, by
+Modules, Lemma \ref{modules-lemma-support-sheaf-rings-closed}.
+Denote $i : Z \to X$ the inclusion map.
+By Modules, Lemma \ref{modules-lemma-i-star-exact}
+there is a unique sheaf of rings $\mathcal{O}_Z$ on $Z$
+with $i_*\mathcal{O}_Z = \mathcal{O}_X/\mathcal{I}$.
+For any $z \in Z$ the stalk $\mathcal{O}_{Z, z}$
+is equal to a quotient $\mathcal{O}_{X, i(z)}/\mathcal{I}_{i(z)}$
+of a local ring and nonzero, hence a local ring.
+Thus $i : (Z, \mathcal{O}_Z) \to (X, \mathcal{O}_X)$ is
+a closed immersion of locally ringed spaces.
+\end{example}
+
+\begin{definition}
+\label{definition-closed-subspace}
+Let $X$ be a locally ringed space.
+Let $\mathcal{I}$ be a sheaf of ideals on $X$
+which is locally generated by sections.
+The locally ringed space $(Z, \mathcal{O}_Z)$
+of Example \ref{example-closed-subspace} above
+is the {\it closed subspace of $X$ associated to
+the sheaf of ideals $\mathcal{I}$}.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-closed-immersion}
+Let $f : X \to Y$ be a closed immersion of
+locally ringed spaces. Let $\mathcal{I}$ be the
+kernel of the map $\mathcal{O}_Y \to f_*\mathcal{O}_X$.
+Let $i : Z \to Y$ be the closed subspace of $Y$
+associated to $\mathcal{I}$.
+There is a unique isomorphism $f' : X \cong Z$ of
+locally ringed spaces such that $f = i \circ f'$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-closed-subspace}
+Let $X$, $Y$ be locally ringed spaces. Let
+$\mathcal{I} \subset \mathcal{O}_X$ be a sheaf of ideals locally generated
+by sections. Let $i : Z \to X$ be the associated closed subspace.
+A morphism $f : Y \to X$ factors through $Z$ if and only if the map
+$f^*\mathcal{I} \to f^*\mathcal{O}_X = \mathcal{O}_Y$
+is zero. If this is the case the morphism $g : Y \to Z$
+such that $f = i \circ g$ is unique.
+\end{lemma}
+
+\begin{proof}
+Clearly if $f$ factors as $Y \to Z \to X$ then the map
+$f^*\mathcal{I} \to \mathcal{O}_Y$ is zero. Conversely
+suppose that $f^*\mathcal{I} \to \mathcal{O}_Y$ is zero.
+Pick any $y \in Y$, and consider the ring map
+$f^\sharp_y : \mathcal{O}_{X, f(y)} \to \mathcal{O}_{Y, y}$.
+Since the composition
+$\mathcal{I}_{f(y)} \to \mathcal{O}_{X, f(y)} \to \mathcal{O}_{Y, y}$
+is zero by assumption and since $f^\sharp_y(1) = 1$
+we see that $1 \not \in \mathcal{I}_{f(y)}$, i.e.,
+$\mathcal{I}_{f(y)} \not = \mathcal{O}_{X, f(y)}$. We conclude that
+$f(Y) \subset Z = \text{Supp}(\mathcal{O}_X/\mathcal{I})$.
+Hence $f = i \circ g$ where $g : Y \to Z$ is continuous.
+Consider the map $f^\sharp : \mathcal{O}_X \to f_*\mathcal{O}_Y$.
+The assumption $f^*\mathcal{I} \to \mathcal{O}_Y$ is zero implies that
+the composition $\mathcal{I} \to \mathcal{O}_X \to f_*\mathcal{O}_Y$ is
+zero by adjointness of $f_*$ and $f^*$.
+In other words, we obtain a morphism of sheaves of rings
+$\overline{f^\sharp} : \mathcal{O}_X/\mathcal{I} \to f_*\mathcal{O}_Y$.
+Note that $f_*\mathcal{O}_Y = i_*g_*\mathcal{O}_Y$ and
+that $\mathcal{O}_X/\mathcal{I} = i_*\mathcal{O}_Z$.
+By Sheaves, Lemma \ref{sheaves-lemma-equivalence-categories-closed-structures}
+we obtain a unique morphism of sheaves of rings
+$g^\sharp : \mathcal{O}_Z \to g_*\mathcal{O}_Y$ whose pushforward
+under $i$ is $\overline{f^\sharp}$. We omit the verification that
+$(g, g^\sharp)$ defines a morphism of locally ringed spaces
+and that $f = i \circ g$ as a morphism of locally ringed spaces.
+The uniqueness of $(g, g^\sharp)$ was pointed out above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-restrict-map-to-closed}
+Let $f : X \to Y$ be a morphism of locally ringed spaces.
+Let $\mathcal{I} \subset \mathcal{O}_Y$ be a sheaf of
+ideals which is locally generated by sections.
+Let $i : Z \to Y$ be the closed subspace associated to the
+sheaf of ideals $\mathcal{I}$.
+Let $\mathcal{J}$ be the image of the map
+$f^*\mathcal{I} \to f^*\mathcal{O}_Y = \mathcal{O}_X$.
+Then this ideal is locally generated by sections.
+Moreover, let $i' : Z' \to X$ be the associated closed
+subspace of $X$. There exists a unique
+morphism of locally ringed spaces $f' : Z' \to Z$ such
+that the following diagram is a commutative square of
+locally ringed spaces
+$$
+\xymatrix{
+Z' \ar[d]_{f'} \ar[r]_{i'} & X \ar[d]^f \\
+Z \ar[r]^{i} & Y
+}
+$$
+Moreover, this diagram is a fibre square in the category of
+locally ringed spaces.
+\end{lemma}
+
+\begin{proof}
+The ideal $\mathcal{J}$ is locally generated by sections
+by Modules, Lemma \ref{modules-lemma-pullback-locally-generated}.
+The rest of the lemma follows from the characterization,
+in Lemma \ref{lemma-characterize-closed-subspace} above,
+of what it means for a morphism to factor through a closed
+subspace.
+\end{proof}
+
+
+
+
+\medskip\noindent
+Let me finish with a proof that haunted my
+second semester of PhD:
+
+\begin{lemma}
+\label{lemma-ideal-sheaf-is-line-bundle-schemes}
+The ideal sheaf of an irreducible codimension-1 closed subscheme of a smooth
+scheme is a line bundle.
+\end{lemma}
+
+\begin{proof}
+Since $Y$ is codimension-1 irreducible, the ideal sheaf at every affine chart is
+a codimension-1 prime ideal. This means that there aren't any nontrivial prime
+ideals of $\mathcal{I}_Y(\Spec A):=I$. Let $f\in I$.
+Since $X$ is smooth, $O_X\Spec A=A$ is a UFD (why?). Then there exists an
+irreducible element $g\in I$ such that $gh=f$. The ideal generated by $g$ is
+prime (again because $A$ is a UFD) 
+and contained in $I$, so that $I$ is principal. This shows that
+$\mathcal{I}_Y$ is locally principal, i.e. it is a line bundle.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{The spectrum of a ring}
+\label{section-spectrum-ring}
+
+\noindent
+We arbitrarily decide that the spectrum of a ring as a topological space
+is part of the algebra chapter, whereas an affine scheme is part of the
+chapter on schemes.
+
+\begin{definition}
+\label{definition-spectrum-ring}
+Let $R$ be a ring.
+\begin{enumerate}
+\item The {\it spectrum} of $R$ is the set of prime ideals of $R$.
+It is usually denoted $\Spec(R)$.
+\item Given a subset $T \subset R$ we let $V(T) \subset \Spec(R)$
+be the set of primes containing $T$, i.e., $V(T) = \{ \mathfrak p \in
+\Spec(R) \mid \forall f\in T, f\in \mathfrak p\}$.
+\item Given an element $f \in R$ we let $D(f) \subset \Spec(R)$
+be the set of primes not containing $f$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-Zariski-topology}
+Let $R$ be a ring.
+\begin{enumerate}
+\item The spectrum of a ring $R$ is empty if and only if $R$
+is the zero ring.
+\item Every nonzero ring has a maximal ideal.
+\item Every nonzero ring has a minimal prime ideal.
+\item Given an ideal $I \subset R$ and a prime ideal
+$I \subset \mathfrak p$ there exists a prime
+$I \subset \mathfrak q \subset \mathfrak p$ such
+that $\mathfrak q$ is minimal over $I$.
+\item If $T \subset R$, and if $(T)$ is the ideal generated by
+$T$ in $R$, then $V((T)) = V(T)$.
+\item If $I$ is an ideal and $\sqrt{I}$ is its radical,
+see basic notion (\ref{item-radical-ideal}), then $V(I) = V(\sqrt{I})$.
+\item Given an ideal $I$ of $R$ we have $\sqrt{I} =
+\bigcap_{I \subset \mathfrak p} \mathfrak p$.
+\item If $I$ is an ideal then $V(I) = \emptyset$ if and only
+if $I$ is the unit ideal.
+\item If $I$, $J$ are ideals of $R$ then $V(I) \cup V(J) =
+V(I \cap J)$.
+\item If $(I_a)_{a\in A}$ is a set of ideals of $R$ then
+$\bigcap_{a\in A} V(I_a) = V(\bigcup_{a\in A} I_a)$.
+\item If $f \in R$, then $D(f) \amalg V(f) = \Spec(R)$.
+\item If $f \in R$ then $D(f) = \emptyset$ if and only if $f$
+is nilpotent.
+\item If $f = u f'$ for some unit $u \in R$, then $D(f) = D(f')$.
+\item If $I \subset R$ is an ideal, and $\mathfrak p$ is a prime of
+$R$ with $\mathfrak p \not\in V(I)$, then there exists an $f \in R$
+such that $\mathfrak p \in D(f)$, and $D(f) \cap V(I) = \emptyset$.
+\item If $f, g \in R$, then $D(fg) = D(f) \cap D(g)$.
+\item If $f_i \in R$ for $i \in I$, then
+$\bigcup_{i\in I} D(f_i)$ is the complement of $V(\{f_i \}_{i\in I})$
+in $\Spec(R)$.
+\item If $f \in R$ and $D(f) = \Spec(R)$, then $f$ is a unit.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We address each part in the corresponding item below.
+\begin{enumerate}
+\item This is a direct consequence of (2) or (3).
+\item Let $\mathfrak{A}$ be the set of all proper ideals of $R$. This set is
+ordered by inclusion and is non-empty, since $(0) \in \mathfrak{A}$ is a proper
+ideal. Let $A$ be a totally ordered subset of $\mathfrak A$.
+Then $\bigcup_{I \in A} I$ is in
+fact an ideal. Since 1 $\notin I$ for all $I \in A$, the union does not contain
+1 and thus is proper. Hence $\bigcup_{I \in A} I$ is in $\mathfrak{A}$ and is
+an upper bound for the set $A$. Thus by Zorn's lemma $\mathfrak{A}$ has a
+maximal element, which is the sought-after maximal ideal.
+\item Since $R$ is nonzero, it contains a maximal ideal which is a prime ideal.
+Thus the set $\mathfrak{A}$ of all prime ideals of $R$ is nonempty.
+$\mathfrak{A}$ is ordered by reverse-inclusion. Let $A$ be a totally ordered
+subset of $\mathfrak{A}$. It's pretty clear that $J = \bigcap_{I \in A} I$ is
+in fact an ideal. Not so clear, however, is that it is prime. Let $xy \in J$.
+Then $xy \in I$ for all $I \in A$. Now let $B = \{I \in A | y \in I\}$. Let $K
+= \bigcap_{I \in B} I$. Since $A$ is totally ordered, either $K = J$ (and we're
+done, since then $y \in J$) or $K \supset J$ and for all $I \in A$ such that
+$I$ is properly contained in $K$, we have $y \notin I$. But that means that for
+all those $I, x \in I$, since they are prime. Hence $x \in J$. In either case,
+$J$ is prime as desired. Hence by Zorn's lemma we get a maximal element which
+in this case is a minimal prime ideal.
+\item This is the same exact argument as (3) except you only consider prime
+ideals contained in $\mathfrak{p}$ and containing $I$.
+\item $(T)$ is the smallest ideal containing $T$. Hence if $T \subset I$, some
+ideal, then $(T) \subset I$ as well. Hence if $I \in V(T)$, then $I \in V((T))$
+as well. The other inclusion is obvious.
+\item Since $I \subset \sqrt{I}, V(\sqrt{I}) \subset V(I)$. Now let
+$\mathfrak{p} \in V(I)$. Let $x \in \sqrt{I}$. Then $x^n \in I$ for some $n$.
+Hence $x^n \in \mathfrak{p}$. But since $\mathfrak{p}$ is prime, a boring
+induction argument gets you that $x \in \mathfrak{p}$. Hence $\sqrt{I} \subset
+\mathfrak{p}$ and $\mathfrak{p} \in V(\sqrt{I})$.
+\item Let $f \in R \setminus \sqrt{I}$. Then $f^n \notin I$ for all $n$. Hence
+$S = \{1, f, f^2, \ldots\}$ is a multiplicative subset, not containing $0$.
+Take a
+prime ideal $\bar{\mathfrak{p}} \subset S^{-1}R$ containing $S^{-1}I$. Then the
+pull-back $\mathfrak{p}$ in $R$ of $\bar{\mathfrak{p}}$ is a prime ideal
+containing $I$ that does not intersect $S$. This shows that $\bigcap_{I \subset
+\mathfrak p} \mathfrak p \subset \sqrt{I}$. Now if $a \in \sqrt{I}$, then $a^n
+\in I$ for some $n$. Hence if $I \subset \mathfrak{p}$, then $a^n \in
+\mathfrak{p}$. But since $\mathfrak{p}$ is prime, we have $a \in \mathfrak{p}$.
+Thus the equality is shown.
+\item $I$ is not the unit ideal if and only if $I$
+is contained in some maximal ideal (to
+see this, apply (2) to the ring $R/I$) which is therefore prime.
+\item If $\mathfrak{p} \in V(I) \cup V(J)$, then $I \subset \mathfrak{p}$ or $J
+\subset \mathfrak{p}$ which means that $I \cap J \subset \mathfrak{p}$. Now if
+$I \cap J \subset \mathfrak{p}$, then $IJ \subset \mathfrak{p}$ and hence
+either $I$ of $J$ is in $\mathfrak{p}$, since $\mathfrak{p}$ is prime.
+\item $\mathfrak{p} \in \bigcap_{a \in A} V(I_a) \Leftrightarrow
+I_a \subset \mathfrak{p}, \forall a \in A \Leftrightarrow
+\mathfrak{p} \in V(\bigcup_{a\in A} I_a)$
+\item If $\mathfrak{p}$ is a prime ideal and $f \in R$, then either $f \in
+\mathfrak{p}$ or $f \notin \mathfrak{p}$ (strictly) which is what the disjoint
+union says.
+\item If $a \in R$ is nilpotent, then $a^n = 0$ for some $n$. Hence $a^n \in
+\mathfrak{p}$ for any prime ideal. Thus $a \in \mathfrak{p}$ as can be shown by
+induction and $D(a) = \emptyset$. Now, as shown in (7), if $a \in R$ is not
+nilpotent, then there is a prime ideal that does not contain it.
+\item $f \in \mathfrak{p} \Leftrightarrow uf \in \mathfrak{p}$, since $u$ is
+invertible.
+\item If $\mathfrak{p} \notin V(I)$, then $\exists f \in I \setminus
+\mathfrak{p}$. Then $f \notin \mathfrak{p}$ so $\mathfrak{p} \in D(f)$. Also if
+$\mathfrak{q} \in D(f)$, then $f \notin \mathfrak{q}$ and thus $I$ is not
+contained in $\mathfrak{q}$. Thus $D(f) \cap V(I) = \emptyset$.
+\item If $fg \in \mathfrak{p}$, then $f \in \mathfrak{p}$ or $g \in
+\mathfrak{p}$. Hence if $f \notin \mathfrak{p}$ and $g \notin \mathfrak{p}$,
+then $fg \notin \mathfrak{p}$. Since $\mathfrak{p}$ is an ideal, if $fg \notin
+\mathfrak{p}$, then $f \notin \mathfrak{p}$ and $g \notin \mathfrak{p}$.
+\item $\mathfrak{p} \in \bigcup_{i \in I} D(f_i) \Leftrightarrow \exists i \in
+I, f_i \notin \mathfrak{p} \Leftrightarrow \mathfrak{p} \in \Spec(R)
+\setminus V(\{f_i\}_{i \in I})$
+\item If $D(f) = \Spec(R)$, then $V(f) = \emptyset$ and
+hence $fR = R$, so $f$ is a unit.
+\end{enumerate}
+\end{proof}
+
+\noindent
+The lemma implies that the subsets $V(T)$ from
+Definition \ref{definition-spectrum-ring} form the closed
+subsets of a topology on $\Spec(R)$. And it also shows that
+the sets $D(f)$ are open and form a basis for this
+topology.
+
+\begin{definition}
+\label{definition-Zariski-topology}
+Let $R$ be a ring.
+The topology on $\Spec(R)$ whose closed sets are the
+sets $V(T)$ is called the {\it Zariski} topology. The open
+subsets $D(f)$ are called the {\it standard opens} of $\Spec(R)$.
+\end{definition}
+
+\noindent
+It should be clear from context whether we consider $\Spec(R)$
+just as a set or as a topological space.
+
+\begin{lemma}
+\label{lemma-spec-functorial}
+\begin{slogan}
+Functoriality of the spectrum
+\end{slogan}
+Suppose that $\varphi : R \to R'$ is a ring homomorphism.
+The induced map
+$$
+\Spec(\varphi) : \Spec(R') \longrightarrow \Spec(R),
+\quad
+\mathfrak p' \longmapsto \varphi^{-1}(\mathfrak p')
+$$
+is continuous for the Zariski topologies. In fact, for any
+element $f \in R$ we have
+$\Spec(\varphi)^{-1}(D(f)) = D(\varphi(f))$.
+\end{lemma}
+
+\begin{proof}
+It is basic notion (\ref{item-inverse-image-prime}) that
+$\mathfrak p := \varphi^{-1}(\mathfrak p')$
+is indeed a prime ideal of $R$. The last assertion
+of the lemma follows directly from the definitions,
+and implies the first.
+\end{proof}
+
+\noindent
+If $\varphi' : R' \to R''$ is a second ring homomorphism
+then the composition
+$$
+\Spec(R'')
+\longrightarrow
+\Spec(R')
+\longrightarrow
+\Spec(R)
+$$
+equals $\Spec(\varphi' \circ \varphi)$. In other
+words, $\Spec$ is a contravariant functor from the
+category of rings to the category of topological spaces.
+
+\begin{lemma}
+\label{lemma-spec-localization}
+Let $R$ be a ring. Let $S \subset R$ be a multiplicative subset.
+The map $R \to S^{-1}R$ induces via the functoriality of $\Spec$
+a homeomorphism
+$$
+\Spec(S^{-1}R)
+\longrightarrow
+\{\mathfrak p \in \Spec(R) \mid S \cap \mathfrak p = \emptyset \}
+$$
+where the topology on the right hand side is that induced from the
+Zariski topology on $\Spec(R)$. The inverse map is given
+by $\mathfrak p \mapsto S^{-1}\mathfrak p = \mathfrak p(S^{-1}R)$.
+\end{lemma}
+
+\begin{proof}
+Denote the right hand side of the arrow of the lemma by $D$.
+Choose a prime $\mathfrak p' \subset S^{-1}R$ and let $\mathfrak p$
+the inverse image of $\mathfrak p'$ in $R$. Since $\mathfrak p'$
+does not contain $1$ we see that $\mathfrak p$ does not contain
+any element of $S$. Hence $\mathfrak p \in D$ and we see that
+the image is contained in $D$. Let $\mathfrak p \in D$.
+By assumption the image $\overline{S}$ does not contain $0$.
+By basic notion (\ref{item-localization-zero})
+$\overline{S}^{-1}(R/\mathfrak p)$ is not the zero ring.
+By basic notion (\ref{item-localize-ideal}) we see
+$S^{-1}R / S^{-1}\mathfrak p = \overline{S}^{-1}(R/\mathfrak p)$
+is a domain, and hence $S^{-1}\mathfrak p$ is a prime.
+The equality of rings also shows that the inverse image of
+$S^{-1}\mathfrak p$ in $R$ is equal to $\mathfrak p$,
+because $R/\mathfrak p \to \overline{S}^{-1}(R/\mathfrak p)$
+is injective by basic notion (\ref{item-localize-nonzerodivisors}).
+This proves that the map $\Spec(S^{-1}R) \to \Spec(R)$
+is bijective onto $D$ with inverse as given.
+It is continuous by Lemma \ref{lemma-spec-functorial}.
+Finally, let $D(g) \subset \Spec(S^{-1}R)$ be a standard
+open. Write $g = h/s$ for some $h\in R$ and $s\in S$.
+Since $g$ and $h/1$ differ by a unit we have $D(g) =
+D(h/1)$ in $\Spec(S^{-1}R)$.
+Hence by Lemma \ref{lemma-spec-functorial} and the bijectivity
+above the image of $D(g) = D(h/1)$ is $D \cap D(h)$.
+This proves the map is open as well.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-standard-open}
+Let $R$ be a ring. Let $f \in R$.
+The map $R \to R_f$ induces via the functoriality of
+$\Spec$ a homeomorphism
+$$
+\Spec(R_f) \longrightarrow D(f) \subset \Spec(R).
+$$
+The inverse is given by $\mathfrak p \mapsto \mathfrak p \cdot R_f$.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-spec-localization}.
+\end{proof}
+
+\noindent
+It is not the case that every ``affine open'' of a
+spectrum is a standard open. See
+Example \ref{example-affine-open-not-standard}.
+
+\begin{lemma}
+\label{lemma-spec-closed}
+Let $R$ be a ring. Let $I \subset R$ be an ideal.
+The map $R \to R/I$ induces via the functoriality of
+$\Spec$ a homeomorphism
+$$
+\Spec(R/I) \longrightarrow V(I) \subset \Spec(R).
+$$
+The inverse is given by $\mathfrak p \mapsto \mathfrak p / I$.
+\end{lemma}
+
+\begin{proof}
+It is immediate that the image is contained in $V(I)$.
+On the other hand, if $\mathfrak p \in V(I)$
+then $\mathfrak p \supset I$ and we may consider
+the ideal $\mathfrak p /I \subset R/I$. Using
+basic notion (\ref{item-isomorphism-theorem}) we see that
+$(R/I)/(\mathfrak p/I) = R/\mathfrak p$ is a domain
+and hence $\mathfrak p/I$ is a prime ideal. From this
+it is immediately clear that the image of $D(f + I)$
+is $D(f) \cap V(I)$, and hence the map is a homeomorphism.
+\end{proof}
+
+
+
+\begin{lemma}
+\label{lemma-quasi-compact}
+\begin{slogan}
+The spectrum of a ring is quasi-compact
+\end{slogan}
+Let $R$ be a ring. The space $\Spec(R)$ is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+It suffices to prove that any covering of $\Spec(R)$
+by standard opens can be refined by a finite covering.
+Thus suppose that $\Spec(R) = \cup D(f_i)$
+for a set of elements $\{f_i\}_{i\in I}$ of $R$. This means that
+$\cap V(f_i) = \emptyset$. According to Lemma
+\ref{lemma-Zariski-topology} this means that
+$V(\{f_i \}) = \emptyset$. According to the
+same lemma this means that the ideal generated
+by the $f_i$ is the unit ideal of $R$. This means
+that we can write $1$ as a {\it finite} sum:
+$1 = \sum_{i \in J} r_i f_i$ with $J \subset I$ finite.
+And then it follows that $\Spec(R)
+= \cup_{i \in J} D(f_i)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-topology-spec}
+Let $R$ be a ring.
+The topology on $X = \Spec(R)$ has the following properties:
+\begin{enumerate}
+\item $X$ is quasi-compact,
+\item $X$ has a basis for the topology consisting of quasi-compact opens, and
+\item the intersection of any two quasi-compact opens is quasi-compact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The spectrum of a ring is quasi-compact, see
+Lemma \ref{lemma-quasi-compact}.
+It has a basis for the topology consisting of the standard opens
+$D(f) = \Spec(R_f)$
+(Lemma \ref{lemma-standard-open})
+which are quasi-compact by the first remark.
+The intersection of two standard opens is quasi-compact
+as $D(f) \cap D(g) = D(fg)$. Given any two quasi-compact opens
+$U, V \subset X$ we may write $U = D(f_1) \cup \ldots \cup D(f_n)$
+and $V = D(g_1) \cup \ldots \cup D(g_m)$. Then
+$U \cap V = \bigcup D(f_ig_j)$ which is quasi-compact.
+\end{proof}
+
+
+
+
+
+
+
+
+\section{Affine schemes}
+\label{section-affine-schemes}
+
+\noindent
+Let $R$ be a ring. Consider the topological space $\Spec(R)$
+associated to $R$, see Algebra, Section \ref{algebra-section-spectrum-ring}.
+We will endow this space with a sheaf of rings $\mathcal{O}_{\Spec(R)}$
+and the resulting pair $(\Spec(R), \mathcal{O}_{\Spec(R)})$
+will be an affine scheme.
+
+\medskip\noindent
+Recall that $\Spec(R)$ has a basis of open sets $D(f)$,
+$f \in R$ which we call standard opens, see Algebra,
+Definition \ref{algebra-definition-Zariski-topology}.
+In addition, the intersection of two standard opens is another:
+$D(f) \cap D(g) = D(fg)$, $f, g\in R$.
+
+\begin{lemma}
+\label{lemma-standard-open}
+Let $R$ be a ring. Let $f \in R$.
+\begin{enumerate}
+\item If $g\in R$ and $D(g) \subset D(f)$, then
+\begin{enumerate}
+\item $f$ is invertible in $R_g$,
+\item $g^e = af$ for some $e \geq 1$ and $a \in R$,
+\item there is a canonical ring map $R_f \to R_g$, and
+\item there is a canonical $R_f$-module map
+$M_f \to M_g$ for any $R$-module $M$.
+\end{enumerate}
+\item Any open covering of $D(f)$ can be refined to a finite
+open covering of the form $D(f) = \bigcup_{i = 1}^n D(g_i)$.
+\item If $g_1, \ldots, g_n \in R$, then $D(f) \subset \bigcup D(g_i)$
+if and only if $g_1, \ldots, g_n$ generate the unit ideal in $R_f$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Recall that $D(g) = \Spec(R_g)$ (see
+Algebra, Lemma \ref{algebra-lemma-standard-open}).
+Thus (a) holds because $f$
+maps to an element of $R_g$ which is not
+contained in any prime ideal, and hence invertible,
+see Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+Write the inverse of $f$ in $R_g$ as $a/g^d$.
+This means $g^d - af$ is annihilated by a power of $g$, whence (b).
+For (c), the map $R_f \to R_g$ exists by (a) from the universal property
+of localization, or we can define it by mapping $b/f^n$
+to $a^nb/g^{ne}$. The equality $M_f = M \otimes_R R_f$
+can be used to obtain the map on modules, or
+we can define $M_f \to M_g$ by mapping
+$x/f^n$ to $a^nx/g^{ne}$.
+
+\medskip\noindent
+Recall that $D(f)$ is quasi-compact, see
+Algebra, Lemma \ref{algebra-lemma-qc-open}.
+Hence the second statement follows directly
+from the fact that the standard opens form
+a basis for the topology.
+
+\medskip\noindent
+The third statement follows directly from
+Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+\end{proof}
+
+\noindent
+In Sheaves, Section \ref{sheaves-section-bases} we defined
+the notion of a sheaf on a basis, and we showed that it is
+essentially equivalent to the notion of a sheaf on the space,
+see Sheaves, Lemmas \ref{sheaves-lemma-extend-off-basis} and
+\ref{sheaves-lemma-extend-off-basis-structures}. Moreover,
+we showed in
+Sheaves, Lemma \ref{sheaves-lemma-cofinal-systems-coverings-standard-case}
+that it is sufficient to check the sheaf
+condition on a cofinal system of open coverings for each
+standard open. By the lemma above it suffices to check
+on the finite coverings by standard opens.
+
+\begin{definition}
+\label{definition-standard-covering}
+Let $R$ be a ring.
+\begin{enumerate}
+\item A {\it standard open covering} of $\Spec(R)$
+is a covering $\Spec(R) = \bigcup_{i = 1}^n D(f_i)$,
+where $f_1, \ldots, f_n \in R$.
+\item Suppose that $D(f) \subset \Spec(R)$ is a standard
+open. A {\it standard open covering} of $D(f)$
+is a covering $D(f) = \bigcup_{i = 1}^n D(g_i)$,
+where $g_1, \ldots, g_n \in R$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Let $R$ be a ring. Let $M$ be an $R$-module. We will define
+a presheaf $\widetilde M$ on the basis of standard opens.
+Suppose that $U \subset \Spec(R)$ is a standard open.
+If $f, g \in R$ are such that $D(f) = D(g)$, then
+by Lemma \ref{lemma-standard-open} above there are canonical
+maps $M_f \to M_g$ and $M_g \to M_f$ which are mutually inverse.
+Hence we may choose any $f$ such that $U = D(f)$
+and define
+$$
+\widetilde M(U) = M_f.
+$$
+Note that if $D(g) \subset D(f)$, then by
+Lemma \ref{lemma-standard-open} above we have
+a canonical map
+$$
+\widetilde M(D(f)) = M_f \longrightarrow M_g = \widetilde M(D(g)).
+$$
+Clearly, this defines a presheaf of abelian groups on the basis
+of standard opens. If $M = R$, then $\widetilde R$ is a presheaf
+of rings on the basis of standard opens.
+
+\medskip\noindent
+Let us compute the stalk of $\widetilde M$ at a point $x \in \Spec(R)$.
+Suppose that $x$ corresponds to the prime $\mathfrak p \subset R$.
+By definition of the stalk we see that
+$$
+\widetilde M_x = \colim_{f\in R, f\not\in \mathfrak p} M_f
+$$
+Here the set $\{f \in R, f \not \in \mathfrak p\}$ is preordered by
+the rule $f \geq f' \Leftrightarrow D(f) \subset D(f')$.
+If $f_1, f_2 \in R \setminus \mathfrak p$, then we have
+$f_1f_2 \geq f_1$ in this ordering. Hence by
+Algebra, Lemma \ref{algebra-lemma-localization-colimit}
+we conclude that
+$$
+\widetilde M_x = M_{\mathfrak p}.
+$$
+
+\medskip\noindent
+Next, we check the sheaf condition for the standard open coverings.
+If $D(f) = \bigcup_{i = 1}^n D(g_i)$, then the sheaf condition
+for this covering is equivalent with the exactness of the
+sequence
+$$
+0 \to M_f \to \bigoplus M_{g_i} \to \bigoplus M_{g_ig_j}.
+$$
+Note that $D(g_i) = D(fg_i)$, and hence we can rewrite this
+sequence as the sequence
+$$
+0 \to M_f \to \bigoplus M_{fg_i} \to \bigoplus M_{fg_ig_j}.
+$$
+In addition, by Lemma \ref{lemma-standard-open} above
+we see that $g_1, \ldots, g_n$ generate the unit ideal
+in $R_f$. Thus we may apply
+Algebra, Lemma \ref{algebra-lemma-cover-module}
+to the module $M_f$ over $R_f$ and the elements $g_1, \ldots, g_n$.
+We conclude that the sequence is exact. By the remarks
+made above, we see that $\widetilde M$ is a sheaf
+on the basis of standard opens.
+
+\medskip\noindent
+Thus we conclude from the material in
+Sheaves, Section \ref{sheaves-section-bases}
+that there exists a
+unique sheaf of rings $\mathcal{O}_{\Spec(R)}$
+which agrees with $\widetilde R$ on the standard opens.
+Note that by our computation of stalks above, the
+stalks of this sheaf of rings are all local rings.
+
+\medskip\noindent
+Similarly, for any $R$-module $M$ there exists
+a unique sheaf of $\mathcal{O}_{\Spec(R)}$-modules
+$\mathcal{F}$ which agrees with $\widetilde M$ on the
+standard opens, see
+Sheaves, Lemma \ref{sheaves-lemma-extend-off-basis-module}.
+
+\begin{definition}
+\label{definition-structure-sheaf}
+Let $R$ be a ring.
+\begin{enumerate}
+\item The {\it structure sheaf $\mathcal{O}_{\Spec(R)}$ of the
+spectrum of $R$} is the unique sheaf of rings $\mathcal{O}_{\Spec(R)}$
+which agrees with $\widetilde R$ on the basis of standard opens.
+\item The locally ringed space
+$(\Spec(R), \mathcal{O}_{\Spec(R)})$ is called
+the {\it spectrum} of $R$ and denoted $\Spec(R)$.
+\item The sheaf of $\mathcal{O}_{\Spec(R)}$-modules
+extending $\widetilde M$ to all opens of $\Spec(R)$
+is called the sheaf of $\mathcal{O}_{\Spec(R)}$-modules
+associated to $M$. This sheaf is denoted $\widetilde M$ as
+well.
+\end{enumerate}
+\end{definition}
+
+\noindent
+We summarize the results obtained so far.
+
+\begin{lemma}
+\label{lemma-spec-sheaves}
+Let $R$ be a ring. Let $M$ be an $R$-module. Let $\widetilde M$
+be the sheaf of $\mathcal{O}_{\Spec(R)}$-modules
+associated to $M$.
+\begin{enumerate}
+\item We have $\Gamma(\Spec(R), \mathcal{O}_{\Spec(R)}) = R$.
+\item We have $\Gamma(\Spec(R), \widetilde M) = M$ as an $R$-module.
+\item For every $f \in R$ we have
+$\Gamma(D(f), \mathcal{O}_{\Spec(R)}) = R_f$.
+\item For every $f\in R$ we have $\Gamma(D(f), \widetilde M) = M_f$
+as an $R_f$-module.
+\item Whenever $D(g) \subset D(f)$ the restriction mappings
+on $\mathcal{O}_{\Spec(R)}$ and $\widetilde M$
+are the maps
+$R_f \to R_g$ and $M_f \to M_g$ from Lemma
+\ref{lemma-standard-open}.
+\item Let $\mathfrak p$ be a prime of $R$, and let $x \in \Spec(R)$
+be the corresponding point. We have
+$\mathcal{O}_{\Spec(R), x} = R_{\mathfrak p}$.
+\item Let $\mathfrak p$ be a prime of $R$, and let $x \in \Spec(R)$
+be the corresponding point. We have $\widetilde M_x = M_{\mathfrak p}$
+as an $R_{\mathfrak p}$-module.
+\end{enumerate}
+Moreover, all these identifications are functorial in the $R$
+module $M$. In particular, the functor $M \mapsto \widetilde M$
+is an exact functor from the category of $R$-modules
+to the category of $\mathcal{O}_{\Spec(R)}$-modules.
+\end{lemma}
+
+\begin{proof}
+Assertions (1) - (7) are clear from the discussion above.
+The exactness of the functor $M \mapsto \widetilde M$
+follows from the fact that the functor $M \mapsto M_{\mathfrak p}$
+is exact and the fact that exactness of short exact sequences
+may be checked on stalks, see
+Modules, Lemma \ref{modules-lemma-abelian}.
+\end{proof}
+
+\begin{definition}
+\label{definition-affine-scheme}
+An {\it affine scheme} is a locally ringed space isomorphic
+as a locally ringed space to $\Spec(R)$ for some ring $R$.
+A {\it morphism of affine schemes} is a morphism in the category
+of locally ringed spaces.
+\end{definition}
+
+\noindent
+It turns out that affine schemes play a special role
+among all locally ringed spaces, which is what the next
+section is about.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{The category of affine schemes}
+\label{section-category-affine-schemes}
+
+\noindent
+This might be a cornerstone of AG.
+The point is that once we take affine charts,
+we re in the affine category. And this category turns
+out to be equivalent to the category of rings. /o/
+See below for some important properties of the correspondence;
+namely fibred products and tensor product counterparts.
+
+\noindent
+Note that if $Y$ is an affine scheme, then its
+points are in canonical $1-1$ bijection with
+prime ideals in $\Gamma(Y, \mathcal{O}_Y)$.
+
+\begin{lemma}
+\label{lemma-morphism-into-affine-where-point-goes}
+Let $X$ be a locally ringed space.
+Let $Y$ be an affine scheme.
+Let $f \in \Mor(X, Y)$ be a morphism
+of locally ringed spaces. Given a point $x \in X$
+consider the ring maps
+$$
+\Gamma(Y, \mathcal{O}_Y) \xrightarrow{f^\sharp}
+\Gamma(X, \mathcal{O}_X) \to \mathcal{O}_{X, x}
+$$
+Let $\mathfrak p \subset \Gamma(Y, \mathcal{O}_Y)$ denote
+the inverse image of $\mathfrak m_x$. Let $y \in Y$ be the
+corresponding point. Then $f(x) = y$.
+\end{lemma}
+
+\begin{proof}
+Consider the commutative diagram
+$$
+\xymatrix{
+\Gamma(X, \mathcal{O}_X) \ar[r] &
+\mathcal{O}_{X, x} \\
+\Gamma(Y, \mathcal{O}_Y) \ar[r] \ar[u] &
+\mathcal{O}_{Y, f(x)} \ar[u]
+}
+$$
+(see the discussion of $f$-maps below
+Sheaves, Definition \ref{sheaves-definition-f-map}).
+Since the right vertical arrow is local
+we see that $\mathfrak m_{f(x)}$ is the
+inverse image of $\mathfrak m_x$. The result
+follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-f-open}
+Let $X$ be a locally ringed space.
+Let $f \in \Gamma(X, \mathcal{O}_X)$.
+The set
+$$
+D(f) = \{x \in X \mid \text{image }f \not\in \mathfrak m_x\}
+$$
+is open. Moreover $f|_{D(f)}$ has an inverse.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Modules, Lemma \ref{modules-lemma-s-open}, but
+we also give a direct proof.
+Suppose that $U \subset X$ and $V \subset X$ are
+two open subsets such that $f|_U$ has an inverse
+$g$ and $f|_V$ has an inverse $h$. Then clearly
+$g|_{U\cap V} = h|_{U\cap V}$. Thus it suffices
+to show that $f$ is invertible in an open neighbourhood
+of any $x \in D(f)$. This is clear because
+$f \not \in \mathfrak m_x$ implies that $f \in \mathcal{O}_{X, x}$
+has an inverse $g \in \mathcal{O}_{X, x}$ which means there
+is some open neighbourhood $x \in U \subset X$ so
+that $g \in \mathcal{O}_X(U)$ and $g\cdot f|_U = 1$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-f-open-affine}
+In Lemma \ref{lemma-f-open} above, if $X$ is an affine scheme,
+then the open $D(f)$ agrees with the standard open $D(f)$
+defined previously (in
+Algebra, Definition \ref{algebra-definition-spectrum-ring}).
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-morphism-into-affine}
+\begin{reference}
+A reference for this fact is \cite[II, Err 1, Prop. 1.8.1]{EGA}
+where it is attributed to J. Tate.
+\end{reference}
+Let $X$ be a locally ringed space.
+Let $Y$ be an affine scheme.
+The map
+$$
+\Mor(X, Y)
+\longrightarrow
+\Hom(\Gamma(Y, \mathcal{O}_Y), \Gamma(X, \mathcal{O}_X))
+$$
+which maps $f$ to $f^\sharp$ (on global sections) is bijective.
+\end{lemma}
+
+\begin{proof}
+Since $Y$ is affine we have
+$(Y, \mathcal{O}_Y) \cong (\Spec(R), \mathcal{O}_{\Spec(R)})$
+for some ring $R$.
+During the proof we will use facts about $Y$ and
+its structure sheaf which are direct consequences of things
+we know about the spectrum of a ring, see e.g.\ Lemma
+\ref{lemma-spec-sheaves}.
+
+\medskip\noindent
+Motivated by the lemmas above we construct the inverse map.
+Let $\psi_Y : \Gamma(Y, \mathcal{O}_Y) \to \Gamma(X, \mathcal{O}_X)$
+be a ring map. First, we define the corresponding map of
+spaces
+$$
+\Psi : X \longrightarrow Y
+$$
+by the rule of
+Lemma \ref{lemma-morphism-into-affine-where-point-goes}.
+In other words, given $x \in X$ we define $\Psi(x)$
+to be the point of $Y$ corresponding to the prime
+in $\Gamma(Y, \mathcal{O}_Y)$ which is the inverse
+image of $\mathfrak m_x$ under the composition
+$
+\Gamma(Y, \mathcal{O}_Y) \xrightarrow{\psi_Y}
+\Gamma(X, \mathcal{O}_X) \to
+\mathcal{O}_{X, x}
+$.
+
+\medskip\noindent
+We claim that the map $\Psi : X \to Y$ is continuous.
+The standard opens $D(g)$, for $g \in \Gamma(Y, \mathcal{O}_Y)$
+are a basis for the topology of $Y$. Thus it suffices to prove
+that $\Psi^{-1}(D(g))$ is open. By construction of $\Psi$
+the inverse image $\Psi^{-1}(D(g))$ is exactly the set
+$D(\psi_Y(g)) \subset X$ which is open by Lemma \ref{lemma-f-open}.
+Hence $\Psi$ is continuous.
+
+\medskip\noindent
+Next we construct a $\Psi$-map of sheaves from
+$\mathcal{O}_Y$ to $\mathcal{O}_X$. By
+Sheaves, Lemma \ref{sheaves-lemma-f-map-basis-below-structures}
+it suffices to define ring maps
+$\psi_{D(g)} : \Gamma(D(g), \mathcal{O}_Y) \to
+\Gamma(\Psi^{-1}(D(g)), \mathcal{O}_X)$
+compatible with restriction maps.
+We have a canonical isomorphism
+$\Gamma(D(g), \mathcal{O}_Y) = \Gamma(Y, \mathcal{O}_Y)_g$,
+because $Y$ is an affine scheme.
+Because $\psi_Y(g)$ is invertible on $D(\psi_Y(g))$
+we see that there is a canonical map
+$$
+\Gamma(Y, \mathcal{O}_Y)_g
+\longrightarrow
+\Gamma(\Psi^{-1}(D(g)), \mathcal{O}_X)
+=
+\Gamma(D(\psi_Y(g)), \mathcal{O}_X)
+$$
+extending the map $\psi_Y$
+by the universal property of localization.
+Note that there is no choice but to take the canonical map here!
+And we take this, combined
+with the canonical identification
+$\Gamma(D(g), \mathcal{O}_Y) = \Gamma(Y, \mathcal{O}_Y)_g$, to
+be $\psi_{D(g)}$. This is compatible with localization since the
+restriction mapping on the affine schemes are defined in terms
+of the universal properties of localization also, see
+Lemmas \ref{lemma-spec-sheaves} and \ref{lemma-standard-open}.
+
+\medskip\noindent
+Thus we have defined a morphism of ringed spaces
+$(\Psi, \psi) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+recovering $\psi_Y$ on global sections. To see that it is
+a morphism of locally ringed spaces we have to show that
+the induced maps on local rings
+$$
+\psi_x : \mathcal{O}_{Y, \Psi(x)} \longrightarrow \mathcal{O}_{X, x}
+$$
+are local. This follows immediately from the commutative diagram
+of the proof of Lemma \ref{lemma-morphism-into-affine-where-point-goes}
+and the definition of $\Psi$.
+
+\medskip\noindent
+Finally, we have to show that the constructions
+$(\Psi, \psi) \mapsto \psi_Y$ and the construction
+$\psi_Y \mapsto (\Psi, \psi)$ are inverse to each other.
+Clearly, $\psi_Y \mapsto (\Psi, \psi) \mapsto \psi_Y$.
+Hence the only thing to prove is that given $\psi_Y$
+there is at most one pair $(\Psi, \psi)$ giving rise
+to it. The uniqueness of $\Psi$ was shown in Lemma
+\ref{lemma-morphism-into-affine-where-point-goes} and
+given the uniqueness of $\Psi$ the uniqueness of the
+map $\psi$ was pointed out during the course of the proof
+above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-category-affine-schemes}
+The category of affine schemes is equivalent to the opposite of the
+category of rings. The equivalence is given by the functor that associates
+to an affine scheme the global sections of its structure sheaf.
+\end{lemma}
+
+\begin{proof}
+This is now clear from Definition \ref{definition-affine-scheme}
+and Lemma \ref{lemma-morphism-into-affine}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-standard-open-affine}
+Let $Y$ be an affine scheme.
+Let $f \in \Gamma(Y, \mathcal{O}_Y)$.
+The open subspace $D(f)$ is an affine scheme.
+\end{lemma}
+
+\begin{proof}
+We may assume that $Y = \Spec(R)$ and $f \in R$.
+Consider the morphism of affine schemes
+$\phi : U = \Spec(R_f) \to \Spec(R) = Y$ induced by the ring
+map $R \to R_f$. By Algebra, Lemma \ref{algebra-lemma-standard-open}
+we know that it is a homeomorphism onto $D(f)$.
+On the other hand, the map $\phi^{-1}\mathcal{O}_Y \to \mathcal{O}_U$
+is an isomorphism on stalks, hence an isomorphism. Thus we see
+that $\phi$ is an open immersion. We conclude that $D(f)$
+is isomorphic to $U$ by Lemma \ref{lemma-open-immersion}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-fibre-product-affine-schemes}
+The category of affine schemes has finite products, and fibre products.
+In other words, it has finite limits. Moreover, the products
+and fibre products in the category of affine schemes
+are the same as in the category of locally ringed spaces.
+In a formula, we have (in the category of locally ringed spaces)
+$$
+\Spec(R) \times \Spec(S) =
+\Spec(R \otimes_{\mathbf{Z}} S)
+$$
+and given ring maps $R \to A$, $R \to B$ we have
+$$
+\Spec(A) \times_{\Spec(R)} \Spec(B)
+=
+\Spec(A \otimes_R B).
+$$
+\end{lemma}
+
+\begin{proof}
+This is just an application of Lemma \ref{lemma-morphism-into-affine}.
+First of all, by that lemma, the affine scheme
+$\Spec(\mathbf{Z})$ is the final object in the category
+of locally ringed spaces. Thus the first displayed formula
+follows from the second. To prove the second note that
+for any locally ringed space $X$ we have
+\begin{eqnarray*}
+\Mor(X, \Spec(A \otimes_R B))
+& = &
+\Hom(A \otimes_R B, \mathcal{O}_X(X)) \\
+& = &
+\Hom(A, \mathcal{O}_X(X))
+\times_{\Hom(R, \mathcal{O}_X(X))}
+\Hom(B, \mathcal{O}_X(X)) \\
+& = &
+\Mor(X, \Spec(A))
+\times_{\Mor(X, \Spec(R))}
+\Mor(X, \Spec(B))
+\end{eqnarray*}
+which proves the formula.
+See Categories, Section \ref{categories-section-fibre-products} for the
+relevant definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-disjoint-union-affines}
+Let $X$ be a locally ringed space.
+Assume $X = U \amalg V$ with $U$ and $V$ open and
+such that $U$, $V$ are affine schemes. Then $X$ is an affine scheme.
+\end{lemma}
+
+\begin{proof}
+Set $R = \Gamma(X, \mathcal{O}_X)$.
+Note that $R = \mathcal{O}_X(U) \times \mathcal{O}_X(V)$
+by the sheaf property. By Lemma \ref{lemma-morphism-into-affine}
+there is a canonical morphism of locally ringed spaces
+$X \to \Spec(R)$. By Algebra, Lemma \ref{algebra-lemma-spec-product}
+we see that as a topological space
+$\Spec(\mathcal{O}_X(U)) \amalg \Spec(\mathcal{O}_X(V)) =
+\Spec(R)$
+with the maps coming from the ring homomorphisms
+$R \to \mathcal{O}_X(U)$ and $R \to \mathcal{O}_X(V)$.
+This of course means that $\Spec(R)$ is the coproduct
+in the category of locally ringed spaces as well.
+By assumption the morphism $X \to \Spec(R)$ induces an isomorphism
+of $\Spec(\mathcal{O}_X(U))$ with $U$ and similarly
+for $V$. Hence $X \to \Spec(R)$ is an isomorphism.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Quasi-coherent sheaves on affines}
+\label{section-quasi-coherent-affine}
+
+\noindent
+Recall that we have defined the abstract notion of a quasi-coherent
+sheaf in Modules, Definition \ref{modules-definition-quasi-coherent}.
+In this section we show that any quasi-coherent sheaf on an affine
+scheme $\Spec(R)$ corresponds to the sheaf $\widetilde M$ associated to
+an $R$-module $M$.
+
+\begin{lemma}
+\label{lemma-compare-constructions}
+Let $(X, \mathcal{O}_X) = (\Spec(R), \mathcal{O}_{\Spec(R)})$
+be an affine scheme. Let $M$ be an $R$-module. There exists a canonical
+isomorphism between the sheaf $\widetilde M$ associated to the $R$-module
+$M$ (Definition \ref{definition-structure-sheaf}) and the sheaf
+$\mathcal{F}_M$ associated to the $R$-module $M$
+(Modules, Definition \ref{modules-definition-sheaf-associated}).
+This isomorphism is functorial in $M$. In particular,
+the sheaves $\widetilde M$ are quasi-coherent. Moreover, they
+are characterized by the following mapping property
+$$
+\Hom_{\mathcal{O}_X}(\widetilde M, \mathcal{F})
+=
+\Hom_R(M, \Gamma(X, \mathcal{F}))
+$$
+for any sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$.
+Here a map $\alpha : \widetilde M \to \mathcal{F}$ corresponds
+to its effect on global sections.
+\end{lemma}
+
+\begin{proof}
+By Modules, Lemma \ref{modules-lemma-construct-quasi-coherent-sheaves}
+we have a morphism $\mathcal{F}_M \to \widetilde M$ corresponding
+to the map $M \to \Gamma(X, \widetilde M) = M$. Let $x \in X$
+correspond to the prime $\mathfrak p \subset R$.
+The induced map on stalks are the maps
+$\mathcal{O}_{X, x} \otimes_R M \to M_{\mathfrak p}$
+which are isomorphisms because
+$R_{\mathfrak p} \otimes_R M = M_{\mathfrak p}$.
+Hence the map $\mathcal{F}_M \to \widetilde M$ is an isomorphism.
+The mapping property follows from the mapping property of
+the sheaves $\mathcal{F}_M$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-widetilde-constructions}
+Let $(X, \mathcal{O}_X) = (\Spec(R), \mathcal{O}_{\Spec(R)})$
+be an affine scheme. There are canonical isomorphisms
+\begin{enumerate}
+\item
+$
+\widetilde{M \otimes_R N}
+\cong
+\widetilde M \otimes_{\mathcal{O}_X} \widetilde N
+$,
+see Modules, Section \ref{modules-section-tensor-product}.
+\item
+$
+\widetilde{\text{T}^n(M)}
+\cong
+\text{T}^n(\widetilde M)
+$,
+$
+\widetilde{\text{Sym}^n(M)}
+\cong
+\text{Sym}^n(\widetilde M)
+$, and
+$
+\widetilde{\wedge^n(M)}
+\cong
+\wedge^n(\widetilde M)
+$,
+see
+Modules, Section \ref{modules-section-symmetric-exterior}.
+\item if $M$ is a finitely presented $R$-module, then
+$
+\SheafHom_{\mathcal{O}_X}(\widetilde M, \widetilde N)
+\cong
+\widetilde{\Hom_R(M,  N)}
+$,
+see
+Modules, Section \ref{modules-section-internal-hom}.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}[First proof]
+Using Lemma \ref{lemma-compare-constructions} and
+Modules, Lemma \ref{modules-lemma-construct-quasi-coherent-sheaves}
+we see that the functor $M \mapsto \widetilde M$ can be viewed
+as $\pi^*$ for a morphism $\pi$ of ringed spaces.
+And pulling back modules commutes with tensor constructions by
+Modules, Lemmas \ref{modules-lemma-tensor-product-pullback}
+and \ref{modules-lemma-pullback-tensor-algebra}.
+The morphism $\pi : (X, \mathcal{O}_X) \to (\{*\}, R)$ is
+flat for example because the stalks of $\mathcal{O}_X$ are
+localizations of $R$ (Lemma \ref{lemma-spec-sheaves})
+and hence flat over $R$. Thus pullback by $\pi$ commutes
+with internal hom if the first module is finitely presented by
+Modules, Lemma \ref{modules-lemma-pullback-internal-hom}.
+\end{proof}
+
+\begin{proof}[Second proof]
+Proof of (1). By Lemma \ref{lemma-compare-constructions} to give a map
+$\widetilde{M \otimes_R N}$ into
+$\widetilde M \otimes_{\mathcal{O}_X} \widetilde N$
+we have to give a map on global sections
+$M \otimes_R N \to
+\Gamma(X, \widetilde M \otimes_{\mathcal{O}_X} \widetilde N)$
+which exists by definition of the tensor product of sheaves
+of modules. To see that this map is an isomorphism it
+suffices to check that it is an isomorphism on stalks.
+And this follows from the description of the stalks
+of $\widetilde{M}$ (either in Lemma \ref{lemma-spec-sheaves} or in
+Modules, Lemma \ref{modules-lemma-construct-quasi-coherent-sheaves}),
+the fact that tensor product commutes with localization
+(Algebra, Lemma \ref{algebra-lemma-tensor-product-localization}) and
+Modules, Lemma \ref{modules-lemma-stalk-tensor-product}.
+
+\medskip\noindent
+Proof of (2). This is similar to the proof of (1), using
+Algebra, Lemma \ref{algebra-lemma-tensor-algebra-localization} and
+Modules, Lemma \ref{modules-lemma-stalk-tensor-algebra}.
+
+\medskip\noindent
+Proof of (3). Since the construction $M \mapsto \widetilde{M}$ is functorial
+there is an $R$-linear map
+$\Hom_R(M, N) \to \Hom_{\mathcal{O}_X}(\widetilde{M}, \widetilde{N})$.
+The target of this map is the global sections of
+$\SheafHom_{\mathcal{O}_X}(\widetilde M, \widetilde N)$.
+Hence by Lemma \ref{lemma-compare-constructions} we obtain a map
+of $\mathcal{O}_X$-modules $\widetilde{\Hom_R(M,  N)} \to
+\SheafHom_{\mathcal{O}_X}(\widetilde M, \widetilde N)$.
+We check that this is an isomorphism by comparing stalks.
+If $M$ is finitely presented as an $R$-module
+then $\widetilde M$ has a global finite presentation as an
+$\mathcal{O}_X$-module. Hence we conclude using
+Algebra, Lemma \ref{algebra-lemma-hom-from-finitely-presented} and
+Modules, Lemma \ref{modules-lemma-stalk-internal-hom}.
+\end{proof}
+
+\begin{proof}[Third proof of part (1)]
+For any $\mathcal{O}_X$-module $\mathcal{F}$
+we have the following isomorphisms functorial in $M$, $N$, and $\mathcal{F}$
+\begin{align*}
+\Hom_{\mathcal{O}_X}(\widetilde{M} \otimes _{\mathcal{O} _X} \widetilde{N},
+\mathcal{F})
+& =
+\Hom_{\mathcal{O}_X}(\widetilde{M},
+\SheafHom_{\mathcal{O} _X} (\widetilde{N}, \mathcal{F})) \\
+& =
+\Hom_R(M, \Gamma(X,
+\SheafHom_{\mathcal{O}_X}(\widetilde{N}, \mathcal{F}))) \\
+& =
+\Hom_R(M, \Hom_{\mathcal{O}_X}(\widetilde{N}, \mathcal{F})) \\
+& =
+\Hom_R(M, \Hom_R(N, \Gamma(X,\mathcal{F}))) \\
+& =
+\Hom_R(M \otimes_R N, \Gamma(X, \mathcal{F})) \\
+& =
+\Hom_{\mathcal{O}_X}(\widetilde{M \otimes_R N}, \mathcal{F})
+\end{align*}
+The first equality is Modules, Lemma \ref{modules-lemma-internal-hom}.
+The second equality is the universal property of $\widetilde{M}$, see
+Lemma \ref{lemma-compare-constructions}. The third equality holds by
+definition of $\SheafHom$. The fourth equality is the universal property
+of $\widetilde{N}$. Then fifth equality is
+Algebra, Lemma \ref{algebra-lemma-hom-from-tensor-product}.
+The final equality is the universal property of
+$\widetilde{M \otimes_R N}$.
+By the Yoneda lemma (Categories, Lemma \ref{categories-lemma-yoneda})
+we obtain (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-widetilde-pullback}
+Let
+$(X, \mathcal{O}_X) = (\Spec(S), \mathcal{O}_{\Spec(S)})$,
+$(Y, \mathcal{O}_Y) = (\Spec(R), \mathcal{O}_{\Spec(R)})$
+be affine schemes.
+Let $\psi : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$ be a
+morphism of affine schemes, corresponding to the ring map
+$\psi^\sharp : R \to S$ (see Lemma \ref{lemma-category-affine-schemes}).
+\begin{enumerate}
+\item We have $\psi^* \widetilde M = \widetilde{S \otimes_R M}$
+functorially in the $R$-module $M$.
+\item We have $\psi_* \widetilde N = \widetilde{N_R}$ functorially
+in the $S$-module $N$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The first assertion follows from the identification in
+Lemma \ref{lemma-compare-constructions}
+and the result of Modules, Lemma \ref{modules-lemma-restrict-quasi-coherent}.
+The second assertion follows from the fact
+that $\psi^{-1}(D(f)) = D(\psi^\sharp(f))$ and hence
+$$
+\psi_* \widetilde N(D(f)) = \widetilde N(D(\psi^\sharp(f))) =
+N_{\psi^\sharp(f)} = (N_R)_f = \widetilde{N_R}(D(f))
+$$
+as desired.
+\end{proof}
+
+\noindent
+Lemma \ref{lemma-widetilde-pullback} above says in particular
+that if you restrict
+the sheaf $\widetilde M$ to a standard affine open subspace
+$D(f)$, then you get $\widetilde{M_f}$. We will use this from
+now on without further mention.
+
+\begin{lemma}
+\label{lemma-quasi-coherent-affine}
+Let $(X, \mathcal{O}_X) = (\Spec(R), \mathcal{O}_{\Spec(R)})$
+be an affine scheme. Let $\mathcal{F}$ be a
+quasi-coherent $\mathcal{O}_X$-module. Then
+$\mathcal{F}$ is isomorphic to the sheaf associated to
+the $R$-module $\Gamma(X, \mathcal{F})$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+Since every standard open $D(f)$ is quasi-compact we see that
+$X$ is locally quasi-compact, i.e., every point has a fundamental
+system of quasi-compact neighbourhoods, see Topology,
+Definition \ref{topology-definition-locally-quasi-compact}.
+Hence by Modules, Lemma \ref{modules-lemma-quasi-coherent-module}
+for every prime $\mathfrak p \subset R$ corresponding to $x \in X$
+there exists an open neighbourhood $x \in U \subset X$ such that
+$\mathcal{F}|_U$ is isomorphic to the quasi-coherent
+sheaf associated to some $\mathcal{O}_X(U)$-module $M$.
+In other words, we get an open covering by $U$'s with this property.
+By Lemma \ref{lemma-standard-open} for example we can refine this
+covering to  a standard open covering.
+Thus we get a covering $\Spec(R) = \bigcup D(f_i)$
+and $R_{f_i}$-modules $M_i$ and isomorphisms
+$\varphi_i : \mathcal{F}|_{D(f_i)} \to \mathcal{F}_{M_i}$
+for some $R_{f_i}$-module $M_i$. On the overlaps
+we get isomorphisms
+$$
+\xymatrix{
+\mathcal{F}_{M_i}|_{D(f_if_j)}
+\ar[rr]^{\varphi_i^{-1}|_{D(f_if_j)}}
+& &
+\mathcal{F}|_{D(f_if_j)}
+\ar[rr]^{\varphi_j|_{D(f_if_j)}}
+& &
+\mathcal{F}_{M_j}|_{D(f_if_j)}.
+}
+$$
+Let us denote these $\psi_{ij}$. It is clear that
+we have the cocycle condition
+$$
+\psi_{jk}|_{D(f_if_jf_k)}
+\circ
+\psi_{ij}|_{D(f_if_jf_k)}
+=
+\psi_{ik}|_{D(f_if_jf_k)}
+$$
+on triple overlaps.
+
+\medskip\noindent
+Recall that each of the open subspaces $D(f_i)$, $D(f_if_j)$,
+$D(f_if_jf_k)$ is an affine scheme. Hence the sheaves $\mathcal{F}_{M_i}$
+are isomorphic to the sheaves $\widetilde M_i$ by Lemma
+\ref{lemma-compare-constructions} above. In particular we see that
+$\mathcal{F}_{M_i}(D(f_if_j)) = (M_i)_{f_j}$, etc.
+Also by Lemma \ref{lemma-compare-constructions} above we see
+that $\psi_{ij}$ corresponds to a unique $R_{f_if_j}$-module isomorphism
+$$
+\psi_{ij} : (M_i)_{f_j} \longrightarrow (M_j)_{f_i}
+$$
+namely, the effect of $\psi_{ij}$ on sections over $D(f_if_j)$.
+Moreover these then satisfy the cocycle condition that
+$$
+\xymatrix{
+(M_i)_{f_jf_k}
+\ar[rd]_{\psi_{ij}}
+\ar[rr]^{\psi_{ik}}
+& &
+(M_k)_{f_if_j} \\
+&
+(M_j)_{f_if_k} \ar[ru]_{\psi_{jk}}
+}
+$$
+commutes (for any triple $i, j, k$).
+
+\medskip\noindent
+Now Algebra, Lemma \ref{algebra-lemma-glue-modules}
+shows that there exist an $R$-module $M$ such that
+$M_i = M_{f_i}$ compatible with the morphisms $\psi_{ij}$.
+Consider $\mathcal{F}_M = \widetilde M$. At this point it is
+a formality to show that $\widetilde M$ is isomorphic to
+the quasi-coherent sheaf $\mathcal{F}$ we started out with.
+Namely, the sheaves $\mathcal{F}$ and $\widetilde M$ give
+rise to isomorphic sets of glueing data of sheaves of $\mathcal{O}_X$-modules
+with respect to the covering $X = \bigcup D(f_i)$, see
+Sheaves, Section \ref{sheaves-section-glueing-sheaves}
+and in particular Lemma \ref{sheaves-lemma-mapping-property-glue}.
+Explicitly, in the current situation, this boils down to
+the following argument: Let us construct an $R$-module map
+$$
+M \longrightarrow \Gamma(X, \mathcal{F}).
+$$
+Namely, given $m \in M$ we get $m_i = m/1 \in M_{f_i} = M_i$
+by construction of $M$. By construction of $M_i$ this corresponds
+to a section $s_i \in \mathcal{F}(U_i)$. (Namely, $\varphi^{-1}_i(m_i)$.)
+We claim that $s_i|_{D(f_if_j)} = s_j|_{D(f_if_j)}$. This is
+true because, by construction of $M$, we have $\psi_{ij}(m_i) = m_j$,
+and by the construction of the $\psi_{ij}$. By the sheaf condition of
+$\mathcal{F}$ this collection of sections gives rise to a unique
+section $s$ of $\mathcal{F}$ over $X$. We leave it to the reader
+to show that $m \mapsto s$ is a $R$-module map.
+By Lemma \ref{lemma-compare-constructions} we obtain an associated
+$\mathcal{O}_X$-module map
+$$
+\widetilde M \longrightarrow \mathcal{F}.
+$$
+By construction this map reduces to the isomorphisms
+$\varphi_i^{-1}$ on each $D(f_i)$ and hence is an isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-equivalence-quasi-coherent}
+Let $(X, \mathcal{O}_X) = (\Spec(R), \mathcal{O}_{\Spec(R)})$
+be an affine scheme.
+The functors $M \mapsto \widetilde M$ and
+$\mathcal{F} \mapsto \Gamma(X, \mathcal{F})$ define quasi-inverse
+equivalences of categories
+$$
+\xymatrix{
+\QCoh(\mathcal{O}_X)
+\ar@<1ex>[r]
+&
+\text{Mod}_R
+\ar@<1ex>[l]
+}
+$$
+between the category of quasi-coherent $\mathcal{O}_X$-modules
+and the category of $R$-modules.
+\end{lemma}
+
+\begin{proof}
+See Lemmas \ref{lemma-compare-constructions}
+and \ref{lemma-quasi-coherent-affine} above.
+\end{proof}
+
+\noindent
+From now on we will not distinguish between quasi-coherent
+sheaves on affine schemes and sheaves of the form $\widetilde M$.
+
+\begin{lemma}
+\label{lemma-kernel-cokernel-quasi-coherent}
+Let $X = \Spec(R)$ be an affine scheme.
+Kernels and cokernels of maps of quasi-coherent
+$\mathcal{O}_X$-modules are quasi-coherent.
+\end{lemma}
+
+\begin{proof}
+This follows from the exactness of the functor $\widetilde{\ }$
+since by Lemma \ref{lemma-compare-constructions} we know that any map
+$\psi : \widetilde{M} \to \widetilde{N}$ comes from
+an $R$-module map $\varphi : M \to N$. (So we have
+$\Ker(\psi) = \widetilde{\Ker(\varphi)}$ and
+$\Coker(\psi) = \widetilde{\Coker(\varphi)}$.)
+\end{proof}
+
+\begin{lemma}
+\label{lemma-colimit-quasi-coherent}
+Let $X = \Spec(R)$ be an affine scheme.
+The direct sum of an arbitrary collection of quasi-coherent sheaves
+on $X$ is quasi-coherent. The same holds for colimits.
+\end{lemma}
+
+\begin{proof}
+Suppose $\mathcal{F}_i$, $i \in I$ is a collection of quasi-coherent
+sheaves on $X$. By Lemma \ref{lemma-equivalence-quasi-coherent}
+above we can write $\mathcal{F}_i = \widetilde{M_i}$ for some $R$-module
+$M_i$. Set $M = \bigoplus M_i$. Consider the sheaf $\widetilde{M}$.
+For each standard open $D(f)$ we have
+$$
+\widetilde{M}(D(f)) = M_f =
+\left(\bigoplus M_i\right)_f =
+\bigoplus M_{i, f}.
+$$
+Hence we see that the quasi-coherent $\mathcal{O}_X$-module
+$\widetilde{M}$ is the direct sum of the sheaves $\mathcal{F}_i$.
+A similar argument works for general colimits.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-extension-quasi-coherent}
+Let $(X, \mathcal{O}_X) = (\Spec(R), \mathcal{O}_{\Spec(R)})$
+be an affine scheme. Suppose that
+$$
+0 \to
+\mathcal{F}_1 \to
+\mathcal{F}_2 \to
+\mathcal{F}_3 \to
+0
+$$
+is a short exact sequence of sheaves of $\mathcal{O}_X$-modules.
+If two out of three are quasi-coherent then so is the third.
+\end{lemma}
+
+\begin{proof}
+This is clear in case both $\mathcal{F}_1$ and $\mathcal{F}_2$ are
+quasi-coherent because the functor $M \mapsto \widetilde M$
+is exact, see Lemma \ref{lemma-spec-sheaves}.
+Similarly in case both $\mathcal{F}_2$ and $\mathcal{F}_3$ are
+quasi-coherent. Now, suppose that $\mathcal{F}_1 = \widetilde M_1$ and
+$\mathcal{F}_3 = \widetilde M_3$ are quasi-coherent.
+Set $M_2 = \Gamma(X, \mathcal{F}_2)$. We claim it suffices to show that
+the sequence
+$$
+0 \to M_1 \to M_2 \to M_3 \to 0
+$$
+is exact. Namely, if this is the case, then (by using the mapping
+property of Lemma \ref{lemma-compare-constructions}) we get a commutative
+diagram
+$$
+\xymatrix{
+0 \ar[r] &
+\widetilde M_1 \ar[r] \ar[d] &
+\widetilde M_2 \ar[r] \ar[d] &
+\widetilde M_3 \ar[r] \ar[d] &
+0 \\
+0 \ar[r] &
+\mathcal{F}_1 \ar[r] &
+\mathcal{F}_2 \ar[r] &
+\mathcal{F}_3 \ar[r] &
+0
+}
+$$
+and we win by the snake lemma.
+
+\medskip\noindent
+The ``correct'' argument here would be to show first
+that $H^1(X, \mathcal{F}) = 0$ for any quasi-coherent sheaf $\mathcal{F}$.
+This is actually not all that hard, but it is perhaps better to postpone
+this till later. Instead we use a small trick.
+
+\medskip\noindent
+Pick $m \in M_3 = \Gamma(X, \mathcal{F}_3)$.
+Consider the following set
+$$
+I = \{ f \in R \mid \text{the element }fm\text{ comes from }M_2\}.
+$$
+Clearly this is an ideal. It suffices to show $1 \in I$.
+Hence it suffices to show that for any prime $\mathfrak p$
+there exists an $f \in I$, $f \not\in \mathfrak p$.
+Let $x \in X$ be the point corresponding to $\mathfrak p$.
+Because surjectivity can be checked on stalks
+there exists an open neighbourhood $U$ of $x$ such that
+$m|_U$ comes from a local section $s \in \mathcal{F}_2(U)$.
+In fact we may assume that $U = D(f)$ is a standard open,
+i.e., $f \in R$, $f \not \in \mathfrak p$. We will show
+that for some $N \gg 0$ we have $f^N \in I$, which
+will finish the proof.
+
+\medskip\noindent
+Take any point $z \in V(f)$, say corresponding to the
+prime $\mathfrak q \subset R$. We can also find a $g \in R$,
+$g \not \in \mathfrak q$ such that $m|_{D(g)}$ lifts
+to some $s' \in \mathcal{F}_2(D(g))$.
+Consider the difference $s|_{D(fg)} - s'|_{D(fg)}$.
+This is an element $m'$ of $\mathcal{F}_1(D(fg)) = (M_1)_{fg}$.
+For some integer $n = n(z)$ the element $f^n m'$ comes
+from some $m'_1 \in (M_1)_g$. We see that
+$f^n s$ extends to a section $\sigma$ of $\mathcal{F}_2$ on $D(f) \cup D(g)$
+because it agrees with the restriction of
+$f^n s' + m'_1$ on $D(f) \cap D(g) = D(fg)$.
+Moreover, $\sigma$ maps to the restriction of $f^n m$
+to $D(f) \cup D(g)$.
+
+\medskip\noindent
+Since $V(f)$ is quasi-compact, there exists a finite list
+of elements $g_1, \ldots, g_m \in R$ such that
+$V(f) \subset \bigcup D(g_j)$, an integer $n > 0$ and sections
+$\sigma_j \in \mathcal{F}_2(D(f) \cup D(g_j))$ such that
+$\sigma_j|_{D(f)} = f^n s$ and $\sigma_j$ maps to the section
+$f^nm|_{D(f) \cup D(g_j)}$ of $\mathcal{F}_3$.
+Consider the differences
+$$
+\sigma_j|_{D(f) \cup D(g_jg_k)}
+-
+\sigma_k|_{D(f) \cup D(g_jg_k)}.
+$$
+These correspond to sections of $\mathcal{F}_1$
+over $D(f) \cup D(g_jg_k)$ which are zero
+on $D(f)$. In particular their images in
+$\mathcal{F}_1(D(g_jg_k)) = (M_1)_{g_jg_k}$
+are zero in $(M_1)_{g_jg_kf}$.
+Thus some high power of $f$ kills each and every one of these.
+In other words, the elements $f^N \sigma_j$, for some $N \gg 0$
+satisfy the glueing condition of the sheaf property and
+give rise to a section $\sigma $ of $\mathcal{F}_2$
+over $\bigcup (D(f) \cup D(g_j)) = X$ as desired.
+\end{proof}
+
+
+
+
+
+
+
+\section{Closed subspaces of affine schemes}
+\label{section-closed-in-affine}
+
+\begin{example}
+\label{example-closed-immersion-affines}
+Let $R$ be a ring.
+Let $I \subset R$ be an ideal.
+Consider the morphism of affine schemes
+$i : Z = \Spec(R/I) \to \Spec(R) = X$.
+By Algebra, Lemma \ref{algebra-lemma-spec-closed}
+this is a homeomorphism of $Z$ onto a closed
+subset of $X$. Moreover, if $I \subset \mathfrak p \subset R$
+is a prime corresponding to a point $x = i(z)$, $x \in X$,
+$z \in Z$, then on stalks we get the map
+$$
+\mathcal{O}_{X, x} = R_{\mathfrak p}
+\longrightarrow
+R_{\mathfrak p}/IR_{\mathfrak p} = \mathcal{O}_{Z, z}
+$$
+Thus we see that $i$ is a closed immersion of locally ringed spaces,
+see Definition \ref{definition-closed-immersion-locally-ringed-spaces}.
+Clearly, this is (isomorphic) to the closed subspace associated
+to the quasi-coherent sheaf of ideals $\widetilde I$, as in
+Example \ref{example-closed-subspace}.
+\end{example}
+
+\begin{lemma}
+\label{lemma-closed-immersion-affine-case}
+\begin{slogan}
+For affine schemes, closed immersions correspond to ideals.
+\end{slogan}
+Let $(X, \mathcal{O}_X) = (\Spec(R), \mathcal{O}_{\Spec(R)})$
+be an affine scheme. Let $i : Z \to X$ be any closed immersion
+of locally ringed spaces. Then there exists a unique ideal
+$I \subset R$ such that the morphism $i : Z \to X$ can be identified
+with the closed immersion $\Spec(R/I) \to \Spec(R)$
+constructed in Example \ref{example-closed-immersion-affines} above.
+\end{lemma}
+
+\begin{proof}
+This is kind of silly! Namely, by Lemma \ref{lemma-closed-immersion}
+we can identify $Z \to X$ with the closed subspace associated to
+a sheaf of ideals $\mathcal{I} \subset \mathcal{O}_X$ as in
+Definition \ref{definition-closed-subspace} and
+Example \ref{example-closed-subspace}.
+By our conventions this sheaf of ideals is locally generated
+by sections as a sheaf of $\mathcal{O}_X$-modules.
+Hence the quotient sheaf $\mathcal{O}_X / \mathcal{I}$
+is locally on $X$ the cokernel
+of a map $\bigoplus_{j \in J} \mathcal{O}_U \to \mathcal{O}_U$.
+Thus by definition, $\mathcal{O}_X / \mathcal{I}$ is quasi-coherent.
+By our results in Section \ref{section-quasi-coherent-affine}
+it is of the form $\widetilde S$ for some $R$-module $S$.
+Moreover, since $\mathcal{O}_X = \widetilde R \to \widetilde S$
+is surjective we see by Lemma \ref{lemma-extension-quasi-coherent}
+that also $\mathcal{I}$ is quasi-coherent, say $\mathcal{I} = \widetilde I$.
+Of course $I \subset R$ and $S = R/I$ and everything is clear.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Schemes}
+\label{section-schemes}
+
+\begin{definition}
+\label{definition-scheme}
+\begin{history}
+In \cite{EGA1} what we call a scheme was called a ``pre-sch\'ema'' and the
+name ``sch\'ema'' was reserved for what is a separated scheme in the
+Stacks project. In the second edition \cite{EGA1-second} the terminology
+was changed to the terminology that is now standard. However, one may
+occasionally encounter the terminology ``prescheme'', for example in
+\cite{Murre-lectures}.
+\end{history}
+A {\it scheme} is a locally ringed space with the property that
+every point has an open neighbourhood which is an affine scheme.
+A {\it morphism of schemes} is a morphism of locally
+ringed spaces. The category of schemes will be denoted
+$\Sch$.
+\end{definition}
+
+\noindent
+Let $X$ be a scheme.
+We will use the following (very slight) abuse of language.
+We will say $U \subset X$ is an {\it affine open}, or an {\it open affine}
+if the open subspace $U$ is an affine scheme. We will often
+write $U = \Spec(R)$ to indicate that $U$ is isomorphic
+to $\Spec(R)$ and moreover that we will identify (temporarily)
+$U$ and $\Spec(R)$.
+
+\begin{lemma}
+\label{lemma-open-subspace-scheme}
+Let $X$ be a scheme. Let $j : U \to X$ be an open immersion
+of locally ringed spaces. Then $U$ is a scheme. In particular,
+any open subspace of $X$ is a scheme.
+\end{lemma}
+
+\begin{proof}
+Let $U \subset X$. Let $u \in U$.
+Pick an affine open neighbourhood $u \in V \subset X$.
+Because standard opens of $V$ form a basis of the topology
+on $V$ we see that there exists a $f\in \mathcal{O}_V(V)$
+such that $u \in D(f) \subset U$. And $D(f)$ is an affine scheme
+by Lemma \ref{lemma-standard-open-affine}. This proves that every point
+of $U$ has an open neighbourhood which is affine.
+\end{proof}
+
+\noindent
+Clearly the lemma (or its proof) shows that any scheme
+$X$ has a basis (see Topology, Section \ref{topology-section-bases})
+for the topology consisting of affine opens.
+
+\begin{example}
+\label{example-not-affine}
+Let $k$ be a field.
+An example of a scheme which is not affine is
+given by the open subspace
+$U = \Spec(k[x, y]) \setminus \{ (x, y)\}$
+of the affine scheme $X =\Spec(k[x, y])$.
+It is covered by two affines, namely $D(x) = \Spec(k[x, y, 1/x])$
+and $D(y) = \Spec(k[x, y, 1/y])$ whose intersection is
+$D(xy) = \Spec(k[x, y, 1/xy])$. By the sheaf property
+for $\mathcal{O}_U$ there is an exact sequence
+$$
+0 \to
+\Gamma(U, \mathcal{O}_U) \to
+k[x, y, 1/x] \times k[x, y, 1/y] \to
+k[x, y, 1/xy]
+$$
+We conclude that the map $k[x, y] \to \Gamma(U, \mathcal{O}_U)$
+(coming from the morphism $U \to X$) is an isomorphism.
+Therefore $U$ cannot be affine since if it was then by
+Lemma \ref{lemma-category-affine-schemes} we would have $U \cong X$.
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+\section{Immersions of schemes}
+\label{section-immersions}
+
+\noindent
+In Lemma \ref{lemma-open-subspace-scheme} we saw that any open subspace
+of a scheme is a scheme. Below we will prove that the same holds for
+a closed subspace of a scheme.
+
+\medskip\noindent
+Note that the notion of a quasi-coherent sheaf of $\mathcal{O}_X$-modules
+is defined for any ringed space $X$ in particular when $X$ is a scheme.
+By our efforts in Section \ref{section-quasi-coherent-affine} we
+know that such a sheaf is on any affine open $U \subset X$
+of the form $\widetilde M$ for some $\mathcal{O}_X(U)$-module $M$.
+
+\begin{lemma}
+\label{lemma-closed-subspace-scheme}
+Let $X$ be a scheme. Let $i : Z \to X$ be a closed immersion
+of locally ringed spaces.
+\begin{enumerate}
+\item The locally ringed space $Z$ is a scheme,
+\item the kernel $\mathcal{I}$ of the map
+$\mathcal{O}_X \to i_*\mathcal{O}_Z$ is a quasi-coherent
+sheaf of ideals,
+\item for any affine open $U = \Spec(R)$ of $X$
+the morphism $i^{-1}(U) \to U$ can be identified with
+$\Spec(R/I) \to \Spec(R)$ for some ideal $I \subset R$, and
+\item we have $\mathcal{I}|_U = \widetilde I$.
+\end{enumerate}
+In particular, any sheaf of ideals locally generated by sections
+is a quasi-coherent sheaf of ideals (and vice versa),
+and any closed subspace of $X$ is a scheme.
+\end{lemma}
+
+\begin{proof}
+Let $i : Z \to X$ be a closed immersion.
+Let $z \in Z$ be a point. Choose any affine open
+neighbourhood $i(z) \in U \subset X$. Say $U = \Spec(R)$.
+By Lemma \ref{lemma-closed-immersion-affine-case} we know
+that $i^{-1}(U) \to U$ can be identified with the morphism
+of affine schemes $\Spec(R/I) \to \Spec(R)$.
+First of all this implies that $z \in i^{-1}(U) \subset Z$ is an
+affine neighbourhood of $z$. Thus $Z$ is a scheme. Second
+this implies that $\mathcal{I}|_U$ is $\widetilde I$.
+In other words for every point $x \in i(Z)$ there exists an
+open neighbourhood such that $\mathcal{I}$ is quasi-coherent in
+that neighbourhood. Note that $\mathcal{I}|_{X \setminus i(Z)}
+\cong \mathcal{O}_{X \setminus i(Z)}$. Thus the restriction
+of the sheaf of ideals is quasi-coherent on $X \setminus i(Z)$
+also. We conclude that $\mathcal{I}$ is quasi-coherent.
+\end{proof}
+
+\begin{definition}
+\label{definition-immersion}
+Let $X$ be a scheme.
+\begin{enumerate}
+\item A morphism of schemes is called an {\it open immersion}
+if it is an open immersion of locally ringed spaces (see
+Definition \ref{definition-immersion-locally-ringed-spaces}).
+\item An {\it open subscheme} of $X$ is an open subspace of $X$
+in the sense of Definition \ref{definition-open-subspace}; an open subscheme
+of $X$ is a scheme by Lemma \ref{lemma-open-subspace-scheme}.
+\item A morphism of schemes is called a {\it closed immersion}
+if it is a closed immersion of locally ringed spaces (see
+Definition \ref{definition-closed-immersion-locally-ringed-spaces}).
+\item A {\it closed subscheme} of $X$ is a closed subspace of $X$
+in the sense of Definition \ref{definition-closed-subspace}; a closed subscheme
+is a scheme by Lemma \ref{lemma-closed-subspace-scheme}.
+\item A morphism of schemes $f : X \to Y$ is called an {\it immersion},
+or a {\it locally closed immersion} if it can be factored as
+$j \circ i$ where $i$ is a closed immersion and $j$ is an open
+immersion.
+\end{enumerate}
+\end{definition}
+
+\noindent
+It follows from the lemmas in Sections \ref{section-open-immersion} and
+\ref{section-closed-immersion} that any open (resp.\ closed) immersion of
+schemes is isomorphic to the inclusion of an open (resp.\ closed) subscheme
+of the target.
+
+\medskip\noindent
+Our definition of a closed immersion is halfway between Hartshorne
+and EGA. Hartshorne defines a closed immersion as a morphism $f : X \to Y$ of
+schemes which induces a homeomorphism of $X$ onto a closed subset of
+$Y$ such that $f^\# : \mathcal{O}_Y \to f_*\mathcal{O}_X$ is surjective, see
+\cite[Page 85]{H}. We will show this is equivalent to our notion in
+Lemma \ref{lemma-characterize-closed-immersions}. In \cite{EGA},
+Grothendieck and Dieudonn\'e first define closed subschemes
+via the construction of Example \ref{example-closed-subspace}
+using quasi-coherent sheaves of ideals and then define a closed immersion
+as a morphism $f : X \to Y$ which induces an isomorphism with a
+closed subscheme. It follows from Lemma \ref{lemma-closed-subspace-scheme}
+that this agrees with our notion.
+
+\medskip\noindent
+Pedagogically speaking the definition above is a disaster/nightmare.
+In teaching this material to students, we have found it often
+convenient to define a closed immersion as an affine morphism
+$f : X \to Y$ of schemes such that $f^\# : \mathcal{O}_Y \to f_*\mathcal{O}_X$
+is surjective. Namely, it turns out that the notion of an affine
+morphism (Morphisms, Section \ref{morphisms-section-affine})
+is quite natural and easy to understand.
+
+\medskip\noindent
+For more information on closed immersions we suggest the reader visit
+Morphisms, Sections \ref{morphisms-section-closed-immersions} and
+\ref{morphisms-section-closed-immersions-quasi-coherent}.
+
+\medskip\noindent
+We will discuss locally closed subschemes and immersions
+at the end of this section.
+
+\begin{remark}
+\label{remark-not-reverse-open-closed}
+If $f : X \to Y$ is an immersion of schemes, then it is in general
+not possible to factor $f$ as an open immersion followed
+by a closed immersion. See Morphisms, Example \ref{morphisms-example-thibaut}.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-immersion-when-closed}
+Let $f : Y \to X$ be an immersion of schemes. Then $f$ is a closed
+immersion if and only if $f(Y) \subset X$ is a closed subset.
+\end{lemma}
+
+\begin{proof}
+If $f$ is a closed immersion then $f(Y)$ is closed by definition.
+Conversely, suppose that $f(Y)$ is closed. By definition
+there exists an open subscheme $U \subset X$ such that $f$ is the composition
+of a closed immersion $i : Y \to U$ and the open immersion
+$j : U \to X$. Let $\mathcal{I} \subset \mathcal{O}_U$ be the
+quasi-coherent sheaf of ideals associated to the closed immersion
+$i$. Note that
+$\mathcal{I}|_{U \setminus i(Y)}
+= \mathcal{O}_{U \setminus i(Y)}
+= \mathcal{O}_{X \setminus i(Y)}|_{U \setminus i(Y)}$.
+Thus we may glue (see Sheaves, Section \ref{sheaves-section-glueing-sheaves})
+$\mathcal{I}$ and $\mathcal{O}_{X \setminus i(Y)}$ to a sheaf of
+ideals $\mathcal{J} \subset \mathcal{O}_X$. Since every
+point of $X$ has a neighbourhood where $\mathcal{J}$ is
+quasi-coherent, we see that $\mathcal{J}$ is quasi-coherent
+(in particular locally generated by sections).
+By construction $\mathcal{O}_X/\mathcal{J}$ is supported
+on $U$ and, restricted there, equal to $\mathcal{O}_U/\mathcal{I}$.
+Thus we see that the closed subspaces associated to $\mathcal{I}$
+and $\mathcal{J}$ are canonically isomorphic, see
+Example \ref{example-closed-subspace}.
+In particular the closed subspace of $U$ associated to $\mathcal{I}$
+is isomorphic to a closed subspace of $X$.
+Since $Y \to U$ is identified with the closed subspace
+associated to $\mathcal{I}$, see Lemma \ref{lemma-closed-immersion},
+we conclude that $Y \to U \to X$
+is a closed immersion.
+\end{proof}
+
+\noindent
+Let $f : Y \to X$ be an immersion.
+Let $Z = \overline{f(Y)} \setminus f(Y)$ which is a closed subset of $X$.
+Let $U = X \setminus Z$.
+The lemma implies that $U$ is the biggest open subspace of $X$
+such that $f : Y \to X$ factors through a closed immersion into $U$.
+We define a {\it locally closed subscheme of $X$} as a pair
+$(Z, U)$ consisting of a closed subscheme $Z$ of an open subscheme $U$
+of $X$ such that in addition $\overline{Z} \cup U = X$. We usually
+just say ``let $Z$ be a locally closed subscheme of $X$'' since we may
+recover $U$ from the morphism $Z \to X$. The above
+then shows that any immersion $f : Y \to X$ factors uniquely
+as $Y \to Z \to X$ where $Z$ is a locally closed subspace of $X$
+and $Y \to Z$ is an isomorphism.
+
+\medskip\noindent
+The interest of this is that the collection of locally closed subschemes
+of $X$ forms a set. We may define a partial ordering on this set,
+which we call inclusion for obvious reasons. To be explicit, if
+$Z \to X$ and $Z' \to X$ are two locally closed subschemes of $X$, then
+we say that {\it $Z$ is contained in $Z'$} simply if the morphism
+$Z \to X$ factors through $Z'$. If it does, then of course $Z$ is identified
+with a unique locally closed subscheme of $Z'$, and so on.
+
+\medskip\noindent
+For more information on immersions, we refer the reader to
+Morphisms, Section \ref{morphisms-section-immersions}.
+
+
+
+
+
+
+
+
+
+
+\section{Base change in algebraic geometry}
+\label{section-base-change}
+
+\noindent
+One motivation for the introduction of the language of schemes
+is that it gives a very precise notion of what it means to
+define a variety over a particular field. For example a variety
+$X$ over $\mathbf{Q}$ is synonymous
+(Varieties, Definition \ref{varieties-definition-variety})
+with $X \to \Spec(\mathbf{Q})$ which is of finite type,
+separated, irreducible and reduced\footnote{Of course algebraic
+geometers still quibble over whether one should require $X$ to be
+geometrically irreducible over $\mathbf{Q}$.}. In any case, the idea
+is more generally to work with schemes over a given {\it base scheme},
+often denoted $S$. We use the language: ``let $X$ be a scheme over $S$''
+to mean simply that $X$ comes equipped with a morphism $X \to S$.
+In diagrams we will try to picture the {\it structure morphism}
+$X \to S$ as a downward arrow from $X$ to $S$.
+We are often more interested in the properties of $X$ relative
+to $S$ rather than the internal geometry of $X$.
+For example, we would like to know things about the fibres of $X \to S$,
+what happens to $X$ after base change, and so on.
+
+\medskip\noindent
+We introduce some of the language that is customarily used.
+Of course this language is just a special case of thinking
+about the category of objects over a given object in a category,
+see Categories, Example \ref{categories-example-category-over-X}.
+
+\begin{definition}
+\label{definition-base-change}
+Let $S$ be a scheme.
+\begin{enumerate}
+\item We say $X$ is a {\it scheme over $S$} to mean that $X$
+comes equipped with a morphism of schemes $X \to S$.
+The morphism $X \to S$ is sometimes called the
+{\it structure morphism}.
+\item If $R$ is a ring we say
+$X$ is a {\it scheme over $R$} instead of
+$X$ is a scheme over $\Spec(R)$.
+\item A {\it morphism $f : X \to Y$ of schemes over $S$}
+is a morphism of schemes such that the composition
+$X \to Y \to S$ of $f$ with the structure morphism of $Y$ is
+equal to the structure morphism of $X$.
+\item We denote $\Mor_S(X, Y)$ the set of all morphisms
+from $X$ to $Y$ over $S$.
+\item Let $X$ be a scheme over $S$. Let $S' \to S$ be a
+morphism of schemes. The {\it base change} of $X$
+is the scheme $X_{S'} = S' \times_S X$ over $S'$.
+\item Let $f : X \to Y$ be a morphism of schemes over $S$. Let $S' \to S$
+be a morphism of schemes. The {\it base change} of $f$ is
+the induced morphism $f' : X_{S'} \to Y_{S'}$ (namely the
+morphism $\text{id}_{S'} \times_{\text{id}_S} f$).
+\item Let $R$ be a ring. Let $X$ be a scheme over $R$.
+Let $R \to R'$ be a ring map. The {\it base change} $X_{R'}$
+is the scheme $\Spec(R') \times_{\Spec(R)} X$
+over $R'$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Here is a typical result.
+
+\begin{lemma}
+\label{lemma-base-change-immersion}
+Let $S$ be a scheme. Let $f : X \to Y$ be an
+immersion (resp.\ closed immersion, resp. open immersion)
+of schemes over $S$. Then any base change of $f$ is an
+immersion (resp.\ closed immersion, resp. open immersion).
+\end{lemma}
+
+\begin{proof}
+We can think of the base change of $f$ via the morphism
+$S' \to S$ as the top left vertical arrow in the following
+commutative diagram:
+$$
+\xymatrix{
+X_{S'} \ar[r] \ar[d] & X \ar[d] \ar@/^4ex/[dd] \\
+Y_{S'} \ar[r] \ar[d] & Y \ar[d] \\
+S' \ar[r] & S
+}
+$$
+The diagram implies $X_{S'} \cong Y_{S'} \times_Y X$,
+and the lemma follows from Lemma \ref{lemma-fibre-product-immersion}.
+\end{proof}
+
+\noindent
+In fact this type of result is so typical that there is a
+piece of language to express it. Here it is.
+
+\begin{definition}
+\label{definition-preserved-by-base-change}
+Properties and base change.
+\begin{enumerate}
+\item Let $\mathcal{P}$ be a property of schemes over a base.
+We say that $\mathcal{P}$ is {\it preserved under arbitrary base change},
+or simply that $\mathcal{P}$ is {\it preserved under base change}
+if whenever $X/S$
+has $\mathcal{P}$, any base change $X_{S'}/S'$ has $\mathcal{P}$.
+\item Let $\mathcal{P}$ be a property of morphisms of schemes over a base.
+We say that $\mathcal{P}$ is {\it preserved under arbitrary base change},
+or simply that {\it preserved under base change} if whenever
+$f : X \to Y$ over $S$ has $\mathcal{P}$, any base change
+$f' : X_{S'} \to Y_{S'}$ over $S'$ has $\mathcal{P}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+At this point we can say that ``being a closed immersion'' is
+preserved under arbitrary base change.
+
+\begin{definition}
+\label{definition-fibre}
+Let $f : X \to S$ be a morphism of schemes.
+Let $s \in S$ be a point.
+The {\it scheme theoretic fibre $X_s$ of $f$ over $s$},
+or simply the {\it fibre of $f$ over $s$},
+is the scheme fitting in the following fibre product diagram
+$$
+\xymatrix{
+X_s = \Spec(\kappa(s)) \times_S X \ar[r] \ar[d] &
+X \ar[d] \\
+\Spec(\kappa(s)) \ar[r] &
+S
+}
+$$
+We think of the fibre $X_s$ always as a scheme over $\kappa(s)$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-fibre-topological}
+Let $f : X \to S$ be a morphism of schemes.
+Consider the diagrams
+$$
+\xymatrix{
+X_s \ar[r] \ar[d] &
+X \ar[d] &
+\Spec(\mathcal{O}_{S, s}) \times_S X \ar[r] \ar[d] &
+X \ar[d]
+\\
+\Spec(\kappa(s)) \ar[r] &
+S &
+\Spec(\mathcal{O}_{S, s}) \ar[r] &
+S
+}
+$$
+In both cases the top horizontal arrow is a homeomorphism
+onto its image.
+\end{lemma}
+
+\begin{proof}
+Choose an open affine $U \subset S$ that contains $s$.
+The bottom horizontal morphisms factor through $U$, see
+Lemma \ref{lemma-morphism-from-spec-local-ring} for example.
+Thus we may assume that $S$ is affine. If $X$ is also affine, then
+the result follows from
+Algebra, Remark \ref{algebra-remark-fundamental-diagram}.
+In the general case the result follows by covering $X$ by open affines.
+\end{proof}
+
+
+
+
+
+
+
+
+\section{Proj of a graded ring}
+\label{section-proj}
+
+\medskip\noindent
+This section may be taken as the preamble to
+the question: what is projective space anyway?
+Yes, projective space is Proj of a graded ring $S$.
+And yes, projective space is a scheme.
+So in particular it's locally affine.
+
+\noindent
+In this section we construct Proj of a graded ring
+following \cite[II, Section 2]{EGA}.
+
+\medskip\noindent
+Let $S$ be a graded ring. Consider the topological space $\text{Proj}(S)$
+associated to $S$, see Algebra, Section \ref{algebra-section-proj}.
+We will endow this space with a sheaf of rings $\mathcal{O}_{\text{Proj}(S)}$
+such that the resulting pair $(\text{Proj}(S), \mathcal{O}_{\text{Proj}(S)})$
+will be a scheme.
+
+\medskip\noindent
+Recall that $\text{Proj}(S)$ has a basis of open sets $D_{+}(f)$,
+$f \in S_d$, $d \geq 1$ which we call {\it standard opens}, see Algebra,
+Section \ref{algebra-section-proj}. This terminology will always
+imply that $f$ is homogeneous of positive degree even if we forget to
+mention it. In addition, the intersection of two standard opens is another:
+$D_{+}(f) \cap D_{+}(g) = D_{+}(fg)$, for $f, g \in S$ homogeneous of positive
+degree.
+
+\begin{lemma}
+\label{lemma-standard-open}
+Let $S$ be a graded ring. Let $f \in S$ homogeneous of positive degree.
+\begin{enumerate}
+\item If $g\in S$ homogeneous of positive degree
+and $D_{+}(g) \subset D_{+}(f)$, then
+\begin{enumerate}
+\item $f$ is invertible in $S_g$, and
+$f^{\deg(g)}/g^{\deg(f)}$ is invertible in $S_{(g)}$,
+\item $g^e = af$ for some $e \geq 1$ and $a \in S$ homogeneous,
+\item there is a canonical $S$-algebra map $S_f \to S_g$,
+\item there is a canonical $S_0$-algebra map $S_{(f)} \to S_{(g)}$
+compatible with the map $S_f \to S_g$,
+\item the map $S_{(f)} \to S_{(g)}$ induces an isomorphism
+$$
+(S_{(f)})_{g^{\deg(f)}/f^{\deg(g)}} \cong S_{(g)},
+$$
+\item these maps induce a commutative diagram of
+topological spaces
+$$
+\xymatrix{
+D_{+}(g) \ar[d] &
+\{\mathbf{Z}\text{-graded primes of }S_g\} \ar[l] \ar[r] \ar[d] &
+\Spec(S_{(g)}) \ar[d] \\
+D_{+}(f) &
+\{\mathbf{Z}\text{-graded primes of }S_f\} \ar[l] \ar[r] &
+\Spec(S_{(f)})
+}
+$$
+where the horizontal maps are homeomorphisms and the vertical maps
+are open immersions,
+\item there are compatible canonical $S_f$ and $S_{(f)}$-module
+maps $M_f \to M_g$ and $M_{(f)} \to M_{(g)}$ for any graded $S$-module $M$,
+and
+\item the map $M_{(f)} \to M_{(g)}$ induces an isomorphism
+$$
+(M_{(f)})_{g^{\deg(f)}/f^{\deg(g)}} \cong M_{(g)}.
+$$
+\end{enumerate}
+\item Any open covering of $D_{+}(f)$ can be refined to a finite
+open covering of the form $D_{+}(f) = \bigcup_{i = 1}^n D_{+}(g_i)$.
+\item Let $g_1, \ldots, g_n \in S$ be homogeneous of positive degree.
+Then $D_{+}(f) \subset \bigcup D_{+}(g_i)$
+if and only if
+$g_1^{\deg(f)}/f^{\deg(g_1)}, \ldots, g_n^{\deg(f)}/f^{\deg(g_n)}$
+generate the unit ideal in $S_{(f)}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Recall that $D_{+}(g) = \Spec(S_{(g)})$ with identification
+given by the ring maps $S \to S_g \leftarrow S_{(g)}$, see
+Algebra, Lemma \ref{algebra-lemma-topology-proj}.
+Thus $f^{\deg(g)}/g^{\deg(f)}$ is an element of $S_{(g)}$ which is not
+contained in any prime ideal, and hence invertible,
+see Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+We conclude that (a) holds.
+Write the inverse of $f$ in $S_g$ as $a/g^d$.
+We may replace $a$ by its homogeneous part of degree $d\deg(g) - \deg(f)$.
+This means $g^d - af$ is annihilated by a power of $g$, whence
+$g^e = af$ for some $a \in S$ homogeneous of degree $e\deg(g) - \deg(f)$.
+This proves (b).
+For (c), the map $S_f \to S_g$ exists by (a) from the universal property
+of localization, or we can define it by mapping $b/f^n$
+to $a^nb/g^{ne}$. This clearly induces a map of the subrings
+$S_{(f)} \to S_{(g)}$ of degree zero elements as well.
+We can similarly define $M_f \to M_g$ and $M_{(f)} \to M_{(g)}$ by mapping
+$x/f^n$ to $a^nx/g^{ne}$. The statements writing $S_{(g)}$
+resp.\ $M_{(g)}$ as principal localizations of $S_{(f)}$ resp.\ $M_{(f)}$
+are clear from the formulas above. The maps in the commutative diagram
+of topological spaces correspond to the ring maps given above. The
+horizontal arrows are homeomorphisms by
+Algebra, Lemma \ref{algebra-lemma-topology-proj}.
+The vertical arrows are open immersions since the left
+one is the inclusion of an open subset.
+
+\medskip\noindent
+The open $D_{+}(f)$ is quasi-compact because it is homeomorphic
+to $\Spec(S_{(f)})$, see  Algebra, Lemma \ref{algebra-lemma-quasi-compact}.
+Hence the second statement follows directly
+from the fact that the standard opens form
+a basis for the topology.
+
+\medskip\noindent
+The third statement follows directly from
+Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+\end{proof}
+
+\noindent
+In Sheaves, Section \ref{sheaves-section-bases} we defined
+the notion of a sheaf on a basis, and we showed that it is
+essentially equivalent to the notion of a sheaf on the space,
+see Sheaves, Lemmas \ref{sheaves-lemma-extend-off-basis} and
+\ref{sheaves-lemma-extend-off-basis-structures}. Moreover,
+we showed in
+Sheaves, Lemma \ref{sheaves-lemma-cofinal-systems-coverings-standard-case}
+that it is sufficient to check the sheaf
+condition on a cofinal system of open coverings for each
+standard open. By the lemma above it suffices to check
+on the finite coverings by standard opens.
+
+\begin{definition}
+\label{definition-standard-covering}
+Let $S$ be a graded ring.
+Suppose that $D_{+}(f) \subset \text{Proj}(S)$ is a standard
+open. A {\it standard open covering} of $D_{+}(f)$
+is a covering $D_{+}(f) = \bigcup_{i = 1}^n D_{+}(g_i)$,
+where $g_1, \ldots, g_n \in S$ are homogeneous of positive degree.
+\end{definition}
+
+\noindent
+Let $S$ be a graded ring. Let $M$ be a graded $S$-module. We will define
+a presheaf $\widetilde M$ on the basis of standard opens.
+Suppose that $U \subset \text{Proj}(S)$ is a standard open.
+If $f, g \in S$ are homogeneous of positive degree
+such that $D_{+}(f) = D_{+}(g)$, then
+by Lemma \ref{lemma-standard-open} above there are canonical
+maps $M_{(f)} \to M_{(g)}$ and $M_{(g)} \to M_{(f)}$ which are
+mutually inverse. Hence we may choose any $f$ such that $U = D_{+}(f)$
+and define
+$$
+\widetilde M(U) = M_{(f)}.
+$$
+Note that if $D_{+}(g) \subset D_{+}(f)$, then by
+Lemma \ref{lemma-standard-open} above we have
+a canonical map
+$$
+\widetilde M(D_{+}(f)) = M_{(f)} \longrightarrow
+M_{(g)} = \widetilde M(D_{+}(g)).
+$$
+Clearly, this defines a presheaf of abelian groups on the basis
+of standard opens. If $M = S$, then $\widetilde S$ is a presheaf
+of rings on the basis of standard opens. And for general $M$ we
+see that $\widetilde M$ is a presheaf of $\widetilde S$-modules
+on the basis of standard opens.
+
+\medskip\noindent
+Let us compute the stalk of $\widetilde M$ at a point
+$x \in \text{Proj}(S)$.
+Suppose that $x$ corresponds to the homogeneous prime
+ideal $\mathfrak p \subset S$.
+By definition of the stalk we see that
+$$
+\widetilde M_x
+=
+\colim_{f\in S_d, d > 0, f\not\in \mathfrak p} M_{(f)}
+$$
+Here the set $\{f \in S_d, d > 0, f \not \in \mathfrak p\}$ is preordered by
+the rule $f \geq f' \Leftrightarrow D_{+}(f) \subset D_{+}(f')$.
+If $f_1, f_2 \in S \setminus \mathfrak p$ are homogeneous of positive
+degree, then we have
+$f_1f_2 \geq f_1$ in this ordering. In
+Algebra, Section \ref{algebra-section-proj}
+we defined $M_{(\mathfrak p)}$ as the module whose elements are fractions
+$x/f$ with $x, f$ homogeneous, $\deg(x) = \deg(f)$, $f \not \in \mathfrak p$.
+Since $\mathfrak p \in \text{Proj}(S)$ there exists at least
+one $f_0 \in S$ homogeneous of positive degree with $f_0 \not\in \mathfrak p$.
+Hence $x/f = f_0x/ff_0$ and we see that we may always assume
+the denominator of an element in $M_{(\mathfrak p)}$ has positive degree.
+From these remarks it follows easily that
+$$
+\widetilde M_x = M_{(\mathfrak p)}.
+$$
+
+\medskip\noindent
+Next, we check the sheaf condition for the standard open coverings.
+If $D_{+}(f) = \bigcup_{i = 1}^n D_{+}(g_i)$, then the sheaf condition
+for this covering is equivalent with the exactness of the
+sequence
+$$
+0 \to M_{(f)} \to \bigoplus M_{(g_i)} \to \bigoplus M_{(g_ig_j)}.
+$$
+Note that $D_{+}(g_i) = D_{+}(fg_i)$, and hence we can rewrite this
+sequence as the sequence
+$$
+0 \to M_{(f)} \to \bigoplus M_{(fg_i)} \to \bigoplus M_{(fg_ig_j)}.
+$$
+By Lemma \ref{lemma-standard-open} we see that
+$g_1^{\deg(f)}/f^{\deg(g_1)}, \ldots, g_n^{\deg(f)}/f^{\deg(g_n)}$
+generate the unit ideal in $S_{(f)}$, and that the modules
+$M_{(fg_i)}$, $M_{(fg_ig_j)}$ are the principal localizations
+of the $S_{(f)}$-module $M_{(f)}$ at these elements and their products.
+Thus we may apply Algebra, Lemma \ref{algebra-lemma-cover-module}
+to the module $M_{(f)}$ over $S_{(f)}$ and the elements
+$g_1^{\deg(f)}/f^{\deg(g_1)}, \ldots, g_n^{\deg(f)}/f^{\deg(g_n)}$.
+We conclude that the sequence is exact. By the remarks
+made above, we see that $\widetilde M$ is a sheaf
+on the basis of standard opens.
+
+\medskip\noindent
+Thus we conclude from the material in
+Sheaves, Section \ref{sheaves-section-bases}
+that there exists a
+unique sheaf of rings $\mathcal{O}_{\text{Proj}(S)}$
+which agrees with $\widetilde S$ on the standard opens.
+Note that by our computation of stalks above and
+Algebra, Lemma \ref{algebra-lemma-proj-prime} the
+stalks of this sheaf of rings are all local rings.
+
+\medskip\noindent
+Similarly, for any graded $S$-module $M$ there exists
+a unique sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules
+$\mathcal{F}$ which agrees with $\widetilde M$ on the
+standard opens, see
+Sheaves, Lemma \ref{sheaves-lemma-extend-off-basis-module}.
+
+\begin{definition}
+\label{definition-structure-sheaf}
+Let $S$ be a graded ring.
+\begin{enumerate}
+\item The {\it structure sheaf $\mathcal{O}_{\text{Proj}(S)}$ of the
+homogeneous spectrum of $S$} is the unique sheaf of rings
+$\mathcal{O}_{\text{Proj}(S)}$
+which agrees with $\widetilde S$ on the basis of standard opens.
+\item The locally ringed space
+$(\text{Proj}(S), \mathcal{O}_{\text{Proj}(S)})$ is called
+the {\it homogeneous spectrum} of $S$ and denoted $\text{Proj}(S)$.
+\item The sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules
+extending $\widetilde M$ to all opens of $\text{Proj}(S)$
+is called the sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules
+associated to $M$. This sheaf is denoted $\widetilde M$ as
+well.
+\end{enumerate}
+\end{definition}
+
+\noindent
+We summarize the results obtained so far.
+
+\begin{lemma}
+\label{lemma-proj-sheaves}
+Let $S$ be a graded ring. Let $M$ be a graded $S$-module.
+Let $\widetilde M$ be the sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules
+associated to $M$.
+\begin{enumerate}
+\item For every $f \in S$ homogeneous of positive degree we have
+$$
+\Gamma(D_{+}(f), \mathcal{O}_{\text{Proj}(S)}) = S_{(f)}.
+$$
+\item For every $f\in S$ homogeneous of positive degree
+we have $\Gamma(D_{+}(f), \widetilde M) = M_{(f)}$
+as an $S_{(f)}$-module.
+\item Whenever $D_{+}(g) \subset D_{+}(f)$ the restriction mappings
+on $\mathcal{O}_{\text{Proj}(S)}$ and $\widetilde M$
+are the maps
+$S_{(f)} \to S_{(g)}$ and $M_{(f)} \to M_{(g)}$ from Lemma
+\ref{lemma-standard-open}.
+\item Let $\mathfrak p$ be a homogeneous prime of $S$ not containing
+$S_{+}$, and let $x \in \text{Proj}(S)$
+be the corresponding point. We have
+$\mathcal{O}_{\text{Proj}(S), x} = S_{(\mathfrak p)}$.
+\item Let $\mathfrak p$ be a homogeneous prime of $S$ not containing
+$S_{+}$, and let $x \in \text{Proj}(S)$
+be the corresponding point. We have $\mathcal{F}_x = M_{(\mathfrak p)}$
+as an $S_{(\mathfrak p)}$-module.
+\item
+\label{item-map}
+There is a canonical ring map
+$
+S_0 \longrightarrow \Gamma(\text{Proj}(S), \widetilde S)
+$
+and a canonical $S_0$-module map
+$
+M_0 \longrightarrow \Gamma(\text{Proj}(S), \widetilde M)
+$
+compatible with the descriptions of sections over standard opens
+and stalks above.
+\end{enumerate}
+Moreover, all these identifications are functorial in the graded
+$S$-module $M$. In particular, the functor $M \mapsto \widetilde M$
+is an exact functor from the category of graded $S$-modules
+to the category of $\mathcal{O}_{\text{Proj}(S)}$-modules.
+\end{lemma}
+
+\begin{proof}
+Assertions (1) - (5) are clear from the discussion above.
+We see (6) since there are canonical maps $M_0 \to M_{(f)}$,
+$x \mapsto x/1$ compatible with the restriction maps
+described in (3). The exactness of the functor $M \mapsto \widetilde M$
+follows from the fact that the functor $M \mapsto M_{(\mathfrak p)}$
+is exact (see Algebra, Lemma \ref{algebra-lemma-proj-prime})
+and the fact that exactness of short exact sequences
+may be checked on stalks, see
+Modules, Lemma \ref{modules-lemma-abelian}.
+\end{proof}
+
+\begin{remark}
+\label{remark-global-sections-not-isomorphism}
+The map from $M_0$ to the global sections of $\widetilde M$
+is generally far from being an isomorphism. A trivial
+example is to take $S = k[x, y, z]$ with $1 = \deg(x) = \deg(y) = \deg(z)$
+(or any number of variables) and to take $M = S/(x^{100}, y^{100}, z^{100})$.
+It is easy to see that $\widetilde M = 0$, but $M_0 = k$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-standard-open-proj}
+Let $S$ be a graded ring. Let $f \in S$ be homogeneous of positive degree.
+Suppose that $D(g) \subset \Spec(S_{(f)})$ is a standard open.
+Then there exists an $h \in S$ homogeneous of positive degree such that
+$D(g)$ corresponds to $D_{+}(h) \subset D_{+}(f)$ via the homeomorphism
+of Algebra, Lemma \ref{algebra-lemma-topology-proj}. In fact we can
+take $h$ such that $g = h/f^n$ for some $n$.
+\end{lemma}
+
+\begin{proof}
+Write $g = h/f^n$ for some $h$ homogeneous of positive degree
+and some $n \geq 1$. If $D_{+}(h)$ is not contained in
+$D_{+}(f)$ then we replace $h$ by $hf$ and $n$ by $n + 1$.
+Then $h$ has the required shape and $D_{+}(h) \subset D_{+}(f)$
+corresponds to $D(g) \subset \Spec(S_{(f)})$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-proj-scheme}
+Let $S$ be a graded ring.
+The locally ringed space $\text{Proj}(S)$ is a scheme.
+The standard opens $D_{+}(f)$ are affine opens.
+For any graded $S$-module $M$ the sheaf
+$\widetilde M$ is a quasi-coherent sheaf of
+$\mathcal{O}_{\text{Proj}(S)}$-modules.
+\end{lemma}
+
+\begin{proof}
+Consider a standard open $D_{+}(f) \subset \text{Proj}(S)$.
+By Lemmas \ref{lemma-standard-open} and \ref{lemma-proj-sheaves}
+we have $\Gamma(D_{+}(f), \mathcal{O}_{\text{Proj}(S)}) = S_{(f)}$, and
+we have a homeomorphism $\varphi : D_{+}(f) \to \Spec(S_{(f)})$.
+For any standard open $D(g) \subset \Spec(S_{(f)})$ we may
+pick an $h \in S_{+}$ as in Lemma \ref{lemma-standard-open-proj}.
+Then $\varphi^{-1}(D(g)) = D_{+}(h)$, and by
+Lemmas \ref{lemma-proj-sheaves} and \ref{lemma-standard-open} we see
+$$
+\Gamma(D_{+}(h), \mathcal{O}_{\text{Proj}(S)})
+=
+S_{(h)}
+=
+(S_{(f)})_{h^{\deg(f)}/f^{\deg(h)}}
+=
+(S_{(f)})_g
+=
+\Gamma(D(g), \mathcal{O}_{\Spec(S_{(f)})}).
+$$
+Thus the restriction of $\mathcal{O}_{\text{Proj}(S)}$ to
+$D_{+}(f)$ corresponds via the homeomorphism $\varphi$
+exactly to the sheaf $\mathcal{O}_{\Spec(S_{(f)})}$
+as defined in Schemes, Section \ref{schemes-section-affine-schemes}.
+We conclude that $D_{+}(f)$ is an affine scheme isomorphic to
+$\Spec(S_{(f)})$ via $\varphi$ and
+hence that $\text{Proj}(S)$ is a scheme.
+
+\medskip\noindent
+In exactly the same way we show that $\widetilde M$ is a
+quasi-coherent sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules.
+Namely, the argument above will show that
+$$
+\widetilde M|_{D_{+}(f)} \cong \varphi^*\left(\widetilde{M_{(f)}}\right)
+$$
+which shows that $\widetilde M$ is quasi-coherent.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-proj-separated}
+Let $S$ be a graded ring.
+The scheme $\text{Proj}(S)$ is separated.
+\end{lemma}
+
+\begin{proof}
+We have to show that the canonical morphism
+$\text{Proj}(S) \to \Spec(\mathbf{Z})$
+is separated.
+We will use Schemes, Lemma \ref{schemes-lemma-characterize-separated}.
+Thus it suffices to show given any pair of standard opens
+$D_{+}(f)$ and $D_{+}(g)$ that $D_{+}(f) \cap D_{+}(g) = D_{+}(fg)$
+is affine (clear) and that the ring map
+$$
+S_{(f)} \otimes_{\mathbf{Z}} S_{(g)} \longrightarrow S_{(fg)}
+$$
+is surjective. Any element $s$ in $S_{(fg)}$ is of
+the form $s = h/(f^ng^m)$ with $h \in S$ homogeneous of degree
+$n\deg(f) + m\deg(g)$. We may multiply $h$ by a suitable
+monomial $f^ig^j$ and assume that $n = n' \deg(g)$, and
+$m = m' \deg(f)$. Then we can rewrite $s$ as
+$s = h/f^{(n' + m')\deg(g)} \cdot f^{m'\deg(g)}/g^{m'\deg(f)}$.
+So $s$ is indeed in the image of the displayed arrow.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-proj-quasi-compact}
+Let $S$ be a graded ring.
+The scheme $\text{Proj}(S)$ is quasi-compact if and only
+if there exist finitely many homogeneous elements
+$f_1, \ldots, f_n \in S_{+}$ such that
+$S_{+} \subset \sqrt{(f_1, \ldots, f_n)}$. In this case
+$\text{Proj}(S) = D_+(f_1) \cup \ldots \cup D_+(f_n)$.
+\end{lemma}
+
+\begin{proof}
+Given such a collection of elements the standard affine opens
+$D_{+}(f_i)$ cover $\text{Proj}(S)$ by
+Algebra, Lemma \ref{algebra-lemma-topology-proj}.
+Conversely, if $\text{Proj}(S)$ is quasi-compact, then we
+may cover it by finitely many standard opens
+$D_{+}(f_i)$, $i = 1, \ldots, n$ and we see that
+$S_{+} \subset \sqrt{(f_1, \ldots, f_n)}$ by the
+lemma referenced above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-structure-morphism-proj}
+Let $S$ be a graded ring. The scheme $\text{Proj}(S)$ has a canonical morphism
+towards the affine scheme $\Spec(S_0)$, agreeing with the map on
+topological spaces coming from
+Algebra, Definition \ref{algebra-definition-proj}.
+\end{lemma}
+
+\begin{proof}
+We saw above that our construction of $\widetilde S$,
+resp.\ $\widetilde M$ gives a sheaf of $S_0$-algebras, resp.\ $S_0$-modules.
+Hence we get a morphism by
+Schemes, Lemma \ref{schemes-lemma-morphism-into-affine}.
+This morphism, when restricted to $D_{+}(f)$ comes from the
+canonical ring map $S_0 \to S_{(f)}$. The maps
+$S \to S_f$, $S_{(f)} \to S_f$ are $S_0$-algebra maps, see
+Lemma \ref{lemma-standard-open}.
+Hence if the homogeneous prime $\mathfrak p \subset S$
+corresponds to the $\mathbf{Z}$-graded prime $\mathfrak p' \subset S_f$
+and the (usual) prime $\mathfrak p'' \subset S_{(f)}$, then
+each of these has the same inverse image in $S_0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-proj-valuative-criterion}
+Let $S$ be a graded ring. If $S$ is finitely generated as
+an algebra over $S_0$, then
+the morphism $\text{Proj}(S) \to \Spec(S_0)$ satisfies
+the existence and uniqueness parts of the valuative criterion,
+see Schemes, Definition \ref{schemes-definition-valuative-criterion}.
+\end{lemma}
+
+\begin{proof}
+The uniqueness part follows from the fact that $\text{Proj}(S)$ is
+separated (Lemma \ref{lemma-proj-separated} and
+Schemes, Lemma \ref{schemes-lemma-separated-implies-valuative}).
+Choose $x_i \in S_{+}$ homogeneous, $i = 1, \ldots, n$
+which generate $S$ over $S_0$. Let $d_i = \deg(x_i)$ and
+set $d = \text{lcm}\{d_i\}$. Suppose we are given a diagram
+$$
+\xymatrix{
+\Spec(K) \ar[r] \ar[d] & \text{Proj}(S) \ar[d] \\
+\Spec(A) \ar[r] & \Spec(S_0)
+}
+$$
+as in Schemes, Definition \ref{schemes-definition-valuative-criterion}.
+Denote $v : K^* \to \Gamma$ the valuation of $A$, see
+Algebra, Definition \ref{algebra-definition-value-group}.
+We may choose an $f \in S_{+}$ homogeneous such that
+$\Spec(K)$ maps into $D_{+}(f)$. Then we get a commutative
+diagram of ring maps
+$$
+\xymatrix{
+K & S_{(f)} \ar[l]^{\varphi} \\
+A \ar[u] & S_0 \ar[l] \ar[u]
+}
+$$
+After renumbering we may assume that $\varphi(x_i^{\deg(f)}/f^{d_i})$
+is nonzero for $i = 1, \ldots, r$ and zero for $i = r + 1, \ldots, n$.
+Since the open sets $D_{+}(x_i)$ cover $\text{Proj}(S)$ we see that $r \geq 1$.
+Let $i_0 \in \{1, \ldots, r\}$ be an index minimizing
+$\gamma_i = (d/d_i)v(\varphi(x_i^{\deg(f)}/f^{d_i}))$ in $\Gamma$.
+For convenience set $x_0 = x_{i_0}$ and $d_0 = d_{i_0}$.
+The ring map $\varphi$ factors though a map $\varphi' : S_{(fx_0)} \to K$
+which gives a ring map $S_{(x_0)} \to S_{(fx_0)} \to K$.
+The algebra $S_{(x_0)}$ is generated over $S_0$ by the elements
+$x_1^{e_1} \ldots x_n^{e_n}/x_0^{e_0}$, where $\sum e_i d_i = e_0 d_0$.
+If $e_i > 0$ for some $i > r$, then
+$\varphi'(x_1^{e_1} \ldots x_n^{e_n}/x_0^{e_0}) = 0$.
+If $e_i = 0$ for $i > r$, then we have
+\begin{align*}
+d \deg(f) v(\varphi'(x_1^{e_1} \ldots x_r^{e_r}/x_0^{e_0}))
+& =
+d v(\varphi'(x_1^{e_1 \deg(f)} \ldots x_r^{e_r \deg(f)}/x_0^{e_0 \deg(f)})) \\
+& =
+d \sum e_i v(\varphi'(x_i^{\deg(f)}/f^{d_i}))
+- e_0 v(\varphi'(x_0^{\deg(f)}/f^{d_0})) \\
+& =
+\sum e_i d_i \gamma_i - e_0 d_0 \gamma_0 \\
+& \geq
+\sum e_i d_i \gamma_0 - e_0 d_0 \gamma_0 = 0
+\end{align*}
+because $\gamma_0$ is minimal among the $\gamma_i$.
+This implies that $S_{(x_0)}$ maps into $A$ via $\varphi'$.
+The corresponding morphism of schemes
+$\Spec(A) \to \Spec(S_{(x_0)}) = D_{+}(x_0)
+\subset \text{Proj}(S)$ provides the morphism fitting into
+the first commutative diagram of this proof.
+\end{proof}
+
+\noindent
+We saw in the proof of Lemma \ref{lemma-proj-valuative-criterion}
+that, under the hypotheses of that lemma, the morphism
+$\text{Proj}(S) \to \Spec(S_0)$ is quasi-compact as well. Hence (by
+Schemes, Proposition \ref{schemes-proposition-characterize-universally-closed})
+we see that $\text{Proj}(S) \to \Spec(S_0)$ is universally closed in
+the situation of the lemma. We give several examples showing these results
+do not hold without some assumption on the graded ring $S$.
+
+\begin{example}
+\label{example-not-existence-valuative-big-proj}
+Let $\mathbf{C}[X_1, X_2, X_3, \ldots]$ be the graded $\mathbf{C}$-algebra
+with each $X_i$ in degree $1$. Consider the ring map
+$$
+\mathbf{C}[X_1, X_2, X_3, \ldots]
+\longrightarrow
+\mathbf{C}[t^\alpha ; \alpha \in \mathbf{Q}_{\geq 0}]
+$$
+which maps $X_i$ to $t^{1/i}$. The right hand side becomes a valuation ring
+$A$ upon localization at the ideal $\mathfrak m = (t^\alpha ; \alpha > 0)$.
+Let $K$ be the fraction field of $A$. The above gives a morphism
+$\Spec(K) \to \text{Proj}(\mathbf{C}[X_1, X_2, X_3, \ldots])$ which does not
+extend to a morphism defined on all of $\Spec(A)$.
+The reason is that the image of $\Spec(A)$ would be contained
+in one of the $D_{+}(X_i)$ but then $X_{i + 1}/X_i$ would map
+to an element of $A$ which it doesn't since it maps to
+$t^{1/(i + 1) - 1/i}$.
+\end{example}
+
+\begin{example}
+\label{example-not-existence-valuative-small-proj}
+Let $R = \mathbf{C}[t]$ and
+$$
+S = R[X_1, X_2, X_3, \ldots]/(X_i^2 - tX_{i + 1}).
+$$
+The grading is such that $R = S_0$ and $\deg(X_i) = 2^{i - 1}$.
+Note that if $\mathfrak p \in \text{Proj}(S)$ then
+$t \not \in \mathfrak p$ (otherwise $\mathfrak p$ has to contain
+all of the $X_i$ which is not allowed for an element of
+the homogeneous spectrum). Thus we see that
+$D_{+}(X_i) = D_{+}(X_{i + 1})$ for all $i$. Hence
+$\text{Proj}(S)$ is quasi-compact; in fact it is affine
+since it is equal to $D_{+}(X_1)$. It is easy to see that
+the image of $\text{Proj}(S) \to \Spec(R)$ is
+$D(t)$. Hence the morphism $\text{Proj}(S) \to \Spec(R)$
+is not closed. Thus the valuative criterion cannot apply because
+it would imply that the morphism is closed (see
+Schemes, Proposition \ref{schemes-proposition-characterize-universally-closed}
+).
+\end{example}
+
+\begin{example}
+\label{example-trivial-proj}
+Let $A$ be a ring.
+Let $S = A[T]$ as a graded $A$ algebra with $T$ in degree $1$.
+Then the canonical morphism $\text{Proj}(S) \to \Spec(A)$
+(see Lemma \ref{lemma-structure-morphism-proj})
+is an isomorphism.
+\end{example}
+
+\begin{example}
+\label{example-open-subset-proj}
+Let $X = \Spec(A)$ be an affine scheme, and let $U \subset X$
+be an open subscheme.  Grade $A[T]$ by setting $\deg T = 1$.  Define $S$
+to be the subring of $A[T]$ generated by $A$ and all $fT^i$, where $i \ge 0$
+and where $f \in A$ is such that $D(f) \subset U$.  We claim that $S$
+is a graded ring with $S_0 = A$ such that $\text{Proj}(S) \cong U$,
+and this isomorphism identifies the canonical morphism
+$\text{Proj}(S) \to \Spec(A)$ of Lemma \ref{lemma-structure-morphism-proj}
+with the inclusion $U \subset X$.
+
+\medskip\noindent
+Suppose $\mathfrak p \in \text{Proj}(S)$ is such that every $fT \in S_1$
+is in $\mathfrak p$.  Then every generator $fT^i$ with $i \ge 1$
+is in $\mathfrak p$ because $(fT^i)^2 = (fT)(fT^{2i-1}) \in \mathfrak p$
+and $\mathfrak p$ is radical.  But then $\mathfrak p \supset S_+$, which
+is impossible. Consequently $\text{Proj}(S)$ is covered by the standard
+open affine subsets $\{D_+(fT)\}_{fT \in S_1}$.
+
+\medskip\noindent
+Observe that, if $fT \in S_1$, then the inclusion $S \subset A[T]$
+induces a graded isomorphism of $S[(fT)^{-1}]$ with $A[T, T^{-1}, f^{-1}]$.
+Hence the standard open subset $D_+(fT) \cong \Spec(S_{(fT)})$
+is isomorphic to $\Spec(A[T, T^{-1}, f^{-1}]_0) = \Spec(A[f^{-1}])$.
+It is clear that this isomorphism is a restriction of the canonical morphism
+$\text{Proj}(S) \to \Spec(A)$.  If in addition $gT \in S_1$, then
+$S[(fT)^{-1}, (gT)^{-1}] \cong A[T, T^{-1}, f^{-1}, g^{-1}]$
+as graded rings, so $D_+(fT) \cap D_+(gT) \cong \Spec(A[f^{-1}, g^{-1}])$.
+Therefore $\text{Proj}(S)$ is the union of open subschemes $D_+(fT)$
+which are isomorphic to the open subschemes $D(f) \subset X$
+under the canonical morphism, and these open subschemes intersect
+in $\text{Proj}(S)$ in the same way they do in $X$.
+We conclude that the canonical morphism is an isomorphism of
+$\text{Proj}(S)$ with the union of all $D(f) \subset U$, which is $U$.
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Projective space}
+\label{section-projective-space}
+
+\noindent
+I have skipped lots of sections 
+between the former and this one.
+
+\noindent
+Projective space is one of the fundamental objects studied in
+algebraic geometry. In this section we just give its construction
+as $\text{Proj}$ of a polynomial ring. Later we will discover many
+of its beautiful properties.
+
+\begin{lemma}
+\label{lemma-projective-space}
+Let $S = \mathbf{Z}[T_0, \ldots, T_n]$ with $\deg(T_i) = 1$.
+The scheme
+$$
+\mathbf{P}^n_{\mathbf{Z}} = \text{Proj}(S)
+$$
+represents the functor which associates to a scheme $Y$ the pairs
+$(\mathcal{L}, (s_0, \ldots, s_n))$ where
+\begin{enumerate}
+\item $\mathcal{L}$ is an invertible $\mathcal{O}_Y$-module, and
+\item $s_0, \ldots, s_n$ are global sections of $\mathcal{L}$
+which generate $\mathcal{L}$
+\end{enumerate}
+up to the following equivalence:
+$(\mathcal{L}, (s_0, \ldots, s_n)) \sim
+(\mathcal{N}, (t_0, \ldots, t_n))$ $\Leftrightarrow$ there exists
+an isomorphism $\beta : \mathcal{L} \to \mathcal{N}$
+with $\beta(s_i) = t_i$ for $i = 0, \ldots, n$.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-apply} above.
+Namely, for any graded ring $A$ we have
+\begin{eqnarray*}
+\Mor_{graded rings}(\mathbf{Z}[T_0, \ldots, T_n], A)
+& = &
+A_1 \times \ldots \times A_1 \\
+\psi & \mapsto & (\psi(T_0), \ldots, \psi(T_n))
+\end{eqnarray*}
+and the degree $1$ part of $\Gamma_*(Y, \mathcal{L})$ is
+just $\Gamma(Y, \mathcal{L})$.
+\end{proof}
+
+\begin{definition}
+\label{definition-projective-space}
+The scheme
+$\mathbf{P}^n_{\mathbf{Z}} = \text{Proj}(\mathbf{Z}[T_0, \ldots, T_n])$
+is called {\it projective $n$-space over $\mathbf{Z}$}.
+Its base change $\mathbf{P}^n_S$ to a scheme $S$ is called
+{\it projective $n$-space over $S$}. If $R$ is a ring the base change
+to $\Spec(R)$ is denoted $\mathbf{P}^n_R$ and called
+{\it projective $n$-space over $R$}.
+\end{definition}
+
+\noindent
+Given a scheme $Y$ over $S$
+and a pair $(\mathcal{L}, (s_0, \ldots, s_n))$ as in
+Lemma \ref{lemma-projective-space}
+the induced morphism to $\mathbf{P}^n_S$ is denoted
+$$
+\varphi_{(\mathcal{L}, (s_0, \ldots, s_n))} :
+Y \longrightarrow \mathbf{P}^n_S
+$$
+This makes sense since the pair defines a morphism into
+$\mathbf{P}^n_{\mathbf{Z}}$ and we already have the structure
+morphism into $S$ so combined we get a morphism into
+$\mathbf{P}^n_S = \mathbf{P}^n_{\mathbf{Z}} \times S$.
+Note that this is the $S$-morphism characterized by
+$$
+\mathcal{L} =
+\varphi_{(\mathcal{L}, (s_0, \ldots, s_n))}^*\mathcal{O}_{\mathbf{P}^n_R}(1)
+\quad
+\text{and}
+\quad
+s_i = \varphi_{(\mathcal{L}, (s_0, \ldots, s_n))}^*T_i
+$$
+where we think of $T_i$ as a global section of
+$\mathcal{O}_{\mathbf{P}^n_S}(1)$ via (\ref{equation-global-sections}).
+
+\begin{lemma}
+\label{lemma-standard-covering-projective-space}
+Projective $n$-space over $\mathbf{Z}$ is covered by
+$n + 1$ standard opens
+$$
+\mathbf{P}^n_{\mathbf{Z}} =
+\bigcup\nolimits_{i = 0, \ldots, n} D_{+}(T_i)
+$$
+where each $D_{+}(T_i)$ is isomorphic to $\mathbf{A}^n_{\mathbf{Z}}$
+affine $n$-space over $\mathbf{Z}$.
+\end{lemma}
+
+\begin{proof}
+This is true because
+$\mathbf{Z}[T_0, \ldots, T_n]_{+} = (T_0, \ldots, T_n)$ and
+since
+$$
+\Spec
+\left(
+\mathbf{Z}
+\left[\frac{T_0}{T_i}, \ldots, \frac{T_n}{T_i}
+\right]
+\right)
+\cong
+\mathbf{A}^n_{\mathbf{Z}}
+$$
+in an obvious way.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-projective-space-separated}
+Let $S$ be a scheme.
+The structure morphism $\mathbf{P}^n_S \to S$ is
+\begin{enumerate}
+\item separated,
+\item quasi-compact,
+\item satisfies the existence and uniqueness parts of the valuative criterion,
+and
+\item universally closed.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+All these properties are stable under base change (this is clear for the
+last two and for the other two see
+Schemes, Lemmas
+\ref{schemes-lemma-separated-permanence} and
+\ref{schemes-lemma-quasi-compact-preserved-base-change}).
+Hence it suffices to prove them for the morphism
+$\mathbf{P}^n_{\mathbf{Z}} \to \Spec(\mathbf{Z})$.
+Separatedness is Lemma \ref{lemma-proj-separated}. Quasi-compactness follows
+from Lemma \ref{lemma-standard-covering-projective-space}.
+Existence and uniqueness of the valuative criterion follow from
+Lemma \ref{lemma-proj-valuative-criterion}.
+Universally closed follows from the above and
+Schemes, Proposition \ref{schemes-proposition-characterize-universally-closed}.
+\end{proof}
+
+\begin{remark}
+\label{remark-missing-finite-type}
+What's missing in the list of properties above? Well to be sure the property
+of being of finite type. The reason we do not list this here is that we have
+not yet defined the notion of finite type at this point. (Another property
+which is missing is ``smoothness''. And I'm sure there are many more you can
+think of.)
+\end{remark}
+
+\begin{lemma}[Segre embedding]
+\label{lemma-segre-embedding}
+Let $S$ be a scheme. There exists a closed immersion
+$$
+\mathbf{P}^n_S \times_S \mathbf{P}^m_S
+\longrightarrow
+\mathbf{P}^{nm + n + m}_S
+$$
+called the {\it Segre embedding}.
+\end{lemma}
+
+\begin{proof}
+It suffices to prove this when $S = \Spec(\mathbf{Z})$.
+Hence we will drop the index $S$ and work in the absolute setting.
+Write $\mathbf{P}^n = \text{Proj}(\mathbf{Z}[X_0, \ldots, X_n])$,
+$\mathbf{P}^m = \text{Proj}(\mathbf{Z}[Y_0, \ldots, Y_m])$,
+and
+$\mathbf{P}^{nm + n + m} =
+\text{Proj}(\mathbf{Z}[Z_0, \ldots, Z_{nm + n + m}])$.
+In order to map into $\mathbf{P}^{nm + n + m}$ we have to
+write down an invertible sheaf $\mathcal{L}$ on the left hand
+side and $(n + 1)(m + 1)$ sections $s_i$ which generate it.
+See Lemma \ref{lemma-projective-space}.
+The invertible sheaf we take is
+$$
+\mathcal{L} =
+\text{pr}_1^*\mathcal{O}_{\mathbf{P}^n}(1)
+\otimes
+\text{pr}_2^*\mathcal{O}_{\mathbf{P}^m}(1)
+$$
+The sections we take are
+$$
+s_0 = X_0Y_0, \ s_1 = X_1Y_0, \ldots, \ s_n = X_nY_0,
+\ s_{n + 1} = X_0Y_1, \ldots, \ s_{nm + n + m} = X_nY_m.
+$$
+These generate $\mathcal{L}$ since the sections $X_i$ generate
+$\mathcal{O}_{\mathbf{P}^n}(1)$ and the sections $Y_j$ generate
+$\mathcal{O}_{\mathbf{P}^m}(1)$. The induced morphism
+$\varphi$ has the property that
+$$
+\varphi^{-1}(D_{+}(Z_{i + (n + 1)j})) = D_{+}(X_i) \times D_{+}(Y_j).
+$$
+Hence it is an affine morphism. The corresponding ring map in case
+$(i, j) = (0, 0)$ is the map
+$$
+\mathbf{Z}[Z_1/Z_0, \ldots, Z_{nm + n + m}/Z_0]
+\longrightarrow
+\mathbf{Z}[X_1/X_0, \ldots, X_n/X_0, Y_1/Y_0, \ldots, Y_n/Y_0]
+$$
+which maps $Z_i/Z_0$ to the element $X_i/X_0$ for $i \leq n$ and
+the element $Z_{(n + 1)j}/Z_0$ to the element $Y_j/Y_0$. Hence it
+is surjective. A similar argument works for the other affine
+open subsets. Hence the morphism $\varphi$ is a closed immersion
+(see Schemes, Lemma \ref{schemes-lemma-closed-local-target} and
+Example \ref{schemes-example-closed-immersion-affines}.)
+\end{proof}
+
+\noindent
+The following two lemmas are special cases of more general results later, but
+perhaps it makes sense to prove these directly here now.
+
+\begin{lemma}
+\label{lemma-closed-in-projective-space}
+Let $R$ be a ring. Let $Z \subset \mathbf{P}^n_R$ be a closed subscheme.
+Let
+$$
+I_d = \Ker\left(
+R[T_0, \ldots, T_n]_d
+\longrightarrow
+\Gamma(Z, \mathcal{O}_{\mathbf{P}^n_R}(d)|_Z)\right)
+$$
+Then $I = \bigoplus I_d \subset R[T_0, \ldots, T_n]$ is
+a graded ideal and $Z = \text{Proj}(R[T_0, \ldots, T_n]/I)$.
+\end{lemma}
+
+\begin{proof}
+It is clear that $I$ is a graded ideal.
+Set $Z' = \text{Proj}(R[T_0, \ldots, T_n]/I)$.
+By Lemma \ref{lemma-surjective-graded-rings-generated-degree-1-map-proj}
+we see that $Z'$ is a closed subscheme of $\mathbf{P}^n_R$.
+To see the equality $Z = Z'$
+it suffices to check on an standard affine open
+$D_{+}(T_i)$. By renumbering the homogeneous coordinates we
+may assume $i = 0$. Say $Z \cap D_{+}(T_0)$, resp.\ $Z' \cap D_{+}(T_0)$
+is cut out by the ideal $J$, resp.\ $J'$ of $R[T_1/T_0, \ldots, T_n/T_0]$.
+Then $J'$ is the ideal generated by the elements $F/T_0^{\deg(F)}$ where
+$F \in I$ is homogeneous.
+Suppose the degree of $F \in I$ is $d$. Since $F$ vanishes as a section
+of $\mathcal{O}_{\mathbf{P}^n_R}(d)$ restricted to $Z$ we see that
+$F/T_0^d$ is an element of $J$. Thus $J' \subset J$.
+
+\medskip\noindent
+Conversely, suppose that $f \in J$. If $f$ has total degree
+$d$ in $T_1/T_0, \ldots, T_n/T_0$, then we can write
+$f = F/T_0^d$ for some $F \in R[T_0, \ldots, T_n]_d$.
+Pick $i \in \{1, \ldots, n\}$. Then $Z \cap D_{+}(T_i)$ is
+cut out by some ideal $J_i \subset R[T_0/T_i, \ldots, T_n/T_i]$.
+Moreover,
+$$
+J \cdot
+R\left[
+\frac{T_1}{T_0}, \ldots, \frac{T_n}{T_0},
+\frac{T_0}{T_i}, \ldots, \frac{T_n}{T_i}
+\right]
+=
+J_i \cdot
+R\left[
+\frac{T_1}{T_0}, \ldots, \frac{T_n}{T_0},
+\frac{T_0}{T_i}, \ldots, \frac{T_n}{T_i}
+\right]
+$$
+The left hand side is the localization of $J$ with respect to the
+element $T_i/T_0$ and the right hand side is the localization of $J_i$
+with respect to the element $T_0/T_i$. It follows that
+$T_0^{d_i}F/T_i^{d + d_i}$ is an element of $J_i$ for some $d_i$
+sufficiently large. This proves that $T_0^{\max(d_i)}F$ is an
+element of $I$, because its restriction to each standard affine
+open $D_{+}(T_i)$ vanishes on the closed subscheme
+$Z \cap D_{+}(T_i)$. Hence $f \in J'$ and we conclude $J \subset J'$
+as desired.
+\end{proof}
+
+\noindent
+The following lemma is a special case of the more general
+Properties, Lemmas \ref{properties-lemma-ample-quasi-coherent} or
+\ref{properties-lemma-proj-quasi-coherent}.
+
+\begin{lemma}
+\label{lemma-quasi-coherent-projective-space}
+Let $R$ be a ring.
+Let $\mathcal{F}$ be a quasi-coherent sheaf on $\mathbf{P}^n_R$.
+For $d \geq 0$ set
+$$
+M_d
+=
+\Gamma(\mathbf{P}^n_R,
+\mathcal{F} \otimes_{\mathcal{O}_{\mathbf{P}^n_R}}
+\mathcal{O}_{\mathbf{P}^n_R}(d))
+=
+\Gamma(\mathbf{P}^n_R, \mathcal{F}(d))
+$$
+Then $M = \bigoplus_{d \geq 0} M_d$ is a graded $R[T_0, \ldots, R_n]$-module
+and there is a canonical isomorphism $\mathcal{F} = \widetilde{M}$.
+\end{lemma}
+
+\begin{proof}
+The multiplication maps
+$$
+R[T_0, \ldots, R_n]_e \times M_d \longrightarrow M_{d + e}
+$$
+come from the natural isomorphisms
+$$
+\mathcal{O}_{\mathbf{P}^n_R}(e)
+\otimes_{\mathcal{O}_{\mathbf{P}^n_R}}
+\mathcal{F}(d)
+\longrightarrow
+\mathcal{F}(e + d)
+$$
+see Equation (\ref{equation-global-sections-module}). Let us construct the
+map $c : \widetilde{M} \to \mathcal{F}$. On each of the standard affines
+$U_i = D_{+}(T_i)$ we see that $\Gamma(U_i, \widetilde{M}) = (M[1/T_i])_0$
+where the subscript ${}_0$ means degree $0$ part. An element of this
+can be written as $m/T_i^d$ with $m \in M_d$. Since $T_i$ is a generator
+of $\mathcal{O}(1)$ over $U_i$ we can always write
+$m|_{U_i} = m_i \otimes T_i^d$ where $m_i \in \Gamma(U_i, \mathcal{F})$
+is a unique section. Thus a natural guess is $c(m/T_i^d) = m_i$.
+A small argument, which is omitted here, shows that this gives a
+well defined map $c : \widetilde{M} \to \mathcal{F}$ if we can
+show that
+$$
+(T_i/T_j)^d m_i|_{U_i \cap U_j} = m_j|_{U_i \cap U_j}
+$$
+in $M[1/T_iT_j]$.
+But this is clear since on the overlap the generators $T_i$ and
+$T_j$ of $\mathcal{O}(1)$ differ by the invertible function $T_i/T_j$.
+
+\medskip\noindent
+Injectivity of $c$. We may check for injectivity over the affine opens
+$U_i$. Let $i \in \{0, \ldots, n\}$
+and let $s$ be an element $s = m/T_i^d \in \Gamma(U_i, \widetilde{M})$
+such that $c(m/T_i^d) = 0$. By the description of $c$ above this means that
+$m_i = 0$, hence $m|_{U_i} = 0$. Hence $T_i^em = 0$ in $M$ for some
+$e$. Hence $s = m/T_i^d = T_i^e/T_i^{e + d} = 0$ as desired.
+
+\medskip\noindent
+Surjectivity of $c$. We may check for surjectivity over the affine opens
+$U_i$. By renumbering it suffices to check it over $U_0$.
+Let $s \in \mathcal{F}(U_0)$.
+Let us write $\mathcal{F}|_{U_i} = \widetilde{N_i}$ for some
+$R[T_0/T_i, \ldots, T_0/T_i]$-module $N_i$, which is possible because
+$\mathcal{F}$ is quasi-coherent. So $s$ corresponds to an element
+$x \in N_0$. Then we have that
+$$
+(N_i)_{T_j/T_i} \cong (N_j)_{T_i/T_j}
+$$
+(where the subscripts mean ``principal localization at'')
+as modules over the ring
+$$
+R\left[
+\frac{T_0}{T_i}, \ldots, \frac{T_n}{T_i},
+\frac{T_0}{T_j}, \ldots, \frac{T_n}{T_j}
+\right].
+$$
+This means that for some large integer $d$ there exist elements
+$s_i \in N_i$, $i = 1, \ldots, n$ such that
+$$
+s = (T_i/T_0)^d s_i
+$$
+on $U_0 \cap U_i$. Next, we look at the difference
+$$
+t_{ij} = s_i - (T_j/T_i)^d s_j
+$$
+on $U_i \cap U_j$, $0 < i < j$. By our choice of $s_i$ we know that
+$t_{ij}|_{U_0 \cap U_i \cap U_j} = 0$. Hence there exists a large integer
+$e$ such that $(T_0/T_i)^et_{ij} = 0$. Set $s_i' = (T_0/T_i)^es_i$,
+and $s_0' = s$. Then we will have
+$$
+s_a' = (T_b/T_a)^{e + d} s_b'
+$$
+on $U_a \cap U_b$ for all $a, b$. This is exactly the condition that the
+elements $s'_a$ glue to a global section
+$m \in \Gamma(\mathbf{P}^n_R, \mathcal{F}(e + d))$.
+And moreover $c(m/T_0^{e + d}) = s$ by construction. Hence $c$ is
+surjective and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-globally-generated-omega-twist-1}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible sheaf
+and let $s_0, \ldots, s_n$ be global sections of $\mathcal{L}$
+which generate it. Let $\mathcal{F}$ be the kernel of the induced
+map $\mathcal{O}_X^{\oplus n + 1} \to \mathcal{L}$.
+Then $\mathcal{F} \otimes \mathcal{L}$ is globally generated.
+\end{lemma}
+
+\begin{proof}
+In fact the result is true if $X$ is any locally ringed space.
+The sheaf $\mathcal{F}$ is a finite locally free $\mathcal{O}_X$-module
+of rank $n$. The elements
+$$
+s_{ij} = (0, \ldots, 0, s_j, 0, \ldots, 0, -s_i, 0, \ldots, 0)
+\in \Gamma(X, \mathcal{L}^{\oplus n + 1})
+$$
+with $s_j$ in the $i$th spot and $-s_i$ in the $j$th spot map to zero
+in $\mathcal{L}^{\otimes 2}$. Hence
+$s_{ij} \in \Gamma(X, \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L})$.
+A local computation shows that these sections generate
+$\mathcal{F} \otimes \mathcal{L}$.
+
+\medskip\noindent
+Alternative proof. Consider the morphism
+$\varphi : X \to \mathbf{P}^n_\mathbf{Z}$ associated to
+the pair $(\mathcal{L}, (s_0, \ldots, s_n))$. Since the pullback
+of $\mathcal{O}(1)$ is $\mathcal{L}$ and since the pullback
+of $T_i$ is $s_i$, it suffices to prove the lemma in the
+case of $\mathbf{P}^n_\mathbf{Z}$. In this case the sheaf
+$\mathcal{F}$ corresponds to the graded $S = \mathbf{Z}[T_0, \ldots, T_n]$
+module $M$ which fits into the short exact sequence
+$$
+0 \to M \to S^{\oplus n + 1} \to S(1) \to 0
+$$
+where the second map is given by $T_0, \ldots, T_n$. In this
+case the statement above translates into the statement that
+the elements
+$$
+T_{ij} = (0, \ldots, 0, T_j, 0, \ldots, 0, -T_i, 0, \ldots, 0)
+\in M(1)_0
+$$
+generate the graded module $M(1)$ over $S$. We omit the details.
+\end{proof}
+
+
+\section{Quasi-coherent sheaves on Proj}
+\label{section-quasi-coherent-proj}
+
+\noindent
+Let $S$ be a graded ring. Let $M$ be a graded $S$-module.
+We saw in Lemma \ref{lemma-proj-sheaves} how to construct a quasi-coherent
+sheaf of modules $\widetilde{M}$ on $\text{Proj}(S)$ and a map
+\begin{equation}
+\label{equation-map-global-sections}
+M_0 \longrightarrow \Gamma(\text{Proj}(S), \widetilde{M})
+\end{equation}
+of the degree $0$ part of $M$ to the global sections of $\widetilde{M}$.
+The degree $0$ part of the $n$th twist $M(n)$ of the graded module $M$ (see
+Algebra, Section \ref{algebra-section-graded})
+is equal to $M_n$. Hence we can get maps
+\begin{equation}
+\label{equation-map-global-sections-degree-n}
+M_n \longrightarrow \Gamma(\text{Proj}(S), \widetilde{M(n)}).
+\end{equation}
+We would like to be able to perform this operation for any quasi-coherent
+sheaf $\mathcal{F}$ on $\text{Proj}(S)$. We will do this by tensoring
+with the $n$th twist of the structure sheaf, see
+Definition \ref{definition-twist}. In order to relate the two notions
+we will use the following lemma.
+
+\begin{lemma}
+\label{lemma-widetilde-tensor}
+Let $S$ be a graded ring.
+Let $(X, \mathcal{O}_X) = (\text{Proj}(S), \mathcal{O}_{\text{Proj}(S)})$
+be the scheme of Lemma \ref{lemma-proj-scheme}.
+Let $f \in S_{+}$ be homogeneous. Let $x \in X$ be a point
+corresponding to the homogeneous prime $\mathfrak p \subset S$.
+Let $M$, $N$ be graded $S$-modules.
+There is a canonical map of $\mathcal{O}_{\text{Proj}(S)}$-modules
+$$
+\widetilde M \otimes_{\mathcal{O}_X} \widetilde N
+\longrightarrow
+\widetilde{M \otimes_S N}
+$$
+which induces the canonical map
+$
+M_{(f)} \otimes_{S_{(f)}} N_{(f)}
+\to
+(M \otimes_S N)_{(f)}
+$
+on sections over $D_{+}(f)$ and the canonical map
+$
+M_{(\mathfrak p)} \otimes_{S_{(\mathfrak p)}} N_{(\mathfrak p)}
+\to
+(M \otimes_S N)_{(\mathfrak p)}
+$
+on stalks at $x$. Moreover, the following diagram
+$$
+\xymatrix{
+M_0 \otimes_{S_0} N_0 \ar[r] \ar[d] &
+(M \otimes_S N)_0 \ar[d] \\
+\Gamma(X, \widetilde M \otimes_{\mathcal{O}_X} \widetilde N) \ar[r] &
+\Gamma(X, \widetilde{M \otimes_S N})
+}
+$$
+is commutative where the vertical maps are given by
+(\ref{equation-map-global-sections}).
+\end{lemma}
+
+\begin{proof}
+To construct a morphism as displayed is the same as constructing
+a $\mathcal{O}_X$-bilinear map
+$$
+\widetilde M \times \widetilde N
+\longrightarrow
+\widetilde{M \otimes_S N}
+$$
+see Modules, Section \ref{modules-section-tensor-product}.
+It suffices to define this on sections over the opens $D_{+}(f)$
+compatible with restriction mappings. On $D_{+}(f)$ we use the
+$S_{(f)}$-bilinear map
+$M_{(f)} \times N_{(f)} \to (M \otimes_S N)_{(f)}$,
+$(x/f^n, y/f^m) \mapsto (x \otimes y)/f^{n + m}$. Details omitted.
+\end{proof}
+
+\begin{remark}
+\label{remark-not-isomorphism}
+In general the map constructed in Lemma \ref{lemma-widetilde-tensor}
+above is not an isomorphism. Here is an example. Let $k$
+be a field. Let $S = k[x, y, z]$ with $k$ in degree $0$ and
+$\deg(x) = 1$, $\deg(y) = 2$, $\deg(z) = 3$.
+Let $M = S(1)$ and $N = S(2)$, see
+Algebra, Section \ref{algebra-section-graded}
+for notation. Then $M \otimes_S N = S(3)$.
+Note that
+\begin{eqnarray*}
+S_z
+& = &
+k[x, y, z, 1/z] \\
+S_{(z)}
+& = &
+k[x^3/z, xy/z, y^3/z^2]
+\cong
+k[u, v, w]/(uw - v^3) \\
+M_{(z)} & = & S_{(z)} \cdot x + S_{(z)} \cdot y^2/z \subset S_z \\
+N_{(z)} & = & S_{(z)} \cdot y + S_{(z)} \cdot x^2 \subset S_z \\
+S(3)_{(z)} & = & S_{(z)} \cdot z \subset S_z
+\end{eqnarray*}
+Consider the maximal ideal $\mathfrak m = (u, v, w) \subset S_{(z)}$.
+It is not hard to see that both $M_{(z)}/\mathfrak mM_{(z)}$
+and $N_{(z)}/\mathfrak mN_{(z)}$ have dimension $2$ over
+$\kappa(\mathfrak m)$. But
+$S(3)_{(z)}/\mathfrak mS(3)_{(z)}$ has dimension $1$.
+Thus the map $M_{(z)} \otimes N_{(z)} \to S(3)_{(z)}$ is not
+an isomorphism.
+\end{remark}
+
+
+
+
+
+
+
+
+
+\section{Invertible sheaves on Proj}
+\label{section-invertible-on-proj}
+
+\noindent
+Here's the construction of the twisted
+sheaves $\mathcal{O}_X(n)$.
+The point is that there is a good way
+to pass from an $S$-module $M$ to an
+$\mathcal{O}_X$-module, called $\widetilde{M}$.
+So basically you just define the twists
+by $M(d)_n=M_{n+d}$ and apply that construction.
+
+Pick an element of degree $d$.
+Then think of the module generated by this element.
+The least degree piece of such a module
+is the degree $d$ piece of the original module,
+that is we have $M(-d)$.
+
+\medskip\noindent
+Recall from Algebra, Section \ref{algebra-section-graded}
+the construction of the twisted module $M(n)$ associated
+to a graded module over a graded ring.
+
+\begin{definition}
+\label{definition-twist}
+Let $S$ be a graded ring. Let $X = \text{Proj}(S)$.
+\begin{enumerate}
+\item We define $\mathcal{O}_X(n) = \widetilde{S(n)}$.
+This is called the $n$th
+{\it twist of the structure sheaf of $\text{Proj}(S)$}.
+\item For any sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$ we set
+$\mathcal{F}(n) = \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{O}_X(n)$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+We are going to use Lemma \ref{lemma-widetilde-tensor}
+to construct some canonical maps.
+Since $S(n) \otimes_S S(m) = S(n + m)$ we see that there
+are canonical maps
+\begin{equation}
+\label{equation-multiply}
+\mathcal{O}_X(n) \otimes_{\mathcal{O}_X} \mathcal{O}_X(m)
+\longrightarrow
+\mathcal{O}_X(n + m).
+\end{equation}
+These maps are not isomorphisms in general, see the example in
+Remark \ref{remark-not-isomorphism}. The same example shows
+that $\mathcal{O}_X(n)$ is {\it not} an invertible sheaf on $X$ in
+general. Tensoring with an arbitrary $\mathcal{O}_X$-module $\mathcal{F}$
+we get maps
+\begin{equation}
+\label{equation-multiply-on-sheaf}
+\mathcal{O}_X(n) \otimes_{\mathcal{O}_X} \mathcal{F}(m)
+\longrightarrow
+\mathcal{F}(n + m).
+\end{equation}
+The maps (\ref{equation-map-global-sections-degree-n})
+on global sections give a map of graded rings
+\begin{equation}
+\label{equation-global-sections}
+S \longrightarrow \bigoplus\nolimits_{n \geq 0} \Gamma(X, \mathcal{O}_X(n)).
+\end{equation}
+And for an arbitrary $\mathcal{O}_X$-module $\mathcal{F}$ the maps
+(\ref{equation-multiply-on-sheaf}) give a graded module structure
+\begin{equation}
+\label{equation-global-sections-module}
+\bigoplus\nolimits_{n \geq 0} \Gamma(X, \mathcal{O}_X(n))
+\times
+\bigoplus\nolimits_{m \in \mathbf{Z}} \Gamma(X, \mathcal{F}(m))
+\longrightarrow
+\bigoplus\nolimits_{m \in \mathbf{Z}} \Gamma(X, \mathcal{F}(m))
+\end{equation}
+and via (\ref{equation-global-sections}) also a $S$-module structure.
+More generally, given any graded $S$-module
+$M$ we have $M(n) = M \otimes_S S(n)$. Hence we get maps
+\begin{equation}
+\label{equation-multiply-more-generally}
+\widetilde M(n)
+=
+\widetilde M
+\otimes_{\mathcal{O}_X}
+\mathcal{O}_X(n)
+\longrightarrow
+\widetilde{M(n)}.
+\end{equation}
+On global sections (\ref{equation-map-global-sections-degree-n})
+defines a map of graded $S$-modules
+\begin{equation}
+\label{equation-global-sections-more-generally}
+M \longrightarrow
+\bigoplus\nolimits_{n \in \mathbf{Z}} \Gamma(X, \widetilde{M(n)}).
+\end{equation}
+Here is an important fact which follows basically immediately from the
+definitions.
+
+\begin{lemma}
+\label{lemma-when-invertible}
+Let $S$ be a graded ring. Set $X = \text{Proj}(S)$.
+Let $f \in S$ be homogeneous of degree $d > 0$.
+The sheaves $\mathcal{O}_X(nd)|_{D_{+}(f)}$ are invertible,
+and in fact trivial for all $n \in \mathbf{Z}$
+(see Modules, Definition \ref{modules-definition-invertible}).
+The maps (\ref{equation-multiply}) restricted to $D_{+}(f)$
+$$
+\mathcal{O}_X(nd)|_{D_{+}(f)} \otimes_{\mathcal{O}_{D_{+}(f)}}
+\mathcal{O}_X(m)|_{D_{+}(f)}
+\longrightarrow
+\mathcal{O}_X(nd + m)|_{D_{+}(f)},
+$$
+the maps (\ref{equation-multiply-on-sheaf}) restricted to $D_+(f)$
+$$
+\mathcal{O}_X(nd)|_{D_{+}(f)} \otimes_{\mathcal{O}_{D_{+}(f)}}
+\mathcal{F}(m)|_{D_{+}(f)}
+\longrightarrow
+\mathcal{F}(nd + m)|_{D_{+}(f)},
+$$
+and the maps (\ref{equation-multiply-more-generally})
+restricted to $D_{+}(f)$
+$$
+\widetilde M(nd)|_{D_{+}(f)}
+=
+\widetilde M|_{D_{+}(f)}
+\otimes_{\mathcal{O}_{D_{+}(f)}}
+\mathcal{O}_X(nd)|_{D_{+}(f)}
+\longrightarrow
+\widetilde{M(nd)}|_{D_{+}(f)}
+$$
+are isomorphisms for all $n, m \in \mathbf{Z}$.
+\end{lemma}
+
+\begin{proof}
+The (not graded) $S$-module maps $S \to S(nd)$, and $M \to M(nd)$, given by
+$x \mapsto f^n x$ become isomorphisms after inverting $f$. The first shows that
+$S_{(f)} \cong S(nd)_{(f)}$ which gives an isomorphism
+$\mathcal{O}_{D_{+}(f)} \cong \mathcal{O}_X(nd)|_{D_{+}(f)}$.
+The second shows that the map
+$S(nd)_{(f)} \otimes_{S_{(f)}} M_{(f)} \to M(nd)_{(f)}$
+is an isomorphism. The case of the map (\ref{equation-multiply-on-sheaf})
+is a consequence of the case of the map (\ref{equation-multiply}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-apply-modules}
+Let $S$ be a graded ring. Let $M$ be a graded $S$-module.
+Set $X = \text{Proj}(S)$. Assume $X$ is covered by the standard
+opens $D_+(f)$ with $f \in S_1$, e.g., if $S$ is generated by $S_1$
+over $S_0$. Then the sheaves $\mathcal{O}_X(n)$
+are invertible and the maps
+(\ref{equation-multiply}), (\ref{equation-multiply-on-sheaf}), and
+(\ref{equation-multiply-more-generally}) are isomorphisms.
+In particular, these maps induce isomorphisms
+$$
+\mathcal{O}_X(1)^{\otimes n} \cong
+\mathcal{O}_X(n)
+\quad
+\text{and}
+\quad
+\widetilde{M} \otimes_{\mathcal{O}_X} \mathcal{O}_X(n) =
+\widetilde{M}(n) \cong \widetilde{M(n)}
+$$
+Thus (\ref{equation-map-global-sections-degree-n}) becomes a map
+\begin{equation}
+\label{equation-map-global-sections-degree-n-simplified}
+M_n \longrightarrow \Gamma(X, \widetilde{M}(n))
+\end{equation}
+and (\ref{equation-global-sections-more-generally}) becomes a map
+\begin{equation}
+\label{equation-global-sections-more-generally-simplified}
+M \longrightarrow
+\bigoplus\nolimits_{n \in \mathbf{Z}} \Gamma(X, \widetilde{M}(n)).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Under the assumptions of the lemma $X$ is covered by the
+open subsets $D_{+}(f)$ with $f \in S_1$ and the
+lemma is a consequence of Lemma \ref{lemma-when-invertible} above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-where-invertible}
+Let $S$ be a graded ring. Set $X = \text{Proj}(S)$. Fix $d \geq 1$ an
+integer. The following open subsets of $X$ are equal:
+\begin{enumerate}
+\item The largest open subset $W = W_d \subset X$ such that
+each $\mathcal{O}_X(dn)|_W$ is invertible and all the
+multiplication maps
+$\mathcal{O}_X(nd)|_W \otimes_{\mathcal{O}_W} \mathcal{O}_X(md)|_W
+\to \mathcal{O}_X(nd + md)|_W$
+(see \ref{equation-multiply}) are isomorphisms.
+\item The union of the open subsets $D_{+}(fg)$ with
+$f, g \in S$ homogeneous and $\deg(f) = \deg(g) + d$.
+\end{enumerate}
+Moreover, all the maps
+$\widetilde M(nd)|_W = \widetilde M|_W \otimes_{\mathcal{O}_W}
+\mathcal{O}_X(nd)|_W \to \widetilde{M(nd)}|_W$
+(see \ref{equation-multiply-more-generally}) are isomorphisms.
+\end{lemma}
+
+\begin{proof}
+If $x \in D_{+}(fg)$ with $\deg(f) = \deg(g) + d$ then
+on $D_{+}(fg)$ the sheaves $\mathcal{O}_X(dn)$
+are generated by the element $(f/g)^n = f^{2n}/(fg)^n$. This implies $x$
+is in the open subset $W$ defined in (1) by arguing as in the
+proof of Lemma \ref{lemma-when-invertible}.
+
+\medskip\noindent
+Conversely, suppose that $\mathcal{O}_X(d)$ is free of rank 1
+in an open neighbourhood $V$ of $x \in X$ and all the
+multiplication maps
+$\mathcal{O}_X(nd)|_V \otimes_{\mathcal{O}_V} \mathcal{O}_X(md)|_V
+\to \mathcal{O}_X(nd + md)|_V$ are isomorphisms.
+We may choose $h \in S_{+}$ homogeneous such that $x \in D_{+}(h) \subset V$.
+By the definition of the twists of the structure sheaf we conclude there
+exists an element $s$ of $(S_h)_d$ such that $s^n$ is a basis of $(S_h)_{nd}$
+as a module over $S_{(h)}$ for all $n \in \mathbf{Z}$.
+We may write
+$s = f/h^m$ for some $m \geq 1$ and $f \in S_{d + m \deg(h)}$.
+Set $g = h^m$ so $s = f/g$. Note that $x \in D_{+}(g)$ by construction.
+Note that $g^d \in (S_h)_{d\deg(g)}$.
+By assumption we can write this as a multiple of
+$s^{\deg(g)} = f^{\deg(g)}/g^{\deg(g)}$, say
+$g^d = a/g^e \cdot f^{\deg(g)}/g^{\deg(g)}$.
+Then we conclude that $g^{d + e + \deg(g)} = a f^{\deg(g)}$
+and hence also $x \in D_{+}(f)$. So $x$ is an element of the set defined
+in (2).
+
+\medskip\noindent
+The existence of the generating section $s = f/g$ over
+the affine open $D_{+}(fg)$ whose
+powers freely generate the sheaves of modules
+$\mathcal{O}_X(nd)$ easily implies that the multiplication maps
+$\widetilde M(nd)|_W = \widetilde M|_W \otimes_{\mathcal{O}_W}
+\mathcal{O}_X(nd)|_W \to \widetilde{M(nd)}|_W$
+(see \ref{equation-multiply-more-generally})
+are isomorphisms. Compare with the proof of Lemma \ref{lemma-when-invertible}.
+\end{proof}
+
+\noindent
+Recall from Modules, Lemma \ref{modules-lemma-s-open}
+that given an invertible sheaf $\mathcal{L}$ on a locally ringed
+space $X$, and given a global section $s$ of $\mathcal{L}$
+the set $X_s = \{x \in X \mid s \not \in \mathfrak m_x\mathcal{L}_x\}$
+is open.
+
+\begin{lemma}
+\label{lemma-principal-open}
+Let $S$ be a graded ring. Set $X = \text{Proj}(S)$. Fix $d \geq 1$ an
+integer. Let $W = W_d \subset X$ be the open subscheme defined in
+Lemma \ref{lemma-where-invertible}. Let $n \geq 1$ and $f \in S_{nd}$.
+Denote $s \in \Gamma(W, \mathcal{O}_W(nd))$ the section which is
+the image of $f$ via (\ref{equation-global-sections}) restricted to $W$. Then
+$$
+W_s = D_{+}(f) \cap W.
+$$
+\end{lemma}
+
+\begin{proof}
+Let $D_{+}(ab) \subset W$ be a standard affine open with
+$a, b \in S$ homogeneous and $\deg(a) = \deg(b) + d$.
+Note that $D_{+}(ab) \cap D_{+}(f) = D_{+}(abf)$.
+On the other hand the restriction of $s$ to $D_{+}(ab)$
+corresponds to the element $f/1 = b^nf/a^n (a/b)^n \in (S_{ab})_{nd}$.
+We have seen in the proof of Lemma \ref{lemma-where-invertible} that
+$(a/b)^n$ is a generator for $\mathcal{O}_W(nd)$ over $D_{+}(ab)$.
+We conclude that $W_s \cap D_{+}(ab)$ is the principal open
+associated to $b^nf/a^n \in \mathcal{O}_X(D_{+}(ab))$.
+Thus the result of the lemma is clear.
+\end{proof}
+
+\noindent
+The following lemma states the properties that we will later use to
+characterize schemes with an ample invertible sheaf.
+
+\begin{lemma}
+\label{lemma-ample-on-proj}
+Let $S$ be a graded ring.
+Let $X = \text{Proj}(S)$.
+Let $Y \subset X$ be a quasi-compact open subscheme.
+Denote $\mathcal{O}_Y(n)$ the restriction of
+$\mathcal{O}_X(n)$ to $Y$.
+There exists an integer $d \geq 1$ such that
+\begin{enumerate}
+\item the subscheme $Y$ is contained in the open $W_d$ defined
+in Lemma \ref{lemma-where-invertible},
+\item the sheaf $\mathcal{O}_Y(dn)$ is invertible for all $n \in \mathbf{Z}$,
+\item all the maps
+$\mathcal{O}_Y(nd) \otimes_{\mathcal{O}_Y} \mathcal{O}_Y(m)
+\longrightarrow
+\mathcal{O}_Y(nd + m)$
+of Equation (\ref{equation-multiply}) are isomorphisms,
+\item all the maps
+$\widetilde M(nd)|_Y = \widetilde M|_Y \otimes_{\mathcal{O}_Y}
+\mathcal{O}_X(nd)|_Y \to \widetilde{M(nd)}|_Y$
+(see \ref{equation-multiply-more-generally}) are isomorphisms,
+\item given $f \in S_{nd}$ denote $s \in \Gamma(Y, \mathcal{O}_Y(nd))$
+the image of $f$ via (\ref{equation-global-sections})
+restricted to $Y$, then $D_{+}(f) \cap Y = Y_s$,
+\item a basis for the topology on $Y$ is given
+by the collection of opens $Y_s$, where $s \in \Gamma(Y, \mathcal{O}_Y(nd))$,
+$n \geq 1$, and
+\item a basis for the topology of $Y$ is given
+by those opens $Y_s \subset Y$, for
+$s \in \Gamma(Y, \mathcal{O}_Y(nd))$, $n \geq 1$ which are affine.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since $Y$ is quasi-compact there exist finitely many homogeneous
+$f_i \in S_{+}$, $i = 1, \ldots, n$ such that the standard opens
+$D_{+}(f_i)$ give an open covering of $Y$. Let $d_i = \deg(f_i)$ and set
+$d = d_1 \ldots d_n$. Note that $D_{+}(f_i) = D_{+}(f_i^{d/d_i})$
+and hence we see immediately that $Y \subset W_d$, by characterization
+(2) in Lemma \ref{lemma-where-invertible} or
+by (1) using Lemma \ref{lemma-when-invertible}.
+Note that (1) implies (2), (3) and (4) by Lemma \ref{lemma-where-invertible}.
+(Note that (3) is a special case of (4).)
+Assertion (5) follows from Lemma \ref{lemma-principal-open}.
+Assertions (6) and (7) follow because the open subsets $D_{+}(f)$
+form a basis for the topology of $X$ and are affine.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-comparison-proj-quasi-coherent}
+Let $S$ be a graded ring. Set $X = \text{Proj}(S)$.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+Set $M = \bigoplus_{n \in \mathbf{Z}} \Gamma(X, \mathcal{F}(n))$ as
+a graded $S$-module, using
+(\ref{equation-global-sections-module}) and (\ref{equation-global-sections}).
+Then there is a canonical $\mathcal{O}_X$-module map
+$$
+\widetilde{M} \longrightarrow \mathcal{F}
+$$
+functorial in $\mathcal{F}$ such that the induced map
+$M_0 \to \Gamma(X, \mathcal{F})$ is the identity.
+\end{lemma}
+
+\begin{proof}
+Let $f \in S$ be homogeneous of degree $d > 0$. Recall that
+$\widetilde{M}|_{D_{+}(f)}$ corresponds to the
+$S_{(f)}$-module $M_{(f)}$ by Lemma \ref{lemma-proj-sheaves}.
+Thus we can define a canonical map
+$$
+M_{(f)} \longrightarrow \Gamma(D_+(f), \mathcal{F}),\quad
+m/f^n \longmapsto m|_{D_+(f)} \otimes f|_{D_+(f)}^{-n}
+$$
+which makes sense because $f|_{D_+(f)}$ is a trivializing
+section of the invertible sheaf $\mathcal{O}_X(d)|_{D_+(f)}$, see
+Lemma \ref{lemma-when-invertible} and its proof.
+Since $\widetilde{M}$ is quasi-coherent, this leads to a canonical
+map
+$$
+\widetilde{M}|_{D_+(f)} \longrightarrow \mathcal{F}|_{D_+(f)}
+$$
+via Schemes, Lemma \ref{schemes-lemma-compare-constructions}.
+We obtain a global map if we prove that the displayed maps glue on overlaps.
+Proof of this is omitted. We also omit the proof of the final statement.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Functoriality of Proj}
+\label{section-functoriality-proj}
+
+\noindent
+This is reminiscent of the olden days.
+The point is that Proj is covariant,
+i.e. for rings  $S' \subset S$ we have
+$\text{Proj}S \subset \text{Proj}S$
+(under the right conditions,
+which is the point of this section),
+meaning that, indeed,
+{\bf Projs are projective schemes}.
+
+\noindent
+A graded ring map $\psi : A \to B$ does not always give rise to a morphism of
+associated projective homogeneous spectra. The reason is that
+the inverse image $\psi^{-1}(\mathfrak q)$
+of a homogeneous prime $\mathfrak q \subset B$ may
+contain the irrelevant prime $A_{+}$ even if $\mathfrak q$ does not
+contain $B_{+}$.
+The correct result is stated as follows.
+
+\begin{lemma}
+\label{lemma-morphism-proj}
+Let $A$, $B$ be two graded rings.
+Set $X = \text{Proj}(A)$ and $Y = \text{Proj}(B)$.
+Let $\psi : A \to B$ be a graded ring map.
+Set
+$$
+U(\psi)
+=
+\bigcup\nolimits_{f \in A_{+}\ \text{homogeneous}} D_{+}(\psi(f))
+\subset Y.
+$$
+Then there is a canonical morphism of schemes
+$$
+r_\psi :
+U(\psi)
+\longrightarrow
+X
+$$
+and a map of $\mathbf{Z}$-graded $\mathcal{O}_{U(\psi)}$-algebras
+$$
+\theta = \theta_\psi :
+r_\psi^*\left(
+\bigoplus\nolimits_{d \in \mathbf{Z}} \mathcal{O}_X(d)
+\right)
+\longrightarrow
+\bigoplus\nolimits_{d \in \mathbf{Z}} \mathcal{O}_{U(\psi)}(d).
+$$
+The triple $(U(\psi), r_\psi, \theta)$ is
+characterized by the following properties:
+\begin{enumerate}
+\item For every $d \geq 0$ the diagram
+$$
+\xymatrix{
+A_d \ar[d] \ar[rr]_{\psi} & &
+B_d \ar[d] \\
+\Gamma(X, \mathcal{O}_X(d)) \ar[r]^-\theta &
+\Gamma(U(\psi), \mathcal{O}_Y(d)) &
+\Gamma(Y, \mathcal{O}_Y(d)) \ar[l]
+}
+$$
+is commutative.
+\item For any $f \in A_{+}$ homogeneous
+we have $r_\psi^{-1}(D_{+}(f)) = D_{+}(\psi(f))$ and
+the restriction of $r_\psi$ to $D_{+}(\psi(f))$
+corresponds to the ring map
+$A_{(f)} \to B_{(\psi(f))}$ induced by $\psi$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Clearly condition (2) uniquely determines the morphism of schemes
+and the open subset $U(\psi)$. Pick $f \in A_d$ with $d \geq 1$.
+Note that
+$\mathcal{O}_X(n)|_{D_{+}(f)}$ corresponds to the
+$A_{(f)}$-module $(A_f)_n$ and that
+$\mathcal{O}_Y(n)|_{D_{+}(\psi(f))}$ corresponds to the
+$B_{(\psi(f))}$-module $(B_{\psi(f)})_n$. In other words $\theta$
+when restricted to $D_{+}(\psi(f))$ corresponds to a map of
+$\mathbf{Z}$-graded $B_{(\psi(f))}$-algebras
+$$
+A_f \otimes_{A_{(f)}} B_{(\psi(f))}
+\longrightarrow
+B_{\psi(f)}
+$$
+Condition (1) determines the images of all elements of $A$.
+Since $f$ is an invertible element which is mapped to $\psi(f)$
+we see that $1/f^m$ is mapped to $1/\psi(f)^m$. It easily follows
+from this that $\theta$ is uniquely determined, namely it is
+given by the rule
+$$
+a/f^m \otimes b/\psi(f)^e \longmapsto \psi(a)b/\psi(f)^{m + e}.
+$$
+To show existence we remark that the proof of uniqueness above gave
+a well defined prescription for the morphism $r$ and the map $\theta$
+when restricted to every standard open of the form
+$D_{+}(\psi(f)) \subset U(\psi)$ into $D_{+}(f)$.
+Call these $r_f$ and $\theta_f$.
+Hence we only need to verify that if $D_{+}(f) \subset D_{+}(g)$
+for some $f, g \in A_{+}$ homogeneous, then the restriction of
+$r_g$ to $D_{+}(\psi(f))$ matches $r_f$. This is clear from the
+formulas given for $r$ and $\theta$ above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-morphism-proj-transitive}
+Let $A$, $B$, and $C$ be graded rings.
+Set $X = \text{Proj}(A)$, $Y = \text{Proj}(B)$ and $Z = \text{Proj}(C)$.
+Let $\varphi : A \to B$, $\psi : B \to C$ be graded ring maps.
+Then we have
+$$
+U(\psi \circ \varphi) = r_\psi^{-1}(U(\varphi))
+\quad
+\text{and}
+\quad
+r_{\psi \circ \varphi}
+=
+r_\varphi \circ r_\psi|_{U(\psi \circ \varphi)}.
+$$
+In addition we have
+$$
+\theta_\psi \circ r_\psi^*\theta_\varphi
+=
+\theta_{\psi \circ \varphi}
+$$
+with obvious notation.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-surjective-graded-rings-map-proj}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume $A_d \to B_d$ is surjective for all $d \gg 0$. Then
+\begin{enumerate}
+\item $U(\psi) = Y$,
+\item $r_\psi : Y \to X$ is a closed immersion, and
+\item the maps $\theta : r_\psi^*\mathcal{O}_X(n) \to \mathcal{O}_Y(n)$
+are surjective but not isomorphisms in general (even if $A \to B$ is
+surjective).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) follows from the definition of $U(\psi)$ and the fact that
+$D_{+}(f) = D_{+}(f^n)$ for any $n > 0$. For $f \in A_{+}$ homogeneous
+we see that $A_{(f)} \to B_{(\psi(f))}$ is surjective because
+any element of $B_{(\psi(f))}$ can be represented by a fraction
+$b/\psi(f)^n$ with $n$ arbitrarily large (which forces the degree of
+$b \in B$ to be large). This proves (2).
+The same argument shows the map
+$$
+A_f \to B_{\psi(f)}
+$$
+is surjective which proves the surjectivity of $\theta$.
+For an example where this map is not an isomorphism
+consider the graded ring $A = k[x, y]$ where $k$ is a field
+and $\deg(x) = 1$, $\deg(y) = 2$. Set $I = (x)$, so that
+$B = k[y]$. Note that $\mathcal{O}_Y(1) = 0$ in this case.
+But it is easy to see that $r_\psi^*\mathcal{O}_X(1)$
+is not zero. (There are less silly examples.)
+\end{proof}
+
+\begin{lemma}
+\label{lemma-eventual-iso-graded-rings-map-proj}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume $A_d \to B_d$ is an isomorphism for all $d \gg 0$. Then
+\begin{enumerate}
+\item $U(\psi) = Y$,
+\item $r_\psi : Y \to X$ is an isomorphism, and
+\item the maps $\theta : r_\psi^*\mathcal{O}_X(n) \to \mathcal{O}_Y(n)$
+are isomorphisms.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We have (1) by Lemma \ref{lemma-surjective-graded-rings-map-proj}.
+Let $f \in A_{+}$ be homogeneous. The assumption on $\psi$ implies that
+$A_f \to B_f$ is an isomorphism (details omitted). Thus it is clear that
+$r_\psi$ and $\theta$ restrict to isomorphisms over $D_{+}(f)$.
+The lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-surjective-graded-rings-generated-degree-1-map-proj}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume $A_d \to B_d$ is surjective for $d \gg 0$ and that $A$ is generated
+by $A_1$ over $A_0$. Then
+\begin{enumerate}
+\item $U(\psi) = Y$,
+\item $r_\psi : Y \to X$ is a closed immersion, and
+\item the maps $\theta : r_\psi^*\mathcal{O}_X(n) \to \mathcal{O}_Y(n)$
+are isomorphisms.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Lemmas \ref{lemma-eventual-iso-graded-rings-map-proj} and
+\ref{lemma-morphism-proj-transitive}
+we may replace $B$ by the image of $A \to B$
+without changing $X$ or the sheaves $\mathcal{O}_X(n)$.
+Thus we may assume that $A \to B$ is surjective. By
+Lemma \ref{lemma-surjective-graded-rings-map-proj} we get (1) and (2)
+and surjectivity in (3).
+By Lemma \ref{lemma-apply-modules} we see that both
+$\mathcal{O}_X(n)$ and $\mathcal{O}_Y(n)$
+are invertible. Hence $\theta$ is an isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-map-proj}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume there exists a ring map $R \to A_0$ and a ring map
+$R \to R'$ such that $B = R' \otimes_R A$. Then
+\begin{enumerate}
+\item $U(\psi) = Y$,
+\item the diagram
+$$
+\xymatrix{
+Y = \text{Proj}(B) \ar[r]_{r_\psi} \ar[d] &
+\text{Proj}(A) = X \ar[d] \\
+\Spec(R') \ar[r] &
+\Spec(R)
+}
+$$
+is a fibre product square, and
+\item the maps $\theta : r_\psi^*\mathcal{O}_X(n) \to \mathcal{O}_Y(n)$
+are isomorphisms.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This follows immediately by looking at what happens over the standard
+opens $D_{+}(f)$ for $f \in A_{+}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localization-map-proj}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume there exists a $g \in A_0$ such that $\psi$ induces an
+isomorphism $A_g \to B$. Then
+$U(\psi) = Y$, $r_\psi : Y \to X$ is an open immersion
+which induces an isomorphism of $Y$ with the inverse image
+of $D(g) \subset \Spec(A_0)$. Moreover the map $\theta$
+is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-base-change-map-proj} above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-d-uple}
+Let $S$ be a graded ring. Let $d \geq 1$. Set $S' = S^{(d)}$ with notation
+as in Algebra, Section \ref{algebra-section-graded}. Set
+$X = \text{Proj}(S)$ and $X' = \text{Proj}(S')$. There is a canonical
+isomorphism $i : X \to X'$ of schemes such that
+\begin{enumerate}
+\item for any graded $S$-module $M$ setting $M' = M^{(d)}$,
+we have a canonical isomorphism $\widetilde{M} \to i^*\widetilde{M'}$,
+\item we have canonical isomorphisms
+$\mathcal{O}_{X}(nd) \to i^*\mathcal{O}_{X'}(n)$
+\end{enumerate}
+and these isomorphisms are compatible with the multiplication maps
+of Lemma \ref{lemma-widetilde-tensor} and hence with the maps
+(\ref{equation-multiply}),
+(\ref{equation-multiply-on-sheaf}),
+(\ref{equation-global-sections}),
+(\ref{equation-global-sections-module}),
+(\ref{equation-multiply-more-generally}), and
+(\ref{equation-global-sections-more-generally}) (see proof for precise
+statements.
+\end{lemma}
+
+\begin{proof}
+The injective ring map $S' \to S$ (which is not a homomorphism of graded rings
+due to our conventions), induces a map $j : \Spec(S) \to \Spec(S')$.
+Given a graded prime ideal $\mathfrak p \subset S$ we see that
+$\mathfrak p' = j(\mathfrak p) = S' \cap \mathfrak p$
+is a graded prime ideal of $S'$.
+Moreover, if $f \in S_+$ is homogeneous and $f \not \in \mathfrak p$, then
+$f^d \in S'_+$ and $f^d \not \in \mathfrak p'$. Conversely, if
+$\mathfrak p' \subset S'$ is a graded prime ideal not containing some
+homogeneous element $f \in S'_+$, then
+$\mathfrak p = \{g \in S \mid g^d \in \mathfrak p'\}$ is a
+graded prime ideal of $S$ not containing $f$ whose image under $j$
+is $\mathfrak p'$. To see that $\mathfrak p$ is an ideal, note
+that if $g, h \in \mathfrak p$, then
+$(g + h)^{2d} \in \mathfrak p'$ by the binomial formula
+and hence $g + h \in \mathfrak p'$ as $\mathfrak p'$ is a prime.
+In this way we see that $j$ induces a homeomorphism $i : X \to X'$.
+Moreover, given $f \in S_+$ homogeneous, then we have
+$S_{(f)} \cong S'_{(f^d)}$. Since these isomorphisms are compatible
+with the restrictions mappings of
+Lemma \ref{lemma-standard-open}, we see that there exists an
+isomorphism $i^\sharp : i^{-1}\mathcal{O}_{X'} \to \mathcal{O}_X$ of
+structure sheaves on $X$ and $X'$, hence $i$ is an isomorphism
+of schemes.
+
+\medskip\noindent
+Let $M$ be a graded $S$-module. Given $f \in S_+$ homogeneous, we have
+$M_{(f)} \cong M'_{(f^d)}$, hence in exactly the same manner as above
+we obtain the isomorphism in (1). The isomorphisms in (2) are a special
+case of (1) for $M = S(nd)$ which gives $M' = S'(n)$. Let $M$ and $N$
+be graded $S$-modules. Then we have
+$$
+M' \otimes_{S'} N' =
+(M \otimes_S N)^{(d)} =
+(M \otimes_S N)'
+$$
+as can be verified directly from the definitions. Having said this
+the compatibility with the multiplication maps of
+Lemma \ref{lemma-widetilde-tensor} is the commutativity of the diagram
+$$
+\xymatrix{
+\widetilde M \otimes_{\mathcal{O}_X} \widetilde N
+\ar[d]_{(1) \otimes (1)} \ar[r] &
+\widetilde{M \otimes_S N} \ar[d]^{(1)} \\
+i^*(\widetilde{M'} \otimes_{\mathcal{O}_{X'}} \widetilde{N'}) \ar[r] &
+i^*(\widetilde{M' \otimes_{S'} N'})
+}
+$$
+This can be seen by looking at the construction of the maps
+over the open $D_+(f) = D_+(f^d)$ where the top horizontal
+arrow is given by the map
+$M_{(f)} \times N_{(f)} \to (M \otimes_S N)_{(f)}$
+and the lower horizontal arrow by the map
+$M'_{(f^d)} \times N'_{(f^d)} \to (M' \otimes_{S'} N')_{(f^d)}$.
+Since these maps agree via the identifications
+$M_{(f)} = M'_{(f^d)}$, etc, we get the desired compatibility.
+We omit the proof of the other compatibilities.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Dominant morphisms}
 \label{section-dominant}
@@ -610,10 +4939,120 @@ finite type and quasi-compact.
 \section{Flat morphisms}
 \label{section-flat-morphisms}
 
+\noindent
+The essential technical property
+for for defining flatness
+is the preservation of exact sequences.
+Right-exactness is true in general;
+it follows from currying in category
+of commutative rings.
+But the functor $-\otimes_R N$ does not
+preserve injectivity of maps---
+that's the point of flatness.
+
+\begin{lemma}[Internal Hom for R-modules]
+\label{lemma-hom-from-tensor-product}
+For any three $R$-modules $M, N, P$,
+$$
+\Hom_R(M \otimes_R N, P) \cong \Hom_R(M, \Hom_R(N, P))
+$$
+\end{lemma}
+
+\begin{proof}
+An $R$-linear map $\hat{f}\in \Hom_R(M \otimes_R N, P)$ corresponds to an
+$R$-bilinear map $f : M \times N \to P$. For
+each $x\in M$ the mapping $y\mapsto f(x, y)$ is $R$-linear by the universal
+property. Thus $f$ corresponds to a
+map $\phi_f : M \to \Hom_R(N, P)$. This map is $R$-linear since
+$$
+\phi_f(ax + y)(z) =
+f(ax + y, z) = af(x, z)+f(y, z) =
+(a\phi_f(x)+\phi_f(y))(z),
+$$
+for all $a \in R$, $x \in M$, $y \in M$ and
+$z \in N$. Conversely, any
+$f \in \Hom_R(M, \Hom_R(N, P))$ defines an $R$-bilinear
+map $M \times N \to P$, namely $(x, y)\mapsto f(x)(y)$.
+So this is a natural one-to-one correspondence between the
+two modules
+$\Hom_R(M \otimes_R N, P)$ and $\Hom_R(M, \Hom_R(N, P))$.
+\end{proof}
+
+\begin{lemma}[Tensor product is right exact]
+\label{lemma-tensor-product-exact}
+Let
+\begin{align*}
+M_1\xrightarrow{f} M_2\xrightarrow{g} M_3 \to 0
+\end{align*}
+be an exact sequence of $R$-modules and homomorphisms, and let $N$ be any
+$R$-module. Then the sequence
+\begin{equation}
+\label{equation-2ndex}
+M_1\otimes N\xrightarrow{f \otimes 1} M_2\otimes N \xrightarrow{g \otimes 1}
+M_3\otimes N \to 0
+\end{equation}
+is exact. In other words, the functor $- \otimes_R N$ is
+{\it right exact}, in the sense that tensoring
+each term in the original right exact sequence preserves the exactness.
+\end{lemma}
+
+\begin{proof}
+For every $R$-module $P$
+we apply the functor $\Hom(-, \Hom(N, P))$ to the first exact
+sequence. We obtain
+$$
+0 \to
+\Hom(M_3, \Hom(N, P)) \to
+\Hom(M_2, \Hom(N, P)) \to
+\Hom(M_1, \Hom(N, P))
+$$
+which is exact by Lemma \ref{lemma-hom-exact} (1).
+By Lemma \ref{lemma-hom-from-tensor-product} this becomes the sequence
+$$
+0 \to \Hom(M_3 \otimes N, P) \to
+\Hom(M_2 \otimes N, P) \to \Hom(M_1 \otimes N, P)
+$$
+which is therefore also exact. Then using
+Lemma \ref{lemma-hom-exact} (1) again, we arrive at the desired exact sequence.
+\end{proof}
+
+\begin{remark}
+\label{remark-tensor-product-not-exact}
+However, tensor product does NOT preserve exact sequences in general.
+In other words, if $M_1 \to M_2 \to M_3$ is
+exact, then it is not necessarily true that
+$M_1 \otimes N \to M_2 \otimes N \to M_3 \otimes N$
+is exact for arbitrary $R$-module $N$.
+\end{remark}
+
+\begin{example}
+\label{example-tensor-product-not-exact}
+Consider the injective map $2 : \mathbf{Z}\to \mathbf{Z}$
+viewed as a map of $\mathbf{Z}$-modules.
+Let $N = \mathbf{Z}/2$. Then the induced map
+$\mathbf{Z} \otimes \mathbf{Z}/2 \to \mathbf{Z} \otimes \mathbf{Z}/2$
+is NOT injective. This is because for
+$x \otimes y\in \mathbf{Z} \otimes \mathbf{Z}/2$,
+$$
+(2 \otimes 1)(x \otimes y) = 2x \otimes y = x \otimes 2y = x \otimes 0 = 0
+$$
+Therefore the induced map is the zero map while $\mathbf{Z} \otimes N\neq 0$.
+\end{example}
+
+\begin{definition}
+\label{definition-flat-module}
+For $R$-modules $N$, if the
+functor $-\otimes_R N$ is exact, i.e. tensoring
+with $N$ preserves all exact
+sequences, then $N$ is said to be {\it flat} $R$-module.
+We will discuss this later in Section \ref{section-flat}.
+\end{definition}
+
+\medskip\noindent
 Epiphany:
 in the category of commutative rings
 pushout is tensor product.
-So think of $\text{Spec}$ as a functor
+So think of $\Spec $ as a functor
 from $\mathit{CRing}^{\text{op}}$ to $\Sch$,
 then pushout goes to pullback,
 and what's an example of a pullback?
@@ -653,6 +5092,17 @@ $S$ is faithfully flat as an $R$-module.
 Recall that a module $M$ over a ring $R$ is {\it flat} if the functor
 $-\otimes_R M : \text{Mod}_R \to \text{Mod}_R$ is exact. A ring map
 $R \to A$ is said to be {\it flat} if $A$ is flat as an $R$-module.
+
+\section{Singularities}
+\label{section-singularities}
+
+As in \cite{sea},
+a Noetherian local ring $A$ is {\it regular} 
+if $\dim A = \dim_k\mathfrak{m}/\mathfrak{m}^2$.
+The stalk $\mathcal{O}_{X,p}$ is
+always local
+so we say that $p$ is {\it regular} 
+if its stalk is regular.
 
 \section{Invertible modules (line bundles)}
 \label{section-invertible}
@@ -1352,181 +5802,6 @@ than $2g-2$.
 Then apply Lemma
 \ref{lemma-divisor-has-sections-implies-deg-geq-0}.
 \end{proof}
-
-\section{Closed immersions of locally ringed spaces}
-\label{section-closed-immersion}
-
-\noindent
-We follow our conventions introduced in
-Modules, Definition \ref{modules-definition-closed-immersion}.
-
-\begin{definition}
-\label{definition-closed-immersion-locally-ringed-spaces}
-Let $i : Z \to X$ be a morphism of locally ringed spaces.
-We say that $i$ is a {\it closed immersion} if:
-\begin{enumerate}
-\item The map $i$ is a homeomorphism of $Z$ onto a closed subset of $X$.
-\item The map $\mathcal{O}_X \to i_*\mathcal{O}_Z$ is surjective;
-let $\mathcal{I}$ denote the kernel.
-\item The $\mathcal{O}_X$-module $\mathcal{I}$
-is locally generated by sections.
-\end{enumerate}
-\end{definition}
-
-\begin{lemma}
-\label{lemma-closed-local-target}
-Let $f : Z \to X$ be a morphism of locally ringed spaces.
-In order for $f$ to be a closed immersion it suffices
-that there exists an open covering $X = \bigcup U_i$ such
-that each $f : f^{-1}U_i \to U_i$ is a closed immersion.
-\end{lemma}
-
-\begin{proof}
-Omitted.
-\end{proof}
-
-\begin{example}
-\label{example-closed-subspace}
-Let $X$ be a locally ringed space.
-Let $\mathcal{I} \subset \mathcal{O}_X$ be a sheaf
-of ideals which is locally generated by sections as a sheaf
-of $\mathcal{O}_X$-modules. Let $Z$ be the support of
-the sheaf of rings $\mathcal{O}_X/\mathcal{I}$.
-This is a closed subset of $X$, by
-Modules, Lemma \ref{modules-lemma-support-sheaf-rings-closed}.
-Denote $i : Z \to X$ the inclusion map.
-By Modules, Lemma \ref{modules-lemma-i-star-exact}
-there is a unique sheaf of rings $\mathcal{O}_Z$ on $Z$
-with $i_*\mathcal{O}_Z = \mathcal{O}_X/\mathcal{I}$.
-For any $z \in Z$ the stalk $\mathcal{O}_{Z, z}$
-is equal to a quotient $\mathcal{O}_{X, i(z)}/\mathcal{I}_{i(z)}$
-of a local ring and nonzero, hence a local ring.
-Thus $i : (Z, \mathcal{O}_Z) \to (X, \mathcal{O}_X)$ is
-a closed immersion of locally ringed spaces.
-\end{example}
-
-\begin{definition}
-\label{definition-closed-subspace}
-Let $X$ be a locally ringed space.
-Let $\mathcal{I}$ be a sheaf of ideals on $X$
-which is locally generated by sections.
-The locally ringed space $(Z, \mathcal{O}_Z)$
-of Example \ref{example-closed-subspace} above
-is the {\it closed subspace of $X$ associated to
-the sheaf of ideals $\mathcal{I}$}.
-\end{definition}
-
-\begin{lemma}
-\label{lemma-closed-immersion}
-Let $f : X \to Y$ be a closed immersion of
-locally ringed spaces. Let $\mathcal{I}$ be the
-kernel of the map $\mathcal{O}_Y \to f_*\mathcal{O}_X$.
-Let $i : Z \to Y$ be the closed subspace of $Y$
-associated to $\mathcal{I}$.
-There is a unique isomorphism $f' : X \cong Z$ of
-locally ringed spaces such that $f = i \circ f'$.
-\end{lemma}
-
-\begin{proof}
-Omitted.
-\end{proof}
-
-\begin{lemma}
-\label{lemma-characterize-closed-subspace}
-Let $X$, $Y$ be locally ringed spaces. Let
-$\mathcal{I} \subset \mathcal{O}_X$ be a sheaf of ideals locally generated
-by sections. Let $i : Z \to X$ be the associated closed subspace.
-A morphism $f : Y \to X$ factors through $Z$ if and only if the map
-$f^*\mathcal{I} \to f^*\mathcal{O}_X = \mathcal{O}_Y$
-is zero. If this is the case the morphism $g : Y \to Z$
-such that $f = i \circ g$ is unique.
-\end{lemma}
-
-\begin{proof}
-Clearly if $f$ factors as $Y \to Z \to X$ then the map
-$f^*\mathcal{I} \to \mathcal{O}_Y$ is zero. Conversely
-suppose that $f^*\mathcal{I} \to \mathcal{O}_Y$ is zero.
-Pick any $y \in Y$, and consider the ring map
-$f^\sharp_y : \mathcal{O}_{X, f(y)} \to \mathcal{O}_{Y, y}$.
-Since the composition
-$\mathcal{I}_{f(y)} \to \mathcal{O}_{X, f(y)} \to \mathcal{O}_{Y, y}$
-is zero by assumption and since $f^\sharp_y(1) = 1$
-we see that $1 \not \in \mathcal{I}_{f(y)}$, i.e.,
-$\mathcal{I}_{f(y)} \not = \mathcal{O}_{X, f(y)}$. We conclude that
-$f(Y) \subset Z = \text{Supp}(\mathcal{O}_X/\mathcal{I})$.
-Hence $f = i \circ g$ where $g : Y \to Z$ is continuous.
-Consider the map $f^\sharp : \mathcal{O}_X \to f_*\mathcal{O}_Y$.
-The assumption $f^*\mathcal{I} \to \mathcal{O}_Y$ is zero implies that
-the composition $\mathcal{I} \to \mathcal{O}_X \to f_*\mathcal{O}_Y$ is
-zero by adjointness of $f_*$ and $f^*$.
-In other words, we obtain a morphism of sheaves of rings
-$\overline{f^\sharp} : \mathcal{O}_X/\mathcal{I} \to f_*\mathcal{O}_Y$.
-Note that $f_*\mathcal{O}_Y = i_*g_*\mathcal{O}_Y$ and
-that $\mathcal{O}_X/\mathcal{I} = i_*\mathcal{O}_Z$.
-By Sheaves, Lemma \ref{sheaves-lemma-equivalence-categories-closed-structures}
-we obtain a unique morphism of sheaves of rings
-$g^\sharp : \mathcal{O}_Z \to g_*\mathcal{O}_Y$ whose pushforward
-under $i$ is $\overline{f^\sharp}$. We omit the verification that
-$(g, g^\sharp)$ defines a morphism of locally ringed spaces
-and that $f = i \circ g$ as a morphism of locally ringed spaces.
-The uniqueness of $(g, g^\sharp)$ was pointed out above.
-\end{proof}
-
-\begin{lemma}
-\label{lemma-restrict-map-to-closed}
-Let $f : X \to Y$ be a morphism of locally ringed spaces.
-Let $\mathcal{I} \subset \mathcal{O}_Y$ be a sheaf of
-ideals which is locally generated by sections.
-Let $i : Z \to Y$ be the closed subspace associated to the
-sheaf of ideals $\mathcal{I}$.
-Let $\mathcal{J}$ be the image of the map
-$f^*\mathcal{I} \to f^*\mathcal{O}_Y = \mathcal{O}_X$.
-Then this ideal is locally generated by sections.
-Moreover, let $i' : Z' \to X$ be the associated closed
-subspace of $X$. There exists a unique
-morphism of locally ringed spaces $f' : Z' \to Z$ such
-that the following diagram is a commutative square of
-locally ringed spaces
-$$
-\xymatrix{
-Z' \ar[d]_{f'} \ar[r]_{i'} & X \ar[d]^f \\
-Z \ar[r]^{i} & Y
-}
-$$
-Moreover, this diagram is a fibre square in the category of
-locally ringed spaces.
-\end{lemma}
-
-\begin{proof}
-The ideal $\mathcal{J}$ is locally generated by sections
-by Modules, Lemma \ref{modules-lemma-pullback-locally-generated}.
-The rest of the lemma follows from the characterization,
-in Lemma \ref{lemma-characterize-closed-subspace} above,
-of what it means for a morphism to factor through a closed
-subspace.
-\end{proof}
-
-\medskip\noindent
-Let me finish with a proof that haunted my
-second semester of PhD:
-
-\begin{lemma}
-\label{lemma-ideal-sheaf-is-line-bundle-schemes}
-The ideal sheaf of an irreducible codimension-1 closed subscheme of a smooth
-scheme is a line bundle.
-\end{lemma}
-
-\begin{proof}
-Since $M$ is codimension-1 irreducible, the ideal sheaf at every affine chart is
-a codimension-1 prime ideal. This means that there aren't any nontrivial prime
-ideals of $\mathcal{I}_X(\text{Spec}A):=I$. Let $f\in I$.
-Since $X$ is smooth, $O_X\text{Spec}A=A$ is a UFD (why?). Then there exists an
-irreducible element $g\in I$ such that $gh=f$. The ideal generated by $g$ is
-prime (again because $A$ is a UFD) 
-and contained in $I$, so that $I$ is principal. This shows that
-$\mathcal{I}_M$ is locally principal, i.e. it is a line bundle.
-\end{proof}
-
 
 \section{Adjunction formulas}
 \label{section-adjunction formulas}
@@ -2295,19 +6570,19 @@ Let $X$ be an algebraic $\mathbb{C}$-scheme.
 $$
 \xymatrix{
 X\ar[r]\ar[d]&\mathcal{X}\ar[d]^{\pi}\\
-\text{Spec}\mathbb{C}\ar[r]^s&S
+\Spec \mathbb{C}\ar[r]^s&S
 }
 $$
 where $\pi$ is a flat surjective morphism of algebraic $\mathbb{C}$-schemes and
 $S$ is connected. (Recall that flatness accounts for ``continuity''.)
 \item A {\it local deformation} of $X$ is a deformation $\xi$ where
-$S=\text{Spec}A$ for $A$ a noetherian local $\mathbb{C}$ algebra with residue
+$S=\Spec A$ for $A$ a noetherian local $\mathbb{C}$ algebra with residue
 field $\mathbb{C}$.
 \item An {\it infinitesimal deformation of $X$} is a local deformation with $A$
 an artinian local $\mathbb{C}$-algebra with residue field $\mathbb{C}$. $X$ is
 called {\it rigid} if all infinitesimal deformations are trivial.
 \item An {\it inifinitesimal deformation of order $n$} is an infinitesimal
-deformation when $S=\text{Spec}(\mathbb{C}[t]/(t^{n+1})$.
+deformation when $S=\Spec (\mathbb{C}[t]/(t^{n+1})$.
 \end{enumerate}
 \end{definition}
 
