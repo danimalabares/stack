@@ -4892,6 +4892,185 @@ We omit the proof of the other compatibilities.
 
 
 
+\section{Reduced schemes}
+\label{section-reduced}
+
+\noindent
+So far a reduced scheme,
+for me,
+is just a scheme where there are
+no ``repetitions'':
+$(x^2)$ is not reduced because
+it gives the same information as $(x)$.
+Algebraically this means that the
+coordinate ring is reduced,
+which is defined by asking
+that there are no nilpotent elements,
+i.e. elements such that some power vanishes.
+(There's no definition of reduced ring in Stacks Project
+since it's taken as part of the basic algebraic knowledge).
+
+The definition is on stalks but the first lemma
+shows it's equivalent to define it on any open set.
+This is in virtue of some ``injectivity'' lemma
+from the ring at $U$ to the product of all stalks parametrized in $U$;
+essentially that if a section vanishes when projected to all
+the stalks then it's zero.
+
+\begin{definition}
+\label{definition-reduced}
+Let $X$ be a scheme. We say $X$ is {\it reduced} if every local ring
+$\mathcal{O}_{X, x}$ is reduced.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-reduced}
+A scheme $X$ is reduced if and only if $\mathcal{O}_X(U)$
+is a reduced ring for all $U \subset X$ open.
+\end{lemma}
+
+\begin{proof}
+Assume that $X$ is reduced.
+Let $f \in \mathcal{O}_X(U)$ be a section such that $f^n = 0$.
+Then the image of $f$ in $\mathcal{O}_{U, u}$ is zero for
+all $u \in U$. Hence $f$ is zero, see
+Sheaves, Lemma \ref{sheaves-lemma-sheaf-subset-stalks}.
+Conversely, assume that $\mathcal{O}_X(U)$ is reduced
+for all opens $U$. Pick any nonzero element $f \in \mathcal{O}_{X, x}$.
+Any representative $(U, f \in \mathcal{O}(U))$  of $f$ is nonzero and
+hence not nilpotent. Hence $f$ is not nilpotent in $\mathcal{O}_{X, x}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affine-reduced}
+An affine scheme $\Spec(R)$ is reduced
+if and only if $R$ is reduced.
+\end{lemma}
+
+\begin{proof}
+The direct implication follows immediately from
+Lemma \ref{lemma-reduced} above.
+In the other direction it follows since any localization of
+a reduced ring is reduced, and in particular the local rings
+of a reduced ring are reduced.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-reduced-closed-subscheme}
+Let $X$ be a scheme. Let $T \subset X$ be a closed subset.
+There exists a unique closed subscheme $Z \subset X$ with
+the following properties: (a) the underlying topological
+space of $Z$ is equal to $T$, and (b) $Z$ is reduced.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{I} \subset \mathcal{O}_X$ be the sub presheaf
+defined by the rule
+$$
+\mathcal{I}(U) = \{f \in \mathcal{O}_X(U) \mid
+f(t) = 0\text{ for all }t \in T\cap U\}
+$$
+Here we use $f(t)$ to indicate the image of
+$f$ in the residue field $\kappa(t)$ of $X$ at $t$.
+Because of the local nature of the condition it is
+clear that $\mathcal{I}$ is a sheaf of ideals. Moreover,
+let $U = \Spec(R)$ be an affine open.
+We may write $T \cap U = V(I)$ for a unique radical
+ideal $I \subset R$. Given a prime $\mathfrak p \in V(I)$
+corresponding to $t \in T \cap U$ and an element $f \in R$ we have
+$f(t) = 0 \Leftrightarrow f \in \mathfrak p$.
+Hence $\mathcal{I}(U) = \bigcap_{\mathfrak p \in V(I)} \mathfrak p
+= I$ by Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+Moreover, for any standard open $D(g) \subset \Spec(R) = U$
+we have $\mathcal{I}(D(g)) = I_g$ by the same reasoning.
+Thus $\widetilde I$ and $\mathcal{I}|_U$ agree (as ideals)
+on a basis of opens and hence are equal. Therefore
+$\mathcal{I}$ is a quasi-coherent sheaf of ideals.
+
+\medskip\noindent
+At this point we may define $Z$ as the closed subspace
+associated to the sheaf of ideals $\mathcal{I}$. For every
+affine open $U = \Spec(R)$ of $X$ we see that
+$Z \cap U = \Spec(R/I)$ where $I$ is a radical ideal and
+hence $Z$ is reduced (by Lemma \ref{lemma-affine-reduced} above).
+By construction the underlying closed subset of $Z$ is $T$.
+Hence we have found a closed subscheme with properties (a) and (b).
+
+\medskip\noindent
+Let $Z' \subset X$ be a second closed subscheme with properties (a) and (b).
+For every affine open $U = \Spec(R)$ of $X$ we see that
+$Z' \cap U = \Spec(R/I')$ for some ideal $I' \subset R$.
+By Lemma \ref{lemma-affine-reduced} the ring $R/I'$ is
+reduced and hence $I'$ is radical. Since $V(I') = T \cap U = V(I)$
+we deduced that $I = I'$ by
+Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+Hence $Z'$ and $Z$ are defined by the same sheaf of ideals
+and hence are equal.
+\end{proof}
+
+\begin{definition}
+\label{definition-reduced-induced-scheme}
+Let $X$ be a scheme. Let $Z \subset X$ be a closed subset.
+A {\it scheme structure on $Z$} is given by a closed subscheme $Z'$ of
+$X$ whose underlying set is equal to $Z$. We often say
+``let $(Z, \mathcal{O}_Z)$ be a scheme structure on $Z$'' to
+indicate this. The {\it reduced induced scheme structure}
+on $Z$ is the one constructed in Lemma \ref{lemma-reduced-closed-subscheme}.
+The {\it reduction $X_{red}$ of $X$} is the reduced induced scheme
+structure on $X$ itself.
+\end{definition}
+
+\noindent
+Often when we say ``let $Z \subset X$ be an irreducible component of $X$''
+we think of $Z$ as a reduced closed subscheme of $X$ using the reduced induced
+scheme structure.
+
+\begin{remark}
+\label{remark-reduced-induced-locally-closed}
+Let $X$ be a scheme. Let $T \subset X$ be a locally closed subset.
+In this situation we sometimes also use the phrase
+``reduced induced scheme structure on $T$''. It refers
+to the reduced induced scheme structure from
+Definition \ref{definition-reduced-induced-scheme}
+when we view $T$ as a closed subset of the open subscheme 
+$X \setminus \partial T$ of $X$. Here
+$\partial T = \overline{T} \setminus T$ is the ``boundary'' of $T$
+in the topological space of $X$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-map-into-reduction}
+Let $X$ be a scheme.
+Let $Z \subset X$ be a closed subscheme.
+Let $Y$ be a reduced scheme.
+A morphism $f : Y \to X$ factors through $Z$ if and only if
+$f(Y) \subset Z$ (set theoretically). In particular, any
+morphism $Y \to X$ factors as $Y \to X_{red} \to X$.
+\end{lemma}
+
+\begin{proof}
+Assume $f(Y) \subset Z$ (set theoretically).
+Let $\mathcal{I} \subset \mathcal{O}_X$ be the ideal sheaf of $Z$.
+For any affine opens $U \subset X$, $\Spec(B) = V \subset Y$
+with $f(V) \subset U$ and any $g \in \mathcal{I}(U)$
+the pullback $b = f^\sharp(g) \in \Gamma(V, \mathcal{O}_Y) = B$
+maps to zero in the residue field of any $y \in V$.
+In other words $b \in \bigcap_{\mathfrak p \subset B} \mathfrak p$.
+This implies $b = 0$ as $B$ is reduced (Lemma \ref{lemma-reduced}, and
+Algebra, Lemma \ref{algebra-lemma-Zariski-topology}).
+Hence $f$ factors through
+$Z$ by Lemma \ref{lemma-characterize-closed-subspace}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
 
 
 
