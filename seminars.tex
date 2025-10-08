@@ -2621,7 +2621,7 @@ There is a graded $[I] \in \mathcal{H}_n$.
 Then
 \begin{align*}
 T_{[I]}\mathcal{H}_n&=\Hom_R(I,R/I)_{=0}\\
-T_{[I]}\pi_n([I])&=' '>0\\
+T_{[I]}\pi_n([I])&='>0\\
 T_{[I]}H_n&=' \geq 0.
 \end{align*}
 \end{theorem}
@@ -2637,6 +2637,320 @@ with $e(A)=e(A')$ and $len(A) \geq  len(A') $.
 $E_h \subset H_n$ is $H$-compressed 
 $E_h \neq  \emptyset$
 \end{theorem}
+
+\section{Normal and Restricted Tangent Bundles of Rational
+Curves in Hypersurfaces}
+\label{section-restricted-tangent-bundles}
+
+\noindent
+Lucas Mioranci, IMPA.
+Algebra Seminar, IMPA. 
+October 8, 2025.
+
+\medskip
+{\bf Abstract.} 
+
+Let $X\subset \mathbb{P}^n$ be a degree $d$ hypersurface containing a smooth
+rational curve $C$ of degree $e$. The normal bundle $N_{C/X}$ and the restricted
+tangent bundle $T_X|_C$ split as direct sums of line bundles of the form
+$\bigoplus_i \mathcal{O}_{\mathbb{P}^1}(a_i)\qquad$ called their splitting type.
+The splitting type of $N_{C/X}$ and ${T_X}|_C\;\;$ controls the local structure
+of the space of rational curves and determines how many general points of $X$ we
+can interpolate by deforming the curve $C$. By combining explicit computations
+of $T_X|_C\;\;$ and an induction argument, I classify all triples $(e,d,n)$ such
+that a general degree $d$ hypersurface $X\subset \mathbb{P}^n$ contains a
+rational curve $C$ of degree $e$ whose restricted tangent bundle ${T_X}|_C\;\;$
+is balanced. The case of quadrics is particular, in which we show that
+odd-degree rational curves do not interpolate the expected number of points on
+quadric hypersurfaces.  For the normal bundle, I compute explicit examples of
+hypersurfaces $X$ for all possible splitting types of $N_{C/X}$ when $C$ is the
+rational normal curve. Additionally, for $d\ge 3$, we compute the dimension of
+the space of hypersurfaces $X$ such that $N_{C/X}$ has a given splitting type.
+
+
+
+\medskip\noindent
+
+$\mathcal{O}$ with no subindex means $\mathcal{O}_{\mathbb{P}^1}$.
+$$
+\xymatrix{
+&0\ar[d]&0\ar[d]\\
+&T_{\mathbb{P}^1}=\mathcal{O}_(2)\ar[d]\ar[r]^=
+&T_{\mathbb{P}^1}=\mathcal{O}(2)\ar[d]\\
+0\ar[r]&T_{X}|_{C}\ar[d]\ar[r]&T_{\mathbb{P}^n}|_{C}\ar[d]\ar[r]&
+N_{X/\mathbb{P}^n}|_{C}\cong \mathcal{O}(de)\ar[d]_=\ar[r]&0\\
+0\ar[r]& N_{C/X}\ar[d]\ar[r]&N_{C/\mathbb{P}^n}\ar[d]\ar[r]&
+N_{X/\mathbb{P}^n}|_{C}\cong \mathcal{O}(de)\ar[r]&0\\
+&0&0
+}
+$$
+Throughout this talk
+$X$ is a degree $d$ hypersurface in $\mathbb{P}^n$ 
+and $C \subset X$ is a smooth rational curve of degree $e$.
+
+Since $C$ is rational we can think of it
+as a map $f:\mathbb{P}^1 \to X$.
+Then we can pullback any bundle over $C$ 
+back to $\mathbb{P}^1$,
+and by Birkhoff-? Theorem
+we know that vector bundles over $\mathbb{P}^1$ 
+split as
+$$
+E\cong \bigoplus_{i=1}^r \mathcal{O}_{\mathbb{P}^1}(a_i),
+\qquad a_1\leq \ldots \leq a_n.
+$$
+This decomposition is called the
+{\it splitting type} of $E$.
+We say $E$ is {\it balanced} if
+$|a_i-a_j|\leq 1$ for all $i,j$.
+
+Balancedness is an open condition,
+i.e. if you have a family of bundles over $\mathbb{P}^1$ 
+and one of them is balanced, then all of them are,
+(also you can think it's a generic condition).
+
+We know the normal bundle $N_{C/X}$ has rank $n-2$
+and degree  $e(n-d+1)-2$.
+And the tangent bundle $T_{X/C}$ 
+has rank $n-1$ and degree $e(n-d+1)$.
+
+\begin{example}
+\label{example-conic}
+A conic $C \subset \mathbb{P}^3$.
+Since a conic in $\mathbb{P}^3$ is contained in a plane,
+this obliges to have a ``distinguished normal direction'',
+$\mathcal{O}(2)$. Indeed,
+\begin{align*}
+N_{C/\mathbb{P}^3}&\cong(N_{Q/\mathbb{P}^3}\oplus
+N_{\mathbb{P}^2/\mathbb{P}^3}|_{C}\\
+&\cong(\mathcal{O}(2) \oplus \mathcal{O}(1))|_{C}\\
+&\cong\mathcal{O}(1)\oplus \mathcal{O}(2).
+\end{align*}
+\end{example}
+
+\medskip\noindent
+Now we discuss interpolation of general points.
+Let $p_1,\ldots,p_n \in \mathbb{P}^1$ 
+and $x_1,\ldots, x_n \in X$ 
+be general points.
+Let $f:\mathbb{P}^1 \to X$ be such that
+$f(p_i)=x_i$.
+
+Consider the space of morphisms mapping
+the  $p_i$ to $x_i$. It's known that it's tangent space
+at $f$
+is given by
+$$
+T_{[f]}\Mor(\mathbb{P}^1,X,p_i \mapsto x_i)
+\cong H^0(\mathbb{P}^1,f^*T_X(-n)).
+$$
+\noindent
+Deformations of $f$ (mapping $p_i \mapsto x_i$)
+dominate $X$ if $a_i-n_i \geq 0$.
+Also, deformations of $f$ interpolate up
+to $a_1+f$ general points in $X$.
+
+\medskip\noindent
+How many points can deformations of the curve interpolate?
+This means (I think) that the deformations of the curve
+are still such that $p_i \mapsto  x_i$.
+``And for the normal bundle, interpolations
+means that the curves contain the points''.
+
+If $T_X|_{C}$ is balanced, $C$ can interpolate up to
+$$
+\text{floor function}(\frac{e(n+1-d)}{n_1}) +1
+$$
+general points. The case of $N_{C/X}$ is similar.
+
+\medskip\noindent
+Next we survey some relevant results.
+
+\begin{theorem}[Coskun-Riedl, 2018]
+\label{theorem-CR18}
+A general Fano $X$ of degree $d \geq 2$ 
+contains a degree $c$ rational smooth curve
+ $C$ with balanced $N_{C/X}$ 
+for every $1 \leq e \leq  n$.
+\end{theorem}
+
+The idea is to observe that the space of curves has
+balanced normal bundle.
+
+\begin{theorem}[Ran, 2021]
+\label{theorem-R21}
+Extends the above for
+$1 \leq  e \leq 2n-2$ 
+and $d \geq 4$.
+\end{theorem}
+
+Idea: general hypersurface contains a curve of balanced normal bundle.
+
+\begin{theorem}[Ran, 2024]
+\label{theorem-R24}
+$X$ general Fano hypersurface.
+There exist smooth rational curve with  $C$ 
+with balanced tangent bundle $T_{X}|_{C}$ 
+for $e$ in some arithmetic progressions.
+\end{theorem}
+
+$e$ is in general very large.
+They show there are curves of arbitrarily large
+degrees with balanced tangent bundle.
+
+\medskip\noindent
+Now we describe the new results.
+
+\begin{theorem}
+\label{theorem-Lucas}
+Let $X \subseteq \mathbb{P}^n$ be Fano
+hypersurface of degree $3 \leq d \leq n$.
+
+\begin{enumerate}
+\item If $C \subset X$ is a rational smooth curve
+of degree $e$ with 
+$e \leq  \frac{n-1}{n+1-d}$,
+then $T_X|_{C}$ is not balanced.
+
+\item A general hypersurface $X$ 
+contains rational curves $C$ 
+of degree $e$ with balanced
+$T_X|_{C}$ for every
+$e> \frac{n-1}{n+1-d}$.
+\end{enumerate}
+
+\begin{theorem}
+\label{theorem-lucas2}
+Let $X \subseteq \mathbb{P}^n$ be a smooth quadric hypersurface.
+
+\begin{enumerate}
+\item If $e \leq 2$ is even,
+then exists a curve $C$ of degree $e$ 
+with $T_X|_{C}\cong \mathcal{O}(e)^{n-1}$.
+(I.e. we can interpolate $e+2$ points
+if $e$ is even.)
+
+\item If $e \geq 1$ is odd,
+then there is no curve $C$ of degree $e$ 
+with balanced $T_X|_C$.
+The best we can do is the most balanced bundle
+before balancedness, namely
+$T_X|_C \cong \mathcal{O}(e-1)\oplus\mathcal{O}(e)\oplus\mathcal{O}(e+1)$. 
+(I.e. we can only interpolate $e$ points if $e$ is odd.)
+\end{enumerate}
+
+Next we give the main ideas in the proof.
+Let $C$ be the rational normal curve
+of degree $e$ in $\mathbb{P}^1$,
+\begin{align*}
+C:\mathbb{P}^1  &\longrightarrow \mathbb{P}^n \\
+(s:t) &\longmapsto (s^2:s^{e-1}t:\ldots:t^e:0:\ldots:0).
+\end{align*}
+$X=V(F)$.
+
+Then find some examples. Then,
+
+\begin{proposition}
+\label{proposition-proposition}
+If $\mu(T_X|_{C})=\frac{e(n+1-d)}{n-1}\leq 1$
+then $T_X|_{C}$ is not balanced.
+\end{proposition}
+
+\noindent
+Use the proposition to show that $T_X|_C$
+is not balanced if $d \leq  n$ 
+and $e le \frac{ n-1}{n+1-d}$.
+
+This implies Theorem \ref{theorem-Lucas}.
+
+\begin{lemma}
+\label{lemma-split-normal-bundle}
+If $N_{C/X}\cong \bigoplus_i \mathcal{O}(a_i)$ 
+with $a_i < 4$ for all $i$,
+then $T_{X}|_C \cong N_{C/X} \oplus \mathcal{O}(2)$.
+\end{lemma}
+
+\noindent
+This implies that $\text{Ext}^1(N_{C/X},\mathcal{O}(2))=0$.
+
+The most important step is the following,
+used as the induction step:
+
+\begin{proposition}
+\label{proposition-induction}
+If $T_Y|_C$ is balanced for some degree $d$ 
+hypersurface $Y \subseteq \mathbb{P}^{n-1}$,
+then there exists a degree $d$ hypersurface
+$C \subseteq \mathbb{P}^n$ with balanced
+$T_X|_C$.
+\end{proposition}
+
+\noindent
+Combining the examples, Lemma \ref{lemma-split-normal-bundle}
+and Proposition \ref{proposition-induction},
+we settle that for $e \leq  \text{max}\{2d-2,n\}$.
+
+The following argument is used to show that 
+actually what we showed so far is enough for all degrees.
+
+\begin{lemma}
+\label{lemma-smoothing-argument}
+$C=C_1 \cup  C_2$, $C_1 \cong \mathbb{P}^1$.
+$E$ vector bundle on $C$ such that
+$E|_{C_1}$ is balanced,
+$E_{C_2}$ is perfectly balanced
+(numerical condition that works when $e=n-1$).
+Then if $E$ is the specialization of a family
+of vector bundles $E'$ on $\mathbb{P}^1$,
+then $E'$ is balanced.
+\end{lemma}
+
+\noindent
+Basically, glue and smooth low degree curves
+(i.e. $e \leq  \text{max}\{2d-2,n\}$)
+to get all degrees
+
+\noindent
+
+\end{theorem}
+
+\noindent
+
+\end{theorem}
+
+\medskip\noindent
+Now we prove the result for quadrics,
+i.e. $X$ is a quadraic.
+For even $e$ compute examples and conclude
+ $T_X|_C \cong \mathcal{O}(e)^{n-1}$.
+
+For odd $e$, compute examples,
+$T_X|_C\cong \mathcal{O}(c-1) \oplus \mathcal{O}(2)^{3}\oplus \mathcal{O}(-1)$.
+
+\begin{proposition}
+\label{proposition-interpolation2}
+$n\geq 3$, $m\leq  e+1$.
+There is a degree $e$ curve $\phi_e$ interpolating
+$m$ general points if and only if there is a 
+degree $e-2$ curve $\psi_{e-2}$ interpolating
+$m-2$ general points in $X$.
+\end{proposition}
+
+\noindent
+The idea is to do induction.
+Suppose you can interpolate $e$ points,
+then show you can interpolate $e+2$.
+
+Chose $y_1,\ldots,y_{m-2}$ on the quadric.
+Choose a line in $\mathbb{P}^{m-1}$ intersecting the quadric,
+and $x_1,\ldots,x_{m-1}$ points on the line.
+Join the points on the line to the points on the quadric,
+Then you get somem points of intersection with the quadric.
+Those points and the two points of intersection of the line and the quadric
+let us construct a scroll, which intersects the quadric.
+The intersection of the scroll and the quadric
+(I guess the scroll contains the lines, and so the points $y_i$)
+gives the curve passing through the $y_i$.
 
 
 
