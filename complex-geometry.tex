@@ -399,51 +399,6 @@ defined over $\overline{\mathbb{Q}}$.
 \section{Analytic varieties}
 \label{section-analytic-varieties}
 
-\begin{definition}
-\label{definition-analytic-variety}
-An {\it analytic variety} is a subset $V$ of an open set $U\subset \mathbb{C}^n$
-such that for any $p\in V$ there is a neighbourhood $U'\ni p$ such that $V\cap
-U'$ is given as the zero locus of a finite set of holomorphic functions
-$f_1,\ldots,f_k$ defined on $U'$.
-\end{definition}
-
-\begin{definition}
-\label{definition-analytic-hypersurface}
-An analytic variety is a {\it hypersurface} if it is given as the vanishing
-locus of a single holomorphic function.
-\end{definition}
-
-\begin{definition}
-\label{definition-irreducible-variety}
-An analytic variety $V\subset U\subset \mathbb{C}^n$ is {\it irreducible} if
-$V$ cannot be written as the union of two distinct analytic varieties 
-$V_1,V_2\subset U$, both distinct to $V$.
-\end{definition}
-
-\begin{lemma}
-\label{lemma-irreducible-analytic-hypersurface-irreducible-polynomial}
-If $V$ is an irreducible analytic hypersurface given locally as $V=\{f=0\}$, 
-then $f$ is irreducible in $\mathcal{O}_p$.
-\end{lemma}
-
-\begin{proof}
-If $f=gh$ and neither of $g$ and $h$ are units and they are distinct, we could 
-express $V$ as the union of two distinct varieties: $V(g)$ and $V(h)$. (If one 
-of them, was a unit then the vanishing set would be all of $U$.)
-\end{proof}
-
-\begin{definition}
-\label{definition-germ-of-set}
-\begin{reference}
-\cite[Definition 1.1.21]{huc}
-\end{reference}
-The {\it germ} of a set in the origin $0\in \mathbb{C}^n$ is given by a subset
-$X \subset \mathbb{C}^n$. To subsets $X,Y$ define the same germ if there exists
-an open neighbourhood $0 \in U\subset \mathbb{C}^n$ with $U\cap X=U\cap Y$. A
-germ is called {\it analytic} if there are functions $f_1,\ldots,f_k\in
-\mathcal{O}_n$ such that $X$ and $Z(f_1,\ldots,f_k)$ define the same germ.
-\end{definition}
-
 \begin{lemma}
 \label{lemma-analytic-germ-is-irreducible-iff-prime-ideal}
 \cite[Lemma 1.1.28]{huc}
@@ -502,15 +457,15 @@ since holomorphicity is a condition defined on
 open sets.
 \end{proof}
 
-\section{Analytic subvarieties}
-\label{section-analytic-subvarieties}
+\section{Analytic set}
+\label{section-analytic-set}
 
 \begin{definition}
 \label{definition-analytic-subvariety}
 \begin{reference}
-\cite{GH}
+
 \end{reference}
-An {\it analytic subvariety} $Y$ of a complex manifold $X$ is a
+An {\it analytic set} or {\it variety} $Y$ of a complex manifold $X$ is a
 subset given locally as the zeros of a finite collection of holomorphic
 functions.
 \end{definition}
@@ -565,7 +520,7 @@ Since the restriction map is surjective,
 we have the following short exact sequence:
 $$
 \xymatrix{
-0\ar[r]&\mathcal{I}_M\ar[r]&\mathcal{O}_N\ar[r]&\mathcal{O}_M\ar[r]&0
+0\ar[r]&\mathcal{I}_Y\ar[r]&\mathcal{O}_X\ar[r]&\mathcal{O}_Y\ar[r]&0
 }
 $$
 
@@ -574,6 +529,39 @@ Notice that for any open set $U\subset X$,
 $\mathcal{I}_Y(U)$ is an ideal of $\mathcal{O}_X(U)$. (Indeed,
 if a function vanishes at $Y$ then its product
 with any other function will also vanish.)
+
+\begin{definition}
+\label{definition-irreducible-variety}
+An analytic variety $V\subset U\subset \mathbb{C}^n$ is {\it irreducible} if
+$V$ cannot be written as the union of two distinct analytic varieties 
+$V_1,V_2\subset U$, both distinct to $V$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-irreducible-analytic-hypersurface-irreducible-polynomial}
+If $V$ is an irreducible analytic hypersurface given locally as $V=\{f=0\}$, 
+then $f$ is irreducible in $\mathcal{O}_p$.
+\end{lemma}
+
+\begin{proof}
+If $f=gh$ and neither of $g$ and $h$ are units and they are distinct, we could 
+express $V$ as the union of two distinct varieties: $V(g)$ and $V(h)$. (If one 
+of them, was a unit then the vanishing set would be all of $U$.)
+\end{proof}
+
+\begin{definition}
+\label{definition-germ-of-set}
+\begin{reference}
+\cite[Definition 1.1.21]{huc}
+\end{reference}
+The {\it germ} of a set in the origin $0\in \mathbb{C}^n$ is given by a subset
+$X \subset \mathbb{C}^n$. To subsets $X,Y$ define the same germ if there exists
+an open neighbourhood $0 \in U\subset \mathbb{C}^n$ with $U\cap X=U\cap Y$. A
+germ is called {\it analytic} if there are functions $f_1,\ldots,f_k\in
+\mathcal{O}_n$ such that $X$ and $Z(f_1,\ldots,f_k)$ define the same germ.
+\end{definition}
+
+
 
 \medskip\noindent
 Now the adventure of proving that the ideal
@@ -613,18 +601,18 @@ The ideal of an irreducible analytic hypersurface is a height-1 prime ideal.
 \end{lemma}
 
 \begin{proof} 
-The fact that it is prime comes from the fact that $X$ is
+The fact that it is prime comes from the fact that $Y$ is
 irreducible as explained above.
 
 Now suppose that $0 \subset \mathfrak{p} \subseteq I$.
-Then $V(\mathfrak{p})$ is an analytic variety that contains $X$.
-At regular points of both $V(\mathfrak{p})$ and $X$, 
-both are smooth manifolds, but since $X$ is of codimension 1 and 
-$V(\mathfrak{p})$ does not equal all of  $M$, 
+Then $V(\mathfrak{p})$ is an analytic variety that contains $Y$.
+At regular points of both $V(\mathfrak{p})$ and $Y$, 
+both are smooth manifolds, but since $Y$ is of codimension 1 and 
+$V(\mathfrak{p})$ does not equal all of  $Y$, 
 we conclude that they coincide. 
 Thus, in a neighbourhood
 of a regular point we have $\mathfrak{p}=I(V(\mathfrak{p}))=I$ by the
-Nullstellensatz \ref{algebra-Nullstellensatz}.
+holomorphic Nullstellensatz \ref{algebra-Nullstellensatz}.
 \end{proof}
 
 Now we shall use the Gauss Lemma 
@@ -667,10 +655,10 @@ complex manifold is a line bundle.
 \end{lemma}
 
 \begin{proof}
-By definition, our subvariety $M$ is locally defined by the zeroes of a single 
+By definition, our subvariety $Y$ is locally defined by the zeroes of a single 
 holomorphic function defined on the ambient manifold $X$. That is,
-at every $p\in M$ there is an open set $U\subset X$ such that $U\cap
-M=f^{-1}(0)$ for some $f\in\mathcal{O}_X(U)$. Since $U$ is an open set of a
+at every $p\in Y$ there is an open set $U\subset X$ such that $U\cap
+Y=f^{-1}(0)$ for some $f\in\mathcal{O}_X(U)$. Since $U$ is an open set of a
 complex manifold, the ring $\mathcal{O}_X(U)$ is isomorphic to the ring
 $\mathcal{O}_n$ of holomorphic functions on $\mathbb{C}^n$ in a neighbourhood of
 the origin; that's by Definition 
@@ -679,14 +667,14 @@ holomorphic function on a manifold is defined as such if its composition with
 the coordinate chart is a holomorphic function on $\mathbb{C}^n$.
 
 By Lemma
-\ref{lemma-irreducible-analytic-hypersurface-irreducible-polynomial}, since $M$
+\ref{lemma-irreducible-analytic-hypersurface-irreducible-polynomial}, since $Y$
 is irreducible it follows that $f$ is irreducible and so is the ideal of
-functions vanishing on $M$.
+functions vanishing on $Y$.
 
 By Lemma \ref{lemma-stalk-is-UFD}, we prove identically as in Lemma 
 \ref{algebraic-geometry-lemma-ideal-sheaf-is-line-bundle-schemes} 
 that the ideal of functions
-vanishing on $M$ is principal.
+vanishing on $Y$ is principal.
 \end{proof}
 
 \begin{definition}
@@ -696,6 +684,93 @@ a complex manifold. The ideal sheaf $\mathcal{I}_S:=\mathcal{O}_X(-S)$ of $S$ is
 the dual line bundle of the {\it line bundle associated to the divisor $D$},
 which is denoted by $\mathcal{O}_X(D)$.
 \end{definition}
+
+\section{Hilbert's Nullstellensatz}
+\label{section-nullstellensatz}
+
+\noindent
+Usually I think of Hilbert's Nullstellensatz
+as the statement that $I(V(I))=\sqrt{I}$.
+Following are two simple initial observations.
+
+It is immediate that $\sqrt{\mathfrak{p}}=\mathfrak{p}$
+if $\mathfrak{p}$ is a prime ideal (of any ring):
+if  $f^k \in \mathfrak{p}$ then
+either $f \in \mathfrak{p}$ or $f^{k-1}\in \mathfrak{p}$,
+etc.
+
+It is also easy to see that
+for any ideal $I$ of functions or germs of functions
+(i.e. either  $I \subset \mathcal{O}_X(U)$
+or $I \subset \mathcal{O}_n$)
+we have
+$\sqrt{I}\subseteq I(V(I))$.
+Indeed, if $f^k \in I$,
+then $f^k(x)=0$ for all $x \in V(I)$,
+and since $\mathbb{C}$ has no nonzero divisors
+we see that $f(x)=0$,
+that is $f \in I(V(I))$.
+
+It remains to show that $I(V(I)) \subseteq \sqrt{I}$.
+We shall follow Demailly to prove
+directly that if $I$ is prime then $I(V(I))=I$.
+But we need a bunch of results before.
+First recall that $S$ is an integral ring over $R$ 
+if every element of $S$ is expressed as
+a root of a monic polynomial with coefficients in $R$.
+
+\begin{proposition}
+\label{proposition-integral-extension}
+$\mathcal{O}_n/\mathcal{I}$ is a
+finite integral extension of $\mathcal{O}_d$.
+\end{proposition}
+
+\begin{proof}
+For this it's enough to check that
+the map $\mathcal{O}_d \to \mathcal{O}_n/\mathcal{I}$ 
+is finite.
+That is, that every element of $\mathcal{O}_n/\mathcal{I}$ 
+can be expressed as a tuple of elements
+of $\mathcal{O}_d$. 
+(We can think of this tuple
+as a linear combination, or cycle.)
+Step 1: produce some Weierstrass polynomials…
+\end{proof}
+
+\begin{lemma}
+\label{lemma-nullstellensatz}
+\begin{reference}
+\cite[Lemma 4.21]{Demailly}
+\end{reference}
+If $\mathcal{I} \subset \mathcal{O}_n$ is prime and
+$A = V(\mathcal{I})$, then
+$\mathcal{I}_{A,0}=\mathcal{I}$.
+\end{lemma}
+
+\begin{proof}
+Lemma \ref{lemma-integral-extension}
+says: take a polynomial $f \in \mathcal{O}_n$
+and consider its equivalence class $\tilde{f}\in\mathcal{O}_n/\mathcal{I}$.
+Then $\tilde{f}$ is the root of some monic polynomial 
+$t^r+b_{r-1}t^{r-1}+\ldots+b_1t+b_0$
+with $b_i \in \mathcal{O}_d$.
+That is, putting $f$ instead of $t$ we get an equation
+$$
+f^r+b_{r-1}f^{r-1}+\ldots+b_1f+b_0=0\qquad \text{mod }\mathcal{I}.
+$$
+Since $f$ vanishes on $(A,0)$,
+this says that $b_0$ vanishes in $(A,0)$ too.
+(Right?)
+
+
+
+\end{proof}
+
+\section{Singularities and dimension}
+\label{section-singularities-and-dimension}
+
+The key statement is that the set of smooth
+points of a complex variety is dense. 
 
 \section{Riemann-Roch formulas}
 \label{section-Riemann-Roch}
