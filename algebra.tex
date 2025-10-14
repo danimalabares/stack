@@ -12,6 +12,61 @@
 
 \tableofcontents
 
+\section{Rings}
+\label{section-rings}
+
+\noindent
+So elementary that this is not in Stacks Project.
+
+\begin{theorem}
+\label{theorem-ideals-quotient-correspondence}
+Let $R$ be a ring and $I \subset R$ an ideal.
+There is a correspondence between ideals of $R$ containing $I$ 
+and ideals of $R/I$.
+\end{theorem}
+
+\begin{proof}
+We show that there are two maps between the set of ideals of $R$ 
+containing $I$ and the ideals of $R/I$ whose compositions
+are the identities in the corresponding set. One map is the projection
+to the quotient, and the other map is taking the elements
+whose equivalence class lies in a given ideal.
+
+Suppose that $\tilde{J}$ is an ideal of $R/I$.
+Define $J=\{j \in R : j+I \in \tilde{J}\}$, 
+the set of elements that project to $\tilde{J}$.
+Then $I \subset J$, because $i + I = I$ is the zero of $R/I$ 
+which is contained in any ideal of $R/I$.
+Also notice that $J$ is an ideal of $R$ since for any $r \in R$,
+$rj+I \in \tilde{J}$ by $\tilde{J}$ being an ideal.
+Notice that projecting $J$ back to $R/I$ gives $J$
+by definition.
+
+Conversely, we project to the quotient.
+Let $J$ be any ideal of $R$ containing $I$ 
+Let $\tilde{J}$ be the projection to $R/I$.
+Then $\tilde{J}$ is an ideal of $R/I$ by $J$ being an ideal of $R$.
+Consider the set $J'$ of all elements whose projection lies in $\tilde{J}$.
+Then $J'=J$ by definition.
+\end{proof}
+
+\noindent
+This is the essential tool in proving that $R/I$ is a field
+when $I$ is a maximal ideal
+
+\begin{lemma}
+\label{lemma-quotient-ring-maximal-ideal-is-field}
+Let $R$ be a ring and $I$ a maximal ideal of $R$.
+Then $R/I$ is a field.
+\end{lemma}
+
+\begin{proof}
+It's easy to prove that a ring is a field if and only if its
+only ideals are $\{0\}$ and $R$. By Theorem \ref{theorem-correspondence-ideals},
+the ideals of $R/I$ are in correspondence with ideals of $R$ containing $I$,
+but only $R$ is such.
+\end{proof}
+
 \section{Modules}
 \label{section-modules}
 
