@@ -82,8 +82,17 @@ to some element in $R$,
 how do we assign an element of $S$
 so as to produce a map $R \to S$?
 
-\medskip\noindent
-The second item in the following definition
+\section{Finitely-generated and finitely presented algebras}
+\label{section-finitely-presented-generated}
+
+\noindent
+See Stacks Project tag \href{https://stacks.math.columbia.edu/tag/00F2}{00F2}.
+
+Upshot: a finitely-generated $R$-algebra $S$ is such that
+$S \simeq R[x_1,\ldots,x_n]/I$ for some ideal $I \subset R$.
+Finitely-presentedness is when $I = (s_1,\ldots,s_k)$.
+
+Fun fact: The second item in the following definition
 is the algebraic counterpart to an
 affine algebraic set (variety);
 i.e. the reason why we hear that
@@ -108,6 +117,12 @@ and an isomorphism of $R$-algebras
 $R[x_1, \ldots, x_n]/(f_1, \ldots, f_m) \cong S$.
 \end{enumerate}
 \end{definition}
+
+Informally, $M$ is a finitely presented $R$-module if and only if
+it is finitely generated and the module of relations among these
+generators is finitely generated as well.
+A choice of an exact sequence as in the definition is called a
+{\it presentation} of $M$.
 
 So, probably an ``algebra'' $A$ over a ring  $R$ is when $A$ contains 
 (or, is isomorphic to?)  $R[X]$ for some possibly very arbitrary set
