@@ -694,7 +694,7 @@ representation of a reductive group.
 \medskip\noindent
 
 We are interested in vector spaces $U \subset \text{Mat}_{m,n}(\mathbb{C})$,
-with $m \leq n$, of {\it constant rank, i.e. such that for all $f \in U$,
+with $m \leq n$, of {\it constant rank}, i.e. such that for all $f \in U$,
 $r:=\text{rank}f$ is the same.
 
 Let $\ell(r,m,n):=\text{max}\dim U:U$ is of rank $r$.
@@ -2952,6 +2952,289 @@ The intersection of the scroll and the quadric
 (I guess the scroll contains the lines, and so the points $y_i$)
 gives the curve passing through the $y_i$.
 
+\section{Regular but non smooth curves of genus 3}
+\label{section-regular-but-non-smooth}
+
+\noindent
+Cesar Hilario, .
+Algebra Seminar, IMPA. 
+October 15, 2025.
+
+\medskip {\bf Abstract.} Regular but non-smooth curves are a unique feature of
+geometry in positive characteristic, that results from the fact that over an
+imperfect field the notion of regularity is weaker than the notion of
+smoothness. In the setting of algebraic geometry over an algebraically closed
+field, these curves correspond to fibrations by singular curves, which are
+fibrations of relative dimension 1 whose fibers are singular. The most famous
+examples are arguably the so-called quasi-elliptic curves and quasi-elliptic
+fibrations, which play a key role in the Bombieri-Mumford classification of
+algebraic surfaces in characteristics 2 and 3. In this talk I will discuss the
+case of genus 3 in characteristic 2, with an eye towards the classification of
+regular plane projective quartic curves that become rational after base change.
+
+\medskip\noindent
+arXiv 2409.05464.
+
+\medskip\noindent
+$C$ will denote a projective geometrically integral curve over
+a not necessaily closed field $K$. Geometricallt integral
+means that $C \otimes_K \overline{K}$ is integra.
+Suppose that $p=\text{char}(K) \geq 0$
+and $g=h_1(\mathcal{O}_C)$ is of genus $C$.
+
+We define
+\begin{enumerate}
+\item $C$ regular iff local rings of $C$ are regular (DVR).
+\item $C$ smooth iff $C$ regular and $K \otimes_K \overline{K}$ regular.
+\end{enumerate}
+
+\noindent
+Thus it's obvious that smoothness implies regularity.
+In this talk we explain why the converse is not true.
+
+Note that if $K$ is perfect (e.g. $p=0$ or $K=\overline{K}$) implies
+ smooth = regular. Recall that $K$ is imperfect iff $p>0$
+the powers of $K$, $K^p$, is a proper subfield of $K$
+(it's always a subfield but we ask it's proper).
+
+\medskip\noindent
+Assume that $C$ is regular and $p>0$.
+The genus of rthe normalization is less than or equal to the genus of the curve,
+i.e.
+$$
+\tilde{g}=h^1(\mathcal{O}_{\widehat{C \otimes_K \overline{K}}})\leq g.
+$$
+We know that $C$ is smooth iff $\overline{g}=g$.
+So $g-\overline{g}$ is a measure of non-smoothness.
+
+\begin{theorem}[Tate]
+\label{theorem-tate}
+$\frac{p-1}{2}$ divides $g-\overline{g}$.
+\end{theorem}
+
+As a corollary, we get that if $C$ is non-smooth,
+$g-\overline{g}>0$ and so $p \leq  2g+1$.
+
+\begin{example}
+\label{example-attain}
+There are cases in which the bound is sharp,
+namely $C:y^2=x^p+t$, with $t \in K\setminus K^p$.
+Then $g=\frac{p-1}{2}$ and $\bar{g}=0$.
+Over $\overline{K}$ rhere exists a singular point,
+$(x,y)=(-t^{1/p},0)$ which
+{\bf is not visible over $K$}, that is we get that
+$t^{1/p}\not \in K$.
+\end{example}
+
+\begin{example}
+\label{example-elliptic}
+$\{\text{elliptic curves}\}=\{g = \overline{g}=1,\text{$\exists K$-rational
+point }\}=\{\text{smooth cubic curves with $K$-rational point}\}$.
+$y^2=x^3+4g_i x+27$.
+\end{example}
+
+\begin{example}
+\label{example-quasielliptic}
+$g=1$, $\overline{g}=0$, $p=2,3$,
+quasielliptic curves. (Important in the classification of surfaces
+in positive characteristic.)
+\end{example}
+
+\medskip\noindent
+Now we make a digression to describe Kodaira-Enriques (over $\mathbb{C}$)
+in positive characteristic. Bombieri-Mumford: {\bf new objects} appear,
+quasielliptic surfaces.
+
+Let $k=\overline{k}$, $S$ smooth elliptic 
+({\it quasielliptic}) surface over $k$. Suppose we have a fibration
+where the general fiber is an elliptic curve an elliptic curve (resp. a plane 
+cuspidal cubic) and the generic fiber an elliptic (resp. quasielliptic)
+curve over $k(B)$.
+
+$$
+\xymatrix{
+S\ar[d]\\
+B
+}
+$$
+
+\medskip\noindent
+Back to our main content, let's assume that $g=3$.
+$$
+\xymatrix{
+\{g=1,\exists K\text{-rat. pt}\}\ar[r]&\ar[l]
+\left\{\substack{\text{reg. cubic curves} \\ \text{with $K$-rat pt}}\right\}
+}
+$$
+Recall that genus-degree formula
+$$
+g=\frac{(d-1)(d-2)}{2}=1,
+$$
+So then $d=3,4$ gives  $g=3$ (right?).
+
+No we present our main theorem, which is a classification result:
+
+\begin{theorem}
+\label{theorem-classification-quartics}
+\begin{itemize}
+\item $C$ regular non-hyperelliptic curve over $K$.
+\item  $g=3$, $\overline{g}=0$.
+\item $p=2$.
+\end{itemize}
+(Not that non-hyperllipticity of $C$ and $g=3$ imply that $C$ is a quartic
+over $K$, and that  $\overline{g}=0$ implies $C$ is geometrically rational.)
+Then $C$ is isomorphic to one of the following quartics.
+
+\begin{enumerate}
+\item $y^4+az^4+xz^3+bx^2z^2+cx^4=0$ where $a,b,c \in K$, $c \not \in K^2$.
+(Notice the imperfectness of $K$ is crucial.)
+
+\item $y^4+az^4+bx^2y^2+cx^2z^2+bx^3z+dx^4=0$ for $a,b,c,d, \in K$,
+$a \not \in K^2$, $b\not =0$.
+
+\item 
+\item 
+\item 
+\end{enumerate}
+\end{theorem}
+
+\noindent
+Now we enumerate properties of these families.
+
+\begin{itemize}
+\item $C$ is a purely inseparable double cover of a quasielliptic curve.
+To understand this consider the induced map from
+Frobenius map $K \to K$, $a \mapsto a^p$ and do base change:
+$$
+\xymatrix{
+C^{(p)}\ar[r]\ar[d]\ar@{}[dr]|-{\lrcorner}&C\ar[d]\\
+\Spec K\ar[r]^{\substack{\text{induced from} \\ \text{Frobenius}}}&\Spec K
+}
+$$
+This gives a map $C \to C^{(p)}$ by universal property of pullback.
+
+$$
+\xymatrix{
+C \ar[rrrd]^{\text{Frobenius}} \ar@{-->}[rrd]\ar[rrdd] & & \\
+& &  C^{(p)}\ar[d] \ar[r] & C \ar[d] \\
+& &  \Spec K\ar[r] & \Spec K
+}
+$$
+
+Then consider the normalization of $C^{(p)}=C_1$ which
+turns out to be quasielliptic; by universal
+property of normalization we can lift:
+$$
+\xymatrix{
+& \widehat{C^{(p)}}\ar[d]\\
+C\ar@{.>}[ur]\ar[r]&C^{(p)}.
+}
+$$
+Here the lower arrow is purely inseparable of degree 2.
+
+\item There exists a unique non smooth point $x \in C$.
+
+\item Now we iterate the construction of the first item:
+$$
+\xymatrix{
+\underbrace{C}_{g=3}\ar[r]&\underbrace{C_1}_{g=1}\ar[r]&
+\underbrace{C_2}_{g_2-9}\ar[r]&\underbrace{C_3}_{g_3=0}\ar[r]&
+\underbrace{C_4}_{g_4=0}\ar[r]&\cdots
+}
+$$
+Let $x$ be the non-smooth (non-rational) point of $C$. Map it under
+these maps to $x_1$( non-smooth,rational), then  $x_2$ (smooth, rational?),
+then $x_3 $ (smooth, rational.), then $x_4$ (smooth, rational), etc.
+
+We have
+$$
+\begin{matrix}
+&\text{$x_2$ rational}& \text{$x$ canoical divisor} & 
+E=K(c_2)\\
+(i)& Y & Y & Y\\
+(ii) & N & Y & N\\
+(iii) & Y & N & N\\
+(iv) & N & N & Y\\
+(v) & N & N & N
+\end{matrix}
+$$
+Where the last column is explained next.
+
+\item Canonical field of $C$ = subfield of $K(C)$ generated
+by the quotients of all non-zero holomorphic differentials
+=  $K(C)$ ($C$ non-hyperelliptic).
+
+\item Pseudocanonical field of $C$ = … non-zero \underline{exact}
+holomorphic differential := $E$. So one has $[K(c),E]=4=p^2$.
+
+$$
+\xymatrix{
+&K(C)\ar[ld]_{4}\ar[rd]^{4}\\
+E&&K(C_2).
+}
+$$
+\end{itemize}
+
+\noindent
+In conclusion, we manage to characterize these families.
+
+\begin{example}
+\label{example-chain-of-maps}
+In case 1, let $a=b=0$. We get
+\begin{equation}
+\label{equation-curve-pencil}
+C: y^4+xz^3+\underbrace{c}_{\in K\setminus K^2}x^4=0
+\end{equation}
+$$
+\underbrace{C_1}_{\text{quasiell.}}:xy^2+z^3+cx^3=0.
+$$
+Further
+$$
+\xymatrix{
+C\ar[r]&C_1\ar[r]&C_2 \cong\mathbb{P}^1\ar[r]
+&C_3 \cong \mathbb{P}^1\ar[r]&C_4\cong \mathbb{P}^1\ar[r]&\cdots.
+}
+$$
+\end{example}
+
+\medskip\noindent
+With $C$ one can construct a pencil (fibration over $\mathbb{P}^1$)
+of quartics.
+Let $k=\overline{k}$ (new base field from what we fixed at the beginning!).
+Idea: replace $c$ for $t$ Equation \ref{equation-curve-pencil}.
+ $K=k(\mathbb{P}^1)$, $S=V(t_0(y^4+xz^3)+t_1x^4)
+\subseteq \mathbb{P}^2_{(x:y:z)}\times \mathbb{P}_{(t_0:t_1)}$.
+This has a singular point, so we blow up:
+$$
+\xymatrix{
+\tilde{S}\ar[d]\ar@/^1em/[dd]^f\\ S\ar[d]\\\mathbb{P}^1
+}
+$$
+The generic fiber is the curve $y^4+xz^3+tx^4=0$,
+so that $t_1/t_0 \in k(\mathbb{P}^1)=K$.
+Fibers are plane rational quartics,
+and the singular fiber $f_1(0:1)$ is a configuration of lines
+given by a Dynkin diagram
+$$
+\xymatrix{
+E_1 \ar[r]& E_2\ar[r]& E_3 \ar[r]& E_4\ar[d]\ar[r]& \cdots & E_{15}\\
+& & & E
+}
+$$
+We do the same with $C_1$: define 
+$S^1=V(t_0(xy^2+z^3)+tx^3) \subseteq \mathbb{P}^2 \times \mathbb{P}^1$.
+Then $S_1$ is also singular, and we blow up to obtain a smooth
+quasielliptic fibration ($\tilde{S^1}$ is quasielliptic).
+The fibers are plane cuspidal cubics.
+The singular fiber an arrangement of curves
+$$
+\xymatrix{
+F_1 \ar[r]& F_2\ar[r]& F_3\ar[d]\ar[r]& \cdots & F_8\\
+& & F
+}
+$$
+
+In fact, there is a correspondence between the two fibrations.
 
 
 \bibliography{my} \bibliographystyle{amsalpha}
