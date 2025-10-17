@@ -12,6 +12,111 @@
 
 \tableofcontents
 
+\section{Coadjoint orbits and KKS theorem}
+\label{section-coadjoint-orbits}
+
+\noindent
+The coadjoint action induces orbits in $\mathfrak{g}^*$.
+The tangent space at any point of a
+coadjoint orbit is given by infinitesimal vector
+fields, that is,
+$$
+T_{\xi}\mathcal{O}=\{u_{\mathfrak{g}^*}(\xi):\forall u \in \mathfrak{g}\}.
+$$
+
+\noindent
+We may introduce a symlpectic form
+$\omega \in \Lambda^{2}T^*_\xi\mathcal{O}$
+on the tangent space 
+at some point of a
+coadjoint orbit by
+$$
+\omega_\xi(X,Y):=\xi([u,v])=-u_{\mathfrak{g}^*}(\xi)v=v_{\mathfrak{g}^*}(\xi)(u)
+$$
+which does not depend on $u,v \in \mathfrak{g}$.
+
+\begin{theorem}[KKS]
+\label{theorem-KKS}
+$\xi \mapsto  \omega_\xi$ is symplectic on $\mathcal{O}$.
+\end{theorem}
+
+\begin{proof}
+Non degeneracy is easy.
+Then show that $\omega$ is $G$-invariant.
+Closedness follows from Jacobi identity.
+\end{proof}
+
+\section{Hamiltonian actions and moment map}
+\label{section-hamiltonian-actions-and-moment-map}
+
+\noindent
+To warm-up we define real symplectic and Hamiltonian actions.
+
+\begin{definition}
+\label{definition-real-symplectic-and-hamiltonian-actions}
+\begin{itemize}
+\item An $\mathbb{R}$-action is {\it symplectic} if $\psi_t^* \iff L_X \omega=0$,
+that is, $X$ is a symplectic field.
+\item An $\mathbb{R}$-action is {\it hamiltonian} if $X$ is Hamiltonian,
+that is, if there exists a function $H \in C^\infty(M)$ such that
+$X=X_H$.
+\end{itemize}
+\end{definition}
+
+\noindent
+To define moment map suppose there exists a map $\hat{\mu}$ 
+such that
+$$
+\xymatrixcolsep{3em}
+\xymatrixrowsep{.7em}
+\xymatrix{
+&C^\infty(M)\ar[dd]&f\ar@{|->}[dd]\\
+\mathfrak{g}\ar[dr]\ar[ur]^{\hat{\mu}}\\
+u \ar@{|->}[dr] & \mathfrak{X}(M) & X_f\\
+& u_M \ar@{=}[ur]
+}
+$$
+Note that if  $\hat{\mu}$ exists, it's not uniquely determined,
+and that we may suppose that it is linear.
+
+It's equivalente to define $\hat{\mu}$ as a map 
+$\hat{\mu}:\mathfrak{g}\to C^\infty(M)$ or as a map
+\begin{align*}
+\mu: M &\longrightarrow \mathfrak{g}^* \\
+\hat{\mu}(u)(x) &= \left<\mu(x),u\right>.
+\end{align*}
+
+\begin{definition}
+\label{definition-symplectic-and-hamiltonian-actions}
+\begin{itemize}
+\item A $G$-action is symplectic if $\psi_g^*\omega=\omega$ for all $g \in G$,
+that is, if
+$$
+\xymatrix{
+\psi:G\ar[r]\ar[dr]&\text{Dif}(M)\\
+&\text{Symp}(M,\omega)\ar@{^{(}->}[u].
+}
+$$
+
+\item A symplectic action $G \overset{\psi}{\mathbb{y}}(M,\omega)$
+is {\it weakly Hamiltonian} if there exists a map $\mu:M \to \mathfrak{g}^*$ 
+(or equivalently, $\hat{\mu}:\mathfrak{g} \to C^\infty(M)$ linear)
+such that
+$$
+i_{u_M}\omega=d\left<\mu,u\right>,\qquad (\text{resp. } u_M=X_{\hat{\mu}(u)}).
+$$
+
+\item A weakly Hamiltonian action is {\it Hamiltonian} if it is also
+$\mu$-equivariant, that is,
+$\mu: G\mathbb{y} M \to g^*\overset{\text{Ad}^*}{\mathbb{x}}G$,
+$$
+\mu \circ \psi_g=(\text{Ad}^*)_g(\mu).
+$$
+In this case we call $\mu$ a {\it moment map}.
+\end{itemize}
+
+\end{definition}
+
 \section{Noether's principle}
 \label{section-Noether-principle}
 
@@ -25,6 +130,266 @@ the Hamiltonian flow.
 \begin{proof}
 one line
 \end{proof}
+
+\section{Symplectic quotient}
+\label{section-symplectic-quotient}
+
+\noindent
+In symplectic geometry we cannot always take quotients.
+We need to use level-sets of the moment map.
+
+\begin{theorem}[Marsden-Weinstein, Megre]
+\label{theorem-marsden-weinstein-megre}
+Let $G \mathbb{y} (M,\omega)$ be a Hamiltonian action
+with moment map $\mu:M \to \mathfrak{g}^*$.
+Suppose $0 \in \mathfrak{g}^*$ is a regular value.
+By the equivariance of $\mu$, we have an action $G \mathbb{y} \mu^{-1}(0)$
+given as follows. For $x \in \mu^{-1}(0)$, 
+$\mu(\psi_g(x))=\text{Ad}_g^*(\mu(x))=0$.
+Suppose that this action is regular (this will be defined later),
+that $\mu^{-1}(0)/G$ is smooth, and that the projection is a submersion.
+Then there exists a unique symplectic form $\omega_{\text{red}}$ in $M_0$ 
+such that $i^*\omega=\pi_0^*\omega_{\text{red}}$.
+\end{theorem}
+
+\noindent
+That is, the pullback of the symplectic form to the 
+0 level-set of $\mu$ passes to the quotient:
+$$
+\xymatrix{
+G \mathbb{y} \mu^{-1}(0)\ar[d]^{\pi_0}\ar@{^{(}->}[r]& M\\
+(M_0:=\mu^{-1}(0)/G,\omega_{\text{red}})
+}
+$$
+
+\noindent
+A slightly more general setting is the following.
+Hamiltonian action $G \mathbb{y} (M,\omega)$,
+and moment map
+$\mu:M \to \mathfrak{g}^*$.
+$\xi \in \mathfrak{g}^*$ regular, $G_\xi \subseteq G$
+stabilizer of $\xi$.
+Then we have
+$$
+\xymatrix{
+G_\xi \mathbb{y} \mu^{-1}(\xi)\ar[d]^{\pi_\xi}\ar@{^{(}->}[r]^{i_\xi}& M\\
+(M_\xi=\mu^{-1}(\xi)/G_\xi,\omega_{\text{red}}).
+}
+$$
+
+\section{Toric varieties}
+\label{section-toric-varieties}
+
+\noindent
+For any compact connected symplectic manifold with an action of a torus,
+$\mathbb{T}^n \mathbb{y} (M^{2n},\omega)\xrightarrow{\mu}\mathbb{R}^n
+=(\mathfrak{t}^n)^*$, the image of $\mu$
+is a polytope. By [Guilleimin-Sternberg] and [Atiyah], this polytope is
+convex. Further, if the dimension of the torus is exactly half
+the dimension of the manifold, by [Delzant], the moment polytope
+determines the manifold, i.e. there is a one-to-one
+correspondence between
+Delzant polytopes and symplectic toric varieties.
+Moduli space of polygons is an example of this.
+
+In fact, this situation of having a torus action of half the dimension
+is what we may call a ``totally integrable system''.
+
+\section{(Completely) integrable systems}
+\label{section-completely-integrable-systems}
+
+\noindent
+Let $(M,\omega)$ be a symplectic manifold.
+Recall that
+
+\begin{itemize}
+\item $\{f,g\}=\omega(X_g,X_f)=L_{X_f}g=-L_{X_g}f$.
+\item $X_{\{f,g\}}=[X_f,X_g]$
+\end{itemize}
+
+\noindent
+If $\{f,g\}=0$ then the Hamiltonian flows of $f$ and $g$ commute.
+
+\begin{definition}
+\label{definition-completely-integrable-system}
+Let $(M^{2n},\omega)$ and $H \in C^\infty(M)$.
+$(M,\omega,H)$ is a {\it completely integrable system} 
+(in Liouville's sense)
+if there exist functions $f_1,\ldots,f_n \in C^\infty(M)$ such that
+\begin{enumerate}
+\item $H=f_1,\ldots,f_n$ are linearly independent
+($df_1,\ldots,df_n$ are linearly independent in every point).
+
+\item $\{ f_i, f_j\}=0$ for all $i,j$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Note that $F=(f_1,\ldots,f_n):M \to \mathbb{R}^n$ is a submersion.
+For all $c \in \mathbb{R}^n$, $F^{-1}(c)$ 
+are Lagrangian submanifolds.
+$F^{-1}(c)$ is invariant by the flow of
+$X_{f_i}$ for $i=1,\ldots,n$.
+
+Explanation: $F^{-1}(c)$ is a level-set submanifold of $M$,
+whose tangent space is generated by the $df_i$.
+These are all in the kernel of $dF$ by the integrability condition,
+namely $dF=(df_1,\ldots,df_n)$, $df_i(X_{f_j})=\{f_i,f_j\}=0$.
+
+The idea is that finding these ``conserved quantities''
+we manage to describe the Hamiltonian dynamics completely.
+Showing that a system is integrable is a victory.
+The moduli space of polygons is an example,
+and I think that so is $(\mathbb{C}^2)^{[n]}$.
+
+There is another method of using ``bihamiltonian actions''
+(two Hamiltonian actions yielding the same dynamics)
+/Lax pairs (defining the system using eigenvalues of matrices).
+Examples of this are Toda, Caolengo-Moser.
+
+\medskip\noindent
+The following theorem says that the connected
+component of a symplectic manifold with an integrable system
+
+
+\begin{theorem}[Arnold-Liouville]
+\label{theorem-arnold-liouville}
+Let $(M^{2n},\omega)$, $H=f_1,\ldots,f_n$ be completely intgrable system
+and $F:M \to \mathbb{R}^n$, $F=(f_1,\ldots,f_n)$.
+Let $M_c$ be the connected component of $F^{-1}(c)$.
+Then
+\begin{enumerate}
+\item 
+\label{item-toric1}
+If $M_c$ is compact, then $M_c \simeq
+\mathbb{T}^n=\mathbb{R}^n/2\pi\mathbb{Z}^n=\{(\theta_1,\ldots,\theta_n) \text{
+mod }2\pi\}$.
+
+\item 
+\label{item-toric2}
+In angular coordinates, the Hamiltonian flow is linear, that is,
+$\frac{d}{dt}^{-1}(t)=\alpha \in \mathbb{R}^n$ 
+implies that $\theta(t)=\theta_0+\alpha t$.
+\end{enumerate}
+\end{theorem}
+
+The proof of item \ref{item-toric1} is given by
+the following proposition
+putting $N=M$ and $X_1=X_{f_1},\ldots,X_n=X_{f_n}$.
+
+\begin{proposition}
+\label{proposition-torus}
+Let $N$ be complete, connected, of dimension $n$.
+Let $X_1,\ldots,X_n$ be linearly independent vector fields on $N$ 
+such that $[X_i,X_j]=0$ for all $j$.
+Then $N \simeq \mathbb{T}^n$.
+\end{proposition}
+
+\begin{proof}
+First we present the steps:
+\begin{enumerate}
+\item Flows of $X_1,\ldots,X_n$ define an action $\mathbb{R}^n \mathbb{y} N$.
+
+\item This action is transitive. Then $N \simeq \mathbb{R}^n/\Gamma$
+where $\Gamma$ is the stabilizer.
+
+\item Since $\dim N=n$, then  $\Gamma$ is a lattice of $\mathbb{R}^n$.
+
+\item Since $N$ is compact, then $\Gamma$ is of maximum rank, that is,
+$\Gamma=2\pi \mathbb{Z}^n \subset \mathbb{R}^n$ .
+\end{enumerate}
+
+
+Let $\varphi^i_t$ be the flow of $X_i$ (which are complete since $N$ is
+compact).
+Since $[X_i,X_j]=0$, then $\varphi_t^i \varphi_s^j=\varphi_s^j \varphi^i_t$.
+Thus we have an action $\mathbb{R}^n\mathbb{y} N$
+given by moving along the flows of the vector fields, that is
+$$
+\underbrace{(t_1,\ldots,t_n)}_{\mathbf{t}}\cdot x
+=\underbrace{\varphi_{t_1}^1 \circ \ldots \circ \varphi_{t_n}^n(x)}_{
+\varphi_{\mathbf{t}}(x)}
+$$
+To prove transitivity 
+we can show that the orbit maps of this action are surjective.
+Indeed, the image of the orbit map is open since it is a local
+diffeomorphism (it's derivative is given by the vector fields,
+which are linearly independent!),
+and it is closed by a taking a point in the boundary and 
+using the flow at this point (and commutativity of the flows).
+
+To check that the stabilizer $\Gamma$ of this action is trivial
+first note that all stabilizers are equal
+(not only conjugate) since $\mathbb{R}^n$ is abelian.
+Further, since the orbit map is a local diffeomorphism,
+$\Gamma$ is discrete. Thus, it must be a lattice of rank $k \leq n$.
+
+To show that in fact $k=n$ consider a linear map  $T$ 
+that maps the generators of $\Gamma$ to the first $k$ canonical 
+vectors of $\mathbb{R}^n$. By the following diagram, the arrow on the bottom
+is well defined as in fact a bijective local diffeomorphism,
+that is, a diffeomorphism.
+$$
+\xymatrix{
+\mathbb{R}^k \times\mathbb{R}^{n-k} \simeq \mathbb{R}^n\ar[r]^{T}\ar[d]_{p}
+\ar[dr]^{\psi_x \circ T}&
+\mathbb{R}^n\ar[d]^{\psi_x=\substack{\text{orbit} \\ \text{map}}}\\
+\mathbb{T}^k \times \mathbb{R}^{n-k}\ar[r]_{\overline{T}}&
+N
+}
+$$
+Thus the factor $\mathbb{R}^{n-k}$ must be a point since $N$ is
+compact by hypothesis.
+\end{proof}
+
+\noindent
+Item \ref{item-toric2} from Theorem \ref{theorem-arnold-liouville}
+is obtained by considering the flows
+on the latter diagram and is left as an exercise.
+
+\noindent
+In the case that $N$ is not compact we just conclude that
+it $M_c$ is a product of a torus with an Euclidean space.
+
+Perhaps the simplest example of an integrable system
+is given by taking an open ball about the origin $B \subseteq \mathbb{R}^n$
+and $B \times \mathbb{T}^n=\{(I_1,\ldots,I_n,\phi_1,\ldots,\phi_n)\}$ 
+with the symplectic form $\omega=\sum_{i=1}^n dI_1 \wedge d\phi_i$ 
+with $\{I_1,I_j\}=0$.
+
+The following theorem says that in fact the {\bf symplectic form} of every
+level set of the kind $M_c$, which we just proved
+that is a torus, may is described locally as such a product.
+
+\begin{theorem}
+\label{theorem-local}
+There is a neighbourhood $U$ of $M_c$ and
+a symplectomorphism
+$$
+\xymatrix{
+\sum d \mathcal{I} \wedge d\phi_i&\ar@{~>}[l]
+B \times \mathbb{T}^n\ar[r]^{r}_{\simeq}\ar[d]_{p}&U \subseteq M\ar[d]^{F}
+\ar@{~>}[r]
+& \omega\\
+&B\ar[r]_{\simeq}&F(U)
+}
+$$
+\end{theorem}
+
+\noindent
+The coordinates $(I_1,\ldots,I_n,\phi_1,\ldots,\phi_n)$
+are called {\it action-angle} coordinates.
+
+The case when $h(I)$ does not depend on the angle coordinates $\phi_i$
+we can solve the Hamiltonian equations easily:
+$$
+\begin{cases}
+\dot I_i=0 \\
+\dot \phi_i=-\frac{\partial h}{\partial I}(I)
+\end{cases}
+$$
+so that $\phi_i(t)=\phi_0+\alpha t$ for some constants $\alpha$.
+This is why integrable systems are actually easy to solve!
 
 \section{Vertex algebras}
 \label{section-vertex-algebras}
