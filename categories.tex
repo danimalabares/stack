@@ -58,6 +58,117 @@ F(\phi) \circ F(\psi)$ for a composable pair $(\phi, \psi)$ of
 morphisms of $\mathcal{A}$ and $F(\text{id}_x) = \text{id}_{F(x)}$.
 \end{definition}
 
+\noindent
+Note that every category $\mathcal{A}$ has an
+{\it identity} functor $\text{id}_\mathcal{A}$.
+In addition, given a functor $G : \mathcal{B} \to \mathcal{C}$
+and a functor $F : \mathcal{A} \to \mathcal{B}$ there is
+a {\it composition} functor $G \circ F : \mathcal{A} \to \mathcal{C}$
+defined in an obvious manner.
+
+\begin{definition}
+\label{definition-faithful}
+Let $F : \mathcal{A} \to \mathcal{B}$ be a functor.
+\begin{enumerate}
+\item We say $F$ is {\it faithful} if
+for any objects $x, y \in \Ob(\mathcal{A})$ the map
+$$
+F : \Mor_\mathcal{A}(x, y) \to \Mor_\mathcal{B}(F(x), F(y))
+$$
+is injective.
+\item If these maps are all bijective then $F$ is called
+{\it fully faithful}.
+\item
+The functor $F$ is called {\it essentially surjective} if for any
+object $y \in \Ob(\mathcal{B})$ there exists an object
+$x \in \Ob(\mathcal{A})$ such that $F(x)$ is isomorphic to $y$ in
+$\mathcal{B}$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{definition-subcategory}
+A {\it subcategory} of a category $\mathcal{B}$ is a category $\mathcal{A}$
+whose objects and arrows form subsets of the objects and arrows of $\mathcal{B}$
+and such that source, target and composition in $\mathcal{A}$ agree with those
+of $\mathcal{B}$ and such that the identity morphism of an object of
+$\mathcal{A}$ matches the one in $\mathcal{B}$. We say $\mathcal{A}$ is a
+{\it full subcategory} of $\mathcal{B}$ if $\Mor_\mathcal{A}(x, y)
+= \Mor_\mathcal{B}(x, y)$ for all $x, y \in \Ob(\mathcal{A})$.
+We say $\mathcal{A}$ is a {\it strictly full} subcategory of $\mathcal{B}$
+if it is a full subcategory and given $x \in \Ob(\mathcal{A})$ any
+object of $\mathcal{B}$ which is isomorphic to $x$ is also in $\mathcal{A}$.
+\end{definition}
+
+\noindent
+If $\mathcal{A} \subset \mathcal{B}$ is a subcategory then the
+identity map is a functor from $\mathcal{A}$ to $\mathcal{B}$.
+Furthermore a subcategory $\mathcal{A} \subset \mathcal{B}$
+is full if and only if the inclusion functor is fully faithful.
+Note that given a category $\mathcal{B}$ the set of full subcategories
+of $\mathcal{B}$ is the same as the set of subsets of
+$\Ob(\mathcal{B})$.
+
+\begin{remark}
+\label{remark-functor-into-sets}
+Suppose that $\mathcal{A}$ is a category.
+A functor $F$ from $\mathcal{A}$ to $\textit{Sets}$
+is a mathematical object (i.e., it is a set not a class or a formula
+of set theory, see
+Sets, Section \ref{sets-section-sets-everything})
+even though the category of sets is ``big''.
+Namely, the range of $F$ on objects will be
+a set $F(\Ob(\mathcal{A}))$ and then we
+may think of $F$ as a functor between
+$\mathcal{A}$ and the full subcategory
+of the category of sets whose
+objects are elements of $F(\Ob(\mathcal{A}))$.
+\end{remark}
+
+\begin{example}
+\label{example-group-homomorphism-functor}
+A homomorphism $p : G\to H$ of groups gives rise to a functor
+between the associated groupoids in Example \ref{example-group-groupoid}. It is
+faithful (resp.\ fully faithful) if and only if $p$ is injective (resp.\ an
+isomorphism).
+\end{example}
+
+\begin{example}
+\label{example-category-over-X}
+Given a category $\mathcal{C}$ and an object $X\in \Ob(\mathcal{C})$
+we define the {\it category of objects over $X$},
+denoted $\mathcal{C}/X$ as follows.
+The objects of $\mathcal{C}/X$ are morphisms $Y\to X$ for
+some $Y\in \Ob(\mathcal{C})$. Morphisms between objects
+$Y\to X$ and $Y'\to X$ are morphisms $Y\to Y'$ in $\mathcal{C}$ that
+make the obvious diagram commute. Note that there is a functor
+$p_X : \mathcal{C}/X\to \mathcal{C}$ which simply forgets the
+morphism. Moreover given a morphism $f : X'\to X$ in
+$\mathcal{C}$ there is an induced functor
+$F : \mathcal{C}/X' \to \mathcal{C}/X$ obtained by composition with $f$,
+and $p_X\circ F = p_{X'}$.
+\end{example}
+
+\begin{example}
+\label{example-category-under-X}
+Given a category $\mathcal{C}$ and an object $X\in \Ob(\mathcal{C})$
+we define the {\it category of objects under $X$},
+denoted $X/\mathcal{C}$ as follows.
+The objects of $X/\mathcal{C}$ are morphisms $X\to Y$ for
+some $Y\in \Ob(\mathcal{C})$. Morphisms between objects
+$X\to Y$ and $X\to Y'$ are morphisms $Y\to Y'$ in $\mathcal{C}$ that
+make the obvious diagram commute. Note that there is a functor
+$p_X : X/\mathcal{C}\to \mathcal{C}$ which simply forgets the
+morphism. Moreover given a morphism $f : X'\to X$ in
+$\mathcal{C}$ there is an induced functor
+$F : X/\mathcal{C} \to X'/\mathcal{C}$
+obtained by composition with $f$,
+and $p_{X'}\circ F = p_X$.
+\end{example}
+
+
+
+
 \section{Monomorphisms}
 \label{section-monomorphisms-and-epimorphisms}
 
@@ -104,9 +215,53 @@ if and only if it is both injective and surjective.
 \label{definition-presheaves-sets}
 A {\it presheaf of sets} on $\mathcal{C}$ is a contravariant
 functor from $\mathcal{C}$ to $\textit{Sets}$. {\it Morphisms
-of presheaves} are transformations of functors. The category
-of presheaves of sets is denoted $\textit{PSh}(\mathcal{C})$.
+of presheaves} are natural transformations of functors.
+The category
+of presheaves of sets is denoted $\textit{PSh}(\mathcal{C})$
+or $\hat{\mathcal{C}}$.
 \end{definition}
+
+\section{Yoneda lemma}
+\label{section-Yoneda-lemma}
+
+The Yoneda lemma says that the sections over $a$
+of a presheaf $X$ can be described completely
+as natural transformations between the 
+presheaf $\Hom(-,a)$ and $X$.
+
+\begin{definition}
+\label{definition-Yoneda-embedding}
+\begin{reference}
+\cite[Definition 1.1.3]{Cisinsky}
+\end{reference}
+Let $A$ be a category.
+The {\it Yoneda embedding} is the functor
+$$
+h:A \to \hat{A}
+$$
+whose value at an object $a$ of $A$ is the presheaf
+$$
+h_a=\Hom_A(-,a).
+$$
+\end{definition}
+
+In other words, the evaluation of the presheaf
+$h_a$ at an object $c$ of $A$ is the set of
+maps from $c$ to $a$.
+
+\begin{theorem}[Yoneda lemma]
+\label{theorem-Yoneda-lemma}
+\begin{reference}
+\cite[Theorem 1.1.4]{Cisinsky}
+\end{reference}
+For any presheaf $X$ over $A$, there is a natural bijection
+(in $\text{Sets}$ I think!!)
+\begin{align*}
+\Hom_{\widehat{A}}(h_a,X) &\xrightarrow{\simeq} X_a  \\
+(h_a \xrightarrow{u}X) &\longmapsto u_a(1_a)
+\end{align*}
+
+\end{theorem}
 
 \section{Internal Hom}
 \label{section-internal-hom}
@@ -182,12 +337,554 @@ $\Hom(X, \text{Map}(Y, Z)) \cong \Hom(X \times Y, Z)$
 and $\text{Map}(X, \text{Map}(Y, Z))\cong \text{Map}(X \times Y, Z)$.
 \end{remark}
 
+\section{Product}
+\label{section-product}
+
+\begin{definition}
+\label{definition-product}
+A {\it product} in a category $\mathcal{C}$ is
+$$
+\xymatrix{
+P\ar[d]_b \ar[r]^a&A\\
+B
+}
+$$
+such that for every other
+$$
+\xymatrix{
+P'\ar[d]_{b'} \ar[r]^{a'}&A\\
+B
+}
+$$
+there exists a unique map $p:P'\to P$ such that
+$ap=a'$ and  $bp=b'$.
+
+\end{definition}
+
+For completeness here's Stacks Project formulation:
+
+\begin{definition}
+\label{definition-products}
+Let $x, y\in \Ob(\mathcal{C})$.
+A {\it product} of $x$ and $y$ is
+an object $x \times y \in \Ob(\mathcal{C})$
+together with morphisms
+$p\in \Mor_{\mathcal C}(x \times y, x)$ and
+$q\in\Mor_{\mathcal C}(x \times y, y)$ such
+that the following universal property holds: for
+any $w\in \Ob(\mathcal{C})$ and morphisms
+$\alpha \in \Mor_{\mathcal C}(w, x)$ and
+$\beta \in \Mor_\mathcal{C}(w, y)$
+there is a unique
+$\gamma\in \Mor_{\mathcal C}(w, x \times y)$ making
+the diagram
+$$
+\xymatrix{
+w \ar[rrrd]^\beta \ar@{-->}[rrd]_\gamma \ar[rrdd]_\alpha & & \\
+& & x \times y \ar[d]_p \ar[r]_q & y \\
+& & x &
+}
+$$
+commute.
+\end{definition}
+
+And some nice piece of information and a definition also from Stacks Project.
+
+\medskip\noindent
+If a product exists it is unique up to unique
+isomorphism. This follows from the Yoneda lemma as
+the definition requires $x \times y$ to be an object
+of $\mathcal{C}$ such that
+$$
+h_{x \times y}(w) = h_x(w) \times h_y(w)
+$$
+functorially in $w$. In other words the product $x \times y$
+is an object representing the functor
+$w \mapsto h_x(w) \times h_y(w)$.
+
+\begin{definition}
+\label{definition-has-products-of-pairs}
+We say the category $\mathcal{C}$ {\it has products of pairs
+of objects} if a product $x \times y$
+exists for any $x, y \in \Ob(\mathcal{C})$.
+\end{definition}
+
+\section{Coproducts of pairs}
+\label{section-coproducts-pairs}
+
+\begin{definition}
+\label{definition-coproducts}
+Let $x, y \in \Ob(\mathcal{C})$.
+A {\it coproduct}, or {\it amalgamated sum} of $x$ and $y$ is
+an object $x \amalg y \in \Ob(\mathcal{C})$
+together with morphisms
+$i \in \Mor_{\mathcal C}(x, x \amalg y)$ and
+$j \in \Mor_{\mathcal C}(y, x \amalg y)$ such
+that the following universal property holds: for
+any $w \in \Ob(\mathcal{C})$ and morphisms
+$\alpha \in \Mor_{\mathcal C}(x, w)$ and
+$\beta \in \Mor_\mathcal{C}(y, w)$
+there is a unique
+$\gamma \in \Mor_{\mathcal C}(x \amalg y, w)$ making
+the diagram
+$$
+\xymatrix{
+& y \ar[d]^j \ar[rrdd]^\beta \\
+x \ar[r]^i \ar[rrrd]_\alpha & x \amalg y \ar@{-->}[rrd]^\gamma \\
+& & & w
+}
+$$
+commute.
+\end{definition}
+
+\noindent
+If a coproduct exists it is unique up to unique
+isomorphism. This follows from the Yoneda lemma (applied to the
+opposite category) as
+the definition requires $x \amalg y$ to be an object
+of $\mathcal{C}$ such that
+$$
+\Mor_\mathcal{C}(x \amalg y, w) =
+\Mor_\mathcal{C}(x, w) \times \Mor_\mathcal{C}(y, w)
+$$
+functorially in $w$.
+
+\begin{definition}
+\label{definition-has-coproducts-of-pairs}
+We say the category $\mathcal{C}$ {\it has coproducts of pairs
+of objects} if a coproduct $x \amalg y$
+exists for any $x, y \in \Ob(\mathcal{C})$.
+\end{definition}
+\section{Fibre products}
+\label{section-fibre-products}
+
+\begin{definition}
+\label{definition-fibre-products}
+Let $x, y, z\in \Ob(\mathcal{C})$,
+$f\in \Mor_\mathcal{C}(x, y)$
+and $g\in \Mor_{\mathcal C}(z, y)$.
+A {\it fibre product} of $f$ and $g$ is
+an object $x \times_y z\in \Ob(\mathcal{C})$
+together with morphisms
+$p \in \Mor_{\mathcal C}(x \times_y z, x)$ and
+$q \in \Mor_{\mathcal C}(x \times_y z, z)$ making the diagram
+$$
+\xymatrix{
+x \times_y z \ar[r]_q \ar[d]_p & z \ar[d]^g \\
+x \ar[r]^f & y
+}
+$$
+commute, and such that the following universal property holds: for
+any $w\in \Ob(\mathcal{C})$ and morphisms
+$\alpha \in \Mor_{\mathcal C}(w, x)$ and
+$\beta \in \Mor_\mathcal{C}(w, z)$ with
+$f \circ \alpha = g \circ \beta$
+there is a unique
+$\gamma \in \Mor_{\mathcal C}(w, x \times_y z)$ making
+the diagram
+$$
+\xymatrix{
+w \ar[rrrd]^\beta \ar@{-->}[rrd]_\gamma \ar[rrdd]_\alpha & & \\
+& & x \times_y z \ar[d]^p \ar[r]_q & z \ar[d]^g \\
+& & x \ar[r]^f & y
+}
+$$
+commute.
+\end{definition}
+
+\begin{remark}
+\label{remark-product-is-fibre-product}
+I think that a product is a fibre product
+when we put $y$ to be the terminal object!
+\end{remark}
 
 
-\bibliography{my}
-\bibliographystyle{amsalpha}
+\noindent
+If a fibre product exists it is unique up to unique
+isomorphism. This follows from the Yoneda lemma as
+the definition requires $x \times_y z$ to be an object
+of $\mathcal{C}$ such that
+$$
+h_{x \times_y z}(w) = h_x(w) \times_{h_y(w)} h_z(w)
+$$
+functorially in $w$. In other words the fibre product $x \times_y z$
+is an object representing the functor
+$w \mapsto h_x(w) \times_{h_y(w)} h_z(w)$.
+
+\begin{definition}
+\label{definition-cartesian}
+We say a commutative diagram
+$$
+\xymatrix{
+w \ar[r] \ar[d] &
+z \ar[d] \\
+x \ar[r] &
+y
+}
+$$
+in a category is {\it cartesian} if $w$ and the morphisms $w \to x$ and
+$w \to z$ form a fibre product of the morphisms $x \to y$ and $z \to y$.
+\end{definition}
+
+\begin{definition}
+\label{definition-has-fibre-products}
+We say the category $\mathcal{C}$ {\it has fibre products} if
+the fibre product exists for any $f\in \Mor_{\mathcal C}(x, y)$
+and $g\in \Mor_{\mathcal C}(z, y)$.
+\end{definition}
+
+\begin{definition}
+\label{definition-representable-morphism}
+A morphism $f : x \to y$ of a category $\mathcal{C}$ is said to be
+{\it representable} if for every morphism $z \to y$
+in $\mathcal{C}$ the fibre product $x \times_y z$ exists.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-composition-representable}
+Let $\mathcal{C}$ be a category.
+Let $f : x \to y$, and $g : y \to z$ be representable.
+Then $g \circ f : x \to z$ is representable.
+\end{lemma}
+
+\begin{proof}
+Let $t \in \Ob(\mathcal C)$ and $ \varphi \in \Mor_{\mathcal C}(t,z) $.
+As $g$ and $f$ are representable, we obtain commutative diagrams
+$$
+\xymatrix{
+y \times_z t \ar[r]_q \ar[d]_p &
+t \ar[d]^{\varphi} \\
+y \ar[r]^{g} & z
+}
+\quad\quad
+\xymatrix{
+x \times_y (y\! \times_z\! t) \ar[r]_{q'} \ar[d]_{p'} &
+y \times_z t \ar[d]^p \\
+x \ar[r]^f & y
+}
+$$
+with the universal property of Definition \ref{definition-fibre-products}.
+We claim that $x \times_z t = x \times_y (y \times_z t)$
+with morphisms $q \circ q' : x \times_z t \to t$ and $p' : x \times_z t \to x$
+is a fibre product. First, it follows from the commutativity of the
+diagrams above that $\varphi \circ q \circ q' = g \circ f \circ p'$.
+To verify the universal property, let
+$w \in \Ob(\mathcal C)$ and suppose $\alpha : w \to x$ and
+$\beta : w \to y$ are morphisms with
+$\varphi \circ \beta = g \circ f \circ \alpha$.
+By definition of the fibre product, there
+are unique morphisms $\delta$ and $\gamma$ such that
+$$
+\xymatrix{
+w \ar[rrrd]^\beta \ar@{-->}[rrd]_\delta \ar[rrdd]_{f\circ\alpha} & & \\
+& & y \times_z t \ar[d]_p \ar[r]_q & t \ar[d]^{\varphi} \\
+& & y \ar[r]^{g} & z
+}
+$$
+and
+$$
+\xymatrix{
+w \ar[rrrd]^\delta \ar@{-->}[rrd]_\gamma \ar[rrdd]_{\alpha} & & \\
+& & x \times_y (y\!\times_z\! t) \ar[d]_{p'} \ar[r]_{q'} &
+y \times_z t \ar[d]^{p} \\
+& & x \ar[r]^{f} & y
+}
+$$
+commute. Then, $\gamma$ makes the diagram
+$$
+\xymatrix{
+w \ar[rrrd]^\beta \ar@{-->}[rrd]_\gamma \ar[rrdd]_{\alpha} & & \\
+& & x \times_z t \ar[d]_{p'} \ar[r]_{q\circ q'} & t \ar[d]^{\varphi} \\
+& & x \ar[r]^{g\circ f} & z
+}
+$$
+commute. To show its uniqueness, let $\gamma'$ verify $ q\circ q'\circ\gamma' =
+\beta $ and $ p'\circ \gamma' = \alpha $. Because $\gamma$ is unique, we just
+need to prove that $ q'\circ\gamma' = \delta $ and $ p'\circ\gamma' = \alpha $
+to conclude. We supposed the second equality. For the first one, we also need
+to use the uniqueness of delta. Notice that $\delta$ is the only morphism
+verifying $ q\circ\delta = \beta $ and $ p\circ\delta = f\circ\alpha $. We
+already supposed that $ q\circ (q'\circ\gamma') = \beta $. Furthermore, by
+definition of the fibre product, we know that $ f\circ p' = p\circ q' $.
+Therefore:
+$$
+p\circ (q'\circ\gamma') =
+(p\circ q')\circ\gamma' =
+(f\circ p')\circ\gamma' =
+f\circ (p'\circ\gamma') = f\circ\alpha.
+$$
+Then $ q'\circ\gamma' = \delta $, which concludes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-representable}
+Let $\mathcal{C}$ be a category.
+Let $f : x \to y$ be representable.
+Let $y' \to y$ be a morphism of $\mathcal{C}$.
+Then the morphism $x' := x \times_y y' \to y'$ is representable also.
+\end{lemma}
+
+\begin{proof}
+Let $z \to y'$ be a morphism. The fibre product
+$x' \times_{y'} z$ is supposed to represent the
+functor
+\begin{eqnarray*}
+w & \mapsto & h_{x'}(w)\times_{h_{y'}(w)} h_z(w) \\
+& = & (h_x(w) \times_{h_y(w)} h_{y'}(w)) \times_{h_{y'}(w)} h_z(w) \\
+& = & h_x(w) \times_{h_y(w)} h_z(w)
+\end{eqnarray*}
+which is representable by assumption.
+\end{proof}
+
+\section{Examples of fibre products}
+\label{section-example-fibre-products}
+
+\noindent
+In this section we list examples of fibre products and
+we describe them.
+
+\medskip\noindent
+As a really trivial first example we observe
+that the category of sets has fibre products and hence every
+morphism is representable. Namely, if $f : X \to Y$
+and $g : Z \to Y$ are maps of sets then we define
+$X \times_Y Z$ as the subset of $X \times Z$ consisting
+of pairs $(x, z)$ such that $f(x) = g(z)$. The morphisms
+$p : X \times_Y Z \to X$ and $q : X \times_Y Z \to Z$ are
+the projection maps $(x, z) \mapsto x$, and $(x, z) \mapsto z$.
+Finally, if $\alpha : W \to X$ and $\beta : W \to Z$
+are morphisms such that $f \circ \alpha = g \circ \beta$
+then the map $W \to X \times Z$, $w\mapsto (\alpha(w), \beta(w))$
+obviously ends up in $X \times_Y Z$ as desired.
+
+\medskip\noindent
+In many categories whose objects are sets endowed with certain types of
+algebraic structures the fibre product of the underlying sets also
+provides the fibre product in the category. For example, suppose
+that $X$, $Y$ and $Z$ above are groups and that $f$, $g$ are
+homomorphisms of groups. Then the set-theoretic fibre product
+$X \times_Y Z$ inherits the structure of a group, simply by
+defining the product of two pairs by the formula
+$(x, z) \cdot (x', z') = (xx', zz')$. Here we list those categories
+for which a similar reasoning works.
+\begin{enumerate}
+\item The category $\textit{Groups}$ of groups.
+\item The category $G\textit{-Sets}$ of sets
+endowed with a left $G$-action for some fixed group $G$.
+\item The category of rings.
+\item The category of $R$-modules given a ring $R$.
+\end{enumerate}
+
+\section{Pushouts}
+\label{section-pushouts}
+
+\noindent
+The dual notion to fibre products is that of pushouts.
+
+\begin{definition}
+\label{definition-pushouts}
+Let $x, y, z\in \Ob(\mathcal{C})$,
+$f\in \Mor_\mathcal{C}(y, x)$
+and $g\in \Mor_{\mathcal C}(y, z)$.
+A {\it pushout} of $f$ and $g$ is
+an object $x\amalg_y z\in \Ob(\mathcal{C})$
+together with morphisms
+$p\in \Mor_{\mathcal C}(x, x\amalg_y z)$ and
+$q\in\Mor_{\mathcal C}(z, x\amalg_y z)$ making the diagram
+$$
+\xymatrix{
+y \ar[r]_g \ar[d]_f & z \ar[d]^q \\
+x \ar[r]^p & x\amalg_y z
+}
+$$
+commute, and such that the following universal property holds:
+For any $w\in \Ob(\mathcal{C})$ and morphisms
+$\alpha \in \Mor_{\mathcal C}(x, w)$ and
+$\beta \in \Mor_\mathcal{C}(z, w)$ with
+$\alpha \circ f = \beta \circ g$ there is a unique
+$\gamma\in \Mor_{\mathcal C}(x\amalg_y z, w)$ making
+the diagram
+$$
+\xymatrix{
+y \ar[r]_g \ar[d]_f & z \ar[d]^q \ar[rrdd]^\beta & & \\
+x \ar[r]^p \ar[rrrd]^\alpha & x \amalg_y z \ar@{-->}[rrd]^\gamma & & \\
+& & & w
+}
+$$
+commute.
+\end{definition}
+
+\noindent
+It is possible and straightforward to prove the uniqueness of the triple
+$(x\amalg_y z, p, q)$ up to unique isomorphism (if it exists) by direct
+arguments. Another possibility is to think of the pushout as the
+fibre product in the opposite category, thereby getting this uniqueness for
+free from the discussion in Section \ref{section-fibre-products}.
+
+\begin{definition}
+\label{definition-cocartesian}
+We say a commutative diagram
+$$
+\xymatrix{
+y \ar[r] \ar[d] & z \ar[d] \\
+x \ar[r] & w
+}
+$$
+in a category is {\it cocartesian} if $w$ and the morphisms $x \to w$ and
+$z \to w$ form a pushout of the morphisms $y \to x$ and $y \to z$.
+\end{definition}
+
+\medskip\noindent
+According to Sergei Burkin, another way
+to define a pushout is as follows.
+The diagram
+$$
+\xymatrix{
+A\ar[r]\ar[d]\ar@{}[dr]|-{\ulcorner}&B\ar[d]\\
+C\ar[r]&D
+}
+$$
+is a {\it pushout} if the diagram
+$$
+\xymatrix{
+\mathit{Map}(D,X)\ar[r]\ar[d]\ar@{}[dr]|-{\lrcorner}&
+\mathit{Map}(B,X)\ar[d]\\
+\mathit{Map}(C,D)\ar[r]&\mathit{Map}(D,X)
+}
+$$
+is a pullback.
+
+In fact, spheres are (homotopy?) pushouts:
+
+$$
+\xymatrix{
+S^{n-1}\ar[r]\ar[d]\ar@{}[dr]|-{\ulcorner}&\text{pt}\ar[d]\\
+\text{pt}\ar[r]&S^n
+}
+$$
+which is homotopically the same as
+$$
+\xymatrix{
+S^{n-1}\ar[r]\ar[d]\ar@{}[dr]|-{\ulcorner}&D^n\ar[d]\\
+D^n\ar[r]&S^n,
+}
+$$
+the familiar construction of glueing two
+disks along their boundary to obtain a sphere.
+
+
+\section{Limits and colimits}
+\label{section-limits-and-colimits}
+
+\noindent
+A colimit is:
+take an abstract diagram $\mathcal{I}$.
+Realize it in the category that interests you
+(for the stack this are open sets which contain the point,
+and are a poset by inclusion).
+The colimit is the unique object that
+there is an arrow from all the points of the diagram
+and satisfies some universal property that
+any other such object there's a morphism bla bla.
+(In the case of the stack it is the unique
+open set contained in all the other open sets.
+Which actually it's interesting that such a thing
+exists.)
+
+\noindent
+A product is actually a particular case of a limit.
+
+\medskip\noindent
+Let $\mathcal{C}$ be a category. A {\it diagram} in $\mathcal{C}$ is
+simply a functor $M : \mathcal{I} \to \mathcal{C}$. We say that
+$\mathcal{I}$ is the {\it index category} or that $M$ is an
+$\mathcal{I}$-diagram. We will use the notation $M_i$ to denote the
+image of the object
+$i$ of $\mathcal{I}$. Hence for $\phi : i \to i'$ a morphism
+in $\mathcal{I}$ we have $M(\phi) : M_i \to M_{i'}$.
+
+\begin{definition}
+\label{definition-limit}
+A {\it limit} of the $\mathcal{I}$-diagram $M$ in the category
+$\mathcal{C}$ is given by an object $\lim_\mathcal{I} M$ in $\mathcal{C}$
+together with morphisms $p_i : \lim_\mathcal{I} M \to M_i$ such that
+\begin{enumerate}
+\item for $\phi : i \to i'$ a morphism
+in $\mathcal{I}$ we have $p_{i'} = M(\phi) \circ p_i$, and
+\item for any object $W$ in $\mathcal{C}$ and any family of
+morphisms $q_i : W \to M_i$ (indexed by $i \in \Ob(\mathcal{I})$)
+such that for all $\phi : i \to i'$
+in $\mathcal{I}$ we have $q_{i'} = M(\phi) \circ q_i$ there
+exists a unique morphism $q : W \to \lim_\mathcal{I} M$ such that
+$q_i = p_i \circ q$ for every object $i$ of $\mathcal{I}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Limits $(\lim_\mathcal{I} M, (p_i)_{i\in \Ob(\mathcal{I})})$ are
+(if they exist)
+unique up to unique isomorphism by the uniqueness requirement
+in the definition. Products of pairs, fibre products, and equalizers are
+examples of limits. The limit over the empty diagram is a final object
+of $\mathcal{C}$.
+In the category of sets all limits exist.
+The dual notion is that of colimits.
+
+\begin{definition}
+\label{definition-colimit}
+A {\it colimit} of the $\mathcal{I}$-diagram $M$ in the category
+$\mathcal{C}$ is given by an object $\colim_\mathcal{I} M$ in $\mathcal{C}$
+together with morphisms $s_i : M_i \to \colim_\mathcal{I} M$ such that
+\begin{enumerate}
+\item for $\phi : i \to i'$ a morphism
+in $\mathcal{I}$ we have $s_i = s_{i'} \circ M(\phi)$, and
+\item for any object $W$ in $\mathcal{C}$ and any family of
+morphisms $t_i : M_i \to W$ (indexed by $i \in \Ob(\mathcal{I})$)
+such that for all $\phi : i \to i'$
+in $\mathcal{I}$ we have $t_i = t_{i'} \circ M(\phi)$ there
+exists a unique morphism $t : \colim_\mathcal{I} M \to W$ such that
+$t_i = t \circ s_i$ for every object $i$ of $\mathcal{I}$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{definition-product-as-a-limit}
+Suppose that $I$ is a set, and suppose given for every $i \in I$ an
+object $M_i$ of the category $\mathcal{C}$. A {\it product}
+$\prod_{i\in I} M_i$ is by definition $\lim_\mathcal{I} M$
+(if it exists)
+where $\mathcal{I}$ is the category having only identities as
+morphisms and having the elements of $I$ as objects.
+\end{definition}
+
+\noindent
+An important special case is where $I = \emptyset$ in which case the
+product is a final object of the category.
+The morphisms $p_i : \prod M_i \to M_i$ are called the
+{\it projection morphisms}.
+
+\begin{definition}
+\label{definition-coproduct}
+Suppose that $I$ is a set, and suppose given for every $i \in I$ an
+object $M_i$ of the category $\mathcal{C}$. A {\it coproduct}
+$\coprod_{i\in I} M_i$ is by definition $\colim_\mathcal{I} M$
+(if it exists) where $\mathcal{I}$ is the category having only
+identities as morphisms and having the elements of $I$ as objects.
+\end{definition}
+
+\noindent
+An important special case is where $I = \emptyset$ in which case the
+coproduct is an initial object of the category.
+Note that the coproduct comes equipped with morphisms
+$M_i \to \coprod M_i$. These are sometimes called the
+{\it coprojections}.
+
+\medskip\noindent
+There is also so-called statement
+of ``commutativity of limits''.
+
+\bibliography{my} \bibliographystyle{amsalpha}
 
 
 
 \end{document}
-
