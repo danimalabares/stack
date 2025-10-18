@@ -43,6 +43,125 @@ representation of $\mathfrak{g}$
 (i.e. a representation where $V$ is finite-dimensional) 
 is isomorphic to a direct sum of irreducible representations 
 
+
+\section{Representations of SL(2,C)}
+\label{section-sl2c}
+
+\noindent
+Klein classified nontrivial finite subgroups of $\text{SL}_2(\mathbb{C})$ 
+up to conjugacy:
+\begin{itemize}
+\item Cyclic groups $\mathcal{C}_m$, $m \geq 2$. $|\mathcal{C}_m|=m$,
+$$
+\mathcal{C}_m=\left\{\begin{pmatrix}
+\zeta&0\\ 
+0&\zeta^{-1}\end{pmatrix}:\zeta^m=1
+\right\}.
+$$
+\item Dihedral groups $\mathcal{D}_m$, $m\geq 2$,
+$$
+\mathcal{D}_m=\left<\mathcal{C}_{2m},\begin{pmatrix}
+0&-1\\ 
+1&0
+\end{pmatrix}\right>.
+$$
+For example, $\mathcal{D}_2$ is the {\it quaternion group} 
+$\left<\underbrace{\begin{pmatrix}
+i&0\\ 
+0&-i
+\end{pmatrix}}_{i},\underbrace{\begin{pmatrix}
+0&-1\\ 
+1&0
+\end{pmatrix}}_{j}\right>$.
+
+\item Binary tetrahedral group $\mathcal{T}$, with $|\mathcal{T}|=24$.
+\item Binary octahedral group, $\mathcal{O}$, with $|\mathcal{O}|=48$.
+\item Binary icosahedral group $\mathcal{I}$ with $|I|=120$.
+
+These three are related to the rotation groups of the
+Platonic solids by the 2-to-1 covering
+$\text{SU}_2 \to \text{SO}_3(\mathbb{R})$.
+To classify the finite subgroups of $\text{SL}_2(\mathbb{C})$:
+first show that any such subgroup is conjugate to a subgroup
+of $\text{SU}_2$ so that its image is a finite subgroup of
+$\text{SO}_3(\mathbb{R})$. We can classify those by considering their
+action on the sphere and showing that they have to be the
+rotation group of one of the Platonic solids or a dihedral group
+or a cyclic group (related to planar polygons).
+\end{itemize}
+
+\noindent
+At some point of the XX century it was realised that this
+classification is an instance of an ADE classification.
+
+Now we explain the (historically second explanation of this) McKay
+correspondence.
+If $\Gamma$ is a nontrivial finite subgroup of $\text{SL}_2(\mathbb{C})$,
+define the  {\it McKay graph} $\tilde{\Delta}_\Gamma$ as follows:
+the vertices are $0,1,2,\ldots,\ell$ which index the
+irreducible representations $R_0,R_1,\ldots,R_\ell$ of $\Gamma$.
+
+Let $Q$ be the 2-dimensional $\Gamma$ coming from
+$\Gamma<\text{SL}_2(\mathbb{C})$.
+(Note that $Q$ is one of the $R_i$'s unless $\Gamma=\mathcal{C}_m$,
+in which case $Q$ is reducible.)
+The number of edges between $i$ and $j$ in $\tilde{\Delta}_\Gamma$ 
+is the multiplicity of $R_j$ in $Q \otimes R_i$.
+So: take the representation $R_i$, tensor it with the
+2-dimensional representation $Q$, 
+express it as a direct sum of irreducible representations
+and perhaps $R_j$ will appear with nonzero multiplicity,
+in which case you put $R_j$ with that number of edges.
+So in general it's a multigraph, though in most
+cases its a simple graph.
+Also note that this multiplicity coincides
+with the multiplicity of $R_i$ in $Q \otimes R_j$
+since $Q^* \cong Q$; that is the graph is not directed.
+
+The surprising thing is that when we do this we obtain
+the affine Dynkin diagrams. McKay's famous observation says:
+\begin{enumerate}
+\item $\tilde{\Delta}_\Gamma$ is a simply-laced affine Dynkin
+diagram.
+
+\item This is a bijection:
+$$
+\left\{\substack{\text{nontrvial finite} \\ \Gamma \subset
+\text{SL}_2(\mathbb{C})}\right\}\Big/\text{conj.}
+\xymatrix{\ar@{<~>}[r]&}
+\left\{\substack{\text{simply-laced} \\ \text{affine Dynkin diagrams}}\right\}.
+$$
+\end{enumerate}
+
+\noindent
+The correspondance reads
+\begin{align*}
+\mathcal{C}_m &\xymatrix{\ar@{<->}[r]&}
+\widetilde{A}_{m-1}\\
+\mathcal{D}_m &\xymatrix{\ar@{<->}[r]&}
+\widetilde{D}_{m+2}\\
+\mathcal{T}&\xymatrix{\ar@{<->}[r]&}\tilde{E}_6\\
+\mathcal{O}&\xymatrix{\ar@{<->}[r]&}\tilde{E}_7\\
+\mathcal{I}&\xymatrix{\ar@{<->}[r]&}\tilde{E}_8.
+\end{align*}
+
+\medskip\noindent
+Now we explain the geometric approach.
+Given a finite $\Gamma \subset \text{SL}_2(\mathbb{C})$, consider
+the quotient $Y_\Gamma=\Gamma\setminus Q$ as an algebraic variety,
+that is, (since $Q$ is just a representation of $\Gamma$, i.e.
+a 2-dimensional affine space with an action of $\Gamma$)
+we can take its quotient in the sense described before:
+$Y_\Gamma$ is the affine variety with coordinate algebra
+$\mathbb{C}[x,y]^\Gamma$.
+
+\begin{lemma}
+\label{lemma-action-is-free-outside-origin}
+The action of $\Gamma$ is free on $Q\setminus\{0\}$ is free.
+\end{lemma}
+
+
+
 \section{Borel-Weil-Bott theorem}
 \label{section-Borel-Weil-Bott-thoerem}
 
