@@ -67,6 +67,17 @@ the ideals of $R/I$ are in correspondence with ideals of $R$ containing $I$,
 but only $R$ is such.
 \end{proof}
 
+\section{Fields}
+\label{section-fields}
+
+\noindent
+Just for the record, any simple field extension, i.e. the smallest
+field in $F$ containing a single element, is isomorphic
+to either que ``rational function field $k(t)/k$''
+or to one of the field extensions $k[t]/(P)$ 
+with $P \in k[t]$ irreducible.
+(Stacks Project tag \href{https://stacks.math.columbia.edu/tag/09G1}{09G1}.)
+
 \section{Modules}
 \label{section-modules}
 
@@ -187,6 +198,33 @@ So, probably an ``algebra'' $A$ over a ring  $R$ is when $A$ contains
 \section{Finite and integral ring extensions}
 \label{section-finite-ring-extensions}
 
+\noindent
+The upshot is: let $\varphi:R \to S$ be a ring map.
+An element $s \in S$ is integral over $R$ if there
+is a monic polynomial with coefficients in $R$
+that gives zero when you put $s$ instead of the variable.
+
+But it might be convenient to think about
+finite (or, for humans, finitely-generated) $R$-modules:
+$x$ is integral over $R$ if and only if $R[x]$
+is a finitely-generated  $R$-module (i.e.,
+not only finitely generated as an algebra
+but also as a module).
+See \href{
+https://youtu.be/5fCHj80BQHw?si=o7tMC4tRsbBnwmJi}{Zvi Rosen's video}.
+The forward implication is: suppose $x$ is integral,
+then $x^n+r_1x^{n-1}+\ldots+r_n=0$, so
+$x^n=-r_1x^{n-1}+\ldots+r_n$,
+which ``says'' $R[x] \cong \bigoplus_{k=0}^{n-1}Rx^k$.
+
+So maybe the details of that are not entirely trivial (Zvi uses some theorem,
+and Stacks Project does lots of things).
+But the point is: I think that after applying Spec,
+the fibers of an integral extension are {\bf finite}.
+
+Ok, now I go to Stacks Project:
+
+\medskip\noindent
 Trivial lemmas concerning finite and integral ring maps.
 We recall the definition.
 
