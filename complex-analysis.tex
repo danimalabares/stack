@@ -38,7 +38,8 @@ Let $f:W\subset\mathbb{C}\to \mathbb{C}$ be a function. Let $z=x+iy$ coordinates
 in $\mathbb{C}$. Define $f:=u+iv$ and
 $z_0=x_0+iy_0 \in U$. $f$ is holomorphic at $z_0$ if and only if
 $$
-\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\qquad \frac{\partial v}{\partial x}=-\frac{\partial u}{\partial y}
+\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\qquad
+\frac{\partial v}{\partial x}=-\frac{\partial u}{\partial y}.
 $$
 \end{theorem}
 
@@ -46,26 +47,25 @@ $$
 \label{section-integration}
 
 \noindent
-The upshot about complex integration
-(and complex analysis, really)
-is that differential forms $fdz$ with $f$ holomorphic are exact
-because that's equivalent to Cauchy-Riemann equations.
-
-\medskip\noindent
 The complex integral may first be defined for a complex-valued function $f$
 defined on a real integral as
 $$
-\int_a^bf=\int_a^b u + i \int_a^bv
+\int_a^bf=\int_a^b u + i \int_a^bv.
 $$
 And then for curves as
 $$
-\int_\gamma f:=\int_a^b f(\gamma(t))\gamma'(t)dt
+\int_\gamma f:=\int_a^b f(\gamma(t))\gamma'(t)dt.
 $$
-A natural question is: what's the essential difference between complex and real
-analysis? What is the power behind Cauchy-Riemann equations? The answer is in
-the proof of Cauchy integral theorem \ref{theorem-Cauchy}: Stokes theorem, which
-in dimension 2 is called Green's theorem, gives an integrand with Cauchy-Riemann
-equations.
+\section{Cauchy integral theorem}
+\label{section-cauchy-integral}
+
+\noindent
+The upshot about complex integration
+(and complex analysis, really)
+is that the integral $\int_\Delta fdz$ vanishes
+by Stokes theorem when $f$ is holomorphic.
+This leads to Cauchy integral formula and
+several other results.
 
 Recall
 \begin{theorem}[Stokes]
@@ -84,19 +84,10 @@ Fundamental theorem of calculus.
 \end{proof}
 
 \noindent
-So, when computing a complex integral $\int_\gamma f$, we are interested in
-knowing when is the form $fdz$ exact. Which says that there is a function $F$
-such that $\partial_x F=f$ and $\partial_y F=if$. In fact, this is the same as
-asking that $F$ satisfies the Cauchy-Riemann equations (provided $f$ is
-continuous).
-
-Thus, the integral $\int_\gamma f$ for continuous $f$ depends only on the end
-points of $\gamma$ if and only if $f$ is the derivative of an analytic function
-in $\Omega$.
-
-\medskip\noindent
-The theory of complex integration has to do with homology. The following
-result does not hold for domains that are not simply connected:
+The idea of the proof behind the following theorem is that 
+a differential $fdz$ is exact when $f$ is holomorphic
+because this condition is non other than the Cauchy-Riemann equations.
+But beware: this works only when the domain is simply connected.
 
 \begin{theorem}[Cauchy]
 \label{theorem-Cauchy}
@@ -117,45 +108,32 @@ $$
 There's Cauchy-Riemann equations!
 \end{proof}
 
-\begin{proof}[Alternative idea]
-I prove this using Stokes theorem. The fact that $f$ is holomorphic says that
-$\overline{\partial}f=0$. In turn, $d=\partial+\overline{\partial}$, so that
-$df=\partial f$, which is a $(1,0)$-form (just as $\overline{\partial}$ maps
-functions to $(0,1)$-forms… (must justify…)). This makes $d(fdz)=df\wedge dz$ a
-$(2,0)$-form, but there are no such forms on $\mathbb{C}$ (because there are no
-holomorphic or antiholomorphic 2-forms on a complex dimension 1 space).
-\end{proof}
-
 \noindent
-The following limit condition allows for the former result even if the domain
-has some points removed:
+We are interested in taking a point away from the domain
+and seeing if we can extend the function holomorphically.
+The condition we need for this to work is given by the following theorem:
 
 \begin{theorem}
 \label{theorem-Cauchy-removable}
 Let $f$ be analytic in the region $\Delta'$ by omitting a finite number of
-points $\zeta_j$ from an open disk $\Delta$. If $f$ satisfies that
+points $z_j$ from an open disk $\Delta$. If $f$ satisfies that
 \begin{equation}
 \label{equation-removable-singularity}
-\lim_{z\to\zeta_j} (z-\zeta_j)f(z)=0
+\lim_{z\to z_j} (z-z_j)f(z)=0
 \end{equation}
-for all $j$, then Eq. \ref{equation-Cauchy-theorem} holds for any closed curve
+for all $j$, then $\int_\gamma fdz=0$ for any closed curve
 $\gamma$ in $\Delta'$.
 \end{theorem}
 
-\begin{proof}[Sketch of proof]
-It suffices to prove that Eq. \ref{equation-removable-singularity} implies that
-we can extend $f$ to a holomorphic function on all of $\Delta$ and apply Stokes
-as in Theorem \ref{theorem-Cauchy}. But that won't work: for that we need Cauchy
-integral formula, and that's why I'm here: to prove Cauchy integral formula.
-
+\begin{proof}[Proof]
 So I think it might be using logarithmic derivative. The limit above allows to
 write
 $$
-|f(z)|\leq \frac{\varepsilon}{|z-\zeta_j|}
+|f(z)|\leq \frac{\varepsilon}{|z-z_j|}
 $$
 Then integrate. On the left we can bound the integral of $f$ after applying
 integral triangle inequality, and on the right we have logarithmic derivative of
-$z-\zeta_j$. This will be a fixed number (the index, see Definition
+$z-z_j$. This will be a fixed number (the index, see Definition
 \ref{definition-index}), so that we have effectively bounded the integral.
 \end{proof}
 
@@ -188,7 +166,7 @@ $$
 is a multple of $2\pi i$.
 \end{lemma}
 
-\begin{proof}[Non-proof]
+An idea (though not at proof) for a proof is the following:
 We are tempted to simply write the integrand as the logarithmic derivative of
 the function $f(z)=z-a$. But this isn't quite right, we must be careful with the
 domain of the logarithm. But it is instructive to see the computation:
@@ -200,6 +178,7 @@ If  $\gamma$ is closed then $\text{log}|z-a|$ would return to its initial value
 and $\text{arg}(z-a)$ increases or decreases by a multiple of $2\pi$. The actual
 proof by Ahlfors is different.
 
+\begin{proof}[Proof for circle]
 Still, the proof for a circle about a point $z_0$ is also trivial: this is just
 the case of the integral $\int_{\partial\Delta}\frac{dz}{z-z_0}$, but the curve
 here is  $\gamma(t)=e^{it}+z_0$ so that when substituting in the parametrization
@@ -300,7 +279,7 @@ of Cauchy formula (Eq. \ref{equation-first-derivative-Cauchy-formula}),
 $$
 |f'(z)|\leq \frac{M}{2\pi i}\int_\gamma \frac{d\zeta}{|\zeta-z|^2}
 $$
-and compute the integral, of course is $\frac{2\pi i}{r}$.
+and compute the integral, which is $\frac{2\pi i}{r}$.
 \end{proof}
 
 \noindent
@@ -308,6 +287,70 @@ A fun application of this is proving the fundamental theorem of algebra. If a
 complex polynomial had no zeroes, $1/P(z)$ would be analytic in all of
 $\mathbb{C}$, and since $P(z)$ tends to $\infty$ as $z$ tends to $\infty$,
 $1/P(z)$ is bounded (use Riemann sphere argument).
+
+\section{Riemann removable singularity theorem}
+\label{section-removable-singularity}
+
+\noindent
+The upshot about the condition that
+$\lim_{z \to z_0} (z-z_0)f(z)=0$ is that this implies
+that $\int_\gamma f=0$. But this actually doesn't
+work in the following proof, since we don't get much from that
+integral vanishing --- that's just to say that
+\cite[Chapter 4, Theorem 7]{Ahlfors} is confusing.
+Instead, I'll put here this great 
+\href{https://en.wikipedia.org/wiki/Removable_singularity}{Wikipedia})
+proof:
+
+\begin{theorem}[Riemann's removable singularity theorem]
+\label{theorem-removable-singularity}
+Let $f(z)$ be analytic in a region $\Omega'$ obtained by omitting a point $z_0$
+from a region $\Omega$. There exists an analytic function  defined on all 
+$\Omega$ that coincides with $f$ on $\Omega'$ if and only if 
+$\lim_{z \to z_0} (z-z_0)f(z)=0$. Such a function is unique.
+\end{theorem}
+
+\begin{proof}
+The direct implication is obvious since we can replace $f$ by
+its holomorphic extension in the limit, which will converge to a fixed
+value, so that the limit is zero. Uniqueness also is trivial
+by continuity of any holomorphic extension.
+
+For the converse define
+$$
+h(z)=\begin{cases}
+(z-z_0)^2f(z)\qquad &z \neq z_0 \\
+0\qquad &z=z_0.
+\end{cases}
+$$
+Clearly $h$ is holomorphic on $\Omega\setminus\{z_0\}$,
+and at $z_0$ it's also complex-differentiable:
+$$
+h'(z_0)=\lim_{z \to z_0} \frac{(z-z_0)^2f(z)-0}{z-z_0}
+=\lim_{z\to z_0}(z-z_0)f(z)=0.
+$$
+by hypothesis. That is, $h$ is holomorphic
+and thus has a Taylor series about $z_0$ (justify!
+\href{https://en.wikipedia.org/wiki/Analyticity_of_holomorphic_functions}{wiki}
+):
+$$
+h(z)=c_0+c_1(z-z_0)+c_2(z-z_0)^2+c_3(z-z_0)^3+\ldots
+$$
+
+We have $c_0=h(z_0)=0$ and $c_1=h'(z_0)=0$, and thus
+$$
+h(z)=c_2(z-z_0)^2+c_3(z-z_0)^3+\ldots.
+$$
+Hence, where $z\neq z_0$ we have
+$$
+f(z)=\frac{h(z)}{(z-z_0)^2}=c_2+c_3(z-z_0)+\ldots.
+$$
+However
+$$
+g(z)=c_2+c_3(z-z_0)+\ldots
+$$
+is holomorphic on all $\Omega$, and is thus an extension of $f$.
+\end{proof}
 
 \section{Zeroes of a holomorphic function}
 \label{section-zeroes}
@@ -319,49 +362,25 @@ Perhaps the best way to remember this section is by the formula
 f(z)=f_n(z)(z-z_0)^n
 \end{equation}
 which holds for a holomorphic function which
-vanishes on $z_0$ and whose derivatives $f^{(\nu)}(z_0)$ vanish
-for $\nu<n$ (see \cite[p. 126]{Ahlfors}).
+vanishes on $z_0$ and whose derivatives $f^{(k)}(z_0)$ vanish
+for $k<n$ (see \cite[p. 126]{Ahlfors}).
 Here $f_n$ is a holomorphic function which does not vanish at $z_0$ 
 (according to \cite{lec}, but why?).
 This fact shows that the zero $z_0$ is isolated,
 since $f_n(z)$ is continuous and nonzero in $z_0$,
 and $(z-z_0)^n$ is also nonzero in a pointed neighbourhood of $z_0$.
-
-All this is basically due to Cauchy integral formula,
-as the following theorem shows.
-
-\begin{theorem}[Removable singularity theorem]
-\label{theorem-removable-singularity}
-Let $f(z)$ be analytic in a region $\Omega'$ obtained by omitting a point $z_0$
-from a region $\Omega$. There exists an analytic function  defined on all 
-$\Omega$ that coincides with $f$ on $\Omega'$ if and only if 
-$\lim_{z \to z_0} (z-z_0)f(z)=0$. Such a function is unique.
-\end{theorem}
-
-\begin{proof}
-(What is wrong in this proof? I need to use
-the limit condition somewhere… see 
-\href{https://en.wikipedia.org/wiki/Removable_singularity}{wiki} and
-\href{https://en.wikipedia.org/wiki/Analyticity_of_holomorphic_functions}{wiki}
-)
-The proof is just looking at Cauchy integral formula and noticing that the
-function defined at the singularity via the integral around it is holomorphic
-since it is given by an integral.
-Integrals are holomorphic since partial derivatives, which are limits,
-go through the integral sign, meaning we can differentiate
-infinitely many times and obtain a Taylor series expansion.
-(or perhaps more generally by Technical
-Lemma \ref{lemma-technical-lemma}).
-\end{proof}
-
-\noindent
-Now consider the function
+ 
+\medskip\noindent
+Recall the function that we used to prove Cauchy integral formula
+Theorem \ref{theorem-Cauchy-integral-formula}:
 \begin{equation}
 \label{equation-F}
 F(z)=\frac{f(z)-f(z_0)}{z-z_0},
 \end{equation}
-which has $\lim_{z\to z_0} (z-z_0)F(z)=0$. Then we apply the theorem and find
-that the holomorphic function extending $F$, say $f_1$, is actually $f'$ at
+which has $\lim_{z\to z_0} (z-z_0)F(z)=0$. Then we apply the 
+Riemann's removable singularity theorem \ref{theorem-removable-singularity}
+and find that the holomorphic function extending $F$,
+say $f_1$, is actually $f'$ at
 $z_0$ by definition. 
 Substituting $F$ by $f_1$
 in Equation \ref{equation-F} we obtain
@@ -432,6 +451,12 @@ Then we must observe that the bound converges uniformly
 to zero in every disk of radius smaller than $\rho$,
 and by Weierstrass theorem there should be a limit
 function identical to zero.
+
+\medskip\noindent
+Here's an important result from
+\href{https://en.wikipedia.org/wiki/Analyticity_of_holomorphic_functions}{wiki}:
+a complex-valued function is holomorphic if and only if it
+has a Taylor series expansion at every point (raidus of convergence is finite).
 
 \section{Argument Principle}
 \label{section-argument-principle}
