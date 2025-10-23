@@ -3217,7 +3217,9 @@ and the singular fiber $f_1(0:1)$ is a configuration of lines
 given by a Dynkin diagram
 $$
 \xymatrix{
-E_1 \ar[r]& E_2\ar[r]& E_3 \ar[r]& E_4\ar[d]\ar[r]& \cdots & E_{15}\\
+E_1 \ar@{-}[r]& E_2\ar@{-}[r]
+& E_3 \ar@{-}[r]& E_4\ar@{-}[d]\ar@{-}[r]
+& \cdots \ar@{-}[r]& E_{15}\\
 & & & E
 }
 $$
@@ -3229,15 +3231,367 @@ The fibers are plane cuspidal cubics.
 The singular fiber an arrangement of curves
 $$
 \xymatrix{
-F_1 \ar[r]& F_2\ar[r]& F_3\ar[d]\ar[r]& \cdots & F_8\\
+F_1 \ar@{-}[r]& F_2\ar@{-}[r]& F_3\ar@{-}[d]\ar@{-}[r]& \cdots \ar@{-}[r]& F_8\\
 & & F
 }
 $$
 
-In fact, there is a correspondence between the two fibrations.
+In fact, there is a correspondence between the 
+singular fibers of the two fibrations.
 
 
-\bibliography{my} \bibliographystyle{amsalpha}
+
+\section{Lagrangian blow-up and blow-down for 4-dimensional symplectic manifolds
+}
+\label{section-blow-up-down}
+
+\noindent
+Misha Verbitsky, IMPA.
+Geoemtric Structures Seminar, IMPA. 
+October 23, 2025.
+
+\medskip {\bf Abstract.} The usual (complex geometric) blow-up has a symplectic
+version, called the symplectic cut. I will introduce a variant of this
+construction, which is valid only in symplectic category, called ``Lagrangian
+blow-up'', and its inverse, called Lagrangian blow-down. Lagrangian blow-down
+takes a Lagrangian sphere in a 4-dimensional  symplectic manifold and contracts
+it to a symplectic orbifold with a double point. Given a symplectic orbifold
+with a double point, Lagrangian blow-up produces a symplectic manifold, and this
+construction is inverse to the Lagrangian blow-down. I will explain why these
+constructions are functorial, that is, defined on the corresponding symplectic
+Teichmuller spaces. This is used to prove an orbifold counterexample to a famous
+conjecture, sometimes attributed to Donaldson, who asked whether any symplectic
+form on a K3 surface is compatible with a Kahler structure. I will prove that
+this is false for orbifolds: some K3 orbifolds admit symplectic forms not
+compatible with any Kahler structure. The same argument is used to produce a
+countable family of Lagrangian spheres in a K3 surface which are not Lagrangian
+isotopic to special Lagrangian spheres. This is a joint work with Michael Entov. 
+
+
+
+\medskip\noindent
+
+
+Consider the total space of the cotangent bundle of $\mathbb{C}P^1$.
+It's $\mathcal{O}(-2)$.
+Let $\gamma \in H^{0}(\mathcal{O}(2))$.
+$\gamma$ defines a fiberwise linear function on $T^*\mathbb{C}P$.
+
+The blow-up of $\mathbb{C}^2/\pm 1$, which is the orbifold $\mathbb{C}^2$ with
+ a doble point, is the cotangent bundle $T^* \mathbb{C}P^1$.
+That is,
+$T^*\mathbb{C}P^1 \to \mathbb{C}^2/\pm 1$.
+This is called {\it crepant resolution}.
+Consider the $dx \wedge dy$, which is holomorphically symplectic
+on $\mathbb{C}^2$ and descends to the quotient $\mathbb{C}^2/\pm 1$
+as $\Omega_0$.
+
+\begin{proposition}
+\label{proposition-}
+$\pi:T^*\mathbb{C}P^1 \to \mathbb{C}^2/\pm 1$.
+Then $\pi^*\Omega_0$ is holomorphically symplectic.
+\end{proposition}
+
+\begin{proof}
+Actually, it gives the standard symplectic form on $T^*\mathbb{C}^2$.
+\end{proof}
+
+\medskip\noindent
+Now we shall define the Langrangian blow-up.
+It's a procedure that starts with a symplectic manifold
+with double points and outputs a symplectic manifold
+without double points.
+
+\begin{definition}[Lagrangian blow up]
+\label{definition-lagrangian-blow-up}
+Let $(B,\omega)$ be the standard ball in $\mathbb{R}^n$,
+$dz_1 \wedge dz_2 +dz_3 \wedge dz_4$.
+Consider the symplectic orbifold $(B,\omega)/\pm 1$.
+Consider $M$ be a symplectic orbifold
+with double point singularities.
+Darboux coordinates in a neighbourhood of $0$ 
+with $(B,\omega)/\pm 1$ resolve singularities.
+\end{definition}
+
+This definition has the caveat that there ar e lots of choices involved.
+We shall later that these choices do not alter the result,
+namely Theorem \ref{theorem-lagrangian-blow-up-well-defined}.
+
+To define the Lagrangian blow-down we first recall
+
+\begin{theorem}[Weinstein's Lagrangian neighbourhood]
+\label{theorem-weinstein-lagrangian-neighbourhood}
+Let $X \subset M$ be a compact Lagrangian submanifold in $(M,\omega)$.
+Then there exists a neighbourhood $U$ of $X \subset M$
+which is symplectomorphic to a neighbourhood of $X$ 
+in $X \subset T^*M$.
+\end{theorem}
+
+\noindent
+Let $S \subset M$ be a Lagrangian sphere (diffeomorphic to sphere
+and Lagrangian).
+
+\begin{definition}
+\label{definition-lagrangian-blow-down}
+The {\it Lagrangian blow-down} is obtained from $M$ 
+by removing $W \subset M$ and gluing $W_0$ in its place,
+where $W_0$ is such that
+
+$$
+\xymatrix{
+W \ar@{^{(}->}[r]\ar[d]&T^*\mathbb{C}P^1\ar[d]\\
+W_0\ar@{^{(}->}[r]&\mathbb{C}^2/\pm 1.
+}
+$$
+\end{definition}
+
+\medskip\noindent
+Now we recall Teichmüller spaces.
+
+Let $\Gamma(\Lambda^2M)$ be the space of all 2-forms on a manifold $M$.
+The space of symplectic forms is a subspace of the closed 2-forms on $M$,
+which in turn is a subspace of $\Gamma(\Lambda^2M)$.
+Equip this space with the $C^\infty$ topology.
+The {\it Teichmüller space} is $\text{Symp}/\text{Diff}_0$.
+
+Two symplectic structures are called {\it isotopic} if they lie
+in the same orbit of $\text{Diff}_0$.
+The {\it period map} $\text{Per}:\text{Teich}_s \to H^{2}(M,\mathbb{R})$ 
+maps a symplectic structure to its cohomology class.
+
+\begin{theorem}[Moser, 1965]
+\label{theorem-period-map-is-local-diffeo}
+The period map is a local diffeomorphism.
+\end{theorem}
+
+\noindent
+This implies that $\text{Teich}_s$ is smooth.
+
+\begin{theorem}[Moser's trick]
+\label{theorem-mosers-trick}
+Let $\omega_t$, $t \in S$ be a smooth family of symplectic
+structures, parametrized by a connected manifold $S$.
+Assume that the cohomology class  $[\omega_t]$ is constant.
+Then all $\omega_t$ are diffeomorphic.
+\end{theorem}
+
+\noindent
+This means that the fibers of $\text{Symp}\to H^{2}(M)$ 
+are the orbits (of the action of $\text{Diff}_0$, I suppose).
+
+\medskip\noindent
+Consider a Lagrangian submanifold $L \subset (M,\omega)$.
+Let us assume for simplicity (though the results 
+can also be obtained without this) that $b_1(L)=0$,
+i.e. first cohomology group is zero.
+
+Let $\text{Symp}_L$ be the set of symplectic forms vanishing on $L$,
+and $\text{Diff}_0^L$ the connected component of diffeomorphisms
+preserving $L$.
+Define $\text{Teich}_L=\text{Symp}_L/\text{Diff}_0^L$.
+
+\begin{theorem}
+\label{theorem-}
+Let $V \subset H^{2}(M,\mathbb{R})$ be the space of all
+cohomology classes on $M$ which vanish on $L$,
+and $\text{Per}_L: \text{Symp}_L/\text{Diff}^L_0 \to V$
+take $(M,\omega)$ to the cohomology class of $\omega$.
+Then Per is a local diffeomorphism.
+\end{theorem}
+
+\begin{proof}
+We used a version of Moser's trick: for $\omega_t$ a family
+of symplectic forms with $\omega_t|_{L}=0$,
+with $[\omega_t]$ constant, then $\omega_t$ 
+are $\text{Diff}_0^L$-isotropic.
+\end{proof}
+
+\noindent
+As a corollary we obtain that this Teichmüller space
+classifies Lagrangian submanifolds:
+
+\begin{lemma}
+\label{lemma-techmuller-classifies-lagrangian-submanifolds}
+Assuma that $L$ and $L'$ are Lagrangian submanifolds in $(M,\omega)$,
+and $\varphi \in \text{Diff}_0(M)$ a smooth isotopy such that
+$\varphi(L)=L'$. Then $(\omega,L)$ and $(\varphi^*\omega,L)$ 
+represent the same point in $\text{Teich}_L$ if and only if
+$L$ and $L'$ are Lagrangian isotopic in $(M,\omega)$.
+\end{lemma}
+
+\noindent
+Again: points of this Teichmüller space are isotopy classes
+of Lagrangian submanifolds.
+
+\medskip\noindent
+\begin{theorem}
+\label{theorem-blow-down-diffeomorphism}
+Let $L$ be a Lagrangian 2-sphere in a K3 surface  $M$
+and $\hat{M}$ the Lagrangian blow-down of $M$.
+The blow-up/blow-down
+is a diffeomorphism $\text{Teich}_L(M) \to \text{Teich}(\hat{M})$.
+\end{theorem}
+
+\medskip\noindent
+Now we prove the theorem which asserts that the Lagrangian
+blow-up is independent of choices.
+
+\begin{theorem}
+\label{theorem-theorem-lagrangian-blow-up-well-defined}
+Let $(\hat{M},\hat{\omega})$ be a orbifold. Then its blow-up
+$(M,L)$ defines a point in $\text{Teich}_L$ independent of the choices.
+\end{theorem}
+
+\begin{proof}
+By taking local Darboux coordinates, and then Moser's trick.
+\end{proof}
+
+\noindent
+Actually, the same happens for blow-downs
+
+\begin{theorem}
+\label{theorem-same-for-blow-down}
+Let $(M,L,\omega)$ be a 4-manifold with a Lagrangian sphere $L$, and
+$(\hat{M},\hat{\omega)}$ be its Lagrangian blow-down.
+
+Then the corresponding point in $\text{Teich}_{\hat{M}}$ is
+independent from the choices made.
+\end{theorem}
+
+\begin{proof}
+Similar.
+\end{proof}
+
+\medskip\noindent
+A conjecture by Donaldson ways that all symplectic structures on a K3
+surface are compatible with a Kähler structure. This conjecture
+(although it's commonly believed to be true) is still open.
+When trying to prove that this would hold for orbifolds,
+Misha and collaborators realised it's actually false.
+
+Note: Seiberg-Witten invariants may be used to tell whether a symplectic
+form is compatible with a complex structure.
+
+\begin{theorem}
+\label{theorem-conjecture-false-for-orbifolds}
+There exists an orbifold symplectic K3 surface $M$ with a single
+double point not admitting an orbifold Kähler structures.
+\end{theorem}
+
+\begin{proof}
+\noindent
+Step 1. Consider 
+$$
+\text{Teich}_{\text{Kähler-symplectic}}(\hat{M})
+=\{\eta \in H^{2}(\hat{M}):\eta^2>0\}.
+$$
+As follows from [Amerik-V., 2005], the
+Teichmüller space of symplectic structures compatible
+with a hyperkähler structure is Hausdorff and connected
+(the same argument works for Kähler K3 orbifolds).
+
+Essentially, if there wasn't any orbifold
+as required, the Teichmüller space classifying
+Lagrangian submanifolds would be connected, which
+is impossible by [Seidel 2000].
+\end{proof}
+
+\noindent
+In fact, Seidel's result is essentially mirror symmetry.
+
+\medskip\noindent
+Now we discuss special Lagrangian submanifolds.
+
+\begin{definition}
+\label{definition-phase}
+Let $(M,I,\omega,\Omega)$ be a Calabi-Yau manifold, where
+$\Omega \in \Lambda^{n,0}_I(M)$ is nondegenerate and $\omega$ is Kähler.
+Let $L$ be a Lagrangian submanifold.
+Define the {\it phase} as
+\begin{align*}
+\text{phase}: L &\longrightarrow \Lambda^nL \otimes \mathbb{C} \\
+x &\longmapsto \Omega|_{T_xL}.
+\end{align*}
+\end{definition}
+
+\noindent
+A better definition is:
+\begin{align*}
+\text{phase}: L &\longrightarrow S^1=\text{U}(1) \\
+x &\longmapsto \frac{\Omega|_{T_xL}}{|\Omega T_xL|}.
+\end{align*}
+
+\begin{definition}
+\label{definition-special-lagrangian}
+A special Lagrangian submanifold is the phase is constant.
+\end{definition}
+
+\noindent
+Special Lagrangian submanifolds have deformation space of
+dimension 1, it's unobstructed. They are calibrated, so minimal.
+
+\begin{theorem}
+\label{theorem-lagrangians-of-k3}
+$L \subset$ K3 is Lagrangian is isotopic to a special Lagrangian
+if and only if its blow-down is Kähler type.
+\end{theorem}
+
+\medskip\noindent
+One of the basic results about special Lagrangian
+submanifolds is
+
+\begin{lemma}[Hitchin]
+\label{lemma-hitchin}
+If $(M,\Omega)$ is holomorphically symplectic and $X \subset M$ 
+is Lagrangian with respect to $\text{Re}\Omega$ and $\text{Im}\Omega$
+then $X$ is complex.
+\end{lemma}
+
+\noindent
+As corollaries:
+
+\begin{lemma}
+\label{lemma-corollary-hitchin}
+Let $(M,I,J,K,g)$ be a hyperkähler manifold of real dimension $4n$,
+considered as a Kähler manifold $(M,I,\omega_I)$ and $\phi:\Omega^n \in
+\Lambda^{2n,0}(M,I)$ the corresponding holomorphic volume form.
+Consider a Lagrangian submaniold $S \subset (M,\omega_I)$
+such that $a \omega_J + b\omega_K|_S=0$ for some nonzero real numbers
+$a,b \in \mathbb{R}$ such that $a^2+b^2=1$.
+Then $S$ is special Lagrangian, and, moreover,
+it is holomorphic with respect to the complex structure
+$-a K+b J$.
+\end{lemma}
+
+\begin{lemma}
+\label{lemma-corollary2-hitchin}
+Let $\omega_I,\omega_J$ and $\omega_K$ on $M$, with $\dim M=4$.
+Let $S \subset (M,\omega_I)$ be Lagrangian.
+Then $S$ is special Lagrangian if and only if $S$ is complex analytic
+on $a J + b K$ for two nonzero numbers  $a,b \in \mathbb{R}$ such that
+$a^2+b^2=1$.
+\end{lemma}
+
+\noindent
+Now an auxiliary claim:
+
+\begin{lemma}
+\label{lemma-k3-type}
+$\Omega$ is holomorphic symplectic 
+\end{lemma}
+
+\begin{theorem}
+\label{theorem-}
+Let $S\subset M$ be a Lagrangian sphere in a K3 surface.
+Then  $S$ is isotropic to a special Lagrangian if and only if
+$M$ is of Kähler type.
+\end{theorem}
+
+
+
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
 
 
 
