@@ -3588,7 +3588,196 @@ $M$ is of Kähler type.
 \end{theorem}
 
 
+\section{Systolic inequality for tori}
+\label{section-systolic-inequality}
 
+\noindent
+Dimitri Korshunov, IMPA.
+Minimal Surfaces end of course presentation. 
+October 24, 2025.
+
+\medskip\noindent
+This is due to L. Guth.
+
+\begin{definition}
+\label{definition-systole}
+Given a Riemannian manifold,
+a {\it systole} $\text{Sys}(M,g)$ is the infimum of the lengths
+of noncontractible paths.
+\end{definition}
+
+\begin{theorem}[Gromov]
+\label{theorem-gromov}
+For any metric on a torus $T^n$,
+$$
+\text{Sys}(T^n,g) \leq C_n \text{Vol}(T^n,g)^{\frac{1}{n}},
+$$
+where $C_n$ is a constant depending only on the dimension 
+of the torus $n$.
+\end{theorem}
+
+\noindent
+This also holds for $\mathbb{R}P^n$. We will use induction, 
+for which we need the following stronger statement:
+given a number bounded by half the systole, there exists a ball
+which is {\it big}:
+
+\begin{theorem}[Guth]
+\label{theorem-guth}
+For $(T^n,g)$, given $R<\frac{1}{2}\text{Sys}(T^n,g)$,
+then there exists a point $p$ on $T^n$
+such that the volume of ball of radius $r$ with center in $p$ 
+satisfies
+$$
+\text{Vol}B(p,R) \geq C_nR^n.
+$$
+\end{theorem}
+
+\noindent
+It was conjectured by Gromov that $C_n=1$.
+
+\medskip\noindent
+Before stating the theorem that we will prove, we introduce the 
+following definition that will allow us to measure cohomological cycles:
+
+\begin{definition}
+\label{definition-measuring-cohomological-cycles}
+Let $\alpha \in H^{1}(M_g,\mathbb{Z}_2)$.
+$$
+L(\alpha)
+=\text{inf}\{|\lambda|:\lambda\text{ 1-cycles, }\alpha(\lambda)\neq 0\}.
+$$
+\end{definition}
+
+\noindent
+The theorem that we will prove, which implies Theorem \ref{theorem-guth}
+is the following
+
+\begin{theorem}
+\label{theorem-bound-classes}
+There exists a constant $\varepsilon_n>0$ 
+such that given a manifold $(M,g)$, and 
+$\alpha_1,\ldots,\alpha_n \in H^1(M,\mathbb{Z}_2)$,
+\begin{enumerate}
+\item $L(\alpha_i)>2R$ 
+\label{item-positive}
+\item
+\label{item-cup} $\alpha_1 \cup  \alpha_2 \cup \ldots \cup \alpha_n \neq 0 \in
+H^n(M,\mathbb{Z})$.
+\end{enumerate}
+
+\noindent
+Then there exists $p \in M$ such that
+$$
+\text{Vol}B(p,R) \geq \varepsilon_nR^n.
+$$
+\end{theorem}
+
+\noindent
+In particular $T^n$ and $\mathbb{R}P^n$ satisfy (\ref{item-cup}).
+
+Before we proceed to the proof we need the following definition.
+Essentially we ask that the surface minimizes volume in its homology
+class up to some constant $\delta$.
+
+\begin{definition}
+\label{definition-delta-minimal-surface}
+A  {\it $\delta$-minimal surface} is an embedded hypersurface $Z$
+such that for any $Z'$ such that $[Z'-Z] = 0$ in  $H_{n-1}(M,\mathbb{Z}_2)$,
+then  $\text{Vol}Z < \text{Vol}Z'+\delta$.
+\end{definition}
+
+\noindent
+Moreover, we need the following
+
+\begin{lemma}[Stability]
+\label{lemma-stability}
+Let $(M,g)$ de closed Riemannian manifold and  $\alpha \in H^1(M,\mathbb{Z}_2)$.
+Suppose $Z$ is Poincaré dual to $\alpha$ and that $Z$ is $\delta$-minimal.
+If $R<\frac{1}{2}L(\alpha$) then the following
+holds for any $p \in M$:
+$$
+|Z \cap \text{Vol}B(p,\frac{R}{2}|\leq \frac{2}{R}|\text{Vol}B(p,R)|+\delta.
+$$ 
+\end{lemma}
+
+\begin{proof}[Proof of the stability lemma]
+\medskip\noindent
+Step 1. Using commas formula, namely
+$$
+\text{Vol}(B_R)=\int_0^R S_tdt,
+$$
+we see that there exists $t$ such that $\frac{R}{2}<t<R$ and
+$$
+|S(p,t)|_R< \frac{2}{R}|\text{Vol}B(p,R)|.
+$$
+
+\medskip\noindent
+Step 2. Consider
+$[Z \cap B(p,t)] \in H^{n-1}(B(p,t),S(p,t),\mathbb{Z})$.
+This can be interpreted geometrically since we are using relative homology.
+
+\medskip\noindent
+Step 3. We claim that $[Z \cap B(p,t)]=0$.
+By contradiction,
+if it weren't trivial, then there would exist a cycle $H_1(B,\mathbb{Z})$
+such that $Z' \cap \gamma \neq 0$ since Poincaré pairing is nondegenerate ---
+namely any cocycle that is not zero pairs nontrivially with some cycle.
+Then we will just split the cocycle in very small parts,
+and we will reach a contradiction with the fact that
+$R<\frac{1}{2}L(\alpha)$.
+
+We will state this as another lemma. Essentially it says that any
+cycle in homology can be decomposed as a sum of cycles
+with small lengths.
+
+\begin{lemma}[Curve factoring, Gromov]
+\label{lemma-curve-factoring-gromov}
+Let $(M,g)$ be a Riemannian manifold and
+$\gamma$ a cycle in $B(p,t)$.
+Then $[\gamma]=\sum \sigma_i$ is such that
+ $L(\sigma_i)<2t+a$ for all $i$.
+\end{lemma}
+
+\begin{proof}
+We spit a cycle (a curve) into some quantity of intervals
+such that each has length smaller than $a$,
+then add paths joining the center point of length $t$,
+so we count $t$ twice: to reach the point and to get away from it.
+\end{proof}
+
+\noindent
+We apply this to $\gamma$ and reach a contradiction
+with the hypothesis that $R<\frac{1}{2}L(\alpha)$ making $a$ smaller and
+smaller.
+
+\medskip\noindent
+Step 4. Finally we use the minimality of $Z$ and the property
+derived from Commas lemma to arrive at a contradiction.
+\end{proof}
+
+\noindent
+Now we prove Theorem \ref{theorem-bound-classes}:
+
+\begin{proof}
+By induction. The case $n=1$ is trivial.
+Now take the last one of our classes, $\alpha_n$.
+Let $Z$ be Poincaré dual of $\alpha_n$ and $\delta$-minimal.
+Notice that $\alpha_1\cup \ldots \cup \alpha_{n-1}\neq 0$
+since if it were, then $\alpha_1\cup \ldots\cup \alpha_n$ would also vanish.
+
+By induction hypothesis we get a point $p \in Z$
+such that $\text{Vol} B_Z(p,\frac{R}{2}) > R^{n-1}$.
+This means that , $|Z \cap B(p,\frac{R}{2})|>\varepsilon_n(R/2)^{n-1}$.
+
+By the Stability Lemma \ref{lemma-stability},
+\begin{align*}
+\frac{2}{R}|B(p,R)|&>\varepsilon_n\frac{R^{n-1}}{2^{n-1}}-\delta\\
+\implies 
+|B(p,B)|&>\frac{\varepsilon_n}{2^n}R^n-\frac{\delta R}{2}
+> \frac{\varepsilon_n}{2^n}R^n.
+\end{align*}
+\end{proof}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
