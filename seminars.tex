@@ -3779,6 +3779,191 @@ By the Stability Lemma \ref{lemma-stability},
 \end{align*}
 \end{proof}
 
+\section{From higher Lie groupoids to higher Lie algebroids}
+\label{section-higher-groupoids-to-higher-algebroids}
+
+\noindent
+Matias del Hoyo, ?.
+Symplectic Geometry Seminar, IMPA. 
+October 29, 2025.
+
+\medskip
+{\bf Abstract.} 
+This is a report of an ongoing collaboration with A. Cabrera, where we develop a
+higher Lie theory. Starting with simple, concrete examples, we present the
+differentiation functor in a geometric, explicit way, using simplicial methods
+and differential graded algebras. We describe how our construction extends the
+classical Lie functors, relate our project with previous works, and show a van
+Est theorem linking the cohomology at the global and infinitesimal levels.
+
+\medskip\noindent
+Upshot: how to differentiate Lie 2-groupoids?
+This means, having a Lie 2-groupoid, we want
+to have an infinitesimal counterpart
+(as Lie algebras are to Lie groups).
+
+\medskip\noindent
+Let $M$ be a smooth manifold.
+
+\begin{remark}
+\label{remark-smooth-function-ring-is-fully-faithful}
+$M \mapsto C^\infty M$ is fully faithful.
+\end{remark}
+
+\noindent
+Which allows us to think of manifolds as algebraic objects.
+Notice that
+$\Omega^kM=\{k\text{-forms}\}
+=\Lambda^k_{C^\infty M}\text{Der}(C^\infty M,C^\infty M)$,
+which is (algebraically) locally spanned
+by the exact 1-forms.
+
+Recall that the exterior differential is
+the only operator $d:\Omega^kM \to \Omega^{k+1}M$
+such that $d(\alpha \wedge \beta)=d\alpha \wedge \beta +
+(-1)^{|\alpha|}\alpha \wedge d\beta$
+and that $df(X)=Xf$.
+
+This makes $(\Omega M,\wedge,d)$ a differential graded algebra.
+Recall that $\text{dom}(X,Y)=X\omega(Y)-Y \omega(X)-\omega([X,Y])$.
+We also have de Rham cohomology.
+
+Consider a submanifold $S \subset M$. Recall
+that $\mathcal{I}_S/\mathcal{I}^2_S$ is essentially
+the sections of the normal bundle.
+In particular, for $M \subset M \times M$
+we can see that the embedding vanishes on the diagonal,
+so there is no linear part in the Taylor expansion,
+and the second term is in fact the de Rham differential
+$df=\pi_1^*f-\pi_2^*f \text{ mod }\mathcal{I}^2_{\Delta(M)}$.
+
+In fact, this construction can be extended to a simplicial manifold
+(which I think is just a presheaf valued on category of manifolds)
+using projections and diagonals,
+$$
+\xymatrix{
+\cdots & M\times M \times M \ar[r]^{triple}& M \times M \ar[r]^{double}& M.
+}
+$$
+To this we can apply the $C^\infty$ functor and obtain
+a cosimplicial ring (not a dga?).
+The idea here
+is that de Rham differential is an alternating sum of pullbacks;
+as other differentials will also be.
+
+\medskip\noindent
+Now observe that for a finite-dimensional vector space $V$,
+$$
+\left\{\substack{\text{Lie bracket} \\ 
+V \times V \xrightarrow{[\cdot,\cdot]}V}\right\}
+\xymatrix{\ar@{<~>}[r]&}
+\left\{\substack{\text{differential on} \\ \Lambda V^*}\right\},
+$$
+making $\Lambda V^*$ into a differential graded algebra.
+
+Recall that given a Lie algebra $\mathfrak{g}$,
+we have $(\Lambda^\bullet \mathfrak{g}^* ,d)=\text{CE}(\mathfrak{g})$,
+the Chevalley Eilenberg algebra,
+which gives Lie algebra cohomology.
+
+\medskip\noindent
+[Missing part on Simplicial approach, exponential map,
+Simplicial manifold nerve]
+
+\medskip\noindent
+Lie algebroid: $\Delta \to M$ vector bundle
+with $[\cdot,\cdot]$ on $\Gamma A$,
+$A \xrightarrow{\rho}TM$ Leibniz.
+
+\begin{remark}
+\label{remark-lie-algebroids-differentials}
+$$
+\left\{\substack{\text{Lie algebroids on} \\ E \to M}\right\}
+\xymatrix{\ar@{<~>}[r]&}
+\left\{\substack{\text{differentials} \\ \text{on }\Lambda\Gamma E^*}\right\}.
+$$
+\end{remark}
+
+\noindent
+This gives a differential graded algebra
+$$
+\xymatrix{
+\Delta\ar[r]&M\ar[r]&\text{CE}(A)
+}
+$$
+and
+$$
+\xymatrix{
+C^\infty M\ar[r]^{\tilde{\rho}}&\Gamma E^*\ar[r]^{\widetilde{[\cdot,\cdot]}}
+&\Gamma E^* \wedge \Gamma E^*\ar[r]&\cdots.
+}
+$$
+
+From Lie groupoids to Lie algebroids:
+Lie functor/differentiation.
+
+$$
+\Omega(G)=\Gamma \Lambda^\bullet \underbrace{\supset}
+_{\text{sub dga}}
+\Gamma \Lambda^\bullet T^s
+\xrightarrow{-/G}\text{CE}(A_G).
+$$
+There's the following ecosistem around Lie groupoids:
+$$
+\xymatrix{
+&\text{Lie groupoids}
+\ar[dl]\ar@{->>}[d]\ar[dr]^{\text{nerve}}\\
+\text{Lie algebroids}&
+\substack{\text{Differentiable stacks} \\ \supset \text{orbifolds}}
+&\text{simplicial manifolds.}
+}
+$$
+
+\medskip\noindent
+Lie groupoids are models for stacks,
+which are geometric objects solving classification
+problems with objects identified up to isomorphism.
+Relaxing the identification to a weaker notion
+of equivalence we must introduce higher versions of stacks.
+
+Moving higher,
+$$
+\xymatrix{
+\text{Lie groupoid}\ar[r]\ar[d]_{\text{Lie}}
+&\text{Simplicial manifolds}\ar[d]^?\\
+\text{Lie algebroids}\ar[r]&\text{dg-manifolds}
+}
+$$
+dg algebra is a  dga $(A=\bigoplus_{k=1}^n A_k \to M,\wedge,d)$
+starting at $C^\infty M$, and continuing until you get to
+the sections, namely
+$$
+\xymatrix{
+C^\infty M \ar[r]_d & A_2 \ar[r]& \cdots &
+\cong \Gamma A.
+}
+$$
+[dH-Cabrera] provide the solution to this problem,
+namely what to put in the right vertical arrow:
+
+\begin{theorem}[dH-Cabrera]
+\label{theorem-dh-cabrera}
+$$
+\frac{(C^\infty_N(G),\cup,\sum(-1)A^*_i)}{J+\delta J}
+=\text{CE}(A_G)
+$$
+where $A_G$ is a higher Lie algebroid
+and $J$ is defined by: $f$ is in $J$ if it has higher vanishing.
+\end{theorem}
+
+
+Groupoids are the counterparts of Poisson manifolds,
+and in the next level there are 2-groupoids and Courant algebroids.
+How to integrate a 2-groupoid to a Courant algebroids?
+This is an open question which motivated this work.
+
+
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
