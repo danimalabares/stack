@@ -17,31 +17,131 @@
 
 \begin{definition}
 \label{definition-holomorphic-function}
-A function $f:W\subset \mathbb{C} \to \mathbb{C}$ is {\it holomorphic} at $z_0
-\in U$ if
+A function $f:\Omega\subset \mathbb{C} \to \mathbb{C}$
+is {\it holomorphic} at $z_0 \in \Omega$ if
 $$
-\lim_{z\to z_0} \frac{f(z_0-z)-f(z_0)}{z-z_0}
+\lim_{z\to z_0} \frac{f(z)-f(z_0)}{z-z_0}
 $$
-exists. This is equivalent to
-$$
-\lim_{h\to 0} \frac{f(z_0+h)-f(z_0)}{h}
-$$
-where $h$ is a complex parameter.
+exists.
 \end{definition}
 
+\noindent
+This is equivalent to
+\begin{equation}
+\label{equation-holomorphic-function-second-definition}
+\lim_{h\to 0} \frac{f(z_0+h)-f(z_0)}{h}
+\end{equation}
+where $h$ is a complex parameter.
+
+
 \section{Cauchy-Riemann equations}
-\label{section-Cauchy-Riemann-equations}
+\label{sectioncauchy-riemann-equations}
 
 \begin{theorem}
-\label{theorem-Cauchy-Riemann}
-Let $f:W\subset\mathbb{C}\to \mathbb{C}$ be a function. Let $z=x+iy$ coordinates
+\label{theorem-cauchy-riemann}
+Let $f:\Omega\subset\mathbb{C}\to \mathbb{C}$ be a function. Let $z=x+iy$ coordinates
 in $\mathbb{C}$. Define $f:=u+iv$ and
-$z_0=x_0+iy_0 \in U$. $f$ is holomorphic at $z_0$ if and only if
+$z_0=x_0+iy_0 \in \Omega$. $f$ is holomorphic at $z_0$ if and only if
 $$
 \frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\qquad
 \frac{\partial v}{\partial x}=-\frac{\partial u}{\partial y}.
 $$
 \end{theorem}
+
+\begin{proof}
+The idea is to use Equation \ref{equation-holomorphic-second-definition}
+as definition of holomorphic function. 
+Let's differentiate along the $x$ axis.
+Let $h \in \mathbb{R}$
+(this time $h$ {\it is} just a real number,
+while in the definition of holomorphic function
+it is a complex parameter).
+We see that
+\begin{align*}
+f(z_0+h)-f(z_0)&=\Big(u(x_0+h,y_0)+iv(x_0+h,y_0)\Big)-\Big(u(x_0,y_0)+iv(x_0,y_0)\Big)\\
+&=\Big(u(x_0+h,y_0)-u(x_0,y_0)\Big)+i\Big(v(x_0+h,y_0)-v(x_0,y_0)\Big)
+\end{align*}
+
+\noindent
+Takin limit as $h \to 0$ we obtain
+\begin{equation}
+\label{equation-crproof1}
+\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}.
+\end{equation}
+If we differentiate along the $y$ axis we shall obtain
+\begin{equation}
+\label{equation-crproof2}
+\frac{\partial v}{\partial y}-i\frac{\partial u}{\partial y}.
+\end{equation}
+Indeed, we let $h$ be again a real number,
+but now we multiply by $i$:
+\begin{align*}
+f(z_0+ih)-f(z_0)&=\Big(u(x_0,y_0+ih)+iv(x_0,y_0+ih)\Big)-\Big(u(x_0,y_0)+iv(x_0,y_0)\Big)\\
+&=\Big(u(x_0,y_0+ih)-u(x_0,y_0)\Big)+i\Big((v(x_0,y_0+ih)-v(x_0,y_0)\Big)\ldots
+\end{align*}
+
+\noindent
+To agree with our definition we must take limit as $ih \to 0$.
+Thus we obtain
+\begin{align*}
+\lim_{ih \to 0}\frac{f(z+ih)-f(z)}{ih}
+&=\frac{1}{i}\left(\frac{\partial u}{\partial y}+i\frac{\partial v}{\partial y}\right)
+=\frac{\partial v}{\partial y}-i\frac{\partial u}{\partial y}
+\end{align*}
+
+\noindent
+To conclude observe that since $f$ is holomorphic,
+The expressions \ref{equation-crproof1} and  \ref{equation-crproof2}
+must both equal the derivative of $f$ at $z_0$.
+Matching real and imaginary parts gives the result.
+
+\medskip\noindent
+For the converse first observe that if $u$ and $v$
+are two real-valued functions of two real variables
+satisfying Cauchy-Riemann equations \ref{equation-cauchy-riemann},
+then they are harmonic, i.e.
+\begin{align*}
+\Delta u&=\frac{\partial^2 u}{\partial x^2}+
+\frac{\partial^2 u}{\partial y^2}=0\\
+\Delta v=\frac{\partial^2 v}{\partial x^2}+
+\frac{\partial^2v}{\partial y^2=0.
+\end{align*}
+
+\noindent
+Now if $u$ and $v$ have continuous first-order partial
+derivatives, then we know that
+\begin{align*}
+u(x+h,y+k)-u(x,y)
+&=\frac{\partial u}{\partial x}h+\frac{\partial u}{\partial y}k+\varepsilon_1\\
+v(x+h,y+k)-v(x,y)
+&=\frac{\partial v}{\partial x}h+\frac{\partial v}{\partial y}k+\varepsilon_2.
+\end{align*}
+
+\noindent
+For real numbers $h,k,\varepsilon_1$ and $\varepsilon_2$,
+where $\varepsilon_1,\varepsilon_2$ tend to zero
+more rapidly than $h+ik$ in the sense that
+$\varepsilon_1/(h+ik) \to 0$ and $\varepsilon_2/(h+ik)\to 0$ 
+for $h+ik\to 0$. Then we compute that
+\begin{align*}
+f(z+h+ik)-f(z)
+&=u(z+h+ik)+iv(z+h+ik)-(u(z)+iv(z))\\
+&=u(x+h,y+k)+iv(x+h,y+k)-u(x,y)-iv(x,y)\\
+&=u_xh+u_yk+\varepsilon_1+i(v_xh+v_yk+\varepsilon_2)
+&=h(u_x+iv_x)+k(u_y+iv_y)+\varepsilon_1+i\varepsilon_2\\
+&=h(u_x+iv_x)+k(-v_x+iu_x)+\varepsilon_1+i\varepsilon_2
+\qquad \text{by Cauchy-Riemann}\\
+&=h(u_x+iv_x)+ik(iv_x+u_x)+\varepsilon_1+i\varepsilon_2.
+\end{align*}
+
+\noindent
+Then we see that
+$$
+\lim_{h+ik\to 0}\frac{f(z+h+ik)-f(z)}{h+ik}
+=\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x},
+$$
+so that the limit exists and thus $f$ is holomorphic.
+\end{proof}
 
 \section{Integration}
 \label{section-integration}
@@ -66,55 +166,42 @@ is that the integral $\int_\Delta fdz$ vanishes
 by Stokes theorem when $f$ is holomorphic.
 This leads to Cauchy integral formula and
 several other results.
-
-Recall
-\begin{theorem}[Stokes]
-\label{theorem-Stokes}
-\begin{reference}
-\cite[Chapter 4, Theorem 1]{ahl}
-\end{reference}
-The line integral $\int_\gamma p dx +q dy$ defined in $\Omega$ depends on the
-end points of $\gamma$ if and only if there exists a function $U(x,y)$ in
-$\Omega$ with the partial derivatives $\partial U/\partial x=p$ and 
-$\partial U/\partial y=q$, that is, if $pdx +qdy$ is exact.
-\end{theorem}
-
-\begin{proof}
-Fundamental theorem of calculus.
-\end{proof}
-
-\noindent
-The idea of the proof behind the following theorem is that 
-a differential $fdz$ is exact when $f$ is holomorphic
-because this condition is non other than the Cauchy-Riemann equations.
-But beware: this works only when the domain is simply connected.
+Beware: this works only when the domain is simply connected.
 
 \begin{theorem}[Cauchy]
-\label{theorem-Cauchy}
+\label{theorem-cauchy}
 If $f(z)$ is analytic in an open disk $\Delta$, then
 \begin{equation}
-\label{equation-Cauchy-theorem}
+\label{equationcauchy-theorem}
 \int_\gamma f(z)dz=0
 \end{equation}
 for every closed curve $\gamma$ in $\Delta$.
 \end{theorem}
 
 \begin{proof}
-Recall that Green's theorem says that
+The following proof comes from 
+\href{https://en.wikipedia.org/wiki/Cauchy%27s_integral_theorem}{wiki}.
+First write
+$$
+\int_\gamma f(z)dz=\int_\gamma(u+iv)(dx+idy)
+=\int_\gamma (udx-vdy)+i\int_\gamma(vdx+udy).
+$$
+Now apply Stokes theorem. For example, the second integral is
 $$
 \int_{\partial\Delta}(vdx+udy)=\int_\Delta d(vdx+udy)
-=\int_\Delta(\partial_xu-\partial_yv)\text{Vol}
+=\int_\Delta(\partial_xu-\partial_yv)\text{Vol}.
 $$
 There's Cauchy-Riemann equations!
 \end{proof}
 
 \noindent
+The following result is essential for proving Cauchy integral formula.
 We are interested in taking a point away from the domain
 and seeing if we can extend the function holomorphically.
 The condition we need for this to work is given by the following theorem:
 
 \begin{theorem}
-\label{theorem-Cauchy-removable}
+\label{theorem-cauchy-removable}
 Let $f$ be analytic in the region $\Delta'$ by omitting a finite number of
 points $z_j$ from an open disk $\Delta$. If $f$ satisfies that
 \begin{equation}
@@ -138,7 +225,7 @@ $z-z_j$. This will be a fixed number (the index, see Definition
 \end{proof}
 
 \section{Cauchy integral formula}
-\label{section-Cauchy-integral-formula}
+\label{sectioncauchy-integral-formula}
 
 \noindent
 The way to Cauchy's integral formula is basically:
@@ -149,6 +236,12 @@ and then apply this to the function $\frac{f(z)-f(z_0)}{z-z_0}$.
 
 The theorem says that we can compute the value of
 a holomorphic function at a point as an integral around the point.
+The crucial point here is that the function inside the integral
+has a singularity at the point because of the fraction $\frac{1}{z-z_0}$.
+This is to be understood as the fact
+that the domain of holomorphy is not simply connected, and thus
+(we cannot apply Stokes) the integral does not vanish --- 
+it gives the value of the function at the point!
 
 To prove a general version we shall use the notion of index of a curve
 about a point, which tells us how many times the curve winds about the point.
@@ -195,21 +288,21 @@ n(\gamma,a):=\frac{1}{2\pi i}\int_\gamma\frac{dz}{z-a}
 \end{definition}
 
 \begin{theorem}[Cauchy Integral Formula]
-\label{theorem-Cauchy-integral-formula}
+\label{theorem-cauchy-integral-formula}
 \begin{reference}
 \cite[Section 2.2, Theorem 6]{ahl}
 \end{reference}
 Suppose that $f(z)$ is analytic in an open disk $\Delta$, and let $\gamma$ be a
 closed curve in $\Delta$. For any point not on $\gamma$,
 \begin{equation}
-\label{equation-Cauchy-formula-with-index}
+\label{equation-cauchy-integral-formula}
 n(\gamma,a)f(a)=\frac{1}{2\pi i}\int_\gamma\frac{f(z)dz}{z-a}
 \end{equation}
 where $n(\gamma,a)$ is the index of $a$ with respect to $\gamma$.
 \end{theorem}
 
 \begin{proof}
-This is a simple application of Theorem \ref{theorem-Cauchy-removable} for the
+This is a simple application of Theorem \ref{theorem-cauchy-removable} for the
 function
 $$
 F(z):=\frac{f(z)-f(a)}{z-a}
@@ -220,7 +313,7 @@ Notice the limit condition holds, so that the integral vanishes!
 \noindent
 Notice that we can differentiate Cauchy integral formula to obtain
 \begin{equation}
-\label{equation-first-derivative-Cauchy-formula}
+\label{equation-first-derivativecauchy-formula}
 f'(z)=\frac{1}{2\pi i}\int_\gamma\frac{f(\zeta)}{(\zeta-z)^2}d\zeta
 \end{equation}
 and more generally
@@ -233,8 +326,14 @@ used by Ahlfors to confirm that indeed we can differentiate
 under the integral sign.
 
 \begin{lemma}
-\label{lemma-technical-lemma}
-[missing]
+\label{lemma-differentiation-of-integral}
+Suppose that $\varphi(\zeta)$ is continuous on the arc $\gamma$.
+Then the function
+$$
+F_n(z)=\int_\gamma \frac{\varphi(\zeta)}{(\zeta-z)^n}d\zeta
+$$
+is analytic in each of the regions determined by $\gamma$,
+and its derivative is $F_n'(z)=nF_{n+1}(z)$.
 \end{lemma}
 
 \noindent
@@ -275,7 +374,7 @@ A bounded holomorphic function defined on all of $\mathbb{C}$ must be constant.
 
 \begin{proof}
 Let $\gamma$ be a circle of radius $r$ about $z$, then by the first derivative
-of Cauchy formula (Eq. \ref{equation-first-derivative-Cauchy-formula}),
+of Cauchy formula (Eq. \ref{equation-first-derivativecauchy-formula}),
 $$
 |f'(z)|\leq \frac{M}{2\pi i}\int_\gamma \frac{d\zeta}{|\zeta-z|^2}
 $$
@@ -288,6 +387,157 @@ complex polynomial had no zeroes, $1/P(z)$ would be analytic in all of
 $\mathbb{C}$, and since $P(z)$ tends to $\infty$ as $z$ tends to $\infty$,
 $1/P(z)$ is bounded (use Riemann sphere argument).
 
+\section{Taylor series}
+\label{section-taylor}
+
+\noindent
+In this section I put 
+\href{https://en.wikipedia.org/wiki/Analyticity_of_holomorphic_functions}
+{wiki's proof}
+that a function is holomorphic if and only if it is analytic.
+This gives for free the Taylor expansion.
+See Remark \ref{remark-taylor-before} to understand why this is here
+and not elsewhere in this notes.
+
+\medskip\noindent
+Before proving the statement I need the following tool,
+which I also borrow from
+\href{https://en.wikipedia.org/wiki/Weierstrass_M-test}{wiki}.
+
+\begin{theorem}[Weierstrass M-test]
+\label{theorem-m-test}
+Suppose that $(f_n)$ is a sequence of real or complex-valued functions
+defined on a set $A$, and that there is a sequence
+of non-negative numbers $(M_n)$ satisfying
+\begin{itemize}
+\item $|f_n(x)|<M_n$ for all $n \geq 1$ and all $x \in A$, and
+\item $\sum_{n=1}^\infty M_n$ converges.
+\end{itemize}
+
+\noindent
+Then the series
+$\sum_{n=1}^\infty f_n(x)$
+converges absolutely and uniformly on $A$.
+\end{theorem}
+
+\begin{proof}
+The sequence $S_n$ of partial sums is shown to be a Cauchy sequence,
+which must converge by completeness of $\mathbb{C}$. Indeed,
+for any $x \in A$ and large enough $m>n>N$, we must have
+$$
+|S_m(x)-S_n(x)|=|\sum_{k=n+1}^mf_k(x)|\leq \sum_{k=n+1}^m|f_k(x)|
+<\sum_{k=n+1}^mM_k.
+$$
+To conclude we basically apply the argument backwards:
+saying that $\sum_{k}M_k$ converges is the same as saying
+that the sequence of partial sums converges,
+which is equivalent to saying it is a Cauchy sequence,
+and that's just saying that the rightmost number on the right
+is smaller than any $\varepsilon>0$ for suitable $N$.
+(This argument is commonly known as 
+\href{https://en.wikipedia.org/wiki/Cauchy%27s_convergence_test}{
+Cauchy convergence test}.)
+
+Notice that convergence is uniform
+since the limit converges regardless of the choice of $x$.
+(Of course this not very profound 
+since the bounds $M_n$ are uniform by hypothesis.)
+\end{proof}
+
+\begin{definition}
+\label{definition-analytic}
+A function $f:\Omega \subset \mathbb{C} \to \mathbb{C}$ is
+{\it analytic} at $z_0 \in \Omega$ if in some open disk centered at $z_0$ 
+it can be expanded as a convergent power series
+$$
+f(z)=\sum_{n=0}^\infty c_n(z-z_0)^n.
+$$
+\end{definition}
+
+\begin{theorem}
+\label{theorem-holomorphic-iff-analytic}
+A function $f:\Omega \subset \mathbb{C} \to \mathbb{C}$ is holomorphic
+in the sense of Definition \ref{definition-holomorphic-function}
+if and only if it is analytic.
+\end{theorem}
+
+\begin{proof}
+The backward implication is easy.
+Suppose that $f(z)=\sum_{n=0}^\infty c_n(z-z_0)^n$.
+Then
+\begin{align*}
+\lim_{z \to z_0}\frac{f(z)-f(z_0)}{z-z_0} &=
+\lim_{z\to z_0}\frac{\sum_{n=0}^\infty c_n(z-z_0)^n-c_0}{z-z_0}\\
+&=\lim_{z\to z_0}\frac{\sum_{n=1}^\infty c_n(z-z_0)^n}{z-z_0}\\
+&=\lim_{z\to z_0}\sum_{n=1}^\infty c_n(z-z_0)^{n-1}=c_1.
+\end{align*}
+
+\noindent
+The forward implication uses Cauchy integral formula
+\ref{equation-cauchy-integral-formula} and the geometric series.
+Let us prove the geometric series, namely that
+$\lim_{n\to\infty} r^n=\frac{1}{1-r}$ for any complex number $r$ of
+norm strictly less than 1:
+$$
+\xymatrixcolsep{.2em}
+\xymatrixrowsep{1em}
+\xymatrix{
+S_n & & 1 \ar@{}[r]&+&r\ar@{}[r]&+&r^2\ar@{}[r]&+&\cdots\ar@{}[r]&+
+&r^{n-2}\ar@{}[r]&+&r^{n-1}\\
+rS_n & & & & r\ar@{}[r]&+&r^2\ar@{}[r]&+&\cdots\ar@{}[r]&+
+&r^{n-2}\ar@{}[r]&+&r^{n-1}\ar@{}[r]&+&r^n\\
+S_n-rS_n& & 1 & & & & & & & & & & & - & r^n
+}
+$$
+Thus $S_n(1-r)=1-r^n$, so that $S_n=\frac{1-r^n}{1-r}$.
+Taking limit as $n\to \infty$ gives the result.
+
+\medskip\noindent
+To prove $f$ is analytic at $z_0\in \Omega$ 
+and suppose that $\gamma$ is a circle contained in $\Omega$
+centered in $z_0$.
+We need to construct a series expansion for
+every $z$ inside the interior of $\gamma$.
+By Cauchy integral formula \ref{equation-cauchy-integral-formula},
+\begin{align*}
+f(z)&=\frac{1}{2\pi\sqrt{-1}}\int_\gamma \frac{f(\zeta)}{\zeta-z}d\zeta\\
+&=\frac{1}{2\pi\sqrt{-1}}
+\int_\gamma\frac{f(\zeta)}{(\zeta-z_0)-(z-z_0)}d\zeta\\
+&=\frac{1}{2\pi\sqrt{-1}}
+\int_\gamma \frac{1}{\zeta-z_0}
+\sum_{n=0}^\infty\left(\frac{z-z_0}{\zeta-z_0}\right)^n
+f(\zeta)d\zeta\\
+&=\sum_{n=0}^\infty \frac{1}{2\pi\sqrt{-1}}
+\int_\gamma\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}f(\zeta)d\zeta.
+\end{align*}
+
+\noindent
+The critical step in the above computation
+is interchanging the integral sign and the series in the last step.
+To make sure we can do this all we need to do is check
+that the last series converges.
+This is done via Weierstrass M-test, i.e. Theorem \ref{theorem-m-test}.
+We need to find uniform bounds for every term in the series.
+This is clear since $f$ is bounded on $\gamma$ (by compactness of $\gamma$),
+and the modulus of the quotient 
+$(z-z_0)/(\zeta-z_0)$ is strictly smaller than $1$
+(since $\zeta$ is farther from $z_0$ than $z$), giving
+for every $n$
+\begin{align*}
+\left| \frac{1}{2\pi\sqrt{-1}}
+\int_\gamma\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}f(z)d\zeta\right| 
+&=\frac{1}{2\pi}\left|
+\int_\gamma\left(\frac{z-z_0}{\zeta-z_0}\right)^n\frac{f(z)}{\zeta-z_0}
+d\zeta\right|\\
+&< \frac{1}{2\pi}\int_\gamma |K|^n
+\left|\frac{M}{r}\right|\\
+&=|M|\;|K|^n.
+\end{align*}
+
+\noindent
+where $M=\text{max}_{\zeta \in \gamma}f(\zeta)$, 
+$\frac{z-z_0}{\zeta-z_0}=K<1$ and $r$ is the radius of $\gamma$.
+\end{proof}
 \section{Riemann removable singularity theorem}
 \label{section-removable-singularity}
 
@@ -359,84 +609,115 @@ is holomorphic on all $\Omega$, and is thus an extension of $f$.
 Perhaps the best way to remember this section is by the formula
 \begin{equation}
 \label{equation-zero}
-f(z)=f_n(z)(z-z_0)^n
+f(z)=f_n(z)(z-z_0)^n,
 \end{equation}
-which holds for a holomorphic function which
-vanishes on $z_0$ and whose derivatives $f^{(k)}(z_0)$ vanish
+which holds for a holomorphic function with a {\it zero of order $k$} on
+$z_0$, meaning that $f$ and its derivatives $f^{(k)}(z_0)$ vanish
 for $k<n$ (see \cite[p. 126]{Ahlfors}).
-Here $f_n$ is a holomorphic function which does not vanish at $z_0$ 
-(according to \cite{lec}, but why?).
+Here $f_n$ is a holomorphic function which does not vanish at $z_0$ .
 This fact shows that the zero $z_0$ is isolated,
 since $f_n(z)$ is continuous and nonzero in $z_0$,
 and $(z-z_0)^n$ is also nonzero in a pointed neighbourhood of $z_0$.
  
 \medskip\noindent
+Let's explain why Equation \ref{equation-zero} holds.
 Recall the function that we used to prove Cauchy integral formula
-Theorem \ref{theorem-Cauchy-integral-formula}:
+(Theorem \ref{theorem-cauchy-integral-formula}):
 \begin{equation}
 \label{equation-F}
 F(z)=\frac{f(z)-f(z_0)}{z-z_0},
 \end{equation}
-which has $\lim_{z\to z_0} (z-z_0)F(z)=0$. Then we apply the 
+which has $\lim_{z\to z_0} (z-z_0)F(z)=0$. Then we apply
 Riemann's removable singularity theorem \ref{theorem-removable-singularity}
-and find that the holomorphic function extending $F$,
-say $f_1$, is actually $f'$ at
-$z_0$ by definition. 
+to find a holomorphic function $f_1$ extending $F$.
+Taking the limit as $z \to z_0$, we see that in fact
+$f_1(z_0)=f'(z_0)$.
 Substituting $F$ by $f_1$
 in Equation \ref{equation-F} we obtain
-$f(z)=f(z_0)+f_1(z)(z-z_0)$. Applying the same
-argument to $f_1$ yields $f_1(z)=f_1(z_0)+f_2(z)(z-z_0)$ for some function
-$f_2$ that is $f''$ at $z_0$.
-
-Repeating this process yields:
-
-\begin{lemma}[Finite Taylor expansion]
-\label{lemma-finite-Taylor-expansion}
-\begin{reference}
-\cite[Chapter 4, Section 3, Subsection 2, Theorem 8]{ahl}
-\end{reference}
-If $f$ is analytic in a connected open set $W\subset\mathbb{C}$ and $a \in W$,
-then we can write
 \begin{equation}
-\label{equation-finite-Taylor-expansion}
-f(z)=f(a)+f'(a)(z-a)+\frac{f''(a)}{2!}(z-a)^2+\ldots
-+\frac{f^{(n-1)}(a)}{(n-1)!}(z-a)^{n-1}+f_n(z)(z-a)^n
+\label{equation-zero2}
+f(z)=f(z_0)+f_1(z)(z-z_0).
 \end{equation}
-for some function $f_n$ analytic on $W$.
-\end{lemma}
+If $f(z_0)$ and $f'(z_0)\neq 0$, then we say that $f$ has
+a zero of order 0 at $z_0$, which is one case of
+Equation \ref{equation-zero}. If  $f'(z_0)$ also vanishes,
+we repeat process for $f_1$, and for $f_2$ if necessary, and so on, 
+until we arrive at Equation \ref{equation-zero}.
+
+\iffalse The argument so far may be summarized in the following statement found
+(without proof) in \cite[p. 13]{lec}:
 
 \begin{theorem}
 \label{theorem-zeroes-are-isolated-and-have-finite-order}
 \begin{reference}
 \cite[p. 13]{lec}
 \end{reference}
-If $f:W\subset\mathbb{C}\to \mathbb{C}$ is a holomorphic function defined on an
-open set $W$ and $f(a)=0$ for some $a\in W$, and $f$ is not identically zero,
-then there is a disk $D_r(a)\subseteq W$ such that $f(z)\neq 0$ for $z \in
+If $f:\Omega\subset\mathbb{C}\to \mathbb{C}$ is a holomorphic function defined on an
+open set $\Omega$ and $f(a)=0$ for some $a\in \Omega$, and $f$ is not identically zero,
+then there is a disk $D_r(a)\subseteq \Omega$ such that $f(z)\neq 0$ for $z \in
 D_r(a)\setminus\{a\}$ and a positive integer $m$ called the {\it order} or
 {\it multiplicity} of the zero $a$ such that  $f(z)=(z-a)^mh(z)$ for some
 holomorphic function $h$ that does not vanish at $a$. The order of a zero is
 equal to the smallest integer $m$ such that $f^{(m)}(a)\neq 0$.
-\end{theorem}
+\end{theorem}\fi
 
-\begin{proof}
-If $f$ is not identically zero, there must exist a first derivative $f^{
-(h)}(a)$ that is not zero, since otherwise $f$ would vanish identically in $W$.
-This follows from … 
+Let us now stop assuming that $z_0$ is a zero of $f$ 
+and just apply the argument to $f_1$. We obtain
+$$
+f_1(z)=f_1(z_0)+f_2(z)(z-z_0)
+$$
+for some function $f_2$ such that $f_2(z_0)=f''(z_0)$.
+Substituing back in Equation \ref{equation-zero2} we obtain
+$$
+f(z)=f(z_0)+f_1(z)(z-z_0)+f_2(z)(z-z_0)^2.
+$$
 
-Then by Lemma \ref{lemma-finite-Taylor-expansion} we obtain that
-$f(z)=f_h(z-a)^n$.
-\end{proof}
+Repeating this process yields:
 
-\section{Taylor expansion}
-\label{section-Taylor-expansion}
+\begin{lemma}[Finite Taylor expansion]
+\label{lemma-finite-taylor-expansion}
+\begin{reference}
+\cite[Chapter 4, Section 3, Subsection 2, Theorem 8]{ahl}
+\end{reference}
+If $f$ is analytic in a connected open set $\Omega\subset\mathbb{C}$ and $z_0 \in \Omega$,
+then we can write
+\begin{equation}
+\label{equation-finite-taylor-expansion}
+f(z)=f(z_0)+f'(z_0)(z-z_0)+\frac{f''(z_0)}{2!}(z-z_0)^2+\ldots
++\frac{f^{(n-1)}(z_0)}{(n-1)!}(z-z_0)^{n-1}+f_n(z)(z-z_0)^n
+\end{equation}
+for some function $f_n$ analytic on $\Omega$.
+\end{lemma}
 
 \noindent
+The coefficients $\frac{f^{(n)}(z_0)}{n!}$ may be found
+by induction differentiating
+Equation \ref{equation-finite-taylor-expansion} $n$ times
+and evaluating at $z_0$:
+any term with
+factor $(z-z_0)$ will vanish at $z_0$, and we are left with
+$f^{(n)}(z_0)=n!f_n(z_0)$.
+
+\medskip\noindent
+\begin{remark}
+\label{remark-taylor-before}
+Now I will briefly discuss \cite[Section 1.2, Chapter 5]{Ahlfors}.
+Since the proof presented by Ahlfors of the 
+Riemann removable singularity theorem \ref{theorem-removable-singularity}
+did not convince me,
+I went to \href{https://en.wikipedia.org/wiki/Removable_singularity}{wiki}
+and this forced me to do Taylor series before Riemann removable singularity.
+Of course if I ever understand Ahlfors' idea I could put Taylor after
+Riemann removable singularity, and after zeroes of holomorphic functions
+which seems much more natural
+\end{remark}
+
+\medskip\noindent
 Actually this part is quite later in Ahlfors book because it requires
 the theory of convergence of series.
 To pass from the finite Taylor expansion to the
 infinite version we notice that the 
-term $f_{n+1}$ in Equation \ref{equation-finite-Taylor-expansion}
+term $f_{n+1}$ in Equation \ref{equation-finite-taylor-expansion}
 is of the form
 $$
 f_{n+1}(z)=\frac{1}{2\pi i}\int_\gamma \frac{f(\zeta)d\zeta}
@@ -473,7 +754,7 @@ $d_i$ their multiplicities.
 \end{exercise}
 
 \begin{proof}
-We use Lemma \ref{lemma-finite-Taylor-expansion} to write
+We use Equation \ref{equation-zero} to write
 $f(z)=(z-z_1)h_1(z)$ where $z_1$ is a zero of $f$. 
 Applying that to $h_1$ for another zero  $z_2$ of $f$,
 and continuing in this way, we obtain 
@@ -497,7 +778,7 @@ counted without multiplicity
 multiplicity).
 
 Multiplying by $z^k$ yields the desired result by Cauchy formula
-\ref{equation-Cauchy-formula-with-index}. More exactly,
+\ref{equation-cauchy-integral-formula}. More exactly,
 multiplying $z^k$ in the formula gives instead of a sum
 of integrals $\int \frac{1}{z-z_i}$, a sum of integrals
 $\int\frac{z^k}{z-z_i}$ which by Cauchy formula give $z_i^k$
@@ -565,7 +846,7 @@ for any holomorphic function $\phi:\Delta\to\mathbb{C}$.
 derivative with respect to each variable at each point of $U$)
 \item $f$ is smooth and satisfies the following Cauchy-Riemann equations:
 \begin{equation}
-\label{equation-Cauchy-Riemann-several-variables}
+\label{equationcauchy-riemann-several-variables}
 \frac{\partial u}{\partial x^j}=\frac{\partial v}{\partial y^j},\qquad 
 \frac{\partial u}{\partial y^j}=-\frac{\partial v}{\partial x^j}
 \end{equation}
@@ -590,7 +871,7 @@ f(z^1,z^2)=\frac{1}{(2\pi\sqrt{-1})^2}
 $$
 Now observe:
 \begin{equation}
-\label{equation-multivariable-Cauchy}
+\label{equation-multivariablecauchy}
 \frac{1}{w^1-z^1}=\frac{1}{w^1-p^1+p^1-z^1}
 =\frac{1}{w^1-p^1}\frac{1}{1-\frac{p^1-z^1}{w^1-p^1}}
 \end{equation}
@@ -599,7 +880,7 @@ $$
 \frac{1}{w^1-z^1}
 =\frac{1}{w^1-p^1}\sum_{k=0}^\infty\left(\frac{p^1-z^1}{w^1-p^1}\right)^k
 $$
-finally substituting this into (\ref{equation-multivariable-Cauchy}) we may take
+finally substituting this into (\ref{equation-multivariablecauchy}) we may take
 the products $(p^1-z^1)^{k_1}(p^2-z^2)^{k_2}$ out of the integral and define the
 remaining term as $a_{k_1k_2}$.
 \end{proof}
@@ -615,9 +896,9 @@ remaining term as $a_{k_1k_2}$.
 \begin{reference}
 \cite[Proposition 1.28]{lec}
 \end{reference}
-If two holomorphic functions $f,g:W\subset \mathbb{C}^n \to \mathbb{C}$ coincide
-in an open subset of the connected open set $W$, 
-then they coincide in all of $W$.
+If two holomorphic functions $f,g:\Omega\subset \mathbb{C}^n \to \mathbb{C}$ coincide
+in an open subset of the connected open set $\Omega$, 
+then they coincide in all of $\Omega$.
 \end{theorem}
 
 \begin{proof}
@@ -803,7 +1084,7 @@ system.
 \end{proof}
 
 \section{Elementary symmetric polynomials and Newton formula}
-\label{section-elementary-symmetric-polynomials-and-Newton-formula}
+\label{section-elementary-symmetric-polynomials-and-newton-formula}
 
 \noindent
 The main result in this section
@@ -832,19 +1113,29 @@ We start by defining three types of polynomials in this ring.
 \label{definition-symmetric-polynomial}
 Let $e_i \in \mathbb{Z}[\alpha_1,\ldots,\alpha_n]$ be the coefficients of the
 polynomial 
-$$
-t^n+e_1t^{n-1}+\ldots+e_{n-1}t+e_n:=\prod_{i=1}^n(1+\alpha_i)
-$$ Then $e_i$ are called {\it elementary
+\begin{equation}
+\label{equation-elementary-symmetric-polynomial}
+t^n+e_1t^{n-1}+\ldots+e_{n-1}t+e_n:=\prod_{i=1}^n(t+\alpha_i).
+\end{equation}
+Then $e_i$ are called {\it elementary
 symmetric polynomials} on $\alpha_i$.
 \end{definition}
 
 \noindent
-Notice that $e_1=\sum_i\alpha_i=p_1$ for the Newton polynomial $p_1$ defined as
-follows. Also $e_n=\prod_{i}\alpha_i$, and in general $e_k=\sum_{1\leq
-i_1<\ldots<i_k\leq n}\alpha_{i_1}\ldots\alpha_{i_k}$.
+Notice that the polynomial in Equation
+\ref{equation-elementary-symmetric-polynomial} is an element of
+the polynomial ring 
+on the indeterminates $t,\alpha_1,\ldots,\alpha_n$.
+
+There are explicit descriptions
+for the elementary symmetric polynomials.
+In fact, $e_1=\sum_i\alpha_i$ 
+(which is the first Newton polynomial $p_1$ defined below).
+Also $e_n=\prod_{i}\alpha_i$, and in general 
+$e_k=\sum_{1\leq i_1<\ldots<i_k\leq n}\alpha_{i_1}\ldots\alpha_{i_k}$.
 
 \begin{definition}
-\label{definition-Newton-polynomial}
+\label{definition-newton-polynomial}
 A {\it Newton polynomial} is $p_j:=\sum_{i=1}^n\alpha_i^j$.
 \end{definition}
 
@@ -949,7 +1240,7 @@ $e_i$ and $\alpha_i$.
 \end{proof}
 
 \begin{exercise}[Newton formula]
-\label{exercise-Newton-formula}
+\label{exercise-newton-formula}
 Prove that $ke_k=\sum_{i=1}^{k-1}(-1)^ie_{k-i}p_i$.
 \end{exercise}
 
@@ -970,7 +1261,7 @@ term yields the result modulo a minus sign.
 Finally,
 
 \begin{exercise}
-\label{exercise-symmetric-polynomials-in-terms-of-Newton-polynomials}
+\label{exercise-symmetric-polynomials-in-terms-of-newton-polynomials}
 Prove that $e_i$ are expressed as polynomials on $p_i$ with rational
 coefficients.
 \end{exercise}
@@ -987,16 +1278,238 @@ The upshot about Weierstrass preparation theorem is that
 we would like it if $\mathcal{O}_n$ was an Euclidean domain,
 i.e. that there was a division algorithm, 
 as in Number Theory Definition \ref{number-theory-definition-euclidean-domain}.
-I think that what fails has to do with the fact
-that holomorphic functions are infinite series,
-so that we cannot put an Euclidean function like the degree.
-But instead, we have Weierstrass preparation theorem
+Probably that's not true because
+holomorphic functions are infinite series,
+so we cannot put an Euclidean function like the degree.
+Instead, we have Weierstrass preparation theorem
 (which gives a Weierstrass {\it division} theorem…?)
 
-Before starting let's say the proof again.
-Start with a germ of holomorphic function.
-Factor its zeroes as in Equation \ref{equation-factor-zeroes}.
-This gives a product of the zeroes times a holomorphic function
+\medskip\noindent
+Before starting let's say the proof.
+Start with a germ of holomorphic function $f$.
+Split the domain as $(z',z_n)$ and regard $f$
+as a function of $z_n$. 
+Then factor its zeroes 
+as in Equation \ref{equation-factor-zeroes}.
+This gives, for every $z'$, 
+a product of $z_n$ minus the zeroes times a holomorphic function
+without zeros, namely $u(z',z_n)\prod (z_n-w_i(z'))$.
+But hey, that product is a polynomial function in the ring
+$\mathbb{C}[z_n,w_1(z'),\ldots,w_n(z')]$; i.e.
+we shall be done once prove it is in fact a Weierstrass polynomial!
+By definition, its coefficients are the 
+elementary symmetric polynomials on the $w_i(z')$.
+But we showed that these can be expressed as polynomials
+with indeterminates being the Newton polynomials.
+And hey, the Newton polynomials are holomorphic functions
+by the Argument principle exercise \ref{exercise-argument-principle}.
+That says that that product of $z_n$ minus the roots
+is a Weierstrass polynomial, as desired.
+
+
+\begin{definition}
+\label{definition-weierstrass-polynomial}
+A {\it Weierstrass polynomial} is a function $f \in \mathcal{O}_{n-1}[z_n]$,
+that is, a function which is polynomial in the last variables with coefficients
+that are analytic functions on the first $n-1$ variables.
+\end{definition}
+
+\noindent
+The following formulation is found in \cite{Demailly}:
+
+\begin{theorem}[Weierstrass preparation theorem]
+\label{theorem-weierstrass-preparation-theorem}
+Let $f$ be holomorphic on a neighourhood of $0$ in $\mathbb{C}^n$,
+such that $f(0,z_n)/z_n^s$ has a nonzero finite limit at $z_n=0$.
+With the ``above'' choice of $r'$ and $r_n$,
+one can write 
+$$
+f(z)=u(z)P(z',z_n)
+$$
+where $u$ is an invertible holomorphic function
+in a neighbourhood of the polydisk $\overline{\Delta}(r',r_n)$ 
+and $P$ is a Weierstrass polynomial with coefficient
+functions defined for $|z'|\leq r'$ in $\mathbb{C}^{n-1}$.
+\end{theorem}
+
+\begin{proof}
+Step 0. First notice that since I will use this theorem
+to prove that $\mathcal{O}_n$ is a UFD, I will start with
+an arbitrary function $f \in \mathcal{O}_n$.
+(Right now it's not clear why we need that $f(0)=0$.)
+But then it's straightforward to change coordinates so that $f$
+is not identically zero on the  $z_n$-axis:
+just complete the point where $f$ is nonzero to a basis $\{b_i\}_{i=1}^{n-1}$
+and precompose with a linear map sending to $(0,\ldots,0,1)$
+to that point, and the rest of the canonical basis
+to the corresponding basis vectors $b_i$.
+The composition of this linear map with $f$ remains holomorphic
+and is nonvanishing in the $z_n$-axis.
+
+(See Exercise \ref{exercise-principal-parts} for a proof that we can suppose
+that the coordinate change preserves the order of the zero,
+but again it's not clear why I need that.)
+
+\medskip\noindent
+Step 1. Now we define the correct domain.
+This is necessary for the next step.
+
+Then $f(0,z_n)$ is a holomorphic function with a zero on $0$. By
+the Taylor expansion we know that this zero must be isolated, so that there is a
+number $r_n>0$ such that $f(0,z_n)\neq 0$ for  $0<|z_n|\leq r_n$.
+
+Since the circle $\partial\Delta_0(r_n)=\{(0,z_n):|z_n|=r_n\}$ is compact 
+and $f(0,z_n)\neq 0$ on this circle, we can construct
+an open neighbourhood of the circle where $f$ is nonzero as follows.
+For any point of the circle $|z_n|=r_n$ 
+pick a pointed open neighbourhood where $f$ is nonzero (using continuity).
+This gives a collection of open neighbourhoods of $\mathbb{C}^n$ 
+covering the circle $\partial\Delta_{0}(r_n)$,
+from which we take a finite subcover.
+Let $r'$ be the minimum radius of these balls.
+We have that $f(z',z_n)\neq 0$ for $z'<r'$ and  $|z_n|<r_n+\varepsilon$ 
+for some small $\varepsilon$.
+
+This means that in the definition of $S_k$ in the next
+step we are confident that we can integrate the function
+$\frac{1}{f(z',z_n)}$ along the circle $\partial\Delta_{z'}r_n$ 
+for every $z'$.
+
+\medskip\noindent
+Step 2. Now we apply Argument principle.
+Consider the function
+$$
+S_k(z'):=\frac{1}{2\pi\sqrt{-1}}
+\int_{\partial\Delta(r_n)}
+\frac{f'(z',z_n)}{f(z',z_n)}z_n^kdz_n.
+$$
+In Exercise \ref{exercise-argument-principle}
+we showed that $S_k(z')$ is the sum of the $k$-th powers of
+the zeroes of  $f(z',-)$ without multiplicities.
+In particular 
+$S_0(z')$ is an integer: the number of
+zeroes of $f(z',-)$ on $\Delta_{z'}(r_n)$ (for fixed 
+$z' \in \Delta(r')=\{z' \in \mathbb{C}^{n-1}:|z'|<r'\}$).
+
+The map $S_k$ is holomorphic as a function of $z'$ because
+it is holomorphic in each of its $n-1$ complex variables.
+This can be checked by fixing all but one of such variables
+and splitting the expression in real and imaginary parts.
+By interchanging partial derivatives and integrals as real functions
+we conclude that Cauchy-Riemann equations are satisfied
+by holomorphicity of the integrands.
+The proof for differentiation of integrals of real functions may be found
+\href{https://en.wikipedia.org/wiki/Leibniz_integral_rule#Proof_of_basic_form}
+{here}.
+
+Moreover, since
+$S_0(z')$ is an integer,
+it's constant (as a function of $z'$) by continuity.
+Thus we have exactly $s$ functions
+$w_1(z'),\ldots,w_s(z')$ which give the $s$ zeroes of $f(z',-)$
+at every $z' \in \Delta(r')$. 
+Now we apply argument principle with multiplication by
+$z^k$ to obtain $S_k(z')=\sum w_i(z')^k$ (without multiplicities).
+Again, these maps are holomorphic on $z'$ by Theorem
+\ref{theorem-holomorphic-iff-analytic} since they are defined as integrals
+and have series expansions. 
+Notice these are by definition the Newton
+polynomials on $w_i(z')$.
+
+\medskip\noindent
+Step 3. 
+By the Newton formula (Exercise \ref{exercise-newton-formula})
+we know that the elementary symmetric polynomials $e_i$ can be expressed 
+as polynomials of the Newton polynomials $p_i$.
+We conclude that the $e_i$ are also holomorphic functions of $z'$. 
+This shows that
+\begin{align*}
+P(z',z_n):&=\prod_{i=1}^k(z_n-w_i(z'))\\
+&=t^n+e_1t^{n-1}+\ldots+e_{n-1}t+e_n,
+\end{align*}
+
+\noindent
+where the $e_i$ are the elementary symmetric polynomials,
+defined exactly by the above relation (see 
+Equation \ref{equation-elementary-symmetric-polynomial}),
+is a Weiestrass polynomial 
+(because its coefficients are holomorphic functions).
+
+Factoring the zeroes of $f(z',-)$ as in
+Equation \ref{equation-factor-zeroes}
+we obtain
+$$
+f(z',z_n)=\left(\prod_{i}z_n-w_i(z')\right)h(z',z_n)
+$$
+for a function $h$ that doesn't vanish in 
+$\Delta(r')\times \Delta_0(r_n+\varepsilon)$.
+
+To conclude we need to confirm that $h$ is holomorphic.
+By our factorization we know that for every fixed $z'$ 
+$h(z',-)$ is holomorphic in $z_n$.
+Then we can use Cauchy integral formula \ref{equation-cauchy-integral-formula}
+to get
+$$
+h(z',z_n)=\frac{1}{2\pi\sqrt{-1}}
+\int_{\partial\Delta(r_n)}\frac{f(z',w_n)}{w_n-z_n}dw_n.
+$$
+This is a holomorphic function of $z'$ since
+for any $z_0' \in \Delta(r')$ the limit
+$$
+\lim_{z'\to z_0'}
+\frac{
+\int_{\partial\Delta_{z'}(r_n)}
+\frac{f(z',w_n)}{w_n-z_n}wd_n
+-
+\int_{\Delta_{z_0'(r_n)}}
+\frac{f(z_0',w_n)}{w_n-z_n}dw_n}
+{z'-z_0}
+$$
+exists.
+
+
+%The classical way is to notice that the function $f/P$ is holomorphic in $z_n$
+%because $f$ and $P$ have the same zeroes, and we write the integral formula to
+%complete to a holomorphic function (but I think it should be enough with my
+%argument).
+\end{proof}
+
+\noindent
+Recall from Number Theory Lemma \ref{lemma-gauss}
+that if $R$ is a UFD, then $R[x]$ is a UFD.
+
+\begin{lemma}
+\label{lemma-stalk-is-UFD}
+The stalk $\mathcal{O}_n:=\mathcal{O}_{\mathbb{C}^n,0}$ is a UFD.
+\end{lemma}
+
+\begin{proof}
+By induction on $n$. For $n=0$ it is trivial. Suppose $\mathcal{O}_{n-1}$ is a
+UFD. Then by Gauss' Lemma \ref{number-theory-lemma-gauss}, 
+$\mathcal{O}_{n-1}[w]$ is a UFD
+too. Thus we may express any Weierstrass polynomial $g$ as a product of
+irreducible elements (uniquely up to multiplication by units).
+
+Let $f\in \mathcal{O}_n$. We want to express $f$ as a product of (unique up to
+multiplication by units) of irreducible elements. By Weierstrass Preparation
+Theorem \ref{theorem-weierstrass-preparation} there is a Weierstrass polynomial
+$g\in\mathcal{O}_n[w]$ and a holomorphic function not vanishing on $0$ (i.e. a
+unit of $\mathcal{O}_n$) such that $f=gh$. By the previous remark $g$ is
+factored uniquely up to multiplication by units as $g=g_1\ldots g_m$. This shows
+existence of the factorization.
+
+To prove uniqueness suppose that $f=f_1\ldots f_k$ for some irreducible
+$f_1,\ldots,f_k\in\mathcal{O}_n$. Since $f$ does not vanish in the $w$ axis,
+neither can each $f_i$, so that we may decompose each of them as  $f_i=g_i'h_i$
+by Weierstrass Preparation Theorem. Since $f_i$ is irreducible, it follows that
+$g_i'$ is irreducible. Then we have that $$ f=gh=\prod g_i'\prod h_i $$ so by
+uniqueness in Weierstrass Preparation Theorem we conclude that $g=\prod g_i'$,
+and by uniqueness from the fact that  $\mathcal{O}_n[w]$ is a UFD we conclude
+that $g$ coincides with $\prod g_i'$ up to multiplication by units.
+\end{proof}
+
+\medskip\noindent
+Here's some material I wrote on the way:
 
 We denote by $B_r(z_1,\ldots,z_{n-1})$ the ball of radius $r$ in
 $\mathbb{C}^{n-1}\subset\mathbb{C}^n$.
@@ -1044,14 +1557,7 @@ more zeroes, but without multiplicities they are always $k$.
 \end{enumerate}
 \end{proof}
 
-\begin{definition}
-\label{definition-weierstrass-polynomial}
-A {\it Weierstrass polynomial} is a function $f \in \mathcal{O}_{n-1}[z_n]$,
-that is, a function which is polynomial in the last variables with coefficients
-that are analytic functions on the first $n-1$ variables.
-\end{definition}
-
-\begin{exercise}
+\begin{exercise}[Weierstrass preparation theorem]
 \label{exercise-weierstrass-preparation-theorem}
 Let $F$ be an analytic function in a neighbourhood of $0$ in $\mathbb{C}^n$,
 such that $\lim_{z_n\to 0}\neq 0,\infty$. Consider the projection map
@@ -1073,8 +1579,8 @@ where implicitly all $\alpha_i$ and $h$ depend on $y_0$. The product of
 $(z_n-\alpha_i)$ is the definition of $P$. Varying $y_0$ we obtain the result.
 \end{proof}
 
-This argument works for every function that has a zero of order $k$ in
-$0\in\mathbb{C}^n$.
+\noindent
+Also \cite{GH} formulation:
 
 As I recall the following is \cite{GH} formulation of the theorem:
 
@@ -1089,149 +1595,7 @@ function $h$ with $h(0)\neq 0$
 such that $f=gh$.
 \end{theorem}
 
-\noindent
-But I will stick to the formulation in \cite{Demailly}:
 
-\begin{theorem}[Weierstrass preparation theorem]
-\label{theorem-weierstrass-preparation-theorem}
-Let $g$ be holomorphic on a neighourhood of $0$ in $\mathbb{C}^n$,
-such that $g(0,z_n)/z_n^s$ has a nonzero finite limit at $z_n=0$.
-With the ``above'' choice of $r'$ and $r_n$,
-one can write 
-$$
-g(z)=u(z)P(z',z_n)
-$$
-where $u$ is an invertible holomorphic function
-in a neighbourhood of the polydisk $\overline{\Delta}(r',r_n)$ 
-and $P$ is a Weierstrass polynomial with coefficient
-functions defined for $|z'|\leq r'$ in $\mathbb{C}^{n-1}$.
-\end{theorem}
-
-\begin{proof}
-We do the proof in steps
-
-\medskip\noindent
-Step 0. First notice that since I will use this theorem
-to prove that $\mathcal{O}_n$ is a UFD, I will start with
-an arbitrary function $g \in \mathcal{O}_n$.
-(Right now it's not clear why we need that $g(0)=0$.)
-But then it's straightforward to change coordinates so that $g$
-is not identically zero on the  $z_n$-axis:
-just complete the point where $g$ is nonzero to a basis $\{b_i\}_{i=1}^{n-1}$
-and precompose with a linear map sending to $(0,\ldots,0,1)$
-to that point, and the rest of the canonical basis
-to the corresponding basis vectors $b_i$.
-The composition of this linear map with $g$ remains holomorphic
-and is nonvanishing in the $z_n$-axis.
-
-(See Exercise \ref{exercise-principal-parts} for a proof that we can suppose
-that the coordinate change preserves the order of the zero,
-but again it's not clear why I need that.)
-
-\medskip\noindent
-Step 1. Now we define the correct domain;
-skip this for now until it comes into play.
-
-Then $g(0,z_n)$ is a holomorphic function with a zero on $0$. By
-the Taylor expansion we know that this zero must be isolated, so that there is a
-number $r_n>0$ such that $f(0,z_n)\neq 0$ for  $0<|z_n|\leq r_n$.
-
-Since the circle $|z_n|=r_n$ is compact and $f(0,z_n)\neq 0$ on this circle, we
-can fix $r'>0$ such that $f(z',z_n)\neq 0$ for $z'<r'$ and $|z_n|<
-r_n+\varepsilon$.
-
-\medskip\noindent
-Step 2. Now we apply Argument principle. 
-By Exercise
-\ref{exercise-argument-principle}, we know that 
-$S_0=\frac{1}{2\pi\sqrt{-1}}\int\frac{f'(z',z)}{f(z',z)}dz$ counts the number of
-zeroes of $f(z',-)$ on $\Delta(r_n)$ for fixed $z' \in \Delta(r')$.
-
-Notice that the map $S_0$ is holomorphic as a function of $z'$ just because the
-complex derivative, defined as a limit, can go into the integral.
-%giving a
-%well-defined complex number; thus we can differentiate infinitely many times and
-%obtain a Taylor expansion.
-Moreover, since
-$S_0(z')$ is an integer,
-it's constant (as a function of $z'$) by continuity.
-Thus we have exactly $s$ functions
-$w_1(z'),\ldots,w_s(z')$ which give the $s$ zeroes of $f(z',-)$
-at every $z' \in \Delta(r')$. 
-Now we apply argument principle with multiplication by
-$z^k$ to obtain $S_k(z')=\sum w_i(z')^k$ (without multiplicities).
-
-\medskip\noindent
-Step 3. Now we use elementary symmetric polynomials.
-We can think of
-$S_k(z')=\sum_{i=1}^sw_i^k=p_k$ as the Newton polynomials in the
-indeterminates $w_i$.
-In the last step we showed they are holomorphic functions
-of $z'$. 
-In Exercise \ref{exercise-symmetric-polynomials-in-terms-of-Newton-polynomials}
-we showed that the elementary symmetric polynomials $e_i$ can be expressed 
-as polynomials of $p_i$ with rational coefficients,
-that is, $e_i\in\mathbb{Q}[p_1,\ldots,p_k]$.
-We conclude that the $e_i$ are also holomorphic functions of $z'$. 
-This shows that
-\begin{align*}
-P(z',z_n):&=\prod_{i=1}^k(z_n-w_i(z'))\\
-&=t^n+e_1t^{n-1}+\ldots+e_{n-1}t+e_n,
-\end{align*}
-
-\noindent
-where the $e_i$ are the elementary symmetric polynomials,
-defined exactly by the above relation (see Section
-\ref{section-elementary-symmetric-polynomials-and-Newton-formula}),
-is a Weiestrass polynomial 
-(because its coefficients are holomorphic functions).
-
-\medskip\noindent
-Step 4. Just apply Cauchy formula to figure out
-the final equation. 
-Factor the zeroes of $f(z',-)$ as in  Equation \ref{equation-factor-zeroes}
-to obtain
-$f(z',z_n)=\left(\prod_{i}z_n-w_i(z')\right)h_{z'}(z_n):=Ph$.
-
-The classical way is to notice that the function $f/P$ is holomorphic in $z_n$
-because $f$ and $P$ have the same zeroes, and we write the integral formula to
-complete to a holomorphic function (but I think it should be enough with my
-argument).
-\end{proof}
-
-\noindent
-Recall from Number Theory Lemma \ref{lemma-gauss}
-that if $R$ is a UFD, then $R[x]$ is a UFD.
-
-\begin{lemma}
-\label{lemma-stalk-is-UFD}
-The stalk $\mathcal{O}_n:=\mathcal{O}_{\mathbb{C}^n,0}$ is a UFD.
-\end{lemma}
-
-\begin{proof}
-By induction on $n$. For $n=0$ it is trivial. Suppose $\mathcal{O}_{n-1}$ is a
-UFD. Then by Gauss' Lemma \ref{number-theory-lemma-gauss}, 
-$\mathcal{O}_{n-1}[w]$ is a UFD
-too. Thus we may express any Weierstrass polynomial $g$ as a product of
-irreducible elements (uniquely up to multiplication by units).
-
-Let $f\in \mathcal{O}_n$. We want to express $f$ as a product of (unique up to
-multiplication by units) of irreducible elements. By Weierstrass Preparation
-Theorem \ref{theorem-weierstrass-preparation} there is a Weierstrass polynomial
-$g\in\mathcal{O}_n[w]$ and a holomorphic function not vanishing on $0$ (i.e. a
-unit of $\mathcal{O}_n$) such that $f=gh$. By the previous remark $g$ is
-factored uniquely up to multiplication by units as $g=g_1\ldots g_m$. This shows
-existence of the factorization.
-
-To prove uniqueness suppose that $f=f_1\ldots f_k$ for some irreducible
-$f_1,\ldots,f_k\in\mathcal{O}_n$. Since $f$ does not vanish in the $w$ axis,
-neither can each $f_i$, so that we may decompose each of them as  $f_i=g_i'h_i$
-by Weierstrass Preparation Theorem. Since $f_i$ is irreducible, it follows that
-$g_i'$ is irreducible. Then we have that $$ f=gh=\prod g_i'\prod h_i $$ so by
-uniqueness in Weierstrass Preparation Theorem we conclude that $g=\prod g_i'$,
-and by uniqueness from the fact that  $\mathcal{O}_n[w]$ is a UFD we conclude
-that $g$ coincides with $\prod g_i'$ up to multiplication by units.
-\end{proof}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
