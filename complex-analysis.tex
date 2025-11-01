@@ -12,6 +12,57 @@
 
 \tableofcontents
 
+\medskip\noindent
+{\bf Current status.}
+The basic result of complex analysis,
+Cauchy's integral formula \ref{equation-cauchy-integral-formula}
+is very well explained:
+if follows from Cauchy integral theorem \ref{theorem-cauchy},
+which is nothing else than an application of Stokes theorem,
+(in this case also Green's theorem),
+which I do not prove in this document.
+After Cauchy's integral formula
+I prove that a function is holomorphic
+if and only if it is analytic (i.e. has convergent
+power series expansion in a neighbourhood of the point)
+in Theorem \ref{theorem-holomorphic-iff-analytic}.
+I use this to prove Riemann removable singularity theorem
+\ref{theorem-removable-singularity},
+from which I can explain how to ``factor zeroes'' of a 
+holomorphic function as in Equations \ref{equation-zero}
+and \ref{equation-factor-zeroes}.
+
+The so-called Argument principle,
+which is presented as Exercise \ref{exercise-argument-principle},
+follows easily from the above development.
+Also Morera's and Liouville's 
+theorems \ref{theorem-Morera} and \ref{theorem-Liouville} follow easily
+and their proofs are outlined.
+Other important results not stated so far also follow,
+in particular: the \href{https://en.wikipedia.org/wiki/Identity_theorem}{
+Identity theorem},
+which says that if two functions coincide in a 
+set with an accumulation point they will coincide in their domains,
+the open mapping theorem, and the maximum principle.
+
+Next in Ahlfors book is a generalization of Cauchy's formula
+for cycles. And after that is the Residue theorem.
+Next are harmonic functions, in particular
+the mean value theorem and Schwarz theorem.
+Also of interest is Riemann's open mapping theorem
+that any simply connected region can be mapped to the
+unit disk.
+
+And after all that elliptic functions.
+
+\medskip\noindent
+Then multivariable complex analysis,
+with a beautifully worked out proof of Weierstrass preparation theorem
+\ref{theorem-weierstrass-preparation-theorem},
+culminating in the proof that the ring of holomorphic
+functions $\mathcal{O}_n$ is a UFD via the Gauss lemma
+from Number Theory \ref{number-theory-gauss-lemma}.
+
 \section{Holomorphic functions}
 \label{section-holomorphic-functions}
 
@@ -104,12 +155,12 @@ then they are harmonic, i.e.
 \Delta u&=\frac{\partial^2 u}{\partial x^2}+
 \frac{\partial^2 u}{\partial y^2}=0\\
 \Delta v=\frac{\partial^2 v}{\partial x^2}+
-\frac{\partial^2v}{\partial y^2=0.
+\frac{\partial^2v}{\partial y^2}=0.
 \end{align*}
 
 \noindent
 Now if $u$ and $v$ have continuous first-order partial
-derivatives, then we know that
+derivatives, then we know (?) that
 \begin{align*}
 u(x+h,y+k)-u(x,y)
 &=\frac{\partial u}{\partial x}h+\frac{\partial u}{\partial y}k+\varepsilon_1\\
