@@ -4221,6 +4221,166 @@ $(\Lambda^\bullet\mathfrak{g}^*,\overline{\partial}_w)\to
 and that the Dolbeault dga of a nilmanifold $M$ is never formal.
 
 
+
+
+
+
+\section{Hyperbolic surfaces and Mizakhani's curve counting}
+\label{section-hyperbolic-surfaces-and-mizakhani-curve-counting}
+
+\noindent
+Viveka Erlandson, University of Bristol, UK.
+8th Brazilian School of Dynamical Systems, IMPA. 
+November 4, 2025.
+
+\medskip\noindent
+{\bf Abstract.}
+It’s a classical problem to study the growth of the number of periodic orbits of
+bounded length $L$ under a geodesic flow on a manifold. When it comes to
+(closed) hyperbolic surfaces Huber proved that the number is asymptotic to $e^L
+L$ and this results has since been generalized in many directions, maybe most
+famously by Margulis to negatively curved manifolds as well as more general
+flows. However, a fundamentally different result is due to Mirzakhani who
+counted the subset of those closed geodesics on hyperbolic surfaces which have
+no self-intersections (or more generally, those inside a fixed mapping class
+group orbit) and showed that in this setting the growth is asymptotic to a
+polynomial in L of degree only depending on the topology of the surface. In this
+mini-course we will give the necessary background on hyperbolic surfaces to
+understand these results, give an idea of the proof of Mirzakhani’s theorem and
+introduce some tools used such as measured laminations and train tracks. Time
+allowing we present some generalizations (for example, to non-simple closed
+geodesics or to various metrics) and applications to the distribution of closed
+geodesics.
+
+\medskip\noindent
+Our goal is to count certain closed geodesics on hyperbolic surfaces.
+By ``certain'' we main, for example, simple or fixed topological type;
+we will define these properly. Also, we may treat more general
+types of curves than only hyperbolic, e.g. combinatorial, algebraic.
+As ``closed geodesics'', we mean free homotopy classes of curves.
+
+Here's an outline of this minicourse:
+\begin{itemize}
+\item Introduction, motivation.
+\item Measured laminations, train tracks, Thurston measure.
+\item  (Geodesic) currents.
+\item Curve counting theorem.
+\end{itemize}
+
+\medskip\noindent
+Throughout $S$ will be a topological (connected, orientable
+of finite type, i.e. finite genus). Let $g<\infty$ be the genus
+and $r< \infty$ the number of punctures.
+We assume that $\chi(S)=2-2g-r<0$,
+which is equivalent to saying that $S$ 
+admits hyperbolic metrics.
+We will not consider the pair of pants,
+since there's only three simple closed geodesics on it,
+making it uninteresting for our means.
+
+Let $X$ be a hyperbolic surface homeomorphic to $S$.
+Consider the universal cover $\tilde{X}=\mathbb{H}^2$ of $X$,
+and $\pi_1(X)=\Gamma\underbrace{<}_{\substack{\text{discrete} \\ \text{free}}}
+\text{PSL}(2,\mathbb{R})=\text{Isom}^+(\mathbb{H}^2)$.
+Recall that a $4g$-gon yields a genus $g$ surface $S_g$ by
+adequate identification of its sides.
+
+For us, a {\it curve} $\gamma$ is a free homotopy class
+of a closed immersion $\mathbb{S}^1 \hookrightarrow S$,
+which are closed $X$-geodesics.
+In turn, a {\it multi-curve} 
+is a formal sum $\sum_{i=1}^na_i\gamma_i$
+for $\gamma_i$ distinct curves and $a_i>0$, $a_i \in \mathbb{Q}$.
+The {\it length} of a curve $\gamma$ is
+$\ell_X(\gamma)$ is the length of $X$-geodesic representing $\gamma$,
+and the length of a multi-curve is the sum of the lengths
+of the curves in the formal sum.
+
+We won't use this: we can think of $X$ as
+an element of Teichmüller space $\tau(S)\cong \mathbb{R}^{6g-6+2r}$ 
+parametrizing complex structures on $S$.
+
+\medskip\noindent
+Notice that given $X \in \tau(S)$,
+the number of curves with length bounded by a given number $L$,
+$\#\{\gamma|\ell_X(\gamma)\leq L\}$,
+is finite. This can be checked going to the universal cover.
+However, as $L \to \infty$, the number also tends to infinity.
+
+Huber, Hekhal (59' or later) showed that if $X$ is hyperbolic
+on $S_{g,r}$, then $\#\{\gamma|\ell_X(\gamma)\leq L\}\sim \frac{e^L}{L}$
+asymptotically, that is,
+$$
+\lim_{L\to \infty}\frac{\# \{\gamma|\ell_X(\gamma)\leq L\}}{e^L/L}=1.
+$$
+
+\medskip\noindent
+What is we restrict to a fixed topological type?
+
+Recall that the {\it mapping class group} of $S$ is
+$\text{Map}(S):=\text{Homeo}^+(S)/\text{homotopy}$.
+Then $\gamma$ and $\gamma_0$ are of the same (topological)
+type if $\gamma \in \text{Map}(S)\gamma_0$.
+
+We define the {\it (geometric) intersection} of $\alpha,\beta$ 
+distinct curves by
+$$
+i(\alpha,\beta)=\text{min}\{\#(\alpha' \cap \beta'|
+\substack{\alpha'\text{ homotopic to }\alpha \\ 
+\beta'\text{ homotopic to }\beta}\}.
+$$
+(In fact, this minimum is always realized by geodesics,
+but it's more a topological definition.)
+The {\it self-intersection} of a curve is
+$$
+i(\alpha,\alpha)=\frac{1}{2}\text{min}
+\{\#(\alpha' \cap \alpha''|\alpha',\alpha''\text{ 
+homotopic to }\alpha\}.
+$$
+
+We say $\gamma$ is {\it simple} if $i(\gamma,\gamma)=0$.
+
+It is known that $i(\cdot,\cdot)$ is $\text{Map}(S)$-invariant,
+and that $\{\gamma:i(\gamma,\gamma)=k\}$ is a finite union
+of topological types.
+
+\begin{theorem}[Mirzakhani, '08, '16]
+\label{theorem-mirzakhani}
+Let $X$ be a hyperbolic surface, $X \cong S_{g,r}$
+and $\gamma_0$ any (multi-)curve.
+Then
+$$
+\#\{\gamma\text{ type }\gamma_0|\ell_X(\gamma)\leq L\}
+\sim CL^{6g-6+2r},
+$$
+where $C>0$, $C=\frac{c(\gamma_0)}{b_\gamma}B(X)$.
+\end{theorem}
+
+\noindent
+As a corollary, we obtain
+\begin{align*}
+\#\{\gamma\text{ simple}|\ell_X(\gamma)\leq L\}&
+\sim\text{const.}L^{6g-6+2r}\\
+\#\{\gamma|i(\gamma,\gamma)\leq k,\ell_X(\gamma)\leq L\}
+&\sim (\text{const. depending on $k$})L^{6g-6+2r}.
+\end{align*}
+
+\medskip\noindent
+As an example, consider the torus with simple (multi-)curves.
+If we put a puncture it becomes a hyperbolic curve.
+Forgetting the puncture, we have an Euclidean flat torus,
+of which we know the geodesics: they are straight lines
+with rational slope in the plane (before quotienting).
+We see that the amount of geodesics of length bounded by $L$ 
+is $\frac{1}{2}\mathbb{Z}^2 \cap B((0,0),L)$, which is in 
+fact $\sim \pi L^2$.
+A result by Mc-Shane-Rivn, 2001 shows that
+ $$
+\{\text{(primitive) simple curves}\}\sim \frac{\pi}{6}L^2.
+$$
+Where primitive (most likely) excludes counting
+a curve twice as a multicurve.
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
