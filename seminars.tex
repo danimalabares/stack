@@ -4259,6 +4259,15 @@ we will define these properly. Also, we may treat more general
 types of curves than only hyperbolic, e.g. combinatorial, algebraic.
 As ``closed geodesics'', we mean free homotopy classes of curves.
 
+As historical note,
+results on coarse polynomial growth for simple curves
+were are due to Birman-Serres, Rees in the 80's.
+In 2001, McShane-Runn studied asymptotic growth
+for simple curves on punctured torus.
+Asymptoric growth on any hyperbolic
+surface was proved by Mirzakhani for simple curves in 2008 
+and then in 2016 for any topological type of curve.
+
 Here's an outline of this minicourse:
 \begin{itemize}
 \item Introduction, motivation.
@@ -4297,11 +4306,11 @@ and the length of a multi-curve is the sum of the lengths
 of the curves in the formal sum.
 
 We won't use this: we can think of $X$ as
-an element of Teichmüller space $\tau(S)\cong \mathbb{R}^{6g-6+2r}$ 
+an element of Teichmüller space $\mathcal{T}(S)\cong \mathbb{R}^{6g-6+2r}$ 
 parametrizing complex structures on $S$.
 
 \medskip\noindent
-Notice that given $X \in \tau(S)$,
+Notice that given $X \in\mathcal{T}(S)$,
 the number of curves with length bounded by a given number $L$,
 $\#\{\gamma|\ell_X(\gamma)\leq L\}$,
 is finite. This can be checked going to the universal cover.
@@ -4380,6 +4389,113 @@ A result by Mc-Shane-Rivn, 2001 shows that
 $$
 Where primitive (most likely) excludes counting
 a curve twice as a multicurve.
+
+
+\medskip\noindent
+Let us introduce a measure on $\mathbb{R}^2$.
+Let $L>0$. Then
+$$ 
+m^L=\frac{1}{L^2}\sum_{p \in \mathbb{Z}^2}\delta_{\frac{1}{L}p}
+\xrightarrow{L \to \infty}\text{Leb}_{\mathbb{R}^2}.
+$$
+For $p=(a,b)$,
+$\frac{1}{L}p=(\frac{1}{L}a,\frac{1}{L}b)$.
+\begin{align*}
+U_{\mathbb{E}}&=\{x \in \mathbb{R}^2:|x|\leq 1\}\\
+m^L(U_{\mathbb{E})}&=\frac{1}{L^2}\#\{p \in \mathbb{Z}^2
+\left|\frac{1}{L}p\right|\leq 1\}\\
+&=\frac{1}{L^2}\#\{p \in \mathbb{Z}^2:|p|\leq L\}\\
+&=\frac{1}{L^2}\#\mathbb{Z}^2 \cap B_{\mathbb{R}^2}((0,0),L)\\
+&\to\text{Leb}_{\mathbb{R}^2}(U_{\mathbb{E})}=\pi.
+\end{align*}
+
+\medskip\noindent
+Let's go back to study the geodesics on a torus.
+First we recall a fact, which is that
+on any hyperbolic surface $S$ there exists a
+compact $K \subset S$ such that all
+simple closed geodesics stay in $K$.
+
+Now consider a geodesic given by a curve of irrational slope,
+which is dense in the torus. However,
+it is not dense on a hyperbolic torus $S_{1,1}$.
+We may approximate this geodesic by $q_n \in \mathbb{Q}$ with
+$q_n \to \alpha$. Each $q_n \rightsquigarrow \gamma_n$ 
+is a closed geodesic on $S_{1,1}$.
+The lamination in this case is the Hausdorff limit
+of the $\gamma_n$.
+
+\begin{definition}
+\label{definition-lamination}
+A {\it lamination} $L$ on a (hyperbolic) surface $S$ 
+is a compact subset of $S$ consisting of simple, pairwise
+disjoint complete geodesics.
+
+A {\it measured lamination} $\lambda$ is
+$\lambda=(L,\lambda)$ is a lamination $L$
+together with a {\it transverse measure} $\lambda$:
+a measure is assigned to each arc $I$ transverse to $L$.
+
+We write $ML(S)$ for the space of all measured laminations on $S$.
+\end{definition}
+
+\noindent
+While the definition of lamination depends on a choice
+of hyperbolic metric on the surface, the different $ML(S)$ 
+that we obtain with different metrics are actually homeomorphic,
+and we thus do not distinguish between them.
+
+As an example, every simple multi-curve is a measured lamination.
+
+Morally we think of measured laminations as limits of simple multicurves:
+simple multi-curves are dense in $ML(S)$.
+
+\medskip\noindent
+Now we will discuss train tracks, which will
+give us a combinatorial model for measured laminations.
+
+\begin{definition}
+\label{definition-train-track}
+A {\it train track} $\tau$ on $S$ is an embedded (trivalent)
+graph such that at every vertex the three half edges
+meet with the same tangent line and such that
+the complementary region (cc. $S \setminus \tau$)
+are not disk 
+(with a certain caveat: it can be a contractible
+region as long as the vertices cannot preserve
+it's smooth incidence structure
+along the homotopy), 
+a cyllinder (ring) nor a punctured disk.
+
+A {\it set of weights} on $\tau$ is an assignment
+of a non-negative real number $w_e$
+to each edge $e$. They satisfy the {\it switch equations}
+if at every vertex we have $w_a=w_b+w_c$ 
+(where $b$ and $c$ ``stem'' from $a$).
+
+We denote $w(\tau)$ the solutions to the switch equations
+and $w_{\mathbb{Z}}(\tau)$ the integral solutions.
+
+We say a measured lamination $\lambda \in ML(S)$ 
+is {\it carried} by $\tau$ ($\lambda < \tau$)
+if its support can be homotopied into $\tau$.
+We denote
+\begin{align*}
+ML(\tau)&=\{\lambda \in ML(S):\lambda < \tau\}\\
+ML_{\mathbb{Z}}(\tau)&=\{\lambda \in ML_{\mathbb{Z}}(S):\lambda <\tau\}\\
+ML_{\mathbb{Z}}(S)&=\{\lambda \in ML(S):\substack{\text{
+simple multi-curve} \\ \text{with integral coefficients}}\}.
+\end{align*}
+\end{definition}
+
+Next time we will explain the fact that
+\begin{align*}
+ML(\tau)&\xymatrix{\ar@{<->}[r]&}w(\tau)\\
+ML_{\mathbb{Z}}(\tau)\xymatrix{\ar@{<->}[r]&}w_{\mathbb{Z}}(\tau).
+\end{align*}
+
+
+
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
