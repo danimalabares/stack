@@ -63,83 +63,6 @@ the products $(p^1-z^1)^{k_1}(p^2-z^2)^{k_2}$ out of the integral and define the
 remaining term as $a_{k_1k_2}$.
 \end{proof}
 
-\section{Weierstrass preparation theorem}
-\label{section-Weierstrass-preparation-theorem}
-
-\begin{definition}
-\label{definition-germ}
-A {\it germ} of a function near a point is a function defined on some open 
-neighbourhood of the point.
-\end{definition}
-
-\begin{definition}
-\label{definition-Weierstrass-polynomial}
-A {\it Weierstrass polynomial} is a polynomial whose coefficients are
-holomorphic functions.
-\end{definition}
-
-\begin{theorem}[Weierstrass preparation theorem]
-\label{theorem-Weierstrass-preparation}
-If $f:U\subset\mathbb{C}^n\to\mathbb{C}$ is holomorphic and $f$ is not
-identically zero in the coordinate axis $z_n:=w$, there
-is a unique germ of a monic Weierstrass polynomial $g$ whose coefficients are
-holomorphic functions on the first $n-1$ variables 
-and a germ of a holomorphic 
-function $h$ with $h(0)\neq 0$ such that $f=gh$.
-\end{theorem}
-
-\begin{proof}
-
-Since $f$ is not identically zero near $0$, then there is a point that we may
-suppose is in the $z_n$-axis where $f$ is not zero.
-
-Consider the function of one complex variable $f(0,\ldots,0,w)$. Since it has a
-zero at $0$, is holomorphic, and is not identically zero, the zero $0$ must be
-of finite order $m$ (cf. Lemma
-\ref{complex-analysis-lemma-zeroes-are-isolated-and-have-finite-order}). Recall
-that $m$ is the smallest integer $m$ such that $f^{(m)}(0)$.
-
-We want to apply the Argument Principle
-\ref{complex-analysis-theorem-argument-principle}.
-
-We want to count the number of zeros that $f(0,…,0,w)$.
-
-\end{proof}
-
-\begin{lemma}
-\label{lemma-Gauss-UFD}
-If $R$ is a UDF, then $R[x]$ is a UFD.
-\end{lemma}
-
-\begin{lemma}
-\label{lemma-stalk-is-UFD}
-The stalk $\mathcal{O}_n:=\mathcal{O}_{\mathbb{C}^n,0}$ is a UFD.
-\end{lemma}
-
-\begin{proof}
-By induction on $n$. For $n=0$ it is trivial. Suppose $\mathcal{O}_{n-1}$ is a
-UFD. Then by Gauss' Lemma \ref{lemma-Gauss}, $\mathcal{O}_{n-1}[w]$ is a UFD
-too. Thus we may express any Weierstrass polynomial $g$ as a product of
-irreducible elements (uniquely up to multiplication by units).
-
-Let $f\in \mathcal{O}_n$. We want to express $f$ as a product of (unique up to
-multiplication by units) of irreducible elements. By Weierstrass Preparation
-Theorem \ref{theorem-Weierstrass-preparation} there is a Weierstrass polynomial
-$g\in\mathcal{O}_n[w]$ and a holomorphic function not vanishing on $0$ (i.e. a
-unit of $\mathcal{O}_n$) such that $f=gh$. By the previous remark $g$ is
-factored uniquely up to multiplication by units as $g=g_1\ldots g_m$. This shows
-existence of the factorization.
-
-To prove uniqueness suppose that $f=f_1\ldots f_k$ for some irreducible
-$f_1,\ldots,f_k\in\mathcal{O}_n$. Since $f$ does not vanish in the $w$ axis,
-neither can each $f_i$, so that we may decompose each of them as  $f_i=g_i'h_i$
-by Weierstrass Preparation Theorem. Since $f_i$ is irreducible, it follows that
-$g_i'$ is irreducible. Then we have that $$ f=gh=\prod g_i'\prod h_i $$ so by
-uniqueness in Weierstrass Preparation Theorem we conclude that $g=\prod g_i'$,
-and by uniqueness from the fact that  $\mathcal{O}_n[w]$ is a UFD we conclude
-that $g$ coincides with $\prod g_i'$ up to multiplication by units.
-\end{proof}
-
 \section{Complex manifolds}
 \label{section-complex-manifolds}
 
@@ -166,7 +89,7 @@ The sheaf $\mathcal{O}_M$ of holomorphic functions is a sheaf.
 \section{Hodge star}
 \label{section-Hodge-star}
 
-The construction of the Hodge star in  \cite[Section 5.1]{voi}
+The construction of the Hodge star in  \cite[Section 5.1]{Voisin}
 is essentially: map $\alpha \in \Lambda^{n-k}$ to the operator 
 $\alpha \wedge - \in \Hom(\Lambda^{k},\Lambda^n)$
 and then use the metric to identify $\Hom(\Lambda^k,\Lambda^n)$
@@ -185,7 +108,7 @@ and $\beta \in \Lambda^{n-k}$
 \begin{lemma}
 \label{lemma-Hodge-star-squared}
 \begin{reference}
-\cite[Lemma 5.5]{voi}
+\cite[Lemma 5.5]{Voisin}
 \end{reference}
 The operator $*$ satisfies the identity
 \begin{equation}
@@ -306,7 +229,7 @@ $f:X\to \mathbb{C}P^{1}$ as ramified coverings:
 \begin{proposition}
 \label{proposition-meromorphic-functions-are-ramified-coverings}
 \begin{reference}
-\cite[Proposition 1.8.9]{lando}
+\cite[Proposition 1.8.9]{Lando}
 \end{reference}
 A nonconstant meromorphic function $f:X\to\mathbb{C}P^{1}$, considered as a
 mapping of the underlying topological space, is a ramified covering of the
@@ -324,7 +247,7 @@ The following paragraph is an approximate quote:
 
 Proposition \ref{proposition-meromorphic-functions-are-ramified-coverings}, and
 the fact that every Riemann surface admits a meromorphic function (which can be
-seen by Riemann-Roch, cf. \cite[Fact 1.8.6]{lando}) show that every Riemann
+seen by Riemann-Roch, cf. \cite[Fact 1.8.6]{Lando}) show that every Riemann
 surface may be represented by a ramified covering of $\mathbb{C}P^{1}$. The
 following theorem, which affirms the converse statement, is one of the most
 fundamantal:
@@ -332,7 +255,7 @@ fundamantal:
 \begin{theorem}[Riemann's existence theorem]
 \label{theorem-Riemann-existence}
 \begin{reference}
-\cite[Theorem 1.8.14]{lando}
+\cite[Theorem 1.8.14]{Lando}
 \end{reference}
 Suppose a base star is fixed in $\mathbb{C}P^{1}$, and the squence of its
 terminal vertices is $R=[y_1,\ldots,y_k]$. Then for any constellation
@@ -352,9 +275,9 @@ monodromy group of a covering. Indeed: for a regular point $y_0$ of a degree-$n$
 convering we get an action of the symmetric group of $n$ elements on the fiber
 $E:=\pi^{-1}(y_0)$; taking each generator of the fundamental group to be any of
 these permutations we obtain a constallation (cf \cite[Construction
-1.2.13]{lando}.
+1.2.13]{Lando}.
 
-The other way around, \cite[Proposition 1.2.15]{lando}, we can define a group
+The other way around, \cite[Proposition 1.2.15]{Lando}, we can define a group
 homomorphism $\pi(S^2\setminus\{p_i\},y_0)\to G$ where $G$ is the group of the
 constellation; the fact that the it is indeed a group homomorphism is due to the
 fact that both sets of generators satisfy the property that their product is
@@ -377,7 +300,7 @@ which may look a bit strange: {\it theory of dessins d'enfants}.
 \begin{definition}
 \label{definition-Riemann-surface-defined-over-field}
 \begin{reference}
-\cite[Definition 1.8.8]{lando}
+\cite[Definition 1.8.8]{Lando}
 \end{reference}
 If it is possible to realize a Riemann surface $X$ by a system of equations with
 coefficients in a subfield $K\subseteq\mathbb{C}$, then we say that $X$ is {\it
@@ -387,7 +310,7 @@ defined over $K$}.
 \begin{theorem}[Belyi]
 \label{theorem-Belyi}
 \begin{reference}
-\cite[Theorem 2.1.1]{lando}
+\cite[Theorem 2.1.1]{Lando}
 \end{reference}
 A Riemann surface $X$ admits a model over the field $\overline{ \mathbb{Q}}$ of
 algebraic numbers if and only if there exists a covering $X\to \overline{
@@ -395,24 +318,6 @@ algebraic numbers if and only if there exists a covering $X\to \overline{
 meromorphic function $f$ can also be chosen in such a way that it will be
 defined over $\overline{\mathbb{Q}}$.
 \end{theorem}
-
-\section{Analytic varieties}
-\label{section-analytic-varieties}
-
-\begin{lemma}
-\label{lemma-analytic-germ-is-irreducible-iff-prime-ideal}
-\cite[Lemma 1.1.28]{huc}
-An analytic germ $X$ is irreducible if and only iff $I(X)$ is a prime ideal.
-\end{lemma}
-
-\begin{proof}
-If $X$ is irreducible let $fg\in I(X)$. Then $V(I(X))\subset V(f)\cup V(g)$. But
-since $X$ is irreducible we cannot express $X \cap (V(f) \cup  V(g))$ unless
-either of $V(f)$ or $V(g)$ are trivial or equal to $X \cap V(f)$ or $X \cap
-V(g)$.
-
-The converse I won't need right now.
-\end{proof}
 
 \section{Sheaf of holomorphic functions}
 \label{section-sheaf-of-holomorphic-functions}
@@ -457,17 +362,17 @@ since holomorphicity is a condition defined on
 open sets.
 \end{proof}
 
-\section{Analytic set}
-\label{section-analytic-set}
+\section{Analytic sets}
+\label{section-analytic-sets}
 
 \begin{definition}
 \label{definition-analytic-subvariety}
 \begin{reference}
 
 \end{reference}
-An {\it analytic set} or {\it variety} $Y$ of a complex manifold $X$ is a
-subset given locally as the zeros of a finite collection of holomorphic
-functions.
+An {\it analytic set} or {\it subvariety} $Y$ 
+is a subset of a complex manifold $X$
+given locally as the zeros of a finite collection of holomorphic functions.
 \end{definition}
 
 \begin{lemma}
@@ -595,6 +500,11 @@ we shall have that $\mathcal{I}_Y(U)=(f)$.
 That is, if $g$ also vanishes at $Y\cap U$,
 we want to see that $g = fh$ for some $h \in \mathcal{O}_X(U)$.
 
+By Stacks Project \href{https://stacks.math.columbia.edu/tag/0AFT}{0AFT}
+we need two ingredients:
+(1) the fact that the ring $\mathcal{O}_X(U)$ is a UFD for all $U \subset X$
+and (2) the following lemma.
+
 \begin{lemma}
 \label{lemma-ideal-of-irreducible-hypersurface-is-height-1-prime}
 The ideal of an irreducible analytic hypersurface is a height-1 prime ideal.
@@ -677,6 +587,11 @@ that the ideal of functions
 vanishing on $Y$ is principal.
 \end{proof}
 
+\noindent
+Note the that argument actually works backwards if we assume
+the ambient ring is Noetherian,
+see Stacks Project \href{https://stacks.math.columbia.edu/tag/0AFT}{0AFT}.
+
 \begin{definition}
 \label{definition-sheaf-associated-to-effective-Cartier-divisor}
 Let $D:=S$ be an effective Cartier divisor, that is, an analytic hypersurface of
@@ -712,12 +627,39 @@ we see that $f(x)=0$,
 that is $f \in I(V(I))$.
 
 It remains to show that $I(V(I)) \subseteq \sqrt{I}$.
-We shall follow Demailly to prove
-directly that if $I$ is prime then $I(V(I))=I$.
-But we need a bunch of results before.
+We shall first suppose that  $I$ is prime
+and prove that $I(V(I)) \subseteq I$.
+(The complete statement for the radical follows
+from a purely algebraic process,
+see \cite[Theorem 4.22]{Demailly}.)
+
+We will need a few preparatory results.
 First recall that $S$ is an integral ring over $R$ 
 if every element of $S$ is expressed as
 a root of a monic polynomial with coefficients in $R$.
+(See Stacks Project \href{https://stacks.math.columbia.edu/tag/00GI}{00GI}.)
+
+It will be handy to keep in mind the following lemma
+(Stacks Project \href{https://stacks.math.columbia.edu/tag/00GH}{00GH}):
+
+\begin{lemma}
+\label{lemma-characterize-finite-in-terms-of-integral}
+Let $R \to S$ be a ring map. The following are equivalent
+\begin{enumerate}
+\item $R \to S$ is finite,
+\item $R \to S$ is integral and of finite type, and
+\item there exist $x_1, \ldots, x_n \in S$ which generate $S$ as an
+algebra over $R$ such that each $x_i$ is integral over $R$.
+\end{enumerate}
+\end{lemma}
+
+\noindent
+This essentially says that an integral extension
+$R \to S$ gives $S$ the structure of a finitely generated $R$-module
+(I think experts call this a ``finite $R$-module'')
+whose generators are integral.
+This just means that $S=R[x_1,\ldots,x_k]$
+and $x_i \in S$ is the root of a monic polynomial in $R$.
 
 \begin{proposition}
 \label{proposition-integral-extension}
@@ -748,7 +690,7 @@ $\mathcal{I}_{A,0}=\mathcal{I}$.
 \end{lemma}
 
 \begin{proof}
-Lemma \ref{lemma-integral-extension}
+Proposition \ref{proposition-integral-extension}
 says: take a polynomial $f \in \mathcal{O}_n$
 and consider its equivalence class $\tilde{f}\in\mathcal{O}_n/\mathcal{I}$.
 Then $\tilde{f}$ is the root of some monic polynomial 
@@ -756,15 +698,67 @@ $t^r+b_{r-1}t^{r-1}+\ldots+b_1t+b_0$
 with $b_i \in \mathcal{O}_d$.
 That is, putting $f$ instead of $t$ we get an equation
 $$
-f^r+b_{r-1}f^{r-1}+\ldots+b_1f+b_0=0\qquad \text{mod }\mathcal{I}.
+f^r+b_1f^{r-1}+\ldots+b_r=0\qquad \text{mod }\mathcal{I}.
 $$
+In other words, the holomorphic function
+$f^r+b_1f^{r-1}+\ldots+b_r$ is in  $\mathcal{I}$.
 Since $f$ vanishes on $(A,0)$,
-this says that $b_0$ vanishes in $(A,0)$ too.
-(Right?)
-
-
-
+this says that $b_r$ vanishes in $(A,0)$ too.
+Now suppose that this implied that the class $\tilde{b_r}=0$.
+We are supposed to use that Proposition \ref{proposition-integral-extension}
+also tells us is that the above equation is irreducible,
+which I think means that $F=\sum b_it^i \in \mathcal{O}_d[t]$
+is irreducible.
+In turn this gives that $r=1$.
 \end{proof}
+
+
+\medskip\noindent
+Let's just store what was learned today:
+\begin{enumerate}
+\item {\bf Noether normalization lemma.} 
+See \href{https://www.youtube.com/watch?v=VWWoG_4XVvs}
+{this video}.
+Let $k$ be a (infinite) field,
+$A \neq 0$ a finitely generated $k$-algebra.
+Then there exists elements $y_1,\ldots,y_r \in A$ 
+which are algebraically independent over $k$ 
+and such that $A$ is integral over $k[y_1,\ldots,y_r]$.
+That is,
+$$
+\xymatrix{
+A\ar@{-}[d]^{\substack{\text{integral} \\ \text{ext.}}}\\
+k[y_1,\ldots,y_r]\ar@{-}[d]^{\substack{\text{transc.} \\ \text{ext.}}}\\
+k.
+}
+$$
+
+\item This can be used to prove the weak Nullstellensatz, i.e.
+let $k$ be an algberaically closed field, and $I \subseteq k[x_1,\ldots,x_n]$ 
+an ideal such that $V(I)=\emptyset$. Then $I=k[x_1,\ldots,x_n]$.
+
+To prove it using Noether's normalization lemma,
+suppose that the $I\neq k[x_1,\ldots,x_n]$.
+Let $\mathfrak{m}$ be a maximal ideal such that $I \subseteq \mathfrak{m}$.
+Then $A=k[x_1,\ldots,x_n]/\mathfrak{m}=k[y_1,\ldots,y_n]$,
+where the first string is algebraically independent
+while the last string is integral. But because the 
+whole extension is algebraic, then $y_1,\ldots,y_n$ 
+are integral over $k$.
+Then we can map $y_i \mapsto \alpha_i$, a root
+of its defining polynomial over $k$.
+This means we do have a point where all polynomials
+in $\mathfrak{m}$ vanish.
+
+{\bf Note.} I'm not sure what we mean with "the first string"
+and the "second string".
+
+\item Also reviewed Misha's proof of the Nullstellensatz.
+Looks accessible, though it is not holomorphic!
+
+\item Perhaps start in Demailly just after Prop. 4.13.
+\end{enumerate}
+
 
 \section{Singularities and dimension}
 \label{section-singularities-and-dimension}
@@ -800,7 +794,6 @@ nowhere vanishing. This says the vector field cannot vanish anywhere, which
 means the tangent bundle of the curve is trivial. Apparently elliptic curves,
 i.e. $g=1$ are the 
 \end{proof}
-
 
 \begin{theorem}[Riemann-Roch for line bundles on surfaces]
 \label{theorem-Riemann-Roch-for-line-bundles-on-surfaces}
@@ -1095,7 +1088,7 @@ constants. Instead, we can use sections of line bundles.
 
 \begin{theorem}[Serre duality]
 \label{theorem-serre-duality}
-\cite{voi} II.5.32. The pairing
+\cite{Voisin} II.5.32. The pairing
 $$
 H^q(X,\mathcal{E})\otimes
 H^{n-q}(X,\mathcal{E}^*\otimes K_X)\to H^{n}(X,K_X)\cong\mathbb{C}
@@ -1213,6 +1206,171 @@ possible to find an almost hypercomplex structure on $\mathbb{C}^2$ passing to
 the torus and then to the $\mathbb{Z}_2$ quotient, but not clear what will
 happen after blowing up.
 \end{proof}
+
+\section{Deformation theory}
+\label{section-deformations}
+
+\noindent
+Here I discuss deformations in the category of complex spaces.
+Let's start with complex manifolds and see how far we can go without
+ringed spaces and the parallel theory the category of schemes.
+
+Let's just do a summary of \cite[Chapter 9]{Voisin}.
+
+Let $\mathcal{X}$ be a complex manifold, $B$ a complex manifold
+and $\phi:\mathcal{X} \to B$ a holomorphic map.
+We call $\phi$ a {\it family} if it is a proper holomorphic submersion.
+
+A theorem by Ehresmann says that if $\phi:\mathcal{X} \to B$ is a
+proper submersion of differentiable manifolds
+(no complex structure), with $B$ contractible and $0 \in B$ 
+some distinguished point,
+then there total space $\mathcal{X}$ is trivial as a 
+manifold over $B$, i.e.
+there exists a diffeomorphism
+ $$
+T:\mathcal{X}\xrightarrow{\cong}X_0 \times B
+$$
+of manifolds over $B$, i.e. commuting with projection.
+
+In the complex situation, if $\phi:\mathcal{X} \to B$ is a family
+of complex manifolds and $0 \in B$, then
+``up to replacing $B$ by a neighbourhood of 0'',
+there exists a smooth trivialization $T=(T_0,\phi):\mathcal{X} \to X_0 \times B$ 
+such that the fibres of $T_0$ are complex submanifolds of $\mathcal{X}$.
+
+Now let $\phi:\mathcal{X} \to B$ be a family of complex manifolds.
+Recall the pullback bundle $\phi^*B$ and the fact
+that the differential $\phi_*$ can be thought of as a gadget
+that maps tangent vectors to $\mathcal{X}$ 
+not to vectors tangent to $B$ but
+to vectors in the pullback bundle $\phi^*B$.
+Restricting everything to the fibre $X=\phi^{-1}(0)$ we get
+\begin{equation}
+\label{equation-short-exact-sequence-deformation}
+\xymatrix{
+0\ar[r]&T_X\ar[r]&T_{\mathcal{X}|X}\ar[r]&\phi^*T_{B|X}\ar[r]&0
+}
+\end{equation}
+There's what seems to be a really nice result saying that
+$H^1(\mathcal{F})$ parametrizes isomorphisms classes
+of extensions of $\mathcal{F}$ by the trivial bundle,
+but for now let me just define it roughly as follows.
+The category of $\mathcal{O}_X$ is most surely abelian
+with enough injectives. This means that objects
+have associated complexes, and we can take
+cohomologies of these complexes.
+This says, roughly, that short exact
+sequences of vector bundles have associated cohomology
+long exact sequences. Then the Kodaira-Spencer map
+is the map 
+$$
+\rho:T_{B,0}=H^0(X,\phi^* T_{B|X})\to H^1(X,T_X)
+$$
+induced by the long exact sequence associated to
+\ref{equation-short-exact-sequence-deformation}.
+Here the equality $T_{B,0}=H^1(X,\phi^* T_{B|X})$ 
+is just because the pullback of the tangent bundle of $B$ 
+to any fiber is trivial.
+
+Now I will explain first order deformations.
+Consider a family $\mathcal{X} \to B$.
+We introduce a complex analytic subscheme $B_\varepsilon$ of $B$ 
+giving an ideal sheaf $\mathcal{M}^2_0$
+where $\mathcal{M}_0$ is the maximal ideal
+of $\mathcal{O}_{B,0}$ consisting of the holomorphic
+functions vanishing at 0.
+This means that a function in $\mathcal{M}^2_0$ 
+is of the form $f=gh$ for $g,h \in \mathcal{M}_0$,
+which means that $df=d(gh)=hdg+gdh=0$ at $0$
+since both $g$ and $h$ vanish at $0$.
+That is, this sheaf contains functions that vanish
+at $0$ and whose first derivative vanishes at $0$.
+
+This means that $B_\varepsilon$ is a point:
+it's the vanishing locus of the set of functions
+that vanish at a single point.
+However, it is endowed with an unusual structure sheaf.
+Let $v$ be a tangent vector to $B$ at $0$ and
+$f$ a function in the strange sheaf $\mathcal{M}_0/\mathcal{M}_0^2$.
+Then by the computation above, since $v$ is a differential
+operator, $v$ annihilates $f$.
+This means that this sheaf detects not only the point $0$ 
+but also any tangent vector at $0$.
+Let's denote
+$B_\varepsilon=\Spec \mathbb{C}[\varepsilon]/(\varepsilon^2)$
+just because its structure sheaf is 
+$\mathbb{C}[\varepsilon]/(\varepsilon^2)$.
+
+In fact, this is so throughout deformation theory:
+$\Spec k[\varepsilon]/(\varepsilon^2)$ is topologically a point!
+But it's a {\it fat point}: the support of its
+structure sheaf is a point, but as a scheme, it's not a point.
+And the same happens with the family $\mathcal{X}$ over
+$\Spec k[\varepsilon]/(\varepsilon^2)$,
+topologically it's just the fibre $X$!
+But its structure sheaf is different:
+``it contains the directions in $\mathcal{X}$ which
+are normal to $X$''.
+
+Then a cocycle construction shows that for $B$ of
+complex dimension 1, the first order deformations
+$\phi:X_\varepsilon \to B_\varepsilon$ associated to the
+family $\mathcal{X} \to B$ are ``exactly parametrised''
+by the group $H^1(X,T_X)$.
+
+\begin{exercise}
+\label{exercise-deformations-curve-in-k3}
+Let $C$ be a smooth genus $g$ curve which
+can be embedded in a K3 surface $M$, and $\mathcal{X}$ 
+``the family of all deformations'' of $C$ in $M$.
+Prove that $\dim \mathcal{X} \leq g$.
+\end{exercise}
+
+\begin{proof}
+For this exercise I assume that $\mathcal{X}\to B$
+is a family such that any fiber is contained in 
+the K3 surface $M$. By the result explained above
+all we need to do is compute $h^0(X,T_X)$.
+Indeed, the dimension of $\mathcal{X}$ is described
+well enough locally via the first order deformation
+$X_\varepsilon \to B_\varepsilon=\Spec \mathbb{C}[\varepsilon]/(\varepsilon^2)$.
+In other words, the dimension of the space
+of first order deformations encodes
+the local structure of the (hypothetical) deformation space
+and thus the dimensions of both coincide.
+Notice that this argument works just as well
+if we don't assume that all the fibres of $\mathcal{X}$ 
+are contained in the K3 surface $M$.
+For now I would just claim that this is indeed the case,
+i.e. that any family of deformations of $C$ has the same dimension.
+
+As for how to compute $h^1(T_C)$, we do a few steps:
+
+\medskip\noindent
+Step 1. Adjunction formula: $N=\mathcal{O}_X(C)$.
+
+\medskip\noindent
+Step 2. Adjunction formula: $2g-2=(\mathcal{O}(C),\mathcal{O}(C))$.
+
+\medskip\noindent
+Step 3. Riemann-Roch for curves on surfaces:
+$\chi(\mathcal{O}(C))=2+\frac{1}{2}(\mathcal{O}(C),\mathcal{O}(C))$.
+
+\medskip\noindent
+Step 4. Steps 2 and 3 imply that
+$\chi(\mathcal{O}(C))=g+1$.
+
+\medskip\noindent
+Step 5. Serre duality and $X$ being a K3 imply that $h^2(\mathcal{O}(C))=0$.
+
+\medskip\noindent
+Step 6. Normal bundle exact sequence
+
+\medskip\noindent
+Step 7. Something's still missing…
+\end{proof}
+
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
