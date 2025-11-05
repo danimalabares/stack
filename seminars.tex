@@ -4497,6 +4497,346 @@ ML_{\mathbb{Z}}(\tau)\xymatrix{\ar@{<->}[r]&}w_{\mathbb{Z}}(\tau).
 
 
 
+
+
+
+Baum-Bott 70'.
+
+Let $E$ be a vector bundle on $X$ 
+complex manifold is a sheaf of 1-jets of $E$:
+$$
+J'_X(E)= E \oplus \Omega^1_X \otimes E
+$$
+where equality is the category of sheavs of abelian groups.
+Where the $\mathcal{O}_X$ structure is given by
+$$
+\underbrace{f}_{\substack{\text{local function} \\ \text{on }U}}
+(\underbrace{e}_{\substack{\text{local section} \\ \text{of $E$ on  $U$}}}
+, \underbrace{\alpha}_{\substack{\text{local section} \\ 
+\text{of $\Omega^1_X \otimes E$}}}
+=(fe,f\alpha-df \otimes e) 
+$$
+The {\it Atiyah class} of $E$ is the element
+$$
+\text{at}_X(E) \in H^1(X,\Omega_X^1 \otimes \text{End}(E))
+$$
+corresponding to the exact sequence of $\mathcal{O}_X$-modules
+$$
+\xymatrix{
+0\ar[r]&\Omega_X^1\otimes E\ar[r]&J_X^1(E)\ar[r]&E\ar[r]&0.
+}
+$$
+
+\begin{remark}
+\label{remark-holomorphic-connection}
+ $\text{at}(E)=0$ if and only if there exists
+$\nabla:E \to \Omega^1_X \otimes E$ map of abelian sheaves
+such that $e \mapsto  (e-\nabla e)$ is $\mathcal{O}_X$-linear
+$$
+-\nabla fe=-f\nabla e - df \otimes e
+$$
+if and only if $E$ admits a holomorphic connextion.
+\end{remark}
+
+\begin{example}
+\label{example-line-bundle-holomorphic-connection}
+If $E$ is a line bundle, at $(E)=(d\text{log}f_{ij})_{ij}
+\in H^1(X,\Omega_X^1)$, $E=(f_{ij})$.
+\end{example}
+
+\begin{theorem}[Atiyah, '57]
+\label{theorem-atiyah-57}
+Let $r =\text{rank}E$, $k$ an integer, $X$ be compact Kähler
+and $\Sigma_k$ a polynomial of degree $k$ on $M_r$
+such that  $\Sigma_k(g)$ is the $k$-th elementary
+symmetric function on the characteristic zeros of
+$g \in M_r$. $S_k=$ polynomial given by polarization.
+\begin{align*}
+M_r^{\otimes k}&\to \mathbb{C}\\
+\text{End}E^{\otimes k}& \to \mathcal{O}_X\\
+\text{Ex., $k=1$}\qquad \text{End}E&\xrightarrow{\text{Tr}}\mathcal{O}_X.
+\end{align*}
+
+$$
+\xymatrix{
+H^1(X,\Omega_X^1 \otimes \text{End}(E))^{\otimes k}\ar[r]^{\cup }
+&H^k(\Omega^1_X^{\otimes k}\otimes \text{End}E^{\otimes k}\ar[r]
+&H^k(X,\Omega_X^k)\ar[r]
+&H^{2k}(X,\mathbb{C})\\
+\text{at}(E)^{\otimes k}\ar[rrr]
+&& &(2\pi i)^kc_{2k}(E).
+}
+$$
+Partial connection. $\mathcal{F}$ regular distribution.
+$\mathcal{F} \subseteq T_X$ subbundle.
+An {\it $\mathcal{F}$-connection} on $E$ is
+$\nabla:E \to \mathcal{F}^\vee \otimes E$ 
+such that
+$$
+\nabla(fe)=f\nabla e+f_{\mathcal{F}}f \otimes e
+$$
+where $d_{\mathcal{F}}:\mathcal{O}_X\xrightarrow{d}\Omega_X^1
+\to\mathcal{F}^\vee$.
+\end{theorem}
+
+\begin{proposition}[Bott-Baum, '70]
+\label{proposition-bott-baum}
+If $E$ admits an $\mathcal{F}$-connection then all characteristic
+classes of degree  $>\text{codim}\mathcal{F}$ vanish.
+\end{proposition}
+
+\begin{proof}
+There exists an $\mathcal{F}$-connection if and only if
+$$
+\xymatrix{
+0\ar[r]&\Omega_X^1 \otimes X\ar[r]\ar[d]&J_X^1\ar[r]&E\ar@{=}[d]\ar[r]&0\\
+0\ar[r]&\mathcal{F}^\vee\otimes E\ar[r]&
+\mathcal{F}^\vee \otimes E \oplus E\ar[r]& E\ar[r]&0
+}
+$$
+if and only if $\text{at}(E) \in H^1(X,\Omega_X^1\otimes\text{End}E)$
+maps to 0 in $H^1(X,\mathcal{F}^\vee\otimes\text{End}E)$
+is and only if $\text{at}(E)$ comes from
+$$
+H^1(X,N^\vee\otimes\text{End}E)\to H^1(X,\Omega_X^1\otimes\text{End}E)
+$$
+where $N=T_{X/\mathcal{F}}$.
+\end{proof}
+
+\begin{example}[Bott's partial connection]
+\label{example-bott-partial-connection}
+Suppose $\mathcal{F}$ is a regular foliation
+and $N=T_{X/\mathcal{F}}$ has a $\mathcal{F}$-connection.
+Take $n$ a local section of $N$,  $v$ a local section of $\mathcal{F}$
+(over the same open) and suppose exists a section $t$ of $T_X$ 
+that is a lift of $t$, i.e. $p(t)=n$ for $p:T_X \to N$.
+Then $\nabla_v^Bn=p([v,t])$ is a section of $N$.
+This defines an $\mathcal{F}$-connection on $N$.
+\end{example}
+
+\begin{lemma}[Beauville]
+\label{lemma-beauville}
+Let $X$ be a complex manifold and $E$ is a direct submanifold of $T_X$.
+Then $\text{at}(E) \in H^1(X,\Omega_X^1 \otimes \text{End}E)$ 
+comes from $H^1(X,E^\vee \otimes \text{End}(E))$.
+\end{lemma}
+
+\begin{proof}
+Consider
+$$
+T_X= E \oplus F \xrightarrow{p}E.
+$$
+We claim that there exists an $\mathcal{F}$-connection on $E$.
+Let $v$ be a local section of $F$,
+$e$ a local section of $E$.
+Define $\nabla_ve=p([v,e])$.
+One checks that this satisfies the required properties.
+\end{proof}
+
+\noindent
+Notice that no involutivity is imposed on $E$ - it's just a distribution.
+
+\medskip\noindent
+Now we will discuss some variations of Baum-Bott's theorem
+\ref{theorem-baum-bott}.
+
+Let $\mathcal{F}$ be  regular foliation, $E$ 
+a vector bundle on $X$ equipped with a flat $\mathcal{F}$-connection.
+For example, $\nabla^B$ flat.
+
+Recall that  $(E,\nabla)$ can be thought of as
+$\text{Mon}(\mathcal{F})$-equivariant vector bundles
+where $\text{Mon}(\mathcal{F})$ is the monodromy groupoid.
+
+Let $X/\mathcal{F}$ be the space of leaves,
+and $\mathcal{O}_{X/\mathcal{F}}=\mathcal{O}_X^{d_{\mathcal{F}}}=
+\{\text{functions $f$ such that $d_{\mathcal{F}}f=0$}\}$.
+
+It is a fact that $E^{\nabla}$ is a locally free $\mathcal{O}_{X/\mathcal{F}}$ 
+sheaf of rank the rank of $E$ and such that
+$E=E^{\nabla}\otimes_{F_{X/\mathcal{F}}}\mathcal{O}_X$.
+
+Now one defines bundles of 1-forms and tangent bundle as follows.
+ $\Omega_{X/\mathcal{F}}^1=(N_{\mathcal{F}}^* )^{\nabla B}$
+and $T_{X/\mathcal{F}}=N_{\mathcal{F}}^{\nabla B}$,
+which are locally free sheaves of $\mathcal{O}_{X/\mathcal{F}}$-modules
+of rank $q=\text{codim}\mathcal{F}$.
+
+The Atiyah class of $(E,\nabla)$ is
+$$
+J^1_{X/\mathcal{F}}(E,\nabla)=E^{\nabla}\oplus \Omega_{X/\mathcal{F}}^1
+\otimes_{\mathcal{O}_{X/\mathcal{F}}}E^{\nabla}
+$$
+with $\mathcal{O}_{X/\mathcal{F}}$-module structure given by
+ $$
+(e,\alpha)=(f\alpha,f\alpha-\underbrace{df}_{\in \Omega^1_{X/\mathcal{F}}}
+\otimes e.
+$$
+Then
+$$
+\text{at}_{X/\mathcal{F}}(E,\nabla)
+\in H^1(X,\Omega_{X/\mathcal{F}}^1\otimes_{\mathcal{O}_{X/\mathcal{F}}}
+\text{End}_{\mathcal{O}_{X/\mathcal{F}}}E^{\nabla})
+$$
+corresponding to
+$$
+\xymatrix{
+0\ar[r]&\Omega_{X/\mathcal{F}}^1\otimes_{\mathcal{O}_{X/\mathcal{F}}}\ar[r]
+&J_{X/\mathcal{F}}^1(E)\ar[r]&E^{\nabla}\ar[r]&0.
+}
+$$
+
+\begin{lemma}
+\label{lemma-atiyah-class-maps-to-atiyah-class}
+$\text{at}_{X/\mathcal{F}}(E,\nabla)$ maps to
+$\text{at}_X(E)$ under
+$$
+H^1(X,\Omega_{X/\mathcal{F}}^1\otimes_{\mathcal{O}_{X/\mathcal{F}}}
+\text{End}_{\mathcal{O}_{X/\mathcal{F}}}E^{\nabla}
+\to H^1(X,\Omega_X \otimes \text{End}E).
+$$
+\end{lemma}
+
+\noindent
+Partial connections. Let $G \subseteq T_{X/\mathcal{F}}$
+be a subbundle a {\it $G$-connection} $(E,\nabla)$ is
+\begin{align*}
+D: E^{\nabla} &\longrightarrow G^\vee\otimes E^{\nabla} \\
+\text{s.t.} D(fe)&=fDe+d_Gf\otimes e
+\end{align*}
+where $d_G:\mathcal{O}_{X/\mathcal{F}}\to\Omega_{X/\mathcal{F}}^1\to G^\vee$.
+
+It's a fact that a $G$-connection $(E,\nabla)$ exists if and only if
+$\text{at}_{X/\mathcal{F}}(E,\nabla)$ maps to 0 in
+$H^1(X,G^\vee 
+\otimes_{G_{X/\mathcal{F}}}\text{End}_{\mathcal{O}_{X/\mathcal{F}}}
+E^{\nabla}$.
+
+The analogue of Beauville's lemma \ref{lemma-beauville} is
+
+\begin{lemma}[Beauville]
+\label{lemma-analogue-beauville}
+Suppose $N_{\mathcal{F}}=\mathcal{A} \oplus B$ such that
+$\nabla^B\mathcal{A} \subseteq 
+\mathcal{F}^\vee \otimes_{\mathcal{O}_X}\mathcal{A}$
+and $\nabla^B \mathcal{B} \subseteq \mathcal{F}^\vee\otimes_{\mathcal{O}_X}
+\mathcal{B}$.
+Let $\nabla_{\mathcal{A}}$ and $\nabla_{\mathcal{B}}$ be a flat
+ $\mathcal{F}$-connection on $\mathcal{A}$ and $\mathcal{B}$.
+
+Then $\text{at}_{X/\mathcal{F}}(\mathcal{A},\nabla_{\mathcal{A}})
+\in H^1(X,\Omega_{X/\mathcal{F}}^1\otimes_{\mathcal{O}_{X/\mathcal{F}}}
+\text{End}_{\mathcal{O}_{X/\mathcal{F}}}\mathcal{A}^{\nabla_{\mathcal{A}}}$ 
+comes from
+$H^1(X,(\mathcal{A}^{\nabla_{\mathcal{A}}})^\vee
+\otimes_{X/\mathcal{F}}\text{End}
+_{\mathcal{O}_{X/\mathcal{F}}}\mathcal{A}^{\nabla_{\mathcal{A}}}$.
+\end{lemma}
+
+\begin{proof}
+Same proof but we need a Lie bracket on
+$T_{X/\mathcal{F}}=N_{\mathcal{F}}\subseteq 
+N_{\mathcal{F}}\overset{p}{\leftarrow}T_X$.
+Let $v_1,v_2$ be local sections on $T_{X/\mathcal{F}}$ 
+with $v_1=p(t_1)$ and $v_2=p(t_2)$.
+Define
+$$
+[v_1,v_2]=p([t_1,t_2]).
+$$
+One can check that this a Lie bracket on $T_{X/\mathcal{F}}$.
+Suppose that $t_1 \in \mathcal{F}$. Then
+$$
+p([t_1,t_2])\overset{\text{def}}{=}\nabla_{t_1}^{\mathcal{B}}v_2=0.
+$$
+For $v_3 \in \mathcal{F}$,
+$$
+\nabla_{v_3}^{\mathcal{B}}[v_1,v_2]
+=p([v_3,[t_1,t_2]])=\pm\nabla_{v_3}^{\mathcal{B}}v_1\pm
+\nabla_{v_3}^{\mathcal{B}}v_2=0.
+$$
+\end{proof}
+
+\begin{lemma}
+\label{lemma-vanishing-chern-class}
+Suppose that $\mathcal{F}$ is a regular foliation on $X$.
+Let $N_{\mathcal{F}}=\mathcal{L}_1 \oplus \ldots \oplus \mathcal{L}_q$
+be line bundles on $X$,
+$\nabla^{\mathcal{B}}\mathcal{L}_i\subseteq 
+\mathcal{F}^\vee\otimes\mathcal{L}_i\rightsquigarrow 
+\nabla_i$.
+Suppose $(\mathcal{L}_i,\nabla_i)\cong(\mathcal{L}_j,\nabla_j)$
+for all $i,j$.
+Then $c_1(\mathcal{L}_i)=0$.
+\end{lemma}
+
+\begin{proof}
+By the Comparison Lemma,
+\begin{align*}
+H^1(X,\Omega_{X/\mathcal{F}}^1 &\longrightarrow H^1(X,\Omega_X^1) \\
+\text{at}_{X/\mathcal{F}}(\mathcal{L},\nabla_i) &\longmapsto 
+\text{at}(\mathcal{L}_i),
+\end{align*}
+
+\noindent
+it suffices to prove that $\text{at}_{X/\mathcal{F}}(\mathcal{L}_i,\nabla_i)$
+vanishes.
+$$
+\text{at}_{X/\mathcal{F}}(\mathcal{L}_i,\nabla_i)
+\in H^1(X,\Omega_{X/\mathcal{F}}^1)
+=\bigoplus_{j=1}^9 H^1(X,(\mathcal{L}_j^{\nabla_j})^\vee)
+$$
+comes from $H^1(X,(\mathcal{L}_i^{\nabla_i})^\vee)$.
+\end{proof}
+
+\begin{example}
+\label{example-degree-2-line-bundle-on-e}
+$A=E^1 \times B^{n-1}$, an abelian variety.
+Let $ L$ be the pullback of a degree 2 divisor on $E$.
+Then there exists  $T_X \xymatrix{\ar@{->>}[r]&}L^{\oplus n-1}$.
+\end{example}
+
+\begin{proposition}
+\label{proposition-}
+$\mathcal{F}$ regular foliation of dimension 1 on $X$ complex projective
+of dimension $\geq 3$.
+Suppose $\mathcal{F}$ is transversally projective flat
+and that $X$ contains a rational curve.
+Then $\mathcal{F}$ is a $\mathbb{P}^1$-bundle and it is tangent
+to $\mathcal{F}$.
+\end{proposition}
+
+\medskip\noindent
+Now we explain what it means to be projectively flat.
+It is when the projectivization of the normal bundle $\mathbb{P}(N)$ 
+is induced by a representation of $\pi_1(X) \to \text{PGL}_g$
+it comes with an Ehresmann connection on
+$$
+\xymatrix{
+\mathbb{P}(N)=\mathbb{P}\ar[d]^{f}\\
+X
+}
+$$
+$T_{\mathbb{P}}=T_f \oplus g$.
+
+Now, it is also called transversally projectively flat
+if $\nabla^B$ is a partial connection on $N$ 
+and there exists a foliation $\mathcal{H}$ on
+$$
+\xymatrix{
+\mathbb{P}(N)\ar[d]\\ X
+}
+$$
+such that $\mathcal{H}$ projects onto $\mathcal{F}$.
+Transversality means that $\mathcal{H} \subseteq \mathcal{G}$.
+
+Finally, transversally projectively flat means that
+it is induced on a $\text{Mon}(\mathcal{F})$-module
+by a representation of
+$\pi_1(\text{Mon}(\mathcal{F}) \to \text{PGL}_g$.
+
+
+
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
