@@ -4076,7 +4076,7 @@ category of dga algebras.
 \medskip\noindent
 Now we move to differential graded algebras (dga).
 A morphism of dgas (which I think only means that commutes with
-the differentials) is calles {\it quasi-isomorphism} if it
+the differentials) is called {\it quasi-isomorphism} if it
 induces isomorphisms on all $H^i(A^\bullet)$.
 
 A dga is {\it formal} if it is connected to $H^\bullet(A^\bullet)$
@@ -4975,7 +4975,252 @@ by a representation of
 $\pi_1(\text{Mon}(\mathcal{F}) \to \text{PGL}_g$.
 
 
+\section{Dolbeault cohomology of nilmanifolds}
+\label{section-dolbeault-cohomology-of-nilmanifolds}
 
+\noindent
+Misha Verbitsky, IMPA.
+Geometric Structures Seminar, IMPA. 
+November 6, 2025.
+
+\medskip\noindent
+{\bf Abstract.}
+A nilmanifold is a (left) quotient of a nilpotent Lie group by a cocompact
+lattice. If this Lie group is equipped with a left-invariant complex structure,
+the quotient is called a complex nilmanifold. Examples of complex nilmanifolds
+include Kodaira-Thurston surface and many other non-Kahler complex manifolds.
+The differential graded algebra of invariant differential forms on a nilmanifold
+has the same cohomology as a nilmanifold, as shown by Nomizu. I am going to
+explain a Dolbeault cohomology version of this theorem. A Lie algebra of a
+nilmanifold admits a natural rational structure, induced by the cocompact
+lattice. If the complex structure operator, acting on the Lie algebra, has
+rational coefficients, Console and Fino proved that the Dolbeault cohomology of
+a nilmanifold is equal to the Dolbeault cohomology of its invariant forms. I
+will describe an attempt to prove this result for a general nilpotent Lie
+algebra, based on number-theoretic arguments.  
+
+\medskip\noindent
+Let $G$ be a nilpotent Lie group.
+[For me this would mean that the Lie algebra of $G$ is
+nilpotent as in Lie Algebras Definition
+\ref{lie-algebras-definition-nilpotent-and-solvable-Lie-algebras},
+but according to Misha this would be the case for $G$ 
+connected only; so there's must some other notion
+of nilpotent Lie groups.]
+A {\it nilmanifold} $M$ is a manifold with a transitive action
+of a nilpotent Lie group. This means that $M=G/\Gamma$.
+
+\begin{theorem}[]
+\label{theorem-}
+
+\end{theorem}
+
+\noindent
+Let $G$ be a real Lie group
+and $I \in \text{End}(TG)$ with $I^2=-\text{Id}$.
+Suppose $I$ is right-invariant.
+Then $I$ is integrable iff $[T^{1,0}G,T^{1,0}G]\subset T^{1,0}G$
+iff $\mathfrak{g}^{1,0}\subset\mathfrak{g}\otimes\mathbb{C}$
+where $\mathfrak{g}^{1,0}$ is the $\sqrt{-1}$-eigenspace of $I$.
+
+A {\it complex nilmanifold} is $(G,I)/\Gamma$.
+
+\begin{example}
+\label{example-iwasawa-manifold}
+An {\it Iwasawa manifold} is a quotient of the set
+of upper triangular matrices with 1 on the diagonal
+(this group is $U_3(\mathbb{C})$) by a lattice $\Gamma$.
+For example, we can take $\Gamma=U_3(\mathbb{Z}[\sqrt{-1}])$.
+\end{example}
+
+\noindent
+The complex structure $I$ is bi-invariant iff it is paralelizable.
+
+\medskip\noindent
+Let $E$ be an elliptic curve with an ample line bundle $L$.
+We put an action on $\text{Tot}L$ given by multiplication by
+$\lambda \in \mathbb{C}$ for $|\lambda|>0$.
+
+\begin{theorem}
+\label{theorem-de-rham-and-chevalley-eilenberg}
+De Rham cohomology of a nilmanifold coincides with the
+CE cohomology of $\mathfrak{g}$.
+\end{theorem}
+
+\begin{theorem}[Console-Fino]
+\label{theorem-console-fino}
+For complex nilmanifolds,
+$H^{\bullet,\bullet}(\mathfrak{g}^\bullet,\overline{\partial}$ and
+$H^{\bullet,\bullet}_{\overline{\partial}}(M)$ are isomorphic.
+\end{theorem}
+
+\noindent
+There's several results addressing a converse situation
+(when the algebras are isomorphic) and other situations
+involving fibrations.
+
+\medskip\noindent
+Now we make a sudden change to deformation theory.
+
+\begin{lemma}
+\label{lemma-}
+Complex spaces on $V=\mathbb{R}^{2n}$ are uniquely determined
+by $W \in V \otimes_{\mathbb{R}}\mathbb{C}$ 
+such that $W \oplus \overline{ W}=V \otimes \mathbb{C}$
+which is an element in $\text{Gr}(n, V \otimes \mathbb{C})$.
+\end{lemma}
+
+\begin{definition}
+\label{definition-}
+Let $\mathfrak{g}$ be a Lie algebra and $\mathfrak{g}_\mathbb{C}$ 
+its complexification.
+The set of complex structures on $\mathfrak{g}$ is $\text{Comp}(\mathfrak{g})$ 
+which is $\{ W \in \text{Gr}_0(\mathfrak{g}_\mathbb{C}:
+W \subset W \subset \mathfrak{g}_{\mathbb{C}}\text{ is a subalgebra}\}$ 
+since being a subalgebra means $[\mathfrak{g}^{1,0},\mathfrak{g}^{1,0}]
+\subset \mathfrak{g}^{1,0}$.
+\end{definition}
+
+We can define a variety out of this:
+$$
+\overline{\text{Comp}(\mathfrak{g}_{\mathbb{C}}}
+=\{W \in \text{Gr}(n,\mathfrak{g}_{\mathbb{C}}:
+\text{$W$ subalgebra}\}
+$$
+is a complex subvareity of $\text{Gr}(n,\mathfrak{g}_{\mathbb{C}})$.
+
+
+\begin{definition}
+\label{definition-field-of-defition}
+Let $X \subset \mathbb{C}P^n$ be a projective subvariety.
+Consider the smallest field $k \supset \mathbb{Q}$ such that
+any ideal $I$ of $X$ [ideal in the coordinate algebra of $X$?]
+can be generated by polynomials with coefficients
+in $k[k^n]$ is called a {\it field of definition}.
+\end{definition}
+
+\noindent
+Apparently there's some discussion about this notion
+not being easily defined.
+
+\begin{lemma}
+\label{lemma-}
+$\text{Gal}_{\mathbb{Q}}(k)$ acts on $\mathbb{P}_k^n$.
+Let $X \subset \mathbb{P}^n$ be a projective subvariety
+and $\Gamma \subset \text{Gal}_{\mathbb{Q}}(k)$
+the stabilizer of $X$.
+Then the field of definition of $X=\{\lambda \in k:\Gamma(\lambda)=\lambda\}$.
+\end{lemma}
+
+\noindent
+We have a simpler definition of field of definition for a point
+(which is apparently the former definition when the variety is a point)
+
+\begin{definition}
+\label{definition-field-of-definition-point}
+For a point $(z_1,\ldots,z_n) \in \mathbb{C}^n$, its
+{\it field of definition} is the field generated by $z_1,\ldots,z_n$.
+\end{definition}
+
+\noindent
+So, for instance, a rational point has transcendence degree 0.
+
+\begin{remark}
+\label{remark-}
+Let $X$ be an $n$-dimensional algebraic variety
+defined over $\mathbb{Q}$ or any finite extension of $\mathbb{Q}$,
+and let $\pi:X\to \mathbb{C}^n$ be finite dominant over $\mathbb{Q}$.
+\end{remark}
+
+
+\noindent
+We have a fun theorem:
+
+\begin{theorem}
+\label{theorem-fun-theorem}
+Let $X$ be an irreducible complex algebraic variety defined over $\mathbb{Q}$.
+Then the group $\text{Aut}_\mathbb{Q}(\mathbb{C})$ acts transitively
+on points of maximal transcendence degree in $X$.
+\end{theorem}
+
+\begin{definition}
+\label{definition-algebraic-point}
+We say that a point $x \in X$ is {\it algebraic} if
+its transcendence degree over $k_X$ is zero.
+\end{definition}
+
+\noindent
+It's not very clear whether the variety $X$ is projective or affine.
+
+\begin{lemma}
+\label{lemma-algebraic-points-are-dense}
+The set of algebraic points in $X\subset\mathbb{C}P^n$ is dense
+in the analytic topology.
+\end{lemma}
+
+\begin{theorem}
+\label{theorem-aut-orbit-of-point}
+Let $X$ be a complex (affine) algebraic variety defined over $\mathbb{Q}$.
+Consider an $\text{Aut}_{\mathbb{Q}}\mathbb{C}$-orbit of a point
+$p \in X$. Then the closure of its orbit is a
+minimal subvariety $Z \subset X$ defined
+over $\mathbb{Q}$ and containing $p$.
+\end{theorem}
+
+\noindent
+Now we introduce a Galois action on Dolbeault cohomology.
+
+\begin{theorem}
+\label{theorem-}
+$\mathfrak{g}$ nilpotent Lie algebra, $M$ corresponding nilmanifold,
+$\sigma \in \text{Aut}_{\mathbb{Q}}(\mathbb{C})$,
+and let $J=\sigma(I) \in \text{Comp}(G)$.
+Then $\dim H^{p,q}_{\overline{\partial}}(M,I)
+=\dim H^{p,q}_{\overline{\partial}}(M,J)$ for all $p,q$.
+\end{theorem}
+
+From this it follows that
+
+\begin{lemma}
+\label{lemma-console-fino-complex-structure}
+For a nilmanifold with complex structure $I$,
+if the field of definition of $I$ is $\mathbb{Q}$,
+then the Console-Fino map
+$H_{\overline{\partial}}^{p,q}(\mathfrak{g})
+\to
+H_{\overline{\partial}}^{p,q}(M)$ is an isomorphism.
+\end{lemma}
+
+\noindent
+The idea is that if we know the result for algebraic
+points then we'll have it for transcendental points as well.
+Namely,
+
+\begin{lemma}
+\label{lemma-if-console-fino-for-algebraic-then-holds-for-transcendental}
+If Console-Fino is an isomorphism for all algebraic complex structures,
+then it holds for all transcendental complex structures too.
+\end{lemma}
+
+\begin{proof}
+Let $I \in \text{Comp}(\mathfrak{g})$ be trascendental.
+Consider the variety $\overline{\text{Aut}_{\mathbb{Q}}\mathbb{C}}$,
+which is algebraic and thus contains algebraic points.
+Then Console-Fino is an isomorphism on such points.
+Then it is so in a neighbourhood of this point.
+Then it is so in the orbit of this neighbourhood.
+\end{proof}
+
+\noindent
+Consider $(\mathfrak{g},I)$ with $I$ with number field $k$.
+Consider $\tilde{\mathfrak{g}}=\bigoplus_{\sigma \in \text{Gal}(k:\mathbb{Q})}
+(\mathfrak{g},\sigma(I))$…
+this constructions leads to a Lie algebra $(\tilde{\mathfrak{g}},\tilde{I})$
+equipped with a complex structure defined over $\mathbb{Q}$.
+This satisfies Console-Fino. We can lift $(\tilde{M},\tilde{I})$
+since it remains Dolbeault harmonic --- which is the main tool used by
+Colsole-Fino in their theorem.
+This is how to proof Console-Fino for complex structures over a closed field.
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
