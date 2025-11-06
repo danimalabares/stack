@@ -4488,11 +4488,131 @@ simple multi-curve} \\ \text{with integral coefficients}}\}.
 \end{align*}
 \end{definition}
 
-Next time we will explain the fact that
+\medskip\noindent
+Now we will explain the fact that there are one-to-one correspondences
 \begin{align*}
 ML(\tau)&\xymatrix{\ar@{<->}[r]&}w(\tau)\\
-ML_{\mathbb{Z}}(\tau)\xymatrix{\ar@{<->}[r]&}w_{\mathbb{Z}}(\tau).
+ML_{\mathbb{Z}}(\tau)&\xymatrix{\ar@{<->}[r]&}w_{\mathbb{Z}}(\tau).
 \end{align*}
+
+\noindent
+In a simple case where we pick a multicurve
+$\lambda \in ML_{\mathbb{Z}}(\tau)$, the associated measure
+is just counting the intersection number
+of the curve with a perpendicular segment near
+the train track edge.
+
+The following argument appears to be a converse construction.
+Given a solution to the switch equations,
+i.e. an element in $\omega(\tau)$, we can produce
+a multicurve $\lambda \in ML_{\mathbb{Z}}(\tau)$.
+(The method is essentially putting as many strands
+as the weights say near the vertex;
+this yields formal sums of curves.)
+This also works for formal sums with rational coefficients.
+And for non-negative real coefficients, we take a thickening of $\tau$.
+
+\begin{theorem}[Thurston]
+\label{theorem-thurston-train-tracks}
+The weights on $\tau$ uniquely determine a transverse measure on $L$.
+\end{theorem}
+
+\medskip\noindent
+Facts:
+\begin{enumerate}
+\item Every $\lambda \in MS(S)$ 
+is carried by some train track $\tau$ and determines
+a unique point in $\omega(\tau)$.
+\item There are finitely many train tracks $\tau_i$ such that
+every $\lambda \in ML(S)$ is carried by at least $\tau_i$.
+From this it follows that we can write 
+$ML(S)=ML(\tau_1)\cup  ML(\tau_2)\cup \ldots\cup ML(\tau_n)$ 
+and $ML(\tau)\approx \omega(\tau)\approx \mathbb{R}^{E-V}$
+(under very mild conditions on the train tracks).
+
+Here is an exercise: suppose $S$ is closed. Show that $E-V \leq  6g-6$, and
+$E-V=6g-6$ if $\tau$ is maximal (which means that all complementary
+regions are triangles).
+
+\item $ML(\tau_i)\cap ML(\tau_j)$ for $i \neq j$ has dimension
+$<6g-6$.
+\end{enumerate}
+
+Given those facts, 
+\begin{align*}
+ML(S)&=ML(\tau_1)\dot\cup \ldots \dot\cup ML(\tau_n)\\
+&=\omega(\tau_1)\dot\cup \ldots\dot\cup \omega(\tau_n).
+\end{align*}
+
+\noindent
+In particular, $ML(S)\approx \mathcal{E}^{6g+6L+2r}$
+($\omega(\tau_1)\approx\mathbb{R}^{6g+6L-2r}$).
+We may now introduce a measure on the space of laminations:
+
+\begin{definition}
+\label{definition-thurston-measure}
+The {\it Thurston measure} on $ML(S)$ is
+$$
+\lim_{L\to\infty}\frac{1}{L^{6g-6+2r}}\sum_{\lambda \in ML_{\mathbb{Z}}(S)}
+\delta_{\frac{1}{L}\lambda}
+$$
+\end{definition}
+
+\noindent
+One checks that this is a Lebesgue measure (in the limit) as follows:
+\begin{align*}
+ML_{\mathbb{Z}}(S)&=\bigcup_{i=1}^nML_{\mathbb{Z}}(\tau_i)\\
+&\frac{1}{L^{6g-6+2r}}\sum_{\lambda \in ML_{\mathbb{Z}}\tau_1}
+\delta_{\frac{1}{L}\lambda}\\
+&\frac{1}{L^{6g-6+2r}}\sum_{(\omega)\in \omega_{\mathbb{Z}}(\tau_i)}
+\delta_{\frac{1}{L}\omega}\\
+&\frac{1}{L^{6g-6+2r}}\sum_{p \in \mathbb{Z}^{6g-6+2r}}
+\delta_{\frac{1}{L}p}
+\end{align*}
+
+\noindent
+on $\mathbb{R}^{6g-6+2r}$.
+
+Notice that there is an action of the mapping class group
+on the space of laminations: a multicurve is taken to another multicurve.
+
+The following theorem was used for proving the speaker's results:
+
+\begin{theorem}[Masur '85]
+\label{theorem-masur-85}
+$m_{Thu}$ is $\text{Map}(S)$-invariant
+and is ergodic with respect to $\text{Map}(S)$.
+\end{theorem}
+
+\medskip\noindent
+Now we discuss (geodesic) currents.
+Consider de space $\mathcal{G}(\tilde{S})$ 
+of unoriented geodesics on $\tilde{S}=\mathbb{H}^2$
+as $(S^1\times S^1\setminus\Delta)/(a,b)\sim (b,a)$.
+This  is well defined (even topologically, i.e. 
+independently of the choice of metric)
+since two geodesics on Poincaré plane are determined by their endpoints.
+
+\begin{definition}
+\label{definition-geodesic-current}
+A {\it (geodesic) current} is a $\pi_1(S)$-invariant
+Radon measure on $\mathcal{G}(S)$.
+\end{definition}
+
+\begin{example}
+\label{example-multicurves-are-currents}
+Any (multi-)curve is a current.
+\end{example}
+
+\noindent
+We shall see that not only curves, but also measured laminations
+and in fact the Teichmüller space are contained in currents:
+\begin{align*}
+\{\text{curves}\}&\subset C(S)\\
+ML(S)&\subset C(S)\\
+\mathcal{T}(S)&\subset C(S)
+\end{align*}
+
 
 
 
@@ -4530,7 +4650,7 @@ $$
 \underbrace{f}_{\substack{\text{local function} \\ \text{on }U}}
 (\underbrace{e}_{\substack{\text{local section} \\ \text{of $E$ on  $U$}}}
 , \underbrace{\alpha}_{\substack{\text{local section} \\ 
-\text{of $\Omega^1_X \otimes E$}}}
+\text{of $\Omega^1_X \otimes E$}}})
 =(fe,f\alpha-df \otimes e) 
 $$
 The {\it Atiyah class} of $E$ is the element
