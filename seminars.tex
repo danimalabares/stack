@@ -4225,7 +4225,7 @@ and that the Dolbeault dga of a nilmanifold $M$ is never formal.
 
 
 
-\section{Hyperbolic surfaces and Mizakhani's curve counting}
+\section{Hyperbolic surfaces and Mirzakhani's curve counting}
 \label{section-hyperbolic-surfaces-and-mizakhani-curve-counting}
 
 \noindent
@@ -4612,6 +4612,133 @@ and in fact the Teichmüller space are contained in currents:
 ML(S)&\subset C(S)\\
 \mathcal{T}(S)&\subset C(S)
 \end{align*}
+
+Let $X$ be a hyperbolic metric on $S$.
+Let $U=\{\lambda \in ML(S):\ell_X(\lambda)\leq 1\}$.
+If we let $m^L(U_X)=\frac{1}{L^{6g-6}}
+\#\{\gamma \in ML_{\mathbb{Z}}(S)|\ell_X(\gamma)\leq  L\}$,
+then $m^L(U_X) \to m_{\text{Thu}}(U_X):=B(X)$
+ as $L \to \infty$.
+
+\medskip\noindent
+In the following, we think os simple
+curves as measured laminations and currents.
+Recall that a measured lamination is
+a union of disjoint curves.
+$$
+\xymatrixcolsep{4em}\xymatrix{
+ML_{\mathbb{Z}}(S)\ar@{^{(}->}[r]&\overline{
+\{\text{simple multicurves}\}}\ar@{^{(}->}[d]\ar@{^{(}->}[r]
+^-{\substack{\text{equality for} \\ \text{closure only!}}}
+&ML(S)\ar@{^{(}->}[d]\\
+&\overline{\{\text{multi-curves}\}}\ar@{^{(}->}[r]^-{
+\substack{\text{equality for} \\ \text{closure only!}}}
+&CS=\{\text{geodesic currents}\}.
+}
+$$
+
+\medskip\noindent
+Facts:
+\begin{enumerate}
+\item (Banahon.) The geometric intersection number of curves
+extends to 
+$$
+i:C(S) \times C(S) \to \mathbb{R}_{\geq 0}
+$$
+continuously, bi-linear,  $\text{Map}(S)$-invariant.
+
+\item $ML(S)=\{\mu \in C(S):i(\mu,\mu)=0\}\rightsquigarrow 
+m_{\text{Thu}}$ measure on $C(S)$ 
+(supported on $ML(S)$).
+
+\item $C_{\text{fin}}(S)=\{\mu \in C(S):
+(\mu,\lambda)>0 \forall \lambda \in C(S)\},$ 
+the {\it filling currents}, is an open dense subset of $C(S)$.
+
+\item (Banahan.) For all $X$ hyperbolic metric on $S$,
+there exists a unique $\lambda_X \in C(S)$ 
+such that $i(\lambda_X,\gamma)=\ell_X(\gamma)$ for all curves $\lambda$ 
+(Liouville current) $\rightsquigarrow $ $\mathcal{T}(S) \subset C(S)$.
+This way we have a notion of hyperbolic length of currents $\mu \in C(S)$:
+$\ell_X(\mu)=i(\lambda_X,\mu)$.
+\end{enumerate}
+
+\begin{definition}
+\label{definition-nice-length-function}
+A length function on curves on $S$ 
+is {\it nice} if it extends to a function
+$F:C(S) \to \mathbb{R}_{\geq 0}$ wich is
+continuous, homogeneous ($F(c\cdot\mu)=cF(\mu)\;\forall c>0$,
+positive ($F(\mu)>0\;\forall \mu\neq 0$.
+\end{definition}
+
+\begin{example}
+\label{example-nice-length-functions}
+Following are examples of nice length functions:
+\begin{itemize}
+\item Hyperbolic length.
+\item (Otal.) Negatively curved Riemannian metric.
+\item (E-Parlier-Souto.) (Singular) Riemannian metric.
+\item (Duchen-Leinhein-Rafi.) Euclidean cone surface.
+\item (Banachan.) $\sigma \in C_{fill}(S)$,
+$\ell_{\sigma}=(\sigma,M)$.
+\item Word length w.r.t. finite generating set $\pi_1(S)$.
+\end{itemize}
+\end{example}
+
+\medskip\noindent
+Let us go back to our original problem 
+of counting curves of a specific type.
+Fix $\gamma_0$ a (multi-)curve (not necessarily simple).
+$\gamma$ is of type $\gamma_0$ if
+$\gamma \in \text{Map}(S)\cdot \gamma_0$.
+
+We want asymptotics of
+$\#\{\gamma\text{ type }\gamma_0:\ell_X(\gamma)\leq L\}$.
+Fix $\gamma_0$ and $L>0$. Consider $m^L_{\gamma_0}=\frac{1}{L^{6g-6}}
+\sum_{\gamma\text{ type }\gamma_0}\delta_{\frac{1}{L}\gamma}$
+measure on $C(\gamma)$.
+
+Note that $m^L_{\gamma_0}(U_X)=
+\frac{1}{L^{6g-6}}\#
+\{\gamma\text{ type }\gamma_0:\ell_X(\gamma)\leq L\}$.
+
+We are ready to state the main theorem:
+
+\begin{theorem}[Mirzakhani '08, E-Souto '22]
+\label{theorem-mirzakhani-e-souto}
+For any $\gamma_0$ on $S=S_g$ 
+$$
+m^L_{\gamma_0}\to\frac{c(\gamma_0)}{b_g}m_{\text{Thu}},\qquad L\to \infty.
+$$
+\end{theorem}
+
+\noindent
+Mirzakhani proved it for simple curves,
+while we now presented a general version using currents.
+We write the constants as
+\begin{align*}
+c(\gamma_0)&=m_{\text{Thu}}(\{\lambda \in ML(S)/\text{Stab}(\gamma_0)
+|i(\lambda,\gamma_0)\leq 1\},\\
+b_g&=\sum_{\alpha_0 \in ML_\mathbb{Z}/\text{Map}(S)}c(\alpha_0).
+\end{align*}
+
+\noindent
+Mirzakhani used another expression.
+This one has the virtue of being purely combinatorial.
+
+Mirzakhani showed the following example.
+Consider the genus 2 surface $S_2$.
+Then
+$$
+\lim_{L \to \infty}
+\frac{\#\{\text{non-separating }\gamma|\ell_X(\gamma)\leq L\}}{
+\#\{\text{separating }\gamma|\ell_X(\gamma)\leq L\}}
+=48.
+$$
+This may be interpreted by saying that when
+taking a closed simple geodesic,
+the probability of it being separating is $\frac{1}{48}$.
 
 
 
