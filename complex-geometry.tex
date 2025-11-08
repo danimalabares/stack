@@ -1212,8 +1212,6 @@ happen after blowing up.
 
 \noindent
 Here I discuss deformations in the category of complex spaces.
-Let's start with complex manifolds and see how far we can go without
-ringed spaces and the parallel theory the category of schemes.
 
 Let's just do a summary of \cite[Chapter 9]{Voisin}.
 
@@ -1225,7 +1223,7 @@ A theorem by Ehresmann says that if $\phi:\mathcal{X} \to B$ is a
 proper submersion of differentiable manifolds
 (no complex structure), with $B$ contractible and $0 \in B$ 
 some distinguished point,
-then there total space $\mathcal{X}$ is trivial as a 
+then the total space $\mathcal{X}$ is trivial as a 
 manifold over $B$, i.e.
 there exists a diffeomorphism
  $$
@@ -1249,7 +1247,7 @@ Restricting everything to the fibre $X=\phi^{-1}(0)$ we get
 \begin{equation}
 \label{equation-short-exact-sequence-deformation}
 \xymatrix{
-0\ar[r]&T_X\ar[r]&T_{\mathcal{X}|X}\ar[r]&\phi^*T_{B|X}\ar[r]&0
+0\ar[r]&T_X\ar[r]&T_{\mathcal{X}|X}\ar[r]&\phi^*T_{B|X}\ar[r]&0.
 }
 \end{equation}
 There's what seems to be a really nice result saying that
@@ -1281,7 +1279,7 @@ where $\mathcal{M}_0$ is the maximal ideal
 of $\mathcal{O}_{B,0}$ consisting of the holomorphic
 functions vanishing at 0.
 This means that a function in $\mathcal{M}^2_0$ 
-is of the form $f=gh$ for $g,h \in \mathcal{M}_0$,
+is (a finite sum of terms) of the form $f=gh$ for $g,h \in \mathcal{M}_0$,
 which means that $df=d(gh)=hdg+gdh=0$ at $0$
 since both $g$ and $h$ vanish at $0$.
 That is, this sheaf contains functions that vanish
@@ -1331,7 +1329,7 @@ Prove that $\dim \mathcal{X} \leq g$.
 For this exercise I assume that $\mathcal{X}\to B$
 is a family such that any fiber is contained in 
 the K3 surface $M$. By the result explained above
-all we need to do is compute $h^0(X,T_X)$.
+all we need to do is compute $h^1(X,T_X)$.
 Indeed, the dimension of $\mathcal{X}$ is described
 well enough locally via the first order deformation
 $X_\varepsilon \to B_\varepsilon=\Spec \mathbb{C}[\varepsilon]/(\varepsilon^2)$.
@@ -1345,30 +1343,32 @@ are contained in the K3 surface $M$.
 For now I would just claim that this is indeed the case,
 i.e. that any family of deformations of $C$ has the same dimension.
 
-As for how to compute $h^1(T_C)$, we do a few steps:
+As for how to compute $h^1(T_C)$, the only thing
+that makes sense is using the normal bundle exact sequence.
+This gives a long exact sequence in cohmology,
+$$
+\xymatrixcolsep{1em}
+\xymatrix{
+0\ar[r]&
+H^0(T_C)\ar[r]&H^0(T_X|_C)\ar[r]&H^0(N)\ar[r]&H^1(T_C)\ar[r]&H^1(T_X|_C)\ar[r]&
+H^1(N)\ar[r]&0
+}
+$$
+and then I just need to compute neighbouring terms of
+$H^1(T_X)$, namely $H^0(N)$ and $H^1(T_X|_C)$.
+In fact, an old computation shows that $h^0(N)=g+1$.
+About $H^1(T_X|_C)$ I'm not sure…
+Notice that if we want $h^1(T_C)\leq g$
+we need the map $H^0(N)\to H^1(T_C)$ to have kernel,
+so $H^0(T_X|_C)$ cannot be zero!
 
-\medskip\noindent
-Step 1. Adjunction formula: $N=\mathcal{O}_X(C)$.
 
-\medskip\noindent
-Step 2. Adjunction formula: $2g-2=(\mathcal{O}(C),\mathcal{O}(C))$.
-
-\medskip\noindent
-Step 3. Riemann-Roch for curves on surfaces:
-$\chi(\mathcal{O}(C))=2+\frac{1}{2}(\mathcal{O}(C),\mathcal{O}(C))$.
-
-\medskip\noindent
-Step 4. Steps 2 and 3 imply that
-$\chi(\mathcal{O}(C))=g+1$.
-
-\medskip\noindent
-Step 5. Serre duality and $X$ being a K3 imply that $h^2(\mathcal{O}(C))=0$.
-
-\medskip\noindent
-Step 6. Normal bundle exact sequence
-
-\medskip\noindent
-Step 7. Something's still missing…
+Other notes. Isn't the restricted tangent bundle 
+just the pullback bundle by the inclusion?
+At every point we put the holomorphic tangent space
+of the K3 surface?
+Also see \href{https://en.wikipedia.org/wiki/Teichm%C3%BCller_space}{wiki}
+on Teichmüller space for some remarks about the complex structure approach.
 \end{proof}
 
 
