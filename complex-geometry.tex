@@ -12,57 +12,6 @@
 
 \tableofcontents
 
-\section{Complex analysis in several variables}
-\label{section-complex-analysis-in-several-variables}
-
-\begin{lemma}
-\label{lemma-holomorphic-function-characterization}
-\cite{lec}, Theorem 1.21. Let $U\subseteq\mathbb{C}^n$ be open and $f:U\to
-\mathbb{C}$. The following are equivalent:
-\begin{enumerate}
-\item $f$ is holomorphic (i.e. it is continuous and has a complex partial
-derivative with respect to each variable at each point of $U$)
-\item $f$ is smooth and satisfies the following Cauchy-Riemann equations:
-\begin{equation}
-\label{equation-Cauchy-Riemann-several-variables}
-\frac{\partial u}{\partial x^j}=\frac{\partial v}{\partial y^j},\qquad 
-\frac{\partial u}{\partial y^j}=-\frac{\partial v}{\partial x^j}
-\end{equation}
-where $z^j=x^j+\sqrt{-1}y^j$ and $f(s)=u(z)+\sqrt{-1}v(x)$.
-\item For each $p=(p^1,\ldots,p^n)\in U$ there exists a neighbourhood of $p$ in
-$U$ on which $f$ is equal to the sum of an absolutely convergent power series of
-the form
-\begin{equation}
-\label{equation-Taylor-series-several-variables}
-f(z)=\sum_{i_1,\ldots,i_n}a_{i_1,\ldots,i_n}(z^1-p^1)\ldots(z^n-p^n)
-\end{equation}
-\end{enumerate}
-\end{lemma}
-
-\begin{proof}
-I will prove that if $f$ is holomorphic then it has a Taylor series for $n=2$. 
-First apply Cauchy integral formula on each variable to obtain
-$$
-f(z^1,z^2)=\frac{1}{(2\pi\sqrt{-1})^2}
-\int_{\substack{|z^1-w^1|=r \\ |z^2-w^2|=r}}
-\frac{f(w^1,w^2)}{(w^1-z^1)(w^2-z^2)}dw^1dw^2
-$$
-Now observe:
-\begin{equation}
-\label{equation-multivariable-Cauchy}
-\frac{1}{w^1-z^1}=\frac{1}{w^1-p^1+p^1-z^1}
-=\frac{1}{w^1-p^1}\frac{1}{1-\frac{p^1-z^1}{w^1-p^1}}
-\end{equation}
-And on the right-hand-side we have a geometric series so that we may write
-$$
-\frac{1}{w^1-z^1}
-=\frac{1}{w^1-p^1}\sum_{k=0}^\infty\left(\frac{p^1-z^1}{w^1-p^1}\right)^k
-$$
-finally substituting this into (\ref{equation-multivariable-Cauchy}) we may take
-the products $(p^1-z^1)^{k_1}(p^2-z^2)^{k_2}$ out of the integral and define the
-remaining term as $a_{k_1k_2}$.
-\end{proof}
-
 \section{Complex manifolds}
 \label{section-complex-manifolds}
 
@@ -1219,7 +1168,15 @@ Let $\mathcal{X}$ be a complex manifold, $B$ a complex manifold
 and $\phi:\mathcal{X} \to B$ a holomorphic map.
 We call $\phi$ a {\it family} if it is a proper holomorphic submersion.
 
-A theorem by Ehresmann says that if $\phi:\mathcal{X} \to B$ is a
+A theorem by Ehresmann says that any ``deformation'' of
+smooth real manifolds is trivial:
+
+\begin{theorem}[Ehresmann]
+\label{theorem-ehresmann}
+\begin{reference}
+\cite[Theorem 9.3]{Voisin}
+\end{reference}
+If $\phi:\mathcal{X} \to B$ is a
 proper submersion of differentiable manifolds
 (no complex structure), with $B$ contractible and $0 \in B$ 
 some distinguished point,
@@ -1230,6 +1187,42 @@ there exists a diffeomorphism
 T:\mathcal{X}\xrightarrow{\cong}X_0 \times B
 $$
 of manifolds over $B$, i.e. commuting with projection.
+\end{theorem}
+
+\begin{proof}
+The main tool is the theorem of tubular neighbourhoods,
+which says that there is a diffeomorphism of
+a nieghbourhood $W$ of $X_0$ in $\mathcal{X}$
+and a neighbourhood of $X_0$ in its normal bundle.
+(We have a normal bundle because $X_0$ is a submanifold of $\mathcal{X}$.)
+
+In particular this gives a differentiable retraction
+$T_0:W \to X_0$, which allows us to consider the map
+$$
+(T_0,\phi):W \to X_0 \times B.
+$$
+Since $T_0$ is a retraction 
+(it's the identity when restricted to $X_0$) and $\phi$ is a submersion,
+the map $(T_0,\phi)$ has nonsingular differential along $X_0$.
+Then we can invert it locally along $X_0$,
+and since $X_0$ is compact we obtain a whole
+neighbourhood $W'\subset W \subset \mathcal{X}$ 
+where the differential is nonzero and thus
+$(T_0,\phi)|_{W'}$ is an embedding
+(using the inverse function theorem).
+
+Finally we restrict the image of $(T_0,\phi)|_{W'}$ 
+to a neighbourhood $U\subset B$ of $0$,
+using properness of $\phi$ to ensure
+that $\phi^{-1}(U) \subset W'$ --- though I'm
+not exactly sure how.
+We have constructed a diffeomorphism
+$\phi^{-1}(U) \to X_0 \times U$ 
+commuting with the projection.
+
+This proof was only local; the global version
+is in \cite{Voisin} though it's not used in the rest of the text.
+\end{proof}
 
 In the complex situation, if $\phi:\mathcal{X} \to B$ is a family
 of complex manifolds and $0 \in B$, then
