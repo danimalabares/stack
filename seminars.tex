@@ -2737,7 +2737,7 @@ Let $f:\mathbb{P}^1 \to X$ be such that
 $f(p_i)=x_i$.
 
 Consider the space of morphisms mapping
-the  $p_i$ to $x_i$. It's known that it's tangent space
+the  $p_i$ to $x_i$. It's known that its tangent space
 at $f$
 is given by
 $$
@@ -2759,7 +2759,7 @@ means that the curves contain the points''.
 
 If $T_X|_{C}$ is balanced, $C$ can interpolate up to
 $$
-\text{floor function}(\frac{e(n+1-d)}{n_1}) +1
+\left\lfloor \frac{e(n+1-d)}{n_1} \right\rfloor +1
 $$
 general points. The case of $N_{C/X}$ is similar.
 
@@ -2818,6 +2818,7 @@ of degree $e$ with balanced
 $T_X|_{C}$ for every
 $e> \frac{n-1}{n+1-d}$.
 \end{enumerate}
+\end{theorem}
 
 \begin{theorem}
 \label{theorem-lucas2}
@@ -2838,6 +2839,7 @@ before balancedness, namely
 $T_X|_C \cong \mathcal{O}(e-1)\oplus\mathcal{O}(e)\oplus\mathcal{O}(e+1)$. 
 (I.e. we can only interpolate $e$ points if $e$ is odd.)
 \end{enumerate}
+\end{theorem}
 
 Next we give the main ideas in the proof.
 Let $C$ be the rational normal curve
@@ -2888,7 +2890,7 @@ $T_X|_C$.
 \noindent
 Combining the examples, Lemma \ref{lemma-split-normal-bundle}
 and Proposition \ref{proposition-induction},
-we settle that for $e \leq  \text{max}\{2d-2,n\}$.
+we establish that for $e \leq  \text{max}\{2d-2,n\}$.
 
 The following argument is used to show that 
 actually what we showed so far is enough for all degrees.
@@ -2910,13 +2912,6 @@ Basically, glue and smooth low degree curves
 (i.e. $e \leq  \text{max}\{2d-2,n\}$)
 to get all degrees
 
-\noindent
-
-\end{theorem}
-
-\noindent
-
-\end{theorem}
 
 \medskip\noindent
 Now we prove the result for quadrics,
@@ -5348,6 +5343,257 @@ This satisfies Console-Fino. We can lift $(\tilde{M},\tilde{I})$
 since it remains Dolbeault harmonic --- which is the main tool used by
 Colsole-Fino in their theorem.
 This is how to proof Console-Fino for complex structures over a closed field.
+
+
+
+
+
+\section{Holomorphic symmetric differentials, semiample bundles,
+fundamental groups}
+\label{section-holomorphic-symmetric-differentials-semiample-fundamental}
+
+\noindent
+Ernesto Mistretta, Università di Padova.
+Algebra Seminar, IMPA. 
+November 12, 2025.
+
+\medskip\noindent
+{\bf Abstract.}
+We will present some recent results and some open conjectures relating
+holomorphic symmetric differentials and the geometry or topology of a compact
+complex manifold, we will illustrate the difference in the projective, or
+Kaehler, or compact complex cases. Then we will apply some elementary
+constructions on semiample vector bundles to partially answer some of these
+questions.
+
+
+
+\medskip\noindent
+
+
+
+\noindent
+As a motivation,
+$$
+\xymatrix{
+&\text{differential forms}\ar[ld]\ar[rd]\\
+\text{topology}&&\text{geometry}
+}
+$$
+$X$ compact complex manifold, $E$ (holomorphic) vector bundle.
+$L$ line bundle, the  {\it Kodaira-Itaka dimension} is
+$\text{KI}(X,L)=k$ if $h^0(X,L^{\otimes m})=\mathcal{O}(m^k)$.
+
+{\it Holomorphic $p$-differentials} are elements of
+$H^0(X,\text{Sym}^m\Omega^p_X)$ for some $m>0$.
+
+A conjecture by Mumford: suppose that $X$ is a compact
+Kähler manifold, then $X$ is rationally connected if and only if
+for every  $m>0$ and for every $p>0$,  $H^0(X,\text{Sym}^m\Omega^p_X)=0$.
+
+Some relevant results are the following.
+
+\begin{theorem}[Campana-Demailly-Peterwell, 2015]
+\label{theorem-cdp}
+Suppose $X$ is a smooth and projective variety over $\mathbb{C}$.
+$X$ is rationally connected if and only if for every 
+ample line bundle there exists a positive constant $C_A>0$,
+such that $\forall p>0$, $\forall K>0$ and $\forall m>C_A K$,
+$$
+H^0(X,\text{Sym}^m\Omega^p_X \otimes A^K)=0.
+$$
+\end{theorem}
+
+\noindent
+Recall that if $X$ is a Kähler manifold and rationally connected,
+then $X$ is projective and $\pi_1(X)=0$.
+
+\begin{theorem}[Brunarbe-Campana, 2016]
+\label{theorem-bc16}
+Let $X$ be compact Kähler.
+Suppose that $\forall m>0$, $\forall p>0$,
+$H^0(X,\text{Sym}^m\Omega^p_X)=0$.
+Then $X$ is projective and $\pi_1(X)=0$.
+\end{theorem}
+
+\noindent
+What if we restrict to $p=1$?
+$H^0(X,\text{Sym}^m\Omega^1_X)$?
+
+A conjecture by Esnault says: let $X$ be a compact Kähler manifold.
+Suppose that $\forall m>0$, $H^0(X,\text{Sym}^m\Omega^1_X)=0$.
+Then $|\pi_1(X)|<\infty$.
+
+\begin{theorem}[Burnabbe-Klinger-Totsaro]
+\label{theorem-bkt}
+Suppose $X$ is a compact Kähler manifold.
+Suppose that there exists a finite-dimensional
+representation of $\rho:\pi_1(X)\to \text{GL}_r(k)$
+over some field $k$ such that $|\pi(\pi_1(X))|=\infty$.
+Then there exists $m>0$ such that
+ $H^0(X,\text{Sym}^m\Omega_X^1) \neq 0$.
+\end{theorem}
+
+\noindent
+Notice the relationship between Theorem \ref{theorem-bkt}
+and the conjecture by Esnault.
+
+\medskip\noindent
+Conjecturally, we have:
+\begin{enumerate}
+\item No holomorphic symmetric $p$-differentials for all $p$ 
+if and only if $X$ is rationally connected.
+\item No holomorphic symmetric 1-differentials, them $|\pi_1(X)|<\infty$.
+\end{enumerate}
+
+\noindent
+Question. Suppose there are some (many) nonzero holomorphic symmetric
+1-differentials, does this imply that $|\pi_1|=\infty$?
+What if $X$ is compact Kähler? And if $X$ is projective?
+
+Let's first answer the easiest of these questions.
+Let $X$ be compact Kähler with $H^0(X,\Omega^1_X)\neq 0$.
+By Hodge theorem, $b_1(X)=\dim_\mathbb{Q}H^1(X,\mathbb{Q})
+=2\dim_\mathbb{C}H^0(X,\Omega_X^1)$.
+Also, $H_1(X,\mathbb{Z})=\text{Ab}(\pi_1(X))$.
+In particular, if $b_1 \neq 0$,
+then $H_1(X,\mathbb{Z})=\mathbb{Z}^{b_1}\oplus$ torsion.
+
+\begin{theorem}[Brotbeck-Drondeau,2018]
+\label{theorem-brotbeck-drondeau18}
+$X \subseteq \mathbb{P}^N$ very gen. complete intersection
+of high degree such that $\dim X\leq N/2$.
+Then $\Omega_X^1$ is ample.
+(In particular, $\text{Sym}^m\Omega_X^1$ 
+is globally generated for $\gg m$.)
+Now if $\dim X\geq 2$, then $\pi_1(X)=\pi_1(\mathbb{P}^N)=0$.
+\end{theorem}
+
+\noindent
+In this case $\omega_X=\det(\Omega_X^1)$ is an ample line bundle.
+So the Kodaira dimension of $X$ is
+$\text{kod}(X)=\text{kod}(X,\omega_X)=\dim(X)$.
+
+\medskip\noindent
+Now we explain joint work with Franccesco Exposito from Padova.
+
+First, a conjecture (by E-M).
+Suppose $X$ is a compact complex manifold
+with $\text{kod}(X)<\dim(X)$. If $\Omega_X^1$ 
+is (weakly) semiample, then $|\pi_1(X)|=\infty$.
+
+The evidence is:
+\begin{enumerate}
+\item If $\dim X=1,2$, holds because of classification.
+\item If $X$ is projective, then the conjecture follows from
+a result of Hörng, which states that $\Omega_X^1$ is semiample,
+then there exists $X'\to X$ finite étale cover
+such that $X'\sim_{\text{bitat}}Y\times A$ where $A$
+is an abelian variety and  $\dim Y=\text{kod}(X)$.
+\item If $X$ is Kähler, the conjecture (E-M) follows
+from a conjecture of Wu-Zheng from 2002, which says that
+if  $\Omega^1_X$ is (NEF) semiample (which implies NEF), then
+there exists $X' \to X$ finite étale that admits a smooth fibration
+$X' \to Y$ in complex tori with $\dim Y=\text{kod}X$.
+In this case the fundamental groups of the tori are injected
+in the fundamental group of $X$, i.e.,
+$\pi_1(F) \hookrightarrow \pi_1(X)$.
+(It appears that this is proved via the Serre homotopy
+long exact sequence, though the Kähler hypothesis may needed, and
+it's not clear how…)
+This makes $|\pi_1(X)|=\infty$.
+
+\item If $X$ is a compact complex manifold and $\text{kod}(X)=0$,
+and $\Omega_X^1$ is (weakly) semiample, then $|\pi_1(X)|=\infty$.
+\end{enumerate}
+
+\noindent
+
+\begin{definition}
+\label{definition-}
+Let $E$ be a vector bundle on $X$, a compact complex manifold.
+Recall the construction
+$$
+\xymatrix{
+\mathbb{P}(E)\ar[d]^{\pi}\ar@{-}[r]&\pi^* E\ar@{->>}[r]
+&\mathcal{O}_{\mathbb{P}(E)}(1)\\
+X\ar@{-}[r]&E
+}
+$$
+$$
+\pi_*(\mathcal{O}_{\mathbb{P}(E)}(m))=\text{Sym}^m(E).
+$$
+\begin{enumerate}
+\item $E$ is {\it strongly semiample} if there exists $m>0$ 
+such that $\text{Sym}^mE$ is globally generated.
+\item $E$ is {\it weakly semiample} if 
+$\mathcal{O}_{\mathbb{P}(E)}(1)$ is semiample line bundle
+(i.e. $\mathcal{O}_{\mathbb{P}(E)}(m)$ is globally generated
+for some $m\gg 0$).
+\end{enumerate}
+\end{definition}
+
+\noindent
+Notice that these two definitions are not equivalent.
+Strongly implies weakly, but not conversely.
+To see that strongly implies weakly, consider the pullback
+$$
+\xymatrix{
+\pi^*\text{Sym}^nE=\text{Sym}^n\pi^*E\ar[r]\ar[d]&\mathbb{P}(E)\ar[d]^{\pi}\\
+\text{Sym}^mE\ar[r]&X
+}
+$$
+then
+ $$
+\text{Sym}^m\pi^* E \xymatrix{\ar@{->>}[r]&}\mathcal{O}_{\mathbb{P}(E)}(m).
+$$
+To see that weakly does not imply strongly, suppose $X$ is a smooth projective
+surface with $\text{kod}(X)=0$.
+Consider $E=\Omega_X^1$ semiample. We have that $\Omega_X^1$ 
+is strongly semiample if and only if $X$ is an abelian surface.
+Also, if $X$ is a hyperelliptic surface, then $\Omega_X^1$ 
+is weakly semiample.
+This means that $X$ hyperelleptic surface is the counterexample.
+
+\begin{theorem}[E-M]
+\label{theorem-em}
+Suppose that $X$ is compact complex and that
+$\text{kod}(X)=0$. Then
+\begin{enumerate}
+\item if $\Omega_X^1$ is strongly semiample then
+$X$ is a parallelalizable complex manifold.
+\item If $\Omega_X^1$ is weakly semiample,
+then $X$ is a finite étale Galois quotient $X\cong P/G$
+of a parallelizable manifold $P$.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}
+\label{definition-paralellizable}
+$X$ is {\it parallelizable} is  $\Omega_X^1\cong\mathcal{O}_X$.
+\end{definition}
+
+\noindent
+A $X$ is a compact complex manifold is parallelizable if and only if
+$X \cong H/\Gamma$ for $H$ a complex Lie group and $\Gamma\subset H$
+a discrete subgroup.
+Further, it is Kähler if and only if $H$ is a complex torus.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
