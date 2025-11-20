@@ -1,0 +1,255 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Algebra}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+\hfill
+\href{http://github.com/danimalabares/stack}{github.com/danimalabares/stack}
+
+\tableofcontents
+
+\section{Rings}
+\label{section-rings}
+
+\noindent
+So elementary that this is not in Stacks Project.
+
+\begin{theorem}
+\label{theorem-ideals-quotient-correspondence}
+Let $R$ be a ring and $I \subset R$ an ideal.
+There is a correspondence between ideals of $R$ containing $I$ 
+and ideals of $R/I$.
+\end{theorem}
+
+\begin{proof}
+We show that there are two maps between the set of ideals of $R$ 
+containing $I$ and the ideals of $R/I$ whose compositions
+are the identities in the corresponding set. One map is the projection
+to the quotient, and the other map is taking the elements
+whose equivalence class lies in a given ideal.
+
+Suppose that $\tilde{J}$ is an ideal of $R/I$.
+Define $J=\{j \in R : j+I \in \tilde{J}\}$, 
+the set of elements that project to $\tilde{J}$.
+Then $I \subset J$, because $i + I = I$ is the zero of $R/I$ 
+which is contained in any ideal of $R/I$.
+Also notice that $J$ is an ideal of $R$ since for any $r \in R$,
+$rj+I \in \tilde{J}$ by $\tilde{J}$ being an ideal.
+Notice that projecting $J$ back to $R/I$ gives $J$
+by definition.
+
+Conversely, we project to the quotient.
+Let $J$ be any ideal of $R$ containing $I$ 
+Let $\tilde{J}$ be the projection to $R/I$.
+Then $\tilde{J}$ is an ideal of $R/I$ by $J$ being an ideal of $R$.
+Consider the set $J'$ of all elements whose projection lies in $\tilde{J}$.
+Then $J'=J$ by definition.
+\end{proof}
+
+\noindent
+This is the essential tool in proving that $R/I$ is a field
+when $I$ is a maximal ideal
+
+\begin{lemma}
+\label{lemma-quotient-ring-maximal-ideal-is-field}
+Let $R$ be a ring and $I$ a maximal ideal of $R$.
+Then $R/I$ is a field.
+\end{lemma}
+
+\begin{proof}
+It's easy to prove that a ring is a field if and only if its
+only ideals are $\{0\}$ and $R$. By Theorem \ref{theorem-correspondence-ideals},
+the ideals of $R/I$ are in correspondence with ideals of $R$ containing $I$,
+but only $R$ is such.
+\end{proof}
+
+\section{Fields}
+\label{section-fields}
+
+\noindent
+Just for the record, any simple field extension, i.e. the smallest
+field in $F$ containing a single element, is isomorphic
+to either que ``rational function field $k(t)/k$''
+or to one of the field extensions $k[t]/(P)$ 
+with $P \in k[t]$ irreducible.
+(Stacks Project tag \href{https://stacks.math.columbia.edu/tag/09G1}{09G1}.)
+
+\section{Modules}
+\label{section-modules}
+
+It looks like most books (at least
+\cite{eis} and \cite{Samuel-Zariski-Vol1})
+define a module to be an abelian group
+along with a certain operation with
+elements of the ring.
+
+Which secretly just says that
+
+\begin{definition}
+\label{definition-module}
+Let $R$ be a ring.
+An {\it (left) $R$-module} $M$ is an abelian group
+such that there exists a (left) ring morphism
+$$
+R \to \text{End}(M).
+$$
+\end{definition}
+
+\noindent
+Indeed, the three usual requirements
+correspond to:
+
+\begin{enumerate}
+\item The endomorphism corresponding to $a \in R$ 
+respect the group structure of the group $M$:
+$$
+a(x+y)=ax+ay,
+$$
+
+\item The representation map is a map of rings
+$$
+(a+b)x=ax+by,\qquad (ab)x=a(bx).
+$$
+\end{enumerate}
+
+\noindent
+
+
+\section{Algebras}
+\label{section-algebras}
+
+\noindent
+There appears to be no definition of ``algebra''
+in Stacks Project.
+But there is one in \cite{Eisenbud}:
+
+\begin{definition}
+\label{definition-algebra}
+If $R$ is a commutative ring,
+then a {\it commutative algebra} over $R$ 
+is a commutative ring $S$ together
+with a ring morphism $R \to S$.
+\end{definition}
+
+\noindent
+But actually I was expecting that 
+$S$ would be defined as 
+a ring that is also an $R$-module.
+So let us note that a morphism of rings
+$R \to S$ gives a representation
+$R \to \text{End}(S)$ via left multiplication.
+But the other way around,
+given an endomorphism associated
+to some element in $R$,
+how do we assign an element of $S$
+so as to produce a map $R \to S$?
+
+\section{Finitely-generated and finitely presented algebras}
+\label{section-finitely-presented-generated}
+
+\noindent
+See Stacks Project tag \href{https://stacks.math.columbia.edu/tag/00F2}{00F2}.
+
+Upshot: a finitely-generated $R$-algebra $S$ is such that
+$S \simeq R[x_1,\ldots,x_n]/I$ for some ideal $I \subset R$.
+Finitely-presentedness is when $I = (s_1,\ldots,s_k)$.
+
+Fun fact: The second item in the following definition
+is the algebraic counterpart to an
+affine algebraic set (variety);
+i.e. the reason why we hear that
+``affine varieties are in correspondence
+with finitely presented $k$-algebras''
+(wasn't there a notion of reduced algebra in that phrase…?)
+And the difference with that and finite type,
+I think,
+is that the kernel is finitely generated.
+
+\begin{definition}
+\label{definition-finite-type}
+Let $R \to S$ be a ring map.
+\begin{enumerate}
+\item We say $R \to S$ is of {\it finite type}, or that {\it $S$ is a finite
+type $R$-algebra} if there exist an $n \in \mathbf{N}$ and an surjection
+of $R$-algebras $R[x_1, \ldots, x_n] \to S$.
+\item We say $R \to S$ is of {\it finite presentation} if there
+exist integers $n, m \in \mathbf{N}$ and polynomials
+$f_1, \ldots, f_m \in R[x_1, \ldots, x_n]$
+and an isomorphism of $R$-algebras
+$R[x_1, \ldots, x_n]/(f_1, \ldots, f_m) \cong S$.
+\end{enumerate}
+\end{definition}
+
+Informally, $M$ is a finitely presented $R$-module if and only if
+it is finitely generated and the module of relations among these
+generators is finitely generated as well.
+A choice of an exact sequence as in the definition is called a
+{\it presentation} of $M$.
+
+So, probably an ``algebra'' $A$ over a ring  $R$ is when $A$ contains 
+(or, is isomorphic to?)  $R[X]$ for some possibly very arbitrary set
+ $X\subset R$.
+
+
+\section{Finite and integral ring extensions}
+\label{section-finite-ring-extensions}
+
+\noindent
+The upshot is: let $\varphi:R \to S$ be a ring map.
+An element $s \in S$ is integral over $R$ if there
+is a monic polynomial with coefficients in $R$
+that gives zero when you put $s$ instead of the variable.
+
+But it might be convenient to think about
+finite (or, for humans, finitely-generated) $R$-modules:
+$x$ is integral over $R$ if and only if $R[x]$
+is a finitely-generated  $R$-module (i.e.,
+not only finitely generated as an algebra
+but also as a module).
+See \href{
+https://youtu.be/5fCHj80BQHw?si=o7tMC4tRsbBnwmJi}{Zvi Rosen's video}.
+The forward implication is: suppose $x$ is integral,
+then $x^n+r_1x^{n-1}+\ldots+r_n=0$, so
+$x^n=-r_1x^{n-1}+\ldots+r_n$,
+which ``says'' $R[x] \cong \bigoplus_{k=0}^{n-1}Rx^k$.
+
+So maybe the details of that are not entirely trivial (Zvi uses some theorem,
+and Stacks Project does lots of things).
+But the point is: I think that after applying Spec,
+the fibers of an integral extension are {\bf finite}.
+Which of course has all to do with the finite-moduleness
+I was trying to explain.
+
+
+
+
+\section{Gröbner theory}
+\label{section-grobner}
+
+\noindent
+So far here's some rather unformatted notes from
+Lin's talk at Commutative Algebra school in Recife 2025.
+
+Would SAGBI bases be related to this?
+
+square free monomial ideals preserve regularity upon Grobner deformation
+i.e. initial ideal!
+
+Constantini-Fouli-Goel-Lin-Lindo-Liske-Mostafazadehfard, 2025.
+
+https://sites.psu.edu/kul20/
+
+How is Lin using the Reese algebra here?
+Is it ture that the initial ideal of the Gröbner deformation
+coincides with the initial ideal ``of the Resse algebra''?
+
+
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
