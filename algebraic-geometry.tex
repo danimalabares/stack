@@ -489,6 +489,38 @@ The least degree piece of such a module
 is the degree $d$ piece of the original module,
 that is we have $M(-d)$.
 
+
+\section{Logarithmic derivations}
+\label{section-logarithmic-derivations}
+
+\noindent
+Just to record a notion of logarithmic derivation
+from Vladimiro Benedetti, Danielle Faenzi and Simone.
+
+Let $F$ be a homogneous polynomial of degree $d$.
+The {\it logarithmic derivations} of $F$ are
+$$
+\text{Der}_U(-\text{log}F)
+=\{\partial \in \text{Der}_U
+:\partial F \in \left<F\right>_U\}
+$$
+where $U=\mathbb{C}[x_1,…,x_e]$.
+
+\section{Gonality}
+\label{section-gonality}
+
+\noindent
+From a talk by Juliana Coelho at Bandoleiros 2025:
+
+A curve $C$ is {\it $k$-gonal} if there is a map $C \to \mathbb{P}^1$ of degree $k$.
+
+A curve is {\it stable} if it is nodal and $\text{Aut}(C)$ is finite.
+Equivalently, the rational components of $C$ meet the
+rest of the curve in at least three points.
+
+We may study the moduli of $k$-stable curves,
+or the space of $k$-gonal structures.
+
 \section{Reduced schemes}
 \label{section-reduced}
 
@@ -1784,6 +1816,76 @@ and compact, then $\mathbb{T}^1_X=H^{1}(X,T_X)$.
 Which basically I interpret as: the dimension of the deformation space of a
 smooth compact variety is $H^{1}(X,T_X)$.
 
+\medskip\noindent
+After a few months of the previous text in this section
+I think I have understood the construction of
+Kodaira-Spencer map for embedded deformations,
+which is \cite[Proposition 3.2.1(ii)]{Sernesi}.
+
+But I will actually briefly outline a particular case
+of this, which is easier: \cite[Examples 3.2.4(ii)]{Sernesi}.
+This the case when $X \subset Y$ is a Cartier divisor.
+Then $X$ is cut out locally by a set of functions $f_i$
+defined on an affine cover $U_i$ of $Y$.
+Then we have a line bundle defined by the
+transition functions $f_{ij}=f_i/f_j$,
+and is such that the $f_i$ glue to a section
+which vanishes along $X$
+(see \cite[Theorem 3.39]{lec}).
+This is the line bundle $\mathcal{O}_Y(X)$, which
+by the adjunction formula is also the normal bundle $N_{X/Y}$
+of $X$ in $Y$.
+
+Now consider a first order deformation
+$$
+\xymatrix{
+X\ar[r]\ar[d]
+&\mathcal{X}\subset Y\times B_\varepsilon\ar[d]^\pi\\
+0\ar[r]
+&B_\varepsilon
+}
+$$
+
+The great thing about first order deformations
+is that the structure sheaf of $\mathcal{X}$
+on an affine open $U_i$ of $Y$ 
+looks like the tensor product 
+$\mathcal{O}_{U_i}\otimes \mathbb{C}[\varepsilon]/(\varepsilon^2)$
+(\href{https://stacks.math.columbia.edu/tag/01I4}{01I4}).
+By definition of tensor product this just says
+that sections look like $f+\varepsilon g$
+for $f,g \in \Gamma(\mathcal{O}_{U_i})$.
+
+If $\mathcal{X}$ is a Cartier divisor on $Y \times B_\varepsilon$
+(it is; but I'm missing a formal proof),
+it is given as the vanishing locus
+of some local sections $f_i+\varepsilon g_i$.
+(Perhaps the $f_i$ coincide with the distinguished
+section of $X$.)
+The line bundle associated to $\mathcal{X}$ 
+is given by the cocycle
+$$
+F_{ij}=f_{ij}+\varepsilon+g_{ij}
+$$
+for $g_{ij}=\frac{g_i-f_{ij}g_j}{f_j}$.
+Indeed, note that 
+$\frac{1}{f_j+\varepsilon g_j}=\frac{1}{f_j}-\varepsilon \frac{g_j}{f^2_j}$ 
+and compute $F_{ij}=(f_i+\varepsilon g_j)/(f_j+\varepsilon g_j)$.
+
+Then
+$$
+f_i+\varepsilon g_i=(f_{ij}+\varepsilon g_{ij})(f_j+\varepsilon g_j)
+$$
+gives
+$$
+g_i=f_{ij}g_j+g_{ij}f_j
+$$
+and since $f_j$ vanishes along $X$,
+we are left with $g_i=f_{ij}g_j$ 
+which is how a section of the sheaf $N_{X/Y}$
+is constructed by definition of sheaf.
+
+
 \begin{example}
 \label{example-moduli-space-of-nonsingular-Riemann-surfaces-of-genus-g}
 \begin{reference}
@@ -1836,10 +1938,22 @@ $X$.
 
 For our curve $C$ we thus know that the dimension of the space of deformations
 (deformations not necessarily contained in $X$) is $h^1(\mathcal{T}_C)$.  The
-family of deformations of $C$ that are contained in $X$ is the Hilbert space of
+family of deformations of $C$ that are contained in $X$ is the Hilbert scheme of
 curves with fixed Hilbert polynomial $P(t)$ after quotienting by $\mathbb{C}s$,
 where $s$ is the section whose vanishing locus is  $C$. 
 This says that the number we are looking for is $h^{0}(X,\mathcal{O}(C))-1$.
+
+Before showing that in fact $h^0(X,\mathcal{O}(C))=1+g$,
+let's explain why this Hilbert scheme construction actually works.
+Intuitively, any curve lying in the same component
+as $C$ would be deformation-equivalent to $C$
+--- at least we know that it's Hilbert polynomial is the same.
+But it's not clear what's the deformation involving these two
+(this question should be addressed!).
+Further, this doesn't explain Vladimiro's
+suggesion of ``taking quotient by $\mathbb{C}s$''.
+To me it looks like I would just compute the dimension
+of the tangent space of $\text{Hilb}^P(M)$ at $C$.
 
 Now I will show that $h^0(X,\mathcal{O}(C))=1+g$ (see 
 \cite[Lemma 1.2.1, Remark 1.2.2]{huk}).
@@ -1970,6 +2084,11 @@ the restricted holomorphic vector fields.
 %\end{enumerate}
 \end{proof}
 
+\medskip\noindent
+Look for the ``Perfect obstruction theory''.
+This is used by Bruzzo for deformations of (super)stacks,
+work with E. Paiva and ---.
+
 \section{Continued fractions}
 \label{section-continued-fractions}
 
@@ -2062,14 +2181,6 @@ another Markov triple. Is $(a,b,c)$ is Markov then so is $(a,b,3ab-c)$. This
 allows to construct a {\it Markov tree}. There is so-called Markov conjecture
 (due to Frobenius) still unsolved.
 
-\section{Stanley Reisner}
-\label{section-}
-
-Antes de introduzir matroides, Os conjuntos $f_s$, que são os conjuntos de
-tamanho $s$, eles tem um significado geométrico?
-
-
-
 \section{Fano varieties}
 \label{section-Fano-varieties}
 
@@ -2078,6 +2189,11 @@ tamanho $s$, eles tem um significado geométrico?
 A {\it Fano variety} is a projective variety with $-K_X$ ample.
 \end{definition}
 
+\noindent
+The idea of the Fano index is that the
+larger the index, the simpler is the variety.
+In a talk by Jõao, it is defined as the larger integer
+dividing $-K_X$ in $\text{Pic}(X)$.
 \begin{definition}
 \label{definition-Fano-index}
 $$
@@ -2107,6 +2223,19 @@ Marcos Jardim, CIMPA 2025 Florianópolis, Lecture 2.
 If $H^3(X,\mathbb{Z})=0$ of a Fano 3-fold, then its derived category is
 generated by 4 elements.
 \end{remark}
+
+\medskip\noindent
+Araujo-Druel em 2017 classify
+Fano foliations relating the Fano index (of the foliation)
+with its rank.
+João found conditions 
+(integrability of the leaves)
+to describe del Pezzo foliations
+(a kind of Fano foliation)
+with Picard rank 1.
+Araujo (2019) classifies the leaves of a algebraically integrable
+del Pezzo foliation (with no restriction on the (log
+canonica) singularities!).
 
 
 \section{Quivers}
@@ -2196,6 +2325,455 @@ $f:C \to X$ with $[f(C)]=\beta$.
 \noindent
 The curves that are points under this map
 (contractible) are {\bf stable}.
+
+\section{Moduli}
+\label{section-moduli}
+
+\noindent
+Pseudo-admissible covers may be the way Mumford orifinally developed stability
+notions.
+
+\noindent
+This is a two-session minicourse by Ugo Bruzzo
+in LEGALzinho 2025.
+
+Let $X$ be a smooth complex projective variety,
+$X \overset{j}{\hookrightarrow}\mathbb{P}^n$.
+$\mathcal{O}_{\mathbb{P}^n}(1)$ is the class of hyperplanes of $\mathbb{P}^n$.
+$\mathcal{L}=j^*\mathcal{O}_{\mathbb{P}^n}(1)$.
+$c_1(\mathcal{L})\in H^2(X,\mathbb{Z})$ is
+a {\it polarization}.
+
+Let $\mathcal{E}$ be a coherent $\mathcal{O}_X$-module.
+For example, $\mathcal{E}$ may be a locally free $\mathcal{O}_X$-module.
+Recall that $H^k(X,\mathcal{E})$ are finite dimensional vector spaces
+and they vanish for $k>\dim X=n$.
+Recall that the {\it Euler characterstic} of $\mathcal{E}$ 
+is given by
+$\chi(\mathcal{E})=\sum_{k=0}^n(-1)^k\dim_{\mathbb{C}}H^k(X,\mathcal{E})$.
+
+The {\it reduced Hilbert polynomial} of $\mathcal{E}$ is
+$$
+p_{\mathcal{E}}(k)=\frac{1}{\text{rk}\mathcal{E}}
+\chi(\mathcal{E}\otimes_{\mathcal{O}_X}\mathcal{L}^k).
+$$
+
+\begin{definition}
+\label{definition-stable-module}
+Let $\mathcal{E}$ be a coherent $\mathcal{O}_X$-module
+with no torsion and positive rank.
+$\mathcal{E}$ is {\it stable} if for all $f \subset \mathcal{E}$ 
+($0 \text{rk} f<\text{rk}\mathcal{E}$),
+$$
+p_f(k)<p_{\mathcal{E}}(k)\qquad \text{for } k\gg 0
+$$
+and {\it semi-stable} if we put $\leq$ instead of $<$.
+
+\begin{lemma}
+\label{lemma-stable}
+If $\mathcal{E}$ is stable then $\mathcal{E}$ is irreducible
+($\mathcal{E} \neq  \mathcal{E}_1 \oplus \mathcal{E}_2$)
+and $\text{Aut}(\mathcal{E})\simeq \mathbb{C}^*$.
+\end{lemma}
+
+\end{definition} 
+
+The {\it functor of moduli} is
+\begin{align*}
+\mathcal{M}: \text{Sch}_\mathbb{C} &\longrightarrow \mathsf{Set} \\
+S
+&\longmapsto
+\left\{
+\substack{\text{stable family}  \\ \text{of sheaves with} \\
+\text{Hilbert polynomial} f\\
+\text{parametrized by $S$}} \right\}\Big/\sim.
+\end{align*}
+
+\medskip\noindent
+Riemann-Roch.
+Let $C$ be a smooth, projective, connected curve
+of genus $g$.
+Let $\mathcal{E}$ be a coherent sheaf over $H^2(C,\mathbb{Z})$ 
+with generator of $H^2(X,\mathbb{Z})$ 
+$w=[pt] \in H^2(C,\mathbb{Z})$.
+$c_1(\mathcal{E})=\text{deg}\mathcal{E}\cdot w$.
+
+\begin{theorem}
+\label{theorem-euler-characteristic-moduli}
+\begin{align*}
+\chi(\mathcal{E})
+&=\int_C(1+(1-g)w)(\text{rk}\mathcal{E}+\text{deg}\mathcal{E}w)\\
+&=\int_C \text{deg}\mathcal{E}+w+(1-g)\text{rk}\mathcal{E}\cdot w\\
+&=\text{deg}(\mathcal{E})+1-g \text{rk}\mathcal{E}.
+\end{align*}
+\end{theorem}
+
+\begin{example}
+\label{example-hilbert-polynomial-sheaf}
+\end{example}
+
+\begin{theorem}
+\label{theorem-moduli-suave}
+Se $(r,d)$, $r>0$ are coprime,
+the functor of moduli of stable bundles
+over $C$ of rank $r$ and degree $d$ 
+is representable, and the moduli space
+$\mathcal{M}_C(\mathcal{E},d)$ is smooth.
+\end{theorem}
+
+\noindent
+In the non coprime case this does not necessarily hold.
+
+\begin{definition}
+\label{definition-}
+$\mathcal{M}$ is a {\it grosseiro} moduli space
+if the funtor is not representable.
+\end{definition}
+
+\noindent
+This means that although there is not
+a universal family,
+there is still a correspondence
+of the closed points of $\mathcal{M}$ and the
+equivalence classes of semistable sheaves
+of rank $r$ and degree $d$.
+
+\medskip\noindent
+Now let's fix $\dim X=2$.
+Let $\mathcal{E}$ be a stable $\mathcal{O}_X$-module.
+Let $r=\text{rk}\mathcal{E}$,
+and the {\it discriminant}
+$$
+\Delta(\mathcal{E})=c_2(\mathcal{E})-\frac{\mathcal{E}-1}{2r}c_1(\mathcal{E})^2
+\in H^4(X,\mathbb{Q})\cong\mathbb{Q}.
+$$
+Here enter $c_1(\mathcal{E}) \in H^2(X,\mathbb{Z})$
+and $c_2(\mathcal{E}) \in H^4(X,\mathbb{Z})$.
+
+\begin{theorem}[Bogomolov]
+\label{theorem-bogomolov}
+$\Delta(\mathcal{E}) \geq 0$.
+\end{theorem}
+
+\noindent
+It could be interesting to study the proof of this theorem.
+
+\medskip\noindent
+Miyaoka (1987). Consider a curve $C$ and a bundle $E$.
+We can for any fibre, which is a vector space $V$,
+consider its projectivization
+$V\setminus\{0\}/\mathbb{C}^*=\mathbb{P}(V)$.
+Then we can bundlize this construction ad obtain
+$\mathbb{P}E \to C$.
+Consider $\mathcal{O}_{\mathbb{P}E}(1)$.
+We define
+$$
+\lambda=rc_1(\mathcal{O}_{\mathbb{P}E}(1))
+-\pi^*c_1(E) \in H^2(\mathbb{P}E,\mathbb{Z}).
+$$
+
+\begin{theorem}
+\label{theorem-semistable-nef}
+$E$ is semistable if $\lambda$ is 
+semicorrente efectiva.
+\end{theorem}
+
+\noindent
+\begin{definition}
+\label{definition-nef}
+Consider again a projective smooth connected
+curve $\Gamma$ and let $f:\Gamma \to \mathbb{P}E$.
+We say $\lambda$ is {\it nef} if 
+$$
+\int_{\Gamma} f^*\lambda\geq 0.
+$$
+\end{definition}
+
+
+\noindent
+The following theorem was proved by Nakayama
+(who is a different author than that of Nakayama's lemma)
+in 1999 but was unkown to Bruzo and Daniel HR.
+\begin{theorem}[Nakayama '99, Bruzzo-HR '04]
+\label{theorem-bruzzo-daniel-nakayama}
+The following are equivalent:
+\begin{enumerate}
+\item $\lambda$ is nef.
+\item For all $f:\Gamma \to X$,
+$f^*E$ is semi-stable.
+\item $E$ is semistable with respect to 
+the polarization, and  $\Delta(E)=0$.
+\end{enumerate}
+\end{theorem}
+
+The polarization says how the surface is embedded in projective space,
+it is $H=c_1(\mathcal{L})$. The stability notion is
+$$
+\mu(E)=\frac{c_1(E)\cdot H^{n-1}}{\text{rk}E}.
+$$
+\medskip\noindent
+They have proved that for Higgs bundles 1 $\iff$ 2, $3 \implies 1,2$.
+And also for $1,2 \implies 3$ but only for $r=2$ using the Higgs Grassmannian,
+but the problem is very complicated for general rank.
+
+\medskip\noindent
+Second lecture. I think this might be a more general
+definition of the Hilbert polynomial:
+$$
+\sum_{k=0}^n(-1)^k \dim H^k(X,\mathcal{E})=\chi(\mathcal{E})
+=\int_X\text{ch}(\mathcal{E})\text{td}X
+$$
+And we also have:
+$$
+\chi(\mathcal{E}\otimes \mathcal{L}^*)
+=\int_X (1+(1-g)w)(r+kr
+\underbrace{c_1(\mathcal{L})}_{\text{deg}\mathcal{L}\cdot w}
++\text{deg}\mathcal{E}\cdot w.
+$$
+And then
+$$
+p_{\mathcal{E}}=k \text{deg} \mathcal{L} +1-g+\mu(\mathcal{E}).
+$$
+
+
+
+\medskip\noindent
+Now we discuss Higgs bundles.
+Let $X$ be ac onnected complex projective variety.
+
+\begin{definition}
+\label{definition-higgs-bundle}
+A {\it Higgs bundle} on $X$ 
+is a pair $\mathfrak{C}=(E,\phi)$ with
+\begin{itemize}
+\item $E$ a vector bundle on $X$ 
+\item $\phi:$ a morphism (connection-like…)
+\end{itemize}
+\end{definition}
+
+For the following see Nitsuze, FGA explained.
+There following scheme is also representable
+(I think this is the ``universal quotient'')
+
+We have also consider the Grassmanization of a vector bundle.
+We obtained a short exact sequence
+and tried to compute the tensor product with
+the holomorphic differentials.
+The idea was to pullback the grassman bundle
+given a map $f:Y \to X$.
+The result is not satisfactory, the pulled back
+thing may be strange. This is called the
+{\it Higgs Grassmannian}.
+
+
+Here's some notion also studied by Campana, Demailly:
+numerically flat bnef bundle $E$.
+Then we have that 
+\begin{lemma}
+\label{lemma-proof-hugo-bruzzo}
+If $c_1=0$ then numerically flat bundle iff semistable.
+\end{lemma}
+
+\medskip\noindent
+This is the beginning of a talk by Alan Muniz
+at Bandoleros 2025 titled
+``Rank 2-bundles on $\mathbb{P}^3$ with odd determinant''.
+(Work in progress with A. Fontes.)
+
+Problem: Classify rank-2 bundles on $\mathbb{P}^3$.
+
+We consider bundles $E$ with chern classes
+$c_1=-1$, $c_2=2n$ and $c_3=0$.
+Let $\mathcal{B}(-1,2n)$ be the moduli space
+of $\mu$-stable rank 2-bundles.
+
+\begin{itemize}
+\item $\mathcal{B}(-1,2)$ is irreducible of dimension 11
+[Hartshorne-Sols '82, Manolache '81].
+
+\item $\mathcal{B}(-1,4)$ has two components
+[Barnica-Manolache '85].
+
+\item $c_2\geq 6$, Tikhomirov (2014)
+Fontes-Jardim (2023, 2024, 2025).
+$\mathcal{B}(-1,6)$ has $\geq 4$ components.
+\end{itemize}
+
+\medskip\noindent
+\subsection*{Serre correspondence}
+How can we describe these spaces?
+Let $E$ be a vector bundle of rank 2
+on $\mathbb{P}^3$ and $\sigma \in H^0(E(r))$.
+Then $C=(\sigma_0)\subset \mathbb{P}^3$ is
+a curve * equipped
+with an ``extension class''
+$\zeta \in H^0(\omega_C(4-2r-c_1))$.
+In fact, this correspondence
+is 1-1, and we call it Serre correspondence.
+We have that $\text{deg}C=c_2(E(r))$ and
+$p_a(C)=1=\frac{c_2(E(r))(c_1(E(r))-4)}{2}$
+To pass from the curve to the bundle
+and viceversa we use
+$$
+\xymatrix{
+0\ar[r]
+&\mathcal{O}(-r)\ar[r]
+&E\ar[r]
+&\mathcal{I}_C(c_1+r)\ar[r]
+&0
+}
+$$
+
+
+\medskip\noindent
+Upshot about Deligne-Mumford stacks:
+the sit below a stack via a map that is étale.
+
+\subsection{Framed moduli}
+\label{subsection-framed-moduli}
+
+\noindent
+Framed instantons on the blow-up of $\mathbb{P}^3$ at a point.
+
+Let $X$ be a projective variety and fix a polarization $H$.
+Let $\mathcal{E}$ be a sheaf on $X$.
+A {\it framed pair} is a $(\mathcal{F},\alpha)$ where
+$\mathcal{F}$ is a coherent sheaf on $X$ 
+and $\alpha$ is a {\it framing datum}, i.e.
+a map $\alpha:\mathcal{F} \to \mathcal{E}$.
+
+Set
+$$
+\mathcal{E}(\alpha)
+=\begin{cases}
+	1\qquad &\alpha\neq 0 \\
+	0\qquad &\text{otherwise} .
+\end{cases}
+$$
+Define the Hilbert polynomial by 
+$$
+P(k)=\chi(\mathcal{F} \otimes \mathcal{O}(kH)).
+$$
+For fied $\delta \in \mathbb{Q}[t]$ rational positive,
+define
+$$
+P_{(\mathcal{F},\alpha)}=P_{\mathcal{F}}(k)-\varepsilon(\alpha)\delta.
+$$
+
+We can also define induced framings from subsheaves $\mathcal{F}' \subset
+\mathcal{F}$, by asking that the inclusion commutes
+with the framing datum $\alpha$.
+Then we put
+$$
+\varepsilon(\alpha')
+=\begin{cases}
+	1\qquad &\mathcal{F}' \subseteq Ker \alpha \\
+	0\qquad &\text{otherwise} .
+\end{cases}
+$$
+We say that $\mathcal{F}$ is {\it $\delta$-(semi)stable}
+if for any subpair $(\mathcal{F}',\alpha')$ with 
+$\text{rk}\mathcal{F}'=r'<r=\text{rk}\mathcal{F}$
+one has
+$$
+\frac{1}{r'}P_{(\mathcal{F}',\alpha')}(k)
+\leq  \frac{1}{r}P_{(\mathcal{F},\alpha)}(k).
+$$
+If $\text{deg}(\delta)\leq \dim X$,
+there are moduli functors $\mathcal{M}^{st}(X,\mathcal{E},\delta)
+\subseteq \mathcal{M}^{\text{ss}}(X,\mathcal{E},\delta)$.
+
+\begin{remark}
+\label{remark-degree-greater-than-dimension}
+If $\text{deg} \delta>\dim X$
+then $\alpha$ is injective or zero, and $\mathcal{F}$ is semistable.
+This gives quot schemes.
+\end{remark}
+
+\noindent
+Huybrechts-L. In $\dim X\leq 2$
+there exists a quasi-projective fine moduli space
+for $\delta \in \mathbb{Q}[t]$ and $p \in \mathbb{Q}[k]$.
+
+\medskip\noindent
+Then there is a notion of good framing by Bruzz-M,
+depending on $D$, an effective divisor on $X$.
+They proved that having good framing is enough
+to obtain a fine quasi-projective moduli space.
+
+\begin{definition}
+\label{definition-instanton}
+A coherent sheaf $\mathcal{E}$ on $X=\tilde{\mathbb{P}^3}$ 
+is an {\it instanton} if it is $\mu_{\mathcal{L}}$-semistable,
+$c_1(\mathcal{E})=0$ and $H^0(\mathcal{E})=0=H^0(Ec(-3,2))$,
+$H^1(\mathcal{E}(-2,1))=0=H^2(\mathcal{E}(-2,1))$ and
+$H^3(\mathcal{E}(0,-1))=H^2(\mathcal{E}(-1,1))$.
+\end{definition}
+
+\noindent
+Some examples are locally free sheaves of rank 2 (via Harrshorne-Serre
+correspondence),
+torsion-free rank 2 constructed via elementary
+transformations.
+
+\medskip\noindent
+General result: for rank 2 instantons on Fano threefolds
+that have a plane $E$, 
+$\mathcal{E}|_{E}$ is $\mu$-semistable
+if and only if $h^1(\mathcal{E}(-2,1) \otimes \mathcal{O}(-E))=0$.
+
+
+
+
+\section{Campana}
+
+A \textit{special} variaty should be thought of 
+as the farthest notion possible from being of general type.
+
+\begin{definition}[Campana]
+$X$ complex projective.
+$X$ is \textit{special} if $\forall i \leq  p \leq \dim X$,
+for all line bundle $L \subset \Omega^P_X$,
+$\kappa(L)<P$ (Kodaira dimension).
+\end{definition}
+
+\noindent
+A conjecture by Campana says that
+$X$ is special if and only if there exists  $f:\mathbb{C}\to X$
+Zariski dense.
+Compare this with Kobayashi hyperbolicity!
+There are no lines on …?
+
+The main tool for proving this kind of
+``Bloch-Ochai" statements (i.e.
+something of the kind: if $h^0(\Omega_X)> \dim X$
+then there are no nonconstant $f:\mathbb{C}\to X$
+Zariski dense)
+is by passing through the Albanese variety.
+
+In a talk [fill details]
+we study a theorem of this kind but with the bound
+given by $q^+(X)$ defined as the supremum of the $h^0(\hat{X},\pi^*\Omega_{X}$
+for $\hat{X}\to X$ some (étale) cover.
+Can we prove a BO stement with the condition
+$q^+(X)>\dim X$?
+
+Notion of special comes in: indeed
+ $$
+q^+(X)>\dim X \implies X \text{ not special }\implies 
+\not\exists f:\mathbb{C}\to X \text{Zariski dense}.  
+$$
+
+The following theorem is not at all easy to prove:
+\begin{theorem}[Campana]
+\label{theorem-campana}
+$\hat{X}\xrightarrow{\text{étale} }X$, then
+$\hat{X}$ is special iff $X$ is special.
+\end{theorem}
+
+\noindent
+My question: why does the abelianess of
+the Albanese variety is important in this construction?
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
