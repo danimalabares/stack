@@ -1264,6 +1264,7 @@ Here the equality $T_{B,0}=H^1(X,\phi^* T_{B|X})$
 is just because the pullback of the tangent bundle of $B$ 
 to any fiber is trivial.
 
+\medskip\noindent
 Now I will explain first order deformations.
 Consider a family $\mathcal{X} \to B$.
 We introduce a complex analytic subscheme $B_\varepsilon$ of $B$ 
@@ -1304,11 +1305,156 @@ But its structure sheaf is different:
 ``it contains the directions in $\mathcal{X}$ which
 are normal to $X$''.
 
-Then a cocycle construction shows that for $B$ of
-complex dimension 1, the first order deformations
-$\phi:X_\varepsilon \to B_\varepsilon$ associated to the
-family $\mathcal{X} \to B$ are ``exactly parametrised''
+\medskip\noindent
+Perhaps the most important part of this construction
+comes when considering a fat point $B_\varepsilon \subset B$.
+This gives a first-order deformation
+$\phi^{-1}(B_\varepsilon)) \subset \mathcal{X}$ 
+$$
+\xymatrix{
+X\ar[r]\ar[d]
+&\phi^{-1}(B_\varepsilon) \subset \mathcal{X}\ar[d]\\
+\ast\ar[r]
+&B_\varepsilon \subset B
+}
+$$
+Using the constructions above, one shows that
+to any such deformation we can associate a cocycle
+in $H^1(X,T_X)$.
+Thus, first order deformations are ``exactly parametrised''
 by the group $H^1(X,T_X)$.
+This is the main idea behind Kodaira-Spencer map,
+which is well-explained in
+\href{https://en.wikipedia.org/wiki/Kodaira%E2%80%93Spencer_map}{Wikipedia}.
+
+I will present a similar construction
+to Kodaira-Spencer map
+that works for embedded deformations
+instead of just deformations.
+(That's with the intention of understanding the
+forthcoming exercise Exercise \ref{exercise-deformations-curve-in-k3}.)
+
+Since we are in complex space category
+I follow \cite[p. 224]{Voisin} for the main setup,
+but this is also a mixture
+of \cite[p. 147, 150]{Sernesi}.
+
+The result is in fact quite reasonable geometrically:
+the dimension of directions in which we can deform a
+submanifold should be non other than
+the dimension of the normal bundle.
+
+\begin{proposition}
+\label{proposition-kodaira-spencer-for-embedded-deformations}
+Let $X\subset Y$ be complex manifolds.
+There is a bijection between first order deformations
+of $X$ in $Y$ and $H^0(X,N_{X/Y})$.
+\end{proposition}
+
+\begin{proof}
+We start with a first order deformation and construct
+a section of the normal bundle of $X$ in $Y$.
+Let
+$$
+\xymatrix{
+X\ar[r]\ar[d]
+&\mathcal{X}\subset Y\times B_\varepsilon\ar[d]^\pi\\
+0\ar[r]
+&B_\varepsilon
+}
+$$
+be a first order deformation of $X$ in $Y$.
+This means that $\mathcal{X}$ is a complex submanifold of
+the product $Y \times B_\varepsilon$ 
+and $\pi:\mathcal{X} \to B_\varepsilon$ is
+a holomorphic submersion.
+
+The first step is to describe the structure sheaf of $\mathcal{X}$.
+For this, Voisin considers instead of the first order deformation,
+a family $\mathcal{X} \to B$ for some complex manifold $B$ 
+(of dimension 1! I don't know why it has to be 1).
+Then by the inverse function theorem, we can find
+open covers $V_i$ of $\mathcal{X}$
+and $U_i$ of $X$ such that
+$V_i \cap X= U_i$ for all $i$.
+This is just using the submanifold
+coordinates of the form
+$(z^1,…,z^n,0,…,0)$ where $\dim X=n$.
+
+But since  $\mathcal{X} \to B$ is a holomorphic
+submersion, we apply the inverse function theorem
+again to obtain for every $V_i \subset \mathcal{X}$ 
+a biholomorphism from some $B_i \subset B$ containing $0$ to $V_i$.
+This gives coordinates $(0,…,b^1,…,b^r)$ to $V_i$,
+where $\dim B=r$.
+
+This means that $V_i$ has local coordinates
+$(z^1,…,z^n,0…,0,b^1,…,b^r)$ as long as $n+r<\dim \mathcal{X}$.
+Or, as Voisin puts it, $V_i \cong U_i\times B_i$,
+``$\mathcal{X} \to B$ is locally isomorphic to 
+a product along $X$''.
+
+Now we turn to the first order deformation,
+which means restricting to the fat point subscheme
+$B_\varepsilon$ of $B$. (Recall that this is
+just the complex space whose topological space
+is $0$ but its structure sheaf is $\mathcal{O}_B/(\varepsilon^2)$;
+I think this is the reason why $B$ must have dimension 1).
+
+Since we are on a local trivialization,
+the structure sheaf of the product $U_i \times B_i$ 
+is the tensor product of the structure sheaves,
+giving an isomorphism
+$$
+\theta : 
+\mathcal{O}_{X_\varepsilon|_{U_i}} \xrightarrow{\cong}
+\mathcal{O}_{U_i}[\varepsilon]/(\varepsilon^2)
+:= \mathcal{O}_{U_i} \otimes \mathbb{C}[\varepsilon]/(\varepsilon^2).
+$$
+This is the structure sheaf of the first order deformation.
+Functions here look like $f+ \varepsilon g$ for 
+$f,g \in \Gamma(U_i,\mathcal{O}_{U_i})$.
+
+The functions in this sheaf must satisfy
+some cocycle condition which essentially allows
+us to glue everything back together.
+Such a condition is what will allow us to construct
+a global section of the normal sheaf.
+
+We can find a great expression for the
+functions in the sheaf $\mathcal{O}_{U_i}[\varepsilon](\varepsilon^2)$
+using the exact sequence
+$$
+\xymatrix{
+0\ar[r]
+&\mathcal{O}_{U_i}\otimes \varepsilon \mathbb{C}\ar[r]
+&\mathcal{O}_{U_i}[\varepsilon]/(\varepsilon^2)\ar[r]
+&\mathcal{O}_{U_i}\ar[r]
+&0
+}
+$$
+which is just a fancy version of the
+elementary dual number exact sequence
+$$
+\xymatrix{
+0\ar[r]
+&\varepsilon\mathbb{C}\ar[r]
+&\mathbb{C}[\varepsilon]/(\varepsilon^2)\ar[r]
+&\mathbb{C}\ar[r]
+&0
+}
+$$
+where $\mathbb{C}[\varepsilon]/(\varepsilon^2)$
+are just expressions $a+\varepsilon b$ with $\varepsilon^2=0$,
+so that the first arrow is the inclusion $\varepsilon b \mapsto  \varepsilon b$
+and the second one the projection $a+\varepsilon b \mapsto  a$.
+
+The sheaf sequence splits and we conclude that functions
+of the deformation space $\mathcal{X}$ locally look
+like $f+\varepsilon g$ for $f,g \in H^0(U_i,\mathcal{O}_{U_i})$.
+
+
+\end{proof}
 
 \begin{exercise}
 \label{exercise-deformations-curve-in-k3}
@@ -1319,22 +1465,32 @@ Prove that $\dim \mathcal{X} \leq g$.
 \end{exercise}
 
 \begin{proof}
-For this exercise I assume that $\mathcal{X}\to B$
-is a family such that any fiber is contained in 
-the K3 surface $M$. By the result explained above
-all we need to do is compute $h^1(X,T_X)$.
-Indeed, the dimension of $\mathcal{X}$ is described
-well enough locally via the first order deformation
-$X_\varepsilon \to B_\varepsilon=\Spec \mathbb{C}[\varepsilon]/(\varepsilon^2)$.
-In other words, the dimension of the space
-of first order deformations encodes
-the local structure of the (hypothetical) deformation space
-and thus the dimensions of both coincide.
-Notice that this argument works just as well
-if we don't assume that all the fibres of $\mathcal{X}$ 
-are contained in the K3 surface $M$.
-For now I would just claim that this is indeed the case,
-i.e. that any family of deformations of $C$ has the same dimension.
+My answer as of December 28, 2025,
+is: use \cite[Proposition 3.2.1(ii) or (ii) p.50]{Sernesi-deformations}
+to argue that the first order deformations
+of $C$ inside $X$ are parametrized by the
+sections of the normal bundle $H^0(C,N_{C/M})$.
+
+Then argue why we have to remove that 1,
+i.e. why we have to projectivize,
+i.e. why these deformations are in the linear system $|C|$.
+
+Then show that $\dim H^0(C,N_{C/M})=g+1$.
+
+And then… show that the deformation space
+of a curve (in a K3?) is unobstructed and in
+fact any infinitesimal deformation can be integrated
+to a full deformation. But in fact
+this is probably not necessary since the question
+is asking to show that $\dim \mathcal{X} \leq  g$
+and not to compute the exact value.
+
+Let $B$ be a connected complex manifold,
+$\mathcal{X}\subset M\times B$ and
+$\mathcal{X} \to B$ a holomorphic submersion
+with fibre $C$ at a distinguished point  $0 \in B$.
+All this just says that $\mathcal{X}$ is a deformation
+of $C$ in $M$.
 
 As for how to compute $h^1(T_C)$, the only thing
 that makes sense is using the normal bundle exact sequence.
@@ -1364,6 +1520,34 @@ Also see \href{https://en.wikipedia.org/wiki/Teichm%C3%BCller_space}{wiki}
 on Teichmüller space for some remarks about the complex structure approach.
 \end{proof}
 
+
+When considering the canonical map $V \otimes V^* \simeq \text{End}(V)$,
+there's also the trace ideal. Would this help at all?
+
+\section{Kähler cone}
+\label{section-kahler-cone}
+
+\begin{exercise}
+\label{exercise-demailly-paun}
+Let $M$ be a K3 surface such that $\text{rk}\text{NS}(M)<20$.
+Using Demailly-Paun theorem,
+prove that there exists a non-zero vector
+$\eta \in H^{1,1}(M)$ which satisfies $\eta^2=0$ 
+and belongs to the boundary of the Kähler cone.
+\end{exercise}
+
+\noindent
+Here's an idea:
+By Demailly-Paun for K3
+(on page 272 of slides.pdf),
+we have that the Kähler cone is contained in the positive cone.
+Then perhaps use \cite[Theorem 7.1]{Huybrechts-HK}
+to conclude to show find a class $\eta$ in the closure
+of the Kähler cone.
+If we can show that $\eta$ also has  $\eta^2=0$,
+we conclude that it must be in the {\it boundary}
+of the Kähler cone, since by Demailly-Paun
+the Kähler cone is contained in the positive cone.
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
