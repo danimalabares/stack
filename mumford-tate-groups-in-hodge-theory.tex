@@ -5,15 +5,8 @@
 \maketitle
 
 \noindent
-Minicourse by (Andrey Soldatenkov, UNICAMP, Brazil), 
+Minicourse by Andrey Soldatenkov, UNICAMP, Brazil, 
 IMPA Summer School, 2026.
-
-\medskip\noindent
-Notes at 
-\href{http://github.com/danimalabares/cimpa-floripa}
-{github.com/danimalabares/cimpa-floripa}
-
-\bigskip\noindent
 
 \tableofcontents
 
@@ -262,9 +255,6 @@ then $i^*h=[\omega] \in H^2(X,\mathbb{Z})$.
 We have $\omega \in \mathcal{H}^{1,1}$ 
 and $[\omega]\in H^2(X,\mathbb{Z}) \cap H^{1,1}(X)$.
 The Lefschetz operator is
-$$
-L_\omega:H^{p,q}(X) \to H^{p+1,q+1}(X).
-$$
 \begin{align*}
 L_\omega: H^{p,q}(X) &\longrightarrow H^{p+1,q+1}(X) \\
 [\alpha] &\longmapsto [\alpha\wedge\omega]=[\alpha]\cup [\omega].
@@ -295,7 +285,7 @@ span a subalgebra of  $\text{End}(H^\bullet(X,\mathbb{Q}))$
 isomorphic to $\mathfrak{sl}_2$.
 This allows us to use what we know about the
 representation theory of $\mathfrak{sl}_2$.
-Let $H^k_{\text{prim}(X,\mathbb{Q})}(\Lambda|_{H^k(X,\mathbb{Q})}$.
+Let $H^k_{\text{prim}}(X,\mathbb{Q})=(\Lambda|_{H^k(X,\mathbb{Q})})$.
 Then $H^m(X,\mathbb{Q})=\bigoplus_{i \geq 0}L_\omega^i
 H^{m-2i}_{\text{prim}}(X,\mathbb{Q})$
 for $0 < m \leq n$.
@@ -344,6 +334,479 @@ Let $Q([\alpha],[\beta])=(2\pi i)^k
 
 Then $Q$ is symmetric (exercise) and positive on $H^k(X,\mathbb{R})$.
 Positive is just the Hodge-Riemann relation.
+
+\section{Hodge structures and Mumford-Tate groups}
+\label{section-hodge-structures-mumford-tate-groups}
+
+\begin{definition}
+\label{definition-rational-hodge-structure}
+A {\it rational Hodge structure} ($\mathbb{Q}$-HS)
+of weight $k\in\mathbb{Z}$ is a finite-dimensional
+$\mathbb{Q}$-vector space $V$ 
+and a decomposition $V \otimes_{\mathbb{Q}} \mathbb{C}
+=\bigoplus_{p+q=k}V^{p,q}$ 
+such that
+$V^{q,p}=\overline{V^{p,q}}\forall p,q$.
+
+A $\mathbb{Q}$-HS (without fixed weight)
+is a $\mathbb{Q}$-vector space $V$ 
+with a decomposition
+$V=V_{k_1}\oplus … \oplus V_{k_n}$
+where $V_{k_i}$ is a $\mathbb{Q}$-HS 
+of weight $k_i$.
+
+Analogously, define $\mathbb{Z}$-HS,
+$\mathbb{R}$-HS, etc
+(i.e. take $V$ to be a finitely generated
+$\mathbb{Z}$-module, $\mathbb{R}$-vector space, etc.)
+\end{definition}
+
+\begin{example}
+\label{example-hodge-structures}
+\begin{enumerate}
+\item $X \subset \mathbb{C}P^N$ smooth subvariety,
+then $H^k(X,\mathbb{Z})$ is a $\mathbb{Z}$-HS
+of weight $k$.
+
+\item The {\it Tate HS} is $\mathbb{Z}(1):=2\pi i\mathbb{Z}
+=\Ker(\mathbb{C}\xrightarrow{\text{exp}}\mathbb{C}^*$,
+since $\mathbb{C}=
+\mathbb{Z}(1)\otimes_{\mathbb{Z}}\mathbb{C}=\mathbb{Z}(1)^{-1,1}$,
+so this is a $\mathbb{Q}$-HS of weight $-2$.
+
+Note that
+$H^2(\mathbb{C}P^1,\mathbb{Z})=\mathbb{Z}$
+sits inside
+$H^2(\mathbb{C}P^1,\mathbb{C}=\mathbb{Z}\otimes\mathbb{C} \cong \mathbb{C}
+=H^{1,1}(\mathbb{C}P^1)$.
+
+Analogously,
+$\mathbb{Q}(1)=2\pi i\mathbb{Q} \subset \mathbb{C}$
+and $\mathbb{Q}(1)\otimes \mathbb{C}=\mathbb{Q}(1)^{-1,-1}$ 
+is of weight $-2$.
+\end{enumerate}
+\end{example}
+
+\section{The Deligne torus}
+\label{section-deligne-torus}
+
+\begin{definition}
+\label{definition-deligne-torus}
+$\mathbb{S}$ is the algebraic group such that
+$\mathbb{S}(\mathbb{R})$ is the $\mathbb{C}^*=\mathbb{C}\setminus\{0\}$.
+\end{definition}
+
+\noindent
+The group of real points $\mathbb{S}(\mathbb{R})$ is a real Lie group.
+
+Note that
+\begin{align*}
+\mathbb{C}^*&=
+\{(x,y) \in \mathbb{R}^2:x^2+y^2\neq 0\}\\
+&=\{(x,y,y)\in \mathbb{R}^2:(x^2+y^2)t=1\},
+\end{align*}
+
+\noindent
+which allows to see $\mathbb{C}^\ast$
+as the vanishing locus of the polynomial
+$(x^2+y^2)t-1$, so to see it as an algebraic variety.
+Now
+\begin{align*}
+\mathbb{S}(\mathbb{C})&=
+\{(x,y,t)\in \mathbb{C}^3:(x^2+y^2)t=1\}\\
+&=\{(x,y,t)\in \mathbb{C}^3:\underbrace{(x+iy)}_{z}
+\underbrace{(x-iy)}_{w}t=1\}\\
+&=\{(z,w,t)\in\mathbb{C}^3:zwt=1\}\\
+&=
+\{(z,w)\in\mathbb{C}^2:z\neq 0, w\neq 0\} \cong \mathbb{C}^*\times\mathbb{C}^*.
+\end{align*}
+
+\medskip\noindent
+Let $V$ be a $\mathbb{Q}$-HS of weight $k$.
+Define a representation over $\mathbb{R}$ 
+$\rho:\mathbb{S}(\mathbb{R}) \to \text{GL}(V\otimes\mathbb{R})$ 
+as follows:
+$\forall z \in \mathbb{C}^*\forall v \in V^{p,q}$ 
+$\rho(z)\cdot v=z^p \overline{z}^qv$ 
+if $v \in V \otimes \mathbb{R}$,
+then $v = \sum_{ p+q=k}v^{p,q},$ 
+$v^{q,p}=\overline{v^{p,q}}$,
+and then
+$\overline{\rho\cdot v}
+=\sum_{p+q=k}z^p \overline{z}^q
+=\sum_{p+q=k}\overline{z}^pz^qv^{q,p}
+=\rho(z)\cdot v$,
+so it is in fact a representation.
+But why? Why is this equality what we need
+to make sure it is a representation?
+
+Observe that $z \in \mathbb{R}^*\subset\mathbb{S}(\mathbb{R})=\mathbb{C}^*$,
+the eigenvalue is
+$\rho(z)\cdot v= z^{p+q}\cdot v=z^k\cdot v$.
+This motivates the following:
+
+Conversely,
+given a $\mathbb{Q}$-vector space $V$
+and a representation
+$\rho:\mathbb{S}(\mathbb{R}) \to \text{GL}(V\otimes_{\mathbb{Q}}\mathbb{R})$ 
+of $\mathbb{R}$-groups, such that
+$\forall r \in \mathbb{R}^*$
+$\rho (r)=r^k\cdot \text{Id}$,
+we have
+$V \otimes \mathbb{C}=\bigoplus_{p,q}V^{p,q}$ 
+where $v \in V^{p,q}$,
+$\rho(z,w)=z^pw^q\cdot v$.
+Since $\rho$ is a representation of $\mathbb{R}$-groups
+we have $V^{q,p}=\overline{V^{p,q}}$,
+so by the computation above we have
+$V^{p,q}=0$ when $p+q \neq k$,
+then $V$ becomes a $\mathbb{Q}$ =HS
+of weight $k$.
+
+In conclusion, a $\mathbb{Q}$-HS is the same thing as a
+$\mathbb{Q}$-vector space $V$ and a representation
+of $\mathbb{R}$-groups $\rho:\mathbb{S}(\mathbb{R}) \to
+\text{GL}(V\otimes_{\mathbb{Q}}\mathbb{R})$ 
+such that $\rho |_{\mathbb{R}^*}$ 
+is defined over $\mathbb{Q}$.
+
+(We may also replace $\mathbb{Q}$ with $\mathbb{Z}$, etc. in this construction.)
+
+\medskip\noindent
+Back to the Tate group
+$\mathbb{Q}(1)=2\pi i \mathbb{Q} \subset \mathbb{C}$,
+define for all $z \in \mathbb{C}^*$ and
+$v \in \mathbb{Q}(1) \otimes \mathbb{C}$ 
+by $\rho(z)\cdot v=|z|^{-2}\cdot v$.
+
+We have operations on HS:
+$V_1 \oplus V_2, V_1 \otimes V_2, \Hom(V_1,V_2)$.
+The $\mathbb{Q}$-HS form an abelian category.
+Let $\mathbb{Q}(m)=\mathbb{Q}(1)^{\otimes m}$ 
+when $m \geq 0$,
+$\mathbb{Q}(-1)=\mathbb{Q}(1)^*$
+and $\mathbb{Q}(-m)=\mathbb{Q}(-1)^{\otimes m}$ 
+for $m \geq 0$.
+
+If $V$ is a $\mathbb{Q}$-HS, then
+$V(m)=V \otimes \mathbb{Q}(m)$
+is the {\it Tate twist}.
+
+\begin{example}
+\label{example-chern-class}
+\begin{enumerate}
+\item $X \subset \mathbb{C}P^n$ subvariety.
+Notice that while $\mathbb{C}$ is the
+algebraic closure of $\mathbb{R}$,
+such a closure can be obtained by 
+choosing the imaginary unit $i$ or $-i$,
+so this is not canonical.
+
+However, the first Chern class is canonical:
+$$
+\xymatrix{
+0\ar[r]
+&\mathbb{Z}(1)\ar[r]
+&\mathbb{C}\ar[r]^{\text{exp}}
+&\mathbb{C}^*\ar[r]
+&0
+}
+$$
+gives the connecting homomorphism
+$H^1(X,\mathbb{C}^* )\xrightarrow{c_1}H^2(X,\mathbb{Z}(1))$
+which is in fact a HS of weight 0
+(because $H^2$ has weight 2 and $\mathbb{Z}(1)$ has
+weight $-2$).
+
+Analogously, the $p$-th chern class is
+$c_p(A\text{ coh. sheaf}) \in H^{2p}(X,\mathbb{Q}(p))$.
+
+\item $cl:CH_\mathbb{Q}^p(X) \to H^{2p}(X,\mathbb{Q})$ 
+the cycle class map, where
+$$
+CH^p_\mathbb{Q}(X)=\left\{\sum_{\substack{Z_i \subset X \\ 
+\text{subvar.}}}\alpha_i[Z_i]:\alpha_i \in \mathbb{Q}\right\}
+\Big/\text{rational equiv.}
+$$
+\end{enumerate}
+\end{example}
+
+Consider
+$$
+\xymatrix{
+Z\ar@{^(->}[r]^i& X\\
+\tilde{Z} \ar[ur]_j\ar[u]
+}
+$$
+where 
+$Z$ is a subvariety of codimension $p$ and 
+$\tilde{Z}$ is a resolution of singularities.
+Then we have the pushforward of the fundamental class,
+$j_*[\tilde{Z}] \in H_{2n-2p}(X,\mathbb{Q})$
+where $[\tilde{Z}]\in H_{2n-2p}(\tilde{Z},\mathbb{Q})
+\cong H^{2n-2p}(\tilde{Z}, \mathbb{Q})^*$.
+Then the Poincare dual of
+$j_*[\tilde{Z}]:=d[Z]
+\in H^{2p}(X,\mathbb{Q}) \cap H^{p,p}(X)$.
+So $H_{2n-2p}(\tilde{Z},\mathbb{Q})$ 
+is a HS of weight $2(p-n)$
+and  $[\tilde{Z}] \in H_{p-n,p-n}$.
+
+\begin{definition}
+\label{definition-space-of-hodge-classes}
+The {\it space of Hodge classes}
+is $H^{2p}_{\text{Hdg}}(X)
+=H^{2p}(X,\mathbb{Q})
+\cap H^{p,p}(X)$
+\end{definition}
+
+
+
+\noindent
+Then we have
+$cl:CH^p_{\mathbb{Q}}(X)
+\to H^{2p}_{\text{Hdg}}(X)
+\cong \Hom_{\mathbb{Q}-HS}(\mathbb{Q}(-p),H^{2p}(X,\mathbb{Q})$.
+The Hodge conjecture is that cl
+is surjective onto the space of Hodge classes.
+
+\section{Polarizations}
+\label{section-polarizations}
+
+\noindent
+Let $V$ be a $\mathbb{Q}$-HS of weight $k$
+and $\rho:\mathbb{S}(\mathbb{R})\to \text{GL}(V\otimes_{\mathbb{Q}}\mathbb{R})$ 
+the corresponding representation of the Deligne torus.
+The Weil operator in terms of $\rho$ is
+$C=\rho(i)$.
+
+\begin{definition}
+\label{definition-polarization}
+A {\it polarization} on $V$ is a morphism
+of $\mathbb{Q}$-HS is a $(-1)^k$-symmetric morphism
+$\psi:V \otimes V \to \mathbb{Q}(-k)$
+such that the bilinear form
+$Q:V_{\mathbb{R}}\otimes V_{\mathbb{R}}\to \mathbb{R}$
+given by $Q(x,y)=(2\pi i)^k\psi(Cx,y)$
+is symmetric and positive definite.
+\end{definition}
+
+\begin{example}
+\label{example-polarization}
+$V=H^k_{\text{prim}}(X,\mathbb{Q})$
+with $\psi$ the Hodge-Riemann pairing.
+\end{example}
+
+\noindent
+Observe: if $V$ is polarizable
+(i.e. it admits a polarization;
+not every HS admits a polarization e.g. HS
+on nonprojetive varieties)
+then $V$ is semisimple
+$V=V_1 \oplus  … \oplus  V_m$,
+$V_i$ is simple.
+
+Assume $W \subset V$ is a sub-HS,
+then $W^{\perp_\psi} \subset V$
+is a sub-HS.
+Then 
+$0 \underbrace{=}_{\substack{Q \\ \text{positive}\\\text{def.}}} 
+W \cap W^{\perp_\psi} \subset V$,
+Then $V=W \oplus  W^{\perp_\psi}$.
+
+\section{The Mumford-Tate group}
+\label{section-mumford-tate-group}
+
+\noindent
+Let $V$ be a $\mathbb{Q}$-HS
+and $\rho:\mathbb{S}(\mathbb{R}) \to \text{GL}(V \otimes \mathbb{R})$ 
+a representation of $\mathbb{R}$-groups.
+
+Consider $G \subset \text{GL}(V)$ such that
+$\text{Im}(\rho) \subset G(\mathbb{R})$.
+
+(The idea is that the Mumford-Tate group
+will recover the rational structure of $V$,
+because the representation $\rho$ knows nothing
+about this rational structure, which must exist
+since $V$ is a rational vector space.)
+
+\begin{definition}
+\label{definition-mumford-tate-group}
+The {\it Mumford-Tate group} is
+$$
+MT(V)=\bigcap_{\substack{G \subset \text{GL}(V) \\ 
+\text{subgroup s.t.}\\
+\text{Im}(\rho) \subset G(\mathbb{R})}}G
+=
+\text{smallest $Q$-subgroup of $\text{GL}(V)$ 
+containing $\text{Im}\rho$}.
+$$
+\end{definition}
+
+\begin{remark}
+\label{remark-Hodge-group}
+We can also consider $U(1) \subset \mathbb{S}(\mathbb{R})$ 
+and $\rho':=\rho|_{U(1)}: U(1) \to \text{GL}(V \otimes \mathbb{R})$.
+Then the {\it Hodge group} is $\text{Hdg}(V)=$
+smallest $Q$-subgroup of $\text{GL}(V)$ such that
+$\text{Im}(\rho')\subset \text{Hdg}(V)(\mathbb{R})$.
+
+$\text{Hdg}(V)$
+is always smaller than $MT(V)$.
+\end{remark}
+
+\begin{example}
+\label{example-mumford-tate-group}
+\begin{enumerate}
+\item $MT(\mathbb{Q}(1))=\mathbb{Q}^*$
+$\mathbb{Q}(1)=2\pi i \mathbb{Q} \subset \mathbb{C}$,
+$\mathbb{Q}(1) \otimes \mathbb{R}=2\pi i\mathbb{R}\subset \mathbb{C}$,
+$\text{GL}(\mathbb{Q}(1)\otimes \mathbb{R})=\mathbb{R}^*$,
+since $z \in \mathbb{S}(\mathbb{R})$ acts as $|z|^{-2}\cdot \text{Id}$.
+
+\item $\mathbb{Q}(0)=\mathbb{Q} \subset \mathbb{C}$,
+$MT(\mathbb{Q}(0)) = \{1\}$.
+In general, if $V$ is of weight $k$,
+then $\mathbb{Q}^* =$ center of $\text{GL}(V)\subset MT(V)$ 
+and $MT(V)$ is generated by  $\mathbb{Q}^*$
+and $Hdg(V)$.
+\end{enumerate}
+\end{example}
+
+
+\section{Tensor construction}
+\label{section-tensor-construction}
+
+\noindent
+Let $V$ be a $\mathbb{Q}$-HS with $MT(V) \subset \text{GL}(V)$
+and $\rho:\mathbb{S}(\mathbb{R}) \to MT(V)(\mathbb{R})$.
+Then
+$$
+T^\bullet(V)=\bigoplus_{e,f \geq 0}
+V^{\otimes e}\otimes (V^* )^{\otimes f}
+$$
+is a $MT(V)$-representation.
+
+\begin{proposition}
+\label{proposition-sub-HS-iff}
+A finite-dimensional subspace $W \subset T^\bullet(V)$
+is a sub-HS if and only if $W$ is
+a $MT(V)$-subspace.
+\end{proposition}
+
+\begin{proof}
+$(\impliedby)$. If $W$ is a $MT(V)$-subrepresentation,
+then from $\rho$ we can compose with the representation that $MT(V)$ is
+to obtain
+$\rho':\mathbb{S}(\mathbb{R}) \to \text{GL}(W \otimes \mathbb{R})$.
+Note that $\rho|_{\mathbb{R}^*}$ is defined over $Q$,
+We get that $W$ is a sub-HS.
+
+($\implies$). Assume that $W \subset T^\bullet(V)$ 
+is a sub-HS, $G - \text{Stab}(W) \subset \text{GL}(V)$ 
+is a $\mathbb{Q}$-subgroup.
+Since $W$ is a sub-HS,
+the action of $\mathbb{S}(\mathbb{R})$ on $T^\bullet(V)$ 
+preserves $W$,
+then $\text{Im}(\rho) \subset G(\mathbb{R})$
+and thus $MT(V)\subset G$,
+which implies that $W$ is a $MT(V)$-subrepresentation.
+\end{proof}
+
+
+As a corollary,
+
+\begin{lemma}
+\label{lemma-mumford-tate-invariant-iff}
+$x \in T^\bullet(V)$ is $MT(V)$-invariant
+if and only if $X$ is a $(0,0)$ Hodge element.
+\end{lemma}
+
+\begin{proposition}
+\label{proposition-}
+Assume that $V$ is a $\mathbb{Q}$-HS of weight $k$ 
+and $\psi:V \otimes V \to \mathbb{Q}(-k)$ is
+a polarization.
+Then 
+$$
+Hdg(V) \subset
+\begin{cases}
+\text{SO}(V,\psi)\qquad &\text{ if }k\equiv 0(\text{mod }2) \\
+Sp(V,\psi)\qquad &\text{ if }k \equiv 1(\text{mod }2)
+\end{cases}
+$$
+\end{proposition}
+
+\begin{proof}
+$\psi: V \otimes V \to \mathbb{Q}(-k)$,
+where the $\mathbb{Q}(-k)$ is a trivial $Hdg(V)$-module,
+so that $\psi$ is a morphism of $Hdg(V)$-modules.
+The action of $Hdg(V)$ preserves the symmetric form
+$\psi$ if $k \equiv 0 (\text{mod }2)$ 
+and the antisymmetric form $\psi$ 
+if $k \equiv 1 (\text{mod }2)$.
+\end{proof}
+
+\begin{example}
+\label{example-elliptic-curve}
+Let $V = H^1(E,\mathbb{Q})$ where $E$ is an elliptic curve
+and $\psi$ the Hodge-Riemann pairing.
+Then $V\otimes \mathbb{C}=V^{1,0}\oplus V^{0,1}$ 
+and $\dim V^{1,0}=1$.
+$Hdg(V) \subset Sp(V,\psi) \cong \text{SL}_2(\mathbb{Q})$.
+
+Observe thati, in general, if $V$ is polarizable,
+then $V=V_1 \oplus  … \oplus  V_m$, $V_i$ are
+irreducible $MT(V)$-representations,
+so $MT(V)$ is reductive.
+
+Back to our elliptic curve example,
+$Hdg(V) \subset \text{SL}_2(\mathbb{Q})$ is reductive.
+
+There are two possibilities:
+\begin{enumerate}
+\item $Hdg(V)=\text{SL}^2(\mathbb{Q})$,
+which implies that $MT(V) = \text{GL}_2(V)$.
+This happens when $E$ is generic in the moduli space.
+
+\item $Hdg(V)$ is properly contained in  $\text{SL}_2(\mathbb{Q})$.
+Then $Hdg(V)$ is a 1-dimensional torus.
+Then $\text{End}_{\mathbb{Q}-HS}(V) \neq  \mathbb{Q}$,
+which implies that $E$ has complex multiplication.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+\label{definition-cm-type}
+A HS $V$ is of  {\it CM-type} if $MT(V)$ is abelian
+(such HS defines a special point in the moduli space of HS.)
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
