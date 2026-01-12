@@ -791,13 +791,74 @@ formula'' is that the line bundle associated to a smooth hypersurface is the
 normal bundle.
 
 \begin{theorem}[Adjunction formula I]
-\label{theorem-adjunction-formula-1}
+\label{theorem-adjunction-formula-i}
 \begin{reference}
 \cite[p.146]{GH}
 \end{reference}
-If $Y$ is a smooth hypersurface of a smooth complex manifold $X$, then
-$\mathcal{O}_X(Y) \simeq \mathcal{N}_{Y/X}$.
+If $X$ is a smooth hypersurface of a smooth complex manifold $Y$, then
+\begin{equation}
+\label{equation-adjunction-i}
+\mathcal{O}_Y(X)|_{X} \simeq \mathcal{N}_{X/Y},
+\end{equation}
+where $\mathcal{N}_{X/Y}:=T_Y'/T_X'$.
 \end{theorem}
+
+\begin{proof}
+If $X$ is locally defined
+by the vanishing of $f_i$ on an open cover $U_i$ of $Y$,
+then $\mathcal{O}_Y(X)$ is given by the cocycle $f_{ij}:=f_if_j$.
+
+To prove Equation \ref{equation-adjunction-i}
+it's enough to show that $\mathcal{O}_Y(X)|_{X}\otimes \mathcal{N}^\vee_{X/Y}$ 
+is trivial, which can be done by constructing a nonvanishing section.
+Such a section is given by
+$$
+df_i=d(f_{ij}f_j)=df_{ij}\cdot f_j+f_{ij}df_j,
+$$
+since the first term vanishes along $X$ (because $f_j$ does)
+and the remaining terms define precisely a section
+of ${T'}^\vee_Y/{T'}^\vee_X$,
+the conormal bundle ---
+indeed, sections of such a bundle
+are holomorphic differencials vanishing along $X$.
+\end{proof}
+
+\begin{theorem}[Adjunction formula II]
+\label{theorem-adjunction-ii}
+Let $X$ be a complex submanifold of a complex manifold $Y$.
+Then
+\begin{equation}
+\label{equation-adjunction-ii}
+(K_Y\otimes \mathcal{O}_Y(X))|_{X}\cong K_X.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+From the holomorphic tangent bundle exact sequence we get
+$$
+\xymatrix{
+0\ar[r]
+&T'_X\ar[r]
+&T'_Y|_{X}\ar[r]
+&N_{X/Y}:=T'_Y/T'_X\ar[r]
+&0
+}
+$$
+which in fact has been claimed not to split.
+But one can prove by hand that
+$$
+T'_Y|_X  \cong T'_X \oplus N_{X/Y}
+$$
+by using the local trivializations of $T'_X$ and $N_{X/Y}$,
+and then conclude using the local trivializations of both
+$T'_X \oplus  N_{X/Y}$ and $T'_Y|_X$, and
+the fact that their dimensions coincide,
+to construct a bundle isomorphism among them.
+
+Taking determinant of both bundles we obtain the
+result since exterior power of direct sum goes to
+tensor product.
+\end{proof}
 
 \begin{lemma}
 \label{lemma-adjunction-formula-for-curves-on-surfaces}
@@ -1383,6 +1444,23 @@ A {\it deformation} of $X$ is a holomorphic submersion
 $\pi:\mathcal{X} \to B$ of complex manifolds
 such that $\pi^{-1}(0)\cong X$ for some $0 \in B$.
 
+If $\mathcal{X}$ and $\mathcal{Y}$ are two deformations
+of $X$ over the same base,
+a {\it morphism of deformations} is a map
+$f:\mathcal{X} \to \mathcal{Y}$ such that the diagram
+$$
+\xymatrix{
+& X\ar[dl]\ar[dr]\\
+\mathcal{X}\ar[dr]\ar[rr]^f&&\mathcal{Y}\ar[dl]\\
+&B
+}
+$$
+commutes. The {\it space of deformations} of $X$
+is the set of deformations modulo
+the equivalence relation of two deformations
+being isomorphic. A priori we don't know
+if this set has any structure.
+
 Let $Y$ be another complex manifold.
 A {\it deformation of $X$ in $Y$} 
 is a deformation of $X$ such that $\mathcal{X}\subset Y\times B$.
@@ -1405,8 +1483,9 @@ and \cite[Examples 3.2.4(ii)]{Sernesi-deformations}.
 \label{proposition-kodaira-spencer-for-embedded-deformations}
 Let $X$ be a smooth hypersurface in a complex manifold $Y$.
 For every deformation of $X$ in $Y$ 
-with base of dimension one we can construct a section of the bundle
-$N_{X/Y}$.
+with base of dimension 1 we can construct a section of the bundle
+$N_{X/Y}$. Different deformations give
+different sections up to rescaling.
 \end{proposition}
 
 \begin{proof}
@@ -1453,6 +1532,9 @@ which is a ringed space whose topological space
 is the same as $X$, but its
 structure sheaf is induced from $B_\varepsilon$.
 
+(I think that to prove this part I have
+to look carefully at the induced sheaf
+$\pi^*(\mathbb{C}[\varepsilon]/(\varepsilon^2)$.)
 Since we are on a local trivialization,
 the structure sheaf of the product $U_i \times B_i$ 
 is the tensor product of the structure sheaves
@@ -1511,9 +1593,11 @@ Recall that the line bundle associated to $X$
 is $\mathcal{O}_Y(X)$, given by the cocycle $f_i/f_j:=f_{ij}$.
 A version of adjunction formula
 (more precisely, \cite[Adjunction formula I, p. 146]{GH})
-establishes that this line bundle is in fact
+establishes that this line bundle,
+when restricted to $C$, is in fact
 the normal bundle of $X$ in $Y$, defined as que quotient
 bundle $T_Y'/T_X':=N_{X/Y}$.
+In symbols, $\mathcal{O}_Y(X)|_{X}\cong N_{X/Y}$.
 
 Similarly, the line bundle associated to $\mathcal{X}$ 
 is given by the cocycle
@@ -1539,14 +1623,6 @@ which is how a section of the sheaf $N_{X/Y}$
 is obtained.
 \end{proof}
 
-\noindent
-Notice that proportional sections of $N_{X/Y}$ 
-may be constructed coming from the same deformation.
-Thus we can consider an injective map whose
-domain is the space of deformations of $X$ in $Y$
-and codomain is $\mathbb{P}H^0(Y,N_{X/Y})$.
-
-
 \begin{exercise}
 \label{exercise-deformations-curve-in-k3}
 Let $C$ be a smooth genus $g$ curve which
@@ -1556,64 +1632,28 @@ Prove that $\dim \mathcal{X} \leq g$.
 \end{exercise}
 
 \begin{proof}
-My answer as of December 28, 2025,
-is: use \cite[Proposition 3.2.1(ii) or (ii) p.50]{Sernesi-deformations}
-to argue that the first order deformations
-of $C$ inside $X$ are parametrized by the
-sections of the normal bundle $H^0(C,N_{C/M})$.
+By Adjunction formula II 
+(Theorem \ref{theorem-adjunction-ii}) 
+and $M$ being a K3 surface
+we get that $h^0(C,N_{C,M})=g$.
 
-Then argue why we have to remove that 1,
-i.e. why we have to projectivize,
-i.e. why these deformations are in the linear system $|C|$.
-
-Then show that $\dim H^0(C,N_{C/M})=g+1$.
-
-And then… show that the deformation space
-of a curve (in a K3?) is unobstructed and in
-fact any infinitesimal deformation can be integrated
-to a full deformation. But in fact
-this is probably not necessary since the question
-is asking to show that $\dim \mathcal{X} \leq  g$
-and not to compute the exact value.
-
-Let $B$ be a connected complex manifold,
-$\mathcal{X}\subset M\times B$ and
-$\mathcal{X} \to B$ a holomorphic submersion
-with fibre $C$ at a distinguished point  $0 \in B$.
-All this just says that $\mathcal{X}$ is a deformation
-of $C$ in $M$.
-
-As for how to compute $h^1(T_C)$, the only thing
-that makes sense is using the normal bundle exact sequence.
-This gives a long exact sequence in cohmology,
-$$
-\xymatrixcolsep{1em}
-\xymatrix{
-0\ar[r]&
-H^0(T_C)\ar[r]&H^0(T_X|_C)\ar[r]&H^0(N)\ar[r]&H^1(T_C)\ar[r]&H^1(T_X|_C)\ar[r]&
-H^1(N)\ar[r]&0
-}
-$$
-and then I just need to compute neighbouring terms of
-$H^1(T_X)$, namely $H^0(N)$ and $H^1(T_X|_C)$.
-In fact, an old computation shows that $h^0(N)=g+1$.
-About $H^1(T_X|_C)$ I'm not sure…
-Notice that if we want $h^1(T_C)\leq g$
-we need the map $H^0(N)\to H^1(T_C)$ to have kernel,
-so $H^0(T_X|_C)$ cannot be zero!
-
-
-Other notes. Isn't the restricted tangent bundle 
-just the pullback bundle by the inclusion?
-At every point we put the holomorphic tangent space
-of the K3 surface?
-Also see \href{https://en.wikipedia.org/wiki/Teichm%C3%BCller_space}{wiki}
-on Teichmüller space for some remarks about the complex structure approach.
+If the deformation space $X$ exists and is a complex manifold,
+the map constructed in 
+Proposition \ref{proposition-kodaira-spencer-for-embedded-deformations}
+would be a holomorphic (why holomorphic!?) 
+injective map $X \to H^0(C,N_{C/Y})$.
+This obliges $\dim X \leq  h^0(C,N_{C/Y})=g$.
+Indeed, if not, the differential must have a kernel,
+and integrating along a direction in the kernel
+we obtain the germ of a complex curve along which
+the map is constant, which is impossible since it is injective.
 \end{proof}
 
 
-When considering the canonical map $V \otimes V^* \simeq \text{End}(V)$,
-there's also the trace ideal. Would this help at all?
+
+
+
+
 
 \section{Kähler cone}
 \label{section-kahler-cone}
