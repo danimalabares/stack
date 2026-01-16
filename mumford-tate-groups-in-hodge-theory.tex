@@ -10,6 +10,11 @@ IMPA Summer School, 2026.
 
 \tableofcontents
 
+\noindent
+Upshot. The Mumford-Tate group is
+the stabilizer of the Hodge classes,
+and remains invariant on the generic fibres of deformations.
+
 \section{Plan}
 \label{section-plan}
 
@@ -784,27 +789,777 @@ A HS $V$ is of  {\it CM-type} if $MT(V)$ is abelian
 \end{definition}
 
 
+\section{Summary so far}
+\label{section-summary}
+
+\noindent
+Recall:
+\begin{itemize}
+\item A $\mathbb{Q}$-HS is a finite dimensional $\mathbb{Q}$ 
+vector space $V$ with a representation of $\mathbb{R}$-group
+$\rho:\underbrace{\mathbb{S}(\mathbb{R})}_{\cong\mathbb{C}^*} 
+\to \text{GL}(V \otimes \mathbb{R})$
+such that $\rho|_{\mathbb{R}^*}$ is defined over $\mathbb{Q}$.
+
+This gives a Hodge structure
+$V\otimes \mathbb{C}=\bigoplus_{p,q}V^{p,q}$,
+$V^{p,q}=\overline{V^{q,p}}$.
+
+$V$ is of weight $k$ if
+$\forall  r \in \mathbb{R}^k$, $\rho(r)=r^k\cdot \text{Id}$.
+$\forall z \in \mathbb{S}(\mathbb{R})$,
+$\rho(z)|_{V^{p,q}}=z^p\overline{v}^q\text{Id}$
+
+\item $MT(V)=\bigcap_{\substack{G \in \text{GL}(V) \\ 
+\text{s.t.}\text{Im}(\rho) \subset G(\mathbb{R})}}G$
+is the Mumford-Tate group.
+
+\item $Hdg(V)=\bigcap_{\substack{
+G \in \text{GL}(V)\\ 
+\text{s.t.}\text{Im}(\rho|_{\text{U}(1)})\subset G(\mathbb{R})}}G$ 
+is the Hodge group.
+
+\item $T^\bullet V=\bigoplus_{e,f \geq 0}
+V^{\otimes e}\otimes(V^* )^{\otimes f}$.
+A sub-HS of $T^\bullet V$ is the same thing as a
+sub-$MT(V)$-representation.
+$T^\bullet V^{MT(V)}=$ $MT(V)$-invariants.
+$T^\bullet V \cap(T^*V)^{0,0}=$ the space of Hodge $(0,0)$-classes.
+
+\item (Polarization.)
+Assume that $V$ has weight $k$ 
+$\psi:V \otimes V \to \mathbb{Q}(-k)$ a $\mathbb{Q}$-HS morphism
+such that the following form is positive definite:
+\begin{align*}
+Q: V_{\mathbb{R}}\otimes V_{\mathbb{R}} &\longrightarrow \mathbb{R} \\
+Q(x,y) &=(2\pi i)^k \psi(Cx,y)
+\end{align*}
+
+\noindent
+where $C=\rho(i) \in Hdg(V)(\mathbb{R})$,
+then $MT(V),Hdg(V)$ are reductive.
+
+\end{itemize}
+
+\noindent
+``We are interested in polarizable Hodge structures
+because that is the case of cohomologies of algebraic varieties.''
+
+\section{Some facts about reductive groups}
+\label{section-reductive-groups}
+
+\noindent
+Let $V$ be a finite dimensional vector space over $k$, $\text{char}(k)=0$
+and $G \subset \text{GL}(V)$ an irreducible algebraic $k$-group.
+
+\begin{remark}
+\label{remark-connected}
+$MT(V)$ and $Hdg(V)$ are connected.
+\end{remark}
+
+\noindent
+Since by definition $G$ is a subgroup of $\text{GL}(V)$,
+we can view $V$ as a faithful representation
+(because the inclusion has no kernel).
+We say $G$ is {\it reductive} if $V$ is semisimple,
+i.e.  $V$ is a direct sum of irreducible representations
+$V=V_1 \oplus  … \oplus  V_n$.
+Equivalently, Every $G$-representation is semisimple.
+Equivalently, the center  $Z^0(G)$ is an algebraic torus
+and $G/Z(G)$ is semisimple.
+Equivalently, $G(\mathbb{C})$ admits a compact real form.
+
+$\sigma\in \text{Aut}(G(\mathbb{C}))$
+is a {\it Cartan involution} 
+if $\sigma^2=\text{id}$ and $G^\sigma=\{g\in G(\mathbb{C}):\sigma(\bar{g})=g \}$
+is compact.
+
+\begin{example}
+\label{example-polarizable-hs}
+Let $V$ be a polarizable $\mathbb{Q}$-HS of weight $k$.
+$C^2=\rho(i^2)=\rho(-1)\in Z(\underbrace{Hdg(V)}_{G})$,
+$G=Hdg(V)$.
+
+Note that  $\sigma=Ad_C:G \to G, g \mapsto CgC^{-1}$,
+$\text{id}=Ad_C^2, g \mapsto  C^2g C^{-2}=g$.
+
+We claim that $\sigma$ is a Cartan involution on $Hdg(V)=G$.
+Indeed,  $Q$ defines a Hermitian product on $V \otimes \mathbb{C}$.
+$g \in G^\sigma$,
+\begin{align*}
+Q(gx,\overline{gy})&=
+Q(gx,\sigma(g)\bar{y})\\
+&=(2\pi i)^k
+\psi(\underbrace{Cg}_{\in Hdg}x,\underbrace{Cg}_{\in Hdg}C^{-1}\bar{y})\\
+&=(2\pi i)^k\psi(x,C^{-1}\bar{y})\\
+&=(2\pi i)^k\psi(Cx,\bar{y})\\
+&=Q(x,\bar{y}).
+\end{align*}
+
+\noindent
+Thus, $G^\sigma \subset \underbrace{U(V \otimes \mathbb{C}}_{\text{compact}}$ 
+as claimed.
+\end{example}
+
+\begin{remark}
+\label{remark-polarizable}
+A $\mathbb{Q}$-HS is polarizable if and only if
+$G=Ad_C$ is a Cartan involution.
+\end{remark}
+
+\section{Reductive groups and their representations}
+\label{section-reductive-groups-and-their-representations}
+
+\noindent
+Let $V$ be a finite-dimensional vector space over $k$, $\text{char}k=0$.
+$T^\bullet V=\bigoplus_{e,f \geq 0}V^{\otimes e}\otimes (V^* )^{\otimes f}$.
+
+\begin{theorem}
+\label{theorem-reductive-groups-representations}
+Let $G\subset \text{GL}(V)$ be a reductive group.
+Then
+\begin{enumerate}
+\item Any finite-dimensional representation of $G$ 
+is a subgroup of $(T^\bullet V)^{\oplus  N}$ 
+for some  $N>0$.
+
+\item Assume that $H \subset G$ 
+is an algebraic subgroup.
+There exists a $G$-representation $W$ 
+and a 1-dimensional subspace $L \subset W$ 
+such that $H=Stab_W(L)$.
+
+\item If $H$ is reductive,
+then there exists a $G$-representation $W$ 
+and $x \in W$ such that $H=Stab_W(x)$.
+\end{enumerate}
+\end{theorem}
+
+\noindent
+We need some preparations for the proof:
+
+\begin{enumerate}
+\item $G\subset \text{GL}(V)$
+Let $k[G]$ be the algebra of regular functions on  $G$.
+
+$$
+\xymatrix{
+\text{GL}(V)\ar[rr]\ar[ddrr]&&\text{End}(V) \oplus  \text{End}(V^* )\\
+g \ar@{|->}[rd]\\
+&(g,(g^t)^{-1})&
+\{(A,B) : A \cdot B^t=\text{Id}\}\ar@{^{(}->}[uu].
+}
+$$
+So we have
+$$
+\text{Sym}(V \otimes V^* )^{\otimes 2}
+\xymatrix{\ar@{->>}[r]&}K[\text{GL}(V)]
+\xymatrix{\ar@{->>}[r]&}K[G].
+$$
+
+\item $K[G]$ is a Hopf algebra. Indeed, we have
+\begin{align*}
+\begin{aligned}
+G\times G &  \xrightarrow{m}G\\
+\{1\}&\xymatrix{\ar@{^{(}->}[r]^e&} G\\
+G &  \xrightarrow{inv}G
+\end{aligned}\qquad 
+\begin{aligned}
+K[G] &\xrightarrow{\Delta}K[G]\otimes K[G]\\
+K[G]&  \xrightarrow{\varepsilon}K\\
+K[G]&\xrightarrow{coinv}K[G].
+\end{aligned}
+\end{align*}
+
+\noindent
+and
+$$
+\xymatrix{
+G \times G \times G\ar[r]^{m \times \text{id}}\ar[d]^{\text{id} \times m}
+&G \times G\ar[d]^{m}\\
+G \times G\ar[r]^{m}
+&G
+}
+\qquad 
+\xymatrix{
+K[C]\ar[r]^{\Delta}\ar[d]^{\Delta}
+&K[G]^{\otimes 2}\ar[d]^{\text{id} \otimes \Delta}\\
+K[G]^{\otimes 2}\ar[r]^{\Delta \otimes \text{id}}
+&K[G]
+}
+$$
+
+Then $V$ is a $G$-representation, i.e. a {\it comodule}.
+We have
+\begin{align*}
+G \times V^*&\to V^*\\
+\text{Sym}(V) & \to \text{Sym}(V) \otimes K[G]\\
+V & \to V \otimes K[G]\\
+\mu:V & \to V \otimes K[G]
+\end{align*}
+
+and the following diagram commutes
+\begin{equation}
+\label{equation-diagram}
+\xymatrix{
+V\ar[r]^{\mu}\ar[d]_{\mu}
+&V \otimes K[G]\ar[d]^{\mu \otimes \text{id}}\\
+V \otimes K[G]\ar[r]_{\text{id} \otimes \Delta}
+&V \otimes K[G] \otimes K[G].
+}
+\end{equation}
+
+\noindent
+Equation \ref{equation-diagram} defines a $K[G]$-comodule
+structure on $K[G]$.
+
+\item Any $G$-representation is a union
+of finite-dimensional subrepresentations.
+(In particular this applies to $K[G]$.)
+
+Indeed, let $\{a_i\}$ be a basis of $K[G]$.
+Fix $x \in V$ and denote
+$$
+\mu(x)=\sum_{i, \text{finite}} v_i \otimes e_i 
+\qquad \text{ and } \qquad 
+\Delta e_i=\sum_{j,k}a_{ijk}e_j \otimes e_k,\qquad 
+a_{ijk}\in k.
+$$
+Then
+\begin{align*}
+\sum_i\mu(v_i)\otimes e_i&=
+\sum_{i,j,k}a_{i j k}v_i \otimes e_j \otimes e_k\\
+&=\sum_i\left(\sum_{j,k}
+a_{i j k}v_k \otimes v_k \otimes e_j \right) \otimes e_i.
+\end{align*}
+
+\noindent
+$\implies \mu(v_i)=\sum_{j,k}a_{k j i}v_k \otimes e_j$.
+$W=\text{span}(x,v_i)\implies \mu:W \to W \otimes K[G]$,
+$\dim W < \infty$.
+\end{enumerate}
+
+Now we can prove Theorem \ref{theorem-reductive-groups-representations}.
+
+\begin{proof}
+\begin{enumerate}
+\item Let $W$ be a finite-dimensional $G$-representation.
+It is enough to show that $W$ 
+is a subrepresentation of $K[G]^{\oplus N}$
+for some $N>0$.
+\begin{equation}
+\label{equation-diagram2}
+\xymatrix{
+W\ar[r]^{\mu}\ar[d]_{\mu}
+&W \otimes K[G]\ar[d]^{\mu \otimes \text{id}}\\
+W \otimes K[G]\ar[r]_{\text{id} \otimes \Delta}
+& W \otimes K[G] \otimes K[G]
+}
+\end{equation}
+
+\noindent
+Equation \ref{equation-diagram2}
+means that $\mu$ defines a morphism of $K[G]$-comodules
+$$
+W \xymatrix{\ar@{^{(}->}[r]&}\underbrace{W \otimes K[G]}_{
+K[G]^{\oplus \dim W}}.
+$$
+\item Let $H \subset G$ be an algebraic $k$-subgroup.
+[We want to show] There exists a $G$-representation $W$
+and $L \subset W$ with $\dim L=1$ such that
+$H=Stab_W(L)$.
+
+$k[H]=k[G]/I$ for an ideal  $I$.
+For $f \in K[G],h,g \in G$ we have
+$gf(h)=f(g^{-1}h)$.
+
+Suppose that  $H=V(I)$ for an ideal  $I$.
+Note that $g \in H$ if and only if $g\cdot I=I$
+since $g\cdot H=V(g I)$
+since $0=f(x)=f(g^{-1}gx)=gf(gx)=0$.
+That is, $H=Stab_{K[G]}(I)$.
+
+Let $f_1,…,f_m$ 
+be generators of $I$.
+Then there exists $\tilde{W} \subset k[G]$,
+a finite-dimensional $G$-subgroup
+with $f_1,…,f_m \in W$,
+$H=Stab_{\tilde{W}}(\tilde{W} \cap I)$.
+Consider $W = \Lambda^d\tilde{W}$
+and $L=\Lambda^d(W \cap I)$, which satisfy the conditions.
 
 
+\item If $H$ is reductive,  $H=Stab_W(L)$ 
+$W=L \oplus  W'$,
+$W \otimes W^* =(\underbrace{L \otimes L^*}_{\text{trivial}}
+\oplus (…)$.
+Let $0\neq x \in L \otimes L^*$.
+Then $H=Stab_{W \otimes W^*}Stab(x)$.
+
+\end{enumerate}
+\end{proof}
+
+\noindent
+As a corollary,
+
+\begin{lemma}
+\label{lemma-mt-is-reductive-for-polarizable-hs}
+If $V$ is a polarizable $\mathbb{Q}$-HS,
+then [the Mumford-Tate group is reductive]
+$MT(V)=$ Stabilizer of all $(0,0)$-Hodge classes
+in $T^\bullet V$.
+\end{lemma}
+
+\begin{proof}
+Let $G=MT(V)$ and
+$$
+G'=\bigcap_{\substack{x \in (0,0)\text{-Hodge}\\\text{classes}}}Stab(x)
+\subset \text{GL}(V).
+$$
+$G \subset G'$.
+
+By part 3 of Theorem \ref{theorem-},
+$G=Stab_W(x)$ where $W$ is a representation of $\text{GL}(V)$.
+By part 1 of Theorem \ref{theorem-},
+$W \subset (T^\bullet V)^{\oplus N}$.
+$x$ is fixed by $G=MT(V)$,
+then  $x$ is a $(0,0)$-Hodge class.
+Thus $G' \subset G$.
+\end{proof}
+
+\noindent
+
+[Approximate comment]
+We have shown that the representations of $MT(V)$ 
+live in that tensor algebra.
+We would like to find a universal object
+such that any Hodge structure is realised as a
+representation of such group.
+This is analogous to Galois theory,
+where we take an inverse limit over Glois groups
+of field extensions,
+which provides a universal object and
+an equivalence of categories.
+
+\section{Short summary}
+\label{section-summary2}
+
+$V$ a $\mathbb{Q}$-Hs, polarizable.
+$\rho:\mathbb{S}(\mathbb{R})\to \text{GL}(V \otimes \mathbb{R})$,
+$MT(V)\subset\text{GL}(V)$, the smallest
+subgroup over $\mathbb{Q}$ such that
+$MT(V)(\mathbb{R})$ contains $\text{Im}(\rho)$.
+Polarizable $\implies$ $MT(V)$ is reductive.
+$MT(V)=$ stabilizer of all $(0,0)$ Hodge classes
+in $T^\bullet V=\bigoplus_{e,f\geq 0}V^{\otimes e}\otimes(V^* )^{\otimes f}$.
+
+\section{Absolute Mumford-Tate group}
+\label{section-absolute}
+
+Let $V' \subset V$ be a sub-HS.
+$MT(V) \subset Stab_V(V')=\left\{\begin{pmatrix}\ast&\ast\\ 
+0&\ast\end{pmatrix} \right\} $.
+
+We also have a map
+$MT(V) \xymatrix{\ar@{->>}[r]&}MT(V')$.
+
+\medskip\noindent
+The absolute MT group should be something
+like the inverse limit $\lim_{\xymatrix{&\ar[l]}}MT(V) $.
+
+\medskip\noindent
+Let $(\mathbb{Q}-HS)$ be the category
+of $\mathbb{Q}$-HS.
+\begin{enumerate}
+\item $\mathbb{Q}$-linear abelian category.
+
+\item Has $\otimes$, which is commutative with unit $1=\mathbb{Q}(0)$,
+which a Hodge structure such that $\text{End}(\mathbb{Q}(0))=\mathbb{Q}$.
+We also have duality, $\forall V\exists V^*$
+and $\mathbb{Q}(0)=q \to V \otimes V^*$
+which is the ``diagonal embedding'',
+and $V \otimes V^* \to 1=\mathbb{Q}(0)$,
+which is the trace.
+
+\item There exists a functor
+$\omega:(\mathbb{Q}-HS)\to (\mathbb{Q}-v.s.)$,
+forgetful functor.
+$\omega$ is called {\it fibre functor}.
+A $\otimes$-functor that is exact and faithful
+(injective on Hom's).
+\end{enumerate}
+
+\noindent
+The pair $(\mathbb{Q}$-HS, $\omega)$ is called
+a {\it neutral Tannakian category}.
+
+\begin{theorem}
+\label{theorem-tannakian}
+A neutral Tannakian category $(\mathcal{C},\omega)$ 
+(where $\mathcal{C}$ is $K$-linear, $\text{char}K=0$)
+is equivalent to the category of finite
+dimensional representations of an affine group scheme over $K$
+$Spc K[G]$, $K[G]$ Hopf algebra.
+$G$ is a pro-alg. group called the {\it Tannakian fundamental group}.
+\end{theorem}
+
+\noindent
+Apply this to $(\mathbb{Q}-HS),\omega$,
+$\implies $ $G=MT_{\mathbb{Q}-HS}$ is the
+{\it absolute MT group}.
+
+Let  $(\mathbb{Q}-HS)^{pol}$ be the full $\otimes$-subcategory
+of polarizable HS.
+$MT_{(\mathbb{Q}-HS)^{\text{pol}}}$ is pro-reductive.
+
+\section{How to construct the Tannakian fundamental group}
+\label{section-tannakian-fundamental-group}
+
+\noindent
+We have $\omega:\mathcal{C}\to (K-v.s.)$.
+Let $\text{Aut}(\omega)^{\otimes}$ be the automorphisms
+ot $\omega$ as a $\otimes$-functor.
+That is, if $g \in \text{Aut}(\omega)^{\otimes}$,
+we have $\forall  X \in \mathcal{C}$, $g_x\in \text{GL}(\omega(X))$.
+
+We also have:
+
+\begin{itemize}
+\item 
+Compatibility with morphisms,
+i.e. for every $f:X \to Y$ we have
+$$
+\xymatrix{
+  \omega(X)\ar[r]^{\omega(f)}\ar[d]_{g_X}
+&\omega(Y)\ar[d]^{g_Y}\\
+\omega(X)\ar[r]_{\omega(f)}
+&\omega(Y)
+}
+$$
+commutes, i.e. $g_Y \circ \omega(f)=\omega(f) \circ g_X$.
+
+\item Compatibility with $\otimes$:
+\begin{align*}
+g_{X \otimes Y}&=g_X \otimes g_Y\\
+g_1&=1 \in K^* = \text{GL}(K),
+  g_{X^*}=(g^*_X)^{-1}.
+\end{align*}
+\end{itemize}
+
+\noindent
+$\text{Aut}(\omega)^\otimes$ is the group of $K$-points of
+the Tannakian fundamental group.
+
+\medskip\noindent
+[Our category $(\mathbb{Q}-HS)^{\text{pol}}$ is equivalent to the
+category of representations of this group.
+But the problem is that this group is huge.
+So we shall restrict to a smaller subcategory.]
+
+Let $V \in (\mathbb{Q}-HS)^{\text{pol}}$ 
+and $\left<V\right>$ the full $\otimes$-subcategory generated by $V$.
+Objects are sub-HS of $T^\bullet V$ and their direct sums.
+
+What is the Tannakian fundamental group of $\left<V\right>$?
+
+Consider $\omega:\left<V\right>\to (\mathbb{Q}-v.s.)$.
+For $g \in \text{Aut}(\omega)^{\otimes}$
+we have that $g_V \in \text{GL}(V)$ 
+is uniquely determined by $g$.
+
+Let $x \in T^\bullet V \cap(T^\bullet V)^{0,0}$.
+We have an embedding
+\begin{align*}
+1=\mathbb{Q}(0)&\xymatrix{\ar@{^{(}->}[r]&}T^\bullet V\\
+1 & \mapsto x.
+\end{align*}
+
+\noindent
+We have $g_{\mathbb{Q}(0)}=1 \implies g_V \in \text{Stab}_{T^\bullet V}(x)$.
+Thus  $g_V \in MT(V)$.
+We also have the converse, so we see that
+the Tannakian fundamental group of $\left<V\right>$ 
+is $MT(V)$.
+This could be taken as an equivalent definition of $MT(V)$
 
 
+\section{Hodge structures of abelian varieties}
+\label{section-hodge-structures-of-abelian-varieties}
 
+\noindent
+Let $(\mathbb{Q}-HS)^{\text{ab}}$ 
+be the full $\otimes$-subcategory of $(\mathbb{Q}-HS)^{\text{pol}}$ 
+genertated by $H^1(A,\mathbb{Q})$
+where $A$ is an abelian varieties.
 
+Recall that if $A$ is a projective variety it
+is biholomorphic to $\mathbb{C}^n/\Lambda$
+and $H^1(A,\mathbb{C})=H^{1,0}(A) \oplus  H^{0,1}(A)$.
 
+\medskip\noindent
+[Suppose that you have some Hodge structure,
+say, on the cohomology of your favourite variety.
+Does it belong to this category or not?
+It is not clear --- there might be some complicated Hodge structures in there]
 
+Let $V=H^1(A,\mathbb{Q})$, $MT(V) \subset \text{GL}(V)$.
+Let $\mathfrak{mt}(V)=\text{Lie}(MT(V))\subset \mathfrak{gl}(V)=V \otimes V^*$,
+a sub-HS (of $\mathfrak{gl}(V)$, which is always a Hodge structure).
+That is, the Lie algebra of $MT(V)$ always carries a Hodge structure.
+This HS may only have types
+$(-1,1),(0,0),(1,-1)$
+because $((1,0)+(0,1)) \otimes ((-1,0),(0,-1))$.
 
+\begin{proposition}
+\label{proposition-lie-algebra-of-mtv}
+Let $V \in (\mathbb{Q}-HS)^{\text{ab}}$.
+Then the HS on $\mathfrak{mt}(V)$ may have only Hodge types
+$(-1,1),(0,0),(1,-1)$.
+\end{proposition}
 
+\begin{proof}
+We may assume that $V \subset T^\bullet W$
+where $W=H^1(A,\mathbb{Q})$ by the tensor construction.
+Then we must have $MT(W) \xymatrix{\ar@{->>}[r]&} MT(V)$,
+which on the level of Lie algebras becomes
+$\mathfrak{mt}(W) \xymatrix{\ar@{->>}[r]&}\mathfrak{mt}(V)$,
+which is a surjection of HS.
+\end{proof}
 
+\noindent
+The next example shows how we may use this result.
 
+\begin{example}
+\label{example-hodge-type-prop}
+\begin{enumerate}
+\item Let $X=$ a K3 surface, $X \subset \mathbb{P}^3$, a smooth quartic.
+Then $K_X=\mathcal{O}_X$, $h^{2,0}=h^{0,2}=1$,
+$H^2(X,\mathbb{C})=H^{2,0}\oplus H^{1,1}\oplus H^{0,2}$.
+The HS is $V=H^2(X,\mathbb{Q})$
+and the intersection product is a map
+$V \otimes V \to \mathbb{Q}(-2)$.
+Recall that the Hodge group is the image of $U(n)$ under the representation
+from the Deligne torus.
+In this case we have
+$MT(V) \supset Hdg(V)\subset \text{SO}(V,\psi)$.
+Also
+$$
+\mathfrak{mt}(V)=\underbrace{\mathfrak{hdg}(V)}_{\text{Lie}(Hdg(V))}
+\oplus \underbrace{\mathbb{Q}(0)}_{\text{center of }\mathfrak{gl}(V)}.
+$$
+And also $(1,-1),(0,0),(-1,1)$.
+Now since $H^{2,0}$ is 1-dimensional we can compute
+$$
+\Lambda^2(V \otimes \mathbb{C})
+=\underbrace{(H^{2,0}\otimes H^{1,1})}_{3,1}
+\oplus \underbrace{(\Lambda^2H^{1,1}\oplus H^{2,0}\otimes H^{0,2})}_{2,2} 
+\oplus\underbrace{(H^{1,1}\otimes H^{0,2})}_{1,3} 
+$$
+\item $X \subset \mathbb{C}P^3$ hypersurface of degree $\geq 5$.
+Then $h^{2,0}>1$, $V=H^2(X,\mathbb{Q})$,
+$\mathfrak{hdg}(V) \subset \mathfrak{so}(V,\psi)$.
+Hodge types: $(2,2),(1,-1),(0,0),(-1,1),(-2,-2)$.
+\end{enumerate}
+\end{example}
 
+\section{Variations of Hodge structures}
+\label{section-variations-of-hs}
 
+\noindent
+A {\it family} is $\pi:\mathcal{X} \to B$ with $\mathcal{X},B$ complex
+manifolds, $\pi$ is a submersion, $B$ is connected
+and $\mathcal{X} \xymatrix{\ar@{^{(}->}[r]&} \mathbb{P}^N \times B$.
 
+Then $R^k\pi_*\mathbb{Z}/\text{tors.}$ is a local system over $B$.
+In fact, $(R^k\pi_*\mathbb{Z})_t=H^k(\mathcal{X}_t,\mathbb{Z})$
+where $\mathcal{X}_t=\pi^{-1}(t)$.
+That is, $R^k\pi_*\mathbb{Z}$ is a sheaf with the information
+of the cohomologies of the fibres.
 
+\medskip\noindent
+Consider
+$$
+\xymatrix{
+0\ar[r]
+&\pi^*\Omega^1_B\ar[r]
+&\Omega^1_\mathcal{X}\ar[r]
+&\Omega_{\mathcal{X}/B}^1\ar[r]
+&0
+}
+$$
+Assume $\dim B=1$
+(This is used to prove the property of the
+Gauss-Manin connection, though it can be
+also be done by restricting to curves.)
+Then
+$$
+\xymatrix{
+0\ar[r]
+&\pi^*\Omega^1_B \otimes \Omega_{\mathcal{X}}^{k-1}\ar[r]
+&\Omega_{\mathcal{X}}^k\ar[r]
+&\Omega_{\mathcal{X}/B}^k\ar[r]
+&0
+}
+$$
+\begin{equation}
+\label{equation-diagram3}
+\xymatrix{
+0\ar[r]
+&\pi^*\Omega_B^1 \otimes \Omega_{\mathcal{X}/B}^\bullet[-1]\ar[r]
+&\Omega_{\mathcal{X}}^\bullet\ar[r]
+&\Omega^\bullet_{\mathcal{X}/B}\simeq \pi^{-1}\mathcal{O}_B\ar[r]
+&0
+}
+\end{equation}
 
+We can construct the vector bundle
+$$
+\mathcal{V}_k=(R^k\pi_*\mathbb{C})\otimes\mathcal{O}_B
+=R^k\pi_*(\pi^{-1}\mathcal{O}_\Big)
+\simeq R^k\pi_*(\Omega^\bullet_{\mathcal{X}/B}).
+$$
 
+On $\mathcal{V}_k$ we have a flat connection
+from Equation \ref{equation-diagram3}.
+We get
+$$
+\xymatrix{
+  R^k\pi_*(\Omega^\bullet_{\mathcal{X}/B}\ar[r]
+&R^{k+1}\pi_*(\pi^*\Omega^1_B \otimes \Omega^\bullet_{\mathcal{X}/B}[-1]\ar[r]
+&\mathcal{V}_k\ar[r]^{\nabla}
+&\Omega_B^1 \otimes R^k\pi_*\Omega^\bullet_{\mathcal{X}/B}
+=\Omega^1_B \otimes \mathcal{V}^k.
+}
+$$
+The map $\nabla$ is called the {\it Gauss-Manin} connection.
 
+\medskip\noindent
+Define $F^pV_k=R^k\pi_*(\Omega_{\mathcal{X}/B}^{\geq p})$.
+Then $F^p\mathcal{V}_k \subset \mathcal{V}_k$
+is a holomorphic subbundle.
 
+The {\it Hodge filtration} on $\mathcal{V}_k$.
+\begin{enumerate}
+\item $\nabla:\mathcal{V}_k \to \Omega_B^1 \otimes \mathcal{V}_k$ 
+a flat connection.
 
+\item The Hodge filtration
+$$
+0 \subset … \subset F^p\mathcal{V}_k
+\subset F^{p-1}\mathcal{V}_k
+\subset…\subset V_k.
+$$
+\item (Griffiths transversality.)
+When we restrict this construction to $F^p$
+the relation we obtain is {\it Griffiths transversality}.
+$\nabla(F^k\mathcal{V}_k) \subset
+\Omega^1_B \otimes F^{p-1}\mathcal{V}_k$.
+\end{enumerate}
+
+\begin{definition}
+\label{definition-polarization-on-vk}
+A {\it polarization} on $\mathcal{V}_k$
+is defined by a section of $R^2\pi_*\mathbb{Z}(1)$.
+\end{definition}
+
+\noindent
+By the exponential sequence
+$$
+\xymatrix{
+0\ar[r]
+&\mathbb{Z}(1)\ar[r]
+&\mathbb{C}\ar[r]^{\text{exp}}
+&\mathbb{C}^*\ar[r]
+&1
+}
+$$
+we obtain maps
+$$
+R^1\pi_*\mathbb{C}^*\to R^2\pi_*\mathbb{Z}(1),
+$$
+and
+$$
+\mathcal{O}_{\mathbb{P}^N}(1) \in
+H^1(\mathcal{X},\mathbb{C}^*)
+\to H^0(B,R^1\pi_*\mathbb{C}^*)
+\to H^0(B,R^2\pi_*\mathbb{Z}(1)).
+$$
+
+From there we get
+$$
+\psi:V_B \otimes V_B \to \mathbb{Z}_B(-k),
+$$
+where $V_B=R^k\pi_*\mathbb{Z}/\text{tors.}$,
+a morphism of local systems that defines
+polarizations on the fibres of $\pi$.
+
+\begin{definition}
+\label{definition-z-variation}
+A {\it $\mathbb{Z}$-variation of Hodge-Structure over $B$} 
+is a $\mathbb{Z}$-local system $V_B$ with a 
+fibre  $\mathbb{Z}^r$ for some $r\geq 0$ 
+and a finite filtration 
+of holomorphic subbundles on $\mathcal{V}=V_B \otimes \mathcal{O}_B$ 
+$$
+0\subset…\subset F^p\mathcal{V}
+\subset F^{p-1}\mathcal{V}
+\subset…\subset \mathcal{V}
+$$
+[which satisfies Griffiths transversality]
+such that
+\begin{enumerate}
+\item for all $t \in B$ $(V_{B,t},F^\bullet \mathcal{V}_t)$ 
+is a $\mathbb{Z}$-HS.
+\item $\nabla(F^p\mathcal{V})\subset \Omega^1_B \otimes F^{p-1}\mathcal{V}$
+where $\nabla$ is the flat connection on $\mathcal{V}$.
+\end{enumerate}
+
+\end{definition}
+
+\section{The Hodge locus}
+\label{section-hodge-locus}
+
+\noindent
+[Next we shall try to study the MT group
+on families. Since MT essentially is the satbilizer of the Hodge 
+classes, we look for those. There are fibres that may
+have more Hodge classes than others. This leads to the following concept.]
+
+Let $B$ be a complex manifold and $V_B$ a $\mathbb{Z}$-local system
+with a VHS. $F^p\mathcal{V}$ of weight $2k$.
+We have
+$$
+\xymatrix{
+\text{Tot}(\mathcal{V})\ar[r]^p
+& B\\
+\text{Tot}(V_B)\ar@{^{(}->}[u]\ar[ur]^{\text{covering}}.
+}
+$$
+Note that $\text{Tot}(V_B)=\amalg W_i$
+where $W_i$ are the connected components of $\text{Tot}(V_B)$.
+
+In this setting, a Hodge class is a point $x$ in one of $W_i$ 
+such that $x \in F^k\mathcal{V} \cap \overline{F^k\mathcal{V}}$ 
+$\iff$
+$x \in F^k\mathcal{V} \cap W_i$.
+
+Let $Z_i=\text{Tot}(F^k\mathcal{V})\cap W_i$.
+Note that $Z_i$ is a closed subvariety (maybe singular)
+of $\text{Tot}(\mathcal{V})$.
+
+If the projections of these $Z_i$, $p(Z_i)$, is not equal to $B$,
+then $p(Z_i)$ is in the Hodge locus.
+That is, the {\it Hodge locus} is
+\begin{align*}
+B^{\text{Hdg}}(V_B)&=\bigcup_{i:p(Z_i)\neq B}p(Z_i)\\
+B^{\text{Hdg}}=\bigcup_{\substack{e,f \\ \text{countable}\\\text{union}}}
+B^{\text{Hdg}}(\underbrace{T^{e,f}V_B}_{
+V_B^{\otimes e}\otimes(V^*_B)^{\otimes f}}).
+\end{align*}
+
+\noindent
+[Our goal is to consider the complement of
+the Hodge locus and study there the MT group.]
 
 
 
