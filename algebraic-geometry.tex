@@ -439,6 +439,163 @@ out to be equivalent to the category of rings. /o/
 See below for some important properties of the correspondence;
 namely fibred products and tensor product counterparts.
 
+\section{Bézout theorem}
+\label{section-bezout-theorem}
+
+\noindent
+The upshot is that the ``size'' of the intersection
+of two curves is the product of their degrees.
+In nice cases this is just the number of intersection points.
+In even nicer cases one of the curves is a line, 
+in which case the product of degrees is
+just the degree of the curve,
+so that we compute the degree of a curve by
+{\it the number of intersection points with a hyperplane}.
+
+But the notion of ``size'' of the intersection
+has to be made precise, which is via the notion of multiplicity.
+The idea is that intersecting with a line
+$\ell=ax +by+c$ where, say,  $b \neq 0$,
+can be done by substituting $y$ 
+for $-\alpha x-b$.
+This makes the ``resultant''
+$f_\ell(x):=f(x,\alpha x+\beta)$
+be a polynomial in one variable,
+which can be factored as a product of linear
+terms, each of the roots of which 
+are the intersection points,
+and are now equipped with a multiplicity.
+
+\begin{definition}
+\label{definition-multiplicity-line}
+The {\it multiplicity} or {\it intersection index} 
+of $f\in k[x,y]\setminus k$ and
+the line $\ell=ax+by+c$ (where $a \neq 0$ or $b\neq 0$) is
+$$
+(\ell,f)_p =
+\begin{cases}
+0\qquad &\text{if }p \not\in V(f,\ell) \\
+\infty \qquad &\text{if }p \in V(\ell) \text{ and }V(\ell) \subset V(f)\\
+m_i \qquad & \text{if }p=(x_i,\alpha x_i+\beta)
+\end{cases}
+$$
+where $f_\ell(x):=f(x,\alpha x+\beta)$
+factors as $c\prod(x-x_i)^{m_i}$.
+
+If $V(\ell)\not \subset V(f)$, the integer
+$$
+\text{deg}(f)-\sum_{i=1}^rm_i
+$$
+is the {\it multiplicity of $\ell,f$ at infinity}.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-asymptotic-direction}
+If $f=\sum_{i=0}^df_i \in k[x,y]$ for $f_i$ homogeneous of degree $i$,
+an {\it asymptotic direction} of $f$ is $ax+by$
+which divides $f_d$.
+
+Show that  $m_\infty \neq 0$ if and only if $y-\alpha x$
+is an asymptotic direction of $f$.
+\end{exercise}
+
+\begin{proof}
+This uses a theorem using the resultant…
+\end{proof}
+
+\begin{theorem}[Bézout]
+\label{theorem-bezout}
+Let $k$ be an algebraically closed field.
+Let  $C,P \subset \mathbb{P}_k^2$ be two curves without
+irreducible components in common
+and suppose that $C \cap D= \{p_1,…,p_r\}$ 
+with intersection multiplicities  $m_1,…,m_r$ 
+in $p_1,…,p_r$.
+Then
+$$
+\text{deg}f\text{deg}g=\sum_{i=1}^r m_i.
+$$
+\end{theorem}
+
+\section{Multiplicities of points and singularities}
+\label{section-multiplicities}
+
+\begin{exercise}
+\label{exercise-factor-in-linear-terms}
+Let $f_m$ be a homogeneous polynomial of degree $m$.
+Show that $f_m$ is a product of $m$ linear factors
+$f_m=\prod (b_ix+c_iy)$.
+\end{exercise}
+
+\begin{proof}
+Upshot: fix $y=1$, factor as product of linear coefficients
+using fundamental theorem of algebra, and then rehomogenize.
+The last is because a 1-variable polynomial
+$F$ is homogeneous of degree $m$ if and only if
+$F(\lambda x)=\lambda^mF(x)$. So if you have $F(x)=f(x,1)$
+you rehomogenize by putting $y^mF(x/y)=y^mf(x/y,1)$.
+Which is strange because $y^mF(x/y)$ is in  $k[x,y,1/y]$,
+but that doesn't matter because when you plug it in you get
+ $$
+y^mf(x/y,1)=y^mc\prod(\frac{x}{y}-\alpha_i)=c\prod(x-\alpha_iy),
+$$
+(where $c$ is a constant coming from making the product having no 
+coefficients on $x$ after using fundamental theorem of algebra)
+which is already a product of linear polynomials.
+We conclude by showing that in fact $y^mf(x/y,1)=f(x,y)$,
+but that's just literally
+$$
+y^mf(x/y,1)&=y^m\sum_{i}a_i \frac{x^i}{y^i}
+=\sum_ia_i x^iy^{m-i}.
+$$
+\end{proof}
+
+\begin{proposition}
+\label{proposition-multiplicity-point}
+Let $f \in k[x,y]\setminus k$ and $p \in V(f)$.
+There exists an integer $m_p(f)\geq 1$ called
+the {\it multiplicity of $p$ in $f$} 
+such that for every line $\ell$ passing through  $p$
+ $$
+(\ell,f)_p \geq m
+$$
+and $(\ell,f)_p>m$ for at most $m$ lines and at least one line.
+\end{proposition}
+
+\begin{definition}
+\label{definition-tangent-line}
+Let $p=(x_0,y_0) \in V(f)$.
+Write $f(x+x_0,y+y_0)=f_m(x,y)+\text{lower degree terms} $, 
+i.e. translate $f$ so that the origin is in its zero set
+and write as homogeneous polynomials.
+Then put $f_m(x,y)=\prod_{i=1}^r(a_ix+b_iy)^{m_i}$.
+The lines $\ell_i=a_ix+b_iy$ are called
+{\it tangent lines} to $f$ and each has a multiplicity $m_i$.
+\end{definition}
+
+\begin{definition}
+\label{definition-smooth-ordinary-point-on-curve}
+A point $p \in V(f)$ is {\it smooth} if $m_p(f)=1$
+and  {\it ordinary} if all its tangent lines have multiplicity 1.
+\end{definition}
+
+\noindent
+Thus, ordinary points are singular,
+but these are mild singularities.
+Essentially they are points where $m$
+straight lines intersect transversally.
+
+\section{Jacobian criterion}
+\label{section-jacobian-criterion}
+
+\noindent
+\begin{proposition}[Jacobian criterion]
+\label{proposition-jacobian-criterion}
+The singular locus of $V(f)$ is $V(f,\partial_x,\partial_y)$.
+\end{proposition}
+
+
+
 \section{Proj of a graded ring}
 \label{section-proj}
 
@@ -1820,18 +1977,15 @@ smooth compact variety is $H^{1}(X,T_X)$.
 After a few months of the previous text in this section
 I think I have understood the construction of
 Kodaira-Spencer map for embedded deformations,
-which is \cite[Proposition 3.2.1(ii)]{Sernesi}.
+which is \cite[Proposition 3.2.1(ii)]{Sernesi-deformations}.
 
 But I will actually briefly outline a particular case
-of this, which is easier: \cite[Examples 3.2.4(ii)]{Sernesi}.
+of this, which is easier: \cite[Examples 3.2.4(ii)]{Sernesi-deformations}.
 This the case when $X \subset Y$ is a Cartier divisor.
 Then $X$ is cut out locally by a set of functions $f_i$
 defined on an affine cover $U_i$ of $Y$.
 Then we have a line bundle defined by the
-transition functions $f_{ij}=f_i/f_j$,
-and is such that the $f_i$ glue to a section
-which vanishes along $X$
-(see \cite[Theorem 3.39]{lec}).
+transition functions $f_{ij}=f_i/f_j$.
 This is the line bundle $\mathcal{O}_Y(X)$, which
 by the adjunction formula is also the normal bundle $N_{X/Y}$
 of $X$ in $Y$.
@@ -1857,7 +2011,12 @@ that sections look like $f+\varepsilon g$
 for $f,g \in \Gamma(\mathcal{O}_{U_i})$.
 
 If $\mathcal{X}$ is a Cartier divisor on $Y \times B_\varepsilon$
-(it is; but I'm missing a formal proof),
+(it is; but I'm missing a formal proof;
+the intuition is that an ``infinitesimal thickening'' $\mathcal{X}$ 
+of $X$ has the same underlying topological space
+but different scheme structure; 
+\href{https://stacks.math.columbia.edu/tag/01JL}{01JL}
+\href{https://stacks.math.columbia.edu/tag/01I4}{01I4}),
 it is given as the vanishing locus
 of some local sections $f_i+\varepsilon g_i$.
 (Perhaps the $f_i$ coincide with the distinguished
@@ -1865,7 +2024,7 @@ section of $X$.)
 The line bundle associated to $\mathcal{X}$ 
 is given by the cocycle
 $$
-F_{ij}=f_{ij}+\varepsilon+g_{ij}
+F_{ij}=f_{ij}+\varepsilon g_{ij}
 $$
 for $g_{ij}=\frac{g_i-f_{ij}g_j}{f_j}$.
 Indeed, note that 
