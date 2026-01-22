@@ -1607,7 +1607,7 @@ $x \in F^k\mathcal{V} \cap V_{B,t}$.
 
  $$
 \xymatrix{
-\text{Tot}(V_B)\ar[r]^{hook}\ar[d]_{=}
+\text{Tot}(V_B)\ar@{^{(}->}[r]\ar@{=}[d]
 &\text{Tot}(\mathcal{V})\ar[d]^{p}\\
 \amalg W_i\ar[r]
 &B
@@ -1942,10 +1942,424 @@ and acting as $-\text{Id}$ on $T_{x_0}\mathcal{D}$.
 \end{proof}
 
 
+\section{The Kuga-Satake construction}
+\label{section-kuga-satake}
+
+\noindent
+Let $X$ be a compact hyperkähler manifold
+(aka IHS manifold).
+Recall that this means that $X$ is a
+compact smooth manifold, simply connected
+equipped with a Riemannian metric $g$ such that
+$\text{Hol}(\nabla^g)=\text{Sp}(n)$ 
+where $\nabla^g$ is the Levi-Civita connection
+and $\text{Sp}(n)$ is the compact form of
+$\text{Sp}(2n,\mathbb{C})$,
+i.e. $\text{Aut}(\mathbb{H}^n,\left<\cdot,\cdot\right>)$,
+the quaternions equipped with the canonical
+quaternionic Hermitian product
+$\left<v,w\right>:=\sum_{i=1}^nv_i\overline{w_i}$.
+
+The holonomy principle implies
+that there exist complex structures $I,J$ and $K$ 
+such that $I J=J I=K$.
+
+Let $X_I$ be the complex manifold $X$ equipped with $I$.
+Again by the holonomy princple, there is a holomorphically symplectic form
+$\sigma_I \in H^0(X,\Omega_{X_I}^2)$.
+In fact, this is unique up to scaling and
+$H^0(X,\Omega_{X_I}^2)\cong \mathbb{C}\sigma_I$.
+Also, $\sigma_I^n$ is a holomorphic volume form,
+so that $K_{X_I}\cong\mathcal{O}_{X_I}$,
+so that these are Calabi-Yau manifolds.
+$\dim_{\mathbb{C}}X_I=2n$.
+
+\begin{example}[IHS manifolds]
+\label{example-hk}
+\begin{enumerate}
+\item $S$ complex K3 surfaces. E.g. quartics in $\mathbb{C}P^3$
+[by CY theorem there is a hyperkähler metric;
+it's difficult to construct such a metric explicitly].
+
+\item Let $S$ be a complex K3 surface.
+Then $\text{Hilb}^n(S)$, the Hilbert scheme
+of length-$n$ 0-dimensional subschemes of $S$.
+
+\item Let $A =\mathbb{C}^2/\Lambda$.
+Consider the Albanese map $\text{Hilb}^{n+1}(A)\to A$.
+Then the fiber is called a {\it Generalized Kummer variety} 
+$K^nA:=Alb^{-1}(0)$.
+
+\item O'Grady: exceptional examples of dimension 6, 10.
+\end{enumerate}
+\end{example}
+
+\section{Cohomology of an IHS manifold}
+\label{section-cohomology-ihs}
+
+\noindent
+$V:=H^2(X,\mathbb{Q})$ is a K3-type Hodge structure.
+Since $H^0(X,\Omega_{X_T}^2)=\mathbb{C}\sigma$
+where $\sigma$ is the holomorphic symplectic form,
+we must have $h^{2,0}=h^{0,2}=1$.
+
+\begin{theorem}[Beauville-Bogomolov-Fujiki]
+\label{theorem-bbf}
+There exists a constant $c_X \in \mathbb{Q}$ and a quadratic form
+$q \in S^2V^*$ of signature $(3,b_2(X)-3)$ 
+such that $\forall  a \in V$ 
+$$
+\int_X a^{2n}=c_X q(a)^n \qquad \text{(Fujiki relation)}
+$$
+where $\int_X$ is the pairing with the fundamental class
+defined by $I$.
+\end{theorem}
+
+[We have the integral of a polynomial on $V$,
+and it happens to be the $n$-th power of a quadratic form $q$.
+In fact, the integral does not depend on the choice of complex
+structure.]
+
+
+We call $q$ the  {\it BBF form}.
+The HS on $H^2$ is given by
+$$
+\rho:U(1) \to \text{SO}(V\otimes \mathbb{R},q).
+$$
+
+If $\omega$ is a Kähler form on $X$,
+then $q([\omega])>0$.
+If the class of  $\omega$ is rational,
+i.e. $[\omega] \in H^2(X,\mathbb{Q})$,
+then $H^2(X,\mathbb{Q})_{\text{prim}}=[\omega]^\perp$ 
+is polarized by $q$.
+
+Since $\omega$ is Kähler, we have the Lefschetz triple
+\begin{align*}
+L_\omega&=[\omega] \cup  -,\qquad  \Lambda_\omega=\text{dual of }L_\omega,
+\qquad [L_\omega,\Lambda_\omega]=\Theta,
+\end{align*}
+
+\noindent
+[which give us a representation of $\mathfrak{sl}_2$].
+
+Consider $L_\omega, \Lambda_\omega$ for all Kähler forms
+on all deformations of  $(X,I)$.
+The smallest Lie subalgebra of $\text{End}(H^\bullet(X,\mathbb{R}))$
+that contains all $L_\omega,\Lambda_\omega$?
+
+\section{Mukai extension}
+\label{section-mukai-extension}
+
+\noindent
+Let $(V,q)$, $\tilde{V}=V \oplus U$,
+where $U$ is the hyperbolic plane
+$q_n=\begin{pmatrix}0&1\\ 1&0\end{pmatrix}$.
+Let $\tilde{q}=q \oplus q_n$.
+We have a grading 
+$$
+\tilde{V}=\underbrace{\mathbb{Q}e_0}_{0}
+\oplus \underbrace{V}_{2}\oplus\underbrace{\mathbb{Q}e_4}_{4}.
+$$
+
+Then
+\begin{align*}
+\mathfrak{so}(\tilde{V},\tilde{q})
+&\simeq \Lambda^2\tilde{V}\\
+&=\underbrace{e_0 \wedge V}_{\substack{-2 \\ \Lambda_\omega \in }}
+\oplus\underbrace{(\underbrace{\Lambda^2V}_{\mathfrak{so}(V,q)} 
+\oplus e_0 \wedge e_n)}_{0}
+\oplus \underbrace{e_n\wedge V}_{\substack{2 \\ L_\omega \in}}
+\end{align*}
+
+\noindent
+is in fact the minimal Lie subalgebra containing
+the Lefschetz operators:
+
+\begin{theorem}[Verbitsky, Looijenga-Lunts]
+\label{theorem-vll}
+The smallest subalegbra of $\text{End}(H^\bullet(X,\mathbb{R}))$
+containing $L_\omega, \Lambda_\omega$ 
+is isomorphic to $\mathfrak{so}(\tilde{V},\tilde{q})$.
+\end{theorem}
+
+\noindent
+This implies that we have an action
+of $\mathfrak{so}(V,q)$ on $H^k(X,\mathbb{Q})$ for all $k$.
+Thus, $H^k(X,\mathbb{Q})$ is a representation of
+$\text{Spin}(X,q)$ for $k \equiv 0 (\text{mod})$ of $\text{SO}(V,q)$.
+
+The HS of $H^k(X,\mathbb{Q})$ are induced by
+$\rho:U(1) \to \text{Spin}(V\otimes \mathbb{R},q)$.
+
+[The idea is to understand the cohomology
+as a representation of $\mathfrak{so}(\tilde{V},\tilde{q})$.]
+
+Let $(\mathbb{Q}-HS)^{\text{tori}}$ be the full
+$\otimes$-subcategory of $(\mathbb{Q}-HS)$ generated
+by $H^1(T,\mathbb{Q})$ for tori $T=\mathbb{C}/\Lambda$.
+We have
+$$
+(\mathbb{Q}-HS)^{\text{tori}}\supset
+(\mathbb{Q}-HS)^{ab}
+\subset (\mathbb{Q}-HS)^{pol}.
+$$
+
+\begin{theorem}[Kurnosov-Soldatenkov-Verbitsky]
+\label{theorem-ksv}
+Let $X$ be an ISH manifold.
+Then for all $k$,
+$H^k(X,\mathbb{Q}) \in (Q-HS)^{\text{tori}}$.
+If $X$ is projective then
+$$
+H^k(X,\mathbb{Q}) \in (\mathbb{Q}-HS)^{ab}.
+$$
+\end{theorem}
+
+\section{Idea of the proof}
+\label{section-proof}
+
+\noindent
+[We need to understand cohomology groups
+as representations of $Spin(V,q)$.]
+
+\begin{enumerate}
+\item (Clifford algebras.)
+Let $(V,q)$ be a quadratic vector space over $\mathbb{Q}$.
+The Clifford algebra $Cl(V,q)=\bigoplus_{i \geq 0}V^{\otimes i}/J$
+where $J$ is the ideal generated by
+$v \otimes v-q(v)\cdot 1$ for all $v \in V$.
+
+In $Cl(V,q)$, $v^2=q(v)\cdot 1$,
+$uv-vu=2q(u,v)\cdot 1$
+Also,
+$$
+\alpha(v_1 \otimes … \otimes v_k)
+=(-1)^k v_1 \otimes … \otimes v_k,\qquad 
+\beta(v_1 \otimes … \otimes v_k)
+=v_k \otimes v_{k-1} \otimes … \otimes v_1
+$$
+descend to $Cl(V,q)$.
+
+Foro all  $a \in cl(V,q)$ write $\bar{a}=\alpha\beta(a)$,
+$Cl(V,q)=Cl^0(V,q) \oplus Cl^1(V,q)$ 
+is a $\mathbb{Z}/2$-grading.
+
+Denote $Cl(V,q)=\mathcal{C}$ and $\mathcal{C}^\times$
+the invertible elements of $\mathcal{C}$.
+For all $x \in V$ such that $q(x) \neq 0$,
+$x \in \mathcal{C}^\times$ since
+$x^2=q(x)\cdot 1 \implies  x^{-1}=\frac{x}{q(x)}$.
+
+We have a natural embedding $V \xymatrix{\ar@{^{(}->}[r]&} \mathcal{C}$.
+Let $\{ x \in \mathcal{C}^\times:\alpha(x)Vx^{-1}\subset V\}:=G$.
+
+If $x \in V$, $q(x) \neq 0$, $y \in V$,
+\begin{align*}
+\alpha(x) y x^{-1}&=-xy\frac{x}{q(x)}\\
+&=(yx-2q(x,y)\frac{x}{q(x)}\\
+&=y-2\frac{q(x,y)}{q(x)}x,
+\end{align*}
+
+\noindent
+i.e. a reflection.
+
+$x \in G$, $y \in V$,
+\begin{align*}
+q(\alpha(x)yx^{-1})&=\underbrace{\alpha(x)yx^{-1}}_{V}\alpha(x)yx^{-1}\\
+&=-\alpha(\alpha(x)yx^{-1})\alpha(x)yx^{-1}\\
+&=xy\alpha(x)^{-1}\alpha(x)yx^{-1}\\
+&=q(y).
+\end{align*}
+
+\noindent
+We get a representation $\mu:G \to O(V,q)$.
+$\mu$ is surjective (because $\text{Im}(\mu)$ contains reflections
+[and there's a theorem that $O(V,q)$ is generated by reflections]).
+
+$\Ker(\mu)=\mathbb{Q}^*\cdot 1$.
+[The kernel is quite big so let's make it a bit smaller.]
+Define a norm $N:G \to \mathbb{Q}^*$ by $N(a)=a\cdot \bar{a}$.
+Define $\Ker(N):=Pin(V,q)$.
+Then $Pin(V,q) \cap \mathcal{C}^0=\text{Spin}(V,q)$.
+Then $\mu:\text{Spin}(V,q)\to \text{SO}(V,q)$.
+Thus, $\Ker \mu=\{\pm 1\}$,
+[the double cover we were looking for].
+
+\item (Key observation.)
+The morphism $\rho:U(1) \to \text{SO}(V\otimes \mathbb{R},q)$ 
+defining the HS on $H^2(X,\mathbb{Q})$
+lifts to $\text{Spin}(V\otimes \mathbb{R},q)$.
+
+To see why, write
+$$
+V \otimes \mathbb{R}= \underbrace{(V^{2,0}\oplus V^{0,2})}_{V^+_{\mathbb{R}}}
+\oplus V^{1,1}_\mathbb{R}.
+$$
+Then $\dim V^+_\mathbb{R}=2$.
+
+We have a double cover
+$$
+\xymatrix{
+\rho:U(1)\ar[rd]_{2:1}\ar[r]&  \text{SO}(V_{\mathbb{R}}^+)\ar@{=}[d]\\
+& U(1).
+}
+$$
+
+We have
+$$
+Cl(V \otimes \mathbb{R},q)
+= \underbrace{ Cl(V_\mathbb{R}^+)}_{4-\dim}
+\otimes Cl(V^{1,1}_\mathbb{R}).
+$$
+Then $V_\mathbb{R}^+=\left<e,f\right>$ --- an orthonormal basis,
+$Cl^0(V_\mathbb{R}^+)=\left<1,ef\right>\simeq \mathbb{R}^2$.
+
+$$
+\xymatrix{
+\text{Spin}(V_\mathbb{R}^+)\cong U(1)
+\ar[d]^{2:1}\\
+\text{SO}(V_\mathbb{R}^+).
+}
+$$
+
+\item (Definition of the Hodge structure.)
+[What's the use of lifting?]
+We have a lift $\tilde{\rho}:U(1) \to \text{Spin}(V\otimes \mathbb{R},q)$.
+Note that $Cl(V_\mathbb{R}^+)$ is two copies of the standard
+representation of $U(1)$.
+
+$$
+Cl(V \otimes \mathbb{R},q)
+\simeq 
+\bigoplus \text{standard reps of }U(1) \simeq \text{Spin}(V_\mathbb{R}^+).
+$$
+Denote $H:=Cl(V,q)$,
+$\implies H \otimes \mathbb{C}=H^{1,0} \oplus H^{0,1}$.
+Then $H \in (\mathbb{Q}-HS)^{\text{tori}}$.
+
+\item (Constructing the embedding.)
+We want to construct $V \xymatrix{\ar@{^{(}->}[r]&} H^*$.
+[We should use some bilinear form on the Clifford algebra.]
+In fact, there exists a non-degenerate pairing
+$\tau:\mathcal{C} \times \mathcal{C} \to \mathbb{Q}$,
+$\tau(x,y)=\text{Tr}(x\bar{y})$,
+where we consider $x\bar{y}$ as an endomorphism of $\mathcal{C}$ 
+acting by left multiplication and 
+Tr is the trace of this endomorphism.
+In fact, $\tau(x,y)=\tau(y,x)$,
+$\tau(ax,y)=\tau(x,\bar{a}y)$ and
+$\tau$ is Pin-invariant, i.e. 
+$\forall  \in Pin(V,q)$, $\tau(ax,ay)=\tau(x,y)$.
+
+Analogously, on $H=\mathcal{C}^{\oplus m}$
+we have $\tau:H \otimes H \to \mathbb{Q}$.
+
+To construct the embedding, for any $x \in V$ 
+let $\omega_x(u,v)=\tau(xu,v)$.
+Then $\omega_x(u,v)=-\omega_x(v,u)$,
+$\omega_x \in \Lambda^2H^*$.
+This defines $\varphi:V \to \Lambda^2H^*$,
+$x \mapsto \omega_x$, the embedding we wanted.
+
+$\varphi$ is a morphism of $\text{Spin}(V,q)$-modules
+[representations].
+Thus, $\varphi$ is a morphism of Hodge structures.
+
+[This finishes the work for K3 surfaces.
+For general HK manifolds we need to work a bit more,
+how to embed all cohomology groups?
+In fact, this is where we will use the $m$ 
+in $H=\mathcal{C}^{\oplus m}$.]
+
+\item (Extra work needed for general HK manifolds.)
+Let $\dim H=4N$ and $\text{Im}(\varphi)=W$.
+For $p \in S^{2N}H^*$, 
+$p(\omega)=\omega^{2N}\in \Lambda^{2N}(H^*)\simeq\mathbb{Q}$.
+
+[$p$ is a polynomial, when we restrict it:]
+$p|_W \in (S^{2N}W^* )^{\text{Spin}(V,q)}$.
+The classical invariant theory implies [that this polynomial
+is a power of the quadratic form, i.e.]
+$p = A \cdot q^N, A \in \mathbb{Q}$.
+So $p(\omega)=\omega^{2N}=A q(\omega)^N$,
+a ``Fujiki relation''.
+
+\begin{align*}
+\mathfrak{so}(\tilde{V},\tilde{q})&=
+\underbrace{V}_{\substack{2 \\ \Lambda_x\in}}
+\oplus \underbrace{\mathfrak{so}(\tilde{V},\tilde{q})}_{0}
+\oplus \underbrace{V}_{\substack{2 \\ L_x\in}}
+\end{align*}
+
+\noindent
+Let $\eta \in \Lambda^\bullet H^*$, $x \in V$,
+\begin{equation}
+\label{equation-rep}
+L_x \eta=\omega_x \wedge \eta,\qquad 
+\Lambda_x\eta=i_\eta \omega_x
+\end{equation}
+[Where $i$ denotes interior multiplication].
+\begin{align*}
+\varphi: V &\xymatrix{\ar@{^{(}->}[r]&} \Lambda^2H^*\\
+x &\longmapsto \omega_x.
+\end{align*}
+
+\begin{proposition}
+\label{proposition-rep}
+Equation \ref{equation-rep} define a $
+\mathfrak{so}(\tilde{V},\tilde{q})$-representation
+on $\Lambda^\bullet H^*$.
+The corresponding $\text{Spin}(\tilde{V},\tilde{q})$-representation
+is faithful.
+\end{proposition}
+
+In conclusion,
+for all $\mathfrak{so}(\tilde{V},\tilde{q})$ representation $U$ 
+exists $m>0$ such that for $H=\mathcal{C}^{\oplus m}$,
+$U \subset \Lambda^\bullet H^*$ 
+as a $\mathfrak{so}(\tilde{V},\tilde{q})$ subrepresentation.
+$U$ is contained in a direct sum of 
+ $(\Lambda^\bullet \mathcal{C}^* )^{\otimes i}
+\simeq \Lambda^\bullet({\mathcal{C}^* }^{\oplus i})$.
+
+Take $U = H^2(X,\mathbb{Q})$,
+qed an embedding of $\text{Spin}(\tilde{V},\tilde{q})$ 
+representations,
+$H^\bullet(X,\mathbb{Q}) \xymatrix{\ar@{^{(}->}[r]&} \Lambda^\bullet H^*$
+is an embedding of HS.
+\end{enumerate}
+
+[Thus the HS on the cohomology of $X$ are abelian.]
 
 
 
 
 
+
+
+
+\section{References}
+\label{section-references}
+
+\begin{enumerate}
+\item Deligne, Milne, Ogus, Shih,
+``Hodge cycles, motives and Shimura varieties''.
+We have seen mostly Chapter 1 and a bit of Chapter 2.
+
+\item Deligne: 
+\begin{itemize}
+\item 
+``La conj. de Weil pour les surfaces K3''
+
+\item ``Théorie de Hodge II''
+
+\item ``Variétes de Shimura: …''
+\end{itemize}
+
+\item Kingler: ``Hodge theory, between
+algebraicity and transcendence 
++ reference therein''.
+\end{enumerate}
 
 \end{document}
