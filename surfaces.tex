@@ -196,20 +196,20 @@ $$
 Setting $h^{p,q}=\dim H^{p,q}$ + symmetries,
 we have the Hodge diamond
 $$
-\xymatrix{
+\begin{aligned}\xymatrix@C=.5em@R=.5em{
 &  &   h^{0,0}\\
 &  h^{0,1}&  &  h^{1,0}\\
 h^{0,2}&&  h^{1,1}&  &  h^{2,0}\\
 &  h^{1,2}&  &  h^{2,1}\\
 &  &  h^{2,2}
-}
-=\xymatrix{
-&  &   1\\
+}\end{aligned}
+\qquad =\qquad 
+\begin{aligned}\xymatrix@C=.5em@R=.5em{&  &   1\\
 &  q&  &  q\\
 p_g&&  h^{1,1}&  &  p_g\\
 &  q&  &  q\\
 &  &  1
-}
+}\end{aligned}
 $$
 where we call $q$ the {\it irregularity}
 $p_g$ the {\it geometric genus}
@@ -340,7 +340,7 @@ The irregularity is $q=H^0(\mathbb{P}^2,\Omega^1)=0$.
 The arithmetic genus is $p_g=\dim H^0(\mathbb{P}^2,\Omega^2)=0$.
 Thus, the Hodge diamond is
 $$
-\xymatrix{
+\xymatrix@C=.5em@R=.5em{
 & & 1\\
 & 0 && 0\\
 0 && 1 && 0\\
@@ -350,7 +350,7 @@ $$
 $$
 \item Any rational surface has a Hodge diamond
 $$
-\xymatrix{
+\xymatrix@C=.5em@R=.5em{
 & & 1\\
 & 0 && 0\\
 0 && \rho && 0\\
@@ -388,11 +388,11 @@ by looking at the positive of $K$
 $q$, $p_g$ and $\kappa$).
 \end{itemize}
 
-\begin{tabular}{c|c|c|c|c}
+\begin{center}\begin{tabular}{c|c|c|c|c}
 $K$ & $\kappa$ & $p_g$ &  $q$  & Structure\\
-\hline\\
-$K^2>0$&2&&&General type\\
-$K^2=0$&1&&&Elliptic*\\
+\hline\hline
+$K^2>0$&2&&&General type\\ \hline
+$K^2=0$&1&&&Elliptic*\\\hline
 $K=0$&0&
 $\substack{1\\0\\1\\0 \\ }$&
 $\substack{2 \\1\\0\\0 }$
@@ -400,11 +400,11 @@ $\substack{2 \\1\\0\\0 }$
 \text{abelian} \\ 
 \text{hyperelliptic}\\
 \text{K3}\\
-\text{Enriques}}$\\
+\text{Enriques}}$\\\hline
 &$-\infty$&$\substack{0 \\ 0}$&
 $\substack{\geq 1 \\ 0}$&
 $\substack{\text{ruled surfaces} \\ \text{rational}}$
-\end{tabular}
+\end{tabular}\end{center}
 
 \medskip\noindent
 The following proposition is also a definition:
@@ -558,7 +558,7 @@ Let $S$ be a surface.
 \begin{definition}
 \label{definition-kodaira-dimension}
 For each $n \geq 0$,
-we define
+we define the {\it pluri-genera}
 $$
 P_n:= \dim H^0(S,\mathcal{O}_S(n K))
 $$
@@ -566,12 +566,28 @@ and the {\it Kodaira dimension}
 $$
 \kappa:=
 \begin{cases}
--\infty\qquad &\text{if }P_n=0\forall n \\
-\substack{\text{smallest $k$ such that}\\
-P_n=O(n^k)}.
+-\infty&\qquad \text{if }P_n=0\forall n \\
+\text{smallest $k$ such that }
+P_n=O(n^k)&\qquad \text{otherwise}
 \end{cases}
 $$
 \end{definition}
+
+\begin{remark} \label{remark-kodaira} (By Daniel.) In one of Misha's course we
+have that the function $\dim H^0(n K)$ is known to be polynomial for all
+projective varieties (Birkar, Cascini, Hacon, McKernan). Conjecturally it is
+always polynomial. Thus, the definition of Kodaira dimension is nothing
+more than the degree of this polynomial.
+
+Further, in \cite[Definition 2.2.26]{huc} we see
+that this should be equivalent to defining it as the
+transcendence degree over $\mathbb{C}$
+of the fraction field of the ring 
+$\bigoplus_{m \geq 0}H^0(X,K_X^{\oplus m})$,
+which is endowed with a natural product which, in general for
+vector bundles $E$ and $F$, maps
+$H^0(X,E) \otimes H^0(X,F) \to H^0(X,E \otimes F)$.
+\end{remark}
 
 \section{Results of Mori's theory}
 \label{section-results-of-mori}
@@ -606,9 +622,9 @@ Note:
 $$
 \dim X=
 \begin{cases}
-0\xymatrix{\ar@{~>}[r]&}\qquad &-K \text{ is ample}\\
-1\xymatrix{\ar@{~>}[r]&}\qquad &S \text{ is a conic bundle}\\
-2\xymatrix{\ar@{~>}[r]&}\qquad & S=Bl_{p_1,…,p_n}.
+0\xymatrix{\ar@{~>}[r]&}&-K \text{ is ample}\\
+1\xymatrix{\ar@{~>}[r]&}&S \text{ is a conic bundle}\\
+2\xymatrix{\ar@{~>}[r]&}& S=Bl_{p_1,…,p_n}.
 \end{cases}
 $$
 
@@ -641,7 +657,7 @@ we have ``separated'' the singularity into two points]
 \item $Bl_1\mathbb{P}^1 \times \mathbb{P}^1
 \simeq Bl_1 \mathbb{F}_1
 \simeq Bl_2\mathbb{P}^2$.
-[Consider two curves $L_1$ and $L_2$ on $\mathbb{P}^1 \times P^1$.
+[Consider two curves $L_1$ and $L_2$ on $\mathbb{P}^1 \times \mathbb{P}^1$.
 Their strict transforms along with the exceptional divisor
 become $(-1)$ curves.
 Then contract $\tilde{L}_1$, this gives $\mathbb{F}_1$,
@@ -696,23 +712,333 @@ is an embedding with image of degree $3$
 
 
 
+\section{Elliptic surfaces}
+\label{section-elliptic-surfaces}
+
+\begin{definition}
+\label{definition-elliptic-surface}
+An {\it elliptic surface} 
+is a surface $S$ together with $f:S\to C$ 
+holomorphic 
+(with connected fibers)
+from $S$ to a smooth curve $C$ 
+such that the generic fiber 
+is a smooth curve of genus 1.
+
+Moreover, we assume that there
+do not exist $(-1)$-curves on fibers of $f$.
+\end{definition}
+
+Warning: I don't assume the existence
+of a section
+[a distinguished point on the fibers],
+and I'm not saying that
+all fibers are smooth.
+
+\medskip\noindent
+Singular fibers have been classified by Kodaira:
+$I_0,I_1,(m)I_n,II, IV,IV^*=\tilde{E}_6,
+III^*=\tilde{E}_7, II^*=\tilde{E}_8$ and $I_n$.
+
+\begin{example}
+\label{example-pencils-of-cubics}
+$$
+\left\{\substack{\text{pencils} \\ 
+\text{of cubics}\\
+\text{w/ smooth}\\
+\text{member}}\right\}
+\xymatrix{\ar@{<~>}[r]&}
+\left\{\substack{\text{RES} \\ \text{w/ section}}\right\}.
+$$
+$$
+\mathcal{P} \mapsto S_{\mathcal{P}}.
+$$
+ Question: given $\mathcal{P}$ and $S_{\mathcal{P}}$ 
+how many singular fibers does $S_{\mathcal{P}}$ have?
+\end{example}
+
+\begin{lemma}
+\label{lemma-discriminant-locus}
+The discriminant locus in $\mathbb{P}^9$
+[this $\mathbb{P}^9$ parametrizes cubics in $\mathbb{P}^2$ ]
+has degree 12.
+\end{lemma}
+
+\noindent
+Note that the Hodge diamond $S_{\mathcal{P}}$ 
+is 
+$$
+\xymatrix@C=.5em@R=.5em{
+& & 1\\
+& 0 && 0\\
+0 && 10 && 0\\
+& 0 &&0\\
+& & 1
+}
+$$
+(Notice that adding up the center column gives 12.)
+
+\begin{example}
+\label{example-pencil-of-conics}
+[We take a conic $C$ 
+and a triple line $3L$ 
+(it has to be triple so that it is a pencil of conics)
+which is tangent to $C$ at an inflection point.
+Then we blow up the point of intersection 9 times,
+each time picking a point in the intersection
+of the strict transform of the original cubic
+and the triple line.]
+
+Blowing up 9 times give
+a surface $S_{\mathcal{P}}$ with
+a $II^*$ fiber.
+\end{example}
+
+\medskip\noindent
+Question: How is Kodaira's classification
+obtained?
+
+\begin{enumerate}
+\item If $F=\sum n_iC_i$ is singular fiber,
+then the intersection form restricts
+to 
+$\text{span}(\{C_i\})$.
+This restriction is negative semi-definite
+with a one-dimensional kernel spanned by $F$.
+
+\item If $F$ is irreducible and $p_a(F)=1$,
+then $F=$smooth,nodal or cuspidal.
+ If $F$ is reducible, then each $C_i$ is
+a $(-2)$-curve.
+\end{enumerate}
+
+\noindent
+This two items combined imply that the
+dual graph [vertices are curves,
+
+two vertices joined if they intersect]
+is a Dynkin diagram (ADE type)
+[by a result of graph theory].
 
 
 
 
+\section{The Weistrass model}
+\label{section-weierstrass-model}
 
+\noindent
+Let $S \to C$ be an elliptic surface
+with a section.
+A choice of a section defines
+a divisor of degree 1 on the generic fiber $S_\eta$,
+i.e. a point $p$.
 
+Looking at $H^0(S_\eta,np)$
+for every $n$, we get:
+\begin{align*}
+H^0(p)&=\left<1\right>,\qquad  H^0(2p)=\left<1,x\right>,
+\qquad H^0(3p)=\left<1,x,y\right>,\\
+…,&\qquad   H^0(6p)=\left<1,x,y,x^2,xy,x^3,y^2\right>,
+\end{align*}
 
+\noindent
+so there must exist a relation.
+Up to further tricks,
+we get to $y^2=x^3+ax+b$.
 
+Making the construction global
+gives the Weierstrass model.
 
+\begin{itemize}
+\item Any $S \to C$ is birational to a
+Weierstrass fibration $W \to C$ 
+(where $W$ can be singular, while $C$ is smooth)
+where all fibers are irreducible and have $p_a=1$.
+\end{itemize}
 
+\noindent
+Geometrically, $W$ is obtained from $S$ 
+by contracting all fiber components that
+do not meet the chosen section
 
+[Once we show that we can do this,
+it will suffice to study Weierstrass fibrations.]
 
+[From now on $W$ is a Weierstrass fibration.]
+Given $\pi_i:W \to C$ (with a section $\sigma$)
+consider the fundamental line bundle
+$\mathcal{L}=(\pi_*N_{\sigma/K})^\vee=(R^1\pi_*\mathcal{O}_W)^\vee$.
+Then for all $n \geq 2$ 
+we have a splitting
+$\pi_*\mathcal{O}_{W}(n\sigma)\simeq \mathcal{O}_C \oplus \mathcal{L}^{-2}
+\oplus … \oplus \mathcal{L}^{-n}$.
+In particular, we have a section
+$$
+\pi^*\pi_*\mathcal{O}_W(3\sigma) 
+\xymatrix{\ar@{->>}[r]&}\mathcal{O}_W(3\sigma)
+$$
+gives a map $f:W \to \mathbb{P}(\pi_*\mathcal{O}_W(3\sigma))$
+that exhibits $W$ as a relative cubic in a $\mathbb{P}^2$-bundle
+over $C$.
 
+A global equation is given by
+$$
+Y^2Z=X^3+AXZ^2+BZ^3
+$$
+where $(Z,X,Y,A,B)$ are interpreted
+as sections of 
+$(\mathcal{O}_C,\mathcal{L}^2,\mathcal{L}^3,\mathcal{L}^4,\mathcal{L}^6)$.
+$\sigma$ is given by $Z=X=0$.
 
+\begin{remark}
+\label{remark-singular-fibers}
+The singular fibers of a minimal resolution of $W$ 
+are determined by the order of vanishing of $A,B$ and
+$\Delta=4A^3+27B^2$.
+\end{remark}
 
+\medskip\noindent
+Consequences:
+\begin{enumerate}
+\item $\omega_W=\pi^*(\omega_C \otimes \mathcal{L})$ 
+implies that $K_W^2=0$.
+$e=R\cdot \text{deg} \mathcal{L}=$
+number of singular fibers.
 
+\item $\kappa(W) \leq  1$.
 
+\item $\text{deg} \mathcal{L}=\chi(W)$, $e=R\cdot \text{deg} \mathcal{L}=$
+number of singular fibers.
+
+\item If $C=\mathbb{P}^1$,
+then $\mathcal{L}=\mathcal{O}_{\mathbb{P}^1}(d)$ 
+for some $d$.
+
+$$
+\begin{cases}
+d=1\xymatrix{\ar@{<~>}[r]&}&\text{(general) RES w/section} \\
+d=2\xymatrix{\ar@{<~>}[r]&}&\text{ K3s, }K_W=0\\
+3\geq 3\xymatrix{\ar@{<~>}[r]&}& \kappa=1\text{ and }K_W=\alpha F
+\text{for some }\alpha>0.
+\end{cases}
+$$
+\end{enumerate}
+
+\medskip\noindent
+Invariants. $\pi:W \to C$.
+Set $g=g(C)$.
+
+\begin{center}\begin{tabular}{c|c c}
+& $q$ & $p_g$\\
+\hline
+$W$ not a product &  $g$ & $ g+ \text{deg}\mathcal{L}-1$ \\
+product& $g+1$ &  $g+\text{deg}\mathcal{L}$.
+\end{tabular}\end{center}
+
+\noindent
+We can also compute the pluri-genera $P_n$ 
+and deduce:
+\begin{itemize}
+\item $g=0$: done.
+
+\item $g=1$:
+ $$
+\begin{cases}
+\mathcal{L}=\mathcal{O}_C\qquad &E\times E \\
+\mathcal{L}\text{ is torsion of order 2,3,4 or 6 hyp}\\
+\text{deg}(\mathcal{L})\geq 1\qquad &\kappa=1
+\end{cases}
+$$
+
+\item $g\geq 2$: $\kappa=1$.
+\end{itemize}
+
+\begin{proposition}
+\label{proposition-minimal-surface}
+Let $S$ be a minimal surface with $\kappa=1$.
+Then
+\begin{enumerate}
+\item $K^2_S=0$ and
+\item there exists $f:S \xymatrix{\ar@{->>}[r]&} C$ elliptic fibration.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}
+\item $S$ contains a curve
+$E= \sum n_iC_i$
+($n_i \in \{ 0,1\}, \text{supp}(E)$ is connected)
+with $E \overset{num}{\not \sim}0$ 
+and $E^2=K_S E=0$.
+
+In fact $K_S \overset{num}{\sim} rE$ for some $r \in \mathbb{Q}$.
+
+\item Some multiple of $E$ moves in an elliptic pencil.
+Some multiple of $E$ is the movable part of $\tilde{r}K_S$ 
+for some $\tilde{r} \in \mathbb{Q}$.
+\end{itemize}
+\end{proof}
+
+\section{Examples}
+\label{section-examples}
+
+\begin{itemize}
+\item (The Fermat quartic.)
+Consider $S \subset \mathbb{P}^3$ 
+given by $x_0^4+x_1^4+x_2^4+x_3^4=0$ 
+and for each $(\lambda:\mu) \in \mathbb{P}^1$,
+let
+$$
+C_{(\lambda:\mu)}
+=\begin{cases}
+\lambda(x_0^2+\zeta^2x_1^2-\mu(x_2^2-\zeta^2x_3^2=0\\
+\mu(x_0^2-\zeta^2x_1)+\lambda(x_2^2+\zeta^2x_3^2)=0
+\end{cases}
+$$
+where $\zeta \in \mathcal{M}_8$
+(an eight root of unity), primitive.
+These curves live in $S$ and
+\begin{align*}
+\pi: S &\longrightarrow \mathbb{P}^1 \\
+(x_0:x_1:x_2:x_3) &\longmapsto 
+(x_0^2-\zeta^2x_1^2:-x_2^2-\zeta x_3^2)
+\end{align*}
+
+\noindent
+is an elliptic surface.
+
+\item Consider a smooth plane quartic $Q$
+and choose a point $p \not\in Q$.
+$$
+\xymatrix{
+S \ar[d]^{Bl_{q_1,q_2}Y \text{ where
+$\pi^{-1}(p)=\{q_1,q_2\}$}}\\
+Y \simeq Bl_7\mathbb{P}^2\ar[d]_\pi^{2:1}\\
+\mathbb{P}^2 \supset Q.
+}
+$$
+where $\pi^{-1}(\ell)$ has $g=1$.
+
+[This produces a rational elliptic surface 
+with a section]
+\end{itemize}
+
+\noindent
+Notice that there exist elliptic surfaces with multiple fibers
+(hence without a section).
+
+\begin{example}
+\label{example-multiple-fibers}
+Start with three lines in the plane
+intersecting pairwise, and a conic intersecting tangentially
+once every line [Fano plane].
+We blow up these three points and obtain
+a type $2I_3$ fiber.
+
+In general, we take pencils of sextics
+with nodes at 9 points. These are in correspondence
+with Halpen surfaces.
+\end{example}
 
 
 
