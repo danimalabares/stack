@@ -1044,5 +1044,251 @@ with Halpen surfaces.
 
 
 
+\section{Halphen surfaces}
+\label{section-halphen-surfaces}
+
+\noindent
+[These are a class of rational surfaces.]
+
+\begin{proposition}
+\label{proposition-res}
+Let $\pi:S \to C$ be an elliptic surface with $S$ rational.
+Then
+\begin{enumerate}
+\item $C=\mathbb{P}^1$, $b_2(S)=10$.
+
+\item $\pi$ has at most one multiple fibre $mF$
+(necessarily type  $m I_n$
+for some $n$ and some $m$.
+
+\item either $\pi$ has no multiple fiber
+and $-K_S \sim F$ (any fiber),
+or $\pi$ has one muliple fiber
+of multiplicity $m$ and $-m K_S \sim S_p$
+
+\item if $\pi$ has no multiple fibers, there exists a section.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof of 2. and 3.]
+Canonical bundle formula:
+\begin{equation}
+\label{equation-canonical-bundle-formula}
+\omega_S=\pi^* (\omega_{\mathbb{P}^1}\otimes\mathcal{O}_{\mathbb{P}^1}(1))
+\otimes \mathcal{O}_S\left(
+\sum_p(m(p)-1)S_p)\right).
+\end{equation}
+Then, given any smooth fiber $F$,
+for any $n \in \mathbb{N}$,
+we have $n K_S \sim n\left(\sum_p\frac{
+m(p)-1}{m(p)}-1\right)^\alpha F$.
+
+Note that $\alpha<0$ because no multiple
+of $K_S$ can be effective.
+Thus, $m(p)=1$ except for at most $1$ at $p$.
+
+Why is \ref{equation-canonical-bundle-formula} true?
+In general, for any relatively minimal
+elliptic surface $\pi:S \to C$
+with multiple fibers
+$m_1F_1,…, m_k F_k$:
+$$
+\omega_S
+=\pi^* (\omega_C \otimes
+\underbrace{R^1\pi_*\mathcal{O}_S}_{\text{deg}\chi})^\vee)
+\otimes \mathcal{O}_S\left(\sum m(p)-1S_p\right).
+$$
+Why? Because $\pi_*\omega_S$ is locally free,
+thus $\omega_S=\pi^*(\omega_C \otimes \mathcal{L})\otimes\mathcal{O}_S(D)$
+where $D$ is the zero divisor
+of $\pi^*\pi_*\omega_S\to \omega_S$.
+Argue that $D=\sum n_iF_i$
+with $n_i< m_i$ using adjunction:
+$$
+\mathcal{O}_{F_i}\simeq \omega_{F_i}
+=\omega_S \otimes\underbrace{\mathcal{O}_{F_i}(F_i)}_{\text{torsion}} 
+=\mathcal{O}_{F_i}(F_i)^{\otimes (n_i+1)}
+$$
+thus $n_i+1$ has to divide $m_i$.
+\end{proof}
+
+\begin{remark}
+\label{remark-rational-elliptic-surface}
+Let $\pi:S \to \mathbb{P}^1$ be a rational elliptic surface (RES)
+and note that $K_S^2=0$.
+So, $S$ is not minimal and there exists a  $(-1)$-curve.
+By Proposition \ref{proposition-res},
+there are two possibilities:
+\begin{enumerate}
+\item There are no multiple fibers, $M.S_n=1$.
+\label{item-no-multiple-fibers}
+
+\item There exists a multiple fiber $mF$ 
+\label{item-halphen}
+and $MS_n=m$,
+\end{enumerate}
+\end{remark}
+
+\begin{definition}
+\label{definition-halphen-surface}
+A RES as in Item \ref{item-halphen}
+is called a {\it Halpen surface} of index $m$.
+Alternatively, a rational surface  $S$ is
+a {\it Halphen surface} if there exists $m$ 
+such that $|-m K_S|$ is one dimensionsional
+and has no fixed component and no base points.
+The smallest such $m$ is the {\it index}.
+(We include $m=1 \iff$ there exists a section.)
+\end{definition}
+
+\begin{proposition}
+\label{proposition-halphen}
+If $\pi:S \to \mathbb{P}^1$ 
+is a Halphen surface
+of index $m$, there exists $f:S \to \mathbb{P}^2$ 
+birational such tat $\pi \circ f^{-1}$ is a {\it Halpen pencil}
+of index $m$
+(i.e. a pencil of plane curves
+with degree $3M$ with 9 base points,
+each of multiplicity $m$).
+Conversely, the resolution
+of any such pencil gives a Halpen surface.
+\end{proposition}
+
+\begin{example}
+\label{example-halphen}
+$Q:y^2+xz=0$,
+$L:y=0$,
+$C:(y^2+xz)(\alpha y+z)+\beta yx^2$,
+$\alpha,\beta \neq 0$.
+
+The pencil $\lambda(4Q+L)+\mu(3C)=0$
+is a Halphen pencil of index 3.
+
+[The intersection of $C$, $Q$ and $L$ consists of two points,
+$p_1=(0:0:1)$ and $p_2=(1:0:0)$.]
+Blow up at $p_1$ seven times
+and at $p_2$ two times.
+[We obtain one the exceptional Dynkin diagram fibers.]
+\end{example}
+
+\begin{example}
+\label{example-halpen2}
+Consider any smooth cubic $C$.
+Take $p_1,…,p_9 \in C$ such that
+$p_1 \oplus … \oplus p_9$ is $m$-torsion.
+Then there exists a curve $D$ of degree $3m$ passing
+though $p_1,…,p_9$ with multiplicity $m$,
+thus $\lambda(D)+\mu(mC)=0$ is a Halpen pencil.
+\end{example}
+
+\section{Singular fibers}
+\label{section-singular-fibers}
+
+Recall that
+$$
+\left\{\substack{\text{Halphen pencils} \\ 
+\text{$\lambda C_{3m}+\mu(mC)=0$}}\right\}
+\xymatrix{\ar@{<~>}[r]&}
+\left\{\substack{
+\text{Halphen surfaces} \\ 
+\pi:S \xrightarrow{|-m K_S|}\mathbb{P}^1}\right\}
+$$
+$$
+C_{3m}\xymatrix{\ar@{<~>}[r]&} F\in |-m K_S|.
+$$
+
+\begin{proposition}[Z]
+\label{proposition-singular-fibers}
+If $F$ is of type $II^*$, $III^*$ or  $IV^*$,
+then $C_{3m}$ is non-reduced.
+\end{proposition}
+
+\begin{proof}
+$R\subset S$ rational smooth $\implies $ $R^2 \geq  -2$,
+$\implies $ exceptional curves in $S$ can only appear
+in disjoint chains.
+Now, if $F$ is as in the statement,
+then at least one curve in [picture of fiber]
+is not exceptional.
+Here are the fibers: 
+\end{proof}
+
+\begin{proposition}[Z]
+\label{proposition-halpen}
+Let $S \to \mathbb{P}^1$ be a Halphen surface of index 2
+and assume that $\pi$ contains a fiber $F$ of type $II^*$.
+Then there exists $\varphi:S \to \mathbb{P}^2$ such that
+the sextic $\varphi(F)$ is one of the following:
+[Picture of conic of multiplicity 3,
+line of multiplicity 3 intersecting cubic,
+two lines of multiplicity 3,
+quadric and line of multiplicity 4,
+a line and a line with multiplicity 5].
+\end{proposition}
+
+\begin{example}
+\label{example-halphen3}
+$C:y^2z=x(x-2)(x-\alpha z)$, $\alpha \neq 0,1$.
+$L:z=0$,
+$\tilde{L}:x=0$,
+$\mathcal{P}:\lambda(L+5\tilde{L})+\mu(2C)=0$.
+
+[A point of intersection is $p_1=(0:1:0)$,
+where the line is tangent at the inflection point of $C$.
+Another point of intersection is $p_2=(0:0:1)$.]
+Blow up $p_1$ 4 times and $p_2$ 5 times.
+\end{example}
+
+\section{Constructions}
+\label{section-construction}
+\begin{enumerate}
+\item 
+$$
+\xymatrix{
+X\ar[d]^{m:1}\\
+S \ar[d]^{|-m K_S|\ni F \text{ smooth}}\\
+\mathbb{P}^1
+}
+$$
+For  $m=2$,  $X$ is a K3. For $m\geq  3$,
+$\kappa(X)=1$ and contains a $(-m)$ $P^1$ section.
+
+
+\item Type $II$ degenerations of K3 surfaces
+and degenerations of Enriques surfaces
+(see Alexeev and Engel).
+
+\item It $\pi:S \to \mathbb{P}^1$ is a general Halphen surface
+of index 2 and we blow up we get a Coble surface.
+
+\item  The Halpen transform
+$$
+\xymatrix{
+S \ar[d]^{|-m K_S|}\\ \mathbb{P}^1
+}
+$$
+$|F+M|$ curves of $g=1$ through $q$.
+Contract $M$ and blow up $q$,
+$\xymatrix{\ar@{~>}[r]&}$ we obtain a RES with section.
+
+\item (Halpne.)
+Given $p_1,…,p_8 \in \mathbb{P}^2$,
+the locus of the 9th base point of a Halpen pencil of index $m$ 
+is a curve of degree $3\psi(m)$
+having ordinary multiple points at $p_1,…,p_8$ 
+of multiplicity $\psi(m)$,
+where
+ $$
+\psi(m)=m^2\left(1-\frac{1}{q_2^2}\right) 
+\left(1-\frac{1}{q_2^2}\right)…
+$$
+where $m=q_1^{r_1}q_2^{r_2}…$ 
+prime factorization. $m=2 \implies \psi(m)=3$.
+
+\end{enumerate}
+
+
+
 
 \end{document}
