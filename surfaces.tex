@@ -1,7 +1,7 @@
 \input{preamble}
 \begin{document}
 
-\title{A tour through algebraic surface}
+\title{A tour through algebraic surfaces}
 \maketitle
 
 \noindent
@@ -1287,6 +1287,332 @@ where $m=q_1^{r_1}q_2^{r_2}…$
 prime factorization. $m=2 \implies \psi(m)=3$.
 
 \end{enumerate}
+
+
+\section{K3 surfaces}
+\label{section-k3}
+
+\begin{definition}
+\label{definition-k3}
+A surface $S$ is a {\it K3} if
+$\Omega^2=\mathcal{O}_S$ and $h^1(S,\mathcal{O}_S)=0$.
+\end{definition}
+
+\noindent
+So, $\omega_S=\mathcal{O}_S$.
+Also $\Omega^2=\mathcal{O}_S$ means that there exists
+a global nowhere zero holomorphic 2-form $\sigma$.
+
+\begin{example}
+\label{example-k3}
+\begin{enumerate}
+\item $S \subset \mathbb{P}^3$ smooth quartic.
+$$
+\xymatrix{
+0\ar[r]
+&\mathcal{O}_{\mathbb{P}^3}(-4)\ar[r]
+&\mathcal{O}_{\mathbb{P}^3}\ar[r]
+&\mathcal{O}_S\ar[r]
+&0
+}
+$$
+The long exact sequence in cohomology
+gives $h^1(S,\mathcal{O}_S)=0$.
+Adjunction gives
+$\omega_S=\omega_{\mathbb{P}^3}\otimes\mathcal{O}_{\mathbb{P}^3}(4)|_S
+=\mathcal{O}_S$.
+
+\item $\pi:S \xrightarrow{2:1}\mathbb{P}^2 \supset B$
+smooth sextic.
+$\pi_*\mathcal{O}_S
+=\mathcal{O}_{\mathbb{P}^2}\oplus\mathcal{O}_{\mathbb{P}^2}(-3)$ 
+gives $h^1(S,\mathcal{O}_S)=0$.
+(If $\mathcal{L}=\mathcal{O}_{\mathbb{P}^2}(-3)$,
+$B$ is a section of $\mathcal{L}^{-2}$.)
+Since $\omega_S=\pi^* (\omega_{\mathbb{P}^2}\otimes\mathcal{L}^{-1}$.
+This implies that $\omega_S \simeq \mathcal{O}_S$.
+\begin{remark}
+\label{remark-ade-singularities-on-k3}
+We can allow ADE singularities on $B$ and take a minimal resolution
+$$
+\xymatrix{
+\tilde{S}\ar[d]_{2:1}&S\text{ K3 surface}\ar[d]^{2:1}
+\ar[l]_{\substack{ \text{min}\\\text{res} }}\\
+\mathbb{P}^2\ar@{-->}[d]^{\substack{B \\ \text{sextic}\\
+\text{w/ 9 noded}}}& \text{ Halphen index 2}\ar[d]^{|-2K_Y|\ni F}\\
+\mathbb{P}^1\ar[r]&\mathbb{P}^1
+}
+$$
+\end{remark}
+
+\item $S$ a K3 surface with a fixed point free involution $i$ 
+then $S/i$ is an {\it Enriques surface} [a friend of K3],
+$p_g=q=0,2K=0$.
+
+\item (Kummer surfaces.) $A$ abelian surface (e.g. $E \times E^1$)
+$a \mapsto  -a$ has 16 fixed points.
+$Kum(A):=\widetilde{A/(-1)}$ is a K3 surface.
+\end{enumerate}
+\end{example}
+
+\noindent
+The Hodge diamond of a K3:
+$$
+\xymatrix@C=.5em@R=.5em{
+& & 1\\
+& 0 && 0\\
+1 && 20 && 1\\
+& 0 && 0\\
+& & 1
+}
+$$
+[The $H^2$ lattice is]
+$$
+H^2(S,\mathbb{Z})=E_8(-1)^{\oplus 2} \oplus U^{\oplus 3},
+$$
+an even unimodular lattice of signature 
+$(\underbrace{3}_{>0},\underbrace{19}_{<0})$.
+
+\section{Curves on a K3 surface}
+\label{section-curves-on-k3}
+
+Let $S$ be a K3 surface and $C \subset S$ a curve.
+By adjunction formula, $C^2=2p_a(C)-2$, so $C^2 \geq -2$.
+
+In particular, if $C$ is smooth and $C^2=-2$,
+$C=\mathbb{P}^1$.
+
+Assume that $C$ is smooth and irreducible, and set $g=g(C)$,
+$\mathcal{L}=\mathcal{O}_S(C)$.
+
+Then $\mathcal{L}^2=2g-2$, $h^0(S,\mathcal{L})=g+1$.
+Moreover, if $g \geq 1$,
+then $|C|$ is base point free and the induced morphism
+$S \to \mathbb{P}^9$ restricts to the canonical map on $C$.
+
+\begin{definition}
+\label{definition-polarized-k3}
+A {\it polarized K3 surface} of degree $2d$ is a pair
+$(S,\mathcal{L})$ with $S$ a K3 and  $\mathcal{L}$ an
+ample (ind in Pic) line bundle of degree $\mathcal{L}^2=2d$
+\end{definition}
+
+\begin{proposition}
+\label{proposition-polarized-k3}
+For any $g \geq 3$ there exists a polarized K3
+of degree $2g-2$ in $\mathbb{P}^9$.
+\end{proposition}
+
+\begin{example}
+\label{example-polarized-k3}
+\begin{itemize}
+\item $2d=4$. Smooth quartic in $\mathbb{P}^3$ 
+or a double cover of $\mathbb{P}^1 \times \mathbb{P}^1$ branched
+aloong a $(4,4)$ curve.
+
+\item $2d=2$.  $S \xrightarrow{2:1}\mathbb{P}^2 \supset$ sextic.
+\end{itemize}
+\end{example}
+
+\section{Elliptic K3s}
+\label{section-elliptic-k3}
+
+\begin{enumerate}
+\item 
+$$
+\xymatrix{
+&Kum(E \times E^1)\ar[dl]\ar[dr]\\
+\mathbb{P}^1\simeq E/(-1)& & \mathbb{P}^1 \simeq E^1/(-1)
+}
+$$
+
+\item
+$$
+\xymatrix{
+S \ar[r]^{\substack{\text{min} \\ \text{res}}}
+&\tilde{S} \ar[r]^{2:1}
+&\mathbb{P}^1 \supset \substack{\text{sextic} \\ \text{w/ node}}.
+}
+$$
+The elliptic pencil comes from the pencil of lines in $\mathbb{P}^1$ 
+through the node.
+
+\item 
+$$
+\xymatrix{
+S \text{ elliptic}\ar[d]^{2:1}\\
+\underbrace{F_1 \cup F_2}_{\text{smooth}}\quad 
+X \text{ a RES w/ section}\ar[d]\\
+\mathbb{P}^1
+}
+$$
+\end{enumerate}
+
+\begin{proposition}
+\label{proposition-elliptic-k3}
+Let $S$ be a K3 surface.
+\begin{enumerate}
+\item $S$ is elliptic $\iff \exists  L \in \text{Pic}(S)$ with $L^2=0$.
+
+\item $S$ is elliptic with a section $\iff U \xymatrix{\ar@{^{(}->}[r]^{
+\text{primitive}}&} \text{NS}(S)$ [where $U$ is the hyperbolic lattice].
+
+\item (If the Picard rank is big enough, the surface will be elliptic.)
+If $\rho(S) \geq 5$, then $S$ is elliptic
+$\rho(S) \geq  12 \implies \exists $ a section.
+\end{enumerate}
+\end{proposition}
+
+To visualize the first point of the proposition,
+consdier the following example.
+
+\begin{example}
+\label{example-smooth-quartic-elliptic}
+A smooth quartic in $\mathbb{P}^3$ is elliptic iff it contains a line.
+\end{example}
+
+\begin{remark}
+\label{remark-elliptic-k3}
+\begin{itemize}
+\item A K3 may admit more than one elliptic fibration.
+
+\item Since the base is always $\mathbb{P}^1$
+[as you remember from the examples],
+there will always be a singular fiber.
+If $\underbrace{S}_{K3} \to C$ with $g(C) > 0$
+then  $h^0(\Omega_C)>0$ 
+but $H^0(\Omega_C) \xymatrix{\ar@{^{(}->}[r]&} H^0(\Omega_S)$.
+
+\item Any 
+$\underbrace{S}_{K3} \xymatrix{\ar@{->>}[r]^{\text{flat}}&}\mathbb{P}^1$ 
+is an elliptic fibration.
+\end{itemize}
+\end{remark}
+
+\section{The Weierstrass model}
+\label{section-weierstrass-model}
+
+\noindent
+For an elliptic K3 $S \to \mathbb{P}^1$ with section,
+$R^1\pi_*\mathcal{O}_S = \mathcal{O}_{\mathbb{P}^1}(-2)$.
+So, a Weierstrass model is given by
+$$
+y^1=x^3 + A(t)x + B(t),\qquad t \in \mathbb{P}^1
+$$
+with $\text{deg}A=8,\text{deg}B=12$.
+
+\medskip\noindent
+The volume form can be written locally as
+$$
+\frac{dx\wedge dt}{2y}.
+$$
+\section{Automorphism}
+\label{section-automorphisms}
+
+\noindent
+[Automorphisms will act in differential forms, cohomology, etc.
+A fundamental question is if an automorphism will
+preserve the volume form or not.]
+
+$$
+\xymatrix{
+&  \text{symplectic }\iff \sigma \text{ is preserved}\\
+\text{2 types}\ar@{-}[ur]\ar@{-}[dr]\\
+&  \text{non- symplectic otherwise}
+}
+$$
+(Purely non-symplectic if it acts as multiplication by a 
+primitive $n-$-th root of 1.)
+
+\noindent
+We restrict to finite order.
+
+\begin{proposition}
+\label{proposition-restrictions-on-orders}
+Let $S$ be a K3 surface
+with volume form $\sigma$.
+\begin{enumerate}
+\item If $f \in \text{Aut}(S)$ acts as
+$f^*\sigma=\underbrace{\zeta_s}_{\text{primitive}}\sigma$,
+then $\varphi(n) \leq  20$ and all $n \neq  20$ satisfying
+this appear.
+
+If $n=2$, $\text{Fix}(f)$ contains only curves
+(no isolated points) or $\emptyset$.
+
+If $n \geq 3$, $\text{Fix}(f)
+=C_g \coprod R_1 \coprod … \coprod R_k \coprod \{p_1,…,p_m\}$,
+$g \geq 0$. (Nikulin, Sarti+Artebani, Hoffmann Brandhorst.)
+
+\item If $f^*\sigma=\sigma$,
+then $\text{Fix}(f)=\{p_1,…,p_k\}$ with $1 \leq k \leq 8$
+and $\text{ord}(f) \leq 8$.
+\end{enumerate}
+\end{proposition}
+
+\begin{center}
+\begin{tabular}{c|c c c c c c c}
+n & 2&3&4&5&6&7&8\\
+\hline
+$\text{Fix}(f)$&8&6&4&4&2&3&2\\
+$\rho(S)$ &9&13&15&17&17&19&19
+\end{tabular}
+\end{center}
+
+\noindent
+(See Salgado, Garbagnati. Comparin-Prieto-Troncoso-Montero (on involutions).)
+
+\begin{example}
+\label{example-automorphisms}
+Consider the elliptic K3 given by
+[the Weierstrass model …]
+$$
+y^2=x^3+t^2x+t^{10}
+$$
+[we have written in this in a simpler way, check degrees]
+and the automorphism
+$$
+f:(x,y,t)\mapsto (\zeta_7x,\zeta_7^5y,-\zeta_7t)
+$$
+(order 14).
+
+\noindent
+Note: 
+\begin{align*}
+A(t,s)&=t^2s^6\\
+B(t,s)&=t^{10}s^2\\
+\Delta(t,s)&=4A^3+27B^2
+=\text{const. }s^4t^6(s^{14}-t^{14}).
+\end{align*}
+
+\begin{itemize}
+\item At $t=0$,  $a=2,b=10,\delta=6$. $I_0^*$.
+
+\item At $s=0$, $a=6, b=2, \delta=4$. $IV$.
+
+\item At each root of $s^{14}-t^{14}$,
+$a=b=0,\delta=1$, $I_1$.
+\end{itemize}
+
+\noindent
+[Pictures of the fibers and how the 
+automorphisms act on them - fixed components etc.]
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
