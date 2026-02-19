@@ -1489,8 +1489,8 @@ is an elliptic fibration.
 \end{itemize}
 \end{remark}
 
-\section{The Weierstrass model}
-\label{section-weierstrass-model}
+\section{Weierstrass model for K3}
+\label{section-weierstrass-model-k3}
 
 \noindent
 For an elliptic K3 $S \to \mathbb{P}^1$ with section,
@@ -1506,7 +1506,7 @@ The volume form can be written locally as
 $$
 \frac{dx\wedge dt}{2y}.
 $$
-\section{Automorphism}
+\section{Automorphisms}
 \label{section-automorphisms}
 
 \noindent
@@ -1600,21 +1600,339 @@ automorphisms act on them - fixed components etc.]
 \end{example}
 
 
+\section{Summary}
+\label{section-summary}
+
+\noindent
+Slogan. We can parametrize the smooth pencils of cubics as long
+as we remove the RESs with bad singular fibers.
+
+\begin{align*}
+\text{PGL}_3 \mathbb{y}
+\left\{
+\substack{
+\text{smooth} \\ 
+\text{pencils of}\\
+\text{plane cubics}}\right\}
+&\xymatrix{\ar@{<~>}[r]&}
+\left\{\substack{
+\text{RES} \\ \text{
+w/ a section}}\right\}\\
+\mathcal{P}
+&  \mapsto 
+S_{\mathcal{P}}.
+\end{align*}
+
+\noindent
+Question: can we parametrize orbits?
+Does the geometry of the RESs
+play any role?
+
+\noindent
+Answer: R. Miranda gives an answer
+in the '80s using GIT.
+
+\begin{align*}
+\left\{
+\substack{\text{RES } \\ \text{w/ section}}\right\}&\xymatrix{\ar@{<~>}[r]&}
+\left\{\substack{\text{Weierstrass eq.} \\ 
+y^2=x^3+A_4(t)+B_6(t)}\right\}
+\end{align*}
+
+\noindent
+Question. Can we parametrize such Weierstrass equations?
+
+\noindent
+Answer. R. Miranda also gives an answer via GIT.
+
+\section{Quick intro to GIT}
+\label{section-git}
+
+Consider a projective embedding 
+$G\mathbb{y} X \xymatrix{\ar@{^{(}->}[r]^{\mathcal{L}}&}\mathbb{P}^N$
+using a line bundle $\mathcal{L}$,
+where $X$ and $\mathcal{L}$ equipped with an action of a group $G$.
+[The idea is to use this embedding and line bundle
+to construct the algebraic quotient.]
+
+\begin{definition}
+\label{definition-git}
+$$
+X//G:=
+\text{Proj}
+\left(
+\bigoplus_{d \geq 0}
+H^0(X,\mathcal{L}^{\otimes d})^G\right).
+$$
+\end{definition}
+
+\noindent
+We have a map
+$$
+X \xrightarrow{\pi}X//G.
+$$
+[Notice that $\pi$ is not well-defined
+at some places (this
+is what we meant before with
+the RESs with bad singular fibers
+that we must remove), 
+namely where all the invariant sections
+vanish. These points have a name:]
+
+\begin{itemize}
+\item $x \in X$ is {\it unstable} if and only if
+$\pi(x)$ is not defined.
+\item  $X \supset X^{ss} \supset X^s$.
+\end{itemize}
+
+\begin{align*}
+X^{ss}&\text{``='' points in $X$ where $\pi$ is defined}\\
+X^s &  \text{``=''}\substack{
+\text{semistable points w/ closed} \\ 
+\text{orbit and finite stabilizer}}.
+\end{align*}
+
+\noindent
+[The first step in constructing the GIT quotient
+is understanding what are the unstable and semistable points.
+This is what the naive questions above are supposed to motivate:
+we intend to find the unstable and semistable points
+of the corresponding GIT problem
+in terms of the fibers of the surfaces.]
+
+\medskip\noindent
+Problem. $X=$ Grassmanian of lines
+in $H^0(\mathbb{P}^2,\mathcal{O}_{\mathbb{P}^2}(3))$.
+$G=\text{SL}(3) \mathbb{y} X$,
+$\mathcal{L} \xymatrix{\ar@{<~>}[r]&} $ Plücker embedding.
+
+\medskip\noindent
+Miranda proved:
+\begin{enumerate}
+\item A pencil $\mathcal{P}$ of plane cubics is stable
+if and only if $\mathcal{P}$ is smooth
+and $S_{\mathcal{P}}$ contains only 
+reduced fibers.
+
+\item Moreover, if $\mathcal{P}$ is smooth,
+then $\mathcal{P}$ is semistable if and only if
+$S_{\mathcal{P}}$ has no fibers of type
+$II^*, III^*$ or $IV^*$.
+\end{enumerate}
 
 
 
+\section{Natural generalizations}
+\label{section-natural-generalizations}
 
+\begin{enumerate}
+\item What about Halphen pencils/surfaces?
 
+\item \leavevmode
+[Recall the construction above on $X$ = Grasmannian of lines
+in $H^0(\mathbb{P}^2,\mathcal{O}_{\mathbb{P}^2}(3))$: why
+only in $\mathbb{P}^2$? Why only degree $3$?]
+What about higher dimensional linear systems in higher dimension?
 
+\item What about a generalization of the
+Weierstrass models?
 
+\item [(1')] What  about higher genus fibrations?
+\end{enumerate}
 
+\noindent
+Now we give answers to those questions:
 
+\begin{enumerate}
+\item For $m=2$ [recall there is an $m$ associated to Halphen surfaces],
+part of my PhD thesis.
+For any $m$ (joint w/ Masafumi Hattori),
+$$
+\mathcal{P}
+\mapsto  S_{\mathcal{P}}
+\mapsto \mathbb{P}^1.
+$$
+\begin{theorem}
+\label{theorem-}
+If $lct(S_{\mathcal{P}},F) > \frac{1}{2m}$
+(resp. $\geq$)
+for any fiber $F$,
+then $\mathcal{P}$ is
+stable (resp. semistable).
+Type 
+$I_n$, II, III, IV, II$^*$
+\end{theorem}
 
+\begin{tabular}{c|c c c c c c c c c c}
+type & $I^*_n$&$I_n$ &II&III&IV&$II^*$&$III^*$&$IV^*$&$m I_n$\\
+\hline
+lct&1/2&1&5/6&3/4&2/3&1/6&1/4&1/3&$1/m$
+\end{tabular}
 
+\noindent
+For $t \in [0,1]$,
+we compute
+\begin{align*}
+K_{\tilde{X}}+t\tilde{D}-\mu^* (K_{\mathbb{C}^2}+tD
+&=(1-2t)E_1+(2-3t)E_2+(4-6t)E_3
+\end{align*}
 
+\item Consider
+$$
+\underbrace{\text{Gr}(K,H^0(\mathbb{P}^n,\mathcal{O}_{\mathbb{P}}(d)}_{
+X_{K,d,n}}
+\mathbb{x}\text{SL}(n+1)
+$$
+(HZ) $\mathcal{L} \in X_{K,d,n}$ 
+is GIT unstable/not stable if and only if
+there exists a choice of generators for
+$\mathcal{L}$, $H_1,…,H_{k+1}$ 
+such that
+$H_1+…+H_{k+1}$ is GIT unstable/not stable.
+[The action, which is compatible
+also in symmetric power, exterior algebra, etc.,
+at the level of degree ¿? hypersurfaces will help
+determine the stable points.]
+This implies (by Hacking, Kim-Lee) that the pair
+$$
+\left(
+\mathbb{P}^n,
+\frac{n+1}{d(k+1)}(H^1+…+H_k)\right)
+$$
+is not lc (not klt).
 
+Work in progress (HPZ).
+The converse where the converse of the last implication
+holds if $n=2, d=3$ 
+and for any $K$.
 
+\medskip\noindent
+Now we consider
+$$
+\left\{
+\substack{\text{nets of cubics} \\
+\text{through $p_1,…,p_7$.} }\right\}
+$$
+$$
+\xymatrix{
+Bl_{p_1,…,p_7}\mathbb{P}^2
+\ar[r]^{\substack{\text{res} \\\text{sing.} }}
+\ar@{-->}[rd]_{2:1}
+& Y \ar[d]^{2:1}\\
+&\mathbb{P}^2 \supset \underbrace{B}_{\text{quartic}}
+}
+$$
 
+$M$ is GIT (semi)stable if and only if so is $B$.
+\end{enumerate}
+
+\noindent
+Now we introduce a new question that is not in the above list:
+
+\begin{enumerate}
+\item [(4)] Let
+$$
+\xymatrix{
+X\text{ RES w/ section}
+\ar[d]^{\text{Blow up }f_1}\\
+Y \ar[d]_f^{2:1}\\
+\mathbb{P}^2 \supset B+p.
+}
+$$
+Question. Given $X$,
+classify all pairs $(B,p)$.
+
+This morning (CGMVZ).
+We did this for sufaces with $6$ double fibers.
+([For completeness:] 
+6II, 6$I_2$, 2$I_2+4 II$,
+$2II+4I_2$,
+$3I_2+3II$.)
+
+\end{enumerate}
+
+\noindent
+Now let's describe the higher genus scenario:
+
+\begin{enumerate}
+\item [(1')]
+Two constructions:
+\begin{enumerate}
+\item 
+$$
+\xymatrix{
+&\tilde{S}\ar[d]^{\text{Blow up }f^{-1}(p)}\ar[ddl]\\
+&S \text{ a K3}\ar[d]\\
+\mathbb{P}^1 & \mathbb{P}^2 \cup  B \text{ sextic }+p
+}
+$$
+
+\item (With Livia Campo.) 
+$T_{a,b}$ toric 3-fold with weight matrix
+[we didn't introduce this gadget yet]
+$$
+\begin{pmatrix} 
+u&v & x & y & z\\
+1& 1 & 1 & 0 & -a & -3a+b\\
+0 & 0 & 1 & 1 & 3 \end{pmatrix} 
+$$
+This gives
+$$
+\xymatrix{
+T_{a,b}\ar[r]&\mathbb{P}^1_{(u,v)}\\
+X\ar@{^{(}->}[u]\ar[ur]_{\substack{\text{of bidigree} \\ 
+\binom{-6a+2b}{a}}}
+}
+$$
+$$
+\xymatrix{\ar@{<~>}[r]&}
+$$
+$$
+\xymatrix{
+X_{a,b}\ar[d]^{2:1}\\
+\mathbb{F}_a
+}
+$$
+When $a=0$ we can then parametrize
+certain divisors in $\mathbb{P}^1 \times \mathbb{P}^1$.
+
+The case $(a,b)=(0,1)$ 
+is the Horikawa model of the rational surface
+$Bl_{13}\mathbb{P}^2$ where
+the 13 points are the base locus of a pencil of quartics
+with a common node.
+\end{enumerate}
+\end{enumerate}
+
+\noindent
+[Finally we address the problem of generalizing the
+Weierstrass model:]
+
+\begin{enumerate}
+\item [(3)]
+For Halpen surfaces,
+at least 2 approaches.
+$$
+\xymatrix{
+S \ar[d]^{|-m K_S|}\\
+\mathbb{P}^1.
+}
+$$
+$\xymatrix{\ar@{~>}[r]&}$ 
+$$
+\xymatrix{
+S \ar[d]^{\substack{\text{gen. of} \\ \text{
+deg. }m}}\\
+\mathbb{P}^1 \times \mathbb{P}^1.
+}
+$$
+We have an equation $y^m=…$.
+
+The second approach is (j/ with S. Rollenske).
+[Diagram of blowing up.]
+For $m=3$, we obtain $S$ as a relative cubic inside a $\mathbb{P}^2$ 
+bundle over $\mathbb{P}^1$.
+\end{enumerate}
 
 
 \end{document}
