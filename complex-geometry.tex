@@ -30,12 +30,50 @@ $f\varphi_\alpha^{-1}$ is holomorphic on
 $\varphi_\alpha(U\cap U_\alpha)\subset\mathbb{C}^n$.
 \end{definition}
 
-\begin{lemma}
-\label{lemma-holomorphic-function-sheaf}
-The sheaf $\mathcal{O}_M$ of holomorphic functions is a sheaf.
-\end{lemma}
+\medskip\noindent
+The converse of the following proposition is
+called the Newlander-Nirenberg theorem:
 
-Complex structures…
+\begin{proposition}
+\label{proposition-complex-structure}
+A complex manifold has a natural almost complex structure,
+i.e. an endomorphism of the real tangent bundle $I:TX \to TX$
+such that $I^2=-\text{Id}$.
+\end{proposition}
+
+\begin{proof}
+Define bundle maps $I_i$ on local trivializations $U_i$
+by rotating vectors $90$ degrees in counter-clockwise
+direction at every copy of $\mathbb{C}$ in the tangent space $\mathbb{C}^n$.
+The upshot is that since $X$ is a complex manifold
+we can interpret the $I_i$ as multiplication by $\sqrt{-1}$ 
+in the complex vector space structure of the tangent space.
+
+Then the changes of coordinates satisfy the condition
+needed to glue to a global endomorphism, namely
+$I_j=g_{ij}I_ig_{ij}^{-1}$, trivially because
+the $g_{ij}$ are holomorphic and thus $\mathbb{C}$-linear.
+
+\noindent
+{\bf Addendum.} It looks like we can just directly
+define the $I_i$ by multiplication by $\sqrt{-1}$.
+\end{proof}
+
+\begin{definition}
+\label{definition-integrable-almost-complex-structure}
+An almost complex structure on a smooth manifold $X$ 
+is called {\it integrable} if it is induced from a
+complex structure on $X$ as in Proposition \ref{proposition-complex-structure}.
+\end{definition}
+
+\begin{theorem}[Newlander-Nirenberg]
+\label{theorem-newlander-nirenberg}
+An almost complex structure $I$ 
+on a smooth manifold is integrable if and only if
+$[T^{0,1},T^{0,1}]\subset T^{0,1}$.
+\end{theorem}
+
+
 \section{Sheaf of holomorphic functions}
 \label{section-sheaf-of-holomorphic-functions}
 
@@ -78,6 +116,32 @@ is well defined. It is also holomorphic
 since holomorphicity is a condition defined on
 open sets.
 \end{proof}
+
+\section{Sheaf of meromorphic functions}
+\label{section-meromorphic-functions}
+
+\noindent
+A meromorphic function is a function that
+can be written locally as a quotient of two
+holomorphic functions:
+
+\begin{definition}
+\label{definition-meromorphic-functions}
+\begin{reference}
+\cite[Definition 2.1.8]{huc}
+\end{reference}
+A {\it meromorphic function} on a complex manifold $X$ 
+is a map
+$$
+f:X \to \coprod_{x \in X}\text{Frac}(\mathcal{O}_{X,x})
+$$
+which associates to any $x\in X$
+an element $f_x \in \text{Frac}(\mathcal{O}_{X,x})$
+such that for any $x_0 \in X$ 
+there exists $U\ni x$ open and $f,g \in\mathcal{O}(U)$ 
+such that $f_x=g/h$ for all $x \in U$.
+The {\it sheaf of meromorphic functions} is $\mathcal{K}_X$.
+\end{definition}
 
 \section{Analytic sets}
 \label{section-analytic-sets}
@@ -568,7 +632,7 @@ implies imposing it on every factor.
 \medskip\noindent
 The main result of Hodge theory is that
 when we take $T^{1,0}(M)\oplus T^{0,1}(M)$,
-the eigenspaces of the complex structure
+the eigenspaces of the complex structure,
 and pass to complex singular cohomology we get
 \begin{equation}
 \label{equation-hodge-theorem}
@@ -620,6 +684,100 @@ In particular this implies that $\omega$,
 the fundamental form of the Riemannian metric $g$ 
 and the complex structure $I$ is a $(1,1)$-form.
 So this shows that Kähler classes are in $H^{1,1}(M)$.
+
+
+\section{del bar}
+\label{section-del-bar}
+
+\begin{definition}
+\label{definition-dbar}
+\begin{reference}
+\cite[Definition 1.3.5]{huc}
+\end{reference}
+Let $X$ be an almost complex manifold.
+If  $d:\mathcal{A}^k_{X,\mathbb{C}}\to \mathcal{A}^{k+1}_{X,\mathbb{C}}$ 
+is the $\mathbb{C}$-linear extension of the
+exterior differential, then one defines
+$$
+\partial:=\Pi^{p+1,q} \circ d
+:\mathcal{A}^{p,q}_X \to \mathcal{A}^{p+1,q}_X,
+\qquad 
+\bar{\partial}:=\Pi^{p,q+1} \circ d
+:\mathcal{A}^{p,q}_X \to A^{p,q+1}_X
+$$
+where $\Pi^{p,q}$ is the projection.
+\end{definition}
+
+\noindent
+Since for any local function $f$ we have
+$$
+d(f)=\sum_i\frac{\partial f}{\partial z_i}dz_i
++\sum_i\frac{\partial d}{\partial \overline{z}_i}d\overline{z}_i,
+$$
+we see that  $f$ is holomorphic if and only if
+$\overline{d}f=0$.
+
+\medskip\noindent
+We have the following local result:
+\begin{lemma}[$\bar\partial$-Poincaré lemma on the open disc]
+\label{lemma-dbar-local-lemma}
+\begin{reference}
+\cite[Corollary 1.3.9]{huc}
+\end{reference}
+If $\alpha \in \mathcal{A}^{p,q}(B)$ 
+is $\bar\partial$ closed, then there exists
+$\beta \in \mathcal{A}^{p,q-1}$ such that
+$\alpha=\bar\partial \beta$.
+\end{lemma}
+
+\begin{proof}
+Looks like this is a consequence of complex analysis.
+\end{proof}
+
+\noindent
+Back to the global situation,
+we have that
+
+\begin{proposition}
+\label{proposition-dolbeault-proposition}
+\begin{reference}
+\cite[Proposition 2.6.11]{huc}
+\end{reference}
+The space $H^0(X,\Omega^p_X)$ of holomorphic
+$p$-forms on a complex manifold is the subspace
+$\{\alpha \in \mathcal{A}^{p,0}(X):\bar\partial=0\}$.
+\end{proposition}
+
+\begin{proof}
+The problem is local.
+We use that $f dz_{i_1}\wedge…\wedge dz_{i+p}$ is holomorphic
+if and only if $f$ is holomorphic, which is equivalent to
+$$
+\bar\partial(fdz_{i_1}\wedge…\wedge dz_{i_p}
+=\sum \frac{\partial f}{\partial \overline{z}_i}d\overline{z}_i
+\wedge dz_{i_1}\wedge…\wedge dz_{i_p}=0.
+$$
+\end{proof}
+
+\noindent
+For a more general statement we must define
+the {\it $(p,q)$-Dolbeault cohomology} by
+ $$
+H^{p,q}(X)_{\bar\partial}
+:=\frac{\Ker (\bar\partial:\mathcal{A}^{p,q}(X) \to \mathcal{A}^{p,q+1}(X)}
+{\text{Im}(\bar\partial:\mathcal{A}^{p,q-1}(X) \to \mathcal{A}^{p,q}(X))}.
+$$
+Then
+
+\begin{theorem}[Dolbeault]
+\label{theorem-dolbeault}
+\begin{reference}
+\cite[Corollary 2.6.21]{huc}, \cite[Theorem 4.2]{voi}
+\end{reference} 
+The Dolbeault cohomology of $X$ computes the cohomology
+of the sheaf $\Omega^p_X$, i.e. $H^{p,q}_{\bar\partial}(X)=H^q(X,\Omega^p_X)$.
+\end{theorem}
+
 
 
 \section{Kähler metrics}
@@ -853,6 +1011,49 @@ the $(-1)^{k(n-k)}$
 and finally Equation \ref{equation-Hodge-star}.
 \end{proof}
 
+\section{Vector bundles}
+\label{section-vector-bundles}
+
+\noindent
+Definition of vector bundle,
+vector bundle from transition maps.
+
+\begin{proposition}[Holomorphic Vector Bundle Isomorphism Criterion]
+\label{proposition-isomorphism-of-vector-bundles}
+\begin{reference}
+\cite[Proposition 3.7]{lec}
+\end{reference}
+Two vector bundles $E$ and $F$ 
+with transition functions $g_{ij}$ and $h_{ij}$
+are isomorphic if and only if
+$g_{ij}=A^{-1}_ih_{ij}A_j$
+for some $A_i:U_i \to \text{GL}_n(\mathbb{C})$.
+\end{proposition}
+
+\begin{proof}
+The idea is to define a map in local trivializations
+and confirm that this glues to a global bundle map.
+This means: invent $\varphi_i:E(U_i):=\Gamma_E(U_i) \to F(U_i)$,
+i.e. a local map of sections
+(yes, a map of sections, since a bundle map
+is constructed as map of the total spaces,
+which are points and vectors, 
+but we need to preserve the projection,
+so all we care is about the vectors).
+Then check that on $U_i\cap U_j:= U_{ij}$ 
+we have $\varphi_i=\varphi_j$.
+This literally creates a bundle map.
+
+Try to do it for line bundles,
+so $A_i$ are just functions.
+Take a local frame $e_i$ for $E$
+and a local frame $f_j$ for $F$.
+Change coordinates and apply the map,
+apply the map and change coordinates
+- this should give both sides of the cocycle condition
+of the proposition.
+\end{proof}
+
 \section{Line bundles}
 \label{section-line-bundles}
 
@@ -1034,13 +1235,13 @@ First notice that each of the three
 determinant bundles gives fiberwise the top-exterior
 power of the corresponding vector spaces,
 thus varying the rank of the exterior power taken.
-Then just define a map
-$$
+Then define a map
+\begin{align*}
 x_1 \wedge…\wedge x_{\text{rk}E'}
-\otimes x_{\text{rk}E'+1}\wedge…\wedge x_{\text{rk}E'+\text{rk}E''}
-\mapsto x_1 \wedge…\wedge x_{\text{rk}E'}
+&\otimes x_{\text{rk}E'+1}\wedge…\wedge x_{\text{rk}E'+\text{rk}E''}\\
+&\qquad \qquad \mapsto x_1 \wedge…\wedge x_{\text{rk}E'}
 \wedge x'_{\text{rk}E'+1}\wedge…\wedge x'_{\text{rk}E'+\text{rk}E''}
-$$
+\end{align*}
 where $x'_{\text{rk}E'+i}$ maps to $x_{\text{rk}E'+i}$ 
 under the surjection given by the exact sequence.
 
@@ -1050,24 +1251,79 @@ factors must be zero, and then the element
 we began with also vanishes.
 Being two vector spaces of dimension 1,
 the map must also be surjective.
+Check this map is well-defined!
 This gives an isomorphism in every fiber.
 
-To prove that this extends to an isomorphism
-of bundles all we have to do is show
-that this is a biholomorphic map on the
-total spaces of the bundles.
-But holomorphicity is a local property,
-and locally both bundles are isomorphic
-because the exact sequence splits,
-so the map above is trivial.
+In fact the isomorphism above acts like 1.
+To show that this glues to a bundle isomorphism
+we have to check some cocycle condition
+as in Proposition \ref{proposition-isomorphism-of-vector-bundles}.
+In this case the transformation functions $A_i$ 
+are just 1 by definition of the morphism.
+The cocycle condition follows from the fact that
+any short exact sequence splits,
+so on $U_{ij}$ we have the isomorphism
+$E(U_{ij}) \simeq E'(U_{ij})\oplus E''(U_{ij})$.
+Recall that the cocycle of the direct sum of
+bundles is given by $\begin{pmatrix}h'_{ij}&0\\ 0&h''_{ij}\end{pmatrix}$ 
+so that when taking determinants
+we obtain that $g_{ij}=h'_{ij}h''_{ij}:=h_{ij}$
+(since taking determinant bundle is taking determinant of
+the transition functions).
+Thus the transition functions of the two bundles in question
+actually coincide,
+and the cocycle condition in Proposition
+\ref{proposition-isomorphism-of-vector-bundles}
+is the trivial equality $g_{ij}=h_{ij}$.
+\end{proof}
 
-In local coordinates of the total spaces
-$\coprod_{p \in M} \Lambda^{\text{rk}E'}E_p'$ and
-$\coprod_{p \in M}\Lambda^{\text{rk}E''}E_p''$,
-which have local frames given by a single local section,
-the map above takes the coordinates to their product,
-which is clearly holomorphic.
-Thus this a holomorphic bunde isomorphism.
+\noindent
+Here's a cleaner version of this proof:
+
+\begin{proof}
+Choose an open cover $\{U_i\}$ on which the sequence splits, so that
+\[
+E|_{U_i}\simeq E'|_{U_i}\oplus E''|_{U_i}.
+\]
+Pick local frames $(e'_{i,1},\dots,e'_{i,r})$ for $E'|_{U_i}$ and
+$(e''_{i,1},\dots,e''_{i,s})$ for $E''|_{U_i}$, and use the splitting to obtain
+a frame $(e'_{i,\bullet},e''_{i,\bullet})$ of $E|_{U_i}$.
+
+On overlaps $U_{ij}$ the transition matrix of $E$ in these adapted frames has
+block diagonal form
+\[
+g^E_{ij}=
+\begin{pmatrix}
+g'_{ij} & 0\\
+0 & g''_{ij}
+\end{pmatrix},
+\]
+hence
+\[
+\det(g^E_{ij})=\det(g'_{ij})\,\det(g''_{ij}).
+\]
+Thus the transition functions of $\det(E)$ coincide with those of
+$\det(E')\otimes\det(E'')$, giving an isomorphism of line bundles. In these
+frames it is given by
+\[
+(e'_{i,1}\wedge\cdots\wedge e'_{i,r})\otimes
+(e''_{i,1}\wedge\cdots\wedge e''_{i,s})
+\longmapsto
+e'_{i,1}\wedge\cdots\wedge e'_{i,r}\wedge
+e''_{i,1}\wedge\cdots\wedge e''_{i,s}.
+\]
+
+If a different local splitting is chosen, the adapted frames differ by a
+matrix of the form
+\[
+\begin{pmatrix}
+I & B\\
+0 & I
+\end{pmatrix},
+\]
+whose determinant is $1$. Therefore the induced map on determinant lines is
+unchanged, showing that the above isomorphism is independent of the splitting
+and hence canonical.
 \end{proof}
 
 \begin{theorem}[Adjunction formula II]
