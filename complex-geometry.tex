@@ -218,8 +218,10 @@ only if it is $I$-invariant.
 \end{exercise}
 
 \begin{proof}
-Let $\alpha,\beta \in \Lambda^{1,1}(M)$.
-Recall that $\Lambda^{1,1}(M)=\Lambda^{1,0}(M)\otimes\Lambda^{0,1}(M)$.
+Let $\alpha\wedge\beta \in \Lambda^{1,1}(M)$.
+Recall that $\Lambda^{1,1}(M)=\Lambda^{1,0}(M)\otimes\Lambda^{0,1}(M)$,
+i.e. $\alpha \in \Lambda^{1,0}(M)$ and
+$\beta \in \Lambda^{0,1}(M)$.
 For any vectors $v,w$ tangent to some point $p \in M$,
 \begin{align*}
 I(\alpha\wedge\beta)(v,w)
@@ -274,7 +276,7 @@ where $\Pi^{p,q}$ is the projection.
 Since for any local function $f$ we have
 $$
 d(f)=\sum_i\frac{\partial f}{\partial z_i}dz_i
-+\sum_i\frac{\partial d}{\partial \overline{z}_i}d\overline{z}_i,
++\sum_i\frac{\partial d}{\partial \bar{z}_i}d\bar{z}_i,
 $$
 we see that  $f$ is holomorphic if and only if
 $\overline{d}f=0$.
@@ -378,9 +380,30 @@ $dd^cf$ is positive definite $(1,1)$-form.
 Let $V$ be a real vector space equipped with a complex structure $I$.
 A $(1,1)$-form $\omega$ is {\it positive} 
 if $\omega(x,Ix)\geq 0$ for any nonzero $x \in V$.
+(Notice the $I$ is in the second entry!)
 It is called {\it Hermitian} or {\it semipositive} 
 if $\omega(x,Ix)>0$ for all nonzero $x \in V$.
 \end{definition}
+
+\noindent
+See \cite[Lemma 3.1.7]{huc}
+to find Huybrecht's definition of a closed {\it positive definite} 
+$(1,1)$-form, namely if
+$\omega=\frac{i}{2}\sum h_{ij}dz_i \wedge d\bar{z}_j$
+such that $(h_{ij}(x))$ is a positive
+definite hermitian matrix for any $x \in X$.
+
+The point is that this condition
+is the same as saying that the associated
+Riemannian metric is in fact positive definite.
+Indeed, $\omega(\cdot,I\cdot)=g(\cdot,\cdot)$
+which is positive definite.
+
+Finally observe that numerical positivity of the
+Kähler class,
+i.e. positivity with respect to the intersection form,
+follows exactly from this fact: we shall have that
+$\int_Y \omega^p>0$ for any analytic cycle $Y$.
 
 \begin{definition}
 \label{definition-psh}
@@ -390,12 +413,12 @@ a positive $(1,1)$-form.
 \end{definition}
 
 \noindent
-ChatGPT: psh is equivalent to the Hermitian matrix
+Again: psh is equivalent to the Hermitian matrix
 $$
 \left(\frac{\partial^2 f}{\partial z_i\partial \bar{z}_j}\right) 
 $$
-being positive semidefinite,
-and it is also equivalent to its restriction to
+being positive semidefinite.
+ChatGPT: it is also equivalent to: its restriction to
 any complex line being subharmonic ($\Delta f\geq 0$).
 
 \begin{exercise}
@@ -445,22 +468,58 @@ dd^c\text{log}l=\sqrt{-1}\sum \left(\frac{\delta_{ij}}{l}
 -\frac{\bar{z}_iz_j}{l^2}\right)
 dz_i \wedge d\bar{z}_j.
 $$
-Now test it on a vector:
-$$
-dd^c\text{log}l(v,\bar{v})
-=
-\sqrt{-1}\sum
-\left(\frac{|v|^2}{|z|^2}
--\frac{\bar{z}_iz_jv^i\bar{v}^j}{l^2}\right) 
-$$
-but the right-hand side
-is just the usual Hermitian norm on $\mathbb{C}^n$
-of the vector $(\bar{z}_iv^i)$,
-so we apply Cauchy-Schwarz inequality to
-show these functions must be positive.
-And by the equality case in Cauchy-Schwarz we get nondegeneracy.
+I'm not sure how to prove that the form
+is degenerate! Or that the coefficient functions
+are positive…
 \end{proof}
 
+\noindent
+The point of this exercise is to show that the form
+$dd^c\ell$ is almost an Hermitian form ---
+but it has a kernel.
+I think the point of the next exercises in this
+\href{http://verbit.ru/IMPA/Surfaces-2025/assign-surfaces-2025-04.pdf}{
+handout}
+is to show that the kernel is actually
+the ``radial directions''.
+And the point of that is to take quotient
+by $\mathbb{C}^*$ action, which is literally
+passing to the projective space.
+
+A bit more formally:
+
+\begin{definition}
+\label{definition-basic-form}
+Let $M$ be a manifold and $\omega \in \Omega^k(M)$.
+Suppose that $\pi:M \to B$ is a surjective
+submersion with connected fibers.
+We say that $\omega$ is {\it basic} (with respect
+to $\pi$) is there exists a form
+$\overline{\omega}\in \Omega^k(B)$ such that
+$\pi^*  \overline{\omega}$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-basic-forms-characterization}
+\begin{enumerate}
+\item Show that $\omega$ is basic if and only if
+$i_X \omega=0$ and $L_X\omega=0$
+for all vector fields $X$ tangent
+to the fibers of $\pi$.
+In particular, if $\omega$ is closed,
+show that it is basic if 
+$\Ker (\pi_*) \subseteq \Ker(\omega)$
+(pointwise in $M$).
+
+\item Suppose that $\omega$ is a closed
+2-form on $M$ and $\Ker(\pi_*)=\Ker(\omega)$.
+Show that $\omega=\pi^*\overline{\omega}$
+and $\overline{\omega}\in\Omega^2(B)$
+is symplectic.
+
+\item (Application to reduction.)
+\end{enumerate}
+\end{exercise}
 
 \begin{exercise}
 \label{exercise-kahler-form-conformal-class}
@@ -997,7 +1056,7 @@ In \cite[Theorem 4.7(ii)]{Demailly-Paun} we have that
 a $(1,1)$-class is nef (in the analytic sense) if and only if
 $\int_Y \alpha\wedge\omega^{p-1}\geq 0$ for every
 irreducible analytic set $Y \subset X$, $p=\dim Y$
-and $\overline{\omega}$ Kähler class.
+and $\bar{\omega}$ Kähler class.
 
 \end{itemize}
 
