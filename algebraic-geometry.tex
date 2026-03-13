@@ -12,6 +12,898 @@
 
 \tableofcontents
 
+\section{Algebraic sets}
+\label{section-algebraic-sets}
+
+\noindent
+I'm following \href{https://www.youtube.com/watch?v=C6XR9DrQnoQ}{this video}
+for this.
+
+\medskip\noindent
+The affine space $\mathbb{A}^n$ is just the Cartesian
+product of the field.
+An {\it algebraic set} is the zero set of an ideal
+in $k[x_1,…,x_n]$.
+
+$V(I)$ and lots of properties, Nullstellensatz and
+Hilbert's basis theorem.
+
+\begin{definition}
+\label{definition-degree}
+\begin{reference}
+\href{https://en.wikipedia.org/wiki/Degree_of_an_algebraic_variety}{Wikipedia}.
+\end{reference}
+The {\it degree} of an affine or projective
+variety $X$ of dimension $n$ is the number of points
+of intersection of $X$ and $n$ hyperplanes in general position.
+\end{definition}
+
+
+\begin{exercise}
+\label{exercise-hypersurfaces-of-pn}
+\begin{reference}
+\cite[Exercise I.2.8]{hart}
+\end{reference}
+A projective variety $Y \subseteq \mathbb{P}^n$ 
+has dimension $n-1$ if and only if
+it is the zero set of a single irreducible homogeneous polynomial
+$f$ of positive degree.
+\end{exercise}
+
+\begin{proof}
+$Y$ has dimension $n-1$ if and only if there is a chain
+of irreducible subsets $Y \supset Y_2\supset… \supset Y_{n-1}$
+if and only if there is a chain of
+prime ideals $I(Y) \subset I_2 \subset…\subset I_{n-1}$.
+But $S:=k[x_0,…,x_n]$ has Krull dimension $n+1$,
+so that $I(Y)$ has height 1 
+(not considering the irrelevant ideal) and thus principal
+since $S$ is a UFD.
+\end{proof}
+
+\begin{proof}
+($\implies$) Suppose $Y$ ir irreducible
+and $\dim Y=n-1$. Pick any nonzero
+homogeneous $g \in I(Y)$.
+Factor $g$ into homogeneous irreducible
+facts and choose one such facto $f$.
+Then $f$ is homogeneous, irreducible and vanishes on $Y$,
+so $Y \subseteq V(f)$.
+Both $Y$ and $V(f)$ are irreducible projective
+varieties and have the same dimension $n-1$,
+hence $Y=V(I(f))$.
+
+($\impliedby$) Suppose $Y=V(f)$ for some
+nonconstant homogeneous polynomial $f$.
+Then it has dimension $n-1$.
+\end{proof}
+
+
+
+
+
+\section{Regular functions, rational functions and morphisms}
+\label{section-regular-functions}
+
+\noindent
+See \href{https://www.youtube.com/live/Vh32DbT0JwA?si=EUXKOcCx5R6xQITt&t=4447}{
+here} for Olivier's definition of morphisms in Lecture 12.
+
+\medskip\noindent
+A {\it regular} or {\it polynomial map} 
+is $\varphi:V \subset \mathbb{A}^n \to W \subset \mathbb{A}^m$
+if there exist $P_1,…,P_m \in k[x_1,…,x_n]$ such that
+$\varphi(a_1,…,a_n)=(P_1(a_1,…,a_n),…,P_m(a_1,…,a_n))$
+and $\varphi(V) \subset W$.
+If $\varphi$ is polynomial then there is an induced
+map in coordinate rings
+$\varphi^*:k[W] \to k[V]$ given by pullback.
+This map is well defined since $\varphi^*(I(W))\subset I(V)$.
+
+A polynomial map $\varphi:V \to W$ is an {\it isomorphism} 
+if it has a left and right inverse that is also a polynomial function.
+$V \cong W \iff k[V] \cong k[W]$ for affine varieties.
+
+\begin{remark}
+\label{remark-hartshorne-definition}
+\cite{hart} has slightly different way of defining a regular function:
+$f:V \to k$ is regular if it can be written locally
+as $f=g/h$ for $g,h \in k[x_1,…,x_n]$ with $h$ nowhere zero on $V$.
+… why?
+\end{remark}
+
+\begin{proposition}
+\label{proposition-coordinate-algebra}
+The coordinate algebra of a variety $V$,
+i.e. $k[x_1,…,x_n]/I(V)$ is isomorphic to
+the ring of regular functions on $V$, i.e. $\mathcal{O}(V)$.
+\end{proposition}
+
+\begin{definition}
+\label{definition-morphism}
+A {\it morphism} of varieties $\varphi:V \to W$
+is a function that pulls back polynomial functions
+$f:W \to k$ to polynomial functions $\varphi^*f:V \to k$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-morphisms-def}
+$\varphi$ is a morphism of varieties if and only if
+it is a polynomial function.
+\end{exercise}
+
+\begin{proof}
+If $\varphi$ is polynomial then it is a morphism:
+if $f:W \to k$ is polynomial,
+then $\varphi^*f(a_1,…,a_n)=f(P_1(a_1,…,a_n),…,P_m(a_1,…,a_n))$
+is also polynomial.
+Conversely, if $\varphi$ is a morphism
+we see that its coordinate functions are polynomials
+by computing $y_i\varphi^*$ where $y_i:W \to k$ 
+is $i$-th coordinate function (which is clearly a polynomial map).
+\end{proof}
+
+The following proposition is also at
+\href{https://stacks.math.columbia.edu/tag/01I1}{01I1}
+
+\begin{proposition}
+\label{proposition-irreducible-prime}
+Let $V,W \subset \mathbb{A}^n$ are irreducible algebraic set.
+There is a bijection
+$$
+\Hom_{k-alg}(k[W],k[V])) \xrightarrow{bij}\underbrace{\Mor(V,W)}_{
+\text{polynomial maps}}.
+$$
+\end{proposition}
+
+\begin{proof}
+We map
+\begin{align*}
+\tilde{\varphi}: \underbrace{k[W]}_{=k[y_1,…,y_m]/I(W)} &\longrightarrow 
+\underbrace{k[V]}_{=k[x_1,…,x_n]/I(V)} \\
+ y_1&\longmapsto f_1\\
+&\vdots \\
+y_m & \longmapsto f_m
+\end{align*}
+
+\noindent
+to
+\begin{align*}
+\varphi: V &\longrightarrow W \\
+(x_1,…,x_n) &\longmapsto (f_1(x_1,…,x_n), …, f_m(x_1,…,x_n)).
+\end{align*}
+
+\noindent
+We check that this is well-defined, i.e.
+that it doesn't depend on the choice of representatives,
+namely the $f_i$. But choosing other $f_i$ which differ
+by an element of the ideal would not make a difference
+when evaluating at $V$ because the ideal is precisely $I(V)$.
+
+The inverse map we already described above.
+\end{proof}
+
+\noindent
+This shows that we have an equivalence of categories:
+
+\begin{lemma}
+\label{lemma-algebras-and-varieties-category-equivalence}
+There is an equivalence of categories between
+finitely-generated (also, domains?) $k$-algebras
+and irreducible algebraic sets.
+\end{lemma}
+
+\noindent
+Olivier was a little sloppy here.
+But we have at \href{https://stacks.math.columbia.edu/tag/01I1}{01I1}
+that ``The category of affine schemes is equivalent 
+to the opposite of the category of rings. 
+The equivalence is given by the functor that 
+associates to an affine scheme the global sections 
+of its structure sheaf''.
+
+An {\it affine variety} is an irreducible algebraic set.
+This means that $k[V]$ is a domain
+because the quotient of ring by a prime ideal is a domain.
+
+\medskip\noindent
+Now let's discuss rational functions.
+Since $k[V]$ for an irreducible algebraic set is a domain,
+there exists a fraction field, which is the
+set of {\it rational functions}.
+Functions here look like $f/g$ for $f,g \in k[V]$,
+which are not defined in $V(g)$.
+Since this can lead to different ways
+of defining the same function
+--- the correct definition shall be that
+we take the greatest set where the function can be defined.
+
+\begin{remark}
+\label{remark-hartshorne-rational}
+\cite{har} defines the ring of rational
+functions as the set of regular functions defined
+on open sets with the identifications that $(U,f)\sim(V,g)$ 
+if they coincide in an intersection. (Like the stalk,
+but there's no point.)
+Then he proves that such ring is indeed
+isomorphic to the fraction field of the
+coordinate ring.
+\end{remark}
+
+Compare this to Voisin's way of describing
+a meromorphic function:
+it's a function that can be written locally
+as a quotient of two holomorphic functions.
+
+\begin{definition}
+\label{definition-stalk}
+Let $V$ be an affine variety (:= irreducible algebraic set)
+and $p \in V$.
+$$
+\mathcal{O}_p(V)
+:= \{f \in k(V):\exists g,h \in k[V]
+\text{ s.t. }f=g/h \text{ and } h(p) \neq 0\}\subset k(V).
+$$
+\end{definition}
+
+\begin{definition}
+\label{definition-localization}
+Let $R$ be a ring and $S \subset R$ 
+a multiplicative subset of $R$ (containing $1$).
+The {\it localization} of $R$ at $S$ 
+is the ring $RS^{-1}$ 
+(where $S^{-1}$ is just a set with
+the same elements as $S$ but with a $-1$ exponent)
+with the operations of $(rs^{-1})(r_1s_1^{-1})=rr_1s^{-1}s_1^{-1}$,
+$rs^{-1}+r_1s_1^{-1}=(rs_1+r_1s)(s^{-1}s^{-1}_1)$
+and the identification given by
+$rs^{-1}=r_1s_1^{-1} \iff rs_1=r_1s$.
+(Check this definition if $R$ has zero divisors!)
+\end{definition}
+
+\noindent
+The localization a ring is not always a local ring.
+But if $S$ is a prime ideal, then it is.
+
+\begin{exercise}
+\label{exercise-localization}
+Show that $\mathcal{O}_p(V) = k[V]_{\mathfrak{m}_p}$ 
+where $\mathfrak{m}_p$ is the set of regular functions
+that vanish in $p$.
+\end{exercise}
+
+\begin{proof}
+Consider the obvious map: take a quotient of classes
+$[g]/[h]$ in the localization of the coordinate ring of $V$ 
+and map it to the rational function $g/h$.
+This is well defined because if $g-g' \in I(V)$,
+then they obviously coincide in any open set of $V$ 
+because they coincide in all of $V$, hence forming the same germ.
+The key fact is that $\mathcal{O}_p(V)$ is the germs of rational
+functions of $V$.
+It is injective because if a germ $g/h$ is zero, then there's
+an open of $V$ where $g$ vanishes, implying that $g=0$
+since it is a polynomial (or holomorphic) map.
+It is obviously surjective.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-poles}
+Let $U$ be the set of points such that $f$ is in the stalk, that is,
+$U=\{p \in k(V):f \in \mathcal{O}_p(V)\}$.
+The {\it set of poles} of a rational function
+$f \in k(V)$ is $V\setminus U$.
+(This is just the points where the function in the denominator
+of $f$ vanishes.)
+
+\begin{enumerate}
+\item The set of poles of $f$ is an algebraic set.
+\item $k[V]=\bigcap_{p\in V}\mathcal{O}_p(V)$ 
+\end{enumerate}\end{proposition}
+
+\begin{proof}
+We define $I_f:=\{g \in k[x_1,…,x_n]:gf \in k[X]\}$ 
+and show that the set of poles is exactly $V(I_f)$.
+This is just writing  $gf = h \in k[X]$
+or equivalently $f=h/g$.
+
+The proof of the second statement is also straightforward.
+(See \href{https://www.youtube.com/watch?v=XJJ04OQnDfc}{video}.)
+\end{proof}
+
+\medskip\noindent
+The condition in the following lemma is the
+definition of a {\it local ring}.
+
+\begin{lemma}
+\label{lemma-maximal-ideal}
+Let $A$ be a ring. The following are equivalent:
+\begin{enumerate}
+\item $\{a \in A:a \text{ is not a unit}\}$ is an ideal.
+\item $A$ has a unique maximal ideal.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Try!
+\end{proof}
+
+\noindent
+Morally, local rings are rings of germs of functions.
+Never forget that analytic functions are determined
+by their germs because they have Taylor series ---
+unlike smooth functions, .e.g. bump functions that
+can be locally zero but are not globally zero.
+
+\section{Dimension: Krull dimension, transcendence degree, tangent space}
+\label{section-dimension}
+
+\noindent
+See \href{https://www.youtube.com/live/naaJ-mUfE_k?si=FA1o9Va3oRcCXTRY&t=2001}{
+here} for Olivier's definition of Krull dimension.
+
+
+\section{Multiplicities, smooth points and Bézout's theorem}
+\label{section-multiplicities-smooth-points-bezout}
+
+\noindent
+Upshot: the multiplicity of a point
+is how many tangent lines there are at the point.
+
+Smooth points of a plane curve are those with multiplicity 1.
+The multiplicity of a plane curve $F$ at the origin
+is the degree of the lowest nonzero homogeneous term $F_m$
+of $F=F_m+F_{m+1}+…+F_n$.
+The tangent lines at the origin are the
+linear factors of $F_m$, which decomposes in linear components
+by the following homogenization trick:
+
+\begin{exercise}
+\label{exercise-factor-in-linear-terms}
+Let $f_m$ be a homogeneous polynomial of degree $m$.
+Show that $f_m$ is a product of $m$ linear factors
+$f_m=\prod (b_ix+c_iy)$.
+\end{exercise}
+
+\begin{proof}
+Upshot: fix $y=1$, factor as product of linear coefficients
+using fundamental theorem of algebra, and then rehomogenize.
+The last is because a 1-variable polynomial
+$F$ is homogeneous of degree $m$ if and only if
+$F(\lambda x)=\lambda^mF(x)$. So if you have $F(x)=f(x,1)$
+you rehomogenize by putting $y^mF(x/y)=y^mf(x/y,1)$.
+Which is strange because $y^mF(x/y)$ is in  $k[x,y,1/y]$,
+but that doesn't matter because when you plug it in you get
+ $$
+y^mf(x/y,1)=y^mc\prod(\frac{x}{y}-\alpha_i)=c\prod(x-\alpha_iy),
+$$
+(where $c$ is a constant coming from making the product having no 
+coefficients on $x$ after using fundamental theorem of algebra)
+which is already a product of linear polynomials.
+We conclude by showing that in fact $y^mf(x/y,1)=f(x,y)$,
+but that's just literally
+$$
+y^mf(x/y,1)=y^m\sum_{i}a_i \frac{x^i}{y^i}
+=\sum_ia_i x^iy^{m-i}.
+$$
+\end{proof}
+
+\noindent
+Thus tangent lines can have multiplicity.
+A {\it node} is an ordinary double point,
+which means that there are two tangent lines and they are not the same.
+A {\it cusp} is a double point with a double tangent line.
+
+
+\medskip\noindent
+The upshot about Bézout theorem is that the ``size'' of the intersection
+of two curves is the product of their degrees.
+In nice cases this is just the number of intersection points.
+In even nicer cases one of the curves is a line, 
+in which case the product of degrees is
+just the degree of the curve,
+so that we compute the degree of a curve by
+{\it the number of intersection points with a hyperplane}.
+
+But the notion of ``size'' of the intersection
+has to be made precise, which is done via the notion of multiplicity.
+The idea is that intersecting with a line
+$\ell=ax +by+c$ where, say,  $b \neq 0$,
+can be done by substituting $y$ 
+for $-\alpha x-b$.
+This makes the ``resultant''
+$f_\ell(x):=f(x,\alpha x+\beta)$
+be a polynomial in one variable,
+which can be factored as a product of linear
+terms, each of the roots of which 
+are the intersection points,
+and are now equipped with a multiplicity.
+
+\begin{definition}
+\label{definition-multiplicity-line}
+The {\it multiplicity} or {\it intersection index} 
+of $f\in k[x,y]\setminus k$ and
+the line $\ell=ax+by+c$ (where $a \neq 0$ or $b\neq 0$) is
+$$
+(\ell,f)_p =
+\begin{cases}
+0\qquad &\text{if }p \not\in V(f,\ell) \\
+\infty \qquad &\text{if }p \in V(\ell) \text{ and }V(\ell) \subset V(f)\\
+m_i \qquad & \text{if }p=(x_i,\alpha x_i+\beta)
+\end{cases}
+$$
+where $f_\ell(x):=f(x,\alpha x+\beta)$
+factors as $c\prod(x-x_i)^{m_i}$.
+
+If $V(\ell)\not \subset V(f)$, the integer
+$$
+\text{deg}(f)-\sum_{i=1}^rm_i
+$$
+is the {\it multiplicity of $\ell,f$ at infinity}.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-asymptotic-direction}
+If $f=\sum_{i=0}^df_i \in k[x,y]$ for $f_i$ homogeneous of degree $i$,
+an {\it asymptotic direction} of $f$ is $ax+by$
+which divides $f_d$.
+
+Show that  $m_\infty \neq 0$ if and only if $y-\alpha x$
+is an asymptotic direction of $f$.
+\end{exercise}
+
+\begin{proof}
+This uses a theorem using the resultant…
+\end{proof}
+
+\begin{theorem}[Bézout]
+\label{theorem-bezout}
+Let $k$ be an algebraically closed field.
+Let  $C,P \subset \mathbb{P}_k^2$ be two curves without
+irreducible components in common
+and suppose that $C \cap D= \{p_1,…,p_r\}$ 
+with intersection multiplicities  $m_1,…,m_r$ 
+in $p_1,…,p_r$.
+Then
+$$
+\text{deg}f\text{deg}g=\sum_{i=1}^r m_i.
+$$
+\end{theorem}
+
+
+\begin{proposition}
+\label{proposition-multiplicity-point}
+Let $f \in k[x,y]\setminus k$ and $p \in V(f)$.
+There exists an integer $m_p(f)\geq 1$ called
+the {\it multiplicity of $p$ in $f$} 
+such that for every line $\ell$ passing through  $p$
+ $$
+(\ell,f)_p \geq m
+$$
+and $(\ell,f)_p>m$ for at most $m$ lines and at least one line.
+\end{proposition}
+
+\begin{definition}
+\label{definition-tangent-line}
+Let $p=(x_0,y_0) \in V(f)$.
+Write $f(x+x_0,y+y_0)=f_m(x,y)+\text{lower degree terms} $, 
+i.e. translate $f$ so that the origin is in its zero set
+and write as homogeneous polynomials.
+Then put $f_m(x,y)=\prod_{i=1}^r(a_ix+b_iy)^{m_i}$.
+The lines $\ell_i=a_ix+b_iy$ are called
+{\it tangent lines} to $f$ and each has a multiplicity $m_i$.
+\end{definition}
+
+\begin{definition}
+\label{definition-smooth-ordinary-point-on-curve}
+A point $p \in V(f)$ is {\it smooth} if $m_p(f)=1$
+and  {\it ordinary} if all its tangent lines have multiplicity 1.
+\end{definition}
+
+\noindent
+Thus, ordinary points are singular,
+but these are mild singularities.
+Essentially they are points where $m$
+straight lines intersect transversally.
+
+Definition of intersection index of two plane curves
+without common components.
+Definition of intersection index of two plane curves
+with common components.
+Properties of intersection index (7 of them).
+These 7 properties characterize uniquely the intersection index.
+
+The multiplicity of a root $\alpha$ of a power series 
+$f\in k[[x]]$,
+i.e. the greatest integer such that $(x-\alpha)^r|f$,
+equals $\dim_k k[[x]]/(x^r)=r$.
+(\href{https://www.youtube.com/live/EspNBiSU8F4?si=UEcdxrysAS47ZA9H&t=5230}{
+Here}'s why.)
+This leads to the alternative definition
+of intersection index as
+$\dim_k k[[x,y]]/(f(x-x_0,y-y_0),g(x-x_0,y-y_0))$.
+This satisfies the 7 properties of the intersection index.
+
+
+
+
+\section{Jacobian criterion}
+\label{section-jacobian-criterion}
+
+\noindent
+\begin{proposition}[Jacobian criterion]
+\label{proposition-jacobian-criterion}
+The singular locus of $V(f)$ is $V(f,\partial_x,\partial_y)$.
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+\section{Plücker formulas}
+\label{section-plucker-formulas}
+
+\begin{theorem}[Plücker formulas]
+\label{theorem-plucker-formulas}
+Let $C \subset \mathbb{P}^2$ be an irreducible
+curve of degree $d$ whose only singularities
+are $\delta$ nodes and $\chi$ ordinary cursps
+(cusps such that the tangent line intersects
+with multiplicity 3 at the singular point).
+Let 
+\begin{itemize}
+\item $i$ be the number of inflection lines
+(lines $\ell$ such that $(\ell,C)_p \geq 3$,
+and, in this case,
+do not intersect another point with multiplicity $\geq 2$), and
+
+\item $d^*$ the number or lines tangent to $C$
+passing through a point $p \not\in C$ 
+such that $p$ is not in any tangent lines at
+the singular points, tangent inflection lines
+or bitangent lines (lines that are tangent to two different points).
+\end{itemize}
+
+\noindent
+Then
+\begin{align*}
+d(d-1)&=d^*+2\delta+3\chi\\
+3d(d-2)&=i+6\delta+8\chi.
+\end{align*}
+\end{theorem}
+
+\section{Divisors, invertible sheaves}
+\label{section-divisors-line-bundles}
+
+\begin{definition}
+\label{definition-weil-divisor}
+\begin{reference}
+\href{https://stacks.math.columbia.edu/tag/0BE2}{0BE2},
+\cite[p. 130]{hart}
+\end{reference}
+A {\it Weil divisor} on the variety $X$ is a formal sum of irreducible
+subvarieties over the integers.
+
+More formally, a {\it prime divisor} is an integral closed
+subscheme $Z \subset X$ of codimension 1.
+A {\it Weil divisor} is a formal sum $D=\sum n_Z Z$ where
+the sum is over prime divisors of $X$ 
+and the collection
+$\{Z|n_Z \neq  0\}$ is locally finite.
+If all coefficients are non-negative we say
+the divisor is {\it effective}.
+\end{definition}
+
+\noindent
+A reasonable notion of order of vanishing
+should then be introduced. In the case of Riemann surfaces
+this can be done using the order of vanishings
+of the denominator and numerator functions in 
+$f=g/h$ where $f \in K(X)^*$.
+A more general construction is a bit more involved.
+
+\begin{definition}
+\label{definition-principal-weil-divisor}
+\begin{reference}
+\href{https://stacks.math.columbia.edu/tag/0be0}{0be0}
+\end{reference}
+Let $X$ be a Noetherian integral scheme.
+Let $f \in R(X)^*$.
+The {\it principal Weil divisor associated to $f$} 
+is the Weil divisor
+$$
+\text{div}(f)=\text{div}_X(f)
+=\sum \text{ord}_Z(f)[Z]
+$$
+where the sum is over prime divisors and
+$\text{ord}_Z(f)$ is as in Definition ?. 
+This makes sense by Lemma ? [a lemma about finiteness of the sum].
+\end{definition}
+
+\begin{definition}
+\label{definition-weil-divisor-class-group}
+\begin{reference}
+\href{https://stacks.math.columbia.edu/tag/0BE4}{0BE4}
+\end{reference}
+Let $X$ be a locally Noetherian scheme.
+The {\it Weil divisor class group} of $X$, denoted
+$\text{Cl}(X)$, is the quotient
+of the group of Weil divisors by the subgroup of principal
+Weil divisors.
+\end{definition}
+
+\noindent
+The next section, \href{https://stacks.math.columbia.edu/tag/02SE}{02SE},
+shows there is an injective homomorphism
+$\text{Pic}(X) \to \text{Cl}(X)$
+which is also surjective if $X$ is normal
+and the local rings of $X$ are UFDs
+(which happens for smooth varieties).
+
+\medskip\noindent
+Earlier, in \href{https://stacks.math.columbia.edu/tag/01WQ}{01WQ},
+we have
+
+\begin{definition}
+\label{definition-cartier-divisor}
+Let $S$ be a scheme.
+\begin{itemize}
+\item A {\it localy principal closed subscheme} of $S$ 
+is a closed subscheme whose sheaf of ideals
+is locally generated by a single element.
+
+\item An {\it effective Cartier divisor} on $S$ 
+is a closed subscheme $D \subset S$ whose ideal sheaf
+$\mathcal{I}_D \subset \mathcal{O}_S$ is an invertible
+$\mathcal{O}_S$-module.
+\end{itemize}
+\end{definition}
+
+\noindent
+Followed by Lemma 
+\href{https://stacks.math.columbia.edu/tag/01WS}{01WS},
+which essentially says that a Cartier
+divisor is cut locally by a single function.
+After this we would show the well-known
+construction of sheaf associated to an effective Cartier divisor
+and eventually construct all group operations and subtleties
+to arrive at Lemma \href{https://stacks.math.columbia.edu/tag/01X0}{01X0},
+which says that effective Cartier divisors on a scheme
+are the same as invertible sheaves with fixed regular global section.
+
+\medskip\noindent
+Here's two basic facts I'm not sure how to prove:
+\begin{enumerate}
+\item 
+$$
+\mathcal{O}_{\mathbb{P}^n}(1)\cong \mathcal{O}_{\mathbb{P}^n}(H)
+$$
+where $\mathcal{O}_{\mathbb{P}^n}(1)$ is defined
+as dual of the tautological bundle,
+and $H$ is any hyperplane (zeroes of a homogeneous degree-1 polynomial
+in $n+1$ variables) seen as an effective Cartier divisor,
+so that $\mathcal{O}_{\mathbb{P}^n}(H)$ is its associated line bundle.
+
+\item 
+$$
+H^0(\mathbb{P}^n,\mathcal{O}_{\mathbb{P}^n}(1))
+\cong
+k[x_0,…,x_n]_1,
+$$
+that is, the space of sections of $\mathcal{O}_{\mathbb{P}^n}(1)$ 
+is isomorphic to the space of homogeneous polynomials
+of degree 1 in $n+1$ variables
+(each of which is a hyperplane in $\mathbb{P}^n$).
+I think this might be
+\href{https://www.youtube.com/live/bXhgeRZMu8M?si=5BPdnECUREsCUwpV&t=4601}{
+here}.
+\end{enumerate}
+
+\begin{exercise}
+\label{exercise-degree-d-surface}
+Show that a hypersurface in $\mathbb{P}^3$ 
+given by the zeroes of a homogeneous polynomial
+of degree $d$ has degree $d$,
+i.e., if $S \subset \mathbb{P}^3$, $S=V(f)$ with
+$f$ homogeneous of degree $d$,
+then
+ $$
+\mathcal{O}_S(1).\mathcal{O}_S(1)=d.
+$$
+\end{exercise}
+
+\begin{proof}
+The exercise is kind of by definition no? 
+The intersection form counts the size of the intersection when 
+the two classes are just two hypersurfaces 
+intersecting transversally (as is the case of two 
+hyperplane sections in general position, 
+both of which have $\mathcal{O}_S(1)$ as 
+associated line bundle). The intersection 
+has $d$ points because its a line in $\mathbb{P}^3$
+intersecting a degree-$d$ polynomial. 
+And that's it.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-intersection-lines}
+Let $S \subset \mathbb{P}^3$ be a surface
+of degree $d$ and $L \subset S$ a line.
+Compute $L^2$ in $S$. Check that when $d=3$, $L^2=-1$!
+\end{exercise}
+
+\begin{proof}
+We apply the genus formula:
+$$
+(L.L+K_S)=2p_a-2
+$$
+By $L$ being a line we know that $p_a=0$
+and that the intersection number of $L$
+with any divisor of degree $d'$ will be $d'$.
+Indeed, $L.d'H=d'(L.H)=d'$
+because $L.H$ is the degree of the line
+(by definition of degree, namely
+the intersection number of $L$ with as many
+hyperplanes as its dimension).
+Thus
+\begin{align*}
+-2=(L.L+K_S)&=L^2+(L.K_S)=L^2+(L.\mathcal{O}_S(d-4))
+=L^2+d-4\\
+\iff L^2=-d+2.
+\end{align*}
+
+\noindent
+where the canonical bundle of $S$
+is computed using adjunction formula
+$K_S=(K_{\mathbb{P}^3}+N)|_S
+=(\mathcal{O}_{\mathbb{P}^3}(-4)+\mathcal{O}_{\mathbb{P}^3}(d))$.
+\end{proof}
+
+\begin{exercise}[Bézout]
+\label{exercise-bezout}
+Show that if $C_d$ and $C_{d'}$ are two plane curves
+(i.e. contained in $\mathbb{P}^2$)
+of degrees $d$ and $d'$ then
+$C_d.C_{d'}=dd'$.
+\end{exercise}
+
+\begin{proof}
+Just notice that the line bundles associated to
+$C_d$ and $C_{d'}$ are $dH$ and $d'H$,
+then use linearity of the bilinear of form.
+To check why the divisor associated to $C_d$
+is indeed $dH$ note that the intersection number
+of $C_d$ and a line $H$ is $d$ because $C_d$
+is given by the roots of a polynomial of degree $d$,
+thus $C_d.H=d$, and since the Picard group of $\mathbb{P}^2=\mathbb{Z}H$
+we must have $C_d \sim dH$.
+\end{proof}
+
+\section{Linear systems}
+\label{section-linear-systems}
+
+\noindent
+A basic fact is that
+$$
+H^0(\mathcal{O}(d)) \cong
+\{\text{homogeneous polynomials of degree $d$}\}.
+$$
+And more generally,
+$$
+|D|=\mathbb{P}H^0(\mathcal{O}(D)).
+$$
+
+\medskip\noindent
+Following \cite[Section 5.2]{Fulton}, let
+$P_1,…,P_n$ be points in $\mathbb{P}^2$. Define
+$$
+V(d,r_1P_1,…,r_nP_n):=
+\{\text{curves $F$ of degree $d$}:
+m_{P_i}F\geq r_i\forall i\}.
+$$
+This space has an interesting property:
+when we blow up the $n$ points, we obtain 
+$$
+H^0(X,\mathcal{O}(dH-\sum r_iE_i))
+=
+\{f \in H^0(\mathbb{P}^2,\mathcal{O}(d)):m_{P_i}(f) \geq  r_i\}.
+$$
+
+Recall (proof?) that the canonical divisor of the blow up is
+$K_{Bl}=\pi^* K_{\mathbb{P}^2}+E_1+…+E_n=-3H + \sum E_i$.
+And the projectivization of the sections of this canonical divisor
+are exactly $V(-3,P_1,…,P_n)$, which makes
+no sense because there are no curves of degree $-3$,
+that is the canonical divisor of the blow up has no sections.
+
+\begin{exercise}
+\label{exercise-hodge-numbers-blow-up-9pts}
+Let $C_1,C_2$ be two cubic curves in $\mathbb{P}^2$.
+Compute the Hodge numbers of the blowup of the 9 points
+of intersection.
+\end{exercise}
+
+\begin{proof}
+The solution is:
+$$
+\begin{aligned}\xymatrix@C=.5em@R=.5em{
+&  &   1\\
+&  0&  &  0\\
+0&&  10&  &  0\\
+&  0&  &  0\\
+&  &  1
+}\end{aligned}
+$$
+Which follows from:
+\begin{itemize}
+\item $h^{0,0}=1$ because $X$ is connected.
+\item $h^{1,0}=0$ because $X$ is simply connected.
+\item $h^{2,0}=0$ because the canonical bundle of $X$ has no sections.
+\item $h^{1,1}=10$ because in the exponential exact sequence
+we get $\text{Pic} \cong H^2(X,\mathbb{Z})$
+(by vanishing irregularity and genus)
+and we know 
+$\text{Pic}=\mathbb{Z}H \oplus \mathbb{Z}E_1\oplus…\oplus \mathbb{Z}E_9$.
+\end{itemize}
+\end{proof}
+
+\section{Riemann-Roch theorem for curves}
+\label{section-riemann-roch}
+
+\noindent
+Let $D=\sum n_p p$ be a divisor on a curve.
+How many rational functions $z \in K^*$ satisfy
+$\text{div}(z) \geq -D$? That is, rational functions
+which can only have poles of order $\leq n_p$
+at the points $p$ with $n_p>0$,
+and can only have zeros of order $\geq  |n_p|$
+at the points $p$ with $n_p<0$.
+
+For example, fix a point $p$ in the curve.
+Then $\mathcal{O}_C(p)$ is the space
+of rational functions with a simple pole at $p$.
+$\mathcal{O}_C(2p)$ is the space of rational functions
+with a pole of order at most 2 at $p$, and so on.
+Note that $\mathcal{O}_C(p) \subset \mathcal{O}_X (2p) 
+\subset \mathcal{O}(3p)…$.
+That is, the more poles we allow, this space of functions will be larger.
+
+In classical (Riemann's) notation, this space was denoted
+$L(D)$, and its dimension $\ell(D)$.
+Modern notation reads $H^0(\mathcal{O}_C(D))$
+instead of $L(D)$ and
+$h^0(\mathcal{O}_C(D))$
+instead of $\ell(D)$.
+
+Riemann-Roch formula for curves is
+\begin{equation}
+\label{equation-riemann-roch-curves}
+h^0(D)-h^0(K-D)=\text{deg}(D)-g+1,
+\end{equation}
+
+\noindent
+where $K$ is a divisor associated to the curve canonically.
+This is done by choosing a meromorphic section $s$
+of the bundle $\Omega_C^1$
+and taking $K:=\text{div}(s)$.
+Then one shows that this is independent of the choice of $s$.
+
+Note that by Serre duality
+$h^1(D)=h^0(K-D)$.
+
+
+\section{Normalization}
+\label{section-normalization}
+
+All bounded meromorphic functions are holomorphic.
+
+
+
 \section{Sheaves}
 \label{section-sheaves}
 
@@ -78,226 +970,6 @@ For example, given two pairs $(U, s)$ and $(U', s')$ we sometimes
 say ``$s$ is equal to $s'$ in $\mathcal{F}_x$'' to indicate
 that $s_x = s'_x$. Other authors use the terminology
 ``germ of $s$ at $x$''.
-
-\section{Abelian sheaves}
-\label{section-abelian-sheaves}
-
-The following may be used to define the ideal
-sheaf of a variety:
-
-\begin{lemma}
-\label{lemma-sheaves-valued-on-groups-have-kernels}
-Let $X$ be a topological space and
-$\mathcal{F}$ and $\mathcal{G}$ be sheaves over $X$
-with values on $\mathit{Grp}$.
-For every morphism of sheaves
-$f:\mathcal{F}\to \mathcal{G}$,
-\begin{align*}
-\Ker f: \mathit{Open}_X^{\text{op}} &\longrightarrow \mathit{Sets} \\
-U &\longmapsto \Ker f(U)\\
-(i:V \to U)&\longmapsto 
-\substack{
-\Ker f(i):\Ker f(U) \to \Ker f(V)\\
-x \mapsto x}
-\end{align*}
-is a sheaf over $X$.
-\end{lemma}
-
-\begin{proof}
-First observe that the correspondence
-on morphisms is well-defined. Indeed, 
-$\Ker f(U)\subset \mathcal{F}(U) \subset \mathcal{F}(V)$ 
-when $V \subset U$, and we just apply $f(U)$ 
-to notice that $\Ker f(V) \subset \Ker f(U)$.
-
-To see this is a presheaf notice it is obvious
-that the identity is mapped to the identity
-by definition of the correspondence of morphisms.
-It is also obvious that composition is preserved.
-
-To see it is a sheaf consider an open
-cover $U_i$ of $U$, and elements $x_i \in \Ker f(U_i)$.
-Then use the property of $\mathcal{F}$ being
-a sheaf to reconstruct an element $x \in \mathcal{F}(U)$,
-whose image under $f$ will be mapped to the
-identity element of $\mathcal{G}(U)$ because
-it does so in every point of the cover of $U$.
-Thus $x$ is in $\Ker f(U)$ as desired.
-\end{proof}
-
-\medskip\noindent
-More formally,
-
-\begin{definition}
-\label{definition-abelian-presheaves}
-Let $X$ be a topological space.
-\begin{enumerate}
-\item A {\it presheaf of abelian groups on $X$} or an
-{\it abelian presheaf over $X$}
-is a presheaf of sets $\mathcal{F}$ such that for each open
-$U \subset X$ the set $\mathcal{F}(U)$ is endowed with
-the structure of an abelian group, and such that all restriction
-maps $\rho^U_V$ are homomorphisms of abelian groups, see
-Lemma \ref{lemma-abelian-presheaves} above.
-\item A {\it morphism of abelian presheaves over $X$}
-$\varphi : \mathcal{F} \to \mathcal{G}$ is a morphism of presheaves
-of sets which induces
-a homomorphism of abelian groups $\mathcal{F}(U) \to \mathcal{G}(U)$
-for every open $U \subset X$.
-\item The category of presheaves of abelian groups on $X$ is denoted
-$\textit{PAb}(X)$.
-\end{enumerate}
-\end{definition}
-
-\medskip\noindent
-\begin{definition}
-\label{definition-abelian-sheaf}
-Let $X$ be a topological space.
-\begin{enumerate}
-\item An {\it abelian sheaf on $X$} or
-{\it sheaf of abelian groups on $X$}
-is an abelian presheaf on $X$ such that the underlying presheaf of
-sets is a sheaf.
-\item The category of sheaves of abelian groups
-is denoted $\textit{Ab}(X)$.
-\end{enumerate}
-\end{definition}
-
-\noindent
-Let $X$ be a topological space.
-In the case of an abelian presheaf $\mathcal{F}$ the sheaf
-condition with regards to an open covering $U = \bigcup U_i$
-is often expressed by saying that the complex of abelian groups
-$$
-0 \to \mathcal{F}(U)
-\to \prod\nolimits_i \mathcal{F}(U_i)
-\to \prod\nolimits_{(i_0, i_1)} \mathcal{F}(U_{i_0} \cap U_{i_1})
-$$
-is exact. The first map is the usual one, whereas the second
-maps the element $(s_i)_{i \in I}$ to the element
-$$
-(
-s_{i_0}|_{U_{i_0} \cap U_{i_1}} -
-s_{i_1}|_{U_{i_0} \cap U_{i_1}}
-)_{(i_0, i_1)}
-\in \prod\nolimits_{(i_0, i_1)} \mathcal{F}(U_{i_0} \cap U_{i_1})
-$$
-
-In fact, the notion of kernel of a sheaf
-is not really defined as I did in the beginning of this section,
-but in the next one, along with several other
-important things.
-
-
-\section{The abelian category of sheaves of modules}
-\label{section-kernels}
-
-\noindent
-I guess that the reason to introduce
-coherent sheaves is not the search for an
-abelian category, after all.
-Looks like the pathologies avoided
-by the definition of coherence are not
-so obvious---something like ``wildly infinitely generated''.
-
-\section{Tensor product of sheaves}
-\label{section-tensor product of sheaves}
-
-Here's my unexpected encounter with the definition of tensor product of sheaves.
-It's not the ``fiber is tensor product of fibers'' construction, but actually
-just some notion of ``change of ring'' sheaf that ends up being adjoint to
-some ``restriction'' sheaf. The setting is a mapping of presheaves {\it of
-rings} over a space $X$… (I think the usual definition is this one taking
-$\mathcal{O}_1$ as the other presheaf we want to tensor).
-
-Immediately after introducing this notion there's the definition of sheaf, then
-stalks, abelian sheaves, some other notions like an ``algebraic structure'' and
-then tensor product will be defined after sheafification---because the following
-definition is in general not a sheaf.
-
-Furthermore, I add that Vakil leaves it as an exercise to define the tensor
-product of two $\mathcal{O}_X$ modules (with a hint of defining the presheaf
-tensor product and sheafifying), which makes me think that after all it {\it is}
-just the intuitive definition. Before diving in, also by Vakil (Exercise 26.K):
-the stalk of the tensor product is the tensor product of the stalks.
-
-\medskip\noindent
-
-Suppose that $\mathcal{O}_1 \to \mathcal{O}_2$ is a
-morphism of presheaves of rings on $X$. In this case,
-if $\mathcal{F}$ is a presheaf of $\mathcal{O}_2$-modules
-then we can think of $\mathcal{F}$ as a presheaf of
-$\mathcal{O}_1$-modules by using the composition
-$$
-\mathcal{O}_1 \times \mathcal{F}
-\to
-\mathcal{O}_2 \times \mathcal{F}
-\to
-\mathcal{F}.
-$$
-We sometimes denote this by $\mathcal{F}_{\mathcal{O}_1}$
-to indicate the restriction of rings. We call this
-the {\it restriction of $\mathcal{F}$}. We obtain the
-restriction functor
-$$
-\textit{PMod}(\mathcal{O}_2)
-\longrightarrow
-\textit{PMod}(\mathcal{O}_1)
-$$
-
-\medskip\noindent
-On the other hand, given a presheaf of $\mathcal{O}_1$-modules
-$\mathcal{G}$
-we can construct a presheaf of $\mathcal{O}_2$-modules
-$\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G}$
-by the rule
-$$
-\left(\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G}\right)(U)
-=
-\mathcal{O}_2(U) \otimes_{\mathcal{O}_1(U)} \mathcal{G}(U)
-$$
-The index $p$ stands for ``presheaf'' and not ``point''.
-This presheaf is called the tensor product presheaf. We obtain
-the {\it change of rings} functor
-$$
-\textit{PMod}(\mathcal{O}_1)
-\longrightarrow
-\textit{PMod}(\mathcal{O}_2)
-$$
-
-\begin{lemma}
-\label{lemma-adjointness-tensor-restrict-presheaves}
-With $X$, $\mathcal{O}_1$, $\mathcal{O}_2$, $\mathcal{F}$ and
-$\mathcal{G}$ as above there exists a canonical bijection
-$$
-\Hom_{\mathcal{O}_1}(\mathcal{G}, \mathcal{F}_{\mathcal{O}_1})
-=
-\Hom_{\mathcal{O}_2}(
-\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G},
-\mathcal{F}
-)
-$$
-In other words, the restriction and change of rings functors
-are adjoint to each other.
-\end{lemma}
-
-\begin{proof}
-This follows from the fact that for a ring map
-$A \to B$ the restriction functor and the change
-of ring functor are adjoint to each other.
-\end{proof}
-
-\medskip\noindent
-Tipologia dos feixes.
-
-\begin{definition}
-\label{definition-tipologia-dos-feixes}
-A sheaf of $\mathcal{A}$-modules $\mathcal{F}$ over a sheaf of rings 
-$\mathcal{A}$ (on a topological space $X$) is called
-\begin{itemize}
-\item 
-\end{itemize}
-\end{definition}
 
 \section{Closed immersions}
 \label{section-closed-immersion}
@@ -425,174 +1097,6 @@ to a subscheme, we tensor with the structure sheaf:
 tensor by the ideal sheaf would kill the information on $Z$,
 and tensoring with the structure sheaf does the opposite.
 
-
-
-
-\section{The category of affine schemes}
-\label{section-category-affine-schemes}
-
-\noindent
-This might be a cornerstone of algebraic geometry.
-The point is that once we take affine charts,
-we re in the affine category. And this category turns
-out to be equivalent to the category of rings. /o/
-See below for some important properties of the correspondence;
-namely fibred products and tensor product counterparts.
-
-\section{Bézout theorem}
-\label{section-bezout-theorem}
-
-\noindent
-The upshot is that the ``size'' of the intersection
-of two curves is the product of their degrees.
-In nice cases this is just the number of intersection points.
-In even nicer cases one of the curves is a line, 
-in which case the product of degrees is
-just the degree of the curve,
-so that we compute the degree of a curve by
-{\it the number of intersection points with a hyperplane}.
-
-But the notion of ``size'' of the intersection
-has to be made precise, which is via the notion of multiplicity.
-The idea is that intersecting with a line
-$\ell=ax +by+c$ where, say,  $b \neq 0$,
-can be done by substituting $y$ 
-for $-\alpha x-b$.
-This makes the ``resultant''
-$f_\ell(x):=f(x,\alpha x+\beta)$
-be a polynomial in one variable,
-which can be factored as a product of linear
-terms, each of the roots of which 
-are the intersection points,
-and are now equipped with a multiplicity.
-
-\begin{definition}
-\label{definition-multiplicity-line}
-The {\it multiplicity} or {\it intersection index} 
-of $f\in k[x,y]\setminus k$ and
-the line $\ell=ax+by+c$ (where $a \neq 0$ or $b\neq 0$) is
-$$
-(\ell,f)_p =
-\begin{cases}
-0\qquad &\text{if }p \not\in V(f,\ell) \\
-\infty \qquad &\text{if }p \in V(\ell) \text{ and }V(\ell) \subset V(f)\\
-m_i \qquad & \text{if }p=(x_i,\alpha x_i+\beta)
-\end{cases}
-$$
-where $f_\ell(x):=f(x,\alpha x+\beta)$
-factors as $c\prod(x-x_i)^{m_i}$.
-
-If $V(\ell)\not \subset V(f)$, the integer
-$$
-\text{deg}(f)-\sum_{i=1}^rm_i
-$$
-is the {\it multiplicity of $\ell,f$ at infinity}.
-\end{definition}
-
-\begin{exercise}
-\label{exercise-asymptotic-direction}
-If $f=\sum_{i=0}^df_i \in k[x,y]$ for $f_i$ homogeneous of degree $i$,
-an {\it asymptotic direction} of $f$ is $ax+by$
-which divides $f_d$.
-
-Show that  $m_\infty \neq 0$ if and only if $y-\alpha x$
-is an asymptotic direction of $f$.
-\end{exercise}
-
-\begin{proof}
-This uses a theorem using the resultant…
-\end{proof}
-
-\begin{theorem}[Bézout]
-\label{theorem-bezout}
-Let $k$ be an algebraically closed field.
-Let  $C,P \subset \mathbb{P}_k^2$ be two curves without
-irreducible components in common
-and suppose that $C \cap D= \{p_1,…,p_r\}$ 
-with intersection multiplicities  $m_1,…,m_r$ 
-in $p_1,…,p_r$.
-Then
-$$
-\text{deg}f\text{deg}g=\sum_{i=1}^r m_i.
-$$
-\end{theorem}
-
-\section{Multiplicities of points and singularities}
-\label{section-multiplicities}
-
-\begin{exercise}
-\label{exercise-factor-in-linear-terms}
-Let $f_m$ be a homogeneous polynomial of degree $m$.
-Show that $f_m$ is a product of $m$ linear factors
-$f_m=\prod (b_ix+c_iy)$.
-\end{exercise}
-
-\begin{proof}
-Upshot: fix $y=1$, factor as product of linear coefficients
-using fundamental theorem of algebra, and then rehomogenize.
-The last is because a 1-variable polynomial
-$F$ is homogeneous of degree $m$ if and only if
-$F(\lambda x)=\lambda^mF(x)$. So if you have $F(x)=f(x,1)$
-you rehomogenize by putting $y^mF(x/y)=y^mf(x/y,1)$.
-Which is strange because $y^mF(x/y)$ is in  $k[x,y,1/y]$,
-but that doesn't matter because when you plug it in you get
- $$
-y^mf(x/y,1)=y^mc\prod(\frac{x}{y}-\alpha_i)=c\prod(x-\alpha_iy),
-$$
-(where $c$ is a constant coming from making the product having no 
-coefficients on $x$ after using fundamental theorem of algebra)
-which is already a product of linear polynomials.
-We conclude by showing that in fact $y^mf(x/y,1)=f(x,y)$,
-but that's just literally
-$$
-y^mf(x/y,1)&=y^m\sum_{i}a_i \frac{x^i}{y^i}
-=\sum_ia_i x^iy^{m-i}.
-$$
-\end{proof}
-
-\begin{proposition}
-\label{proposition-multiplicity-point}
-Let $f \in k[x,y]\setminus k$ and $p \in V(f)$.
-There exists an integer $m_p(f)\geq 1$ called
-the {\it multiplicity of $p$ in $f$} 
-such that for every line $\ell$ passing through  $p$
- $$
-(\ell,f)_p \geq m
-$$
-and $(\ell,f)_p>m$ for at most $m$ lines and at least one line.
-\end{proposition}
-
-\begin{definition}
-\label{definition-tangent-line}
-Let $p=(x_0,y_0) \in V(f)$.
-Write $f(x+x_0,y+y_0)=f_m(x,y)+\text{lower degree terms} $, 
-i.e. translate $f$ so that the origin is in its zero set
-and write as homogeneous polynomials.
-Then put $f_m(x,y)=\prod_{i=1}^r(a_ix+b_iy)^{m_i}$.
-The lines $\ell_i=a_ix+b_iy$ are called
-{\it tangent lines} to $f$ and each has a multiplicity $m_i$.
-\end{definition}
-
-\begin{definition}
-\label{definition-smooth-ordinary-point-on-curve}
-A point $p \in V(f)$ is {\it smooth} if $m_p(f)=1$
-and  {\it ordinary} if all its tangent lines have multiplicity 1.
-\end{definition}
-
-\noindent
-Thus, ordinary points are singular,
-but these are mild singularities.
-Essentially they are points where $m$
-straight lines intersect transversally.
-
-\section{Jacobian criterion}
-\label{section-jacobian-criterion}
-
-\noindent
-\begin{proposition}[Jacobian criterion]
-\label{proposition-jacobian-criterion}
-The singular locus of $V(f)$ is $V(f,\partial_x,\partial_y)$.
-\end{proposition}
 
 
 
