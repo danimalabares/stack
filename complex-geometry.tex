@@ -468,9 +468,10 @@ dd^c\text{log}l=\sqrt{-1}\sum \left(\frac{\delta_{ij}}{l}
 -\frac{\bar{z}_iz_j}{l^2}\right)
 dz_i \wedge d\bar{z}_j.
 $$
-I'm not sure how to prove that the form
-is degenerate! Or that the coefficient functions
-are positive…
+I'm not sure how to prove that  the coefficient functions
+are positive… Or that the form is degenerate…
+But fortunately this can be checked at
+\cite[p. 118]{huc}.
 \end{proof}
 
 \noindent
@@ -521,6 +522,45 @@ is symplectic.
 \end{enumerate}
 \end{exercise}
 
+\begin{proof}
+\begin{enumerate}
+\item Since $\pi$ is surjective, for any 
+vector $\bar{X}$ tangent to $B$ there is
+a vector $X$ tangent to $M$ such that $\pi_*X=\bar{X}$.
+Define a form $\overline{\omega}(\bar{X}^1,…,\bar{X}^k):=
+\omega(X^1,…,X^k)$.
+
+To show this does not depend on the choice of lift of $\bar{X}$
+just notice that the tangent space of $M$ can be written
+$T_pM \simeq T_pF_b \oplus \pi^*(T_bB)$ where $\pi(p)=b$. 
+Since $\omega$ kills vectors tangent to the fibers,
+$\overline{\omega}$ is well-defined.
+
+Notice that there can be different choices of $p$ such that
+$\pi(p)=b$. We must show that the definition is also 
+independent of this choice.
+Let $X \in T_pM$ and $Y \in T_qM$ be such that
+$\pi(p)=\pi(q)=b \in B$ and $\pi_*X=\pi_*Y$.
+We wish to show that
+$\omega(…,X,…)=\omega(…,Y,…)$.
+
+This a little more involved so I'll just sketch it for now.
+If there is a vector field $V$ tangent to the fibers
+whose flow $\varphi$ joins $p$ and $q$, we are done,
+since we pull back $\omega$ along this flow,
+and by the condition of the Lie derivative, i.e. $L_V\omega$ for $V$
+tangent to the fiber, we see that $\varphi^*\omega=\omega$.
+(Indeed, $L_V\omega=\frac{d}{dt}\varphi^*\omega$,
+so the derivative is zero and at $t=0$ we have $\omega$.)
+
+Note that the choice of $Y$ within $T_qM$
+is superfluous since we already know that $\omega$
+is constant within every tangent space at a poi
+
+…
+\end{enumerate}
+\end{proof}
+
 \begin{exercise}
 \label{exercise-kahler-form-conformal-class}
 Let $X$ be a connected complex manifold of dimension $n>1$
@@ -528,6 +568,22 @@ and let $g$ be a Kähler metric.
 Show that $g$ is the only Kähler metric in its conformal class,
 i.e. if $g'=e^fg$ is Kähler then $f$ is constant.
 \end{exercise}
+
+\begin{exercise}
+\label{exercise-holomorphic-vector-bundles-kahler}
+\begin{reference}
+\cite[Exercise 2, Chapter 3]{voi}
+\end{reference}
+Let $E$ be a holomorphic vector bundle of rank $r$
+over a complex manifold $X$.
+Show that if $L$ is a holomorphic line bundle on $X$,
+then $\mathbb{P}(E^* \otimes L^*)= \mathbb{P}(E^*)$
+but the line bundle $\mathcal{O}_{\mathbb{P}(E^*\otimes L^*)}(1)$
+is isomorphic to
+$\mathcal{O}_{\mathbb{P}(E^*)}(1) \otimes \pi^*L$,
+where $\pi:\mathbb{P}(E^*)\to X$ is the structural morphism.
+\end{exercise}
+
 
 \section{Sheaf of holomorphic functions}
 \label{section-sheaf-of-holomorphic-functions}
@@ -1954,6 +2010,181 @@ possible to find an almost hypercomplex structure on $\mathbb{C}^2$ passing to
 the torus and then to the $\mathbb{Z}_2$ quotient, but not clear what will
 happen after blowing up.
 \end{proof}
+
+\section{Instantons}
+\label{section-instantons}
+
+\noindent
+Let $X$ be a compact 4-dimensional compact oriented
+Riemannian manifold, $G$ a compact Lie group
+(e.g. $U(n), \text{SO}(n),Sp(n)$).
+
+\begin{definition}
+\label{definition-g-instanton}
+A {\it $G$-instanton} on $X$
+is a $G$-vector bundle $E$
+with a connection $\nabla$ such that its
+curvature $F_{\nabla}$ is self-dual, i.e.
+$*F_{\nabla}=F_{\nabla}$
+where $*$ is Hodge operator.
+\end{definition}
+
+ADHM studied the case when $X=S^4$,
+and $X=\mathbb{C}P^2$ was also studied in a 
+paper by N. Buchdahl.
+
+\medskip\noindent
+Now we review the twistor space construction.
+Note that since $X$ is 4-dimensional,
+the Hodge star operator is of the form
+$*:\Lambda^2 \to \Lambda^2$
+
+
+
+
+
+\section{Twistor space}
+\label{section-twistor-space}
+
+\noindent
+Let $X$ be a compact oriented 4-dimensional Riemannian manifold.
+Recall that since the Hodge star operator 
+$*:\Lambda^2\to\Lambda^2$
+has eigenvalues $\pm 1$,
+we have a decomposition
+$$
+\Lambda^2=\Lambda^+ \oplus \Lambda^- \cong \text{SO}(T_X)
+$$
+Consider the spherization of $\Lambda^+$:
+$$
+Z:=S\Lambda^+=\{S \in \Lambda^+:\text{unit vectors}\}
+$$
+$(m,s) \in Z$, $m \in X$, $s_m \in \Lambda^+_m$,
+
+$$
+T_{(m,s)}Z=
+T_mX \oplus_{LC}T_sS \Lambda^+_m
+\cong T\mathbb{C}P^1
+$$
+which has a complex structure $\mathcal{I}_{\mathbb{C}P^1}$
+(metric orientation).
+
+\begin{theorem}
+\label{theorem-twistor-space}
+$(Z,\mathcal{I}_Z=(s,\mathcal{I}_{\mathbb{C}P^1}))$
+is a complex manifold of complex dimension 3.
+\end{theorem}
+
+\noindent
+We also have a projection $p:Z \to X $
+whose fibers are $\mathbb{C}P^1$, called {\it real lines}.
+
+\begin{example}
+\label{example-twistor-space}
+\begin{itemize}
+\item $X=S^4$ then $Z=\mathbb{C}P^3$ (projective).
+\item $X=\mathbb{C}P^2$ then $Z=\mathbb{F}_3(\mathbb{C})$ (projective).
+\end{itemize}
+\end{example}
+
+Let $Z$ be a 3-dimension complex manifold.
+Let $L \xymatrix{\ar@{^{(}->}[r]&} Z$
+be a rational curve with a normal bundle
+$N_L \cong \mathcal{O}(1) \oplus \mathcal{O}(1)$.
+
+\begin{remark}
+\label{remark-small-deformations}
+If $Z \supset W$ where $W$ is a complex submanifold,
+the small deformations of $W$ are encoded by
+$H^0(N_W)$ and $H^1(N_W)$.
+\end{remark}
+
+Let $\mathcal{M}$ be the sapce of deformations of $L$.
+Since $H^1(N_L)=0$ then 
+$TM \simeq H^0(N_L) = H^0(\mathcal{O}(1) \oplus \mathcal{O}(1))$,
+so $\dim_\mathbb{C}TM=4$.
+
+Let $\sigma:Z \to Z$ be an antiholomorphic involution
+with no fixed points but $L$ ($L$ is fixed).
+There is an induced antiholomorphic involution 
+$\tilde{\sigma}$ on $\mathcal{M}$.
+
+\begin{remark}
+\label{remark-antiholomorphic-involution}
+\begin{itemize}
+\item We can recover $X$ as a connected component
+of the fixed point set of $\tilde{\sigma}$ in $\mathcal{M}$.
+\item We can recover the conformal strucutre.
+ 
+\end{itemize}\end{remark}
+
+\medskip\noindent
+Now we discuss Ward-Penrose transform.
+Let $E$ be a $G$-instanton
+(i.e. a vector bundle with a connection such that
+$*F_\nabla=F_\nabla$) on $X$.
+Let $\phi:V \to \overline{V}^*$ be an Hermitian form.
+
+There is a correspondence (the {\it Ward correspondence})
+which allows to construct a holomorphic vector bundle on $Z$
+such that $\tilde{E}$ restricted to the fiber of $p:Z \to X$
+(the fibers of $p$ are $\mathbb{C}P^1$) trivially.
+
+Conversely, starting from a hermitian holomorphic vector bundle $\tilde{E}$
+on $Z$ which restricts trivially to the fibers of $p:Z \to X$.
+
+\medskip\noindent
+{\bf Problem (ADHM).} Describe all $G$-instanton bundles on $S^4$
+with $r \geq 2$, $c_2=k$ (fixed second Chern class).
+
+This makes us want to study the vector bundles on $\mathbb{C}P^3=Z$.
+
+See Horrseks for the original construction of monads.
+Upshot: ``All bundles can be represented by the cohomology of some monad''.
+
+\begin{definition}[Monad]
+\label{definition-monad}
+Let $U,V,W$ be complex vector spaces over $\mathbb{C}P^1$.
+Consider the sequence $h \circ a=0$, where $a,b$are bundle homomorphisms:
+$$
+\xymatrix{
+0\ar[r]&U(-1):=U \otimes \mathcal{O}(1)
+\ar[r]^a
+& V \otimes \mathcal{O}
+\ar[r]^b
+& W(1):=W \otimes \mathcal{O}(1)\ar[r]&0
+}
+$$
+Let $E:=\frac{\Ker b}{\text{Im}a}$.
+\end{definition}
+
+\medskip\noindent
+Let's study the case of $\mathbb{C}P^3$.
+If $Z_i$ are homogeneous coordinates on $\mathbb{C}P^3$,
+$$
+a=\sum_i A_iZ_i,\qquad b=\sum_jB_jZ_j
+$$
+the {\it monad condition} is
+$$
+B_jA_i+A_jB_j=0
+$$
+[which gives the conditions for a hyperkähler metric on the moduli space].
+
+\begin{theorem}[Barth, Barth-Hulek]
+\label{theorem-bbh}
+Let $E$ be a holomorphic vector bundle of rank $r \geq 2$
+on $\mathbb{C}P^3$ with a $c_2=k$ and $E|_L=$trivially.
+Then $E$ is the cohomology of a monad.
+Also, it satisfies some vanishing conditions:
+$$
+H^0(E)=H^0(E^*)=H^1(E(-2))=H^1(E^*(-2))=0.
+$$
+\end{theorem}
+
+
+
+
+
 
 \section{Deformation theory (introduction)}
 \label{section-deformations}
