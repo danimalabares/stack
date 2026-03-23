@@ -89,19 +89,61 @@ $(M,I,g)$ is called {\it Kähler} if its fundamental form
 is closed.
 \end{definition}
 
-\begin{exercise}
-\label{exercise-kahler-iff-i-parallel}
-$(M,I,g)$ is Kähler if and only if $\nabla^{LC}I=0$.
-\end{exercise}
 
-\begin{definition}
-\label{definition-hermitian-connection}
-Let $(M,I,g)$ be a hermitian manifold.
-A linear connection $\nabla$ on $TM$
-is {\it hermitian} if $\nabla g=0$ and $\nabla J=0$.
-\end{definition}
 
 \medskip\noindent
+Let's discuss complex structures at the level of linear algebra.
+
+\begin{definition}
+\label{definition-complex-structure-vector-space}
+An {\it almost complex structure} on a vector space $V$
+is an endomorphism $I \in \text{End}(V)$ such that $I^2 = -\text{Id}_V$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-almost-complex-structure-then-complex-module}
+A vector space endowed with an almost complex structure
+admits a natural structure of a complex vector space.
+\end{lemma}
+
+\begin{proof}
+$(a+ib)v:=av + b_i(v)$.
+\end{proof}
+
+\noindent
+Multiplication by $i$ produces an almost complex structure
+on any complex vector space, so that the two notions become the same.
+
+\noindent
+Now we introduce the complexification of a real vector space.
+Let $V_{\mathbb{C}}:=V \otimes_{\mathbb{R}}\mathbb{C}$.
+This means that elements of $V_{\mathbb{C}}$
+are finite sums of elements of the form $v \otimes (a+iv)$
+for $a,b \in \mathbb{R}$ and $i = \sqrt{-1}$.
+In particular, $V_\mathbb{C}=V \oplus i V$.
+
+We define {\it conjugation} of vectors in $V_{\mathbb{C}}$ by
+$\bar{v}=\overline{v \otimes \lambda} := v \otimes \bar{\lambda}$
+
+
+This means that $\overline{V}$ is just $V$ but 
+with the scalar product $\lambda v:=\bar{\lambda}v$.
+for any $v \in V_{\mathbb{C}}:=V \otimes_{\mathbb{R}}\mathbb{C}$.
+by definition, and then 
+$\overline{\Lambda^{p,q}(V)}=\Lambda^{q,p}(V)$.
+(See \cite[p. 25]{huc}.)
+
+\begin{lemma}
+\label{lemma-i-eigenspace-decomposition}
+We have a decomposition
+$$
+V_\mathbb{C}=V^{1,0}\oplus V^{0,1}
+$$
+given by the eigenspaces of $I$.
+$\overline{\Lambda^{1,0}}=\Lambda^{0,1}$ holds by definition of conjugation.
+\end{lemma}
+
+
 Now let's discuss the $p,q$ decomposition.
 The upshot is the following:
 $$
@@ -204,10 +246,11 @@ where $H^{p,q}(M)$ is the set of differential forms
 represented by a closed form in $\Lambda^{p,q}(M)$.
 
 \medskip\noindent
-Missing: what does it even mean that
-$\overline{\Lambda^{p,q}(V)}=\Lambda^{q,p}(V)$?
-Recall that $\overline{V}$ is just $V$ but 
-with the scalar product $\lambda v:=\bar{\lambda}v $.
+It also happens that
+$\overline{\Lambda^{p,q}(V)}=\Lambda^{q,p}(V)$,
+which is due to the fact that
+$\overline{\Lambda^{1,0}}=\Lambda^{0,1}$.
+
 
 \begin{exercise}
 \label{exercise-1,1-forms-are-i-invariant}
@@ -259,6 +302,9 @@ Now let's discuss $\partial,\bar\partial$.
 \cite[Definition 1.3.5]{huc}
 \end{reference}
 Let $X$ be an almost complex manifold.
+(Or vector space! The following 
+objects may be defined over $V_{\mathbb{C}}$.)
+
 If  $d:\mathcal{A}^k_{X,\mathbb{C}}\to \mathcal{A}^{k+1}_{X,\mathbb{C}}$ 
 is the $\mathbb{C}$-linear extension of the
 exterior differential, then one defines
@@ -279,7 +325,93 @@ d(f)=\sum_i\frac{\partial f}{\partial z_i}dz_i
 +\sum_i\frac{\partial d}{\partial \bar{z}_i}d\bar{z}_i,
 $$
 we see that  $f$ is holomorphic if and only if
-$\overline{d}f=0$.
+$\bar\partial f=0$.
+
+
+\begin{definition}
+\label{definition-lefschetz-operator}
+Let $(V,g,I)$ be an almost complex vector space 
+equipped with an hermitian metric $g$.
+The {\it Lefschetz operator} is
+\begin{align*}
+L: \Lambda^\bullet(V_{\mathbb{C}}^\vee) &\longrightarrow 
+\Lambda^\bullet(V_{\mathbb{C}}^\vee) \\
+\alpha &\longmapsto \omega\wedge\alpha.
+\end{align*}
+\end{definition}
+
+\noindent
+Recall that a metric on a vector space
+induces a metric on the dual vector space
+by defining the dual basis of an orthonormal basis
+to be orthonormal.
+And for higher exterior powers all we do is
+declare that wedge products of elements of the dual orthonormal basis
+(in ascending order)
+form an orthonormal basis; more precisely
+if $e_1,…,e_n$ is orthonormal for $V$ then the elements of the form
+$e_{i_1}\wedge…\wedge e_{i_k}$ with $i_1<…<i_k$
+are an orthonormal basis for $\Lambda^k(V^\vee)$.
+
+\begin{exercise}
+\label{exercise-hodge-star-existence}
+Let $V$ be an oriented Riemannian vector space with
+orientation form $\text{Vol}$.
+There is a unique operator 
+$*:\Lambda^\bullet(V^\vee) \to \Lambda^\bullet(V^\vee)$
+called the {\it Hodge star} such that
+$$
+\alpha\wedge*\beta=g(\alpha,\beta)\text{Vol}
+$$
+for any $\alpha,\beta \in \Lambda^k(V^\vee)$.
+\end{exercise}
+
+\noindent
+Intuition on the Hodge star operator is that
+it maps a form to its ``complement'' with respect to the volume form.
+For instance, $*dx=dy \wedge dz$ in $\mathbb{R}^3$.
+
+\begin{lemma}
+\label{lemma-hodge-star-isometry}
+Hodge star is an isometry.
+\end{lemma}
+
+\begin{lemma}
+\label{lemma-Hodge-star-squared}
+\begin{reference}
+\cite[Lemma 5.5]{Voisin}
+\end{reference}
+The operator $*$ satisfies the identity
+\begin{equation}
+\label{equation-Hodge-star-squared}
+*^2=(-1)^{k(n-k)} \text{ on }A^k(X).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Recall that $*$ is an isometry,
+use skew-commutativity of product to obtain
+the $(-1)^{k(n-k)}$
+and finally Equation \ref{equation-Hodge-star}.
+\end{proof}
+
+\noindent
+The construction of the Hodge star in  \cite[Section 5.1]{Voisin}
+is essentially: map $\alpha \in \Lambda^{n-k}$ to the operator 
+$\alpha \wedge - \in \Hom(\Lambda^{k},\Lambda^n)$
+and then use the metric to identify $\Hom(\Lambda^k,\Lambda^n)$
+with $\Lambda^k$. Notice that the latter
+means that we take a form $\alpha$ and
+we map it to the morphism
+which maps $\cdot$ to the top-form 
+$g(\alpha,\cdot)\text{Vol}$.
+This says that for all $\alpha \in \Lambda^k$ 
+and $\beta \in \Lambda^{n-k}$
+\begin{equation}
+\label{equation-Hodge-star}
+\alpha\wedge*\beta=(\alpha,\beta)\text{Vol}.
+\end{equation}
+
 
 \medskip\noindent
 We have the following local result:
@@ -570,6 +702,46 @@ i.e. if $g'=e^fg$ is Kähler then $f$ is constant.
 \end{exercise}
 
 \begin{exercise}
+\label{exercise-lefschetz-injective-on-1-forms}
+Let $X$ be a connected complex manifold and $h$ be a Kähler metric.
+Let $\omega$ be the associated Kähler form.
+Show that if $\dim X \geq  2$, the wedge product with $\omega$
+is injective on 1-forms.
+
+Show that if $\dim X \geq  2$ and $\phi$ is a differentiable
+function with values in $\mathbb{R}^+$ such that $\phi h$ is also
+a Kähler metric, then $\phi$ is constant.
+\end{exercise}
+
+\begin{proof}
+Take local symplectic coordinates, i.e. such that
+$\omega = \sum_idz^i \wedge d \bar{z}^i$.
+Let $\alpha$ be any 1-form and suppose it is written
+in those coordinates as 
+$\alpha=\sum_ia_idz^i + \sum_i\bar{a}_id\bar{z}^i$.
+Then
+\begin{align*}
+\alpha\wedge\omega&=
+\left(\sum_ia_idz^i\right)
+\wedge
+\left(\sum_i dz^i \wedge d\bar{z}^i\right) 
++
+\left(\sum_i \bar{a}_i dz^i\right) 
+\wedge
+\left(\sum_i dz^i \wedge d\bar{z}^i\right)\\
+&=
+\sum_{i,j}a_i dz^i \wedge dz^j \wedge d\bar{z}^j
++
+\sum_{i,j}\bar{a}_i d\bar{z}^i \wedge dz^j \wedge d\bar{z}^j.
+\end{align*}
+
+\noindent
+We see that if $\alpha \wedge \omega=0$
+then both its $1,2$ and $2,1$ parts are zero,
+which foces $a_i$ and $\bar{a}_i$ to vanish,
+i.e. $\alpha=0$.
+\end{proof}
+\begin{exercise}
 \label{exercise-holomorphic-vector-bundles-kahler}
 \begin{reference}
 \cite[Exercise 2, Chapter 3]{voi}
@@ -583,6 +755,59 @@ is isomorphic to
 $\mathcal{O}_{\mathbb{P}(E^*)}(1) \otimes \pi^*L$,
 where $\pi:\mathbb{P}(E^*)\to X$ is the structural morphism.
 \end{exercise}
+
+\begin{exercise}
+\label{exercise-kahler-iff-i-parallel}
+$(M,I,g)$ is Kähler if and only if $\nabla^{LC}I=0$.
+\end{exercise}
+
+\section{Vector bundles, connections, curvature and Chern classes}
+\label{section-vector-bundles}
+
+\begin{proposition}[Holomorphic Vector Bundle Isomorphism Criterion]
+\label{proposition-isomorphism-of-vector-bundles}
+\begin{reference}
+\cite[Proposition 3.7]{lec}
+\end{reference}
+Two vector bundles $E$ and $F$ 
+with transition functions $g_{ij}$ and $h_{ij}$
+are isomorphic if and only if
+$g_{ij}=A^{-1}_ih_{ij}A_j$
+for some $A_i:U_i \to \text{GL}_n(\mathbb{C})$.
+\end{proposition}
+
+\begin{proof}
+The idea is to define a map in local trivializations
+and confirm that this glues to a global bundle map.
+This means: invent $\varphi_i:E(U_i):=\Gamma_E(U_i) \to F(U_i)$,
+i.e. a local map of sections
+(yes, a map of sections, since a bundle map
+is constructed as map of the total spaces,
+which are points and vectors, 
+but we need to preserve the projection,
+so all we care is about the vectors).
+Then check that on $U_i\cap U_j:= U_{ij}$ 
+we have $\varphi_i=\varphi_j$.
+This literally creates a bundle map.
+
+Try to do it for line bundles,
+so $A_i$ are just functions.
+Take a local frame $e_i$ for $E$
+and a local frame $f_j$ for $F$.
+Change coordinates and apply the map,
+apply the map and change coordinates
+- this should give both sides of the cocycle condition
+of the proposition.
+\end{proof}
+
+
+
+\begin{definition}
+\label{definition-hermitian-connection}
+Let $(M,I,g)$ be a hermitian manifold.
+A linear connection $\nabla$ on $TM$
+is {\it hermitian} if $\nabla g=0$ and $\nabla J=0$.
+\end{definition}
 
 
 \section{Sheaf of holomorphic functions}
@@ -1213,87 +1438,6 @@ all analytic curves by $X$ being projective
 
 
 
-
-\section{Hodge star}
-\label{section-Hodge-star}
-
-The construction of the Hodge star in  \cite[Section 5.1]{Voisin}
-is essentially: map $\alpha \in \Lambda^{n-k}$ to the operator 
-$\alpha \wedge - \in \Hom(\Lambda^{k},\Lambda^n)$
-and then use the metric to identify $\Hom(\Lambda^k,\Lambda^n)$
-with $\Lambda^k$. Notice that the latter
-means that we take a form $\alpha$ and
-we map it to the morphism
-which maps $\cdot$ to the top-form 
-$g(\alpha,\cdot)\text{Vol}$.
-This says that for all $\alpha \in \Lambda^k$ 
-and $\beta \in \Lambda^{n-k}$
-\begin{equation}
-\label{equation-Hodge-star}
-\alpha\wedge*\beta=(\alpha,\beta)\text{Vol}.
-\end{equation}
-
-\begin{lemma}
-\label{lemma-Hodge-star-squared}
-\begin{reference}
-\cite[Lemma 5.5]{Voisin}
-\end{reference}
-The operator $*$ satisfies the identity
-\begin{equation}
-\label{equation-Hodge-star-squared}
-*^2=(-1)^{k(n-k)} \text{ on }A^k(X).
-\end{equation}
-\end{lemma}
-
-\begin{proof}
-Observe that $*$ is an isometry,
-use skew-commutativity of product to obtain
-the $(-1)^{k(n-k)}$
-and finally Equation \ref{equation-Hodge-star}.
-\end{proof}
-
-\section{Vector bundles}
-\label{section-vector-bundles}
-
-\noindent
-Definition of vector bundle,
-vector bundle from transition maps.
-
-\begin{proposition}[Holomorphic Vector Bundle Isomorphism Criterion]
-\label{proposition-isomorphism-of-vector-bundles}
-\begin{reference}
-\cite[Proposition 3.7]{lec}
-\end{reference}
-Two vector bundles $E$ and $F$ 
-with transition functions $g_{ij}$ and $h_{ij}$
-are isomorphic if and only if
-$g_{ij}=A^{-1}_ih_{ij}A_j$
-for some $A_i:U_i \to \text{GL}_n(\mathbb{C})$.
-\end{proposition}
-
-\begin{proof}
-The idea is to define a map in local trivializations
-and confirm that this glues to a global bundle map.
-This means: invent $\varphi_i:E(U_i):=\Gamma_E(U_i) \to F(U_i)$,
-i.e. a local map of sections
-(yes, a map of sections, since a bundle map
-is constructed as map of the total spaces,
-which are points and vectors, 
-but we need to preserve the projection,
-so all we care is about the vectors).
-Then check that on $U_i\cap U_j:= U_{ij}$ 
-we have $\varphi_i=\varphi_j$.
-This literally creates a bundle map.
-
-Try to do it for line bundles,
-so $A_i$ are just functions.
-Take a local frame $e_i$ for $E$
-and a local frame $f_j$ for $F$.
-Change coordinates and apply the map,
-apply the map and change coordinates
-- this should give both sides of the cocycle condition
-of the proposition.
-\end{proof}
 
 \section{Line bundles}
 \label{section-line-bundles}
@@ -2001,14 +2145,77 @@ that $\int \omega\wedge *\omega=0$, implying that $\|\omega\|=0$.
 
 \begin{exercise}
 \label{exercise-closed-fundamental-forms-on-almost-hypercomplex-manifold}
+Let $(M,K,J,K,g)$ be an almost hypercomplex Hermitian structure
+on a K3 surface, and $\omega_I, \omega_J, \omega_K$
+its fundamental forms.
 
+Suppse that $\omega_I$ is closed.
+Prove that $\omega_J,\omega_K$ are closed, or find a counterexample.
 \end{exercise}
 
+\noindent
+The idea of the following solution
+(provided entirely by ChatGPT)
+is that we can ``rotate''
+(in the $J,K$-plane within $\text{End}(TM)$)
+two of the complex structures while preserving the
+quaternionic relations.
+Any orthonormal triple of such endomorphisms
+should be expected to satisfy the quaternionic relations (algebra),
+but the closedness condition on the associated fundamental
+forms will be modified (differential).
+
 \begin{proof}
-Idea: find a counterexample. The easiest should be a Kummer surface. It looks
-possible to find an almost hypercomplex structure on $\mathbb{C}^2$ passing to
-the torus and then to the $\mathbb{Z}_2$ quotient, but not clear what will
-happen after blowing up.
+Let $(M,I,J,K,g)$ be a hyperkähler structure on a K3 surface.
+Define
+\begin{align*}
+\tilde{J}&=\cos \theta J+ \sin \theta K\\
+\tilde{K}&=-\sin \theta J + \cos \theta K
+\end{align*}
+
+\noindent
+Then for any $v \in TM$,
+\begin{align*}
+\tilde{J}^2v&=\cos J(\cos \theta Jv+ \sin \theta Kv)
++\sin \theta K (\cos J v + \sin Kv)\\
+&=\cos^2J^2v+\cos \theta \sin \theta J K v
++ \sin \theta \cos \theta K J v + \sin^2 \theta K^2 v\\
+&=-\text{Id} v
+\end{align*}
+
+\noindent
+And likewise $\tilde{K}^2=-\text{Id}$.
+Also,
+\begin{align*}
+I \tilde{J} \tilde{K}v&=
+I(\cos\theta J(-\sin \theta Jv+\cos \theta Kv)
++\sin \theta K (- \sin Jv+ \cos \theta Kv))\\
+&=I (-\cos \theta \sin \theta J^2 v
++ \cos^2 \theta J K v
+- \sin^2 \theta K J v
++\sin \theta \cos \theta K^2 v)\\
+&=-\cos \theta \sin \theta I J^2 v
++ \cos^2 \theta I J K
+- \sin^2 \theta I K J v
++ \sin \theta \cos \theta I K^2 v\\
+&=-\cos^2v- \sin^2v=-\text{Id}v.
+\end{align*}
+
+\noindent
+Thus $(I,\tilde{J},\tilde{K})$ is an almost hypercomplex
+structure on $M$.
+However,
+\begin{align*}
+d \omega_{\tilde{J}}&=d(g(\cdot,\tilde{J}\cdot))\\
+&=d(g(\cdot,\cos \theta J\cdot + \sin \theta K\cdot))\\
+&=d(\cos \theta \omega_J + \sin \theta \omega_K)\\
+&=d \cos \theta \wedge \omega_J + d \sin \theta \wedge \omega_K\\
+&=-\sin \theta d\theta\wedge\omega_J+\cos\theta d\theta\wedge\omega_K\\
+&=d \theta \wedge \omega_{\tilde{K}},
+\end{align*}
+
+\noindent
+which is not always zero if $\theta$ is not constant.
 \end{proof}
 
 \section{Instantons}
