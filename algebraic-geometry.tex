@@ -25,8 +25,64 @@ product of the field.
 An {\it algebraic set} is the zero set of an ideal
 in $k[x_1,…,x_n]$.
 
-$V(I)$ and lots of properties, Nullstellensatz and
-Hilbert's basis theorem.
+$V(I)$ and lots of properties…
+
+\begin{theorem}[Weak Nullstellensatz]
+\label{theorem-weak-nullstellensatz}
+(Misha's formulation.) Let $A \subset \mathbb{C}^n$
+be an affine variety and $\mathcal{O}_A$ the ring of polynomial
+functions on $A$.
+Then every maximal ideal in $A$
+is an ideal of a point $a \in A$.
+\end{theorem}
+
+\noindent
+The idea behind the radical idea is that
+we can take roots of elements:
+
+\begin{definition}
+\label{definition-radical-ideal}
+$I \subset R$ is {\it radical} 
+if for every $x \in R$ we have $x^n \in I \implies x \in I$.
+\end{definition}
+
+
+\begin{definition}
+\label{definition-nilpotent}
+An element $a \in R$ is called {\it nilpotent} 
+if $a^n = 0$.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-no-nilpotents-iff-radical}
+$A/I$ has no nilpotents if and only if $I$ is a radical ideal.
+\end{exercise}
+
+\begin{theorem}[Nullstellensatz]
+\label{theorem-nullstellensatz}
+$$
+I(V(I))=\sqrt{I}
+$$
+where $I$ is an ideal of $k[x_1,…,x_n]$.
+\end{theorem}
+
+\begin{proof}
+Prove the Weak Nullstellensatz first
+and then use Rabinowitsch trick 
+(which uses localization).
+\end{proof}
+
+\noindent
+(Prove this:)
+$k[x_1,…,x_n]/I$ has no nilpotents if and only if
+$I = \sqrt{I}$.
+
+\begin{theorem}[Hilbert's basis theorem]
+\label{theorem-hilberts-basis}
+If $R$ is a Noetherian ring, so is $R[x]$.
+Equivalently, every ideal in $R[x]$ is finitely generated.
+(Check this!!!)
+\end{theorem}
 
 \begin{definition}
 \label{definition-degree}
@@ -37,7 +93,6 @@ The {\it degree} of an affine or projective
 variety $X$ of dimension $n$ is the number of points
 of intersection of $X$ and $n$ hyperplanes in general position.
 \end{definition}
-
 
 \begin{exercise}
 \label{exercise-hypersurfaces-of-pn}
@@ -80,10 +135,20 @@ Then it has dimension $n-1$.
 
 
 
-
-
 \section{Regular functions, rational functions and morphisms}
 \label{section-regular-functions}
+
+\begin{definition}
+\label{definition-regular-function}
+Let $Y$ be a quasi-affine variety
+(i.e. an open set of an affine variety).
+A function $Y \to k$ is called {\it regular} at $P \in Y$
+if there is an open set $U \ni P$ and
+$g,h \in k[x_1,…,x_n]$ such that
+$f=g/h$ on $U$. $f$ is {\it regular} if it is regular
+at all points of $Y$.
+\end{definition}
+
 
 \noindent
 See \href{https://www.youtube.com/live/Vh32DbT0JwA?si=EUXKOcCx5R6xQITt&t=4447}{
@@ -262,6 +327,34 @@ $rs^{-1}=r_1s_1^{-1} \iff rs_1=r_1s$.
 \end{definition}
 
 \noindent
+In a simple case, consider a ring $R$ and $f \in R$.
+The {\it localization of $R$ at $f$}
+is $R[t]/(ft-1):=R[f^{-1}]=R(f)$. 
+The quotient basically says that $t$ is the inverse of $f$.
+
+\begin{example}
+\label{example-localization}
+\begin{itemize}
+\item Dyadic numbers: $\mathbb{Z}[2^{-1}]$,
+which are fractions of integers with denominators which
+are powers of $2$.
+
+\item Laurent polynomials: $\mathbb{C}[t,t^{-1}]$.
+\end{itemize}
+\end{example}
+
+\begin{lemma}
+\label{lemma-localization-nilpotent}
+If $R[f^{-1}]=0$ then $f$ is nilpotent.
+\end{lemma}
+
+\begin{proof}
+If $R[f^{-1}]=0$ then $1 \in (ft-1)$,
+which means that $1=(1-ft)p(t)$ for some $p(t) \in k[t]$.
+Then…
+\end{proof}
+
+\noindent
 The localization a ring is not always a local ring.
 But if $S$ is a prime ideal, then it is.
 
@@ -335,18 +428,209 @@ by their germs because they have Taylor series ---
 unlike smooth functions, .e.g. bump functions that
 can be locally zero but are not globally zero.
 
-\section{Dimension: Krull dimension, transcendence degree, tangent space}
+\section{Dimension: Krull dimension, transcendence degree}
 \label{section-dimension}
 
+\begin{definition}
+\label{definition-irreducible-topological}
+A nonempty subset $Y$ of a topological space $X$
+is {\it irreducible} if it cannot be expressed
+as a union of two proper subsets,
+each of which is closed in $Y$.
+\end{definition}
+
+\begin{definition}
+\label{definition-topological-space-dimension}
+If $X$ is a topological space,
+the {\it dimension} of $X$ is the supremum of all integers $n$
+such that there exists a chain
+$Z_0 \subset Z_1\subset … \subset Z_n$
+of distinct irreducible closed subsets of $X$.
+The {\it dimension of an algebraic variety}
+is its dimension as a topological space.
+\end{definition}
+
+\begin{definition}
+\label{definition-krull-dimension}
+In a ring $A$, the {\it height} of a prime ideal $\mathfrak{p}$
+is the supremum of all integers $n$
+such that there exists a chain 
+$\mathfrak{p}_0 \subset\mathfrak{p}_1\subset…\subset\mathfrak{p}_n=\mathfrak{p}$
+of distinct prime ideals.
+The {\it Krull dimension} of $A$ is the supremum of the heights
+of all prime ideals.
+\end{definition}
+
+\begin{proposition}
+\label{proposition-dimension}
+If $Y$ is an affine algebraic set,
+the dimension of $Y$ is equal to the dimension
+of its coordinate ring.
+\end{proposition}
+
+\begin{theorem}
+\label{theorem-dimension-and-transcendence-degree}
+Let $k$ be a field and let $B$ be an integral domain
+which is a finitely generated $k$-algebra. Then:
+\begin{enumerate}
+\item the dimension of $B$ is equal to the transcendence degree
+of the quotient field $K(B)$ of $B$ over $k$;
+\item For any prime ideal $\mathfrak{p}$ in $B$, we have
+$$
+\text{height }\mathfrak{p}+ \dim B / \mathfrak{p}=\dim B.
+$$
+
+\end{enumerate}
+\end{theorem}
+
+\begin{exercise}
+\label{exercise-affine-twisted-cubic}
+Let $Y\subseteq \mathbb{A}^3$ be the set
+$Y= \{(t,t^2,t^3:t \in k\}$.
+Show that $Y$ is an affine variety of dimension 1.
+Find generators for the ideal $I(Y)$.
+Show that $A(Y)$ is isomorphic to a polynomial ring in one variable over $k$.
+We say that $Y$ is given by the {\it parametric representation} 
+$x=t$, $y=t^2$, $z=t^3$.
+\end{exercise}
+
+\begin{proof}
+It's immediate that $x^2-y$ and $x^3-z$ must be in 
+the ideal defining $Y$. Let $J=(x^2-y,x^3-z)$. 
+Consider the ring map
+\begin{align*}
+\varphi:k[x,y,z] &\longrightarrow k[t] \\
+x &\longmapsto t\\
+y &\longmapsto t^2\\
+z &\longmapsto t^3
+\end{align*}
+
 \noindent
-See \href{https://www.youtube.com/live/naaJ-mUfE_k?si=FA1o9Va3oRcCXTRY&t=2001}{
-here} for Olivier's definition of Krull dimension.
+Since $\varphi$ is given literally by the parametrization of $Y$,
+it follows from definition that the ideal of $Y$
+is the kernel of $\varphi$.
 
+It's clear the in the kernel of $\varphi$
+lie the polynomials $x^2-y$ and $x^3-z$.
+But how to make sure that $J$ is the complete kernel?
 
-\section{Multiplicities, smooth points and Bézout's theorem}
+The procedure by AI is the following.
+First notice that there is an isomorphism
+$k[x,y,z]/J \cong k[x]$
+given by $f(x,y,z)+J \mapsto f(x,x^2,x^3)$.
+This shows that $k[x,y,z]/J$ is a domain, and thus $J$ is prime.
+Further, the projection $k[x,y,z] \to k[x,y,z]/J$,
+which obviously has kernel $J$,
+is exactly the map I introduced before from
+$k[x,y,z]$ to $k[t]$ when we see $k[x,y,z]/J$ as $k[t]$.
+Since the kernel of such map is the ideal of $Y$ by definition,
+we are done.
+\end{proof}
+
+\section{Zariski tangent space, smooth points}
 \label{section-multiplicities-smooth-points-bezout}
 
 \noindent
+Let's discuss Zariski tangent space.
+The simplest notion of nonsingularity is what we expect:
+
+\begin{definition}
+\label{definition-nonsingular-affine}
+Let $Y \subseteq \mathbb{A}^n$ be ann affine variety,
+and let $f_1,…,f_t \in R=k[x_1,…,x_n]$ be a set of generators
+for the ideal of $Y$.
+$Y$ is {\it nonsingular at a point $P \in Y$}
+if the rank of the matrix
+$\left(\frac{\partial f_i}{\partial x_j}(P)\right)$
+is $n-r$, where $r$ is the dimension of $Y$.
+$Y$ is {\it nonsingular} if it is nonsingular at every point.
+\end{definition}
+
+\noindent
+It can be checked that this definition is independent
+of the choice of generators. But we look for a
+criterion that is more algebraic.
+
+\begin{definition}
+\label{definition-residue-field}
+Let $R$ be a ring and $\mathfrak{m}$ a maximal ideal of $R$.
+The {\it residue field} is  $R/\mathfrak{m}$.
+\end{definition}
+
+\begin{definition}
+\label{definition-regular-local-ring}
+Let $R$ be a noetherian local ring with maximal ideal $\mathfrak{m}$
+and residue field $k:=R/\mathfrak{m}$.
+$R$ is a {\it regular local ring} if
+$\dim_k \mathfrak{m}/\mathfrak{m}^2=\dim R$.
+\end{definition}
+
+\noindent
+Upshot. $\mathfrak{m}$ is the ideal of functions vanishing at $P$.
+This means that the constant term of $h \in \mathfrak{m}$ is zero.
+Differentiate $h$.
+Now the constant term is what originally was the linear part.
+If $h'$ has no constant term, that is, if $h$ vanishes at $P$
+up to order 1,
+then $h$ can be seen as a product $h=fg$ for $f,g \in \mathfrak{m}$.
+Indeed, the smallest nonzero term of $h$ is of degree 2,
+so we can make it look like a product of two things of degree 1.
+Conversely, products $h=fg$ vanish up to order 1 since
+the first-order coefficient is given by the derivative
+(Taylor expansion)
+and $dh=df\cdot g+fdg =0$ at $P$.
+
+Then we can interpret $\mathfrak{m}/\mathfrak{m}^2$ as follows.
+Among all the functions which vanish at $P$, i.e. inside $\mathfrak{m}$,
+we identify any two functions if their difference
+is in $\mathfrak{m}^2$,
+that is, if their difference vanishes up to order 1 at $P$,
+that is, if their linear parts coincide at $P$.
+
+Thus, $\mathfrak{m}/\mathfrak{m}^2$ is the space
+of linear parts of polynomials vanishing at $P$.
+
+\begin{theorem}
+\label{theorem-nonsingularity-jacobian-iff-regular-local-ring}
+Let $Y \subseteq \mathbb{A}^n$ be an affine variety.
+Let $P \in Y$ be a point.
+Then $Y$ is nonsingular at $P$ 
+if and only if
+the local ring $\mathcal{O}_{P,Y}$ is a regular local ring.
+\end{theorem}
+
+\begin{proof}
+Still hard to grasp completely,
+but an important insight is that the map
+\begin{align*}
+\nabla: k[x_1,…,x_n]  &\longrightarrow k^n \\
+ f &\longmapsto \nabla f=\left(\frac{\partial f}{\partial x_1},
+…,\frac{\partial f}{\partial x_n}\right) 
+\end{align*}
+
+\noindent
+has kernel $\mathfrak{m}^2$ and is surjective
+when restricted to $\mathfrak{m}$
+(because $\nabla(x_i-p_i)=(0,…,0,1,0,…0)$, so we construct a base of $k^n$)
+so we have the isomorphism
+$$
+\mathfrak{m}/\mathfrak{m}^2=k^n,
+$$
+which we understand as the space of linear directions at $P$.
+\end{proof}
+
+\begin{definition}
+\label{definition-nonsingular}
+Let $Y$ be any variety,
+$Y$ is {\it nonsingular} at a point $P \in Y$
+if the local ring $\mathcal{O}_{P,Y}$ is a regular local ring,
+that is,
+if $\dim_k\mathfrak{m}/\mathfrak{m}^2=\dim \mathcal{O}_{P,Y}$.
+\end{definition}
+
+\medskip\noindent
+Now we discuss singularity theory for plane curves.
+
 Upshot: the multiplicity of a point
 is how many tangent lines there are at the point.
 
@@ -393,6 +677,19 @@ Thus tangent lines can have multiplicity.
 A {\it node} is an ordinary double point,
 which means that there are two tangent lines and they are not the same.
 A {\it cusp} is a double point with a double tangent line.
+
+\begin{exercise}[Intersection multiplicity]
+\label{exercise-intersection-multiplicity}
+If $Y,Z \subseteq \mathbb{A}^2$ are two distinct curves,
+given by equations $f$ and $g$, and if $P \in Y \cap Z$,
+we define the {\it intersection multiplicity} $(Y \cdot Z)_P$
+of $Y$ and $Z$ at $P$ to be the length of the
+$\mathcal{O}_P$-module $\mathcal{O}_P/(f,g)$.
+\begin{itemize}
+\item Show that $(Y\cdot Z)_P$ is finite,
+and $(Y\cdot Z)_P \geq  \mu_P(Y) \mu_P(Z)$.
+\end{itemize}
+\end{exercise}
 
 
 \medskip\noindent
@@ -525,11 +822,6 @@ $\dim_k k[[x,y]]/(f(x-x_0,y-y_0),g(x-x_0,y-y_0))$.
 This satisfies the 7 properties of the intersection index.
 
 
-
-
-\section{Jacobian criterion}
-\label{section-jacobian-criterion}
-
 \noindent
 \begin{proposition}[Jacobian criterion]
 \label{proposition-jacobian-criterion}
@@ -538,21 +830,11 @@ The singular locus of $V(f)$ is $V(f,\partial_x,\partial_y)$.
 
 
 
-
-
-
-
-
-
-
-\section{Plücker formulas}
-\label{section-plucker-formulas}
-
 \begin{theorem}[Plücker formulas]
 \label{theorem-plucker-formulas}
 Let $C \subset \mathbb{P}^2$ be an irreducible
 curve of degree $d$ whose only singularities
-are $\delta$ nodes and $\chi$ ordinary cursps
+are $\delta$ nodes and $\chi$ ordinary cusps
 (cusps such that the tangent line intersects
 with multiplicity 3 at the singular point).
 Let 
@@ -576,6 +858,24 @@ d(d-1)&=d^*+2\delta+3\chi\\
 3d(d-2)&=i+6\delta+8\chi.
 \end{align*}
 \end{theorem}
+
+\section{Rational maps and blow up}
+\label{section-rational-maps-and-blow-up}
+
+\noindent
+The category of varieties and dominant rational maps
+is equivalent to the category of finitely generated
+field extensions of $k$ with the arrows reversed.
+
+\begin{exercise}
+\label{exercise-cuspidal-curve-blow-up}
+Let $Y$ be the cuspidal curve $y^2=x^3$ in $\mathbb{A}^2$.
+Blow up the point $O=(0,0)$, let $E$ be the exceptional curve,
+and let $\tilde{Y}$ be the strict transform of $Y$.
+Show that $E$ meets $\tilde{Y}$ in one point,
+and that $\tilde{Y} \cong \mathbb{A}^1$.
+\end{exercise}
+
 
 \section{Divisors, invertible sheaves}
 \label{section-divisors-line-bundles}
