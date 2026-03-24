@@ -377,7 +377,7 @@ Hodge star is an isometry.
 \end{lemma}
 
 \begin{lemma}
-\label{lemma-Hodge-star-squared}
+\label{lemma-hodge-star-squared}
 \begin{reference}
 \cite[Lemma 5.5]{Voisin}
 \end{reference}
@@ -396,22 +396,96 @@ and finally Equation \ref{equation-Hodge-star}.
 \end{proof}
 
 \noindent
-The construction of the Hodge star in  \cite[Section 5.1]{Voisin}
-is essentially: map $\alpha \in \Lambda^{n-k}$ to the operator 
-$\alpha \wedge - \in \Hom(\Lambda^{k},\Lambda^n)$
-and then use the metric to identify $\Hom(\Lambda^k,\Lambda^n)$
-with $\Lambda^k$. Notice that the latter
-means that we take a form $\alpha$ and
-we map it to the morphism
-which maps $\cdot$ to the top-form 
-$g(\alpha,\cdot)\text{Vol}$.
-This says that for all $\alpha \in \Lambda^k$ 
-and $\beta \in \Lambda^{n-k}$
-\begin{equation}
-\label{equation-Hodge-star}
-\alpha\wedge*\beta=(\alpha,\beta)\text{Vol}.
-\end{equation}
+In the setting of linear algebra alone,
+there is no confusion on which inner product
+we use to define adjoint operators.
 
+\begin{definition}
+\label{definition-dual-lefschetz}
+The adjoint operator of $L$ with respect to the metric
+is called {\it dual Lefschetz operator}, i.e. it is
+the unique operator $\Lambda$ such that
+$$
+\left<L \alpha,\beta\right>=\left<\alpha, \Lambda \beta\right>.
+$$
+\end{definition}
+
+\begin{exercise}
+\label{exercise-dual-lefschetz-hodge-conjugated}
+$\Lambda=*^{-1}\Lambda *$.
+\end{exercise}
+
+\noindent
+Next we would define $H$, another operator on $\Lambda^\bullet$
+called the {\it counting operator},
+which is just the identity multipliied by the codegree of a form:
+$$
+H|_{\Lambda^kV}=(k-n)\text{id}.
+$$
+\begin{proposition}
+\label{proposition-sl2-relations-exterior-algebra}
+Let $(V,\left<\cdot,\cdot\right>)$ be an euclidean vector space
+endowed with an compatible almost complex structure $I$.
+Then
+$$
+[H,L]=2L,\qquad [H,\Lambda]=-2\Lambda,\qquad [L,\Lambda]=H,
+$$
+that is, there is a representation of $\mathfrak{sl}_2$
+on $\Lambda^\bullet(V)$.
+\end{proposition}
+
+\begin{definition}
+\label{definition-primitive-form}
+Let $(V,\left<\cdot,\cdot\right>)$ be an euclidean
+vector space with a compatible almost complex structure $I$.
+{\it Primitive forms} are the elements of $\Ker \Lambda$.
+The set of primitive forms of degree $k$
+is denoted $P^k \subset \Lambda^k(V^\vee)$.
+\end{definition}
+
+\begin{theorem}[Lefschetz decomposition]
+\label{theorem-lefschetz-decomposition}
+$$
+\Lambda^k(V^\vee)
+=
+\bigoplus_i L^i(P^{k-2i})
+$$
+holds and is called the {\it Lefschetz decomposition}.
+Moreover, the decomposition is orthogonal with respect to
+$\left<\cdot,\cdot\right>$.
+\end{theorem}
+
+\noindent
+The upshot about this theorem
+is that it is proved using the fact
+that $\Lambda^\bullet(V^\vee)$ is an $\mathfrak{sl}_2$-representation.
+
+\begin{definition}
+\label{definition-hodge-riemann-pairing}
+\begin{reference}
+\cite[Definition 1.2.35]{huc}
+\end{reference}
+Let $(V,\left<\cdot,\cdot\right>)$
+be an euclidean vector space with a compatible almost complex structure.
+The {\it Hodge-Riemann pairing} is
+
+\begin{align*}
+Q: \Lambda^k(V^\vee)\times \Lambda^k(^\vee) &\longrightarrow 
+\Lambda^{2n}(V^\vee)\cong \mathbb{R} \\
+Q(\alpha,\beta)&
+=(-1)^{\frac{k(k-1)}{2}}\alpha\wedge\beta\wedge\omega^{n-k}.
+\end{align*}
+\end{definition}
+
+\begin{theorem}[Hodge-Riemann bilinear relation]
+\label{theorem-hodge-riemann-relation}
+$Q$ is positive definite on $P^{p,q}$, more precisely,
+$$
+\sqrt{-1}^{p-q}Q(\alpha,\bar{\alpha})
+=(n-(p+q))!\left<\alpha,\alpha\right>_{\mathbb{C}}>0,
+$$
+for $\alpha \in P^{p,q}\setminus\{0\}$ and $p+q\leq n$.
+\end{theorem}
 
 \medskip\noindent
 We have the following local result:
