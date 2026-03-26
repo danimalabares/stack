@@ -12,86 +12,11 @@
 
 \tableofcontents
 
-\section{Complex manifolds}
-\label{section-complex-manifolds}
+\section{Complex vector spaces and complex manifolds}
+\label{section-complex-structure}
 
-\begin{definition}
-\label{definition-complex-manifold}
-A {\it complex manifold} $M$ is a smooth manifold admitting an open cover
-$\{U_\alpha\}$ and coordinate maps $\varphi_\alpha:U_\alpha\to\mathbb{C}^n$ such
-that $\varphi_\alpha\circ\varphi_\beta^{-1}$ is holomorphic on
-$\varphi_\beta(U_\alpha\cap U_\beta)\subset\mathbb{C}^n$ for all $\alpha,\beta$.
-\end{definition}
-
-\begin{definition}
-\label{definition-holomorphic-function-on-complex-manifold}
-A function on an open set $U\subset M$ is {\it holomorphic} if for all $\alpha$,
-$f\varphi_\alpha^{-1}$ is holomorphic on 
-$\varphi_\alpha(U\cap U_\alpha)\subset\mathbb{C}^n$.
-\end{definition}
-
-\medskip\noindent
-The converse of the following proposition is
-called the Newlander-Nirenberg theorem:
-
-\begin{proposition}
-\label{proposition-complex-structure}
-A complex manifold has a natural almost complex structure,
-i.e. an endomorphism of the real tangent bundle $I:TX \to TX$
-such that $I^2=-\text{Id}$.
-\end{proposition}
-
-\begin{proof}
-Define bundle maps $I_i$ on local trivializations $U_i$
-by rotating vectors $90$ degrees in counter-clockwise
-direction at every copy of $\mathbb{C}$ in the tangent space $\mathbb{C}^n$.
-The upshot is that since $X$ is a complex manifold
-we can interpret the $I_i$ as multiplication by $\sqrt{-1}$ 
-in the complex vector space structure of the tangent space.
-
-Then the changes of coordinates satisfy the condition
-needed to glue to a global endomorphism, namely
-$I_j=g_{ij}I_ig_{ij}^{-1}$, trivially because
-the $g_{ij}$ are holomorphic and thus $\mathbb{C}$-linear.
 
 \noindent
-{\bf Addendum.} It looks like we can just directly
-define the $I_i$ by multiplication by $\sqrt{-1}$.
-\end{proof}
-
-\begin{definition}
-\label{definition-integrable-almost-complex-structure}
-An almost complex structure on a smooth manifold $X$ 
-is called {\it integrable} if it is induced from a
-complex structure on $X$ as in Proposition \ref{proposition-complex-structure}.
-\end{definition}
-
-\begin{theorem}[Newlander-Nirenberg]
-\label{theorem-newlander-nirenberg}
-An almost complex structure $I$ 
-on a smooth manifold is integrable if and only if
-$[T^{0,1},T^{0,1}]\subset T^{0,1}$.
-\end{theorem}
-
-\begin{definition}
-\label{definition-hermitian-structure}
-A {\it hermitian structure} on a complex manifold $M$
-is a Riemannian metric $g$ that is also an isometry for
-the complex structure $I$, that is $g(I\cdot,I\cdot)=g(\cdot,\cdot)$.
-\end{definition}
-
-\begin{definition}
-\label{definition-fundamental-form}
-If $(M,I,g)$ is a hermitian manifold,
-$\omega(\cdot,\cdot):=g(I\cdot,\cdot)$
-is called the {\it fundamental form}.
-$(M,I,g)$ is called {\it Kähler} if its fundamental form
-is closed.
-\end{definition}
-
-
-
-\medskip\noindent
 Let's discuss complex structures at the level of linear algebra.
 
 \begin{definition}
@@ -293,39 +218,11 @@ So this shows that Kähler classes are in $H^{1,1}(M)$.
 
 
 
-\medskip\noindent
-Now let's discuss $\partial,\bar\partial$.
-
-\begin{definition}
-\label{definition-dbar}
-\begin{reference}
-\cite[Definition 1.3.5]{huc}
-\end{reference}
-Let $X$ be an almost complex manifold.
-(Or vector space! The following 
-objects may be defined over $V_{\mathbb{C}}$.)
-
-If  $d:\mathcal{A}^k_{X,\mathbb{C}}\to \mathcal{A}^{k+1}_{X,\mathbb{C}}$ 
-is the $\mathbb{C}$-linear extension of the
-exterior differential, then one defines
-$$
-\partial:=\Pi^{p+1,q} \circ d
-:\mathcal{A}^{p,q}_X \to \mathcal{A}^{p+1,q}_X,
-\qquad 
-\bar{\partial}:=\Pi^{p,q+1} \circ d
-:\mathcal{A}^{p,q}_X \to A^{p,q+1}_X
-$$
-where $\Pi^{p,q}$ is the projection.
-\end{definition}
 
 \noindent
-Since for any local function $f$ we have
-$$
-d(f)=\sum_i\frac{\partial f}{\partial z_i}dz_i
-+\sum_i\frac{\partial d}{\partial \bar{z}_i}d\bar{z}_i,
-$$
-we see that  $f$ is holomorphic if and only if
-$\bar\partial f=0$.
+Now we shall continue discussing complex linear algebra up
+to Lefschetz hard theorem \ref{theorem-lefschetz-decomposition}
+and the Hodge-Riemann relations \ref{theorem-hodge-riemann-relation}.
 
 
 \begin{definition}
@@ -411,16 +308,28 @@ $$
 \end{definition}
 
 \begin{exercise}
-\label{exercise-dual-lefschetz-hodge-conjugated}
+\label{exercise-dual-lefschetz-is-hodge-twisted}
 $\Lambda=*^{-1}\Lambda *$.
 \end{exercise}
 
+\begin{proof}
+\begin{align*}
+\left<L \alpha,\beta\right>
+&=L \alpha\wedge*\beta
+&=\omega\wedge\alpha\wedge*\beta\\
+&=\alpha\wedge\omega\wedge*\beta\\
+&=\alpha\wedge L * \beta\\
+&=\alpha\wedge * *^{-1}L * \beta\\
+&=\left<\alpha,*^{-1}L * \beta\right>\text{Vol}.
+\end{align*}
+\end{proof}
+
 \noindent
-Next we would define $H$, another operator on $\Lambda^\bullet$
+Next we define $H$, another operator on $\Lambda^\bullet$
 called the {\it counting operator},
 which is just the identity multipliied by the codegree of a form:
 $$
-H|_{\Lambda^kV}=(k-n)\text{id}.
+H|_{\Lambda^kV}:=(k-n)\text{id}.
 $$
 \begin{proposition}
 \label{proposition-sl2-relations-exterior-algebra}
@@ -487,10 +396,49 @@ $$
 for $\alpha \in P^{p,q}\setminus\{0\}$ and $p+q\leq n$.
 \end{theorem}
 
+
+\medskip\noindent
+Now let's discuss the local theory on complex manifolds,
+which is rather just analysis on an open set of the complex numbers.
+We start with $\partial,\bar\partial$.
+
+\begin{definition}
+\label{definition-dbar}
+\begin{reference}
+\cite[Definition 1.3.5]{huc}
+\end{reference}
+Let $X$ be an almost complex manifold.
+(Or vector space! The following 
+objects may be defined over $V_{\mathbb{C}}$;
+we put almost complex manifold since the definition 
+for almost complex manifolds shall be identical)
+
+If  $d:\mathcal{A}^k_{X,\mathbb{C}}\to \mathcal{A}^{k+1}_{X,\mathbb{C}}$ 
+is the $\mathbb{C}$-linear extension of the
+exterior differential, then one defines
+$$
+\partial:=\Pi^{p+1,q} \circ d
+:\mathcal{A}^{p,q}_X \to \mathcal{A}^{p+1,q}_X,
+\qquad 
+\bar{\partial}:=\Pi^{p,q+1} \circ d
+:\mathcal{A}^{p,q}_X \to A^{p,q+1}_X
+$$
+where $\Pi^{p,q}$ is the projection.
+\end{definition}
+
+\noindent
+Since for any local function $f$ we have
+$$
+d(f)=\sum_i\frac{\partial f}{\partial z_i}dz_i
++\sum_i\frac{\partial d}{\partial \bar{z}_i}d\bar{z}_i,
+$$
+we see that  $f$ is holomorphic if and only if
+$\bar\partial f=0$.
+
 \medskip\noindent
 We have the following local result:
 \begin{lemma}[$\bar\partial$-Poincaré lemma on the open disc]
-\label{lemma-dbar-local-lemma}
+\label{lemma-poincare-dbar-local-lemma}
 \begin{reference}
 \cite[Corollary 1.3.9]{huc}
 \end{reference}
@@ -504,9 +452,91 @@ $\alpha=\bar\partial \beta$.
 Looks like this is a consequence of complex analysis.
 \end{proof}
 
+\begin{proposition}
+\label{proposition-leibniz-for-del}
+\begin{align*}
+\partial(\alpha\wedge\beta)&=\partial\alpha\wedge\beta
++(-1)^{p+q}\alpha\wedge\partial\beta\\
+\bar\partial(\alpha\wedge\beta)
+&=\partial\alpha\wedge\beta+(-1)^{p+q}\alpha\wedge\bar\partial\beta.
+\end{align*}
+Also,
+$$
+\partial^2=\bar\partial^2=0,\qquad \partial \bar\partial=-\bar\partial \partial.
+$$
+
+\end{proposition}
+
+
+\medskip\noindent
+Finally we arrive at complex manifolds.
+
+\begin{definition}
+\label{definition-complex-manifold}
+A {\it complex manifold} $M$ is a smooth manifold admitting an open cover
+$\{U_\alpha\}$ and coordinate maps $\varphi_\alpha:U_\alpha\to\mathbb{C}^n$ such
+that $\varphi_\alpha\circ\varphi_\beta^{-1}$ is holomorphic on
+$\varphi_\beta(U_\alpha\cap U_\beta)\subset\mathbb{C}^n$ for all $\alpha,\beta$.
+\end{definition}
+
+\begin{definition}
+\label{definition-almost-complex-manifold}
+An {\it almost complex manifold} $M$ is a smooth manifold together with
+an endomorphism of the real tangent bundle $I:TM \to TM$
+such that $I^2=-\text{Id}$.
+\end{definition}
+
+\begin{proposition}
+\label{proposition-complex-structure}
+A complex manifold has a natural almost complex structure.
+\end{proposition}
+
+\begin{proof}
+Define bundle maps $I_i$ on local trivializations $U_i$
+by rotating vectors $90$ degrees in counter-clockwise
+direction at every copy of $\mathbb{C}$ in the tangent space $\mathbb{C}^n$.
+The upshot is that since $X$ is a complex manifold
+we can interpret the $I_i$ as multiplication by $\sqrt{-1}$ 
+in the complex vector space structure of the tangent space.
+
+Then the changes of coordinates satisfy the condition
+needed to glue to a global endomorphism, namely
+$I_j=g_{ij}I_ig_{ij}^{-1}$, trivially because
+the $g_{ij}$ are holomorphic and thus $\mathbb{C}$-linear.
+
 \noindent
-Back to the global situation,
-we have that
+{\bf Addendum.} It looks like we can just directly
+define the $I_i$ by multiplication by $\sqrt{-1}$.
+\end{proof}
+
+
+\noindent
+But what about the converse?
+What's the condition for an almost complex manifold to be complex?
+
+\begin{definition}
+\label{definition-integrable-almost-complex-structure}
+An almost complex structure on a smooth manifold $X$ 
+is called {\it integrable} if it is induced from a
+complex structure on $X$ as in Proposition \ref{proposition-complex-structure}.
+\end{definition}
+
+\begin{theorem}[Newlander-Nirenberg]
+\label{theorem-newlander-nirenberg}
+An almost complex structure $I$ 
+on a smooth manifold is integrable if and only if
+$[T^{0,1},T^{0,1}]\subset T^{0,1}$.
+\end{theorem}
+
+Other equivalent conditions…
+
+
+
+
+
+\medskip\noindent
+Now let's discuss Dolbeault cohomology.
+
 
 \begin{proposition}
 \label{proposition-dolbeault-proposition}
@@ -548,15 +578,94 @@ The Dolbeault cohomology of $X$ computes the cohomology
 of the sheaf $\Omega^p_X$, i.e. $H^{p,q}_{\bar\partial}(X)=H^q(X,\Omega^p_X)$.
 \end{theorem}
 
+
+
+\section{Kähler manifolds, Kähler identities}
+\label{section-kahler}
+
+
+\begin{definition}
+\label{definition-hermitian-structure}
+A {\it hermitian structure} on a complex manifold $M$
+is a Riemannian metric $g$ that is also an isometry for
+the complex structure $I$, that is $g(I\cdot,I\cdot)=g(\cdot,\cdot)$.
+\end{definition}
+
+\begin{definition}
+\label{definition-fundamental-form}
+If $(M,I,g)$ is a hermitian manifold,
+$\omega(\cdot,\cdot):=g(I\cdot,\cdot)$
+is called the {\it fundamental form}.
+$(M,I,g)$ is called {\it Kähler} if its fundamental form
+is closed.
+\end{definition}
+
+\noindent
+As in with vector spaces endowed with almost complex structures,
+we have the operators $L,\Lambda,*$ defined on the exterior algebra
+of an almost complex manifold.
+But now we have others.
+
+\begin{definition}
+\label{definition-adjoint-de-rham-differential}
+The {\it adjoint de Rham differential} is
+$$
+d^*:=(-1)^{n(k+1)+1}*\circ dd^\circ *
+:\mathcal{A}^k(M) \to \mathcal{A}^{k-1}(M)
+$$
+where, as always, $\mathcal{A}^k(M)$ denotes the
+sections of $\Lambda^k(M):=\Lambda^k(T^*M)$.
+\end{definition}
+
+\begin{definition}
+\label{definition-laplace}
+The {\it Laplace operator} is
+$$
+\Delta=d d^*+d^*d.
+$$
+\end{definition}
+
+\noindent
+If $M$ is a complex manifold,
+then
+$$
+d^*=-*\circ d \circ *.
+$$
+
+Similarly we define
+$$
+\partial^*:=-* \circ \partial \circ *,
+\qquad 
+\bar\partial^*:=-* \circ \bar\partial \circ *,
+$$
+which yield the Laplacians
+\begin{align*}
+\Delta_\partial&=\partial \partial^* +\partial^*\partial,\\
+\Delta_{\bar\partial}&=\bar\partial \bar\partial^*+\bar\partial^*\bar\partial.
+\end{align*}
+
+\begin{proposition}[Kähler identities]
+\label{proposition-kahler-identities}
+Let $X$ be a complex manifold endowed with a Kähler metric $g$. Then
+\begin{enumerate}
+\item $[\bar\partial,L]=[\partial,L]=0$, 
+$[\bar\partial^*,\Lambda]=[\partial^*,\Lambda]=0$.
+\item  Etc.
+\item $\Delta_\partial=\Delta_{\bar\partial}=\frac{1}{2}\Delta$.
+\item $\Delta$ commutes with 
+$*,\partial,\bar\partial,\partial^*,\bar\partial^*,L$ and $\Lambda$.
+\end{enumerate}
+\end{proposition}
+
 \begin{definition}
 \label{definition-dc}
 On a complex manifold $(M,I)$,
 $$
-d^c:=I^{-1}d I=-I d I
+d^c:=I^{-1}d I=-I d I.
 $$
 \end{definition}
 
-But there's also the fact that
+Notice (prove) that
 $$
 d^c=\frac{i}{2}(\bar\partial-\partial)
 $$
@@ -564,15 +673,50 @@ so that
 $$
 dd^c=i(\partial \bar\partial).
 $$
-Let use just use this for now.
+We may also define
+$$
+{d^c}^*:=-* \circ d^c \circ *.
+$$
 
 
+On a compact hermitian manifold $(X,g)$ we may define
+$$
+(\alpha,\beta):=\int_Xg_{\mathbb{C}}(\alpha,\beta)*1,
+$$
+which is an hermitian product on $\mathcal{A}_{\mathbb{C}}^*(X)$.
 
-\section{Kähler metrics}
-\label{section-kahler}
+\begin{lemma}
+\label{lemma-adjoints}
+\begin{reference}
+\cite[Lemma 3.2.3]{huc}
+\end{reference}
+Let $X$ be a compact hermitian manifold.
+Then $\partial^*$ and $\bar\partial^*$
+are adjoints to $\partial$ and $\bar\partial$ with respect to
+$(\cdot,\cdot)$.
+\end{lemma}
+
+\begin{proof}
+We have
+\begin{align*}
+(\partial\alpha,\beta)
+&=\int_X\left<\partial\alpha,\beta\right>_\mathbb{C}\text{Vol}
+=\int_X \partial\alpha\wedge*\beta,\\
+(\alpha,\partial^*\beta)
+&=\int_X\left<\alpha,-*\partial*\beta\right>_{\mathbb{C}}\text{Vol}
+=\int_X\alpha\wedge\partial*\beta.
+\end{align*}
 
 \noindent
-We start by discussing Kähler potentials.
+Now we also have 
+$\partial(\alpha\wedge\beta)
+=\partial\alpha\wedge\beta+\alpha\wedge\partial\beta$,
+and the integral of the first vanishes by Stokes theorem.
+\end{proof}
+
+
+\noindent
+Now let's introduce Fubini-Study form.
 The following discussion of psh functions is because
 to pass from a potential, i.e. a function,
 to a $(1,1)$-form we apply $dd^c$ (or $\partial\bar\partial$).
@@ -767,6 +911,9 @@ is constant within every tangent space at a poi
 \end{enumerate}
 \end{proof}
 
+
+
+
 \begin{exercise}
 \label{exercise-kahler-form-conformal-class}
 Let $X$ be a connected complex manifold of dimension $n>1$
@@ -834,6 +981,24 @@ where $\pi:\mathbb{P}(E^*)\to X$ is the structural morphism.
 \label{exercise-kahler-iff-i-parallel}
 $(M,I,g)$ is Kähler if and only if $\nabla^{LC}I=0$.
 \end{exercise}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Vector bundles, connections, curvature and Chern classes}
 \label{section-vector-bundles}
@@ -2180,41 +2345,32 @@ $\text{SU}(2)$-invariant 2-forms. Prove that $V$ is finite-dimensional.
 \begin{proof}[Proof by Arpan.]
 Consider the Hodge star operator with respect to the Riemannian metric on $M$.
 \begin{enumerate}
-\item A closed anti-self-dual form is harmonic. Indeed, by some 
-characterization a
-form is harmonic $\iff$ it is $d$-closed and $d^*$-closed. So if $\alpha$ is
-self-dual and $d$-closed we get $d^*\alpha=(-1)^{-\bullet}*d*\alpha=0$ since
-$d\alpha=0$.
-\item The space of harmonic forms is finite-dimensional (analysis, cf. Fredholm
-theory).
-\item I should be able to prove that an $\text{SU}(2)$-invariant closed form is
+\item A closed anti-self-dual form is harmonic. 
+\item The space of harmonic forms is finite-dimensional.
+\item An $\text{SU}(2)$-invariant closed form is
 anti self-dual.
 \begin{enumerate}
-\item Define $\Lambda^+:=$self-dual 2-forms and $\Lambda^-:=$anti-self dual
-2-forms. Notice that $\Lambda^2=\Lambda^+ \oplus \Lambda^-$,
-this is by \ref{lemma-Hodge-star-squared}, since we can
-see $*$ as an involutive endomorphism of $\Lambda^2$,
-so that it has eigenvalues $\pm 1$, given the
-desired decomposition as its eigenspace decomposition.
-
 \item {\bf Claim.} $\Lambda^+=\text{span}(\omega_I,\omega_J,\omega_K)$.
-\item {\bf Claim.} $\omega_I,\omega_J$ and $\omega_K$ are
-$\text{SU}(2)$-invariant.
+\item {\bf Claim.} $\omega_I,\omega_J$ and $\omega_K$ are rotated
+$\text{SU}(2)$ action. Therefore there are no $\text{SU}(2)$-fixed
+points in $\Lambda^+$.
 
-The last two items imply that $\text{SU}(2)\Lambda^+=\Lambda^+$.
-\item {\bf Claim.} $\text{SU}(2)\mathbb{y}\Lambda^+$ has no fixed points.
+\item  {\bf Claim.}
+$\text{SU}(2)\Lambda^+=\Lambda^+$ and $\text{SU}(2)\Lambda^-=\Lambda^-$.
 
 We conclude that if $\alpha$ is $\text{SU}(2)$-invariant (i.e. a fixed point of
-$\text{SU}(2)\mathbb{y}\Lambda^2$) it's positive part will vanish, so that
-$\alpha$ is anti-self-dual.
+$\text{SU}(2)\mathbb{y}\Lambda^2$) its positive part will vanish, so that
+$\alpha$ is anti-self-dual. More precisely, if
+$\alpha = \alpha^+ +\alpha^-$ is
+$\text{SU}(2)$-invariant and $A \in \text{SU}(2)$,
+$$
+\alpha^+ +\alpha^- = \alpha = A\alpha=A\alpha^+ + A\alpha^-,
+$$
+so $A\alpha^+=\alpha^+$, but $\text{SU}(2)$ 
+has no fixed points in $\Lambda^+$, so $\alpha^+=0$.
+Therefore $\alpha \in \Lambda^-$ as required.
 \end{enumerate}
 \end{enumerate}
-\end{proof}
-
-\begin{proof}
-Idea: show that
-Hodge star $*\omega$ is in the $\text{SU}(2)$-orbit of $\omega$ and conclude
-that $\int \omega\wedge *\omega=0$, implying that $\|\omega\|=0$.
 \end{proof}
 
 \begin{exercise}
