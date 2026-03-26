@@ -102,6 +102,45 @@ $S^1\times\ldots\times S^1$ with the product metric is called the {\it flat
 torus}.
 \end{definition}
 
+\medskip\noindent
+Let $G$ be a Lie group equipped with a bi-invariant metric.
+Then for any $U,V,X \in \mathfrak{g}$,
+\begin{equation}
+\label{equation-lie-group-bi-invariant-metric-and-lie-bracket}
+\left<[U,X],V\right>=-\left<U,[V,X]\right>.
+\end{equation}
+
+\noindent
+This follows from
+\begin{align*}
+\left<U,V\right>&=
+\left<dR_{\text{exp}(tX)}\circ dL_{\text{exp}(tX)^{-1}}U,
+dR_{\text{exp}(tX)}\circ dL_{\text{exp}(tX)^{-1}}V\right>\\
+&=\left<dR_{\text{exp}(tX)}U,
+dR_{\text{exp}(tX)}V\right>
+\end{align*}
+
+\noindent
+since both $U$ and $V$ are left invariant.
+The key observation is that the map $R_{\text{exp}(tX)}$
+is exactly the flow of $X$.
+Thus, differentiating and evaluating at $t=0$
+we obtain
+$$
+0=\left<[U,X],V\right>+\left<U,[V,X]\right>,
+$$
+where the $V$ and $U$ appear since evaluating
+$R_{\text{exp}(tX)}$ at $t=0$ is the identity.
+
+A similar construction shows that the derivative of the map
+$\text{Ad}:G \to \text{End}(\mathfrak{g})$
+is the map $\text{ad}:\mathfrak{g} \to \text{End}(\mathfrak{g})$,
+$X \mapsto [X,\cdot]$.
+(Indeed, to compute this differential we use
+the curve definition, $\gamma(t)=\text{exp}(tX)$…)
+
+\medskip\noindent
+
 \begin{exercise}[Warped product]
 \label{exercise-wraped-product}
 See \cite{pet}. Para $(M,g_M)$ e $(N,g_N)$ e $f:M \to \mathbb{R}_+$, definimos o
@@ -241,6 +280,22 @@ again using that we are a geodesic frame with vanishing covariant
 derivative at $p$.
 \end{proof}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Connections}
 \label{section-connections}
 
@@ -254,17 +309,47 @@ $$
 
 \begin{proposition}[Everything I know about connections]
 \label{proposition-existence-of-pullback-connection}
+If $f:M \to N$ is a map of manifolds
+and $E$ is a vector bundle on $N$
+with a connection $\nabla$,
+there exists a unique connection $\nabla^f$ on $f^*E$ such that
+$$
+\nabla^f_XY\circ f=\nabla_{f_*X}Y
+$$
+for $X \in TM$ and $Y \in \Gamma(E)$.
 \end{proposition}
 
 \begin{lemma}
 \label{lemma-composition-of-pullback-connections}
-\cite{aulas}, p.5. If $g:M_1\to M_2$ and $f:M_2\to M_3$ are smooth maps of 
+\begin{reference}
+\cite{aulas}, p.5 
+\end{reference}
+If $g:M_1\to M_2$ and $f:M_2\to M_3$ are smooth maps of 
 manifolds and $E$ is a vector bundle over $M_3$, then
 $$
 g^* (f^* (E))=(f\circ g)^* (E)\qquad \text{and}\qquad
 (\nabla^f)^g=\nabla^{f\circ g}
 $$
 \end{lemma}
+
+\begin{proposition}
+\label{proposition-existence-of-levi-civita}
+On any Riemann manifold
+there exists a unique metric and torsion-free
+connection called the {\it Levi-Civita connection}.
+\end{proposition}
+
+\begin{proposition}[Symmetry and compatibility]
+\label{proposition-symmetry-and-compatibility}
+Let $f:M \to N$ be a map of smooth manifolds and suppose $M$ is Riemannian.
+Then the pullback of the LC connection is symmetric, i.e.
+\begin{equation}
+\label{equation-pullback-connection-symmetric}
+\nabla^f_X f_*Y-\nabla^f_Yf_*X = f_*[X,Y],\qquad 
+\forall X,Y \in \mathfrak{X}(N)
+\end{equation}
+and compatible with the pullback Riemannian metric.
+\end{proposition}
 
 The following three lemmas are fundamental properties of isometric
 immersions and will be used in Section \ref{section-isometric-immersions}. (Cf.
@@ -606,30 +691,67 @@ $d_{\mathbb{R}^{n+1}}(p,q)=d_{\mathbb{R}^{n+1}}(\tilde{A}p,\tilde{A}q)$ pelo
 argumento anterior.
 \end{example}
 
-\begin{proposition}
-\label{proposition-naturallity-of-exponential}
-If $f:M\to \tilde{M}$ is an isometry,
-$$
-\xymatrix{
-B_\varepsilon(0)\subset T_pM \ar[r]^{d_p f} \ar[d]_{\text{exp}_p} &
-B_\varepsilon(0)\subset T_{f(p)}\tilde{M} \ar[d]^{\text{exp}_{f(p)}} \\
-B_\varepsilon(p)\subset M \ar[r]_{f} & B_\varepsilon(f(p))\subset \tilde{M}
-}
-$$
-\end{proposition}
-
-\begin{proof}
-Isometry maps geodesics to geodesics by Lemma 
-\ref{lemma-isometry-maps-geodesics-to-geodesics}, then uniqueness of solutions
-of ODEs.
-\end{proof}
-
 \begin{proposition}[Totally Normal Neighbourhoods]
 \label{proposition-totally-normal-neighbourhoods}
 For all $p \in M$ there is a neighbourhood $W \ni p$ and a number $\delta>0$ 
  such that for every $q \in W$, $B_\delta(q)$ is normal and
  $W \subset B_\delta(q)$. 
 \end{proposition}
+
+\medskip\noindent
+Now we discuss distance, geodesics and exponential.
+First notice that if $p$ and $q$ are two points sufficiently near each other,
+$d(p,q)=|\text{exp}^{-1}_p(q)|$.
+Indeed, if $q=\gamma_w(1)$ for some geodesic with
+velocity $w \in T_pM$ at $p$ (this is what
+we mean by ``sufficiently near''),
+we have
+
+\begin{align*}
+d(p,q)=\int_0^1|\gamma'|=\int_0^1|w|=|w|.
+\end{align*}
+
+\begin{exercise}
+\label{exercise-differentiate-distance-function}
+Let $d_p:=d(p,\cdot)$. Compute $|\nabla d_p|$ and the integral
+curves of $\nabla d_p$ inside $B_\varepsilon(p)\setminus\{p\}$.
+\end{exercise}
+
+\begin{proof}
+Suppose that $\gamma$ is a geodesic joining $p$ and $q$
+with $|\gamma'|=1$.
+Let $\sigma$ be a curve contained in the geodesic sphere $S_{d(p,q)}(p)$.
+Then
+$$
+\left<\nabla d_p,\sigma'\right>
+=\sigma'(d_p\circ \sigma)
+=\sigma'(\underbrace{d(p,q)}_{\text{cte}})=0.
+$$
+Thus $\nabla d_p=\lambda\gamma'$.
+Now
+$$
+\left<\nabla d_p,\gamma'\right>
+=\lambda |\gamma'|=\lambda
+$$
+for some $\lambda \in \mathbb{R}$.
+But
+$$
+\gamma'd_p=\frac{d}{dt}d_p \circ \gamma'
+=\frac{d}{dt}t=1,
+$$
+so $\lambda=1$, and then $|\nabla d_p|=1$.
+It is clear that the integral curves of $\nabla d_p$
+are unit speed geodesics.
+\end{proof}
+
+\begin{exercise}
+\label{exercise-killing-field-with-zero-of-order-1}
+Let $X$ be a Killing field in a connected Riemannian manifold $M$.
+Suppose there is a point $q \in M$ such that
+$X(q)=0$ and $\nabla_YX(q)=0$ for any $Y(q) \in T_qM$.
+Show that $X=0$.
+\end{exercise}
+
 
 \begin{lemma}
 \label{lemma-geodesic-coordinates}
@@ -650,8 +772,7 @@ ensures that $E_i$ is orthonormal since parallel transport preserves angles.
 
 To check that Christoffel symbols vanish at $p$ we do as follows. 
 Take a random vector $v \in T_pM$ and its geodesic
-$\gamma_v(t)=\operatorname{exp}_p(tv)$. I drop the subindex $v$ for the next
-computations for the next computations. Then
+$\gamma_v(t)=\operatorname{exp}_p(tv)$. Then
 \begin{align*}
 0&=\nabla_{\frac{d}{dt}}^{\gamma}\gamma'
 =\nabla^{\gamma}_{\frac{d}{dt}}v^i(E_i\circ \gamma)
@@ -680,6 +801,25 @@ along $\gamma$. Now choose $v=e_1$. You get $\Gamma_{11}^k=0$ for all $k$ along 
 So $\Gamma_{12}^k=0$ since Levi-Civita is torsion-free, i.e. symmetric. 
 And so on. So the all Christoffel symbols vanish at the same time at $p$.
 \end{proof}
+
+\begin{proposition}
+\label{proposition-naturality-of-exponential}
+If $f:M\to \tilde{M}$ is an isometry,
+$$
+\xymatrix{
+B_\varepsilon(0)\subset T_pM \ar[r]^{d_p f} \ar[d]_{\text{exp}_p} &
+B_\varepsilon(0)\subset T_{f(p)}\tilde{M} \ar[d]^{\text{exp}_{f(p)}} \\
+B_\varepsilon(p)\subset M \ar[r]_{f} & B_\varepsilon(f(p))\subset \tilde{M}
+}
+$$
+\end{proposition}
+
+\begin{proof}
+Isometry maps geodesics to geodesics by Lemma 
+\ref{lemma-isometry-maps-geodesics-to-geodesics}, then uniqueness of solutions
+of ODEs.
+\end{proof}
+
 
 \begin{exercise}
 \label{exercise-maximum-principle}
@@ -713,6 +853,7 @@ $$
 First one vanishes because $f$ is harmonic, so second one is zero which says
  $f$ is constant!
 \end{proof}
+
 
 \section{Curvature}
 \label{section-curvature}
@@ -807,6 +948,26 @@ $$
 =\frac{1}{\text{Vol}(S^{n-1})}\int_{\sigma\subset T_pM}K(\sigma)
 $$
 \end{lemma}
+
+\medskip\noindent
+The following result is very important.
+
+\begin{lemma}[Symmetry lemma for curvature]
+\label{lemma-symmetry-lemma-curvature}
+Let $f:U \subset \mathbb{R}^2 \to M$
+be a map into a Riemannian manifold and $V \in \mathfrak{X}^f$.
+Then
+$$
+\nabla_{\partial_s}\nabla_{\partial_t}V
+-\nabla_{\partial_t}\nabla_{\partial_s}V
+=R(f_s,f_t)V
+$$
+where $f_s:=f_*\partial_s$, $f_t:=f_*\partial_t$.
+More generally, the pullback of $R$ is the
+Riemannian curvature tensor of the pullback vector bundle
+for any affine vector bundle $(E,\nabla)$ on $M$.
+\end{lemma}
+
 
 \begin{exercise}
 \label{lemma-curvatures-of-product-metric}
