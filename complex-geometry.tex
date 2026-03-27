@@ -32,14 +32,15 @@ admits a natural structure of a complex vector space.
 \end{lemma}
 
 \begin{proof}
-$(a+ib)v:=av + b_i(v)$.
+$(a+ib)v:=av + b I(v)$.
 \end{proof}
 
 \noindent
-Multiplication by $i$ produces an almost complex structure
-on any complex vector space, so that the two notions become the same.
+Conversely, given a complex vector space, 
+multiplication by $i$ produces an almost complex structure.
+Thus the two notions become the same.
 
-\noindent
+\medskip\noindent
 Now we introduce the complexification of a real vector space.
 Let $V_{\mathbb{C}}:=V \otimes_{\mathbb{R}}\mathbb{C}$.
 This means that elements of $V_{\mathbb{C}}$
@@ -54,8 +55,9 @@ $\bar{v}=\overline{v \otimes \lambda} := v \otimes \bar{\lambda}$
 This means that $\overline{V}$ is just $V$ but 
 with the scalar product $\lambda v:=\bar{\lambda}v$.
 for any $v \in V_{\mathbb{C}}:=V \otimes_{\mathbb{R}}\mathbb{C}$.
-by definition, and then 
-$\overline{\Lambda^{p,q}(V)}=\Lambda^{q,p}(V)$.
+This makes the equation
+$\overline{\Lambda^{1,0}(V)}=\Lambda^{0,1}(V)$ 
+in the next proposition obvious.
 (See \cite[p. 25]{huc}.)
 
 \begin{lemma}
@@ -159,7 +161,7 @@ implies imposing it on every factor.
 The main result of Hodge theory is that
 when we take $T^{1,0}(M)\oplus T^{0,1}(M)$,
 the eigenspaces of the complex structure,
-and pass to complex singular cohomology we get
+and pass to complex singular cohomology of a Kähler manifold we get
 \begin{equation}
 \label{equation-hodge-theorem}
 H^{k}(M,\mathbb{C})
@@ -263,6 +265,14 @@ $$
 for any $\alpha,\beta \in \Lambda^k(V^\vee)$.
 \end{exercise}
 
+\begin{proof}
+First prove uniqueness,
+then prove that mapping a basic form $e^{i_1}\wedge… \wedge e^{i_k}$
+to $e^{j_1}\wedge…\wedge e^{j_{n-k}}$
+where $(i_1,…,i_k,j_1,…,j_{n-k})$ is a permutation of
+$(1,…,n)$ will work (up to sign maybe).
+\end{proof}
+
 \noindent
 Intuition on the Hodge star operator is that
 it maps a form to its ``complement'' with respect to the volume form.
@@ -273,23 +283,38 @@ For instance, $*dx=dy \wedge dz$ in $\mathbb{R}^3$.
 Hodge star is an isometry.
 \end{lemma}
 
+\begin{proof}
+Consider two basic covectors $e^I$ and $e^J$.
+Then $*e^I$ and $*e^J$ are determined by $I$ and $J$.
+By definition of the metric on $\Lambda^\bullet(M)$,
+$\left<e^I,e^J\right>$ is zero if $I\neq J$ and 1 otherwise.
+Similarly, $\left<*e^I,*e^J\right>$ is zero if $I\neq J$,
+while, if $I=J$, then it will clearly be 1.
+\end{proof}
+
 \begin{lemma}
 \label{lemma-hodge-star-squared}
 \begin{reference}
 \cite[Lemma 5.5]{Voisin}
 \end{reference}
-The operator $*$ satisfies the identity
-\begin{equation}
-\label{equation-Hodge-star-squared}
-*^2=(-1)^{k(n-k)} \text{ on }A^k(X).
-\end{equation}
+$$
+*^2=(-1)^{k(n-k)}\text{Id}.
+$$
 \end{lemma}
 
 \begin{proof}
-Recall that $*$ is an isometry,
-use skew-commutativity of product to obtain
-the $(-1)^{k(n-k)}$
-and finally Equation \ref{equation-Hodge-star}.
+We prove that
+$$
+\left<\alpha-*^2\alpha,\beta\right>=0\qquad 
+\forall \beta \in \Lambda^k(M).
+$$
+\begin{align*}
+\left<\alpha,\beta\right>\text{Vol}
+&=\left<*\alpha,*\beta\right>\text{Vol}\\
+&=*\beta\wedge *^2\alpha\\
+&=(-1)^{\text{deg}(*\alpha) \text{deg}(\beta)}*^2\alpha\wedge *\beta\\
+&=\left<(-1)^{(n-k)k}*^2\alpha,*\beta\right>\text{Vol}.
+\end{align*}
 \end{proof}
 
 \noindent
@@ -315,7 +340,7 @@ $\Lambda=*^{-1}\Lambda *$.
 \begin{proof}
 \begin{align*}
 \left<L \alpha,\beta\right>
-&=L \alpha\wedge*\beta
+&=L \alpha\wedge*\beta\\
 &=\omega\wedge\alpha\wedge*\beta\\
 &=\alpha\wedge\omega\wedge*\beta\\
 &=\alpha\wedge L * \beta\\
@@ -715,6 +740,7 @@ and the integral of the first vanishes by Stokes theorem.
 \end{proof}
 
 
+
 \noindent
 Now let's introduce Fubini-Study form.
 The following discussion of psh functions is because
@@ -991,15 +1017,6 @@ $(M,I,g)$ is Kähler if and only if $\nabla^{LC}I=0$.
 
 
 
-
-
-
-
-
-
-
-
-
 \section{Vector bundles, connections, curvature and Chern classes}
 \label{section-vector-bundles}
 
@@ -1049,8 +1066,8 @@ is {\it hermitian} if $\nabla g=0$ and $\nabla J=0$.
 \end{definition}
 
 
-\section{Sheaf of holomorphic functions}
-\label{section-sheaf-of-holomorphic-functions}
+\section{Complex varieties}
+\label{section-complex-varieties}
 
 For a definition of sheaf
 see Algebraic Geometry Definition 
@@ -1092,10 +1109,7 @@ since holomorphicity is a condition defined on
 open sets.
 \end{proof}
 
-\section{Sheaf of meromorphic functions}
-\label{section-meromorphic-functions}
-
-\noindent
+\medskip\noindent
 A meromorphic function is a function that
 can be written locally as a quotient of two
 holomorphic functions:
@@ -1118,8 +1132,9 @@ such that $f_x=g/h$ for all $x \in U$.
 The {\it sheaf of meromorphic functions} is $\mathcal{K}_X$.
 \end{definition}
 
-\section{Analytic sets}
-\label{section-analytic-sets}
+
+\medskip\noindent
+Now we pass to the theory of analytic subvarieties.
 
 \begin{definition}
 \label{definition-analytic-subvariety}
@@ -1356,8 +1371,9 @@ the dual line bundle of the {\it line bundle associated to the divisor $D$},
 which is denoted by $\mathcal{O}_X(D)$.
 \end{definition}
 
-\section{Hilbert's Nullstellensatz}
-\label{section-nullstellensatz}
+\medskip\noindent
+Now we discuss the analytic version of Hilbert's Nullstellensatz.
+as explained by Demailly.
 
 \noindent
 Usually I think of Hilbert's Nullstellensatz
@@ -1515,24 +1531,6 @@ Looks accessible, though it is not holomorphic!
 \item Perhaps start in Demailly just after Prop. 4.13.
 \end{enumerate}
 
-\section{Hodge theory}
-\label{section-hodge}
-
-\noindent
-Harmonic forms and Hodge theorem.
-Definition of $\text{NS}(X)$ and Lefschetz theorem
-on $(1,1)$-classes (i.e. Pic surjects on integral classes).
-Hard Lefschetz theorem (?).
-Hodge-Riemann bilinear relation (?).
-
-\begin{theorem}[Hodge index]
-\label{theorem-hodge-index}
-The intersection form on $H^{1,1}(X,\mathbb{R})$ 
-has index $(1,h^{1,1}-1)$.
-\end{theorem}
-
-Hodge conjecture.
-
 \section{Cones}
 \label{section-cone}
 
@@ -1678,7 +1676,7 @@ all analytic curves by $X$ being projective
 
 
 
-\section{Line bundles}
+\section{Line bundles, divisors, Riemann-Roch formulas}
 \label{section-line-bundles}
 
 \noindent
@@ -1707,8 +1705,8 @@ is a line bundle defined by the cocycle $(f_i/f_j)^{-1}$
 and a locally principal sheaf generated by $f_i$,
 that is, the ideal sheaf of $X$.
 
-\section{Examples of line bundles}
-\label{section-examplex-line-bundles}
+\medskip\noindent
+
 
 \begin{example}[Determinant bundle]
 \label{example-determinant-bundle}
@@ -1748,10 +1746,42 @@ We thus obtain the cocycle condition on the maps $g_{ij}$
 after applying $\Lambda^r$.
 \end{example}
 
+\medskip\noindent
+Now let's introduce Néron-Severi group.
+Instead of considering the exact sequence 
+$$
+\xymatrix{
+0\ar[r]
+&H^0(X,\mathcal{M}^*_X)\ar[r]
+&H^0(X,\mathcal{M}_X^*/\mathcal{O}_X^*)\ar[r]
+&H^1(X,\mathcal{O}_X^*)\ar[r]
+&0
+}
+$$
+which says that $\text{Pic}(X)$ is isomorphic
+to Cartier divisors modulo linear equivalence,
+we consider
+$$
+\xymatrix{
+0\ar[r]
+&\text{Pic}^0(X)\ar[r]
+&\text{Pic}(X)\ar[r]
+&\text{Pic}(X)/\text{Pic}^0(X):=\text{NS}(X)\ar[r]
+&0
+}
+$$
+where $\text{Pic}^0(X)$ is the connected component
+of the identity in the Picard scheme,
+which is a scheme representing some functor.
+The idea is that $\text{Pic}^0(X)$-equivalence
+is like linear equivalence, but different.
+The Néron-Severi group describes line bundles
+module this other equivalence.
 
 
-\section{Riemann-Roch formulas}
-\label{section-Riemann-Roch}
+
+\medskip\noindent
+Now let's discuss Riemann-Roch formulas.
 
 \begin{theorem}[Riemann-Roch for curves]
 \label{theorem-Riemann-Roch-for-curves}
@@ -1789,10 +1819,40 @@ canonical bundle of $X$. Then
 \end{equation}
 \end{theorem}
 
-\section{Adjunction formulas}
-\label{section-adjunction-formulas}
+\medskip\noindent
+Now let's discuss Bertini's theorem.
 
-\noindent
+\begin{slogan}
+In \(\mathbb{C}^n\) many complex hypersurfaces can be written as regular level
+sets of globally defined holomorphic functions. But in a compact complex
+manifold, this is never possible, because all global holomorphic functions are
+constants. Instead, we can use sections of line bundles.
+\end{slogan}
+
+\medskip\noindent
+Now let's discuss Serre's duality.
+
+\begin{theorem}[Serre duality]
+\label{theorem-serre-duality}
+\cite{Voisin} II.5.32. The pairing
+$$
+H^q(X,\mathcal{E})\otimes
+H^{n-q}(X,\mathcal{E}^*\otimes K_X)\to H^{n}(X,K_X)\cong\mathbb{C}
+$$
+is perfect.
+\end{theorem}
+
+So when you put the dual \(\vee\) on one of these you get isomorphism.
+
+Our course version says:
+$$
+H^{k}(X,\mathcal{L})^{\vee}=H^{n-k}(X,\omega_X \otimes \mathcal{L}^*)
+$$
+
+
+
+\medskip\noindent
+Now let's introduce different adjunction formulas.
 Perhaps the most accessible statement that could be interpreted as ``adjunction
 formula'' is that the line bundle associated to a smooth hypersurface is the
 normal bundle.
@@ -2019,41 +2079,6 @@ its normalization, which must be strictly positive since there exists at least
 one singularity.
 \end{proof}
 
-\section{Chow's theorem}
-\label{section-chow-theorem}
-
-\begin{proposition}
-\label{proposition-slice-charts}
-Every codimension-$p$ submanifold of a complex $n$-manifold has slice charts,
-i.e. for any $p \in M$ there's a coordinate chart $U \ni p$ such that points of
-$M$ have coordinates $(z_1,\ldots,z_n,0,\ldots 0)$.
-\end{proposition}
-
-\begin{proof}
-This may be taken as the definition of smooth (real or complex) submanifold, or
-as a proposition using inverse function theorem (real or complex).
-\end{proof}
-
-\begin{proposition}
-\label{proposition-stalk-is-PID}
-Stalk of holomorphic functions is a PID.
-\end{proposition}
-
-\begin{proof}
-This can be proved via Weierstrass Preparation theorem
-\ref{theorem-Weierstrass-preparation} which implies
- Lemma \ref{lemma-stalks-are-UFDs}, and this in turn implies Lemma 
-\ref{lemma-codimension-1-ideals-in-UFD-are-principal}.
-
-Also, it can be shown directly for smooth hypersurfaces
- as in \cite{lec} Lemma 3.38.
-\end{proof}
-
-\begin{theorem}[Chow for hypersurfaces]
-\label{theorem-Chow-for-hypersurfaces}
-Every complex codimension-1 submanifold of $\mathbb{C}P^{n}$ is algebraic.
-\end{theorem}
-
 \section{Ampleness}
 \label{section-ampleness}
 
@@ -2226,35 +2251,41 @@ Finally we apply Riemann-Roch to $L^{\otimes 2}$ and $L^{\otimes 2}(-p)$ to
 obtain that $h^0(L^{\otimes 2})>h^0(L^{\otimes 2}(-p))$.
 \end{proof}
 
-\section{Bertini's theorem}
-\label{section-Bertini-theorem}
+\section{Chow's theorem}
+\label{section-chow-theorem}
 
-\begin{slogan}
-In \(\mathbb{C}^n\) many complex hypersurfaces can be written as regular level
-sets of globally defined holomorphic functions. But in a compact complex
-manifold, this is never possible, because all global holomorphic functions are
-constants. Instead, we can use sections of line bundles.
-\end{slogan}
+\begin{proposition}
+\label{proposition-slice-charts}
+Every codimension-$p$ submanifold of a complex $n$-manifold has slice charts,
+i.e. for any $p \in M$ there's a coordinate chart $U \ni p$ such that points of
+$M$ have coordinates $(z_1,\ldots,z_n,0,\ldots 0)$.
+\end{proposition}
 
-\section{Serre duality}
-\label{section-serre-duality}
+\begin{proof}
+This may be taken as the definition of smooth (real or complex) submanifold, or
+as a proposition using inverse function theorem (real or complex).
+\end{proof}
 
-\begin{theorem}[Serre duality]
-\label{theorem-serre-duality}
-\cite{Voisin} II.5.32. The pairing
-$$
-H^q(X,\mathcal{E})\otimes
-H^{n-q}(X,\mathcal{E}^*\otimes K_X)\to H^{n}(X,K_X)\cong\mathbb{C}
-$$
-is perfect.
+\begin{proposition}
+\label{proposition-stalk-is-PID}
+Stalk of holomorphic functions is a PID.
+\end{proposition}
+
+\begin{proof}
+This can be proved via Weierstrass Preparation theorem
+\ref{theorem-Weierstrass-preparation} which implies
+ Lemma \ref{lemma-stalks-are-UFDs}, and this in turn implies Lemma 
+\ref{lemma-codimension-1-ideals-in-UFD-are-principal}.
+
+Also, it can be shown directly for smooth hypersurfaces
+ as in \cite{lec} Lemma 3.38.
+\end{proof}
+
+\begin{theorem}[Chow for hypersurfaces]
+\label{theorem-Chow-for-hypersurfaces}
+Every complex codimension-1 submanifold of $\mathbb{C}P^{n}$ is algebraic.
 \end{theorem}
 
-So when you put the dual \(\vee\) on one of these you get isomorphism.
-
-Our course version says:
-$$
-H^{k}(X,\mathcal{L})^{\vee}=H^{n-k}(X,\omega_X \otimes \mathcal{L}^*)
-$$
 \section{Kodaira Vanishing theorem}
 \label{section-Kodaira-vanishing-theorem}
 
@@ -2298,40 +2329,6 @@ map is an embedding such that $L^{\otimes N}=\varphi^*\mathcal{O}(1)$, which has
 degree 1 by definition as in \cite[15.4.14]{sea}.
 \end{proof}
 
-\section{Néron-Severi group}
-\label{section-neron-severi-group}
-
-\noindent
-Instead of considering the exact sequence 
-$$
-\xymatrix{
-0\ar[r]
-&H^0(X,\mathcal{M}^*_X)\ar[r]
-&H^0(X,\mathcal{M}_X^*/\mathcal{O}_X^*)\ar[r]
-&H^1(X,\mathcal{O}_X^*)\ar[r]
-&0
-}
-$$
-which says that $\text{Pic}(X)$ is isomorphic
-to Cartier divisors modulo linear equivalence,
-we consider
-$$
-\xymatrix{
-0\ar[r]
-&\text{Pic}^0(X)\ar[r]
-&\text{Pic}(X)\ar[r]
-&\text{Pic}(X)/\text{Pic}^0(X):=\text{NS}(X)\ar[r]
-&0
-}
-$$
-where $\text{Pic}^0(X)$ is the connected component
-of the identity in the Picard scheme,
-which is a scheme representing some functor.
-The idea is that $\text{Pic}^0(X)$-equivalence
-is like linear equivalence, but different.
-The Néron-Severi group describes line bundles
-module this other equivalence.
-
 \section{Hypercomplex manifolds}
 \label{section-hypercomplex-manifolds}
 
@@ -2350,14 +2347,23 @@ Consider the Hodge star operator with respect to the Riemannian metric on $M$.
 \item An $\text{SU}(2)$-invariant closed form is
 anti self-dual.
 \begin{enumerate}
-\item {\bf Claim.} $\Lambda^+=\text{span}(\omega_I,\omega_J,\omega_K)$.
-\item {\bf Claim.} $\omega_I,\omega_J$ and $\omega_K$ are rotated
-$\text{SU}(2)$ action. Therefore there are no $\text{SU}(2)$-fixed
+\item $\Lambda^+=\text{span}(\omega_I,\omega_J,\omega_K)$.
+This is clear since $M$ is a manifold of real dimension 4,
+which means that $\dim\Lambda^2(M)=6$ and thus
+$\dim\Lambda^+(M)=3$. Clearly the three fundamental forms
+are linearly independent and thus span $\Lambda^+(M)$.
+\item $\omega_I,\omega_J$ and $\omega_K$ are not fixed by the
+$\text{SU}(2)$ action
+Indeed, $J\omega_I=-\omega_I$ and similarly
+for other cases. Therefore there are no $\text{SU}(2)$-fixed
 points in $\Lambda^+$.
 
-\item  {\bf Claim.}
-$\text{SU}(2)\Lambda^+=\Lambda^+$ and $\text{SU}(2)\Lambda^-=\Lambda^-$.
+\item $\text{SU}(2)\Lambda^+(M)=\Lambda^+(M)$.
+This is clear since $J\omega_I = -\omega_I$ and so on.
+Since $*$ is an isomorphism of $\Lambda^+(M)$ it follows that
+$\text{SU}(2)\Lambda^-(M)=\Lambda^-(M)$.
 
+\medskip\noindent
 We conclude that if $\alpha$ is $\text{SU}(2)$-invariant (i.e. a fixed point of
 $\text{SU}(2)\mathbb{y}\Lambda^2$) its positive part will vanish, so that
 $\alpha$ is anti-self-dual. More precisely, if
