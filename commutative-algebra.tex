@@ -156,25 +156,19 @@ See Stacks Project tag \href{https://stacks.math.columbia.edu/tag/00F2}{00F2}.
 
 Upshot: a finitely-generated $R$-algebra $S$ is such that
 $S \simeq R[x_1,\ldots,x_n]/I$ for some ideal $I \subset R$.
+Another way of saying this is that there is a surjective morphism
+$R[x_1,…,x_n]\to S$.
 Finitely-presentedness is when $I = (s_1,\ldots,s_k)$.
 
-Fun fact: The second item in the following definition
-is the algebraic counterpart to an
-affine algebraic set (variety);
-i.e. the reason why we hear that
-``affine varieties are in correspondence
-with finitely presented $k$-algebras''
-(wasn't there a notion of reduced algebra in that phrase…?)
-And the difference with that and finite type,
-I think,
-is that the kernel is finitely generated.
+As an aside, recall that finitely presented $k$-algebras
+with no nilpotents are in correspondence with affine algebraic varieties.
 
 \begin{definition}
 \label{definition-finite-type}
 Let $R \to S$ be a ring map.
 \begin{enumerate}
 \item We say $R \to S$ is of {\it finite type}, or that {\it $S$ is a finite
-type $R$-algebra} if there exist an $n \in \mathbf{N}$ and an surjection
+type $R$-algebra} if there exist an $n \in \mathbf{N}$ and a surjection
 of $R$-algebras $R[x_1, \ldots, x_n] \to S$.
 \item We say $R \to S$ is of {\it finite presentation} if there
 exist integers $n, m \in \mathbf{N}$ and polynomials
@@ -184,15 +178,118 @@ $R[x_1, \ldots, x_n]/(f_1, \ldots, f_m) \cong S$.
 \end{enumerate}
 \end{definition}
 
-Informally, $M$ is a finitely presented $R$-module if and only if
-it is finitely generated and the module of relations among these
-generators is finitely generated as well.
-A choice of an exact sequence as in the definition is called a
-{\it presentation} of $M$.
+IA: for modules, the definition of finitely generated $R$-module
+is that there exists a surjective morphism $R^n \xymatrix{\ar@{->>}[r]&} S$.
+So: f.g. algebra means elements are polynomials 
+on the generators with coefficients in the ring,
+and f.g. module means elements are linear combinations
+on the generators with coefficients in the ring.
 
-So, probably an ``algebra'' $A$ over a ring  $R$ is when $A$ contains 
-(or, is isomorphic to?)  $R[X]$ for some possibly very arbitrary set
- $X\subset R$.
+\section{Noetherian and Artinian rings}
+\label{section-noetherian-and-artinian-rings}
+
+\begin{definition}
+\label{definition-noetherian-and-artinian-rings}
+A ring is called {\it Noetherian} 
+if any increasing chain of ideals $I_1 \subset I_2 \subset…$
+stabilizes. It is called {\it Artinian} 
+if any descending chain of ideals $I_1 \supset I_2\supset…$
+stabilizes.
+\end{definition}
+
+\begin{exercise}
+\label{exercise-noetherian-iff-ideals-are-finitely-generated}
+A ring is Noetherian if and only if all its ideals are finitely generated.
+\end{exercise}
+
+\begin{proof}
+First we prove that if not every ideal is finitely generated
+then $R$ cannot be Noetherian.
+Indeed, if $I$ is not finitely generated
+we construct an ascending chain by of ideals by starting with
+any generator of $I$ and adding other generators one by one.
+
+For the converse suppose that all ideals of $R$ are finitely generated
+and pick an ascending chain $I_1\subset I_2\subset…$.
+Consider $I=\bigcup_i I_i$,
+which is an ideal since for any $a \in I$
+there is $i$ such that $a \in I_i$
+so that $ra \in I_i$ for any $r \in R$.
+However, since it is finitely generated,
+all the generators have to be in some $I_j$,
+and thus the chain stabilizes.
+\end{proof}
+\section{Localization}
+\label{section-localization}
+
+\begin{definition}
+\label{definition-localization}
+Let $R$ be a ring and $S \subset R$ 
+a multiplicative subset of $R$ (containing $1$).
+The {\it localization} of $R$ at $S$ 
+is the ring $RS^{-1}$ 
+(where $S^{-1}$ is just a set with
+the same elements as $S$ but with a $-1$ exponent)
+with the operations of $(rs^{-1})(r_1s_1^{-1})=rr_1s^{-1}s_1^{-1}$,
+$rs^{-1}+r_1s_1^{-1}=(rs_1+r_1s)(s^{-1}s^{-1}_1)$
+and the identification given by
+$rs^{-1}=r_1s_1^{-1} \iff rs_1=r_1s$.
+(Check this definition if $R$ has zero divisors!)
+\end{definition}
+
+\noindent
+In a simple case, consider a ring $R$ and $f \in R$.
+The {\it localization of $R$ at $f$}
+is $R[t]/(ft-1):=R[f^{-1}]=R(f)$. 
+The quotient basically says that $t$ is the inverse of $f$.
+
+\begin{example}
+\label{example-localization}
+\begin{itemize}
+\item Dyadic numbers: $\mathbb{Z}[2^{-1}]$,
+which are fractions of integers with denominators which
+are powers of $2$.
+
+\item Laurent polynomials: $\mathbb{C}[t,t^{-1}]$.
+\end{itemize}
+\end{example}
+
+\begin{lemma}
+\label{lemma-localization-nilpotent}
+If $R[f^{-1}]=0$ then $f$ is nilpotent.
+\end{lemma}
+
+\begin{proof}
+If $R[f^{-1}]=0$ then $1 \in (ft-1)$,
+which means that $1=(1-ft)p(t)$ for some $p(t) \in k[t]$.
+Then…
+\end{proof}
+
+\noindent
+The localization a ring is not always a local ring.
+But if $S$ is a prime ideal, then it is.
+
+
+\begin{exercise}
+\label{exercise-localization-of-noetherian-is-noetherian}
+Prove that localization of a Noetherian ring is Noetherian.
+\end{exercise}
+
+\begin{proof}
+Let $R$ be a Noetherian ring and $S \subset R$.
+Let $I_1\subset I_2 \subset…$
+be a chain of ideals in the localization $R[S^{-1}]$.
+Let $\pi:R \to R[S^{-1}]$ the canonical projection $r \mapsto r$.
+
+Let $I$ be any of the $I_i$.
+Consider $\pi^{-1}(I)$. This gives a chain of ideals in $R$,
+which must stabilize.
+To go back to the localization simply recall that
+$\pi^{-1}(I)[S^{-1}]=I$.
+\end{proof}
+
+
+
 
 
 \section{Finite and integral ring extensions}
