@@ -970,9 +970,6 @@ the products $(p^1-z^1)^{k_1}(p^2-z^2)^{k_2}$ out of the integral and define the
 remaining term as $a_{k_1k_2}$.
 \end{proof}
 
-\section{Taylor series in several variables}
-\label{section-Taylor-series-in-several-variables}
-
 \section{Identity theorem in several variables}
 \label{section-identity-theorem-in-several-variables}
 
@@ -994,6 +991,30 @@ the partial derivatives of $h$. By definition of $U$, we see that $h$ must be
 zero in such a neighbourhood. $U$ is also closed by continuity of partial
 derivatives of all orders. 
 \end{proof}
+
+\section{Hartog's phenomenon}
+\label{section-hartog}
+
+\noindent
+In particular, Hartog's phenomom says 
+that any isolated singularity is removable in dimension $\geq 2$.
+
+More precisely but still roughly,
+it says that in dimension at least two,
+a holomorphic function defined on an open set minus a compact set
+can be extended to the whole open set
+as long as the open minus the compact is connected.
+This doesn't happen in one variable: $\frac{1}{z}$
+is holomorphic away from the origin, but cannot be extended.
+
+Hopefully we will see how this theorem is used
+in Kodaira embedding theorem and in showing that
+the sections of $\mathcal{O}(d)$ are precisely degree $d$-polynomials.
+
+
+\begin{theorem}[Hartog's phenomenon]
+\label{theorem-hartog}
+\end{theorem}
 
 \section{Germs of holomorphic functions}
 \label{section-germs-of-holomorphic-functions}
@@ -1680,7 +1701,60 @@ function $h$ with $h(0)\neq 0$
 such that $f=gh$.
 \end{theorem}
 
+\section{Weierstrass division theorem}
+\label{section-weierstrass-division-theorem}
 
+\begin{theorem}[Weierstrass division theorem]
+\label{theorem-weierstrass-division-theorem}
+For any $f \in \mathcal{O}_{\mathbb{C}^n,0}$ and
+a Weierstrass polynomial $g \in \mathcal{O}_{\mathbb{C}^{n-1},0}[z_n]$
+there exist a unique Weierstrass polynomial
+$r \in \mathcal{O}_{\mathbb{C}^{n-1},0}[z_n]$
+and a unique germ $h \in \mathcal{O}_{\mathbb{C}^n,0}$
+such that
+$$
+f=gh+r,\qquad \text{deg }r < \text{deg }g.
+$$
+\end{theorem}
+
+\begin{proposition}
+\label{proposition-stalk-is-noetherian}
+$\mathcal{O}_{\mathbb{C}^n,0}$ is Noetherian.
+\end{proposition}
+
+\begin{proof}
+Let $I \subset \mathcal{O}_{\mathbb{C}^n,0}$ be any ideal.
+We want to show that $I$ is finitely generated.
+
+First notice that the ring of Weierstrass polynomials is
+Noetherian by induction on Hilbert basis theorem:
+$\mathcal{O}_{\mathbb{C}^0,0}[z_1]=\mathbb{C}[z_1]$
+(because $\mathbb{C}$-valued functions on $\mathbb{C}^0=pt$
+are just constants, i.e. $\mathbb{C}$)
+is Noetherian because $\mathbb{C}$ is,
+and so on.
+
+This means that $I \cap \mathcal{O}_{\mathbb{C}^{n-1},0}[z_n]$
+is finitely generated, say $I=(g_1,…,g_k)$
+for $g_i$ Weierstrass polynomials.
+
+Now pick any Weierstrass polynomial
+$g \in I \cap \mathcal{O}_{\mathbb{C}^{n-1},0}[z_n]$,
+which is granted to exist by Weierstrass Preparation theorem
+applied to any $f \in \mathcal{O}_{C_n,0}$:
+we must have $f=gh$ for $g \in \mathcal{O}_{\mathbb{C}^{n-1},0}[z_n]$
+and $h$ unit (i.e. holomorphic germ not vanishing at $0$),
+which means that $g=fh^{-1}$ is in $I$,
+and pick also any element $\tilde{f} \in I$.
+Apply Wierestrass Division theorem to obtain
+$$
+\tilde{f}=gh+r,\qquad \text{deg }r < \text{deg }g.
+$$
+Since $g$ and $\tilde{f}$ are in $I$, so is $r$.
+Moreover, $r$ is a Weierstrass polynomial and is thus generated
+by the $g_i$. Since $g$ does not depend on $\tilde{f}$,
+we see that $I=(g,g_1,…,g_k)$.
+\end{proof}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
