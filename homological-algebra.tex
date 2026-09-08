@@ -10,6 +10,33 @@
 
 \tableofcontents
 
+\medskip\noindent
+These notes follow Jethro van Ekeren's
+homological algebra course at IMPA,
+2026-2. The material from chain homotopies
+through September 4 was checked against
+Francisca Aguayo Moreno's notes,
+\emph{Homological Algebra},
+pp.~1--17, and Jethro's
+\href{https://w3.impa.br/~jethro/2026-2/%
+ah-current.pdf}{course notes}.
+The dated sections record the lecture
+content; the final section contains added
+connections with deformation theory.
+
+% Source map for the September 2026 revision:
+% Francisca pp. 1--3: homotopy, injectives.
+% pp. 4--8: August 31, derived functors,
+% divisible groups, projectives, Ext, Tor.
+% pp. 9--12: September 2, group cohomology.
+% pp. 13--17: September 4, vanishing,
+% coinduction, Hilbert 90, closing remarks.
+% Replaces the planned-lecture addition in
+% commit 73c8d1df (September 4, 2026).
+% Jethro's notes checked September 8, 2026;
+% Sections 3.2--3.5, especially pp. 48--53.
+
+
 \section{Categories of G-modules and
 R-modules}
 \label{section-g-and-r-modules}
@@ -1894,6 +1921,13 @@ chain complexes, and homotopies between
 morphisms of chain complexes
 make sense even in a preadditive category.
 
+\noindent
+Homotopy is an equivalence relation:
+the zero homotopy gives reflexivity,
+negating a homotopy gives symmetry,
+and adding homotopies gives transitivity.
+
+
 \begin{lemma}
 \label{lemma-compose-homotopy}
 \begin{slogan}
@@ -1936,9 +1970,9 @@ is a {\it homotopy equivalence} if there
 exists
 a morphism $b : B_\bullet \to A_\bullet$
 such that there exists a homotopy between
-$a \circ b$ and $\text{id}_A$
-and there exists a homotopy between $b \circ
-a$ and $\text{id}_B$.
+$a \circ b$ and $\operatorname{id}_B$
+and there exists a homotopy between
+$b \circ a$ and $\operatorname{id}_A$.
 If there exists such a morphism between
 $A_\bullet$ and $B_\bullet$, then
 we say that $A_\bullet$ and $B_\bullet$ are
@@ -2044,7 +2078,19 @@ equivalence, then $f$ is a quasi-isomorphism.
 \end{lemma}
 
 \begin{proof}
-Omitted.
+For modules, let $x\in A_i$ be a cycle.
+The homotopy identity gives
+$$
+f_i(x)-g_i(x)=d_{i+1}h_i(x),
+$$
+so the difference is a boundary. In an
+abelian category the same argument says
+that the restriction of $f_i-g_i$ to the
+kernel of $d_i$ factors through the image
+of $d_{i+1}$. Thus it induces zero on
+homology. Applying this to the two
+compositions of a homotopy equivalence
+proves the second assertion.
 \end{proof}
 
 \begin{lemma}
@@ -2261,9 +2307,9 @@ is a {\it homotopy equivalence} if there
 exists
 a morphism $b : B^\bullet \to A^\bullet$
 such that there exists a homotopy between
-$a \circ b$ and $\text{id}_A$
-and there exists a homotopy between $b \circ
-a$ and $\text{id}_B$.
+$a \circ b$ and $\operatorname{id}_B$
+and there exists a homotopy between
+$b \circ a$ and $\operatorname{id}_A$.
 If there exists such a morphism between
 $A^\bullet$ and $B^\bullet$, then
 we say that $A^\bullet$ and $B^\bullet$ are
@@ -2369,7 +2415,10 @@ then $f$ is a quasi-isomorphism.
 \end{lemma}
 
 \begin{proof}
-Omitted.
+The proof of Lemma
+\ref{lemma-map-homology-homotopy}
+applies with cochain indices: on cycles,
+$f^i-g^i=d^{i-1}h^i$.
 \end{proof}
 
 \begin{lemma}
@@ -2578,7 +2627,7 @@ injective resolution.
 Proof of (1). First choose an injection
 $A \to I^0$ of $A$ into an injective object
 of $\mathcal{A}$. Next, choose an injection
-$I_0/A \to I^1$ into an injective object of
+$I^0/A \to I^1$ into an injective object of
 $\mathcal{A}$. Denote $d^0$ the induced map
 $I^0 \to I^1$.
 Next, choose an injection
@@ -2636,7 +2685,8 @@ $$
 &0
 }
 $$
-is a short exact sequence, then does
+is a short exact sequence, does the
+following sequence remain exact?
 $$
 \xymatrix{
 0\ar[r]
@@ -2689,17 +2739,70 @@ is exact.
 
 \begin{definition}
 \label{definition-right-derived-functors}
-Let $\mathcal{A}$ have enough injectives.
-Let $F: \mathcal{A} to \mathcal{B}$ be a
-left exact functor.
+Let $\mathcal{A}$ and $\mathcal{B}$ be
+abelian categories, with $\mathcal{A}$
+having enough injectives. Let
+$F:\mathcal{A}\to\mathcal{B}$ be an
+additive left exact functor.
 Define the {\it right derived functors}
 of $F$ to be
 $$
 R^nF(A) = H^n(F(I^\bullet)),
 $$
-when $0 \to I^0 \to I^1 \to I^2 \to…$
-is an injective resolution of $\mathcal{A}$.
+where $A\to I^\bullet$ is an injective
+resolution of the object $A$.
 \end{definition}
+
+% Francisca, pp. 4--5 (August 31).
+\begin{lemma}[Comparison of resolutions]
+\label{lemma-injective-comparison}
+Let $A\to I^\bullet$ and
+$B\to J^\bullet$ be injective resolutions
+in an abelian category. Every morphism
+$f:A\to B$ extends to a cochain map
+$u:I^\bullet\to J^\bullet$.
+Any two extensions of $f$ are homotopic.
+\end{lemma}
+
+\begin{proof}
+Extend the composite $A\to B\to J^0$
+across $A\to I^0$, using injectivity of
+$J^0$. This gives $u^0:I^0\to J^0$.
+The composite $d_J^0u^0$ vanishes on $A$,
+so it factors through
+$$
+I^0/A\cong\operatorname{im}(d_I^0)
+\subset I^1.
+$$
+Extend the resulting map to $I^1\to J^1$.
+Repeating this construction gives $u$.
+At each step the chain-map identity makes
+the next map vanish on the required
+kernel, so it descends to the quotient.
+
+For uniqueness, let $u,v$ extend $f$ and
+put $w=u-v$. Since $w^0$ vanishes on $A$,
+it factors through
+$\operatorname{im}(d_I^0)$.
+Injectivity of $J^0$ extends that factor
+to a map $h^1:I^1\to J^0$. Thus
+$w^0=h^1d_I^0$.
+Inductively, once $h^1,\ldots,h^n$ have
+been chosen, the map
+$$
+w^n-d_J^{n-1}h^n
+$$
+vanishes on $\ker(d_I^n)$, by the previous
+identity and the chain-map identities.
+It therefore factors through
+$\operatorname{im}(d_I^n)\subset I^{n+1}$.
+Extend this factor to $h^{n+1}$ using
+injectivity of $J^n$. With $h^0=0$ we get
+$$
+w^n=d_J^{n-1}h^n+h^{n+1}d_I^n,
+$$
+which is the required homotopy.
+\end{proof}
 
 \begin{theorem}
 \label{theorem-derived-functors}
@@ -2734,9 +2837,54 @@ is exact.
 \end{enumerate}
 \end{theorem}
 
+\begin{proof}
+Two resolutions of $A$ admit comparison
+maps in both directions extending
+$\operatorname{id}_A$. Their composites
+are homotopic to the identity by Lemma
+\ref{lemma-injective-comparison}.
+An additive functor preserves homotopies,
+so applying $F$ gives inverse maps on
+cohomology. This proves independence.
+The same lemma shows that two lifts of
+$f$ induce the same map. Compositions of
+lifts lift compositions, giving
+functoriality. Left exactness identifies
+$H^0(F(I^\bullet))$ with $F(A)$.
 
-\medskip\noindent
-{\bf Divisible groups.}
+For the last assertion use the injective
+horseshoe lemma: resolutions of $A$ and
+$C$ extend to a resolution of $B$ in a
+short exact sequence of complexes
+$$
+0\to I_A^\bullet\to I_B^\bullet
+\to I_C^\bullet\to0,
+$$
+with $I_B^n=I_A^n\oplus I_C^n$.
+Here is the construction. Extend
+$A\to I_A^0$ to $B\to I_A^0$ and combine
+it with $B\to C\to I_C^0$.
+The resulting map $B\to I_A^0\oplus I_C^0$
+is injective. The snake lemma gives a
+short exact sequence of the three
+cokernels. Repeat with those cokernels.
+The rows of the resulting sequence of
+complexes split in every degree, so
+applying the additive functor $F$ keeps
+them exact. The long exact cohomology
+sequence now proves the assertion.
+\end{proof}
+
+\begin{remark}
+\label{remark-exact-derived-vanishing}
+If $F$ is exact, then $R^nF=0$ for $n>0$:
+applying $F$ to the augmented injective
+resolution leaves an exact complex.
+Also $R^nF(I)=0$ for every injective $I$
+and $n>0$, since $I$ resolves itself.
+\end{remark}
+
+
 
 \begin{definition}
 \label{definition-divisible-group}
@@ -2749,6 +2897,39 @@ $ni'=i$.
 
 \noindent
 Example: $I = \mathbb{Q}$.
+
+% Francisca, p. 6 (August 31).
+\begin{proposition}
+\label{proposition-divisible-injective}
+An abelian group is injective if and only
+if it is divisible.
+\end{proposition}
+
+\begin{proof}
+If $I$ is injective, extend the map
+$n\mathbb{Z}\to I$ sending $n$ to $a$
+to a map $f:\mathbb{Z}\to I$. Then
+$nf(1)=a$, proving divisibility.
+
+Conversely, suppose $I$ is divisible and
+$f:A\to I$ is defined on a subgroup
+$A\subset B$. Order its extensions to
+subgroups of $B$ by inclusion. Unions of
+chains give extensions, so Zorn's lemma
+gives a maximal extension $f':A'\to I$.
+If $x\in B\setminus A'$, consider the
+subgroup of integers $k$ with $kx\in A'$.
+If it is zero, extend to $A'+\mathbb{Z}x$
+by sending $x$ to zero. Otherwise it is
+$n\mathbb{Z}$ for some $n>0$.
+Choose $y\in I$ with $ny=f'(nx)$ and set
+$$
+f''(a+kx)=f'(a)+ky.
+$$
+The choice of $y$ makes this well-defined.
+Both cases contradict maximality. Thus
+$A'=B$, proving injectivity.
+\end{proof}
 
 \section{Projectives}
 \label{section-projectives}
@@ -3001,271 +3182,391 @@ functor admits left derived functors, they
 are computed by applying the functor to a
 projective resolution and taking homology.
 
-\section{Group cohomology}
-\label{section-group-cohomology}
+\section{Ext and Tor}
+\label{section-ext-and-tor}
 
 \noindent
-We have considered the category
-$G$-mod $\sim$ $\mathbb{Z}G$-mod and the
-functor of $G$-invariants
+The end of the August 31 lecture introduced
+these two examples of derived functors
+(Francisca, p.~8). Fix a ring $R$.
+For left $R$-modules $M,N$, choose an
+injective resolution $N\to I^\bullet$.
+
+\begin{definition}
+\label{definition-derived-ext}
+The groups
 $$
-(-)^G : G\operatorname{-mod}
-\to
-\underline{\operatorname{Ab}}.
+\operatorname{Ext}^n_R(M,N)
+=H^n(\operatorname{Hom}_R(M,I^\bullet))
 $$
-this functor is left exact, and
-$\mathbb{Z}G$-mod has enough injectives,
-so we can construct right derived functors
-$$
-R^n(-)^G: G\operatorname{-mod}
-\to \underline{\operatorname{Ab}}.
-$$
-More generally, if $R$ is a ring and
-$M$ an $R$-module,
-$\Hom_R(M,-):R\operatorname{-mod}
-\to \underline{ \operatorname{Ab}}$,
-and 
-$[R^n\Hom_R(M,-)](A)$
-is called $\operatorname{Ext}^n_R(M,A)$.
+are the \emph{Ext groups} of $M$ and $N$.
+Thus $\operatorname{Ext}^0_R(M,N)$ is
+$\operatorname{Hom}_R(M,N)$.
+\end{definition}
 
 \begin{remark}
 \label{remark-hom-functor-contravariant}
-Fixing an $R$-module $N$,
-the functor
+The functor $\operatorname{Hom}_R(-,N)$
+is contravariant and left exact: a short
+exact sequence in its first variable gives
 $$
-\Hom_R(-,N):R\operatorname{-mod}
-\to \underline{\operatorname{Ab}}
+\begin{aligned}
+0\to\operatorname{Hom}_R(M'',N)
+&\to\operatorname{Hom}_R(M,N)\\
+&\to\operatorname{Hom}_R(M',N).
+\end{aligned}
 $$
-is a left exact (and contravariant)
-functor.
+Consequently, a projective resolution
+$P_\bullet\to M$ gives the cochain complex
+$$
+\operatorname{Hom}_R(P_\bullet,N).
+$$
+Its arrows go towards increasing indices.
 \end{remark}
-
-\noindent
-So if $R$-mod has enough projectives
-(which it does) we can define left
-derived functors
-$$
-[L^n\Hom_R(-,N)](M).
-$$
 
 \begin{theorem}[Balancing]
 \label{theorem-balancing}
+There are natural isomorphisms
 $$
-[R^n\Hom_R(M,-)](N)
-\simeq
-[L^n\Hom_R(-,N)](M)
-$$
-and both equal
-$$
-\operatorname{Ext}^n_R(M,N).
+\begin{aligned}
+\operatorname{Ext}^n_R(M,N)
+&\cong H^n(\operatorname{Hom}_R
+(M,I^\bullet))\\
+&\cong H^n(\operatorname{Hom}_R
+(P_\bullet,N)).
+\end{aligned}
 $$
 \end{theorem}
 
 \noindent
-We shall prove this theorem later.
+This was stated on September 2 with its
+proof postponed (Francisca, p.~9).
+One may resolve either variable, but must
+take cohomology after applying Hom.
+The group of cochains itself is not Ext.
+
+\begin{definition}
+\label{definition-derived-tor}
+Let $M$ be a right $R$-module and $N$ a
+left $R$-module. For a projective
+resolution $P_\bullet\to N$, the groups
+$$
+\operatorname{Tor}^R_n(M,N)
+=H_n(M\otimes_R P_\bullet)
+$$
+are the \emph{Tor groups} of $M$ and $N$.
+They are the left derived functors of
+$M\otimes_R-$, which is right exact.
+In degree zero,
+$$
+\operatorname{Tor}^R_0(M,N)=M\otimes_R N.
+$$
+\end{definition}
+
+\section{Group cohomology: September 2}
+\label{section-group-cohomology}
+
+\noindent
+This section includes the computations
+recorded on pp.~9--12 of Francisca's notes.
+Let $G$ be a group. The category of
+$G$-modules is the category of left
+$\mathbb{Z}G$-modules. Evaluation at $1$
+gives the natural identification
+$$
+\operatorname{Hom}_{\mathbb{Z}G}
+(\mathbb{Z},A)\cong A^G,
+$$
+where $\mathbb{Z}$ has trivial action.
+The invariants functor is left exact.
+Its right derived functors are
+$$
+H^n(G,A)=[R^n(-)^G](A)
+=\operatorname{Ext}^n_{\mathbb{Z}G}
+(\mathbb{Z},A).
+$$
+By balancing, we can compute them by
+resolving the single module $\mathbb{Z}$.
 
 \medskip\noindent
-Back to group cohomology,
+{\bf The bar resolution.}
+Put $P_n=\mathbb{Z}[G^{n+1}]$.
+This abelian group is free on tuples
+$(g_0,\ldots,g_n)$. Give it the action
 $$
-R^n(-)^G](M)
-=
-\operatorname{Ext}^n_{\mathbb{Z} G}
-(\mathbb{Z},M).
+g(g_0,\ldots,g_n)=(gg_0,\ldots,gg_n).
 $$
-We can compute it by forming an injective
-resolution of $M$… OR (!)
-a projective resolution of $\mathbb{Z}$
-(which is better).
-
-
-
-\medskip\noindent
-{\bf The bar complex.}
-The projective resolution of $\mathbb{Z}$
-will be
-$$
-… \xrightarrow{d}P_2
-\xrightarrow{d}P_1
-\xrightarrow{d}P_0
-\xrightarrow{\varepsilon}
-\mathbb{Z}\to 0
-$$
-with $P_n=\mathbb{Z}G^{n+1}$
-as abelian group (free $\mathbb{Z}$-module).
-
-$G$-action on $\mathbb{Z}G^{n+1}$ is
-$$
-g(g_0,g_1,…,g_n)
-=
-(gg_0, g g_1,…,g g_n),
-$$
-extended $\mathbb{Z}$-linearly.
-
-The differential
-$$
-\mathbb{Z}G^{n+1}
-\xrightarrow{d}
-\mathbb{Z}G^n,
-$$
-$$
-d((g_0,g_1,…,g_n))
-=
-\sum_{i=0}^n
-(-1)^i(g_0,g_1,…,\widehat{g_i},…,g_n).
-$$
-So for example
+Define the differential by
 $$
 \begin{aligned}
-\mathbb{Z}G^2 &\longrightarrow \mathbb{Z}G \\
-(g_0,g_1) &\longmapsto g_1-g_0,
+&d_n(g_0,\ldots,g_n)\\
+&\quad=\sum_{i=0}^n(-1)^i
+(g_0,\ldots,\widehat{g_i},\ldots,g_n).
 \end{aligned}
 $$
-and
+The augmentation is
+$\varepsilon:P_0\to\mathbb{Z}$,
+with $\varepsilon(g)=1$.
+For example,
 $$
 \begin{aligned}
-\mathbb{Z}G^3 &\longrightarrow \mathbb{Z}G \\
-(g_0,g_1,g_2) &\longmapsto 
-(g_1,g_2)-(g_0,g_2)+(g_0,g_1).
+d_1(g_0,g_1)&=g_1-g_0,\\
+d_2(g_0,g_1,g_2)&=(g_1,g_2)-(g_0,g_2)\\
+&\quad +(g_0,g_1).
 \end{aligned}
 $$
-The ``accumulation'' is
-$$
-\varepsilon:\mathbb{Z}G \to \mathbb{Z},
-\qquad 
-\varepsilon(g)=1 \quad \forall g \in G.
-$$
+Each pair of deletions occurs twice with
+opposite signs, so $d_{n-1}d_n=0$.
+
 \begin{exercise}
 \label{exercise-bar-complex}
-$d \circ d=0$.
+Check the cancellation just described and
+the identity $\varepsilon d_1=0$.
 \end{exercise}
 
 \begin{remark}
 \label{remark-bar}
-Every $P_n$ is a free $\mathbb{Z}G$-module,
-and free modules are projective.
-Why is $\tilde{P}_\bullet$
-acyclic? We'll see soon.
+Each $P_n$ is free over $\mathbb{Z}G$:
+every orbit of the diagonal action has a
+unique representative with first entry
+$e$. These representatives form a
+$\mathbb{Z}G$-basis.
 \end{remark}
 
-\noindent
-This leads to the following
-definition/theorem.
+\begin{proposition}
+\label{proposition-bar-contracting}
+The augmented bar complex
+$$
+\cdots\to P_2\to P_1\to P_0
+\xrightarrow{\varepsilon}\mathbb{Z}\to0
+$$
+is exact, hence a free resolution of
+$\mathbb{Z}$ as a $G$-module.
+\end{proposition}
+
+\begin{proof}
+Put $P_{-1}=\mathbb{Z}$ and
+$d_0=\varepsilon$. Define additive maps
+$$
+h_{-1}(1)=(e),
+\qquad
+h_n(g_0,\ldots,g_n)=(e,g_0,\ldots,g_n).
+$$
+Deleting the initial $e$ gives the
+original tuple; all other terms cancel
+against $h_{n-1}d_n$. Thus
+$$
+d_{n+1}h_n+h_{n-1}d_n
+=\operatorname{id}_{P_n},
+$$
+and
+$d_0h_{-1}=\operatorname{id}_{\mathbb{Z}}$.
+The identity is homotopic to zero, so
+the augmented complex is acyclic.
+These maps need only be
+$\mathbb{Z}$-linear: exactness of a
+sequence of $G$-modules can be checked
+on the underlying abelian groups.
+They are generally not $G$-equivariant.
+\end{proof}
 
 \begin{definition}
 \label{definition-group-cohomology}
-Let $A$ be a $G$-module.
-We define
+For a $G$-module $A$, the group of
+\emph{inhomogeneous $n$-cochains} is
 $$
-C^n(G,A)
-=
-\{\varphi:G^n\to A\}
+C^n(G,A)=\{\varphi:G^n\to A\},
 $$
-(no restrictions whatsoever, the $\varphi$
-are just functions of sets).
-$C^n$ is an abelian group (by the addition
-of $A$). Let $C^n = C^n(G,A)$.
-Differentials
+with pointwise addition. In particular,
+$C^0(G,A)=A$. For $\varphi\in C^n(G,A)$,
+define
 $$
-0\to C^0
-\xrightarrow{d} C^1
-\xrightarrow{d} C^2
-\xrightarrow{d}…
+\begin{aligned}
+(d\varphi)(g_1,\ldots,g_{n+1})
+&=g_1\varphi(g_2,\ldots,g_{n+1})\\
+&\quad+\sum_{i=1}^n(-1)^i
+\varphi(g_1,\ldots,g_ig_{i+1},
+\ldots,g_{n+1})\\
+&\quad+(-1)^{n+1}
+\varphi(g_1,\ldots,g_n).
+\end{aligned}
 $$
-If $\varphi \in C^n$,
-$$
-[d\varphi](g_0,g_1,…,g_n)
-=
-g_0\varphi(g_1,g_2,…,g_n)
--
-\sum_{i=a}^{n-1}
-(-1)^i
-\varphi(g_0|g_1|…g_{i-1}|g_ig_{i+1}|
-g_{i+2}|…g_n)
-+(-1)^{n+1}\varphi(g_0|g_1|…|g_{n-1}).
-$$
-Let $Z^n=\ker d$,
-$B^n=\operatorname{Im}(d)$, since
-$d^2=0$,  $B^n \subset Z^n$.
-The group cohomology is
-$$
-H^n(G,A) = Z^n/B^n.
-$$
+The \emph{cocycles} and
+\emph{coboundaries} are
+$Z^n=\ker(d:C^n\to C^{n+1})$ and
+$B^n=\operatorname{im}(d:C^{n-1}\to C^n)$,
+respectively, with $B^0=0$.
 \end{definition}
 
 \begin{exercise}
 \label{exercise-hom-group-cohom}
+Identify
 $$
-\Hom_{\mathbb{Z}G}(P_n,A)
-=
-C^n(G,A).
+\operatorname{Hom}_{\mathbb{Z}G}(P_n,A)
+\cong C^n(G,A)
 $$
+by sending $f$ to the function
+$$
+(g_1,\ldots,g_n)\longmapsto
+f(e,g_1,g_1g_2,\ldots,g_1\cdots g_n).
+$$
+Check that the bar differential becomes
+the differential above.
 \end{exercise}
 
 \begin{theorem}
 \label{theorem-ext-group-cohom}
+For every $n\geq0$,
 $$
-\operatorname{Ext}^n_{\mathbb{Z}A}(\mathbb{Z},A)
-=
-H^n(G,A).
+\operatorname{Ext}^n_{\mathbb{Z}G}
+(\mathbb{Z},A)
+\cong H^n(C^\bullet(G,A))=Z^n/B^n.
 $$
 \end{theorem}
 
 \begin{proof}
-\begin{enumerate}
-\item Resolve $\mathbb{Z}$ by 
-$P_{\bullet}$ (balancing says this is
-legit).
-
-\item Exercise says
-$$
-\operatorname{Ext}^n_{\mathbb{Z}G}(\mathbb{Z},A)
-=
-[L^n\Hom_{\mathbb{Z}G}(Z,-)](A)
-=
-\Hom_{\mathbb{Z}G}(P_n,A)
-=
-C^n(G,A).
-$$
-\item Remains to prove
-$$
-\tilde{P}_\bullet=P_\bullet
-\to \mathbb{Z}
-\xrightarrow{\varepsilon}0
-$$
-is acyclic. [Proof continued.]
-\end{enumerate}
+Apply $\operatorname{Hom}_{\mathbb{Z}G}(-,A)$
+to the free resolution just constructed,
+then take cohomology. Balancing and
+Exercise \ref{exercise-hom-group-cohom}
+give the assertion.
 \end{proof}
 
 \noindent
-Unwrapping definitions we see that
+In low degrees the differentials read
 $$
-H^0(G,A) = A^G,
+\begin{aligned}
+(da)(g)&=ga-a,\\
+(d\varphi)(g,h)&=g\varphi(h)-\varphi(gh)
++\varphi(g).
+\end{aligned}
 $$
+Therefore $H^0(G,A)=A^G$, and
 $$
-H^1(G,A)
-=
-\frac{\{\varphi:G \to A:
-g\varphi(h)-\varphi(gh)
-+\varphi(g)=0\}}{
-\varphi \operatorname{da}
-\operatorname{forma}
-\varphi(g)=ga-a}.
+H^1(G,A)=
+\frac{\{\varphi:G\to A\mid
+\varphi(gh)=g\varphi(h)+\varphi(g)\}}
+{\{g\mapsto ga-a\mid a\in A\}}.
 $$
-The bar resolution is very big, its
-advantage is it works for all $G$.
-If I'm intersete in a specific $G$,
-maybe there exists a smaller resolution…
 
-\begin{example}
+\begin{example}[Cyclic groups]
 \label{example-group-cohom-cyclic}
-Let $G = C_m \simeq \mathbb{Z}/m$
-be the cylcic group…
+Let $G=C_m=\langle\sigma\rangle$ and put
+$$
+N=1+\sigma+\cdots+\sigma^{m-1}
+\in\mathbb{Z}G.
+$$
+A smaller free resolution is
+$$
+\cdots\xrightarrow{\sigma-1}\mathbb{Z}G
+\xrightarrow{N}\mathbb{Z}G
+\xrightarrow{\sigma-1}\mathbb{Z}G
+\xrightarrow{\varepsilon}\mathbb{Z}\to0.
+$$
+Indeed, the kernel of $\sigma-1$ consists
+of elements whose coefficients are all
+equal, hence is $\mathbb{Z}N$.
+Multiplication by $N$ sends $x$ to
+$\varepsilon(x)N$, and the augmentation
+kernel is $(\sigma-1)\mathbb{Z}G$.
+These identities prove exactness.
+
+Applying Hom gives
+$$
+0\to A\xrightarrow{\sigma-1}A
+\xrightarrow{N}A
+\xrightarrow{\sigma-1}A
+\xrightarrow{N}\cdots.
+$$
+Thus, for every integer $r\geq0$,
+$$
+\begin{aligned}
+H^0(G,A)&=A^G,\\
+H^{2r+1}(G,A)&=\ker(N)/(\sigma-1)A,\\
+H^{2r+2}(G,A)&=A^G/NA.
+\end{aligned}
+$$
+For trivial action, $\sigma-1=0$ and
+$N$ is multiplication by $m$. If
+$A[m]=\{a\in A\mid ma=0\}$, this gives
+$$
+H^{2r+1}(G,A)=A[m],
+\qquad H^{2r+2}(G,A)=A/mA.
+$$
+In particular, for trivial coefficients,
+$$
+\begin{aligned}
+H^{2r+1}(G,\mathbb{Z})&=0,\\
+H^{2r+2}(G,\mathbb{Z})&=\mathbb{Z}/m,\\
+H^{2r+1}(G,\mathbb{C}^{\times})&=\mu_m,\\
+H^{2r+2}(G,\mathbb{C}^{\times})&=0.
+\end{aligned}
+$$
+Here $\mu_m$ is the group of $m$th roots
+of unity. For the additive group
+$\mathbb{C}$, all positive-degree
+cohomology vanishes, since multiplication
+by $m$ is bijective.
 \end{example}
 
+\begin{example}[The exponential sequence]
+\label{example-cohomology-c-c-star-4-sept}
+Give $\mathbb{Z}$, $\mathbb{C}$, and
+$\mathbb{C}^{\times}$ trivial $G$-actions.
+The exponential map gives an exact
+sequence of abelian groups, hence of
+$G$-modules,
+$$
+0\to\mathbb{Z}\to\mathbb{C}
+\xrightarrow{z\mapsto e^{2\pi iz}}
+\mathbb{C}^{\times}\to0.
+$$
+The multiplicative group is written as
+an object of an additive category here;
+the zeros at the ends mean trivial groups.
+For $G=C_m$ its long exact sequence and
+the preceding vanishing give
+$$
+H^n(G,\mathbb{C}^{\times})
+\cong H^{n+1}(G,\mathbb{Z})
+$$
+for $n\geq1$. The same conclusion holds
+for every finite $G$, by the vanishing
+proved in the September 4 lecture.
+This example was already discussed on
+September 2 (Francisca, pp.~11--12).
+\end{example}
+
+\begin{proposition}[Averaging]
+\label{proposition-invariants-averaging}
+Let $G$ be finite and $F$ a field of
+characteristic zero. The functor
+$$
+(-)^G:\operatorname{Rep}_F(G)
+\to\operatorname{Vec}_F
+$$
+is exact. Here representations may have
+arbitrary dimension.
+\end{proposition}
+
+\begin{proof}
+Invariants are left exact. Given an
+equivariant surjection $p:B\to C$ and
+$c\in C^G$, choose $b$ with $p(b)=c$.
+Then
+$$
+\overline b=\frac{1}{|G|}\sum_{g\in G}gb
+$$
+is invariant and $p(\overline b)=c$.
+Thus $B^G\to C^G$ is surjective as well.
+\end{proof}
 
 \noindent
-Anything else in this lecture?
-
+This was the endpoint of September 2.
+To deduce vanishing of ordinary group
+cohomology, we still need to compare
+resolutions in $\operatorname{Rep}_F(G)$
+with resolutions in $G$-modules.
 
 \section{Extensions}
 \label{section-extensions}
@@ -3509,712 +3810,514 @@ or pullback of the given short exact
 sequence.
 \end{proof}
 
-\section{Example: Group cohomology 4-sept}
+\section{Vanishing of group cohomology:
+September 4}
 \label{section-group-cohomology-4-sept}
 
 \noindent
-What one would like to do is apply the LES of
-group cohomology to deduce vanishing of
-higher cohomology directly from exactness of
-$(-)^G$.
-Indeed if $V$ is a representation of $G$ one
-could consider an embedding $V \to I$ into an
-injective object in the category
-$\operatorname{Rep}_F(G)$ and corresponding
-quotient $Q=I/V$. The LES
+Francisca's record of this lecture starts
+on p.~13. We first finish the argument
+begun on September 2. Unless otherwise
+specified, $G$ is finite and $F$ has
+characteristic zero.
+
+\medskip\noindent
+Exactness of $(-)^G$ on representations
+implies that its derived functors in
+$\operatorname{Rep}_F(G)$ vanish in
+positive degrees. But $H^n(G,V)$ was
+defined using injectives in $G$-modules.
+We must answer two questions: does
+$\operatorname{Rep}_F(G)$ have enough
+injectives, and can we choose a resolution
+whose terms are injective in $G$-modules
+as well?
+
+\begin{definition}
+\label{definition-coinduction-4-sept}
+For an $F$-vector space $W$, its
+\emph{coinduced representation} is
 $$
-\xymatrix{
-H^1(G,V) \ar[r] & H^1(G,I)=0 \\
-0 \ar[r] & V^G \ar[r] & I^G \ar[r] & Q^G
-\ar@{-->}[ulll]^0
-}
+\operatorname{Coind}(W)
+=\operatorname{Hom}_F(FG,W),
 $$
-gives us the desired conclusion.
+with $(g\varphi)(h)=\varphi(hg)$.
+The formula on $h\in G$ extends linearly
+to $FG$. Equivalently, this is the space
+of functions $G\to W$ with right
+translation on the argument.
+\end{definition}
 
 \noindent
-This suggests two issues. Does
-$\operatorname{Rep}(G)$
-have enough injectives?
-Do the derived functors of $(-)^G$ computed
-within $\operatorname{Rep}(G)$ coincide with
-those computed in $G$-mod? A better version
-of
-the second question is whether an object of
-$\operatorname{Rep}(G)$ can be resolved by
-injectives in $\operatorname{Rep}(G)$
-which are
-also injective in $G$-mod.
-
-\noindent
-This is a good excuse to introduce a bit of
-abstract nonsense.
+The action law follows from
+$$
+(g_1(g_2\varphi))(h)=\varphi(hg_1g_2).
+$$
+The alternative convention
+$(g\varphi)(h)=\varphi(g^{-1}h)$ is
+isomorphic to this one via
+$\varphi(h)\mapsto\varphi(h^{-1})$.
 
 \begin{proposition}
 \label{proposition-forgetful-4-sept}
-The forgetful functor
-$\operatorname{Rep}(G)\to\operatorname{Vec}$
-has a right adjoint.
+Coinduction is right adjoint to the
+forgetful functor
+$$
+U:\operatorname{Rep}_F(G)\to
+\operatorname{Vec}_F.
+$$
 \end{proposition}
 
 \begin{proof}
-The right adjoint, explicitly, is the
-following
-so-called coinduction:
+There is a natural bijection
 $$
-\operatorname{Coind}(W)
-=
-\operatorname{Hom}_F(FG,W).
+\begin{aligned}
+&\operatorname{Hom}_{FG}
+(M,\operatorname{Coind}(W))\\
+&\qquad\cong\operatorname{Hom}_F(U(M),W).
+\end{aligned}
 $$
-The $G$-action is inherited from that on the
-first factor. More precisely, if
-$\varphi:FG\to W$, then $g\varphi$ is by
-definition the function $FG\to W$ defined by
+It sends $f$ to $m\mapsto f(m)(e)$.
+Conversely, a linear map $a:U(M)\to W$
+gives $f_a(m)(h)=a(hm)$.
+This is equivariant because
 $$
-x\longmapsto\varphi(xg)
+f_a(gm)(h)=a(hgm)=(g f_a(m))(h).
 $$
-for all $x\in FG$.
-
-\noindent
-Let
-$$
-f\in
-\operatorname{Hom}_{\operatorname{Rep}(G)}
-(M,\operatorname{Hom}_F(FG,W)),
-$$
-and denote $f(m)$ by $\varphi_m$. Then by
-evaluating $\varphi_m$ on $e\in FG$ we get an
-element $\varphi_m(e)\in W$, and this gives
-us
-a function $\overline{f}:M\to W$. In this way
-we have set up a function
-$$
-\operatorname{Hom}_{\operatorname{Rep}(G)}
-(M,\operatorname{Hom}_F(FG,W))
-\longrightarrow
-\operatorname{Hom}_F(M,W)
-$$
-by $f\longmapsto\overline{f}$. Note that
-$\overline{f}$, while linear in $m\in M$, is
-not necessarily compatible with the
-$G$-actions,
-so it lies in $\operatorname{Hom}_F(M,W)$
-rather than in
-$\operatorname{Hom}_{\operatorname{Rep}(G)}
-(M,W)$. Or even more precisely, it lies in
-$\operatorname{Hom}_{\operatorname{Rep}(G)}
-(F(M),W)$ where $F$ denotes the forgetful
-functor
-$$
-F:\operatorname{Rep}(G)\longrightarrow
-\operatorname{Vec}.
-$$
-
-\noindent
-To show that $\operatorname{Coind}$ is right
-adjoint to $F$ we have to show that the
-association set up above is an isomorphism,
-that is, that any linear map
-$\overline{f}:M\to W$ yields an
-$m\longmapsto\varphi_m$ as above. The
-construction is going to be
-$$
-\varphi_m(g)=\overline{f}(gm).
-$$
+The two constructions are inverse:
+equivariance recovers $f(m)(h)$ from
+$f(hm)(e)$. They commute with composition
+in both variables, proving naturality.
 \end{proof}
 
 \begin{proposition}
 \label{proposition-adjoint-exact-4-sept}
-An additive functor which is a right adjoint
-is
-left exact.
+An additive right adjoint between abelian
+categories is left exact.
 \end{proposition}
 
 \begin{proof}
-Exercise.
+Right adjoints preserve kernels and finite
+products by their universal properties.
+Thus they preserve left exact sequences.
 \end{proof}
 
 \begin{proposition}
 \label{proposition-monos-4-sept}
-A left exact functor sends monomorphisms to
+A left exact additive functor preserves
 monomorphisms.
 \end{proposition}
 
 \begin{proof}
-Exercise.
+Apply it to $0\to A\to B$.
 \end{proof}
 
 \begin{proposition}
 \label{proposition-adjoint-injective-4-sept}
-The right adjoint to an exact functor sends
-injective objects to injective objects.
+The right adjoint to an exact additive
+functor sends injective objects to
+injective objects.
 \end{proposition}
 
 \begin{proof}
-Exercise.
+Write $L:\mathcal A\to\mathcal B$ for
+the exact functor and $R$ for its right
+adjoint. If $J$ is injective, then
+$$
+\operatorname{Hom}_{\mathcal A}(-,R(J))
+\cong\operatorname{Hom}_{\mathcal B}(L(-),J)
+$$
+is exact. Hence $R(J)$ is injective.
 \end{proof}
+
+\noindent
+These three proofs were left as exercises
+on the board; the short justifications
+above fill them in.
 
 \begin{lemma}[Corollary]
 \label{lemma-adjoint-injectives-4-sept}
-If $A\to B$ is an exact functor which has a
-right adjoint, and if $B$ has enough
-injectives,
-then $A$ has enough injectives.
+Let $L:\mathcal A\to\mathcal B$ be
+faithful and exact, with right adjoint
+$R$. If $\mathcal B$ has enough
+injectives, then so does $\mathcal A$.
 \end{lemma}
 
-\noindent
-Proof of Lemma 3.4.4. The following paragraph
-essentially replicates the proof of the
-corollary above. Let
-$$
-\operatorname{Coind}:\operatorname{Vec}
-\longrightarrow\operatorname{Rep}(G)
-$$
-denote the right adjoint to the forgetful
-functor
-$$
-\operatorname{Rep}(G)\longrightarrow
-\operatorname{Vec}.
-$$
-Here all vector spaces are over $F$, which we
-omit from the notation. Let
-$V\in\operatorname{Rep}(G)$ and consider its
-image in $\operatorname{Vec}$. We want to map
-it to some injective
-$I'\in\operatorname{Vec}$.
-Now, in $\operatorname{Vec}$ all objects are
-injective, so $I'=V$ will do. Now define
-$$
-I=\operatorname{Coind}(I'),
-$$
-which by the adjunction receives a morphism
-$V\to I$. The morphism is a monomorphism by
-Proposition \ref{proposition-monos-4-sept}.
+\begin{proof}
+Choose a monomorphism $j:L(X)\to J$
+with $J$ injective. Its adjoint is
+$i:X\to R(J)$, whose target is injective
+by the preceding proposition.
+If $a,b:Y\to X$ satisfy $ia=ib$,
+naturality of the adjunction gives
+$jL(a)=jL(b)$. Since $j$ is monic and
+$L$ is faithful, $a=b$. Thus $i$ is monic.
+
+In the notation of the lecture, the unit
+$\eta_X:X\to RL(X)$ corresponds to
+$\operatorname{id}_{L(X)}$, and
+$i=R(j)\eta_X$. The same argument, with
+$j$ the identity, proves that $\eta_X$
+is monic.
+\end{proof}
+
+\begin{remark}
+\label{remark-faithfulness-4-sept}
+The faithfulness hypothesis is missing
+from the recorded board statement and
+the previous transcription. It is needed
+in the proof and is included in
+Corollary 3.4.9 of Jethro's current notes.
+See also the Stacks Project,
+\href{https://stacks.math.columbia.edu/tag/%
+015Y}{Section 12.29, Lemma 12.29.3}.
+Forgetting a group action is faithful,
+so the application here satisfies it.
+\end{remark}
 
 \noindent
-The next question is whether the injective
-$I$
-in $\operatorname{Rep}(G)$ is injective in
-$G$-mod. This is the content of the following
-proposition.
+Every vector space is injective in
+$\operatorname{Vec}_F$, since a linear
+map on a subspace extends after choosing
+a complementary subspace. Hence
+$\operatorname{Coind}(W)$ is injective
+in $\operatorname{Rep}_F(G)$.
+The adjunction gives an embedding
+$$
+\begin{aligned}
+\eta_V:V&\to\operatorname{Coind}(U(V)),\\
+\eta_V(v)(h)&=hv.
+\end{aligned}
+$$
+Evaluation at $e$ recovers $v$, proving
+injectivity directly. This answers the
+first question.
 
 \begin{proposition}
 \label{proposition-coind-injective-4-sept}
-Assume that $\operatorname{char}(F)=0$. For
-every $F$-vector space $W$, the module
-$$
-\operatorname{Coind}(W)
-=
-\operatorname{Hom}_F(FG,W)
-$$
-is injective in $G$-mod.
+If $F$ has characteristic zero, then
+$\operatorname{Coind}(W)$ is also
+injective as a $G$-module.
 \end{proposition}
 
 \begin{proof}
-We show that
+For every $G$-module $M$, evaluation at
+$e$ gives a natural isomorphism
 $$
 \operatorname{Hom}_{\mathbb{Z}G}
-(-,\operatorname{Coind}(W))
+(M,\operatorname{Coind}(W))
+\cong\operatorname{Hom}_{\mathbb{Z}}(M,W).
 $$
-is exact as a functor from $G$-mod to
-$\operatorname{Ab}$. By Exercise 3.2.5 this
-suffices.
-
-\noindent
-For any $M\in G$-mod we consider
-$$
-\beta_M:
-\operatorname{Hom}_{\mathbb{Z}G}
-(M,\operatorname{Hom}_F(FG,W))
-\longrightarrow
-\operatorname{Hom}_{\mathbb{Z}}(M,W)
-$$
-defined by
-$$
-\varphi\longmapsto
-\bigl[m\longmapsto\varphi(m)(1_{FG})\bigr].
-$$
-For its inverse we start with
-$$
-\operatorname{Hom}_{\mathbb{Z}G}
-(M,\operatorname{Hom}_{\mathbb{Z}}
-(\mathbb{Z}G,W))
-\longleftarrow
-\operatorname{Hom}_{\mathbb{Z}}(M,W)
-$$
-and the assignment
-$$
-\bigl[m\longmapsto
-\bigl[x\longmapsto
-\psi(x\mathbin{\cdot}m)\bigr]\bigr]
-\longleftarrow\psi.
-$$
-Since $W$ is a vector space, any
-$\mathbb{Z}$-linear map $\mathbb{Z}G\to W$
-extends in a unique way to an $F$-linear map
-$FG\to W$. So this inverse lands in the right
-place, and a simple calculation confirms it
-really is an inverse. Thus
-$$
-\operatorname{Hom}_{\mathbb{Z}G}
-(-,\operatorname{Coind}(W))
-\simeq
-\operatorname{Hom}_{\mathbb{Z}}(-,W).
-$$
-In more sophisticated language, $\beta$
-establishes a natural isomorphism between
-these
-two functors.
-
-\noindent
-But $\operatorname{Hom}_{\mathbb{Z}}(-,W)$ is
-exact because $W$, being a vector space over
-a
-field of characteristic zero, is a divisible
-abelian group, hence injective in
-$\operatorname{Ab}$. This proves that
-$\operatorname{Coind}(W)$ is injective in
-$G$-mod.
+Its inverse sends $a:M\to W$ to the map
+whose value at $m$ is the $F$-linear
+extension of $h\mapsto a(hm)$ from the
+basis $G$ of $FG$. The verification is
+the same as for the first adjunction.
+As an abelian group, $W$ is divisible:
+for $n\ne0$, division by $n$ is possible
+because $F$ has characteristic zero.
+Thus $W$ is injective in abelian groups
+by Proposition
+\ref{proposition-divisible-injective}.
+The functor on the right is exact,
+which proves the claim.
 \end{proof}
 
-\begin{exercise}
-\label{exercise-vec-unnecessary-4-sept}
-The introduction of $\operatorname{Vec}$ in
-addition to $\operatorname{Rep}(G)$ and
-$G$-mod might seem unnecessary. Indeed let
-$$
-F:\operatorname{Rep}(G)\longrightarrow
-G\operatorname{-mod}
-$$
-be the forgetful functor, and let
-$$
-G=\operatorname{Hom}_{\mathbb{Z}G}(FG,-).
-$$
-Is $G$ right adjoint to $F$? If so, then we
-can
-produce injective resolutions of
-$V\in\operatorname{Rep}(G)$ by the corollary
-above. Now the question is whether such
-objects
-are injective in $G$-mod.
-\end{exercise}
+\begin{theorem}
+\label{theorem-group-vanishing-4-sept}
+Let $G$ be finite and $V$ an $F$-linear
+representation, with $F$ of characteristic
+zero. Then $H^n(G,V)=0$ for every $n>0$.
+\end{theorem}
 
-\begin{exercise}
-\label{exercise-adjoints-injective-4-sept}
-Let $F:\mathcal{A}\to\mathcal{B}$ be an exact
-functor, and let
-$G:\mathcal{B}\to\mathcal{A}$
-be a right adjoint to $F$. Is it true that
-for
-$I\in\mathcal{B}$ injective, the object
-$F(G(I))\in\mathcal{B}$ is injective? The
-answer is no, and a counterexample is given
-by
-the categories of modules over the rings
-$\mathbb{C}[x]/(x^2)$ and $\mathbb{C}$.
-\end{exercise}
+\begin{proof}
+Embed $V$ into $\operatorname{Coind}(U(V))$,
+take the quotient, and repeat. This gives
+a resolution by representations which are
+injective in both categories. Applying
+invariants therefore computes both the
+derived functors in representations and
+ordinary group cohomology.
+By Proposition
+\ref{proposition-invariants-averaging},
+the invariants functor on representations
+is exact, so the positive cohomology
+of this complex is zero.
 
-\noindent
-Find somewhere to discuss $i^*$ and its two
-adjoints $i_*$ and $i_!$.
+Equivalently, if $0\to V\to I\to Q\to0$
+is the first step, the long exact sequence
+and surjectivity of $I^G\to Q^G$ give
+$H^1(G,V)=0$. The higher terms give
+$H^{n+1}(G,V)\cong H^n(G,Q)$ for $n>0$;
+iteration proves all the remaining cases.
+\end{proof}
 
-\begin{example}
-\label{example-cohomology-c-c-star-4-sept}
-Consider the short exact sequence of
-$G$-modules
-$$
-0\longrightarrow\mathbb{Z}
-\longrightarrow\mathbb{C}
-\longrightarrow\mathbb{C}^{\times}
-\longrightarrow0,
-$$
-where the first map is inclusion and the
-second
-is the exponential
-$$
-a\longmapsto e^{2\pi ia}.
-$$
-Applying Proposition 3.2.1, we obtain a long
-exact sequence
-$$
-\cdots\longrightarrow
-H^{n-1}(G;\mathbb{C}^{\times})
-\longrightarrow H^n(G;\mathbb{Z})
-\longrightarrow H^n(G;\mathbb{C})
-\longrightarrow H^n(G;\mathbb{C}^{\times})
-\longrightarrow H^{n+1}(G;\mathbb{Z})
-\longrightarrow\cdots.
-$$
-By Lemma 3.4.4, $H^n(G;\mathbb{C})=0$ for
-$n\geq1$. Therefore
-$$
-H^{n+1}(G;\mathbb{Z})
-\simeq
-H^n(G;\mathbb{C}^{\times})
-$$
-for all $n\geq1$.
-\end{example}
-
-\begin{exercise}
-\label{exercise-cyclic-c-c-star-4-sept}
-Confirm these isomorphisms in the case
-$G=C_m$ using the general computation above,
-applied to $A=\mathbb{Z}$ and
-$A=\mathbb{C}^{\times}$.
-\end{exercise}
-
-\section{Example: Hilbert's theorem 90
-4-sept}
+\section{Hilbert's theorem 90: September 4}
 \label{section-hilberts-theorem-90-4-sept}
 
 \noindent
-Recall that a finite field extension $L/K$ is
-called Galois if $L^G=K$, where $G$ is the
-Galois group
+The remainder of the lecture is recorded
+on pp.~15--17 of Francisca's notes.
+Let $L/K$ be a finite field extension.
+Its degree is $[L:K]=\dim_K L$, and
 $$
-\operatorname{Gal}(L/K)
-=
-\{f\in\operatorname{Aut}(L)mid f|_K
-=\operatorname{Id}_K\}.
+G=\operatorname{Gal}(L/K)
+=\{g\in\operatorname{Aut}(L)\mid
+g|_K=\operatorname{id}_K\}.
 $$
-The degree $[L:K]$ of the extension is the
-dimension of $L$ as a vector space over $K$,
-and it is a theorem that
-$\#\operatorname{Gal}(L/K)$ equals the
-degree.
-Since $L$ is a finite dimensional vector
-space
-over $K$ we can consider, for each
-$\alpha\in L$, the $K$-linear endomorphism
-$L\to L$ of multiplication by $\alpha$ as an
-element $m_\alpha\in\operatorname{GL}_K(L)$.
-Then we define the norm of $\alpha$ to be
+For $H\subset G$, its fixed field is
 $$
-N(\alpha)=\det(m_\alpha).
+L^H=\{a\in L\mid h(a)=a
+\quad\forall h\in H\}.
 $$
-It is a theorem that if $L/K$ is Galois then
+We always have $K\subset L^H$.
+The finite extension is Galois precisely
+when $L^G=K$; then $|G|=[L:K]$.
+From now on assume $L/K$ is Galois.
+
+\begin{definition}
+\label{definition-galois-norm-4-sept}
+For $\alpha\in L$, let
+$m_\alpha\in\operatorname{End}_K(L)$
+be multiplication by $\alpha$.
+The \emph{norm} is
 $$
-N(\alpha)=\prod_{g\in G}g(\alpha).
+N_{L/K}(\alpha)=\det(m_\alpha)\in K.
 $$
-We discuss the following result of Noether,
-which is often called Hilbert 90.
+\end{definition}
+
+\noindent
+For a finite Galois extension,
+$$
+N_{L/K}(\alpha)=\prod_{g\in G}g(\alpha).
+$$
+This formula was stated in the lecture.
 
 \begin{theorem}[Noether]
 \label{theorem-noether-hilbert-90-4-sept}
-Let $L/K$ be a Galois extension, and let
-$G=\operatorname{Gal}(L/K)$. Then $G$ acts on
-$L$, and on $L^{\times}$, so that
-$L^{\times}$ is a $G$-module. One has
+For a finite Galois extension $L/K$,
 $$
 H^1(G,L^{\times})=0.
 $$
+Here $G$ acts on $L^{\times}$ by field
+automorphisms.
 \end{theorem}
 
-\noindent
-Hilbert only stated the theorem in the case
-$G\simeq\mathbb{Z}/n$ is cyclic. The
-statement is given as follows.
-
-\begin{theorem}
+\begin{theorem}[Hilbert 90, cyclic form]
 \label{theorem-hilbert-90-cyclic-4-sept}
-Let $L/K$ be a Galois extension, and suppose
-that
-$$
-G=\left\langle{}\sigma\right\rangle{}
-\simeq\mathbb{Z}/n.
-$$
-Then for every $\alpha\in L$ of norm
-$N(\alpha)=1$, there exists $\beta\in L$ such
-that
+If $G=\langle\sigma\rangle$ is cyclic,
+then for every $\alpha\in L^{\times}$
+with $N_{L/K}(\alpha)=1$ there exists
+$\beta\in L^{\times}$ such that
 $$
 \alpha=\sigma(\beta)/\beta.
 $$
 \end{theorem}
 
 \noindent
-We will give an elementary proof of Hilbert's
-version first.
-
-\begin{proof}
-Let $\alpha\in L^{\times}$ with
-$N(\alpha)=1$. Let $y\in L^{\times}$ and
-consider
-$$
-d_0=\alpha y,
-\qquad
-d_{j+1}=\alpha\sigma(d_j),
-\qquad
-j=0,1,2,\ldots.
-$$
-Equivalently,
-$$
-d_j=
-\bigl(\alpha\sigma(\alpha)\cdots
-\sigma^j(\alpha)\bigr)\sigma^j(y).
-$$
-We note that
-$$
-d_{n-1}=N(\alpha)\sigma^{n-1}(y)
-=\sigma^{n-1}(y).
-$$
-Let
-$$
-\beta=d_0+d_1+\cdots+d_{n-1}.
-$$
-We claim that there exists a choice of $y$
-such
-that $\beta\ne0$. For if there were not, we
-would have
-$$
-\sum_{i=0}^{n-1}m_i\sigma^i(y)=0
-$$
-for all $y\in L^{\times}$. Thus there would
-be
-a linear dependence among the $\sigma^i(y)$
-for
-every $y\in L$. But by a certain theorem in
-Galois theory we can choose a generator $y$,
-that is, $L=K(y)$. Then the $n=[L:K]$ images
-$$
-\{\sigma^i(y)\mid\sigma^i\in G\}
-$$
-must form a basis, a contradiction.
-
-\noindent
-All right, so $\beta\ne0$. But then
-$$
-\begin{aligned}
-\frac{\sigma(\beta)}{\beta}
-&=
-\frac{\sigma(d_0)+\cdots+\sigma(d_{n-1})}
-{d_0+\cdots+d_{n-1}} \\
-&=
-\frac{d_1/\alpha+d_2/\alpha+\cdots+
-d_{n-1}/\alpha+d_0/\alpha}
-{d_0+d_1+\cdots+d_{n-1}} \\
-&=\alpha^{-1}.
-\end{aligned}
-$$
-Therefore
-$$
-\frac{\sigma(\beta^{-1})}{\beta^{-1}}
-=
-\frac{\beta}{\sigma(\beta)}
-=\alpha.
-$$
-\end{proof}
+The elementary proof of the cyclic form
+was explicitly omitted on the board.
+Instead, the lecture asked us to recover
+it from the periodic complex for $C_m$.
 
 \begin{exercise}
 \label{exercise-hilbert-90-cyclic-4-sept}
-Compare the statement for cyclic extensions
-with the convenient complex for cohomology
-of a
-cyclic group, to understand why Hilbert's
-theorem is a special case of the
-cohomological
-version of Noether's theorem.
+Write the maps in Example
+\ref{example-group-cohom-cyclic}
+multiplicatively for $A=L^{\times}$.
+Check that they are
+$$
+\beta\longmapsto\sigma(\beta)/\beta,
+\qquad \alpha\longmapsto N_{L/K}(\alpha).
+$$
+Consequently,
+$$
+H^1(G,L^{\times})
+=\frac{\ker(N_{L/K})}
+{\{\sigma(\beta)/\beta
+\mid\beta\in L^{\times}\}}.
+$$
+This identifies the cyclic theorem with
+the cyclic case of Noether's theorem.
 \end{exercise}
-
-\noindent
-To prove Noether's theorem, we first need a
-lemma. This proof, which I found on Noam
-Elkies's website [2], is essentially from
-Jacobson's book, though there it appears as
-[?], more or less buried in the proof of
-the lemma on page 236.
 
 \begin{lemma}[Artin's lemma]
 \label{lemma-artin-4-sept}
-Let $L/K$ be a Galois extension of degree $n$
-with Galois group
-$G=\operatorname{Gal}(L/K)$. Denote by
+The automorphisms $g\in G$ are linearly
+independent over $L$ as functions $L\to L$.
+In other words, if $c_g\in L$ and
 $$
-\rho:G\longrightarrow\operatorname{GL}_K(L)
+\sum_{g\in G}c_g g(x)=0
 $$
-the canonical inclusion. If
-$$
-\sum_{g\in G}c_g\rho(g)=0
-$$
-for constants $c_g\in L$, then $c_g=0$ for
-all $g$.
+for every $x\in L$, then all $c_g$ vanish.
 \end{lemma}
 
 \noindent
-Notice that $\operatorname{GL}_K(L)$ is a
-$K$-vector space, so the lemma says the
-$\rho(g)$ are linearly independent in this
-vector space, but it says more: the
-coefficients can be in $L$.
+The lemma is stated on the board and
+used in the following proof. It concerns
+linear independence in
+$\operatorname{End}_K(L)$, where $L$
+acts by multiplication on the output.
 
-\begin{proof}
-Let $\{x_1,\ldots,x_n\}$ be a $K$-linear
-basis of $L$, and let $g_1,\ldots,g_n$ be the
-elements of $G$ in some order. Consider the
-matrix
+\begin{proof}[Proof of Noether's theorem]
+Let $\alpha:G\to L^{\times}$ be a
+$1$-cocycle. In multiplicative notation,
 $$
-M\in\operatorname{Mat}_{n\times n}(L)
+\alpha(gh)=\alpha(g)g(\alpha(h)).
 $$
-defined by
+By Artin's lemma the function
 $$
-M_{ij}=g_i(x_j).
+x\longmapsto\sum_{h\in G}\alpha(h)h(x)
 $$
-Then the relation in the statement says
-$cM=0$, where $c$ is the row vector
+is not zero. Choose $\theta\in L$ so that
 $$
-(c_1,\ldots,c_n).
+b=\sum_{h\in G}\alpha(h)h(\theta)\ne0.
 $$
-This means $M$ must be a degenerate matrix,
-so
-there exist nonzero column vectors
+The cocycle identity gives
 $$
-v=(v_1,\ldots,v_n)^T
+\begin{aligned}
+g(b)&=\sum_{h\in G}g(\alpha(h))gh(\theta)\\
+&=\alpha(g)^{-1}
+\sum_{h\in G}\alpha(gh)gh(\theta)\\
+&=\alpha(g)^{-1}b.
+\end{aligned}
 $$
-such that $Mv=0$. Clearly the set of all such
-column vectors, denoted $V\subset L^n$, is an
-$L$-vector space. For each $g\in G$ and
-$v\in V$, the relation
-$$
-\sum_i v_i g(x_i)=0
-$$
-holds.
-
-\noindent
-We observe that $V$ is invariant under the
-entry-wise action of $G$. Indeed if $v\in V$,
-then
-$$
-\sum_i v_i h(x_i)=0
-$$
-for all $h\in G$, and hence
-$$
-g\left(\sum_i v_i g^{-1}h(x_i)\right)
-=
-\sum_i g(v_i)h(x_i)=0
-$$
-for all $g\in G$ too.
-
-\noindent
-We claim there exists such a $v\in V$ with
-all
-entries in $K$. Let $v\in V$ be nonzero with
-a
-a minimal number of nonzero entries. Without
-loss
-of generality $v_1=1$. Now if we apply some
-$g$
-to all entries we get another element of $V$,
-and subtracting gives a vector
-$$
-w=v-g\ast v
-$$
-with first entry zero. By minimality of $v$
-we
-have $w=0$. But this means $g(v_i)=v_i$ for
-each $g\in G$. Hence each $v_i\in L^G=K$.
-
-\noindent
-But with such a vector $v$ in hand, we set
-$g=e$ to conclude that
-$$
-\sum_i v_ix_i=0,
-$$
-meaning the basis $\{x_1,\ldots,x_n\}$ would
-not be a basis. This contradiction proves the
-lemma.
+Thus $\alpha(g)=b/g(b)$. With
+$\beta=b^{-1}$ this is
+$\alpha(g)=g(\beta)/\beta$, a coboundary
+in our convention. The expressions
+$b/g(b)$ and $g(\beta)/\beta$ describe
+the same subgroup of coboundaries.
+Every cocycle therefore represents zero.
 \end{proof}
 
-\noindent
-The following proof of Noether's theorem can
-be
-found in [16, page 150].
+\begin{remark}[Closing statements]
+\label{remark-galois-closing-4-sept}
+The final board also states
+$$
+H^n(G,L)=0
+$$
+for $n>0$, with the additive action on
+$L$, and mentions $H^2(G,L^{\times})$
+as the Brauer group of the extension.
+No proof of the additive statement or
+construction of the Brauer group is
+recorded there.
 
-\begin{proof}
-Let $\alpha$ be a nonzero $1$-cocycle. Thus
-$\alpha:G\to L^{\times}$ satisfies
-$$
-\alpha(gh)=\alpha(g)g(\alpha(h)),
-$$
-while a $1$-coboundary is such an $\alpha$
-which is of the form
-$$
-\alpha(g)=\beta/g(\beta).
-$$
-We wish to show that every $1$-cocycle is a
-$1$-coboundary.
+More precisely, the latter is the
+\emph{relative Brauer group} of $L/K$.
+For this terminology see
+\href{https://www.jmilne.org/math/%
+CourseNotes/CFT.pdf}{Milne's notes},
+the opening paragraph of Chapter III.
+The board also recalls the vanishing for
+characteristic-zero representations proved
+earlier in the lecture.
+\end{remark}
 
-\noindent
-Consider
-$$
-\sum_{g\in G}\alpha(g)\rho(g).
-$$
-Since it is nonzero by Lemma
-\ref{lemma-artin-4-sept}, there exists
-$\theta\in L^{\times}$ such that
-$$
-\sum_{g\in G}\alpha(g)g(\theta)\ne0.
-$$
-Take $\beta$ to be this element. Then we
-claim
-that
-$$
-\alpha(g)=\beta/g(\beta),
-$$
-so we are done.
-\end{proof}
-
-\section{Example: Weyl's complete
-reducibility theorem 4-sept}
-\label{section-weyl-4-sept}
+\section{Connections with deformation theory}
+\label{section-homological-deformations}
 
 \noindent
-We discuss cohomology of Lie algebras.
-Although
-some familiarity with Lie algebras would be
-helpful, I think this discussion should be
-comprehensible even to those without previous
-exposure to the subject.
+The following explanations are added
+connections, rather than additional
+claims about what was covered in class.
 
-\begin{definition}
-\label{definition-lie-algebra-4-sept}
-A {\it Lie algebra} over a field $F$ is an
-$F$-vector space $\mathfrak{g}$ equipped
-with a
-bilinear operation
+\begin{remark}[Resolutions and extensions]
+\label{remark-ext-one-extensions}
+The two meanings of Ext in this chapter
+agree in degree one for modules. To see
+the concrete connection, choose
 $$
-[\mathbin{\cdot},\mathbin{\cdot}]:
-\mathfrak{g}\times\mathfrak{g}
-\longrightarrow\mathfrak{g}
+0\to K\to P_0\to M\to0
 $$
-satisfying
-\begin{enumerate}
-\item $[b,a]=-[a,b]$,
-\item
+with $P_0$ projective. Computing with a
+projective resolution gives
 $$
-[a,[x,y]]=[[a,x],y]+[x,[a,y]].
+\operatorname{Ext}^1_R(M,N)
+\cong
+\frac{\operatorname{Hom}_R(K,N)}
+{\operatorname{im}(
+\operatorname{Hom}_R(P_0,N)
+\to\operatorname{Hom}_R(K,N))}.
 $$
-\end{enumerate}
-\end{definition}
+Indeed, a degree-one cocycle descends
+from $P_1$ to $K$, and a coboundary is
+the restriction of a map $P_0\to N$.
+For an extension $0\to N\to E\to M\to0$,
+lift $P_0\to M$ to $P_0\to E$.
+Its restriction to $K$ lands in $N$.
+Changing the lift changes this map by
+a restriction from $P_0$.
+Conversely, pushing out along $K\to N$
+constructs the extension. Its class is
+zero precisely when it splits.
+This explains how a quotient of maps
+encodes the extensions of Section
+\ref{section-extensions}.
+\end{remark}
 
-\noindent
-A simple example of a Lie algebra, denoted
-$\mathfrak{gl}(V)$, is
-$\operatorname{End}(V)$ with
+\begin{remark}[Tor and first-order flatness]
+\label{remark-tor-dual-numbers}
+Let $D=k[t]/(t^2)$ and let $M$ be a
+$D$-module. A free resolution of $k$ is
 $$
-[A,B]=AB-BA.
+\cdots\xrightarrow{t}D
+\xrightarrow{t}D\xrightarrow{t}D
+\to k\to0.
 $$
-Another is the set $\operatorname{Der}(R)$ of
-derivations of a commutative $F$-algebra $R$.
-A derivation is an $F$-linear map $D:R\to R$
-satisfying
+It is exact because the kernel and image
+of multiplication by $t$ are both $(t)$.
+Tensoring with $M$ therefore gives
 $$
-D(ab)=D(a)b+aD(b).
+\operatorname{Tor}^D_1(M,k)
+\cong\ker(t:M\to M)/tM.
 $$
-The Lie bracket is again
-$$
-[D_1,D_2]=D_1D_2-D_2D_1.
-$$
+A flat module preserves exactness under
+tensor product, so this quotient must
+vanish. This is the concrete condition
+that every element killed by $t$ already
+lies in $tM$, as in the first-order
+flatness discussion in the chapter on
+deformations.
+\end{remark}
 
+\begin{remark}[Averaging and obstruction
+classes]
+\label{remark-averaging-obstructions}
+Let a finite group $G$ act on a complex
+$C^\bullet$ of characteristic-zero
+vector spaces, commuting with $d$.
+Exactness of invariants gives
+$$
+H^n((C^\bullet)^G)
+\cong H^n(C^\bullet)^G.
+$$
+An invariant cohomology class has an
+invariant representative by averaging
+any representative. If an invariant
+cycle $z$ is a boundary $du=z$, then
+$$
+d\left(\frac{1}{|G|}\sum_{g\in G}gu\right)
+=z,
+$$
+so it has an invariant primitive too.
 
-codex resume 01a06df8-835b-7e23-b0a4-d2ecaba3a558
+For the $S_3$-action in the
+Gr\"unbaum deformation problem, this is
+the linear algebra behind choosing
+invariant solutions to equivariant
+correction equations, once their
+obstruction classes vanish.
+It does not prove $(T^2)^G=0$.
+The group cohomology vanishing
+$H^{n}(G,V)=0$ for $n>0$ concerns the
+derived invariants functor; it does not
+say that the invariant space $V^G$ is
+zero. In particular, $(T^2)^G$ requires
+its own computation of the action on
+cotangent cohomology.
+\end{remark}
 
 \bibliography{my}
 \bibliographystyle{amsalpha}
