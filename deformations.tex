@@ -2192,11 +2192,68 @@ from the presentation are also explained
 in \href{https://math.berkeley.edu/%
 \string~robin/math274root.pdf}
 {Hartshorne's online lectures}, Section 3,
-especially Lemmas 3.2 and 3.3. The
-obstruction theorem is Theorem 10.1 there.
+especially Lemmas 3.2 and 3.3.
 These references identify the quotient
 with cotangent cohomology; we do not need
 to construct a cotangent complex here.
+
+The following theorem explains why this
+quotient detects flat lifts at every order.
+Write $T^2_A=T^2(A/k,A)$ for the same
+cokernel without the degree restriction.
+
+\begin{theorem}[Obstruction to a flat lift]
+\label{theorem-obstruction-flat-lift}
+Let $A$ be a finitely generated
+$k$-algebra. Let $B'\to B$ be a surjection
+of local Artinian $k$-algebras with
+residue field $k$. Write $J=\ker(B'\to B)$
+and assume
+$$
+\mathfrak{m}_{B'}J=0.
+$$
+Let $A_B$ be a flat, finitely generated
+$B$-algebra, with a specified
+identification $A_B\otimes_B k\cong A$.
+There is a canonical obstruction
+$$
+\operatorname{ob}(A_B,B')
+\in T^2_A\otimes_k J.
+$$
+It vanishes if and only if there exists
+a flat, finitely generated $B'$-algebra
+$A_{B'}$ with an identification
+$$
+A_{B'}\otimes_{B'}B\cong A_B.
+$$
+Such a lift can be realized by lifting
+the generators of the ideal in a chosen
+polynomial presentation of $A_B$.
+\end{theorem}
+
+\noindent
+For a proof, see Hartshorne,
+\href{https://math.berkeley.edu/%
+\string~robin/math274root.pdf}
+{\emph{Lectures on Deformation Theory}}
+(2004), Theorem 10.1(a), p.~58
+(PDF page 64; proof on pp.~59--60),
+and Corollary 10.3, p.~61.
+
+\medskip\noindent
+For the rings $B_r$ above, take
+$$
+B'=B_{r+1},\qquad B=B_r,\qquad
+J=(t^{r+1})/(t^{r+2})\cong k.
+$$
+Thus a lift extends the specified family
+by one order while preserving flatness.
+For graded deformations with $\deg t=0$,
+the calculation takes place in
+$T^2_{A,0}$: the maps preserve degree,
+so corrections can be chosen in degree
+zero. We now construct the obstruction
+explicitly at second order.
 
 \medskip\noindent
 \textbf{Why the residual belongs to this
@@ -2579,7 +2636,8 @@ is
 $$
 \sum_{i=1}^n F_iR_{n+1-i}.
 $$
-The general obstruction theorem assigns
+Theorem~\ref{theorem-obstruction-flat-lift}
+assigns
 its class to the same space $T^2_{A,0}$,
 tensored with the one-dimensional kernel
 $(t^{n+1})/(t^{n+2})$. These later classes
