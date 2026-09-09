@@ -4057,6 +4057,212 @@ characteristic-zero representations proved
 earlier in the lecture.
 \end{remark}
 
+
+\section{g-modules}
+\label{section-g-modules}
+
+\noindent
+Let $\mathfrak{g}$ be a Lie algebra.
+Recall that a $\mathfrak{g}$-module
+is a representation of $\mathfrak{g}$.
+
+\begin{proposition}
+\label{proposition-g-mod-abelian-category}
+$\mathfrak{g}$-mod is an abelian category.
+\end{proposition}
+
+\noindent
+Let $B$ be a $\mathfrak{g}$-module and
+$A \subset B$ a submodule.
+Then $C = B/A$ is the quotient module, and
+we have
+\begin{equation}
+\label{equation-ses-gmod}
+\xymatrix{
+0\ar[r]
+&A\ar[r]^i
+&B\ar[r]^p
+&C\ar[r]\ar@/^.5pc/[l]^s
+&0,
+}
+\end{equation}
+
+\noindent
+a short exact sequence in
+$\mathfrak{g}$-mod.
+
+\begin{definition}
+\label{definition-split}
+We say Equation \ref{equation-ses-gmod}
+is a {\it split short exact sequence} 
+if there exists the section $s$,
+i.e. a map $s:C \to B$ such that $p \circ s
+= \operatorname{id}_C$.
+\end{definition}
+
+\noindent
+Note: if Equation \ref{equation-ses-gmod}
+is split, then $s$ is injective.
+Call $\widetilde{C} \subset B$
+the image of $s$.
+Also call $\tilde{A} =
+\operatorname{Im}(i)$.
+One can check that
+\begin{enumerate}
+\item $\widetilde{A}$ and
+$\widetilde{C}$ are submodules of $B$.
+
+\item $\tilde{A} \cap \widetilde{C}=0$.
+
+\item $\widetilde{A}+\widetilde{C}=B$.
+\end{enumerate}
+
+\noindent
+Hence
+$$
+B=A \oplus C.
+$$
+
+\medskip\noindent
+If $U \subset V$ is a subrepresentation,
+it has a complement $W$ if and only if
+
+$$
+\xymatrix{
+0\ar[r]
+&U\ar[r]^i
+&V\ar[r]^p
+&V/U\ar[r]\ar@/^.5pc/[l]^s
+&0,
+}
+$$
+is split. Indeed, if there exists
+a complement $W \subset V$, then
+$$
+\xymatrix{
+W \ar@{^{(}->}[d]\ar[dr]^{\simeq}\\
+V \ar[r] & V/U.
+}
+$$
+\medskip\noindent
+{\bf Some homological algebra, finally.} 
+Let Equation
+\ref{homological-algebra-equation-ses-gmod}
+be a short exact sequence in
+$\mathfrak{g}$-mod. Choose a splitting $s$
+at the level of vector spaces.
+$p \circ s = \operatorname{id}_C$,
+but for $x \in \mathfrak{g}$,
+$s(xc) \neq  xs(c)$.
+Look at difference $x s(c) - s(xc)$:
+$$
+\begin{aligned}
+p(xs(c)-s(xc)) &= x \psi(c)-\psi(xc)\\
+&=xc-xc = 0.
+\end{aligned}
+$$
+So $$
+xs(c) - s(xc) \in \ker(p)
+= \operatorname{Im}(i) \simeq A.
+$$
+So we have
+$$
+\begin{aligned}
+\mathfrak{g}\times C &\longrightarrow A \\
+x,c &\longmapsto a.
+\end{aligned}
+$$
+This map is bilinear.
+
+So we can think of this function as an
+element of
+$$
+\Hom(\mathfrak{g} \otimes C,A),
+$$
+or as an element
+$$
+\xi \in
+\Hom(\mathfrak{g},\Hom(C,A)).
+$$
+$\xi$ depends on the random choice of $s$.
+
+\medskip\noindent
+Let $M$ be a $\mathfrak{g}$-module.
+Consider
+$$
+\begin{aligned}
+C^0 = M, \qquad 
+C^1 = \Hom_{\mathbb{F}}(\mathfrak{g},M),\qquad 
+C^2 = \Hom(\Lambda^2\mathfrak{g},M).
+\end{aligned}
+$$
+Let
+$$
+\begin{aligned}
+d: C^0 &\longrightarrow C^1 \\
+m &\longmapsto (x \mapsto xm),
+\end{aligned}
+$$
+and
+$$
+\begin{aligned}
+d: C^1 &\longrightarrow C^2 \\
+\varphi &\longmapsto 
+(x \wedge y \mapsto 
+x \varphi(y) - y \varphi(x)-
+\varphi([x,y]).
+\end{aligned}
+$$
+
+Check: $d \circ d =0$.
+
+\begin{definition}
+\label{definition-lie-algebra-cohomology}
+{\it Lie algebra cohomology} is
+$$
+H^n(\mathfrak{g},M)
+=
+\frac{\ker(d)}{\operatorname{Im}d}.
+$$
+\end{definition}
+
+\begin{lemma}
+\label{lemma-xi}
+$\xi:\mathfrak{g} \to
+\Hom_{\mathbb{F}}(C,A)$ is in $\ker(d)$,
+where $d$ is defined using some
+$\mathfrak{g}$-module structure on
+$M=\Hom(C,A)$.
+\end{lemma}
+
+\noindent
+For $f \in \Hom(C,A)$ and
+$x \in \mathfrak{g}$,
+$$
+\begin{aligned}
+xf: C &\longrightarrow A \\
+[xg](c) &= xf(c) - f(xc).
+\end{aligned}
+$$
+
+\begin{exercise}
+\label{exercise-g-mod-structure}
+Check this defines a $\mathfrak{g}$-mod
+structure and check that $\xi \in \ker(d)$.
+\end{exercise}
+
+\begin{exercise}
+\label{exercise-does-not-depend}
+Show Lie algebra cohomology does not
+depend on the choice of $s$.
+\end{exercise}
+
+
+
+
+
+
+
 \bibliography{my}
 \bibliographystyle{amsalpha}
 
