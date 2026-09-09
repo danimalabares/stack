@@ -1,0 +1,114 @@
+\input{preamble}
+
+\begin{document}
+
+\title{Reading the Masters}
+\maketitle
+
+\phantomsection
+\label{section-phantom}
+
+\noindent
+Personal notes on important mathematical
+articles I read, one paragraph at a time.
+
+\medskip
+\tableofcontents
+
+\section{Saint-Donat: first impressions}
+\label{section-saint-donat}
+
+\noindent
+B. Saint-Donat, \textit{Projective Models
+of K-3 Surfaces} \cite{saint-donat}.
+Notes from the introduction, 9 September
+2026. Here the K3 surfaces are projective
+over $\mathbb{C}$.
+
+\medskip\noindent
+\textit{My first impressions, with minimal
+corrections.}
+I gather that the cool thing about
+Saint-Donat's paper is that a line bundle
+$L$ with $L^2>0$ provides a morphism to
+projective space if $|L|$ is nonempty and
+has no fixed components. I first understood
+this as a projective embedding, but that
+requires more. If I remember correctly,
+Nakai--Moishezon says that $L$ is ample if
+$L^2>0$ and $L\cdot C>0$ for every
+irreducible curve $C$. This condition on
+curves still matters on a K3; ampleness is
+also different from very ampleness.
+
+Saint-Donat also says he derives some other
+theorem involving no s\'e qu\'e
+non-hyperelliptic curves. I do not yet
+understand that part.
+
+And there was a third thing\ldots
+
+\medskip\noindent
+\textbf{AI clarification.}
+The second point is an analogue of the
+Enriques--Petri theorem about equations of
+non-hyperelliptic canonical curves. For
+non-hyperelliptic K3 projective models,
+Saint-Donat proves
+generation of the homogeneous ideal by
+quadrics outside explicitly described
+exceptions; see
+\cite[Theorem 7.2]{saint-donat}.
+The third point is that, if $L$ is ample,
+then $L^{\otimes n}$ is basepoint-free for
+$n\geq 2$ and very ample for $n\geq 3$;
+see \cite[Theorem 8.3]{saint-donat}.
+
+\section{Rational or birational?}
+\label{section-rational-or-birational}
+
+\noindent
+\textbf{My question.}
+So every line bundle on every variety
+defines a birational map to projective
+space?
+
+\medskip\noindent
+\textbf{AI answer.}
+No. Let $X$ be an integral projective
+variety over $\mathbb{C}$ and $L$ a line
+bundle. If $H^0(X,L)=0$, the construction
+using global sections gives no map.
+Otherwise, a basis $s_0,\ldots,s_N$ of
+$H^0(X,L)$ gives a rational map
+$$
+\begin{aligned}
+\varphi_{|L|}:X
+&\dashrightarrow\mathbb{P}^N,\\
+x&\longmapsto[s_0(x):\cdots:s_N(x)].
+\end{aligned}
+$$
+This formula is defined wherever the
+sections do not all vanish. If $L$ is
+basepoint-free, it defines a morphism on
+all of $X$. If $L$ is very ample, the
+morphism is a closed embedding.
+
+Being \textit{birational onto its image}
+means that the map restricts to an
+isomorphism between dense open subsets
+of $X$ and its image. This is an extra
+property, not part of the meaning of
+``rational map.''
+
+For example, the trivial line bundle
+$\mathcal{O}_{\mathbb{P}^1}$ has only
+constant global sections. Its complete
+linear system maps $\mathbb{P}^1$ to a
+point, so the map is a morphism but is
+not birational onto its image.
+
+\bibliography{my}
+\bibliographystyle{amsalpha}
+
+\end{document}
